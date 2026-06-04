@@ -23,6 +23,7 @@ from learner import (
 )
 from github_sync import sync_to_github, restore_from_github
 from utils import format_number, gmgn_link, setup_logging
+from backtest import BacktestEngine, REPORTS_DIR, MAX_REPORTS
 
 logger = setup_logging("meme_bot")
 
@@ -77,6 +78,8 @@ class MemeBot:
 
         if config.enable_github_sync:
             self._tasks.append(asyncio.create_task(self.github_sync_loop(), name="github_sync"))
+
+        self._tasks.append(asyncio.create_task(self.backtest_loop(), name="backtest"))
 
         await send_msg(self.telegram_app.bot, "🤖 <b>বট v2 চালু!</b>\n✅ সব সিস্টেম রেডি")
 
@@ -523,6 +526,32 @@ class MemeBot:
                 break
             except Exception as e:
                 logger.error(f"GitHub sync loop error: {e}")
+
+    async def backtest_loop(self):
+        backtest_interval = 7 * 24 * 3600
+        await asyncio.sleep(300)
+        while True:
+            try:
+                stats = await self.state.get_stats()
+                if not stats["bot_active"]:
+                    await asyncio.sleep(3600)
+                    continue
+                logger.info("🧪 Scheduled 30-day backtest শুরু...")
+                async with aiohttp.ClientSession() as bt_session:
+                    dex = DexScreenerClient(bt_session)
+                    helius = HeliusClient(bt_session)
+                    async def bt_send(text):
+                        await send_msg(self.telegram_app.bot, text)
+                    engine = BacktestEngine(bt_session, dex, helius, bt_send)
+                    result = await engine.run(days=30, max_tokens=300)
+                    if "metrics" in result:
+                        if config.enable_github_sync:
+                            await sync_to_github(f"backtest: {result['metrics']['win_rate']}% win rate")
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"Backtest loop error: {e}", exc_info=True)
+            await asyncio.sleep(backtest_interval)
 
 async def daily_report_loop(bot: Bot):
     while True:

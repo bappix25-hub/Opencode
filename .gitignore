@@ -5,3 +5,7 @@ bot_data.json
 *.log
 .pytest_cache/
 .coverage
+backtest_reports/
+backtest_summary.md
+test_bot_data.json
+test_*.json

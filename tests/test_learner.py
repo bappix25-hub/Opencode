@@ -10,18 +10,22 @@ class TestLearner(unittest.TestCase):
 
     def setUp(self):
         import os
-        os.environ["DATA_FILE"] = "./test_bot_data.json"
+        for f in ["./test_bot_data.json", "./bot_data.json", "./test_dump.json", "./test_pump.json"]:
+            if os.path.exists(f):
+                os.remove(f)
+        os.environ["DATA_FILE"] = "./test_learner_data.json"
         from config import config
         self.original_data_file = config.data_file
-        config.data_file = "./test_bot_data.json"
+        config.data_file = "./test_learner_data.json"
 
-        if os.path.exists("./test_bot_data.json"):
-            os.remove("./test_bot_data.json")
+        if os.path.exists("./test_learner_data.json"):
+            os.remove("./test_learner_data.json")
 
     def tearDown(self):
         import os
-        if os.path.exists("./test_bot_data.json"):
-            os.remove("./test_bot_data.json")
+        for f in ["./test_learner_data.json", "./test_bot_data.json", "./bot_data.json"]:
+            if os.path.exists(f):
+                os.remove(f)
 
     def test_hash_address(self):
         h1 = _hash_address("TokenABC123")
@@ -73,12 +77,12 @@ class TestLearner(unittest.TestCase):
         }
         coin = {"name": "TestCoin", "symbol": "TEST"}
 
-        ok, msg = learn_pump(coin, pair, 3.0, "test_addr_1", manual=True)
-        self.assertTrue(ok)
+        ok, msg = learn_pump(coin, pair, 3.0, "test_addr_pump_test", manual=True)
+        self.assertTrue(ok, f"learn_pump failed: {msg}")
 
-        self.assertTrue(is_duplicate("test_addr_1"))
+        self.assertTrue(is_duplicate("test_addr_pump_test"))
 
-        ok2, msg2 = learn_pump(coin, pair, 3.0, "test_addr_1", manual=True)
+        ok2, msg2 = learn_pump(coin, pair, 3.0, "test_addr_pump_test", manual=True)
         self.assertFalse(ok2)
         self.assertIn("ডুপ্লিকেট", msg2)
 
@@ -117,8 +121,8 @@ class TestLearner(unittest.TestCase):
             "txns": {"h1": {"buys": 5, "sells": 50}}
         }
         coin = {"name": "DumpCoin", "symbol": "DUMP"}
-        ok, msg = learn_dump(coin, pair, "dump_addr_1", manual=True)
-        self.assertTrue(ok)
+        ok, msg = learn_dump(coin, pair, "dump_addr_unique_test", manual=True)
+        self.assertTrue(ok, f"learn_dump failed: {msg}")
 
     def test_adaptive_threshold(self):
         threshold = get_adaptive_threshold()

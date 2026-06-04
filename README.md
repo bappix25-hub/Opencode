@@ -15,6 +15,7 @@ AI-powered Solana মেমে কয়েন ট্র্যাকার য�
 - **Async GitHub সিঙ্ক** — `asyncio.subprocess` ব্যবহার
 - **Rate-Limited API** — DexScreener exponential backoff
 - **বর্ধিত রিস্ক চেক** — Honeypot, high tax, single holder
+- **Backtesting System** — ৩০ দিনের historical data দিয়ে AI validate, স্বয়ংক্রিয় report
 
 ---
 
@@ -49,6 +50,9 @@ python meme_bot.py
 | `/threshold 50` | AI থ্রেশোল্ড সেট (১-১০০) |
 | `/health` | বটের স্বাস্থ্য পরীক্ষা |
 | `/config` | কনফিগারেশন দেখুন |
+| `/backtest 30` | ৩০ দিনের backtest (ডিফল্ট) |
+| `/backtest 7` | ৭ দিনের backtest |
+| `/lastbacktest` | শেষ backtest রিপোর্ট দেখাও |
 
 ### কীবোর্ড বাটন
 - 📊 স্ট্যাটাস / 📈 পারফরম্যান্স / 🏆 ট্রেন / ⚙️ সেটিংস
@@ -69,10 +73,14 @@ Opencode/
 ├── pumpportal_ws.py       # WebSocket
 ├── learner.py             # AI ইঞ্জিন
 ├── github_sync.py         # Async Git
+├── backtest.py            # Backtesting engine
 ├── telegram_bot.py        # কমান্ড হ্যান্ডলার
 ├── meme_bot.py            # মেইন অর্কেস্ট্রেটর
+├── backtest_reports/      # Backtest JSON রিপোর্ট
+├── backtest_summary.md    # Latest backtest summary
 ├── tests/
-│   └── test_learner.py
+│   ├── test_learner.py
+│   └── test_backtest.py
 ├── .env.example
 ├── .gitignore
 ├── requirements.txt

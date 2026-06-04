@@ -1,11 +1,16 @@
 import logging
+import os
+import json
+import asyncio
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters
 from bot_state import BotState
 from learner import get_stats, get_daily_report, learn_pump, learn_dump, is_duplicate, verify_pump
 from dex_client import DexScreenerClient
+from helius_client import HeliusClient
 from config import config
 from utils import format_number
+from backtest import BacktestEngine, REPORTS_DIR
 
 logger = logging.getLogger("telegram_bot")
 
@@ -33,7 +38,9 @@ class TelegramHandlers:
             "/forcepump ADDRESS — ফোর্স পাম্প\n"
             "/threshold 50 — থ্রেশোল্ড সেট (১-১০০)\n"
             "/health — বটের স্বাস্থ্য\n"
-            "/config — কনফিগারেশন",
+            "/config — কনফিগারেশন\n"
+            "/backtest 30 — ৩০ দিনের backtest\n"
+            "/lastbacktest — শেষ backtest দেখাও",
             parse_mode="HTML", reply_markup=main_keyboard()
         )
 
@@ -151,6 +158,100 @@ class TelegramHandlers:
             parse_mode="HTML"
         )
 
+    async def cmd_backtest(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        days = 30
+        max_tokens = 300
+        if context.args:
+            try:
+                days = int(context.args[0])
+                days = max(1, min(90, days))
+            except (ValueError, IndexError):
+                pass
+
+        await update.message.reply_text(
+            f"🧪 <b>Backtest শুরু হচ্ছে...</b>\n"
+            f"📅 Period: <b>{days} দিন</b>\n"
+            f"📊 Max tokens: <b>{max_tokens}</b>\n\n"
+            f"⏱️ ৩০-৯০ মিনিট লাগবে।\n"
+            f"শেষ হলে রিপোর্ট পাঠাবো।",
+            parse_mode="HTML"
+        )
+
+        async def progress_callback(current, total):
+            try:
+                await update.message.reply_text(
+                    f"⏳ Backtest progress: {current}/{total}",
+                    parse_mode="HTML"
+                )
+            except Exception:
+                pass
+
+        async def run_in_bg():
+            try:
+                import aiohttp
+                async with aiohttp.ClientSession() as session:
+                    dex = DexScreenerClient(session)
+                    helius = HeliusClient(session)
+
+                    async def bt_send(text):
+                        try:
+                            await context.bot.send_message(
+                                chat_id=update.effective_chat.id, text=text,
+                                parse_mode="HTML"
+                            )
+                        except Exception as e:
+                            logging.error(f"bt_send error: {e}")
+
+                    engine = BacktestEngine(session, dex, helius, bt_send)
+                    await engine.run(days=days, max_tokens=max_tokens, progress_callback=progress_callback)
+            except Exception as e:
+                logging.error(f"Backtest error: {e}", exc_info=True)
+                try:
+                    await context.bot.send_message(
+                        chat_id=update.effective_chat.id,
+                        text=f"❌ Backtest এরর: {e}",
+                        parse_mode="HTML"
+                    )
+                except Exception:
+                    pass
+
+        asyncio.create_task(run_in_bg())
+
+    async def cmd_lastbacktest(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        if not os.path.exists(REPORTS_DIR):
+            await update.message.reply_text("❌ কোনো backtest রিপোর্ট নেই।")
+            return
+        files = sorted(
+            [f for f in os.listdir(REPORTS_DIR) if f.startswith("backtest_") and f.endswith(".json")],
+            reverse=True
+        )
+        if not files:
+            await update.message.reply_text("❌ কোনো backtest রিপোর্ট নেই।")
+            return
+        latest = os.path.join(REPORTS_DIR, files[0])
+        try:
+            with open(latest, "r") as f:
+                data = json.load(f)
+            metrics = data.get("metrics", {})
+            period = data.get("period_days", 30)
+            text = (
+                f"📊 <b>শেষ Backtest</b>\n"
+                f"📅 {files[0].replace('backtest_', '').replace('.json', '')}\n"
+                f"⏱️ Period: {period} দিন\n"
+                f"━━━━━━━━━━━━━━━━\n"
+                f"📊 Total: <b>{metrics.get('total_tokens', 0)}</b>\n"
+                f"🚀 Pumps: <b>{metrics.get('actual_pumps', 0)}</b>\n"
+                f"🎯 Precision: <b>{metrics.get('precision', 0)}%</b>\n"
+                f"📈 Recall: <b>{metrics.get('recall', 0)}%</b>\n"
+                f"⚖️ F1: <b>{metrics.get('f1_score', 0)}</b>\n"
+                f"✅ Accuracy: <b>{metrics.get('accuracy', 0)}%</b>\n"
+                f"💰 Win Rate: <b>{metrics.get('win_rate', 0)}%</b>\n"
+                f"📈 Avg Multiplier: <b>{metrics.get('avg_multiplier', 0)}x</b>"
+            )
+            await update.message.reply_text(text, parse_mode="HTML")
+        except Exception as e:
+            await update.message.reply_text(f"❌ রিপোর্ট পড়তে এরর: {e}")
+
     async def handle_buttons(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         text = update.message.text
         if text == "📊 স্ট্যাটাস":
@@ -211,4 +312,6 @@ def register_handlers(app, handlers: TelegramHandlers):
     app.add_handler(CommandHandler("threshold", handlers.cmd_threshold))
     app.add_handler(CommandHandler("health", handlers.cmd_health))
     app.add_handler(CommandHandler("config", handlers.cmd_config))
+    app.add_handler(CommandHandler("backtest", handlers.cmd_backtest))
+    app.add_handler(CommandHandler("lastbacktest", handlers.cmd_lastbacktest))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handlers.handle_buttons))
