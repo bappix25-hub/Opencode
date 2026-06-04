@@ -126,6 +126,18 @@ class BacktestEngine:
         except Exception:
             return False, 0.0
 
+    def identify_5x_pump(self, pair: dict) -> tuple:
+        try:
+            h1 = float(pair.get("priceChange", {}).get("h1", 0) or 0)
+            h6 = float(pair.get("priceChange", {}).get("h6", 0) or 0)
+            h24 = float(pair.get("priceChange", {}).get("h24", 0) or 0)
+            best = max(h1, h6, h24)
+            multiplier = 1 + best / 100
+            is_5x = multiplier >= 5.0
+            return is_5x, round(multiplier, 2)
+        except Exception:
+            return False, 0.0
+
     async def evaluate_token(self, token_info: dict) -> dict:
         addr = token_info["address"]
         pair = token_info["pair"]
@@ -133,6 +145,7 @@ class BacktestEngine:
         symbol = token_info["symbol"]
 
         is_pump, actual_multi = self.identify_pump(pair)
+        is_5x, _ = self.identify_5x_pump(pair)
         age = get_launch_age(pair) or 0
 
         ai_score = 0.0
@@ -159,6 +172,7 @@ class BacktestEngine:
             "name": name,
             "symbol": symbol,
             "actual_pump": is_pump,
+            "actual_5x": is_5x,
             "actual_multiplier": actual_multi,
             "ai_score": ai_score,
             "ai_threshold": threshold_used,
@@ -178,6 +192,7 @@ class BacktestEngine:
         fn = sum(1 for r in results if r["verdict"] == "FN")
         total = len(results)
         actual_pumps = sum(1 for r in results if r["actual_pump"])
+        actual_5x = sum(1 for r in results if r.get("actual_5x", False))
         signals_sent = tp + fp
 
         precision = tp / signals_sent if signals_sent > 0 else 0
@@ -189,6 +204,9 @@ class BacktestEngine:
             sum(r["actual_multiplier"] for r in results if r["verdict"] == "TP") / tp
             if tp > 0 else 0
         )
+        tp_5x = sum(1 for r in results if r["verdict"] == "TP" and r.get("actual_5x", False))
+        five_x_precision = tp_5x / signals_sent if signals_sent > 0 else 0
+        five_x_recall = tp_5x / actual_5x if actual_5x > 0 else 0
 
         hour_stats = {}
         for r in results:
@@ -215,15 +233,19 @@ class BacktestEngine:
         return {
             "total_tokens": total,
             "actual_pumps": actual_pumps,
+            "actual_5x": actual_5x,
             "dumps": total - actual_pumps,
             "signals_sent": signals_sent,
             "tp": tp, "fp": fp, "tn": tn, "fn": fn,
+            "tp_5x": tp_5x,
             "precision": round(precision * 100, 1),
             "recall": round(recall * 100, 1),
             "f1_score": round(f1, 3),
             "accuracy": round(accuracy * 100, 1),
             "win_rate": round(win_rate * 100, 1),
             "avg_multiplier": round(avg_multiplier, 2),
+            "five_x_precision": round(five_x_precision * 100, 1),
+            "five_x_recall": round(five_x_recall * 100, 1),
             "hour_success_rate": hour_success,
         }
 
@@ -246,14 +268,19 @@ class BacktestEngine:
             f"📅 Period: <b>{days} days</b>\n"
             f"📊 Total tokens: <b>{metrics['total_tokens']}</b>\n"
             f"🚀 3x+ pumps: <b>{metrics['actual_pumps']} ({round(metrics['actual_pumps']/max(metrics['total_tokens'],1)*100, 1)}%)</b>\n"
+            f"🌟 5x+ pumps: <b>{metrics.get('actual_5x', 0)} ({round(metrics.get('actual_5x', 0)/max(metrics['total_tokens'],1)*100, 1)}%)</b>\n"
             f"📉 Dumps: <b>{metrics['dumps']}</b>\n\n"
-            f"<b>AI Performance:</b>\n"
+            f"<b>AI Performance (3x target):</b>\n"
             f"🎯 Precision: <b>{metrics['precision']}%</b>\n"
             f"📈 Recall: <b>{metrics['recall']}%</b>\n"
             f"⚖️ F1 Score: <b>{metrics['f1_score']}</b>\n"
             f"✅ Accuracy: <b>{metrics['accuracy']}%</b>\n"
             f"💰 Win Rate: <b>{metrics['win_rate']}%</b>\n"
             f"📊 Avg Multiplier: <b>{metrics['avg_multiplier']}x</b>\n\n"
+            f"<b>AI Performance (5x target):</b>\n"
+            f"🌟 5x Precision: <b>{metrics.get('five_x_precision', 0)}%</b>\n"
+            f"🌟 5x Recall: <b>{metrics.get('five_x_recall', 0)}%</b>\n"
+            f"🌟 5x Signals: <b>{metrics.get('tp_5x', 0)}</b>\n\n"
             f"<b>Best Hours (UTC):</b>\n"
             f"{hours_text}\n"
             f"<b>Verdict:</b> {verdict_emoji} <i>{verdict_text}</i>"

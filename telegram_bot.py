@@ -11,6 +11,8 @@ from helius_client import HeliusClient
 from config import config
 from utils import format_number
 from backtest import BacktestEngine, REPORTS_DIR
+from signal_filter import SignalFilter
+from verify_loop import VerifyLoop
 
 logger = logging.getLogger("telegram_bot")
 
@@ -23,15 +25,17 @@ def main_keyboard():
     return ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
 
 class TelegramHandlers:
-    def __init__(self, state: BotState, dex: DexScreenerClient, session):
+    def __init__(self, state: BotState, dex: DexScreenerClient, session, filter_engine: SignalFilter = None, verify_loop: VerifyLoop = None):
         self.state = state
         self.dex = dex
         self.session = session
+        self.filter_engine = filter_engine
+        self.verify_loop = verify_loop
 
     async def cmd_start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(
-            "🤖 <b>Bappis Trade Bot v2 চালু!</b>\n"
-            "AI-powered Solana মেমে কয়েন ট্র্যাকার\n\n"
+            "🤖 <b>Bappis Trade Bot v3 চালু!</b>\n"
+            "🌟 5x filter + Auto-verify + Social signals সক্রিয়\n\n"
             "📚 কমান্ড:\n"
             "/pump ADDRESS — পাম্প শেখান\n"
             "/dump ADDRESS — ডাম্প শেখান\n"
@@ -40,7 +44,11 @@ class TelegramHandlers:
             "/health — বটের স্বাস্থ্য\n"
             "/config — কনফিগারেশন\n"
             "/backtest 30 — ৩০ দিনের backtest\n"
-            "/lastbacktest — শেষ backtest দেখাও",
+            "/lastbacktest — শেষ backtest দেখাও\n"
+            "/signalstats — সিগন্যাল পরিসংখ্যান\n"
+            "/golden — golden patterns (5x+ proven)\n"
+            "/blacklist — blacklisted patterns\n"
+            "/retrain — model retrain",
             parse_mode="HTML", reply_markup=main_keyboard()
         )
 
@@ -241,16 +249,82 @@ class TelegramHandlers:
                 f"━━━━━━━━━━━━━━━━\n"
                 f"📊 Total: <b>{metrics.get('total_tokens', 0)}</b>\n"
                 f"🚀 Pumps: <b>{metrics.get('actual_pumps', 0)}</b>\n"
+                f"🌟 5x Pumps: <b>{metrics.get('actual_5x', 0)}</b>\n"
                 f"🎯 Precision: <b>{metrics.get('precision', 0)}%</b>\n"
                 f"📈 Recall: <b>{metrics.get('recall', 0)}%</b>\n"
                 f"⚖️ F1: <b>{metrics.get('f1_score', 0)}</b>\n"
                 f"✅ Accuracy: <b>{metrics.get('accuracy', 0)}%</b>\n"
                 f"💰 Win Rate: <b>{metrics.get('win_rate', 0)}%</b>\n"
+                f"🌟 5x Precision: <b>{metrics.get('five_x_precision', 0)}%</b>\n"
                 f"📈 Avg Multiplier: <b>{metrics.get('avg_multiplier', 0)}x</b>"
             )
             await update.message.reply_text(text, parse_mode="HTML")
         except Exception as e:
             await update.message.reply_text(f"❌ রিপোর্ট পড়তে এরর: {e}")
+
+    async def cmd_signalstats(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        if not self.verify_loop:
+            await update.message.reply_text("❌ Verify loop not initialized")
+            return
+        v = self.verify_loop.get_stats()
+        f = self.filter_engine.get_stats() if self.filter_engine else {}
+        text = (
+            f"📊 <b>Signal Statistics</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"<b>Verification:</b>\n"
+            f"⚡ Total verified: <b>{v['total_verified']}</b>\n"
+            f"✅ Pumps: <b>{v['pumps']}</b>\n"
+            f"🌟 Strong pumps (5x+): <b>{v['strong_pumps']}</b>\n"
+            f"❌ Dumps: <b>{v['dumps']}</b>\n"
+            f"💰 Win rate: <b>{v['win_rate']}%</b>\n"
+            f"🌟 5x rate: <b>{v['strong_rate']}%</b>\n\n"
+            f"<b>Filter:</b>\n"
+            f"🌟 Golden patterns: <b>{f.get('golden_count', 0)}</b>\n"
+            f"🚫 Blacklisted: <b>{f.get('blacklist_count', 0)}</b>\n"
+        )
+        await update.message.reply_text(text, parse_mode="HTML")
+
+    async def cmd_golden(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        if not self.filter_engine:
+            await update.message.reply_text("❌ Filter not initialized")
+            return
+        goldens = self.filter_engine.golden_patterns.get("patterns", [])
+        if not goldens:
+            await update.message.reply_text("❌ কোনো golden pattern নেই এখনো (5+ সফল সিগন্যাল দরকার)")
+            return
+        text = "🌟 <b>Golden Patterns (5x+ proven):</b>\n━━━━━━━━━━━━━━━━\n"
+        for i, gp in enumerate(goldens[:10], 1):
+            text += (
+                f"{i}. <b>{gp.get('symbol', '?')}</b>\n"
+                f"   Count: {gp.get('count', 0)} | "
+                f"Max: {gp.get('max_multiplier', 0)}x | "
+                f"Avg: {gp.get('avg_multiplier', 0)}x\n"
+            )
+        await update.message.reply_text(text, parse_mode="HTML")
+
+    async def cmd_blacklist(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        if not self.filter_engine:
+            await update.message.reply_text("❌ Filter not initialized")
+            return
+        count = len(self.filter_engine.blacklist.get("patterns", []))
+        await update.message.reply_text(
+            f"🚫 <b>Blacklisted Patterns:</b> {count} টি\n"
+            f"3+ বার ব্যর্থ হলে auto-blacklist হয়।"
+        )
+
+    async def cmd_retrain(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        await update.message.reply_text("🔄 Model retraining triggered...")
+        from learner import _update_model, load_data
+        data = load_data()
+        _update_model(data)
+        from learner import save_data
+        save_data(data)
+        learner_stats = get_stats()
+        await update.message.reply_text(
+            f"✅ Model updated!\n"
+            f"🧠 Patterns: {learner_stats['pump_patterns']}\n"
+            f"🎯 Accuracy: {learner_stats['accuracy']}%"
+        )
 
     async def handle_buttons(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         text = update.message.text
@@ -314,4 +388,8 @@ def register_handlers(app, handlers: TelegramHandlers):
     app.add_handler(CommandHandler("config", handlers.cmd_config))
     app.add_handler(CommandHandler("backtest", handlers.cmd_backtest))
     app.add_handler(CommandHandler("lastbacktest", handlers.cmd_lastbacktest))
+    app.add_handler(CommandHandler("signalstats", handlers.cmd_signalstats))
+    app.add_handler(CommandHandler("golden", handlers.cmd_golden))
+    app.add_handler(CommandHandler("blacklist", handlers.cmd_blacklist))
+    app.add_handler(CommandHandler("retrain", handlers.cmd_retrain))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handlers.handle_buttons))

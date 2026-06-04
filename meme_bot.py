@@ -24,6 +24,9 @@ from learner import (
 from github_sync import sync_to_github, restore_from_github
 from utils import format_number, gmgn_link, setup_logging
 from backtest import BacktestEngine, REPORTS_DIR, MAX_REPORTS
+from social_signals import SocialSignalEngine
+from signal_filter import SignalFilter
+from verify_loop import VerifyLoop
 
 logger = setup_logging("meme_bot")
 
@@ -43,6 +46,9 @@ class MemeBot:
         self.dex: DexScreenerClient = None
         self.rugcheck: RugcheckClient = None
         self.helius: HeliusClient = None
+        self.social: SocialSignalEngine = None
+        self.filter_engine: SignalFilter = None
+        self.verify_loop: VerifyLoop = None
         self.pumpportal: PumpPortalWS = None
         self.telegram_app: Application = None
         self.handlers: TelegramHandlers = None
@@ -54,6 +60,9 @@ class MemeBot:
         self.dex = DexScreenerClient(self.session)
         self.rugcheck = RugcheckClient(self.session)
         self.helius = HeliusClient(self.session)
+        self.social = SocialSignalEngine(self.session)
+        self.filter_engine = SignalFilter()
+        self.verify_loop = VerifyLoop(self.dex, self.filter_engine, lambda t: send_msg(self.telegram_app.bot, t))
 
         self.pumpportal = PumpPortalWS(
             on_new_token=self._on_new_token,
@@ -62,7 +71,7 @@ class MemeBot:
         )
 
         self.telegram_app = Application.builder().token(config.bot_token).build()
-        self.handlers = TelegramHandlers(self.state, self.dex, self.session)
+        self.handlers = TelegramHandlers(self.state, self.dex, self.session, self.filter_engine, self.verify_loop)
         register_handlers(self.telegram_app, self.handlers)
 
         await restore_from_github()
@@ -80,8 +89,9 @@ class MemeBot:
             self._tasks.append(asyncio.create_task(self.github_sync_loop(), name="github_sync"))
 
         self._tasks.append(asyncio.create_task(self.backtest_loop(), name="backtest"))
+        self._tasks.append(asyncio.create_task(self.daily_summary_loop(), name="daily_summary"))
 
-        await send_msg(self.telegram_app.bot, "🤖 <b>বট v2 চালু!</b>\n✅ সব সিস্টেম রেডি")
+        await send_msg(self.telegram_app.bot, "🤖 <b>বট v3 চালু!</b>\n✅ 5x filter + Auto-verify + Social signals সক্রিয়")
 
         try:
             await self.telegram_app.initialize()
@@ -197,12 +207,34 @@ class MemeBot:
         ai_score, reason = score_launch(launch_dict)
         threshold = get_adaptive_threshold()
 
-        if ai_score >= threshold:
+        pattern = {
+            "mcap": launch_data.volume * 1000,
+            "liquidity": launch_data.volume * 50,
+            "vol_liq_ratio": 0.3,
+            "buy_sell_ratio": buy_sell_ratio,
+            "buy_count": launch_data.buy_count,
+            "sell_count": launch_data.sell_count,
+        }
+
+        social_score = 0.0
+        try:
+            social_score = await self.social.calculate_social_score(address, launch_data.symbol)
+        except Exception as e:
+            logger.debug(f"Social score error: {e}")
+
+        should_signal, final_score, filter_reason = self.filter_engine.should_signal(
+            address, pattern, ai_score=ai_score,
+            social_score=social_score, age_seconds=age
+        )
+
+        effective_threshold = max(threshold, self.filter_engine.min_threshold)
+        if should_signal and ai_score >= effective_threshold:
             symbol = launch_data.symbol
             name = launch_data.name
-            confidence_pct = int(ai_score * 100)
+            confidence_pct = int(final_score * 100)
             confidence_bar = "🟢" * int(confidence_pct/20) + "⚪" * (5 - int(confidence_pct/20))
             link = gmgn_link(address)
+            social_pct = int(social_score * 100)
             await send_msg(self.telegram_app.bot,
                 f"⚡ <b>প্রি-মাইগ্রেশন সিগন্যাল!</b>\n"
                 f"━━━━━━━━━━━━━━━━\n"
@@ -211,6 +243,7 @@ class MemeBot:
                 f"🧠 <i>{reason}</i>\n"
                 f"📊 Buy: <b>{launch_data.buy_count}</b> | Sell: <b>{launch_data.sell_count}</b>\n"
                 f"👥 Unique wallets: <b>{len(launch_data.unique_wallets)}</b>\n"
+                f"🌐 Social: <b>{social_pct}%</b>\n"
                 f"⏱️ বয়স: <b>{int(age)}s</b> (launch time থেকে)\n"
                 f"━━━━━━━━━━━━━━━━\n"
                 f"⚠️ <i>মাইগ্রেশনের আগে! DYOR করুন!</i>\n"
@@ -218,7 +251,7 @@ class MemeBot:
             )
             await self.state.add_alerted(address)
             launch_data.pre_signal_sent = True
-            logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {symbol} স্কোর: {ai_score}")
+            logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {symbol} স্কোর: {final_score:.2f} (ai={ai_score:.2f}, social={social_score:.2f})")
 
     async def _on_migration(self, data: dict):
         await self.handle_migration(data)
@@ -366,11 +399,32 @@ class MemeBot:
                             launch_data=launch_dict, is_post_migration=True
                         )
                         threshold = get_adaptive_threshold()
-                        if ai_score >= threshold:
+
+                        pattern = {
+                            "mcap": mcap,
+                            "liquidity": liquidity,
+                            "vol_liq_ratio": pair.get("volume", {}).get("h24", 0) / max(liquidity, 1) if liquidity > 0 else 0,
+                            "buy_sell_ratio": launch_data.buy_count / max(launch_data.sell_count, 1) if launch_data else 1,
+                        }
+
+                        social_score = 0.0
+                        try:
+                            social_score = await self.social.calculate_social_score(addr, symbol)
+                        except Exception as e:
+                            logger.debug(f"Social score error: {e}")
+
+                        should_signal, final_score, filter_reason = self.filter_engine.should_signal(
+                            addr, pattern, ai_score=ai_score,
+                            social_score=social_score, age_seconds=age
+                        )
+
+                        effective_threshold = max(threshold, self.filter_engine.min_threshold)
+                        if should_signal and ai_score >= effective_threshold:
                             holders = coin_info.holders
                             lp = coin_info.lp_locked
-                            confidence_pct = int(ai_score * 100)
+                            confidence_pct = int(final_score * 100)
                             confidence_bar = "🟢" * int(confidence_pct/20) + "⚪" * (5 - int(confidence_pct/20))
+                            social_pct = int(social_score * 100)
                             await send_msg(self.telegram_app.bot,
                                 f"⚡ <b>আর্লি সিগন্যাল!</b>\n"
                                 f"━━━━━━━━━━━━━━━━\n"
@@ -382,11 +436,12 @@ class MemeBot:
                                 f"💧 লিকুইডিটি: <b>{format_number(liquidity)}</b>\n"
                                 f"👥 হোল্ডার: <b>{holders}</b>\n"
                                 f"🔒 LP লক: <b>{lp}%</b>\n"
+                                f"🌐 Social: <b>{social_pct}%</b>\n"
                                 f"⏱️ বয়স: <b>{int(age)}s</b> (launch time থেকে)\n"
                                 f"━━━━━━━━━━━━━━━━\n"
                                 f"🔗 <a href='{link}'>GMGN</a>"
                             )
-                            record_signal(addr, symbol, ai_score, current_price, mcap)
+                            record_signal(addr, symbol, final_score, current_price, mcap)
                             from bot_state import SignalInfo
                             await self.state.add_signal(addr, SignalInfo(
                                 symbol=symbol,
@@ -394,6 +449,14 @@ class MemeBot:
                                 signal_time=now_ts
                             ))
                             await self.state.add_alerted(addr)
+
+                            try:
+                                self.verify_loop.schedule_verification(
+                                    addr, symbol, coin_info.launch_time or now_ts,
+                                    current_price, social_score, final_score
+                                )
+                            except Exception as e:
+                                logger.debug(f"Verify schedule error: {e}")
 
                 sync_counter += 1
                 if sync_counter >= config.github_sync_interval // max(config.scan_interval, 1):
@@ -552,6 +615,44 @@ class MemeBot:
             except Exception as e:
                 logger.error(f"Backtest loop error: {e}", exc_info=True)
             await asyncio.sleep(backtest_interval)
+
+    async def daily_summary_loop(self):
+        await asyncio.sleep(60)
+        while True:
+            try:
+                now = datetime.now(timezone.utc)
+                if now.hour == 0 and now.minute < 2:
+                    stats = await self.state.get_stats()
+                    learner_stats = get_stats()
+                    filter_stats = self.filter_engine.get_stats() if self.filter_engine else {}
+                    verify_stats = self.verify_loop.get_stats() if self.verify_loop else {}
+
+                    await send_msg(self.telegram_app.bot,
+                        f"📋 <b>দৈনিক সামারি</b>\n"
+                        f"━━━━━━━━━━━━━━━━\n"
+                        f"📅 {now.strftime('%Y-%m-%d')}\n\n"
+                        f"<b>সিগন্যাল:</b>\n"
+                        f"⚡ মোট verified: <b>{verify_stats.get('total_verified', 0)}</b>\n"
+                        f"✅ Win rate: <b>{verify_stats.get('win_rate', 0)}%</b>\n"
+                        f"🌟 5x rate: <b>{verify_stats.get('strong_rate', 0)}%</b>\n\n"
+                        f"<b>AI Model:</b>\n"
+                        f"🧠 Pump patterns: <b>{learner_stats['pump_patterns']}</b>\n"
+                        f"📉 Dump patterns: <b>{learner_stats['dump_patterns']}</b>\n"
+                        f"🎯 Accuracy: <b>{learner_stats['accuracy']}%</b>\n\n"
+                        f"<b>Filter:</b>\n"
+                        f"🌟 Golden: <b>{filter_stats.get('golden_count', 0)}</b>\n"
+                        f"🚫 Blacklist: <b>{filter_stats.get('blacklist_count', 0)}</b>\n\n"
+                        f"🟢 বট চালু আছে — 24/7 monitoring"
+                    )
+
+                    if config.enable_github_sync:
+                        await sync_to_github(f"daily summary: {verify_stats.get('win_rate', 0)}% win")
+                await asyncio.sleep(60)
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"Daily summary error: {e}")
+                await asyncio.sleep(60)
 
 async def daily_report_loop(bot: Bot):
     while True:
