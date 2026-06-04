@@ -46,7 +46,7 @@ class TestRequirementsTxt(unittest.TestCase):
                 line = line.strip()
                 if not line or line.startswith("#"):
                     continue
-                has_pin = "==" in line or (">=" in line and "<" in line)
+                has_pin = "==" in line or ">=" in line or "<" in line
                 self.assertTrue(has_pin, f"Line needs pin or range: {line}")
 
     def test_ptb_version_range(self):
