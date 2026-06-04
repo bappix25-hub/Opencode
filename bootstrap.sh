@@ -49,9 +49,16 @@ echo "✅ Repo ready: $(git rev-parse --short HEAD)"
 
 echo ""
 echo "📦 Installing Python deps..."
+PIP_FLAGS="--upgrade --quiet --disable-pip-version-check"
+if [ "$1" = "v2" ] || [ -n "$BOT_INSTANCE" ]; then
+    PIP_FLAGS="$PIP_FLAGS --break-system-packages"
+fi
 if [ -f requirements.txt ]; then
-    pip install --quiet --disable-pip-version-check -r requirements.txt 2>&1 | tail -3 || {
-        echo "⚠️  pip install warning — continuing (deps may already exist)"
+    pip install $PIP_FLAGS -r requirements.txt 2>&1 | tail -3 || {
+        echo "⚠️  pip install warning — trying with --force-reinstall"
+        pip install --upgrade --force-reinstall $PIP_FLAGS -r requirements.txt 2>&1 | tail -5 || {
+            echo "⚠️  pip install failed — continuing (deps may already be compatible)"
+        }
     }
 else
     echo "⚠️  requirements.txt missing — skipping"

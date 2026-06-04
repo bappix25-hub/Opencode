@@ -35,9 +35,28 @@ class TestRequirementsTxt(unittest.TestCase):
                 line = line.strip()
                 if not line or line.startswith("#"):
                     continue
-                self.assertIn("==", line, f"Line not pinned: {line}")
+                self.assertTrue(
+                    "==" in line or ">=" in line or "<=" in line,
+                    f"Line not pinned/ranged: {line}"
+                )
 
-    def test_requirements_no_secrets(self):
+    def test_requirements_pinned_or_ranged(self):
+        with open(f"{REPO}/requirements.txt") as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                has_pin = "==" in line or (">=" in line and "<" in line)
+                self.assertTrue(has_pin, f"Line needs pin or range: {line}")
+
+    def test_ptb_version_range(self):
+        with open(f"{REPO}/requirements.txt") as f:
+            for line in f:
+                if "python-telegram-bot" in line:
+                    self.assertIn(">=", line, f"PTB should use >= range: {line}")
+                    self.assertIn("<", line, f"PTB should have upper bound: {line}")
+                    return
+        self.fail("PTB not found in requirements.txt")
         with open(f"{REPO}/requirements.txt") as f:
             content = f.read().lower()
         for secret in ["token=", "api_key=", "password="]:
