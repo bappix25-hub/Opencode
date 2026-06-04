@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+bot_data.json
+*.log
+.pytest_cache/
+.coverage
