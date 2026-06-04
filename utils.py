@@ -1,18 +1,43 @@
 import logging
+import os
 from datetime import datetime, timezone
+from logging.handlers import TimedRotatingFileHandler, RotatingFileHandler
 from typing import Optional
 
 def setup_logging(name: str = "meme_bot") -> logging.Logger:
     logger = logging.getLogger(name)
-    if not logger.handlers:
-        handler = logging.StreamHandler()
-        formatter = logging.Formatter(
-            "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-            datefmt="%Y-%m-%d %H:%M:%S"
-        )
-        handler.setFormatter(formatter)
-        logger.addHandler(handler)
-        logger.setLevel(logging.INFO)
+    if logger.handlers:
+        return logger
+
+    logger.setLevel(logging.INFO)
+    formatter = logging.Formatter(
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S"
+    )
+
+    console = logging.StreamHandler()
+    console.setFormatter(formatter)
+    logger.addHandler(console)
+
+    log_file = os.environ.get("LOG_FILE", "").strip()
+    if log_file:
+        try:
+            os.makedirs(os.path.dirname(log_file) or ".", exist_ok=True)
+            daily = TimedRotatingFileHandler(
+                log_file, when="midnight", backupCount=7, encoding="utf-8"
+            )
+            daily.setFormatter(formatter)
+            logger.addHandler(daily)
+
+            size_cap = RotatingFileHandler(
+                log_file + ".size", maxBytes=10 * 1024 * 1024,
+                backupCount=3, encoding="utf-8"
+            )
+            size_cap.setFormatter(formatter)
+            logger.addHandler(size_cap)
+        except Exception as e:
+            logger.warning(f"⚠️ File logging disabled: {e}")
+
     return logger
 
 def format_number(n: float) -> str:

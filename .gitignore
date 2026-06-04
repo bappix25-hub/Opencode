@@ -1,7 +1,10 @@
 __pycache__/
 *.pyc
 .env
+.env.v2
+.env.local
 bot_data.json
+bot_data_v2.json
 *.log
 .pytest_cache/
 .coverage
@@ -9,3 +12,5 @@ backtest_reports/
 backtest_summary.md
 test_bot_data.json
 test_*.json
+golden_patterns.json
+blacklist_patterns.json
