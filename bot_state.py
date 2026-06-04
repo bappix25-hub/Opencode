@@ -8,12 +8,17 @@ class LaunchData:
     name: str
     symbol: str
     first_seen: float
+    launch_time: float
     buy_count: int = 0
     sell_count: int = 0
     unique_wallets: set = field(default_factory=set)
     volume: float = 0.0
     holders: int = 0
     lp_locked: float = 0.0
+    deployer_wallet: str = ""
+    tx_history: list = field(default_factory=list)
+    pre_signal_sent: bool = False
+    migration_time: float = 0.0
 
 @dataclass
 class TrackedCoin:
@@ -21,8 +26,11 @@ class TrackedCoin:
     name: str
     symbol: str
     first_seen: float
+    launch_time: float
     holders: int = 0
     lp_locked: float = 0.0
+    deployer_wallet: str = ""
+    initial_holders: int = 0
 
 @dataclass
 class SignalInfo:
@@ -50,6 +58,27 @@ class BotState:
         self.bot_active: bool = True
         self.current_threshold: float = 0.50
     
+    async def update_launch_tx(self, address: str, tx_type: str, wallet: str = "", amount: float = 0.0) -> None:
+        async with self._lock:
+            data = self.launch_tracking.get(address)
+            if not data:
+                return
+            data.tx_history.append({"type": tx_type, "wallet": wallet, "amount": amount, "time": datetime.now(timezone.utc).timestamp()})
+            if len(data.tx_history) > 50:
+                data.tx_history = data.tx_history[-50:]
+            if tx_type == "buy":
+                data.buy_count += 1
+                if wallet:
+                    data.unique_wallets.add(wallet)
+            elif tx_type == "sell":
+                data.sell_count += 1
+
+    async def get_deployer_tokens(self, deployer: str) -> list:
+        if not deployer:
+            return []
+        async with self._lock:
+            return [addr for addr, data in self.launch_tracking.items() if data.deployer_wallet == deployer]
+
     async def add_launch_tracking(self, address: str, data: LaunchData) -> None:
         async with self._lock:
             self.launch_tracking[address] = data

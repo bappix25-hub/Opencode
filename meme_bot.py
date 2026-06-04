@@ -18,7 +18,8 @@ from telegram_bot import TelegramHandlers, register_handlers
 from learner import (
     score_coin, score_launch, record_signal, update_signal_result,
     get_stats, get_daily_report, learn_pump, learn_dump,
-    extract_launch_pattern, learn_pump_with_launch, verify_pump, get_launch_age
+    extract_launch_pattern, learn_pump_with_launch, verify_pump, get_launch_age,
+    get_adaptive_threshold, is_duplicate
 )
 from github_sync import sync_to_github, restore_from_github
 from utils import format_number, gmgn_link, setup_logging
@@ -123,13 +124,9 @@ class MemeBot:
         if not launch_data:
             return
         tx_type = data.get("txType", "")
-        if tx_type == "buy":
-            launch_data.buy_count += 1
-            wallet = data.get("traderPublicKey", "")
-            if wallet:
-                launch_data.unique_wallets.add(wallet)
-        elif tx_type == "sell":
-            launch_data.sell_count += 1
+        wallet = data.get("traderPublicKey", "")
+        amount = float(data.get("solAmount", 0) or data.get("tokenAmount", 0) or 0)
+        await self.state.update_launch_tx(address, tx_type, wallet, amount)
         await self.check_pre_migration_signal(address)
 
     async def process_new_token(self, data: dict):
@@ -156,16 +153,25 @@ class MemeBot:
 
         from bot_state import LaunchData
         price = float(data.get("initialBuy", 0) or 0)
+        now_ts = datetime.now(timezone.utc).timestamp()
+        deployer = data.get("traderPublicKey", "") or data.get("deployer", "")
+
+        existing_tokens = await self.state.get_deployer_tokens(deployer) if deployer else []
+        if len(existing_tokens) > 2:
+            logger.info(f"⚠️ Bundle detected: {symbol} deployer {deployer[:8]}... has {len(existing_tokens)} tokens")
+
         launch_data = LaunchData(
             name=data.get("name", "Unknown"),
             symbol=symbol,
-            first_seen=datetime.now(timezone.utc).timestamp(),
+            first_seen=now_ts,
+            launch_time=now_ts,
             volume=price,
             holders=holders or 0,
-            lp_locked=rug.lp_locked if rug else 0
+            lp_locked=rug.lp_locked if rug else 0,
+            deployer_wallet=deployer,
         )
         await self.state.add_launch_tracking(address, launch_data)
-        logger.info(f"🆕 লঞ্চ ট্র্যাক: {symbol}")
+        logger.info(f"🆕 লঞ্চ ট্র্যাক: {symbol} (deployer: {deployer[:8] if deployer else 'unknown'}...)")
 
     async def check_pre_migration_signal(self, address: str):
         if await self.state.is_alerted(address):
@@ -173,7 +179,7 @@ class MemeBot:
         launch_data = await self.state.get_launch_tracking(address)
         if not launch_data:
             return
-        age = datetime.now(timezone.utc).timestamp() - launch_data.first_seen
+        age = datetime.now(timezone.utc).timestamp() - launch_data.launch_time
         if age < 30:
             return
 
@@ -186,7 +192,7 @@ class MemeBot:
             "buy_sell_ratio": buy_sell_ratio
         }
         ai_score, reason = score_launch(launch_dict)
-        threshold = await self.state.get_threshold()
+        threshold = get_adaptive_threshold()
 
         if ai_score >= threshold:
             symbol = launch_data.symbol
@@ -202,12 +208,13 @@ class MemeBot:
                 f"🧠 <i>{reason}</i>\n"
                 f"📊 Buy: <b>{launch_data.buy_count}</b> | Sell: <b>{launch_data.sell_count}</b>\n"
                 f"👥 Unique wallets: <b>{len(launch_data.unique_wallets)}</b>\n"
-                f"⏱️ বয়স: <b>{int(age)}s</b>\n"
+                f"⏱️ বয়স: <b>{int(age)}s</b> (launch time থেকে)\n"
                 f"━━━━━━━━━━━━━━━━\n"
                 f"⚠️ <i>মাইগ্রেশনের আগে! DYOR করুন!</i>\n"
                 f"🔗 <a href='{link}'>GMGN</a>"
             )
             await self.state.add_alerted(address)
+            launch_data.pre_signal_sent = True
             logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {symbol} স্কোর: {ai_score}")
 
     async def _on_migration(self, data: dict):
@@ -222,6 +229,7 @@ class MemeBot:
         if not launch_data:
             return
         logger.info(f"🚀 Migration: {symbol}")
+        launch_data.migration_time = datetime.now(timezone.utc).timestamp()
         await asyncio.sleep(10)
         pair = await self.dex.fetch_pair_data(address)
         if not pair:
@@ -232,9 +240,12 @@ class MemeBot:
                 initial_price=price,
                 name=launch_data.name,
                 symbol=launch_data.symbol,
-                first_seen=datetime.now(timezone.utc).timestamp(),
+                first_seen=launch_data.launch_time,
+                launch_time=launch_data.launch_time,
                 holders=launch_data.holders,
-                lp_locked=launch_data.lp_locked
+                lp_locked=launch_data.lp_locked,
+                deployer_wallet=launch_data.deployer_wallet,
+                initial_holders=launch_data.holders,
             )
             await self.state.add_tracked_coin(address, tracked)
             logger.info(f"✅ মাইগ্রেশন ট্র্যাক: {symbol}")
@@ -267,11 +278,14 @@ class MemeBot:
                         continue
                     price = float(pair.get("priceUsd", 0) or 0)
                     if price > 0:
+                        pair_age = get_launch_age(pair) or 0
+                        launch_ts = datetime.now(timezone.utc).timestamp() - pair_age
                         tracked = TrackedCoin(
                             initial_price=price,
                             name=pair.get("baseToken", {}).get("name", "Unknown"),
                             symbol=pair.get("baseToken", {}).get("symbol", "???"),
-                            first_seen=datetime.now(timezone.utc).timestamp()
+                            first_seen=launch_ts,
+                            launch_time=launch_ts,
                         )
                         await self.state.add_tracked_coin(addr, tracked)
 
@@ -282,8 +296,12 @@ class MemeBot:
                     pair = await self.dex.fetch_pair_data(addr)
                     if not pair:
                         continue
-                    age = get_launch_age(pair)
-                    if age is None:
+                    now_ts = datetime.now(timezone.utc).timestamp()
+                    age = now_ts - coin_info.launch_time if coin_info.launch_time > 0 else 0
+                    if age <= 0:
+                        pair_age = get_launch_age(pair) or 0
+                        age = pair_age
+                    if age <= 0:
                         continue
                     current_price = float(pair.get("priceUsd", 0) or 0)
                     if coin_info.initial_price <= 0 or current_price <= 0:
@@ -332,8 +350,19 @@ class MemeBot:
                         continue
 
                     if not await self.state.is_alerted(addr) and 0 < age <= 600:
-                        ai_score, reason = score_coin(pair, {"name": name, "symbol": symbol}, age)
-                        threshold = await self.state.get_threshold()
+                        launch_data = await self.state.get_launch_tracking(addr)
+                        launch_dict = None
+                        if launch_data:
+                            launch_dict = {
+                                "buy_count": launch_data.buy_count,
+                                "unique_wallets": len(launch_data.unique_wallets),
+                                "volume": launch_data.volume,
+                            }
+                        ai_score, reason = score_coin(
+                            pair, {"name": name, "symbol": symbol}, age,
+                            launch_data=launch_dict, is_post_migration=True
+                        )
+                        threshold = get_adaptive_threshold()
                         if ai_score >= threshold:
                             holders = coin_info.holders
                             lp = coin_info.lp_locked
@@ -350,7 +379,7 @@ class MemeBot:
                                 f"💧 লিকুইডিটি: <b>{format_number(liquidity)}</b>\n"
                                 f"👥 হোল্ডার: <b>{holders}</b>\n"
                                 f"🔒 LP লক: <b>{lp}%</b>\n"
-                                f"⏱️ বয়স: <b>{int(age)}s</b>\n"
+                                f"⏱️ বয়স: <b>{int(age)}s</b> (launch time থেকে)\n"
                                 f"━━━━━━━━━━━━━━━━\n"
                                 f"🔗 <a href='{link}'>GMGN</a>"
                             )
@@ -359,7 +388,7 @@ class MemeBot:
                             await self.state.add_signal(addr, SignalInfo(
                                 symbol=symbol,
                                 price_at_signal=current_price,
-                                signal_time=datetime.now(timezone.utc).timestamp()
+                                signal_time=now_ts
                             ))
                             await self.state.add_alerted(addr)
 

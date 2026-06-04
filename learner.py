@@ -92,19 +92,39 @@ def extract_pattern(pair: dict, age_seconds: Optional[float] = None) -> Optional
     try:
         if age_seconds is None:
             age_seconds = get_launch_age(pair) or 0
+        mcap = float(pair.get("fdv", 0) or 0)
+        liquidity = float(pair.get("liquidity", {}).get("usd", 0) or 0)
+        volume_h1 = float(pair.get("volume", {}).get("h1", 0) or 0)
+        volume_m5 = float(pair.get("volume", {}).get("m5", 0) or 0)
+        buys_m5 = int(pair.get("txns", {}).get("m5", {}).get("buys", 0) or 0)
+        sells_m5 = int(pair.get("txns", {}).get("m5", {}).get("sells", 0) or 0)
+        buys_h1 = int(pair.get("txns", {}).get("h1", {}).get("buys", 0) or 0)
+        sells_h1 = int(pair.get("txns", {}).get("h1", {}).get("sells", 0) or 0)
+
+        vol_liq_ratio = volume_h1 / liquidity if liquidity > 0 else 0
+        buy_sell_ratio_m5 = buys_m5 / max(buys_m5 + sells_m5, 1)
+        buy_sell_ratio_h1 = buys_h1 / max(buys_h1 + sells_h1, 1)
+        mcap_liq_ratio = mcap / liquidity if liquidity > 0 else 0
+        momentum_5m = float(pair.get("priceChange", {}).get("m5", 0) or 0)
+
         return {
-            "mcap": float(pair.get("fdv", 0) or 0),
-            "liquidity": float(pair.get("liquidity", {}).get("usd", 0) or 0),
-            "volume_h1": float(pair.get("volume", {}).get("h1", 0) or 0),
-            "volume_m5": float(pair.get("volume", {}).get("m5", 0) or 0),
+            "mcap": mcap,
+            "liquidity": liquidity,
+            "volume_h1": volume_h1,
+            "volume_m5": volume_m5,
             "age_seconds": age_seconds,
-            "price_change_5m": float(pair.get("priceChange", {}).get("m5", 0) or 0),
+            "price_change_5m": momentum_5m,
             "price_change_1h": float(pair.get("priceChange", {}).get("h1", 0) or 0),
             "hour_of_day": datetime.now(timezone.utc).hour,
-            "buys_m5": int(pair.get("txns", {}).get("m5", {}).get("buys", 0) or 0),
-            "sells_m5": int(pair.get("txns", {}).get("m5", {}).get("sells", 0) or 0),
-            "buys_h1": int(pair.get("txns", {}).get("h1", {}).get("buys", 0) or 0),
-            "sells_h1": int(pair.get("txns", {}).get("h1", {}).get("sells", 0) or 0),
+            "buys_m5": buys_m5,
+            "sells_m5": sells_m5,
+            "buys_h1": buys_h1,
+            "sells_h1": sells_h1,
+            "vol_liq_ratio": vol_liq_ratio,
+            "buy_sell_ratio_m5": buy_sell_ratio_m5,
+            "buy_sell_ratio_h1": buy_sell_ratio_h1,
+            "mcap_liq_ratio": mcap_liq_ratio,
+            "momentum_5m": momentum_5m,
         }
     except Exception:
         return None
@@ -177,26 +197,40 @@ def _update_model(data: dict) -> None:
     mcap_values = [p["mcap"] for p in pumps if p["mcap"] > 0]
     if mcap_values:
         model["avg_pump_mcap"] = statistics.mean(mcap_values)
+        model["std_pump_mcap"] = statistics.stdev(mcap_values) if len(mcap_values) > 1 else 0
 
     liq_values = [p["liquidity"] for p in pumps if p["liquidity"] > 0]
     if liq_values:
         model["avg_pump_liquidity"] = statistics.mean(liq_values)
+        model["std_pump_liquidity"] = statistics.stdev(liq_values) if len(liq_values) > 1 else 0
 
     vol_values = [p.get("volume_h1", 0) for p in pumps if p.get("volume_h1", 0) > 0]
     if vol_values:
         model["avg_pump_volume_h1"] = statistics.mean(vol_values)
+        model["std_pump_volume_h1"] = statistics.stdev(vol_values) if len(vol_values) > 1 else 0
 
     buys_values = [p.get("buys_h1", 0) for p in pumps if p.get("buys_h1", 0) > 0]
     if buys_values:
         model["avg_pump_buys_h1"] = statistics.mean(buys_values)
+        model["std_pump_buys_h1"] = statistics.stdev(buys_values) if len(buys_values) > 1 else 0
+
+    vol_liq_values = [p.get("vol_liq_ratio", 0) for p in pumps if p.get("vol_liq_ratio", 0) > 0]
+    if vol_liq_values:
+        model["avg_pump_vol_liq_ratio"] = statistics.mean(vol_liq_values)
+        model["std_pump_vol_liq_ratio"] = statistics.stdev(vol_liq_values) if len(vol_liq_values) > 1 else 0
+
+    buy_sell_values = [p.get("buy_sell_ratio_m5", 0) for p in pumps]
+    if buy_sell_values:
+        model["avg_pump_buy_sell_ratio"] = statistics.mean(buy_sell_values)
+        model["std_pump_buy_sell_ratio"] = statistics.stdev(buy_sell_values) if len(buy_sell_values) > 1 else 0
 
     model["avg_pump_price_change_5m"] = statistics.mean([p.get("price_change_5m", 0) for p in pumps])
 
     successful_ages = [p["age_seconds"] for p in pumps if p.get("age_seconds", 0) > 0 and p.get("final_multiplier", 0) >= 3.0]
     if successful_ages:
         model["avg_pump_age_at_signal"] = statistics.mean(successful_ages)
-        model["signal_age_min"] = max(60, min(successful_ages) * 0.5)
-        model["signal_age_max"] = min(600, max(successful_ages) * 1.5)
+        model["signal_age_min"] = max(30, min(successful_ages) * 0.3)
+        model["signal_age_max"] = min(900, max(successful_ages) * 2.0)
 
     hour_counts = {}
     hour_success = {}
@@ -207,7 +241,17 @@ def _update_model(data: dict) -> None:
             hour_success[h] = hour_success.get(h, 0) + 1
 
     model["best_hours"] = hour_counts
-    model["hourly_success_rate"] = {h: round(hour_success.get(h, 0) / hour_counts[h], 2) for h in hour_counts if hour_counts[h] > 0}
+    model["hourly_success_rate"] = {h: round(hour_success.get(h, 0) / hour_counts[h], 3) for h in hour_counts if hour_counts[h] > 0}
+
+    hourly_threshold = {}
+    for hour_str, rate in model["hourly_success_rate"].items():
+        if rate >= 0.7:
+            hourly_threshold[hour_str] = max(0.25, model["threshold"] - 0.15)
+        elif rate <= 0.3:
+            hourly_threshold[hour_str] = min(0.75, model["threshold"] + 0.15)
+        else:
+            hourly_threshold[hour_str] = model["threshold"]
+    model["hourly_threshold"] = hourly_threshold
 
     total = model.get("total_signals", 0)
     correct = model.get("correct_signals", 0)
@@ -216,7 +260,7 @@ def _update_model(data: dict) -> None:
         if model["accuracy"] < 40:
             model["threshold"] = min(0.7, model["threshold"] + 0.05)
         elif model["accuracy"] > 70:
-            model["threshold"] = max(0.2, model["threshold"] - 0.05)
+            model["threshold"] = max(0.25, model["threshold"] - 0.05)
 
     launches = data["launch_patterns"]
     if len(launches) >= 3:
@@ -224,9 +268,33 @@ def _update_model(data: dict) -> None:
         model["launch_avg_wallets"] = statistics.mean([l.get("unique_wallets", 0) for l in launches])
         model["launch_avg_volume"] = statistics.mean([l.get("volume", 0) for l in launches])
 
+    signals_by_score = sorted(data["signals"], key=lambda s: s.get("score", 0), reverse=True)
+    if len(signals_by_score) >= 20:
+        successful_scores = [s["score"] for s in signals_by_score if s.get("result_checked") and (s.get("result_multiplier") or 0) >= 2.0]
+        failed_scores = [s["score"] for s in signals_by_score if s.get("result_checked") and (s.get("result_multiplier") or 0) < 1.0]
+        if successful_scores and failed_scores:
+            model["success_score_mean"] = statistics.mean(successful_scores)
+            model["failed_score_mean"] = statistics.mean(failed_scores)
+
     data["model"] = model
 
-def score_coin(pair: dict, coin_info: dict, age_seconds: Optional[float] = None) -> tuple:
+
+def get_adaptive_threshold(current_hour: int = None) -> float:
+    data = load_data()
+    model = data["model"]
+    if current_hour is None:
+        current_hour = datetime.now(timezone.utc).hour
+    hour_str = str(current_hour)
+    hourly = model.get("hourly_threshold", {})
+    return hourly.get(hour_str, model.get("threshold", 0.50))
+
+
+def get_dynamic_signal_window(launch_time: float) -> tuple:
+    now = datetime.now(timezone.utc).timestamp()
+    age = now - launch_time if launch_time > 0 else 0
+    return age
+
+def score_coin(pair: dict, coin_info: dict, age_seconds: Optional[float] = None, launch_data: Optional[dict] = None, is_post_migration: bool = True) -> tuple:
     data = load_data()
     model = data["model"]
     pumps = data["pump_patterns"]
@@ -258,38 +326,87 @@ def score_coin(pair: dict, coin_info: dict, age_seconds: Optional[float] = None)
         if 0 < age_seconds <= 600:
             score += 0.1
             reasons.append("Early launch ✅")
+        if launch_data:
+            if launch_data.get("buy_count", 0) > 15:
+                score += 0.15
+                reasons.append("Launch buys ✅")
+            if launch_data.get("unique_wallets", 0) > 8:
+                score += 0.15
+                reasons.append("Unique wallets ✅")
         return round(min(score, 1.0), 2), "⏳ শিখছি | " + " | ".join(reasons)
 
     score = 0.0
     reasons = []
+    pattern_match_strength = 0
 
     if 0 < age_seconds <= 600:
         score += 0.1
         reasons.append("Early launch ✅")
+        pattern_match_strength += 1
 
-    if model["avg_pump_mcap"] > 0:
-        mcap_ratio = pattern["mcap"] / model["avg_pump_mcap"]
-        if 0.1 <= mcap_ratio <= 5.0:
-            score += 0.2
-            reasons.append("MCap ✅")
+    if model.get("avg_pump_mcap", 0) > 0:
+        avg_mcap = model["avg_pump_mcap"]
+        std_mcap = model.get("std_pump_mcap", 0)
+        if std_mcap > 0:
+            z = abs(pattern["mcap"] - avg_mcap) / std_mcap
+            if z <= 1.5:
+                score += 0.2
+                reasons.append("MCap ম্যাচ ✅")
+                pattern_match_strength += 1
+            elif z > 3.0:
+                score -= 0.15
         else:
-            score -= 0.1
+            mcap_ratio = pattern["mcap"] / avg_mcap if avg_mcap > 0 else 0
+            if 0.1 <= mcap_ratio <= 5.0:
+                score += 0.2
+                reasons.append("MCap ✅")
+                pattern_match_strength += 1
 
-    if model["avg_pump_liquidity"] > 0:
-        liq_ratio = pattern["liquidity"] / model["avg_pump_liquidity"]
-        if 0.1 <= liq_ratio <= 5.0:
-            score += 0.15
-            reasons.append("লিকুইডিটি ✅")
+    if model.get("avg_pump_liquidity", 0) > 0:
+        avg_liq = model["avg_pump_liquidity"]
+        std_liq = model.get("std_pump_liquidity", 0)
+        if std_liq > 0:
+            z = abs(pattern["liquidity"] - avg_liq) / std_liq
+            if z <= 1.5:
+                score += 0.15
+                reasons.append("লিকুইডিটি ম্যাচ ✅")
+                pattern_match_strength += 1
+        else:
+            liq_ratio = pattern["liquidity"] / avg_liq
+            if 0.1 <= liq_ratio <= 5.0:
+                score += 0.15
+                reasons.append("লিকুইডিটি ✅")
+                pattern_match_strength += 1
 
-    if model["avg_pump_volume_h1"] > 0:
+    if model.get("avg_pump_volume_h1", 0) > 0:
         vol_ratio = pattern["volume_h1"] / model["avg_pump_volume_h1"]
         if 0.1 <= vol_ratio <= 5.0:
             score += 0.15
             reasons.append("ভলিউম ✅")
+            pattern_match_strength += 1
+        elif vol_ratio > 5.0:
+            score += 0.1
+            reasons.append("ভলিউম স্পাইক ✅")
+            pattern_match_strength += 0.5
 
-    if model["avg_pump_buys_h1"] > 0 and pattern["buys_h1"] >= model["avg_pump_buys_h1"] * 0.5:
+    if model.get("avg_pump_buys_h1", 0) > 0 and pattern["buys_h1"] >= model["avg_pump_buys_h1"] * 0.5:
         score += 0.1
         reasons.append("Buy count ✅")
+        pattern_match_strength += 1
+
+    if model.get("avg_pump_vol_liq_ratio", 0) > 0:
+        avg_vl = model["avg_pump_vol_liq_ratio"]
+        if 0.5 <= pattern["vol_liq_ratio"] <= avg_vl * 5:
+            score += 0.1
+            reasons.append("Vol/Liq ratio ✅")
+            pattern_match_strength += 1
+
+    if model.get("avg_pump_buy_sell_ratio", 0) > 0:
+        avg_bsr = model["avg_pump_buy_sell_ratio"]
+        if pattern["buy_sell_ratio_m5"] >= avg_bsr * 0.7:
+            score += 0.1
+            reasons.append("Buy/Sell ratio ✅")
+            pattern_match_strength += 1
 
     if pattern["price_change_5m"] > 5:
         score += 0.15
@@ -322,8 +439,43 @@ def score_coin(pair: dict, coin_info: dict, age_seconds: Optional[float] = None)
         score -= 0.25
         reasons.append("⚠️ ডাম্প প্যাটার্ন")
 
+    if launch_data:
+        buy_count = launch_data.get("buy_count", 0)
+        unique = launch_data.get("unique_wallets", 0)
+        volume = launch_data.get("volume", 0)
+        if model.get("launch_avg_buys", 0) > 0 and buy_count >= model["launch_avg_buys"] * 0.7:
+            score += 0.1
+            reasons.append("Launch buys ✅")
+        if model.get("launch_avg_wallets", 0) > 0 and unique >= model["launch_avg_wallets"] * 0.7:
+            score += 0.1
+            reasons.append("Launch wallets ✅")
+
+    if pattern_match_strength >= 4 and is_post_migration:
+        score += 0.1
+        reasons.append("Strong pattern match 🎯")
+
     score = max(0.0, min(1.0, score))
     return round(score, 2), " | ".join(reasons) if reasons else "প্যাটার্ন দুর্বল"
+
+
+def should_signal_now(age_seconds: float, pattern_match_strength: int, threshold: float) -> tuple:
+    if age_seconds <= 0:
+        return False, "Age invalid"
+
+    if pattern_match_strength >= 6:
+        if age_seconds >= 30:
+            return True, "Strong match, signal early"
+    elif pattern_match_strength >= 4:
+        if age_seconds >= 60:
+            return True, "Good match, signal normal"
+    elif pattern_match_strength >= 2:
+        if age_seconds >= 180:
+            return True, "Weak match, wait 3min"
+    else:
+        if age_seconds >= 300:
+            return True, "Very weak match, wait 5min"
+
+    return False, f"Wait: strength={pattern_match_strength}, age={int(age_seconds)}s"
 
 def get_signal_age_window() -> tuple:
     data = load_data()

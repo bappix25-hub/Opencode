@@ -10,16 +10,16 @@ logger = logging.getLogger("pumpportal_ws")
 class PumpPortalWS:
     def __init__(
         self,
-        on_new_token: Callable[[dict], None],
-        on_migration: Callable[[dict], None],
-        on_trade: Callable[[dict], None]
+        on_new_token: Callable,
+        on_migration: Callable,
+        on_trade: Callable
     ):
         self.ws_url = config.pumpportal_ws
         self.on_new_token = on_new_token
         self.on_migration = on_migration
         self.on_trade = on_trade
         self._running = False
-        self._ws: Optional[websockets.WebSocketClientProtocol] = None
+        self._ws = None
     
     async def connect(self) -> None:
         self._running = True
@@ -38,11 +38,11 @@ class PumpPortalWS:
                         try:
                             data = json.loads(message)
                             if "mint" in data and "name" in data:
-                                self.on_new_token(data)
+                                asyncio.create_task(self.on_new_token(data))
                             elif data.get("txType") == "migrate":
-                                self.on_migration(data)
+                                asyncio.create_task(self.on_migration(data))
                             elif "mint" in data and "txType" in data:
-                                self.on_trade(data)
+                                asyncio.create_task(self.on_trade(data))
                         except json.JSONDecodeError:
                             pass
                         except Exception as e:

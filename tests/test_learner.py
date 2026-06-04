@@ -2,7 +2,8 @@ import unittest
 from learner import (
     load_data, save_data, is_duplicate, learn_pump, learn_dump,
     score_coin, score_launch, verify_pump, get_launch_age,
-    extract_pattern, _hash_address
+    extract_pattern, _hash_address, get_adaptive_threshold,
+    should_signal_now
 )
 
 class TestLearner(unittest.TestCase):
@@ -118,6 +119,38 @@ class TestLearner(unittest.TestCase):
         coin = {"name": "DumpCoin", "symbol": "DUMP"}
         ok, msg = learn_dump(coin, pair, "dump_addr_1", manual=True)
         self.assertTrue(ok)
+
+    def test_adaptive_threshold(self):
+        threshold = get_adaptive_threshold()
+        self.assertGreaterEqual(threshold, 0.0)
+        self.assertLessEqual(threshold, 1.0)
+
+    def test_should_signal_now_logic(self):
+        should, _ = should_signal_now(120, 6, 0.5)
+        self.assertTrue(should)
+        should, _ = should_signal_now(30, 1, 0.5)
+        self.assertFalse(should)
+        should, _ = should_signal_now(200, 0, 0.5)
+        self.assertFalse(should)
+
+    def test_extract_pattern_engineered_features(self):
+        pair = {
+            "fdv": 100000,
+            "liquidity": {"usd": 5000},
+            "volume": {"h1": 1000, "m5": 200},
+            "priceChange": {"m5": 10, "h1": 50},
+            "txns": {
+                "m5": {"buys": 20, "sells": 5},
+                "h1": {"buys": 100, "sells": 30}
+            }
+        }
+        pattern = extract_pattern(pair, age_seconds=300)
+        self.assertIn("vol_liq_ratio", pattern)
+        self.assertIn("buy_sell_ratio_m5", pattern)
+        self.assertIn("buy_sell_ratio_h1", pattern)
+        self.assertIn("mcap_liq_ratio", pattern)
+        self.assertEqual(pattern["vol_liq_ratio"], 0.2)
+        self.assertAlmostEqual(pattern["buy_sell_ratio_m5"], 0.8)
 
 
 if __name__ == "__main__":
