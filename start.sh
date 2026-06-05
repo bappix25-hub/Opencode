@@ -7,6 +7,17 @@
 
 cd "$(dirname "$0")"
 
+# Auto-update from GitHub before starting
+if [ -d .git ]; then
+    echo "📥 Updating from GitHub..."
+    git pull origin main 2>/dev/null
+    if [ $? -eq 0 ]; then
+        echo "✅ Updated to latest version"
+    else
+        echo "⚠️ Update failed (no internet or conflict), continuing..."
+    fi
+fi
+
 ENV_FILE=".env"
 if [ "$1" = "v2" ] || [ -n "$BOT_INSTANCE" ]; then
     if [ -f .env.v2 ]; then
