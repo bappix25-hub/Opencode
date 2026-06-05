@@ -397,6 +397,12 @@ class MemeBot:
                         )
                         await self.state.add_tracked_coin(addr, tracked)
 
+                for addr, _ld in list(self.state.launch_tracking.items()):
+                    if await self.state.is_blacklisted(addr):
+                        continue
+                    await self.check_pre_migration_signal(addr)
+                    await asyncio.sleep(0.3)
+
                 for addr, coin_info in list((await self._get_tracked_dict()).items()):
                     if await self.state.is_blacklisted(addr):
                         continue
