@@ -19,7 +19,7 @@ from learner import (
     score_coin, score_launch, record_signal, update_signal_result,
     get_stats, get_daily_report, learn_pump, learn_dump,
     extract_launch_pattern, learn_pump_with_launch, verify_pump, get_launch_age,
-    get_adaptive_threshold, is_duplicate
+    get_adaptive_threshold, is_duplicate, auto_learn_from_tracking
 )
 from github_sync import sync_to_github, restore_from_github
 from utils import format_number, gmgn_link, setup_logging
@@ -83,6 +83,7 @@ class MemeBot:
             asyncio.create_task(self.history_scan_loop(), name="history"),
             asyncio.create_task(self.cleanup_loop(), name="cleanup"),
             asyncio.create_task(self.check_signal_results_loop(), name="signal_check"),
+            asyncio.create_task(self.track_outcomes_loop(), name="track_outcomes"),
         ]
 
         if config.enable_github_sync:
@@ -160,10 +161,6 @@ class MemeBot:
             return
 
         holders = await self.helius.get_holder_count(address)
-        if holders is not None and holders < 3:
-            logger.info(f"⚠️ হোল্ডার কম: {symbol} ({holders})")
-            return
-
         from bot_state import LaunchData
         price = float(data.get("initialBuy", 0) or 0)
         now_ts = datetime.now(timezone.utc).timestamp()
@@ -184,7 +181,10 @@ class MemeBot:
             deployer_wallet=deployer,
         )
         await self.state.add_launch_tracking(address, launch_data)
-        logger.info(f"🆕 লঞ্চ ট্র্যাক: {symbol} (deployer: {deployer[:8] if deployer else 'unknown'}...)")
+        if holders is not None and holders < 3:
+            logger.info(f"📊 শেখার জন্য ট্র্যাক (low holders): {symbol} ({holders}h)")
+        else:
+            logger.info(f"🆕 লঞ্চ ট্র্যাক: {symbol} (deployer: {deployer[:8] if deployer else 'unknown'}...)")
 
     async def check_pre_migration_signal(self, address: str):
         if await self.state.is_alerted(address):
@@ -579,6 +579,73 @@ class MemeBot:
                 break
             except Exception as e:
                 logger.error(f"ক্লিনআপ এরর: {e}")
+
+    async def track_outcomes_loop(self):
+        """
+        Stage 2 learning: for every launch we tracked (even low-holder ones),
+        re-check price at T+5/15/60 minutes and feed learn_pump/learn_dump.
+        """
+        from bot_state import LaunchData
+        eval_offsets = [300, 900, 3600]
+        await asyncio.sleep(120)
+        while True:
+            try:
+                now = datetime.now(timezone.utc).timestamp()
+                for addr, ld in list(self.state.launch_tracking.items()):
+                    age = now - ld.launch_time
+                    next_offset = None
+                    for off in eval_offsets:
+                        marker_attr = f"_eval_done_{off}"
+                        if age >= off and not getattr(ld, marker_attr, False):
+                            next_offset = off
+                            break
+                    if next_offset is None:
+                        continue
+
+                    pair = await self.dex.fetch_pair_data(addr)
+                    if not pair:
+                        setattr(ld, f"_eval_done_{next_offset}", True)
+                        continue
+                    current_price = float(pair.get("priceUsd", 0) or 0)
+                    initial_price = float(ld.volume or 0)
+                    if initial_price <= 0:
+                        initial_price = current_price or 0.000001
+
+                    launch_dict = {
+                        "buy_count": ld.buy_count,
+                        "sell_count": ld.sell_count,
+                        "unique_wallets": len(ld.unique_wallets),
+                        "volume": ld.volume,
+                    }
+
+                    learned, kind, msg = auto_learn_from_tracking(
+                        address=addr,
+                        symbol=ld.symbol,
+                        name=ld.name,
+                        launch_dict=launch_dict,
+                        current_price=current_price,
+                        initial_price=initial_price,
+                        holders=ld.holders,
+                        lp_locked=ld.lp_locked,
+                        deployer_wallet=ld.deployer_wallet,
+                        tx_history=ld.tx_history,
+                        age_seconds=age,
+                        pump_threshold=config.pump_multiplier,
+                    )
+
+                    if learned:
+                        multiplier = current_price / initial_price if initial_price else 0
+                        logger.info(
+                            f"📚 অটো-শেখা: ${ld.symbol} → {kind} {multiplier:.2f}x @ T+{int(next_offset)}s"
+                        )
+                    setattr(ld, f"_eval_done_{next_offset}", True)
+
+                await asyncio.sleep(60)
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"track_outcomes_loop error: {e}")
+                await asyncio.sleep(60)
 
     async def github_sync_loop(self):
         while True:

@@ -684,3 +684,92 @@ def learn_pump_with_launch(coin_info: dict, pair: dict, final_multiplier: float,
     _update_model(data)
     save_data(data)
     return True, f"✅ পাম্প শেখা! {final_multiplier}x | মোট: {len(data['pump_patterns'])}"
+
+
+def auto_learn_from_tracking(
+    address: str,
+    symbol: str,
+    name: str,
+    launch_dict: dict,
+    current_price: float,
+    initial_price: float,
+    holders: int = 0,
+    lp_locked: float = 0.0,
+    deployer_wallet: str = "",
+    tx_history: Optional[list] = None,
+    age_seconds: float = 0.0,
+    pump_threshold: float = 3.0,
+) -> tuple:
+    """
+    Post-tracking evaluation: after launch window elapses, decide if token pumped/dumped,
+    then call learn_pump() or learn_dump() to enrich the model.
+
+    Returns (learned: bool, kind: str, message: str).
+    """
+    if initial_price <= 0 or current_price <= 0:
+        return False, "skip", "invalid price"
+
+    if is_duplicate(address):
+        return False, "skip", "duplicate"
+
+    multiplier = current_price / initial_price
+    buy_count = launch_dict.get("buy_count", 0) or 0
+    sell_count = launch_dict.get("sell_count", 0) or 0
+    volume = launch_dict.get("volume", 0.0) or 0.0
+    unique_wallets = launch_dict.get("unique_wallets", 0) or 0
+    if isinstance(unique_wallets, (set, list)):
+        unique_wallets = len(unique_wallets)
+
+    if multiplier >= pump_threshold:
+        pattern = {
+            "mcap": volume * 1000,
+            "liquidity": volume * 50,
+            "vol_liq_ratio": 0.3,
+            "buy_sell_ratio": buy_count / max(sell_count, 1),
+            "buy_count": buy_count,
+            "sell_count": sell_count,
+            "holders": holders,
+            "lp_locked": lp_locked,
+            "deployer_history": 0,
+            "price_change_5m": (multiplier - 1.0) * 100,
+            "age_at_signal": age_seconds,
+            "final_multiplier": multiplier,
+        }
+        data = load_data()
+        pattern["symbol"] = symbol
+        pattern["name"] = name
+        pattern["address"] = address
+        pattern["source"] = "auto_track"
+        pattern["timestamp"] = datetime.now(timezone.utc).isoformat()
+        data["pump_patterns"].append(pattern)
+        data["pump_patterns"] = data["pump_patterns"][-500:]
+        _mark_trained(data, address)
+        _update_model(data)
+        save_data(data)
+        return True, "pump", f"pump {multiplier:.2f}x"
+
+    if age_seconds < 60:
+        return False, "skip", "too early to dump-learn"
+
+    pattern = {
+        "mcap": volume * 1000,
+        "liquidity": volume * 50,
+        "vol_liq_ratio": 0.3,
+        "buy_sell_ratio": buy_count / max(sell_count, 1),
+        "buy_count": buy_count,
+        "sell_count": sell_count,
+        "holders": holders,
+        "lp_locked": lp_locked,
+        "price_change_5m": (multiplier - 1.0) * 100,
+        "age_at_signal": age_seconds,
+    }
+    data = load_data()
+    pattern["symbol"] = symbol
+    pattern["address"] = address
+    pattern["source"] = "auto_track"
+    pattern["timestamp"] = datetime.now(timezone.utc).isoformat()
+    data["dump_patterns"].append(pattern)
+    data["dump_patterns"] = data["dump_patterns"][-500:]
+    _mark_trained(data, address)
+    save_data(data)
+    return True, "dump", f"dump {multiplier:.2f}x"
