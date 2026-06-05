@@ -3,7 +3,6 @@ __pycache__/
 .env
 .env.v2
 .env.local
-bot_data.json
 bot_data_v2.json
 *.log
 .pytest_cache/
