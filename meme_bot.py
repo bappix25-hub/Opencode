@@ -412,9 +412,31 @@ class MemeBot:
                 launch_dict = dict(self.state.launch_tracking)
                 if launch_dict:
                     logger.info(f"🔍 pre-mig scan: {len(launch_dict)} launches in queue")
-                for addr, _ld in launch_dict.items():
+                for addr, _ld in list(launch_dict.items())[:30]:
                     if await self.state.is_blacklisted(addr):
                         continue
+                    pair = await self.dex.fetch_pair_data(addr)
+                    if pair:
+                        ld = self.state.launch_tracking.get(addr)
+                        if ld:
+                            txns = pair.get("txns") or {}
+                            h1 = txns.get("h1") or {}
+                            h24 = txns.get("h24") or {}
+                            buys_1h = int(h1.get("buys", 0) or 0)
+                            sells_1h = int(h1.get("sells", 0) or 0)
+                            vol_1h = float((pair.get("volume") or {}).get("h1", 0) or 0)
+                            vol_24h = float((pair.get("volume") or {}).get("h24", 0) or 0)
+                            if buys_1h > ld.buy_count or sells_1h > ld.sell_count or vol_1h > ld.volume:
+                                await self.state.update_launch_tx(
+                                    addr, "buy" if buys_1h > ld.buy_count else "sell",
+                                    "dexscreener", 0.0
+                                )
+                                if buys_1h > ld.buy_count:
+                                    ld.buy_count = buys_1h
+                                if sells_1h > ld.sell_count:
+                                    ld.sell_count = sells_1h
+                                if vol_1h > ld.volume:
+                                    ld.volume = vol_1h
                     await self.check_pre_migration_signal(addr)
                     await asyncio.sleep(0.3)
 
