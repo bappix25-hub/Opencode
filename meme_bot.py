@@ -426,24 +426,6 @@ class MemeBot:
             launch_data.pre_signal_sent = True
             logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {symbol} স্কোর: {final_score:.2f} (ai={ai_score:.2f}, social={social_score:.2f}, bond={bonding_boost:.2f})")
 
-            if config.paper_trading:
-                try:
-                    pos = await self.paper_trader.buy(
-                        address, symbol, name, 0.0,
-                        ai_score, social_score, final_score, age
-                    )
-                    if pos:
-                        await send_msg(self.telegram_app.bot,
-                            f"🟢 <b>Paper Buy!</b>\n"
-                            f"🏷️ ${symbol}\n"
-                            f"💰 {pos.sol_amount:.4f} SOL\n"
-                            f"🎯 TP: {((pos.tp_price / pos.entry_price) - 1) * 100:+.0f}%\n"
-                            f"🛑 SL: {((pos.sl_price / pos.entry_price) - 1) * 100:+.0f}%\n"
-                            f"💵 ব্যালেন্স: {self.paper_trader.state.current_sol:.4f} SOL"
-                        )
-                except Exception as e:
-                    logger.debug(f"Paper buy error: {e}")
-
     async def _on_migration(self, data: dict):
         await self.handle_migration(data)
 

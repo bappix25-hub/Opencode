@@ -1,0 +1,33 @@
+{
+  "initial_sol": 0.1,
+  "current_sol": 0.09000000000000001,
+  "total_trades": 0,
+  "wins": 0,
+  "losses": 0,
+  "total_pnl_sol": 0.0,
+  "peak_sol": 0.1,
+  "max_drawdown_pct": 0.0,
+  "positions": [
+    {
+      "address": "JTD9xJWEwvcTNTNbmky194tu8mhgA47aDeyWyLGpump",
+      "symbol": "NILL",
+      "name": "Nillionaire",
+      "entry_price": 0.0,
+      "entry_time": 1780688923.542916,
+      "sol_amount": 0.01,
+      "token_amount": 0,
+      "tp_price": 0.0,
+      "sl_price": 0.0,
+      "ai_score": 0.5,
+      "social_score": 0.0,
+      "signal_score": 0.75,
+      "status": "open",
+      "exit_price": 0.0,
+      "exit_time": 0.0,
+      "exit_reason": "",
+      "pnl_sol": 0.0,
+      "pnl_pct": 0.0
+    }
+  ],
+  "closed_trades": []
+}
