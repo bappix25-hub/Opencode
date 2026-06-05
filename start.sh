@@ -25,11 +25,25 @@ LOG_FILE="${LOG_FILE:-./bot.log}"
 DATA_FILE="${DATA_FILE:-./bot_data.json}"
 mkdir -p "$(dirname "$LOG_FILE")" 2>/dev/null
 
+if [ -n "$GITHUB_PAT" ] && [ -d .git ]; then
+    REMOTE_URL="https://${GITHUB_USER:-bappix25-hub}:${GITHUB_PAT}@github.com/${GITHUB_USER:-bappix25-hub}/${GITHUB_REPO:-Opencode}.git"
+    if git remote get-url origin >/dev/null 2>&1; then
+        git remote set-url origin "$REMOTE_URL" 2>/dev/null
+    else
+        git remote add origin "$REMOTE_URL" 2>/dev/null
+    fi
+fi
+
 echo "🤖 Opencode Bot Starting..."
 echo "📅 $(date)"
 echo "📂 Data: $DATA_FILE"
 echo "📝 Log:  $LOG_FILE"
 echo "🔧 Env:  $ENV_FILE"
+if [ -n "$GITHUB_PAT" ]; then
+    echo "🔑 GitHub: PAT configured (auto-push enabled)"
+else
+    echo "🔓 GitHub: public clone (push disabled — set GITHUB_PAT)"
+fi
 echo "━━━━━━━━━━━━━━━━━━━━"
 
 while true; do

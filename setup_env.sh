@@ -36,12 +36,23 @@ while [ -z "$HELIUS_KEY" ]; do
     read -p "🔑 Helius API Key: " -r HELIUS_KEY
 done
 
+echo ""
+echo "🔑 GitHub PAT (optional — auto data sync এর জন্য।"
+read -p "   Enter দিয়ে skip করতে পারেন, পরে .env এ add করবেন): " -r GITHUB_PAT
+GITHUB_PAT="${GITHUB_PAT:-}"
+GITHUB_USER="${GITHUB_USER:-bappix25-hub}"
+GITHUB_REPO="${GITHUB_REPO:-Opencode}"
+
 cat > .env << EOF
 BOT_TOKEN=$BOT_TOKEN
 CHAT_ID=$CHAT_ID
 HELIUS_API_KEY=$HELIUS_KEY
 
 TWITTER_BEARER_TOKEN=
+
+GITHUB_PAT=$GITHUB_PAT
+GITHUB_USER=$GITHUB_USER
+GITHUB_REPO=$GITHUB_REPO
 
 PUMPPORTAL_WS=wss://pumpportal.fun/api/data
 RUGCHECK_URL=https://api.rugcheck.xyz/v1
