@@ -720,16 +720,18 @@ def learn_early_pump(address: str, symbol: str, name: str, pair: dict,
     save_data(data)
     return True, f"✅ Early pump শেখা! {multiplier}x @ {int(age_seconds)}s | মোট: {len(data['pump_patterns'])}"
 
-def learn_pump_with_launch(coin_info: dict, pair: dict, final_multiplier: float, launch_pattern: Optional[dict], address: Optional[str] = None, manual: bool = False) -> tuple:
+def learn_pump_with_launch(coin_info: dict, pair: dict, final_multiplier: float, launch_pattern: Optional[dict], address: Optional[str] = None, manual: bool = False, verified_multiplier: Optional[float] = None) -> tuple:
     data = load_data()
     if address and is_duplicate(address):
         return False, "ডুপ্লিকেট!"
 
-    if not manual:
+    if not manual and verified_multiplier is None:
         verified, actual_multi = verify_pump(pair, config.pump_multiplier)
         if not verified:
             return False, f"{config.pump_multiplier}x ভেরিফাই হয়নি ({actual_multi}x)"
         final_multiplier = actual_multi
+    elif verified_multiplier is not None:
+        final_multiplier = verified_multiplier
 
     age = get_launch_age(pair)
     pattern = extract_pattern(pair, age)

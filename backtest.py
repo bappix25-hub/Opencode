@@ -155,8 +155,10 @@ class BacktestEngine:
         except Exception as e:
             logger.warning(f"score_coin error for {symbol}: {e}")
 
-        predicted_pump = ai_score >= 0.50
-        threshold_used = 0.50
+        from config import config as live_config
+        threshold = live_config.ai_threshold
+        predicted_pump = ai_score >= threshold
+        threshold_used = threshold
 
         if is_pump and predicted_pump:
             verdict = "TP"
@@ -271,15 +273,11 @@ class BacktestEngine:
             f"🌟 5x+ pumps: <b>{metrics.get('actual_5x', 0)} ({round(metrics.get('actual_5x', 0)/max(metrics['total_tokens'],1)*100, 1)}%)</b>\n"
             f"📉 Dumps: <b>{metrics['dumps']}</b>\n\n"
             f"<b>AI Performance (3x target):</b>\n"
-            f"🎯 Precision: <b>{metrics['precision']}%</b>\n"
-            f"📈 Recall: <b>{metrics['recall']}%</b>\n"
-            f"⚖️ F1 Score: <b>{metrics['f1_score']}</b>\n"
-            f"✅ Accuracy: <b>{metrics['accuracy']}%</b>\n"
-            f"💰 Win Rate: <b>{metrics['win_rate']}%</b>\n"
-            f"📊 Avg Multiplier: <b>{metrics['avg_multiplier']}x</b>\n\n"
+            f"🎯 Win Rate: <b>{metrics['win_rate']}%</b> (AI কতটুকু সঠিক পাম্প চেনে)\n"
+            f"📊 Avg Multiplier: <b>{metrics['avg_multiplier']}x</b>\n"
+            f"⚖️ F1 Score: <b>{metrics['f1_score']}</b>\n\n"
             f"<b>AI Performance (5x target):</b>\n"
-            f"🌟 5x Precision: <b>{metrics.get('five_x_precision', 0)}%</b>\n"
-            f"🌟 5x Recall: <b>{metrics.get('five_x_recall', 0)}%</b>\n"
+            f"🌟 5x Win Rate: <b>{metrics.get('five_x_precision', 0)}%</b>\n"
             f"🌟 5x Signals: <b>{metrics.get('tp_5x', 0)}</b>\n\n"
             f"<b>Best Hours (UTC):</b>\n"
             f"{hours_text}\n"
@@ -370,7 +368,8 @@ class BacktestEngine:
 
                     ok, msg = learn_pump_with_launch(
                         {"name": name, "symbol": symbol}, pair,
-                        result["actual_multiplier"], launch_pat, addr, manual=False
+                        result["actual_multiplier"], launch_pat, addr, manual=False,
+                        verified_multiplier=result["actual_multiplier"]
                     )
                     if ok:
                         trained_pumps += 1
