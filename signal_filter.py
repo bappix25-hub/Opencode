@@ -67,6 +67,10 @@ class SignalFilter:
             score += 0.05
         if pattern.get("vol_liq_ratio", 0) >= 0.2:
             score += 0.05
+        if pattern.get("buy_count", 0) >= 20 and pattern.get("buy_sell_ratio", 0) >= 1.5:
+            score += 0.15
+        elif pattern.get("buy_count", 0) >= 10 and pattern.get("buy_sell_ratio", 0) >= 1.2:
+            score += 0.08
         return min(1.0, score)
 
     def calculate_timing_score(self, age_seconds: float) -> float:

@@ -274,11 +274,14 @@ class MemeBot:
         ai_score, reason = score_launch(launch_dict)
         threshold = get_adaptive_threshold()
 
+        real_mcap = getattr(self, "_last_pre_mig_pair_mcap", 0) or 0
+        real_liq = getattr(self, "_last_pre_mig_pair_liq", 0) or 0
+        real_vol_liq = (real_mcap / max(real_liq, 1)) if (real_mcap and real_liq) else 0.3
         safe_volume = launch_data.volume if isinstance(launch_data.volume, (int, float)) else 0.0
         pattern = {
-            "mcap": safe_volume * 1000,
-            "liquidity": safe_volume * 50,
-            "vol_liq_ratio": 0.3,
+            "mcap": real_mcap if real_mcap > 0 else safe_volume * 1000,
+            "liquidity": real_liq if real_liq > 0 else safe_volume * 50,
+            "vol_liq_ratio": real_vol_liq,
             "buy_sell_ratio": buy_sell_ratio,
             "buy_count": launch_data.buy_count,
             "sell_count": launch_data.sell_count,
@@ -426,11 +429,11 @@ class MemeBot:
                             sells_1h = int(h1.get("sells", 0) or 0)
                             vol_1h = float((pair.get("volume") or {}).get("h1", 0) or 0)
                             vol_24h = float((pair.get("volume") or {}).get("h24", 0) or 0)
+                            real_mcap = float(pair.get("fdv", 0) or 0)
+                            real_liq = float((pair.get("liquidity") or {}).get("usd", 0) or 0)
+                            self._last_pre_mig_pair_mcap = real_mcap
+                            self._last_pre_mig_pair_liq = real_liq
                             if buys_1h > ld.buy_count or sells_1h > ld.sell_count or vol_1h > ld.volume:
-                                await self.state.update_launch_tx(
-                                    addr, "buy" if buys_1h > ld.buy_count else "sell",
-                                    "dexscreener", 0.0
-                                )
                                 if buys_1h > ld.buy_count:
                                     ld.buy_count = buys_1h
                                 if sells_1h > ld.sell_count:
