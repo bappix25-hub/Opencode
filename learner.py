@@ -232,6 +232,21 @@ def _update_model(data: dict) -> None:
         model["signal_age_min"] = max(30, min(successful_ages) * 0.3)
         model["signal_age_max"] = min(900, max(successful_ages) * 2.0)
 
+    launches = data.get("launch_patterns", [])
+    early_pumps = [l for l in launches if l.get("source") == "early_pump" and l.get("final_multiplier", 0) >= 2.0]
+    if early_pumps:
+        velocities = [l.get("buy_velocity", 0) for l in early_pumps if l.get("buy_velocity", 0) > 0]
+        if velocities:
+            model["avg_early_pump_velocity"] = statistics.mean(velocities)
+            model["std_early_pump_velocity"] = statistics.stdev(velocities) if len(velocities) > 1 else 0
+        curves = [l.get("curve_fill_pct", 0) for l in early_pumps if l.get("curve_fill_pct", 0) > 0]
+        if curves:
+            model["avg_early_pump_curve_pct"] = statistics.mean(curves)
+        gaps = [l.get("avg_buy_gap", 0) for l in early_pumps if l.get("avg_buy_gap", 0) > 0]
+        if gaps:
+            model["avg_early_pump_buy_gap"] = statistics.mean(gaps)
+        model["early_pump_count"] = len(early_pumps)
+
     hour_counts = {}
     hour_success = {}
     for p in pumps:
@@ -595,6 +610,8 @@ def score_launch(launch_data: dict) -> tuple:
     unique = launch_data.get("unique_wallets", 0)
     volume = launch_data.get("volume", 0)
     buy_sell = launch_data.get("buy_sell_ratio", 1)
+    buy_velocity = launch_data.get("buy_velocity", 0)
+    curve_fill_pct = launch_data.get("curve_fill_pct", 0)
 
     if len(launches) < 3:
         score = 0.0
@@ -611,6 +628,12 @@ def score_launch(launch_data: dict) -> tuple:
         if buy_sell > 2:
             score += 0.2
             reasons.append("Buy pressure ✅")
+        if buy_velocity > 5:
+            score += 0.15
+            reasons.append("Velocity ✅")
+        if curve_fill_pct > 60:
+            score += 0.1
+            reasons.append("Curve filling ✅")
         return round(min(score, 1.0), 2), "⏳ শিখছি | " + " | ".join(reasons)
 
     score = 0.0
@@ -618,6 +641,7 @@ def score_launch(launch_data: dict) -> tuple:
     avg_buys = model.get("launch_avg_buys", 0)
     avg_wallets = model.get("launch_avg_wallets", 0)
     avg_volume = model.get("launch_avg_volume", 0)
+    avg_velocity = model.get("avg_early_pump_velocity", 0)
 
     if avg_buys > 0 and buys >= avg_buys * 0.7:
         score += 0.25
@@ -631,6 +655,25 @@ def score_launch(launch_data: dict) -> tuple:
     if buy_sell > 2:
         score += 0.2
         reasons.append("Buy pressure ✅")
+
+    if buy_velocity > 0 and avg_velocity > 0:
+        if buy_velocity >= avg_velocity * 1.5:
+            score += 0.15
+            reasons.append("High velocity ✅")
+        elif buy_velocity >= avg_velocity:
+            score += 0.10
+            reasons.append("Velocity OK ✅")
+    elif buy_velocity > 0 and avg_velocity == 0 and len(launches) < 10:
+        if buy_velocity > 5:
+            score += 0.10
+            reasons.append("Velocity ✅")
+
+    if curve_fill_pct >= 80:
+        score += 0.10
+        reasons.append("Curve full ✅")
+    elif curve_fill_pct >= 60:
+        score += 0.05
+        reasons.append("Curve filling ✅")
 
     hour = str(datetime.now(timezone.utc).hour)
     hourly_success = model.get("hourly_success_rate", {})
@@ -704,6 +747,9 @@ def learn_early_pump(address: str, symbol: str, name: str, pair: dict,
             "unique_wallets": launch_data.get("unique_wallets", 0),
             "volume": launch_data.get("volume", 0),
             "buy_sell_ratio": launch_data.get("buy_sell_ratio", 1),
+            "buy_velocity": launch_data.get("buy_velocity", 0),
+            "curve_fill_pct": launch_data.get("curve_fill_pct", 0),
+            "avg_buy_gap": launch_data.get("avg_buy_gap", 0),
             "symbol": symbol,
             "address": address,
             "final_multiplier": multiplier,
@@ -718,7 +764,7 @@ def learn_early_pump(address: str, symbol: str, name: str, pair: dict,
         _mark_trained(data, address)
     _update_model(data)
     save_data(data)
-    return True, f"✅ Early pump শেখা! {multiplier}x @ {int(age_seconds)}s | মোট: {len(data['pump_patterns'])}"
+    return True, f"✅ Early pump শেখা! {multiplier}x @ {int(age_seconds)}s | velocity={launch_data.get('buy_velocity', 0):.1f}/min | মোট: {len(data['pump_patterns'])}"
 
 def learn_pump_with_launch(coin_info: dict, pair: dict, final_multiplier: float, launch_pattern: Optional[dict], address: Optional[str] = None, manual: bool = False, verified_multiplier: Optional[float] = None) -> tuple:
     data = load_data()

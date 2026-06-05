@@ -19,6 +19,10 @@ class LaunchData:
     tx_history: list = field(default_factory=list)
     pre_signal_sent: bool = False
     migration_time: float = 0.0
+    migration_price: float = 0.0
+    buy_timestamps: list = field(default_factory=list)
+    buy_velocity: float = 0.0
+    curve_fill_pct: float = 0.0
 
 @dataclass
 class TrackedCoin:
@@ -72,6 +76,18 @@ class BotState:
                 data.buy_count += 1
                 if wallet:
                     data.unique_wallets.add(wallet)
+                now = datetime.now(timezone.utc).timestamp()
+                data.buy_timestamps.append(now)
+                if len(data.buy_timestamps) > 50:
+                    data.buy_timestamps = data.buy_timestamps[-50:]
+                if len(data.buy_timestamps) >= 2:
+                    age = now - data.launch_time
+                    if age > 0:
+                        data.buy_velocity = len(data.buy_timestamps) / max(age / 60.0, 1.0)
+                data.volume += amount
+                estimated_mcap = data.volume * 1000
+                curve_max = 85.0
+                data.curve_fill_pct = min(100.0, (data.volume / max(curve_max, 1.0)) * 100)
             elif tx_type == "sell":
                 data.sell_count += 1
 

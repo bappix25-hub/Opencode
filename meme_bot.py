@@ -351,6 +351,29 @@ class MemeBot:
             bonding_boost += 0.10
             bonding_reasons.append("👥 Healthy holder range")
 
+        if launch_data.buy_velocity > 0:
+            try:
+                from learner import load_data
+                model = load_data().get("model", {})
+                avg_vel = model.get("avg_early_pump_velocity", 0)
+                if avg_vel > 0:
+                    if launch_data.buy_velocity >= avg_vel * 1.5:
+                        bonding_boost += 0.25
+                        bonding_reasons.append("⚡ High velocity frenzy")
+                    elif launch_data.buy_velocity >= avg_vel:
+                        bonding_boost += 0.15
+                        bonding_reasons.append("⚡ Above avg velocity")
+            except Exception:
+                pass
+
+        if launch_data.curve_fill_pct > 0:
+            if launch_data.curve_fill_pct >= 80:
+                bonding_boost += 0.15
+                bonding_reasons.append("📈 Curve nearly full")
+            elif launch_data.curve_fill_pct >= 60:
+                bonding_boost += 0.10
+                bonding_reasons.append("📈 Curve filling fast")
+
         real_mcap = getattr(self, "_last_pre_mig_pair_mcap", 0) or 0
         real_liq = getattr(self, "_last_pre_mig_pair_liq", 0) or 0
         real_vol_liq = (real_mcap / max(real_liq, 1)) if (real_mcap and real_liq) else 0.3
@@ -403,6 +426,13 @@ class MemeBot:
             link = gmgn_link(address)
             social_pct = int(social_score * 100)
             bonding_text = "\n".join([f"  • {r}" for r in bonding_reasons]) if bonding_reasons else "  • Standard scoring"
+            velocity_text = f"⚡ {launch_data.buy_velocity:.1f} buys/min" if launch_data.buy_velocity > 0 else ""
+            curve_text = f"📈 Curve: ~{launch_data.curve_fill_pct:.0f}%" if launch_data.curve_fill_pct > 0 else ""
+            avg_time_between = ""
+            if len(launch_data.buy_timestamps) >= 2:
+                diffs = [launch_data.buy_timestamps[i+1] - launch_data.buy_timestamps[i] for i in range(len(launch_data.buy_timestamps)-1)]
+                avg_diff = sum(diffs) / len(diffs)
+                avg_time_between = f"⏱️ Avg buy gap: {avg_diff:.0f}s"
 
             await send_msg(self.telegram_app.bot,
                 f"⚡ <b>প্রি-মাইগ্রেশন সিগন্যাল!</b>\n"
@@ -418,13 +448,14 @@ class MemeBot:
                 f"━━━━━━━━━━━━━━━━\n"
                 f"🔗 <b>Bonding Curve Analysis:</b>\n"
                 f"{bonding_text}\n"
+                f"{velocity_text}\n{curve_text}\n{avg_time_between}\n"
                 f"━━━━━━━━━━━━━━━━\n"
                 f"⚠️ <i>মাইগ্রেশনের আগে! DYOR করুন!</i>\n"
                 f"🔗 <a href='{link}'>GMGN</a>"
             )
             await self.state.add_alerted(address)
             launch_data.pre_signal_sent = True
-            logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {symbol} স্কোর: {final_score:.2f} (ai={ai_score:.2f}, social={social_score:.2f}, bond={bonding_boost:.2f})")
+            logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {symbol} স্কোর: {final_score:.2f} (ai={ai_score:.2f}, social={social_score:.2f}, bond={bonding_boost:.2f}, velocity={launch_data.buy_velocity:.1f}/min)")
 
     async def _on_migration(self, data: dict):
         await self.handle_migration(data)
@@ -445,6 +476,7 @@ class MemeBot:
             return
         price = float(pair.get("priceUsd", 0) or 0)
         if price > 0 and not await self.state.get_tracked_coin(address):
+            launch_data.migration_price = price
             tracked = TrackedCoin(
                 initial_price=price,
                 name=launch_data.name,
@@ -457,7 +489,7 @@ class MemeBot:
                 initial_holders=launch_data.holders,
             )
             await self.state.add_tracked_coin(address, tracked)
-            logger.info(f"✅ মাইগ্রেশন ট্র্যাক: {symbol}")
+            logger.info(f"✅ মাইগ্রেশন ট্র্যাক: {symbol} | price: ${price:.8f} | buys: {launch_data.buy_count} | velocity: {launch_data.buy_velocity:.1f}/min")
 
     async def realtime_scan_loop(self):
         sync_counter = 0
@@ -678,9 +710,12 @@ class MemeBot:
 
                             if config.paper_trading:
                                 try:
+                                    launch_vel = getattr(launch_data, 'buy_velocity', 0)
+                                    launch_curve = getattr(launch_data, 'curve_fill_pct', 0)
                                     pos = await self.paper_trader.buy(
                                         addr, symbol, name, current_price,
-                                        ai_score, social_score, final_score, age
+                                        ai_score, social_score, final_score, age,
+                                        launch_vel, launch_curve
                                     )
                                     if pos:
                                         await send_msg(self.telegram_app.bot,

@@ -94,7 +94,8 @@ class PaperTrader:
         except Exception as e:
             logger.error(f"Paper state save error: {e}")
 
-    def _calculate_tp(self, ai_score: float, social_score: float, signal_score: float, age_seconds: float) -> tuple:
+    def _calculate_tp(self, ai_score: float, social_score: float, signal_score: float, age_seconds: float,
+                     buy_velocity: float = 0, curve_fill_pct: float = 0) -> tuple:
         base_tp_pct = 50.0
         base_sl_pct = -25.0
 
@@ -123,11 +124,32 @@ class PaperTrader:
             base_tp_pct *= 1.2
             base_sl_pct *= 0.9
 
+        if buy_velocity > 0:
+            try:
+                from learner import load_data
+                model = load_data().get("model", {})
+                avg_vel = model.get("avg_early_pump_velocity", 0)
+                if avg_vel > 0 and buy_velocity >= avg_vel * 1.5:
+                    base_tp_pct *= 1.25
+                    base_sl_pct *= 0.85
+                elif avg_vel > 0 and buy_velocity >= avg_vel:
+                    base_tp_pct *= 1.1
+                    base_sl_pct *= 0.9
+            except Exception:
+                pass
+
+        if curve_fill_pct > 0:
+            if curve_fill_pct >= 80:
+                base_tp_pct *= 1.15
+            elif curve_fill_pct >= 60:
+                base_tp_pct *= 1.05
+
         return round(base_tp_pct, 1), round(base_sl_pct, 1)
 
     async def buy(self, address: str, symbol: str, name: str,
                   price_usd: float, ai_score: float, social_score: float,
-                  signal_score: float, age_seconds: float) -> Optional[Position]:
+                  signal_score: float, age_seconds: float,
+                  buy_velocity: float = 0, curve_fill_pct: float = 0) -> Optional[Position]:
         async with self._lock:
             for p in self.state.positions:
                 if p.address == address and p.status == "open":
@@ -138,7 +160,8 @@ class PaperTrader:
                 logger.warning(f"⚠️ Insufficient SOL: {self.state.current_sol:.4f} < {sol_amount}")
                 return None
 
-            tp_pct, sl_pct = self._calculate_tp(ai_score, social_score, signal_score, age_seconds)
+            tp_pct, sl_pct = self._calculate_tp(ai_score, social_score, signal_score, age_seconds,
+                                                buy_velocity, curve_fill_pct)
             tp_price = price_usd * (1 + tp_pct / 100)
             sl_price = price_usd * (1 + sl_pct / 100)
 
@@ -165,7 +188,8 @@ class PaperTrader:
 
             logger.info(
                 f"🟢 PAPER BUY: {symbol} | {sol_amount:.4f} SOL @ ${price_usd:.8f} | "
-                f"TP: ${tp_price:.8f} ({tp_pct:+.0f}%) | SL: ${sl_price:.8f} ({sl_pct:+.0f}%)"
+                f"TP: ${tp_price:.8f} ({tp_pct:+.0f}%) | SL: ${sl_price:.8f} ({sl_pct:+.0f}%) | "
+                f"vel={buy_velocity:.1f} curve={curve_fill_pct:.0f}%"
             )
             return position
 
