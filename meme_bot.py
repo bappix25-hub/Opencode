@@ -257,6 +257,11 @@ class MemeBot:
         age = datetime.now(timezone.utc).timestamp() - launch_data.launch_time
         if age < 30:
             return
+        logger.debug(
+            f"pre-mig {launch_data.symbol}: age={int(age)}s "
+            f"buys={launch_data.buy_count} sells={launch_data.sell_count} "
+            f"holders={launch_data.holders}"
+        )
 
         buy_sell_ratio = launch_data.buy_count / max(launch_data.sell_count, 1)
         launch_dict = {
