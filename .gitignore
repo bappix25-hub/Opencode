@@ -14,3 +14,8 @@ test_bot_data.json
 test_*.json
 golden_patterns.json
 blacklist_patterns.json
+paper_trades.json
+.bot_daemon.pid
+*.pid
+*.backup
+*.bak

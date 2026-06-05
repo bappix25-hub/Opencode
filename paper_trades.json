@@ -1,12 +1,12 @@
 {
   "initial_sol": 0.1,
-  "current_sol": 0.09000000000000001,
-  "total_trades": 0,
+  "current_sol": 0.08673320659062106,
+  "total_trades": 1,
   "wins": 0,
-  "losses": 0,
-  "total_pnl_sol": 0.0,
+  "losses": 1,
+  "total_pnl_sol": -0.003266793409378961,
   "peak_sol": 0.1,
-  "max_drawdown_pct": 0.0,
+  "max_drawdown_pct": 13.27,
   "positions": [
     {
       "address": "JTD9xJWEwvcTNTNbmky194tu8mhgA47aDeyWyLGpump",
@@ -29,5 +29,26 @@
       "pnl_pct": 0.0
     }
   ],
-  "closed_trades": []
+  "closed_trades": [
+    {
+      "address": "5BLqz3M12k2scR72GNuM9v4U6sM1J75s3wNPDJwtpump",
+      "symbol": "Derp",
+      "name": "Derp",
+      "entry_price": 3.156e-05,
+      "entry_time": 1780689231.25069,
+      "sol_amount": 0.01,
+      "token_amount": 316.8567807351077,
+      "tp_price": 8.155104000000001e-05,
+      "sl_price": 2.5879200000000005e-05,
+      "ai_score": 0.95,
+      "social_score": 0.3,
+      "signal_score": 0.73,
+      "status": "closed",
+      "exit_price": 2.125e-05,
+      "exit_time": 1780689396.454837,
+      "exit_reason": "sl_hit",
+      "pnl_sol": -0.003266793409378961,
+      "pnl_pct": -32.66793409378961
+    }
+  ]
 }
