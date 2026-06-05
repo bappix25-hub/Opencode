@@ -74,7 +74,8 @@ SYNC_FILES = [
     ".env.example", "config.py", "bot_state.py", "dex_client.py",
     "rugcheck_client.py", "helius_client.py", "pumpportal_ws.py",
     "telegram_bot.py", "utils.py", "signal_filter.py", "social_signals.py",
-    "verify_loop.py", "backtest.py", GOLDEN_FILE, BLACKLIST_FILE
+    "verify_loop.py", "backtest.py", "paper_trader.py", "honeypot_detector.py",
+    GOLDEN_FILE, BLACKLIST_FILE
 ]
 
 async def sync_to_github(message: str = None) -> bool:
