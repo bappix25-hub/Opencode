@@ -249,6 +249,31 @@
       "final_multiplier": 3.21,
       "manual": false,
       "timestamp": "2026-06-05T20:45:18.482922+00:00"
+    },
+    {
+      "mcap": 380671.0,
+      "liquidity": 43329.7,
+      "volume_h1": 499035.39,
+      "volume_m5": 38782.86,
+      "age_seconds": 3475.4136850585937,
+      "price_change_5m": -3.6,
+      "price_change_1h": 887.0,
+      "hour_of_day": 21,
+      "buys_m5": 1081,
+      "sells_m5": 151,
+      "buys_h1": 14952,
+      "sells_h1": 2689,
+      "vol_liq_ratio": 11.517166977846605,
+      "buy_sell_ratio_m5": 0.877435064935065,
+      "buy_sell_ratio_h1": 0.8475709993764525,
+      "mcap_liq_ratio": 8.785452010976305,
+      "momentum_5m": -3.6,
+      "symbol": "\ud83d\ude2d",
+      "name": "\ud83d\ude2d\ud83d\ude2d\ud83d\ude2d",
+      "address": "Es5XQ5yUjCDSMuD7X6jDFNX82LjynB2s1idBEqeUpump",
+      "final_multiplier": 9.87,
+      "manual": false,
+      "timestamp": "2026-06-05T21:27:06.413821+00:00"
     }
   ],
   "dump_patterns": [
@@ -395,6 +420,30 @@
       "final_multiplier": 0,
       "manual": false,
       "timestamp": "2026-06-05T21:19:49.935464+00:00"
+    },
+    {
+      "mcap": 4665.0,
+      "liquidity": 4735.82,
+      "volume_h1": 164371.73,
+      "volume_m5": 845.71,
+      "age_seconds": 3920.1794860839846,
+      "price_change_5m": 81.15,
+      "price_change_1h": -84.4,
+      "hour_of_day": 21,
+      "buys_m5": 30,
+      "sells_m5": 5,
+      "buys_h1": 2748,
+      "sells_h1": 2231,
+      "vol_liq_ratio": 34.708187811192154,
+      "buy_sell_ratio_m5": 0.8571428571428571,
+      "buy_sell_ratio_h1": 0.5519180558345049,
+      "mcap_liq_ratio": 0.9850458843452665,
+      "momentum_5m": 81.15,
+      "symbol": "$mart",
+      "address": "6bbXSPAq38WbGz4VPfEUi9EeogQDwqSMZBayn7W9pump",
+      "final_multiplier": 0,
+      "manual": false,
+      "timestamp": "2026-06-05T21:27:31.179526+00:00"
     }
   ],
   "launch_patterns": [
@@ -517,6 +566,18 @@
       "symbol": "UFC250",
       "address": "GXieFxZFPVYuw3NJTfr4zRooeRgYPN9ssAkEn5MBpump",
       "final_multiplier": 3.21
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 20,
+      "unique_wallets": 22,
+      "volume": 418461.1390045849,
+      "buy_sell_ratio": 0.0,
+      "hour_of_day": 21,
+      "timestamp": "2026-06-05T21:27:06.408037+00:00",
+      "symbol": "\ud83d\ude2d",
+      "address": "Es5XQ5yUjCDSMuD7X6jDFNX82LjynB2s1idBEqeUpump",
+      "final_multiplier": 9.87
     }
   ],
   "trained_addresses": [
@@ -535,7 +596,9 @@
     "9e67be71ca6440e1bbc748efa2418f10",
     "b59a57ad10e8608f33ff8e6f10cebbbe",
     "608300541ce7fe83c90efde8be870f0c",
-    "df269a58d0c3b53ca9f4c129f13e2d06"
+    "df269a58d0c3b53ca9f4c129f13e2d06",
+    "1f9dc03002a1df23bffe62b1a5126a3b",
+    "a7043dcc1475de4ea53d3d38925655db"
   ],
   "signals": [
     {
@@ -583,46 +646,62 @@
       "ath_price": 4.958e-05,
       "ath_multiplier": 1.32,
       "ath_timestamp": "2026-06-05T20:45:41.398642+00:00"
+    },
+    {
+      "address": "CzZeKbWDhf6mR3QfS48CXHRbGEe8JAaNrfAPZVgMbonk",
+      "symbol": "$WIF",
+      "score": 0.6849999999999999,
+      "price_at_signal": 1.703e-05,
+      "mcap_at_signal": 17035.0,
+      "timestamp": "2026-06-05T21:26:37.139433+00:00",
+      "result_multiplier": null,
+      "result_checked": false,
+      "ath_price": 2.576e-05,
+      "ath_multiplier": 1.51,
+      "ath_timestamp": "2026-06-05T21:27:09.286892+00:00"
     }
   ],
   "model": {
-    "avg_pump_mcap": 122676.11111111111,
-    "avg_pump_liquidity": 30695.105,
-    "avg_pump_volume_h1": 110220.826,
-    "avg_pump_buys_h1": 2413.6,
-    "avg_pump_price_change_5m": 6.71,
-    "avg_pump_age_at_signal": 18935.58798081055,
+    "avg_pump_mcap": 148475.6,
+    "avg_pump_liquidity": 31843.704545454544,
+    "avg_pump_volume_h1": 145567.60454545455,
+    "avg_pump_buys_h1": 3553.4545454545455,
+    "avg_pump_price_change_5m": 5.7727272727272725,
+    "avg_pump_age_at_signal": 17530.117590287642,
     "best_hours": {
       "18": 7,
       "19": 2,
-      "20": 1
+      "20": 1,
+      "21": 1
     },
     "hourly_success_rate": {
       "18": 1.0,
       "19": 1.0,
-      "20": 1.0
+      "20": 1.0,
+      "21": 1.0
     },
-    "total_signals": 4,
+    "total_signals": 5,
     "correct_signals": 0,
     "accuracy": 0.0,
-    "threshold": 0.65,
+    "threshold": 0.7,
     "signal_age_min": 311.597211328125,
     "signal_age_max": 900,
     "launch_avg_buys": 0,
-    "launch_avg_wallets": 22.5,
-    "launch_avg_volume": 15610418.741902377,
-    "std_pump_mcap": 63568.20888117827,
-    "std_pump_liquidity": 23588.000245057865,
-    "std_pump_volume_h1": 131988.1838898108,
-    "std_pump_buys_h1": 4200.659847637697,
-    "avg_pump_vol_liq_ratio": 4.353482572757638,
-    "std_pump_vol_liq_ratio": 4.86152860040465,
-    "avg_pump_buy_sell_ratio": 0.5578501897647461,
-    "std_pump_buy_sell_ratio": 0.21529760919024193,
+    "launch_avg_wallets": 22.454545454545453,
+    "launch_avg_volume": 14229331.687093487,
+    "std_pump_mcap": 101232.7153237639,
+    "std_pump_liquidity": 22699.481713879883,
+    "std_pump_volume_h1": 171528.81654938604,
+    "std_pump_buys_h1": 5492.990175917601,
+    "avg_pump_vol_liq_ratio": 5.004726609583908,
+    "std_pump_vol_liq_ratio": 5.092771450773802,
+    "avg_pump_buy_sell_ratio": 0.5869033602347751,
+    "std_pump_buy_sell_ratio": 0.22583779207364063,
     "hourly_threshold": {
       "18": 0.5,
       "19": 0.5,
-      "20": 0.5
+      "20": 0.5,
+      "21": 0.5
     }
   }
 }
