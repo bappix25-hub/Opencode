@@ -2,7 +2,7 @@
 # Watchdog: restart bot if crashed or internet came back
 # Runs via cron every 2 minutes
 
-BOT_DIR="/root/Opencode"
+BOT_DIR="$(cd "$(dirname "$0")" && pwd)"
 LOG_FILE="$BOT_DIR/bot.log"
 PID_FILE="$BOT_DIR/.bot.pid"
 

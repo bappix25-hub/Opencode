@@ -103,7 +103,8 @@ async def sync_to_github(message: str = None) -> bool:
     env = os.environ.copy()
     if GITHUB_PAT:
         env["GIT_TERMINAL_PROMPT"] = "0"
-        env["GIT_ASKPASS"] = "/bin/true"
+        import shutil
+        env["GIT_ASKPASS"] = shutil.which("true") or "/usr/bin/true"
     proc = await asyncio.create_subprocess_exec(
         "git", "push", "origin", GIT_BRANCH,
         stdout=asyncio.subprocess.PIPE,

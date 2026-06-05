@@ -2,7 +2,7 @@
 # Auto-push to GitHub after code changes
 # Usage: bash git_sync.sh [message]
 
-cd /root/Opencode || exit 1
+cd "$(dirname "$0")" || exit 1
 
 MSG="${1:-Auto-sync: $(date -u +%Y-%m-%dT%H:%M:%SZ)}"
 
