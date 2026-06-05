@@ -301,6 +301,13 @@ class MemeBot:
             f"signal={should_signal} ({filter_reason})"
         )
         if should_signal and ai_score >= effective_threshold:
+            if logger.isEnabledFor(logging.INFO):
+                logger.info(
+                    f"⚡ pre-mig check {launch_data.symbol}: age={int(age)}s "
+                    f"buys={launch_data.buy_count} sells={launch_data.sell_count} "
+                    f"ai={ai_score:.2f} soc={social_score:.2f} "
+                    f"final={final_score:.2f} thr={effective_threshold:.2f} → SIGNAL!"
+                )
             symbol = launch_data.symbol
             name = launch_data.name
             confidence_pct = int(final_score * 100)
@@ -397,7 +404,10 @@ class MemeBot:
                         )
                         await self.state.add_tracked_coin(addr, tracked)
 
-                for addr, _ld in list(self.state.launch_tracking.items()):
+                launch_dict = dict(self.state.launch_tracking)
+                if launch_dict:
+                    logger.info(f"🔍 pre-mig scan: {len(launch_dict)} launches in queue")
+                for addr, _ld in launch_dict.items():
                     if await self.state.is_blacklisted(addr):
                         continue
                     await self.check_pre_migration_signal(addr)
