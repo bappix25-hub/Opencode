@@ -3,7 +3,7 @@
 # Usage:
 #   bash start.sh                 # uses .env
 #   bash start.sh v2              # uses .env.v2 (Termux parallel bot)
-# WiFi reconnect → bot auto-starts
+# WiFi reconnect → bot auto-starts (waits for connectivity first)
 
 cd "$(dirname "$0")"
 
@@ -34,6 +34,12 @@ if [ -n "$GITHUB_PAT" ] && [ -d .git ]; then
     fi
 fi
 
+check_internet() {
+    local target="${1:-https://api.telegram.org}"
+    curl -fsS -m 5 -o /dev/null "$target" 2>/dev/null
+    return $?
+}
+
 echo "🤖 Opencode Bot Starting..."
 echo "📅 $(date)"
 echo "📂 Data: $DATA_FILE"
@@ -46,10 +52,25 @@ else
 fi
 echo "━━━━━━━━━━━━━━━━━━━━"
 
+INTERNET_WAIT=15
+ATTEMPT=0
 while true; do
-    echo "🚀 Launching at $(date)" >> "$LOG_FILE"
-    python3 meme_bot.py >> "$LOG_FILE" 2>&1
-    EXIT_CODE=$?
-    echo "❌ Exited code=$EXIT_CODE at $(date), restart in 10s" >> "$LOG_FILE"
-    sleep 10
+    if check_internet "https://api.telegram.org"; then
+        if [ $ATTEMPT -gt 0 ]; then
+            echo "🌐 Internet back at $(date) (after $ATTEMPT retries)" >> "$LOG_FILE"
+        fi
+        ATTEMPT=0
+        echo "🚀 Launching at $(date)" >> "$LOG_FILE"
+        python3 meme_bot.py >> "$LOG_FILE" 2>&1
+        EXIT_CODE=$?
+        echo "❌ Exited code=$EXIT_CODE at $(date), restart in 10s" >> "$LOG_FILE"
+        sleep 10
+    else
+        ATTEMPT=$((ATTEMPT + 1))
+        if [ $((ATTEMPT % 4)) -eq 1 ]; then
+            echo "⏳ No internet (try $ATTEMPT) — waiting ${INTERNET_WAIT}s" >> "$LOG_FILE"
+        fi
+        sleep $INTERNET_WAIT
+    fi
 done
+

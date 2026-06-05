@@ -15,10 +15,23 @@ class SignalFilter:
     def __init__(self):
         self.golden_patterns = self._load_golden()
         self.blacklist = self._load_blacklist()
-        self.min_threshold = 0.60
+        self.min_threshold = 0.70
+        self.warmup_min_threshold = 0.55
+        self.warmup_signal_count = 20
         self.onchain_weight = 0.60
         self.social_weight = 0.30
         self.timing_weight = 0.10
+
+    def _warmup_active(self) -> bool:
+        try:
+            data = load_data()
+            results = data.get("model", {}).get("signal_results", [])
+            return len(results) < self.warmup_signal_count
+        except Exception:
+            return True
+
+    def effective_threshold(self) -> float:
+        return self.warmup_min_threshold if self._warmup_active() else self.min_threshold
 
     def _load_golden(self) -> dict:
         if os.path.exists(GOLDEN_FILE):
@@ -112,8 +125,8 @@ class SignalFilter:
             + timing * self.timing_weight
         )
 
-        if final_score < self.min_threshold:
-            return False, final_score, f"Below threshold ({final_score:.2f} < {self.min_threshold})"
+        if final_score < self.effective_threshold():
+            return False, final_score, f"Below threshold ({final_score:.2f} < {self.effective_threshold():.2f})"
 
         return True, final_score, "Signal candidate"
 

@@ -699,10 +699,15 @@ def auto_learn_from_tracking(
     tx_history: Optional[list] = None,
     age_seconds: float = 0.0,
     pump_threshold: float = 3.0,
+    is_honeypot: bool = False,
+    honeypot_reasons: Optional[list] = None,
 ) -> tuple:
     """
     Post-tracking evaluation: after launch window elapses, decide if token pumped/dumped,
     then call learn_pump() or learn_dump() to enrich the model.
+
+    If `is_honeypot` is True, the token is recorded as a dump (negative example) regardless
+    of price action — fake pumps on honeypots must not pollute the pump model.
 
     Returns (learned: bool, kind: str, message: str).
     """
@@ -719,6 +724,32 @@ def auto_learn_from_tracking(
     unique_wallets = launch_dict.get("unique_wallets", 0) or 0
     if isinstance(unique_wallets, (set, list)):
         unique_wallets = len(unique_wallets)
+
+    if is_honeypot and age_seconds >= 60:
+        pattern = {
+            "mcap": volume * 1000,
+            "liquidity": volume * 50,
+            "vol_liq_ratio": 0.3,
+            "buy_sell_ratio": buy_count / max(sell_count, 1),
+            "buy_count": buy_count,
+            "sell_count": sell_count,
+            "holders": holders,
+            "lp_locked": lp_locked,
+            "price_change_5m": (multiplier - 1.0) * 100,
+            "age_at_signal": age_seconds,
+            "honeypot": True,
+            "honeypot_reasons": honeypot_reasons or [],
+        }
+        data = load_data()
+        pattern["symbol"] = symbol
+        pattern["address"] = address
+        pattern["source"] = "auto_track_honeypot"
+        pattern["timestamp"] = datetime.now(timezone.utc).isoformat()
+        data["dump_patterns"].append(pattern)
+        data["dump_patterns"] = data["dump_patterns"][-500:]
+        _mark_trained(data, address)
+        save_data(data)
+        return True, "honeypot_dump", f"honeypot dump {multiplier:.2f}x"
 
     if multiplier >= pump_threshold:
         pattern = {
@@ -773,3 +804,53 @@ def auto_learn_from_tracking(
     _mark_trained(data, address)
     save_data(data)
     return True, "dump", f"dump {multiplier:.2f}x"
+
+
+def purge_honeypot_patterns(known_honeypot_addresses: Optional[set] = None) -> dict:
+    """
+    Re-check existing pump_patterns and move any that look like honeypots to dump_patterns.
+
+    `known_honeypot_addresses` is a set of addresses already flagged as honeypot
+    (e.g., from a persisted list). When omitted or empty, this is a safe no-op
+    (no false positives on cold start).
+
+    Returns dict with counts of moved patterns.
+    """
+    data = load_data()
+    pumps = data.get("pump_patterns", [])
+    known = set(a for a in (known_honeypot_addresses or set()) if a)
+    if not known:
+        return {"moved": 0, "kept_pumps": len(pumps), "skipped": "no known honeypots"}
+
+    kept: list = []
+    moved: list = []
+    for p in pumps:
+        addr = p.get("address", "")
+        if addr in known:
+            p["source"] = "purged_honeypot"
+            moved.append(p)
+        else:
+            kept.append(p)
+    data["pump_patterns"] = kept[-500:]
+    data["dump_patterns"] = (data.get("dump_patterns", []) + moved)[-500:]
+    save_data(data)
+    return {"moved": len(moved), "kept_pumps": len(kept)}
+
+
+def save_honeypot_blocklist(honeypot_addresses: set, blocked_deployers: set) -> None:
+    """Persist honeypot + deployer blocklists to bot_data.json so they survive restart."""
+    data = load_data()
+    data["honeypot_addresses"] = sorted(a for a in honeypot_addresses if a)
+    data["blocked_deployers"] = sorted(d for d in blocked_deployers if d)
+    save_data(data)
+
+
+def load_honeypot_blocklist() -> tuple:
+    """Returns (honeypot_addresses_set, blocked_deployers_set)."""
+    try:
+        data = load_data()
+        hp = set(data.get("honeypot_addresses", []) or [])
+        dep = set(data.get("blocked_deployers", []) or [])
+        return hp, dep
+    except Exception:
+        return set(), set()

@@ -19,7 +19,8 @@ from learner import (
     score_coin, score_launch, record_signal, update_signal_result,
     get_stats, get_daily_report, learn_pump, learn_dump,
     extract_launch_pattern, learn_pump_with_launch, verify_pump, get_launch_age,
-    get_adaptive_threshold, is_duplicate, auto_learn_from_tracking
+    get_adaptive_threshold, is_duplicate, auto_learn_from_tracking,
+    purge_honeypot_patterns, save_honeypot_blocklist, load_honeypot_blocklist
 )
 from github_sync import sync_to_github, restore_from_github
 from utils import format_number, gmgn_link, setup_logging
@@ -27,6 +28,7 @@ from backtest import BacktestEngine, REPORTS_DIR, MAX_REPORTS
 from social_signals import SocialSignalEngine
 from signal_filter import SignalFilter
 from verify_loop import VerifyLoop
+from honeypot_detector import HoneypotDetector
 
 logger = setup_logging("meme_bot")
 
@@ -49,11 +51,13 @@ class MemeBot:
         self.social: SocialSignalEngine = None
         self.filter_engine: SignalFilter = None
         self.verify_loop: VerifyLoop = None
+        self.honeypot: HoneypotDetector = None
         self.pumpportal: PumpPortalWS = None
         self.telegram_app: Application = None
         self.handlers: TelegramHandlers = None
         self._shutdown_event = asyncio.Event()
         self._tasks: list = []
+        self._last_internet_ok: bool = True
 
     async def start(self):
         self.session = aiohttp.ClientSession()
@@ -63,6 +67,7 @@ class MemeBot:
         self.social = SocialSignalEngine(self.session)
         self.filter_engine = SignalFilter()
         self.verify_loop = VerifyLoop(self.dex, self.filter_engine, lambda t: send_msg(self.telegram_app.bot, t))
+        self.honeypot = HoneypotDetector(self.session, rugcheck=self.rugcheck, helius=self.helius, dex=self.dex)
 
         self.pumpportal = PumpPortalWS(
             on_new_token=self._on_new_token,
@@ -75,6 +80,25 @@ class MemeBot:
         register_handlers(self.telegram_app, self.handlers)
 
         await restore_from_github()
+
+        try:
+            hp_set, dep_set = load_honeypot_blocklist()
+            for a in hp_set:
+                await self.state.mark_honeypot(a)
+            for d in dep_set:
+                await self.state.add_blocked_deployer(d)
+            if hp_set or dep_set:
+                logger.info(
+                    f"♻️ হানিপট ব্লকলিস্ট লোড: {len(hp_set)} addr, {len(dep_set)} deployer"
+                )
+            purged = purge_honeypot_patterns(hp_set)
+            if purged.get("moved", 0) > 0:
+                logger.info(
+                    f"🧹 Purge: {purged['moved']} honeypot pump patterns → dump"
+                )
+        except Exception as e:
+            logger.debug(f"purge/load blocklist error: {e}")
+
         logger.info("🚀 বট চালু হচ্ছে...")
 
         self._tasks = [
@@ -84,6 +108,7 @@ class MemeBot:
             asyncio.create_task(self.cleanup_loop(), name="cleanup"),
             asyncio.create_task(self.check_signal_results_loop(), name="signal_check"),
             asyncio.create_task(self.track_outcomes_loop(), name="track_outcomes"),
+            asyncio.create_task(self.connection_monitor_loop(), name="conn_monitor"),
         ]
 
         if config.enable_github_sync:
@@ -130,6 +155,15 @@ class MemeBot:
     async def _on_migration(self, data: dict):
         asyncio.create_task(self.handle_migration(data))
 
+    async def _is_known_honeypot(self, address: str) -> bool:
+        if not address:
+            return False
+        if await self.state.is_honeypot(address):
+            return True
+        if await self.state.is_blacklisted(address):
+            return True
+        return False
+
     async def _on_trade(self, data: dict):
         address = data.get("mint")
         if not address:
@@ -149,22 +183,50 @@ class MemeBot:
             return
         if await self.state.is_blacklisted(address):
             return
+        if await self.state.is_honeypot(address):
+            return
         if await self.state.get_tracked_coin(address):
             return
         symbol = data.get("symbol", "???")
 
+        deployer = data.get("traderPublicKey", "") or data.get("deployer", "")
+        if deployer and await self.state.is_deployer_blocked(deployer):
+            logger.info(f"🚫 ডেপ্লয়ার ব্লক: {symbol} ({deployer[:8]}...)")
+            return
+
         await asyncio.sleep(3)
         rug = await self.rugcheck.check_token(address, symbol)
         if rug and rug.is_risky:
-            await self.state.add_blacklisted(address)
-            logger.info(f"🚫 ব্ল্যাকলিস্ট: {symbol} | {rug.risks[:2]}")
+            await self.state.mark_honeypot(address)
+            if deployer:
+                await self.state.add_blocked_deployer(deployer)
+            logger.info(f"🍯 হানিপট: {symbol} | {rug.risks[:2]}")
+            return
+
+        hp_report = None
+        try:
+            hp_report = await self.honeypot.check(address, symbol)
+        except Exception as e:
+            logger.debug(f"honeypot check error: {e}")
+        if hp_report and hp_report.is_honeypot:
+            await self.state.mark_honeypot(address)
+            if deployer:
+                await self.state.add_blocked_deployer(deployer)
+            logger.info(
+                f"🍯 হানিপট (multi-layer): {symbol} | {hp_report.reasons[:2]}"
+            )
             return
 
         holders = await self.helius.get_holder_count(address)
         from bot_state import LaunchData
-        price = float(data.get("initialBuy", 0) or 0)
+        raw_price = data.get("initialBuy", 0) or 0
+        if isinstance(raw_price, dict):
+            raw_price = raw_price.get("amount", 0) or 0
+        try:
+            price = float(raw_price)
+        except (TypeError, ValueError):
+            price = 0.0
         now_ts = datetime.now(timezone.utc).timestamp()
-        deployer = data.get("traderPublicKey", "") or data.get("deployer", "")
 
         existing_tokens = await self.state.get_deployer_tokens(deployer) if deployer else []
         if len(existing_tokens) > 2:
@@ -207,9 +269,10 @@ class MemeBot:
         ai_score, reason = score_launch(launch_dict)
         threshold = get_adaptive_threshold()
 
+        safe_volume = launch_data.volume if isinstance(launch_data.volume, (int, float)) else 0.0
         pattern = {
-            "mcap": launch_data.volume * 1000,
-            "liquidity": launch_data.volume * 50,
+            "mcap": safe_volume * 1000,
+            "liquidity": safe_volume * 50,
             "vol_liq_ratio": 0.3,
             "buy_sell_ratio": buy_sell_ratio,
             "buy_count": launch_data.buy_count,
@@ -464,7 +527,8 @@ class MemeBot:
                         await sync_to_github()
                     sync_counter = 0
 
-                logger.info(f"ট্র্যাক: {stats['tracked_coins']} | লঞ্চ: {stats['launch_tracking']} | পাম্প: {stats['pump_coins']}")
+                final_stats = await self.state.get_stats()
+                logger.info(f"ট্র্যাক: {final_stats['tracked_coins']} | লঞ্চ: {final_stats['launch_tracking']} | পাম্প: {final_stats['pump_coins']}")
             except asyncio.CancelledError:
                 break
             except Exception as e:
@@ -574,6 +638,13 @@ class MemeBot:
             try:
                 await asyncio.sleep(config.cleanup_interval)
                 await self.state.cleanup_old_entries()
+                try:
+                    async with self.state._lock:
+                        hp_snapshot = set(self.state.honeypot_addresses)
+                        dep_snapshot = set(self.state.blocked_deployers)
+                    save_honeypot_blocklist(hp_snapshot, dep_snapshot)
+                except Exception as e:
+                    logger.debug(f"save blocklist error: {e}")
                 logger.info("🧹 ক্লিনআপ সম্পন্ন")
             except asyncio.CancelledError:
                 break
@@ -584,6 +655,9 @@ class MemeBot:
         """
         Stage 2 learning: for every launch we tracked (even low-holder ones),
         re-check price at T+5/15/60 minutes and feed learn_pump/learn_dump.
+
+        Also re-runs honeypot detection at each window — late-revealing honeypots
+        are still detected and recorded as dumps (not pumps).
         """
         from bot_state import LaunchData
         eval_offsets = [300, 900, 3600]
@@ -611,6 +685,21 @@ class MemeBot:
                     if initial_price <= 0:
                         initial_price = current_price or 0.000001
 
+                    hp_report = None
+                    try:
+                        hp_report = await self.honeypot.check(addr, ld.symbol, pair=pair)
+                    except Exception as e:
+                        logger.debug(f"honeypot recheck error: {e}")
+                    is_hp = bool(hp_report and hp_report.is_honeypot)
+
+                    if is_hp and not await self.state.is_honeypot(addr):
+                        await self.state.mark_honeypot(addr)
+                        if ld.deployer_wallet:
+                            await self.state.add_blocked_deployer(ld.deployer_wallet)
+                        logger.info(
+                            f"🍯 লেট-রিভিল হানিপট: {ld.symbol} @ T+{int(next_offset)}s | {hp_report.reasons[:2]}"
+                        )
+
                     launch_dict = {
                         "buy_count": ld.buy_count,
                         "sell_count": ld.sell_count,
@@ -631,12 +720,15 @@ class MemeBot:
                         tx_history=ld.tx_history,
                         age_seconds=age,
                         pump_threshold=config.pump_multiplier,
+                        is_honeypot=is_hp,
+                        honeypot_reasons=hp_report.reasons if hp_report else None,
                     )
 
                     if learned:
                         multiplier = current_price / initial_price if initial_price else 0
+                        suffix = f" (honeypot)" if is_hp else ""
                         logger.info(
-                            f"📚 অটো-শেখা: ${ld.symbol} → {kind} {multiplier:.2f}x @ T+{int(next_offset)}s"
+                            f"📚 অটো-শেখা: ${ld.symbol} → {kind} {multiplier:.2f}x @ T+{int(next_offset)}s{suffix}"
                         )
                     setattr(ld, f"_eval_done_{next_offset}", True)
 
@@ -646,6 +738,56 @@ class MemeBot:
             except Exception as e:
                 logger.error(f"track_outcomes_loop error: {e}")
                 await asyncio.sleep(60)
+
+    async def connection_monitor_loop(self):
+        """
+        Periodically check internet connectivity. If it drops for >3 minutes,
+        log offline state. When it comes back, force-reconnect the PumpPortal WS
+        and all scan loops.
+        """
+        check_every = 30
+        offline_threshold = 3
+        consecutive_failures = 0
+        was_offline = False
+        await asyncio.sleep(60)
+        while True:
+            try:
+                ok = False
+                try:
+                    async with self.session.get(
+                        "https://api.telegram.org",
+                        timeout=aiohttp.ClientTimeout(total=10),
+                    ) as r:
+                        ok = r.status < 500
+                except Exception:
+                    ok = False
+
+                if ok:
+                    if was_offline or not self._last_internet_ok:
+                        logger.info("🌐 ইন্টারনেট ফিরে এসেছে — টাস্ক পুনরায় চালু")
+                        try:
+                            if self.pumpportal and not getattr(self.pumpportal, "_running", False):
+                                asyncio.create_task(self.pumpportal.connect())
+                        except Exception as e:
+                            logger.debug(f"PumpPortal restart error: {e}")
+                    was_offline = False
+                    consecutive_failures = 0
+                    self._last_internet_ok = True
+                else:
+                    consecutive_failures += 1
+                    if consecutive_failures >= offline_threshold and not was_offline:
+                        logger.warning(
+                            f"⚠️ ইন্টারনেট ড্রপ ({consecutive_failures}× ব্যর্থ) — রিস্টার্টের জন্য অপেক্ষা"
+                        )
+                        was_offline = True
+                    self._last_internet_ok = False
+
+                await asyncio.sleep(check_every)
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"connection_monitor_loop error: {e}")
+                await asyncio.sleep(check_every)
 
     async def github_sync_loop(self):
         while True:

@@ -35,7 +35,8 @@ class TestSignalFilter(unittest.TestCase):
     def test_initial_state(self):
         self.assertIsInstance(self.filter.golden_patterns, dict)
         self.assertIsInstance(self.filter.blacklist, dict)
-        self.assertEqual(self.filter.min_threshold, 0.60)
+        self.assertEqual(self.filter.min_threshold, 0.70)
+        self.assertEqual(self.filter.warmup_min_threshold, 0.55)
 
     def test_calculate_timing_score_sweet_spot(self):
         score = self.filter.calculate_timing_score(300)
@@ -69,7 +70,7 @@ class TestSignalFilter(unittest.TestCase):
             social_score=0.2, age_seconds=300
         )
         self.assertFalse(should)
-        self.assertLess(score, 0.60)
+        self.assertLess(score, 0.70)
 
     def test_should_signal_above_threshold(self):
         pattern = {"mcap": 50000, "liquidity": 5000, "vol_liq_ratio": 0.5}

@@ -52,6 +52,8 @@ class BotState:
         self.tracked_coins: dict[str, TrackedCoin] = {}
         self.alerted_coins: set[str] = set()
         self.blacklisted: set[str] = set()
+        self.blocked_deployers: set[str] = set()
+        self.honeypot_addresses: set[str] = set()
         self.signal_tracking: dict[str, SignalInfo] = {}
         self.pump_coins: dict[str, CoinInfo] = {}
         self.dump_coins: dict[str, CoinInfo] = {}
@@ -114,10 +116,31 @@ class BotState:
     async def add_blacklisted(self, address: str) -> None:
         async with self._lock:
             self.blacklisted.add(address)
-    
+
     async def is_blacklisted(self, address: str) -> bool:
         async with self._lock:
             return address in self.blacklisted
+
+    async def add_blocked_deployer(self, deployer: str) -> None:
+        if not deployer:
+            return
+        async with self._lock:
+            self.blocked_deployers.add(deployer)
+
+    async def is_deployer_blocked(self, deployer: str) -> bool:
+        if not deployer:
+            return False
+        async with self._lock:
+            return deployer in self.blocked_deployers
+
+    async def mark_honeypot(self, address: str) -> None:
+        async with self._lock:
+            self.honeypot_addresses.add(address)
+            self.blacklisted.add(address)
+
+    async def is_honeypot(self, address: str) -> bool:
+        async with self._lock:
+            return address in self.honeypot_addresses
     
     async def add_signal(self, address: str, signal: SignalInfo) -> None:
         async with self._lock:
@@ -164,6 +187,8 @@ class BotState:
                 "tracked_coins": len(self.tracked_coins),
                 "alerted_coins": len(self.alerted_coins),
                 "blacklisted": len(self.blacklisted),
+                "blocked_deployers": len(self.blocked_deployers),
+                "honeypot_addresses": len(self.honeypot_addresses),
                 "signal_tracking": len(self.signal_tracking),
                 "pump_coins": len(self.pump_coins),
                 "dump_coins": len(self.dump_coins),
