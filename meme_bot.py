@@ -267,7 +267,7 @@ class MemeBot:
         if not launch_data:
             return
         age = datetime.now(timezone.utc).timestamp() - launch_data.launch_time
-        if age < 15:
+        if age < 30:
             return
         logger.debug(
             f"pre-mig {launch_data.symbol}: age={int(age)}s "
@@ -277,6 +277,29 @@ class MemeBot:
 
         buy_sell_ratio = launch_data.buy_count / max(launch_data.sell_count, 1)
         unique_wallets = len(launch_data.unique_wallets)
+
+        if unique_wallets < 2:
+            logger.debug(f"🚫 {launch_data.symbol}: Red flag - {unique_wallets} unique wallets (min 2)")
+            return
+        if launch_data.holders < 5:
+            logger.debug(f"🚫 {launch_data.symbol}: Red flag - {launch_data.holders} holders (min 5)")
+            return
+        if launch_data.buy_count < 3:
+            return
+
+        red_flags = []
+        red_flag_penalty = 0.0
+
+        if unique_wallets < 3:
+            red_flags.append("⚠️ Very few unique wallets")
+            red_flag_penalty += 0.3
+        if launch_data.holders < 10:
+            red_flags.append("⚠️ Low holder count")
+            red_flag_penalty += 0.15
+        if launch_data.holders < 3:
+            red_flags.append("🚨 Suspiciously low holders")
+            red_flag_penalty += 0.4
+
         launch_dict = {
             "buy_count": launch_data.buy_count,
             "sell_count": launch_data.sell_count,
@@ -287,31 +310,46 @@ class MemeBot:
         ai_score, reason = score_launch(launch_dict)
         threshold = get_adaptive_threshold()
 
+        social_score = 0.0
+        try:
+            social_score, _ = await self.social.calculate_social_score(address, launch_data.symbol)
+            if not isinstance(social_score, (int, float)):
+                social_score = 0.0
+        except Exception as e:
+            logger.debug(f"Social score error: {e}")
+
+        if social_score < 0.1:
+            red_flags.append("⚠️ No social presence")
+            red_flag_penalty += 0.2
+
         bonding_boost = 0.0
         bonding_reasons = []
 
         if age < 60:
-            if launch_data.buy_count >= 5 and buy_sell_ratio >= 3.0:
+            if launch_data.buy_count >= 8 and buy_sell_ratio >= 4.0 and unique_wallets >= 5:
                 bonding_boost += 0.25
-                bonding_reasons.append("🔥 Early frenzy (5+ buys, 3x+ ratio)")
-            if unique_wallets >= 3 and launch_data.buy_count >= 8:
+                bonding_reasons.append("🔥 Strong early frenzy")
+            if unique_wallets >= 5 and launch_data.buy_count >= 10:
                 bonding_boost += 0.20
-                bonding_reasons.append("👥 Multi-wallet demand")
+                bonding_reasons.append("👥 Multi-wallet demand (5+ wallets)")
         elif age < 180:
-            if launch_data.buy_count >= 10 and buy_sell_ratio >= 2.5:
+            if launch_data.buy_count >= 15 and buy_sell_ratio >= 3.0 and unique_wallets >= 5:
                 bonding_boost += 0.20
-                bonding_reasons.append("📈 Strong buy pressure")
-            if unique_wallets >= 5:
+                bonding_reasons.append("📈 Strong buy pressure (verified)")
+            if unique_wallets >= 8:
                 bonding_boost += 0.15
-                bonding_reasons.append("🌐 Diverse buyers")
+                bonding_reasons.append("🌐 Diverse buyers (8+ wallets)")
         elif age < 300:
-            if launch_data.buy_count >= 15 and buy_sell_ratio >= 2.0:
+            if launch_data.buy_count >= 20 and buy_sell_ratio >= 2.5 and unique_wallets >= 8:
                 bonding_boost += 0.15
                 bonding_reasons.append("📊 Sustained demand")
+            if unique_wallets >= 10:
+                bonding_boost += 0.10
+                bonding_reasons.append("👥 Growing community")
 
-        if launch_data.holders >= 5 and launch_data.holders <= 50:
+        if launch_data.holders >= 10 and launch_data.holders <= 100:
             bonding_boost += 0.10
-            bonding_reasons.append("👥 Early holder sweet spot")
+            bonding_reasons.append("👥 Healthy holder range")
 
         real_mcap = getattr(self, "_last_pre_mig_pair_mcap", 0) or 0
         real_liq = getattr(self, "_last_pre_mig_pair_liq", 0) or 0
@@ -326,31 +364,31 @@ class MemeBot:
             "sell_count": launch_data.sell_count,
         }
 
-        social_score = 0.0
-        try:
-            social_score, _ = await self.social.calculate_social_score(address, launch_data.symbol)
-            if not isinstance(social_score, (int, float)):
-                social_score = 0.0
-        except Exception as e:
-            logger.debug(f"Social score error: {e}")
-
         should_signal, final_score, filter_reason = self.filter_engine.should_signal(
             address, pattern, ai_score=ai_score,
             social_score=social_score, age_seconds=age
         )
 
         final_score += bonding_boost
+        final_score -= red_flag_penalty
+        final_score = max(0.0, final_score)
+
         effective_threshold = max(threshold, self.filter_engine.min_threshold)
+        effective_threshold += red_flag_penalty * 0.5
 
         logger.debug(
             f"pre-mig {launch_data.symbol}: age={int(age)}s "
             f"buys={launch_data.buy_count} sells={launch_data.sell_count} "
             f"ai={ai_score:.2f} soc={social_score:.2f} bond={bonding_boost:.2f} "
-            f"final={final_score:.2f} thr={effective_threshold:.2f} "
+            f"red={red_flag_penalty:.2f} final={final_score:.2f} thr={effective_threshold:.2f} "
             f"signal={should_signal} ({filter_reason})"
         )
 
-        if final_score >= effective_threshold or (bonding_boost >= 0.3 and ai_score >= 0.3):
+        if final_score >= effective_threshold and bonding_boost > 0:
+            if red_flags:
+                logger.info(f"🚫 {launch_data.symbol}: Blocked by red flags: {red_flags}")
+                return
+
             if logger.isEnabledFor(logging.INFO):
                 logger.info(
                     f"⚡ pre-mig check {launch_data.symbol}: age={int(age)}s "
@@ -374,6 +412,7 @@ class MemeBot:
                 f"🧠 <i>{reason}</i>\n"
                 f"📊 Buy: <b>{launch_data.buy_count}</b> | Sell: <b>{launch_data.sell_count}</b>\n"
                 f"👥 Unique wallets: <b>{unique_wallets}</b>\n"
+                f"👤 Holders: <b>{launch_data.holders}</b>\n"
                 f"🌐 Social: <b>{social_pct}%</b>\n"
                 f"⏱️ বয়স: <b>{int(age)}s</b> (launch time থেকে)\n"
                 f"━━━━━━━━━━━━━━━━\n"
