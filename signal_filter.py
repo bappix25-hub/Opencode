@@ -113,6 +113,15 @@ class SignalFilter:
         if self.is_blacklisted(address):
             return False, 0.0, "🚫 Blacklisted pattern"
 
+        try:
+            social_score = float(social_score) if social_score is not None else 0.0
+        except (TypeError, ValueError):
+            social_score = 0.0
+        try:
+            ai_score = float(ai_score) if ai_score is not None else 0.0
+        except (TypeError, ValueError):
+            ai_score = 0.0
+
         onchain = self.calculate_onchain_score(pattern, {}, ai_score)
         golden_match = self.is_golden_match(pattern)
         if golden_match > 0:

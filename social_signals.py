@@ -73,7 +73,7 @@ class SocialSignalEngine:
             logger.warning(f"DexScreener boost count error: {e}")
         return 0
 
-    async def calculate_social_score(self, token_address: str, symbol: str) -> dict:
+    async def calculate_social_score(self, token_address: str, symbol: str) -> tuple:
         result = {
             "score": 0.0,
             "twitter_mentions": 0,
@@ -127,4 +127,4 @@ class SocialSignalEngine:
         except Exception as e:
             logger.error(f"Social score calc error: {e}")
 
-        return result
+        return result["score"], result

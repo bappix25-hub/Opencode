@@ -281,7 +281,9 @@ class MemeBot:
 
         social_score = 0.0
         try:
-            social_score = await self.social.calculate_social_score(address, launch_data.symbol)
+            social_score, _ = await self.social.calculate_social_score(address, launch_data.symbol)
+            if not isinstance(social_score, (int, float)):
+                social_score = 0.0
         except Exception as e:
             logger.debug(f"Social score error: {e}")
 
@@ -472,7 +474,9 @@ class MemeBot:
 
                         social_score = 0.0
                         try:
-                            social_score = await self.social.calculate_social_score(addr, symbol)
+                            social_score, _ = await self.social.calculate_social_score(addr, symbol)
+                            if not isinstance(social_score, (int, float)):
+                                social_score = 0.0
                         except Exception as e:
                             logger.debug(f"Social score error: {e}")
 
