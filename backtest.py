@@ -7,7 +7,7 @@ from typing import Optional
 
 from dex_client import DexScreenerClient
 from helius_client import HeliusClient
-from learner import score_coin, get_launch_age, extract_pattern
+from learner import score_coin, get_launch_age, extract_pattern, learn_pump_with_launch, learn_early_pump
 from config import config
 from utils import format_number
 
@@ -351,25 +351,69 @@ class BacktestEngine:
             return {"error": "No tokens found"}
 
         results = []
+        trained_pumps = 0
+        trained_early = 0
         for i, token in enumerate(tokens):
             result = await self.evaluate_token(token)
             results.append(result)
+
+            if result["actual_pump"] and result["actual_multiplier"] >= 3.0:
+                try:
+                    pair = token["pair"]
+                    addr = token["address"]
+                    name = token["name"]
+                    symbol = token["symbol"]
+                    age = get_launch_age(pair) or 0
+
+                    txs = await self.helius.get_launch_transactions(addr)
+                    launch_pat = extract_launch_pattern(txs) if txs else None
+
+                    ok, msg = learn_pump_with_launch(
+                        {"name": name, "symbol": symbol}, pair,
+                        result["actual_multiplier"], launch_pat, addr, manual=False
+                    )
+                    if ok:
+                        trained_pumps += 1
+
+                    if age <= 600 and result["actual_multiplier"] >= 2.0:
+                        launch_dict = {
+                            "buy_count": launch_pat.get("buy_count", 0) if launch_pat else 0,
+                            "sell_count": launch_pat.get("sell_count", 0) if launch_pat else 0,
+                            "unique_wallets": launch_pat.get("unique_wallets", 0) if launch_pat else 0,
+                            "volume": launch_pat.get("volume", 0) if launch_pat else 0,
+                        }
+                        ok2, msg2 = learn_early_pump(
+                            addr, symbol, name, pair, launch_dict,
+                            age, result["actual_multiplier"]
+                        )
+                        if ok2:
+                            trained_early += 1
+                except Exception as e:
+                    logger.debug(f"Train error for {token.get('symbol', '?')}: {e}")
+
             if (i + 1) % 25 == 0:
-                logger.info(f"Evaluated {i+1}/{len(tokens)}")
+                logger.info(f"Evaluated {i+1}/{len(tokens)} (trained: {trained_pumps} pumps, {trained_early} early)")
                 if progress_callback:
                     await progress_callback(i + 1, len(tokens))
 
         metrics = self.calculate_metrics(results)
         metrics["elapsed_seconds"] = round(datetime.now(timezone.utc).timestamp() - start_ts, 1)
         metrics["period_days"] = days
+        metrics["trained_pumps"] = trained_pumps
+        metrics["trained_early_pumps"] = trained_early
 
         json_path = self._save_report_files(metrics, results, days)
 
         if self.send_msg:
-            await self.send_msg(self._format_telegram_report(metrics, days))
+            report = self._format_telegram_report(metrics, days)
+            report += f"\n\n📚 <b>Training:</b>\n"
+            report += f"🚀 Pumps trained: <b>{trained_pumps}</b>\n"
+            report += f"🎯 Early pumps trained: <b>{trained_early}</b>"
+            await self.send_msg(report)
 
         logger.info(f"✅ Backtest complete in {metrics['elapsed_seconds']}s")
         logger.info(f"📊 Win rate: {metrics['win_rate']}%, Precision: {metrics['precision']}%, Recall: {metrics['recall']}%")
+        logger.info(f"📚 Trained: {trained_pumps} pumps, {trained_early} early pumps")
 
         return {
             "metrics": metrics,

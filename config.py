@@ -55,4 +55,10 @@ class Config:
     enable_history_scan: bool = get_env_bool("ENABLE_HISTORY_SCAN", True)
     enable_github_sync: bool = get_env_bool("ENABLE_GITHUB_SYNC", True)
 
+    paper_trading: bool = get_env_bool("PAPER_TRADING", True)
+    paper_trade_sol: float = get_env_float("PAPER_TRADE_SOL", 0.1)
+    paper_trade_sol_per_buy: float = get_env_float("PAPER_TRADE_SOL_PER_BUY", 0.01)
+    paper_trade_max_positions: int = get_env_int("PAPER_TRADE_MAX_POSITIONS", 5)
+    paper_trade_timeout_hours: int = get_env_int("PAPER_TRADE_TIMEOUT_HOURS", 3)
+
 config = Config()

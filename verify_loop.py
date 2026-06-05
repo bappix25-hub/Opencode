@@ -5,7 +5,7 @@ from typing import Optional, Callable
 from dex_client import DexScreenerClient
 from config import config
 from signal_filter import SignalFilter
-from learner import load_data, save_data
+from learner import load_data, save_data, update_signal_ath
 
 logger = logging.getLogger("verify_loop")
 
@@ -43,16 +43,23 @@ class VerifyLoop:
         signal_price = v["signal_price"]
 
         checkpoints = [
-            ("15m", 15 * 60),
             ("30m", 30 * 60),
-            ("60m", 60 * 60),
+            ("1h", 60 * 60),
+            ("2h", 120 * 60),
+            ("3h", 180 * 60),
         ]
 
         max_launch_mult = 0.0
         max_signal_mult = 0.0
+        ath_price = signal_price
+        ath_mult = 1.0
 
         for label, delay in checkpoints:
-            await asyncio.sleep(delay if label == "15m" else delay - (15 * 60 if label == "30m" else 30 * 60))
+            if label == "30m":
+                await asyncio.sleep(delay)
+            else:
+                prev_delay = {"1h": 30 * 60, "2h": 60 * 60, "3h": 120 * 60}[label]
+                await asyncio.sleep(delay - prev_delay)
 
             try:
                 pair = await self.dex.fetch_pair_data(address)
@@ -61,6 +68,10 @@ class VerifyLoop:
                 current_price = float(pair.get("priceUsd", 0) or 0)
                 if current_price <= 0 or signal_price <= 0:
                     continue
+
+                if current_price > ath_price:
+                    ath_price = current_price
+                    ath_mult = current_price / signal_price
 
                 if launch_time > 0:
                     try:
@@ -89,20 +100,26 @@ class VerifyLoop:
                     "current_price": current_price,
                     "signal_mult": round(signal_mult, 2),
                     "launch_mult": round(launch_mult, 2),
+                    "ath_price": ath_price,
+                    "ath_mult": round(ath_mult, 2),
                 })
 
                 if self.send_msg:
                     emoji = "✅" if launch_mult >= 3 else "⏳" if launch_mult >= 1.5 else "⚠️"
+                    ath_text = f"\n📈 ATH: <b>{ath_mult:.2f}x</b>" if ath_mult > 1.5 else ""
                     await self.send_msg(
                         f"{emoji} <b>Verify {label} — ${symbol}</b>\n"
                         f"📈 From launch: <b>{launch_mult:.2f}x</b>\n"
-                        f"📊 From signal: <b>{signal_mult:.2f}x</b>"
+                        f"📊 From signal: <b>{signal_mult:.2f}x</b>{ath_text}\n"
+                        f"💰 Paper PnL: <b>{((current_price / signal_price) - 1) * 100:+.1f}%</b>"
                     )
             except Exception as e:
                 logger.error(f"Verify {label} error for {symbol}: {e}")
 
         v["final_multiplier"] = round(max_launch_mult, 2)
         v["final_signal_multiplier"] = round(max_signal_mult, 2)
+        v["ath_price"] = ath_price
+        v["ath_multiplier"] = round(ath_mult, 2)
         v["completed_at"] = datetime.now(timezone.utc).isoformat()
 
         if max_launch_mult >= 5.0:
@@ -133,6 +150,7 @@ class VerifyLoop:
                 f"━━━━━━━━━━━━━━━━\n"
                 f"📊 From launch: <b>{max_launch_mult:.2f}x</b>\n"
                 f"📈 From signal: <b>{max_signal_mult:.2f}x</b>\n"
+                f"📈 ATH: <b>{ath_mult:.2f}x</b> (${ath_price:.8f})\n"
                 f"🏷️ Verdict: <b>{verdict}</b>\n"
                 f"🎯 Target: 5x {'✅' if max_launch_mult >= 5 else '❌'}\n"
                 f"🎯 Target: 3x {'✅' if max_launch_mult >= 3 else '❌'}"

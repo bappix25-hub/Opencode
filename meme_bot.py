@@ -16,11 +16,12 @@ from helius_client import HeliusClient
 from pumpportal_ws import PumpPortalWS
 from telegram_bot import TelegramHandlers, register_handlers
 from learner import (
-    score_coin, score_launch, record_signal, update_signal_result,
+    score_coin, score_launch, record_signal, update_signal_result, update_signal_ath,
     get_stats, get_daily_report, learn_pump, learn_dump,
     extract_launch_pattern, learn_pump_with_launch, verify_pump, get_launch_age,
     get_adaptive_threshold, is_duplicate, auto_learn_from_tracking,
-    purge_honeypot_patterns, save_honeypot_blocklist, load_honeypot_blocklist
+    purge_honeypot_patterns, save_honeypot_blocklist, load_honeypot_blocklist,
+    learn_early_pump
 )
 from github_sync import sync_to_github, restore_from_github
 from utils import format_number, gmgn_link, setup_logging
@@ -29,6 +30,7 @@ from social_signals import SocialSignalEngine
 from signal_filter import SignalFilter
 from verify_loop import VerifyLoop
 from honeypot_detector import HoneypotDetector
+from paper_trader import get_paper_trader
 
 logger = setup_logging("meme_bot")
 
@@ -55,6 +57,7 @@ class MemeBot:
         self.pumpportal: PumpPortalWS = None
         self.telegram_app: Application = None
         self.handlers: TelegramHandlers = None
+        self.paper_trader = get_paper_trader()
         self._shutdown_event = asyncio.Event()
         self._tasks: list = []
         self._last_internet_ok: bool = True
@@ -76,7 +79,7 @@ class MemeBot:
         )
 
         self.telegram_app = Application.builder().token(config.bot_token).build()
-        self.handlers = TelegramHandlers(self.state, self.dex, self.session, self.filter_engine, self.verify_loop)
+        self.handlers = TelegramHandlers(self.state, self.dex, self.session, self.filter_engine, self.verify_loop, self.paper_trader)
         register_handlers(self.telegram_app, self.handlers)
 
         await restore_from_github()
@@ -117,7 +120,16 @@ class MemeBot:
         self._tasks.append(asyncio.create_task(self.backtest_loop(), name="backtest"))
         self._tasks.append(asyncio.create_task(self.daily_summary_loop(), name="daily_summary"))
 
-        await send_msg(self.telegram_app.bot, "🤖 <b>বট v3 চালু!</b>\n✅ 5x filter + Auto-verify + Social signals সক্রিয়")
+        if config.paper_trading:
+            self._tasks.append(asyncio.create_task(self.paper_trading_loop(), name="paper_trading"))
+            await send_msg(self.telegram_app.bot,
+                f"📄 <b>Paper Trading চালু!</b>\n"
+                f"💰 ব্যালেন্স: <b>{self.paper_trader.state.current_sol:.4f} SOL</b>\n"
+                f"📦 প্রতি বাই: <b>{config.paper_trade_sol_per_buy:.4f} SOL</b>\n"
+                f"🎯 Auto TP/SL + 3h timeout সক্রিয়"
+            )
+
+        await send_msg(self.telegram_app.bot, "🤖 <b>বট v3 চালু!</b>\n✅ 5x filter + Auto-verify + Social signals + Paper Trading সক্রিয়")
 
         try:
             await self.telegram_app.initialize()
@@ -255,7 +267,7 @@ class MemeBot:
         if not launch_data:
             return
         age = datetime.now(timezone.utc).timestamp() - launch_data.launch_time
-        if age < 30:
+        if age < 15:
             return
         logger.debug(
             f"pre-mig {launch_data.symbol}: age={int(age)}s "
@@ -264,15 +276,42 @@ class MemeBot:
         )
 
         buy_sell_ratio = launch_data.buy_count / max(launch_data.sell_count, 1)
+        unique_wallets = len(launch_data.unique_wallets)
         launch_dict = {
             "buy_count": launch_data.buy_count,
             "sell_count": launch_data.sell_count,
-            "unique_wallets": len(launch_data.unique_wallets),
+            "unique_wallets": unique_wallets,
             "volume": launch_data.volume,
             "buy_sell_ratio": buy_sell_ratio
         }
         ai_score, reason = score_launch(launch_dict)
         threshold = get_adaptive_threshold()
+
+        bonding_boost = 0.0
+        bonding_reasons = []
+
+        if age < 60:
+            if launch_data.buy_count >= 5 and buy_sell_ratio >= 3.0:
+                bonding_boost += 0.25
+                bonding_reasons.append("🔥 Early frenzy (5+ buys, 3x+ ratio)")
+            if unique_wallets >= 3 and launch_data.buy_count >= 8:
+                bonding_boost += 0.20
+                bonding_reasons.append("👥 Multi-wallet demand")
+        elif age < 180:
+            if launch_data.buy_count >= 10 and buy_sell_ratio >= 2.5:
+                bonding_boost += 0.20
+                bonding_reasons.append("📈 Strong buy pressure")
+            if unique_wallets >= 5:
+                bonding_boost += 0.15
+                bonding_reasons.append("🌐 Diverse buyers")
+        elif age < 300:
+            if launch_data.buy_count >= 15 and buy_sell_ratio >= 2.0:
+                bonding_boost += 0.15
+                bonding_reasons.append("📊 Sustained demand")
+
+        if launch_data.holders >= 5 and launch_data.holders <= 50:
+            bonding_boost += 0.10
+            bonding_reasons.append("👥 Early holder sweet spot")
 
         real_mcap = getattr(self, "_last_pre_mig_pair_mcap", 0) or 0
         real_liq = getattr(self, "_last_pre_mig_pair_liq", 0) or 0
@@ -300,20 +339,23 @@ class MemeBot:
             social_score=social_score, age_seconds=age
         )
 
+        final_score += bonding_boost
         effective_threshold = max(threshold, self.filter_engine.min_threshold)
+
         logger.debug(
             f"pre-mig {launch_data.symbol}: age={int(age)}s "
             f"buys={launch_data.buy_count} sells={launch_data.sell_count} "
-            f"ai={ai_score:.2f} soc={social_score:.2f} "
+            f"ai={ai_score:.2f} soc={social_score:.2f} bond={bonding_boost:.2f} "
             f"final={final_score:.2f} thr={effective_threshold:.2f} "
             f"signal={should_signal} ({filter_reason})"
         )
-        if should_signal and ai_score >= effective_threshold:
+
+        if final_score >= effective_threshold or (bonding_boost >= 0.3 and ai_score >= 0.3):
             if logger.isEnabledFor(logging.INFO):
                 logger.info(
                     f"⚡ pre-mig check {launch_data.symbol}: age={int(age)}s "
                     f"buys={launch_data.buy_count} sells={launch_data.sell_count} "
-                    f"ai={ai_score:.2f} soc={social_score:.2f} "
+                    f"ai={ai_score:.2f} soc={social_score:.2f} bond={bonding_boost:.2f} "
                     f"final={final_score:.2f} thr={effective_threshold:.2f} → SIGNAL!"
                 )
             symbol = launch_data.symbol
@@ -322,6 +364,8 @@ class MemeBot:
             confidence_bar = "🟢" * int(confidence_pct/20) + "⚪" * (5 - int(confidence_pct/20))
             link = gmgn_link(address)
             social_pct = int(social_score * 100)
+            bonding_text = "\n".join([f"  • {r}" for r in bonding_reasons]) if bonding_reasons else "  • Standard scoring"
+
             await send_msg(self.telegram_app.bot,
                 f"⚡ <b>প্রি-মাইগ্রেশন সিগন্যাল!</b>\n"
                 f"━━━━━━━━━━━━━━━━\n"
@@ -329,16 +373,37 @@ class MemeBot:
                 f"🎯 কনফিডেন্স: {confidence_bar} <b>{confidence_pct}%</b>\n"
                 f"🧠 <i>{reason}</i>\n"
                 f"📊 Buy: <b>{launch_data.buy_count}</b> | Sell: <b>{launch_data.sell_count}</b>\n"
-                f"👥 Unique wallets: <b>{len(launch_data.unique_wallets)}</b>\n"
+                f"👥 Unique wallets: <b>{unique_wallets}</b>\n"
                 f"🌐 Social: <b>{social_pct}%</b>\n"
                 f"⏱️ বয়স: <b>{int(age)}s</b> (launch time থেকে)\n"
+                f"━━━━━━━━━━━━━━━━\n"
+                f"🔗 <b>Bonding Curve Analysis:</b>\n"
+                f"{bonding_text}\n"
                 f"━━━━━━━━━━━━━━━━\n"
                 f"⚠️ <i>মাইগ্রেশনের আগে! DYOR করুন!</i>\n"
                 f"🔗 <a href='{link}'>GMGN</a>"
             )
             await self.state.add_alerted(address)
             launch_data.pre_signal_sent = True
-            logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {symbol} স্কোর: {final_score:.2f} (ai={ai_score:.2f}, social={social_score:.2f})")
+            logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {symbol} স্কোর: {final_score:.2f} (ai={ai_score:.2f}, social={social_score:.2f}, bond={bonding_boost:.2f})")
+
+            if config.paper_trading:
+                try:
+                    pos = await self.paper_trader.buy(
+                        address, symbol, name, 0.0,
+                        ai_score, social_score, final_score, age
+                    )
+                    if pos:
+                        await send_msg(self.telegram_app.bot,
+                            f"🟢 <b>Paper Buy!</b>\n"
+                            f"🏷️ ${symbol}\n"
+                            f"💰 {pos.sol_amount:.4f} SOL\n"
+                            f"🎯 TP: {((pos.tp_price / pos.entry_price) - 1) * 100:+.0f}%\n"
+                            f"🛑 SL: {((pos.sl_price / pos.entry_price) - 1) * 100:+.0f}%\n"
+                            f"💵 ব্যালেন্স: {self.paper_trader.state.current_sol:.4f} SOL"
+                        )
+                except Exception as e:
+                    logger.debug(f"Paper buy error: {e}")
 
     async def _on_migration(self, data: dict):
         await self.handle_migration(data)
@@ -470,6 +535,23 @@ class MemeBot:
                     symbol = coin_info.symbol
                     link = gmgn_link(addr)
 
+                    if config.paper_trading:
+                        try:
+                            closed = await self.paper_trader.check_tp_sl(addr, current_price)
+                            if closed:
+                                emoji = "✅" if closed.pnl_sol >= 0 else "❌"
+                                reason_map = {"tp_hit": "🎯 TP Hit", "sl_hit": "🛑 SL Hit"}
+                                reason = reason_map.get(closed.exit_reason, closed.exit_reason)
+                                await send_msg(self.telegram_app.bot,
+                                    f"{emoji} <b>Paper {reason}!</b>\n"
+                                    f"🏷️ ${symbol}\n"
+                                    f"📈 ${closed.entry_price:.8f} → ${closed.exit_price:.8f}\n"
+                                    f"💰 PnL: <b>{closed.pnl_sol:+.4f} SOL ({closed.pnl_pct:+.1f}%)</b>\n"
+                                    f"💵 ব্যালেন্স: {self.paper_trader.state.current_sol:.4f} SOL"
+                                )
+                        except Exception as e:
+                            logger.debug(f"Paper TP/SL check error: {e}")
+
                     if liquidity < 300:
                         await self.state.add_blacklisted(addr)
                         logger.info(f"🚫 লিকুইডিটি pull: {symbol}")
@@ -573,6 +655,24 @@ class MemeBot:
                             ))
                             await self.state.add_alerted(addr)
 
+                            if config.paper_trading:
+                                try:
+                                    pos = await self.paper_trader.buy(
+                                        addr, symbol, name, current_price,
+                                        ai_score, social_score, final_score, age
+                                    )
+                                    if pos:
+                                        await send_msg(self.telegram_app.bot,
+                                            f"🟢 <b>Paper Buy!</b>\n"
+                                            f"🏷️ ${symbol} @ ${current_price:.8f}\n"
+                                            f"💰 {pos.sol_amount:.4f} SOL\n"
+                                            f"🎯 TP: ${pos.tp_price:.8f} ({((pos.tp_price / pos.entry_price) - 1) * 100:+.0f}%)\n"
+                                            f"🛑 SL: ${pos.sl_price:.8f} ({((pos.sl_price / pos.entry_price) - 1) * 100:+.0f}%)\n"
+                                            f"💵 ব্যালেন্স: {self.paper_trader.state.current_sol:.4f} SOL"
+                                        )
+                                except Exception as e:
+                                    logger.debug(f"Paper buy error: {e}")
+
                             try:
                                 self.verify_loop.schedule_verification(
                                     addr, symbol, coin_info.launch_time or now_ts,
@@ -665,26 +765,41 @@ class MemeBot:
     async def check_signal_results_loop(self):
         while True:
             try:
-                await asyncio.sleep(300)
+                await asyncio.sleep(60)
                 unchecked = await self.state.get_unchecked_signals()
                 now = datetime.now(timezone.utc).timestamp()
                 for addr, sig_info in list(unchecked.items()):
                     age = now - sig_info.signal_time
-                    if age < 1800:
-                        continue
                     pair = await self.dex.fetch_pair_data(addr)
                     if not pair:
                         continue
                     current_price = float(pair.get("priceUsd", 0) or 0)
                     if current_price <= 0:
                         continue
+
+                    ath_price, ath_mult = update_signal_ath(addr, current_price)
+
+                    if age < 10800:
+                        continue
+
                     update_signal_result(addr, current_price)
                     multiplier = current_price / sig_info.price_at_signal if sig_info.price_at_signal > 0 else 0
                     emoji = "✅" if multiplier >= 2.0 else "❌"
+
+                    ath_emoji = "📈" if ath_mult >= 3 else "📊" if ath_mult >= 2 else "📉"
+                    ath_text = f"{ath_emoji} ATH: <b>{ath_mult:.2f}x</b> (${ath_price:.8f})" if ath_mult > 1.0 else ""
+
+                    pnl_text = ""
+                    if config.paper_trading and self.paper_trader:
+                        closed = await self.paper_trader.force_close(addr, current_price)
+                        if closed:
+                            pnl_text = f"\n💰 Paper PnL: <b>{closed.pnl_sol:+.4f} SOL ({closed.pnl_pct:+.1f}%)</b>"
+
                     await send_msg(self.telegram_app.bot,
-                        f"{emoji} <b>সিগন্যাল ফলাফল!</b>\n"
+                        f"{emoji} <b>সিগন্যাল ফলাফল (3h)!</b>\n"
                         f"🏷️ ${sig_info.symbol}\n"
-                        f"📈 ফলাফল: <b>{multiplier:.2f}x</b>"
+                        f"📊 বর্তমান: <b>{multiplier:.2f}x</b>\n"
+                        f"{ath_text}{pnl_text}"
                     )
                     await self.state.mark_signal_checked(addr)
                     await asyncio.sleep(1)
@@ -767,6 +882,28 @@ class MemeBot:
                         "volume": ld.volume,
                     }
 
+                    if next_offset == 300 and not is_hp:
+                        multiplier = current_price / initial_price if initial_price else 0
+                        if multiplier >= 2.0:
+                            try:
+                                ok, msg = learn_early_pump(
+                                    addr, ld.symbol, ld.name, pair,
+                                    launch_dict, age, multiplier
+                                )
+                                if ok:
+                                    logger.info(f"🎯 Early pump trained: ${ld.symbol} {multiplier:.2f}x @ T+5min")
+                                    if self.telegram_app and self.telegram_app.bot:
+                                        link = gmgn_link(addr)
+                                        await send_msg(self.telegram_app.bot,
+                                            f"🎯 <b>Early Pump শেখা!</b>\n"
+                                            f"🏷️ ${ld.symbol}\n"
+                                            f"📈 {multiplier:.2f}x @ T+5min\n"
+                                            f"📊 Buy: {ld.buy_count} | Wallets: {len(ld.unique_wallets)}\n"
+                                            f"🔗 <a href='{link}'>GMGN</a>"
+                                        )
+                            except Exception as e:
+                                logger.debug(f"Early pump learn error: {e}")
+
                     learned, kind, msg = auto_learn_from_tracking(
                         address=addr,
                         symbol=ld.symbol,
@@ -848,6 +985,28 @@ class MemeBot:
             except Exception as e:
                 logger.error(f"connection_monitor_loop error: {e}")
                 await asyncio.sleep(check_every)
+
+    async def paper_trading_loop(self):
+        while True:
+            try:
+                await asyncio.sleep(60)
+                closed = await self.paper_trader.timeout_close_all(self.dex)
+                for pos in closed:
+                    emoji = "✅" if pos.pnl_sol >= 0 else "❌"
+                    await send_msg(self.telegram_app.bot,
+                        f"{emoji} <b>Paper 3h Timeout!</b>\n"
+                        f"🏷️ ${pos.symbol}\n"
+                        f"📈 ${pos.entry_price:.8f} → ${pos.exit_price:.8f}\n"
+                        f"💰 PnL: <b>{pos.pnl_sol:+.4f} SOL ({pos.pnl_pct:+.1f}%)</b>\n"
+                        f"💵 ব্যালেন্স: {self.paper_trader.state.current_sol:.4f} SOL"
+                    )
+                open_count = len(self.paper_trader.get_open_positions())
+                if open_count > 0 and open_count % 5 == 0:
+                    logger.info(f"📄 Paper: {open_count} open positions, balance: {self.paper_trader.state.current_sol:.4f} SOL")
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"paper_trading_loop error: {e}")
 
     async def github_sync_loop(self):
         while True:

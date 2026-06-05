@@ -13,6 +13,7 @@ from utils import format_number
 from backtest import BacktestEngine, REPORTS_DIR
 from signal_filter import SignalFilter
 from verify_loop import VerifyLoop
+from paper_trader import PaperTrader
 
 logger = logging.getLogger("telegram_bot")
 
@@ -20,22 +21,24 @@ def main_keyboard():
     keyboard = [
         [KeyboardButton("📊 স্ট্যাটাস"), KeyboardButton("📈 পারফরম্যান্স")],
         [KeyboardButton("🏆 ট্রেন"), KeyboardButton("⚙️ সেটিংস")],
+        [KeyboardButton("💰 ব্যালেন্স"), KeyboardButton("📦 পজিশন")],
         [KeyboardButton("✅ অন"), KeyboardButton("❌ অফ")]
     ]
     return ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
 
 class TelegramHandlers:
-    def __init__(self, state: BotState, dex: DexScreenerClient, session, filter_engine: SignalFilter = None, verify_loop: VerifyLoop = None):
+    def __init__(self, state: BotState, dex: DexScreenerClient, session, filter_engine: SignalFilter = None, verify_loop: VerifyLoop = None, paper_trader: PaperTrader = None):
         self.state = state
         self.dex = dex
         self.session = session
         self.filter_engine = filter_engine
         self.verify_loop = verify_loop
+        self.paper_trader = paper_trader
 
     async def cmd_start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        await update.message.reply_text(
+        text = (
             "🤖 <b>Bappis Trade Bot v3 চালু!</b>\n"
-            "🌟 5x filter + Auto-verify + Social signals সক্রিয়\n\n"
+            "🌟 5x filter + Auto-verify + Social signals + Paper Trading সক্রিয়\n\n"
             "📚 কমান্ড:\n"
             "/pump ADDRESS — পাম্প শেখান\n"
             "/dump ADDRESS — ডাম্প শেখান\n"
@@ -48,7 +51,14 @@ class TelegramHandlers:
             "/signalstats — সিগন্যাল পরিসংখ্যান\n"
             "/golden — golden patterns (5x+ proven)\n"
             "/blacklist — blacklisted patterns\n"
-            "/retrain — model retrain",
+            "/retrain — model retrain\n\n"
+            "💰 <b>Paper Trading:</b>\n"
+            "/balance — ব্যালেন্স ও P&L\n"
+            "/positions — ওপেন পজিশন\n"
+            "/trades — ট্রেড হিস্ট্রি"
+        )
+        await update.message.reply_text(
+            text,
             parse_mode="HTML", reply_markup=main_keyboard()
         )
 
@@ -326,6 +336,40 @@ class TelegramHandlers:
             f"🎯 Accuracy: {learner_stats['accuracy']}%"
         )
 
+    async def cmd_balance(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        if not self.paper_trader:
+            await update.message.reply_text("❌ Paper Trading চালু নেই।")
+            return
+        await update.message.reply_text(
+            self.paper_trader.format_balance(),
+            parse_mode="HTML"
+        )
+
+    async def cmd_positions(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        if not self.paper_trader:
+            await update.message.reply_text("❌ Paper Trading চালু নেই।")
+            return
+        await update.message.reply_text(
+            self.paper_trader.format_positions(),
+            parse_mode="HTML"
+        )
+
+    async def cmd_trades(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        if not self.paper_trader:
+            await update.message.reply_text("❌ Paper Trading চালু নেই।")
+            return
+        limit = 10
+        if context.args:
+            try:
+                limit = int(context.args[0])
+                limit = max(1, min(50, limit))
+            except (ValueError, IndexError):
+                pass
+        await update.message.reply_text(
+            self.paper_trader.format_trade_history(limit),
+            parse_mode="HTML"
+        )
+
     async def handle_buttons(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         text = update.message.text
         if text == "📊 স্ট্যাটাস":
@@ -370,6 +414,10 @@ class TelegramHandlers:
             )
         elif text == "⚙️ সেটিংস":
             await self.cmd_config(update, context)
+        elif text == "💰 ব্যালেন্স":
+            await self.cmd_balance(update, context)
+        elif text == "📦 পজিশন":
+            await self.cmd_positions(update, context)
         elif text == "✅ অন":
             await self.state.set_bot_active(True)
             await update.message.reply_text("✅ বট চালু!")
@@ -392,4 +440,7 @@ def register_handlers(app, handlers: TelegramHandlers):
     app.add_handler(CommandHandler("golden", handlers.cmd_golden))
     app.add_handler(CommandHandler("blacklist", handlers.cmd_blacklist))
     app.add_handler(CommandHandler("retrain", handlers.cmd_retrain))
+    app.add_handler(CommandHandler("balance", handlers.cmd_balance))
+    app.add_handler(CommandHandler("positions", handlers.cmd_positions))
+    app.add_handler(CommandHandler("trades", handlers.cmd_trades))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handlers.handle_buttons))

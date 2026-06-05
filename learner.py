@@ -492,11 +492,34 @@ def record_signal(address: str, symbol: str, score: float, price_at_signal: floa
         "mcap_at_signal": mcap_at_signal,
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "result_multiplier": None,
-        "result_checked": False
+        "result_checked": False,
+        "ath_price": price_at_signal,
+        "ath_multiplier": 1.0,
+        "ath_timestamp": datetime.now(timezone.utc).isoformat(),
     })
     data["signals"] = data["signals"][-500:]
     data["model"]["total_signals"] = data["model"].get("total_signals", 0) + 1
     save_data(data)
+
+def update_signal_ath(address: str, current_price: float) -> tuple:
+    data = load_data()
+    updated = False
+    ath_price = 0
+    ath_mult = 0
+    for sig in data["signals"]:
+        if sig["address"] == address and not sig["result_checked"]:
+            if sig["price_at_signal"] > 0:
+                current_ath = sig.get("ath_price", sig["price_at_signal"])
+                if current_price > current_ath:
+                    sig["ath_price"] = current_price
+                    sig["ath_multiplier"] = round(current_price / sig["price_at_signal"], 2)
+                    sig["ath_timestamp"] = datetime.now(timezone.utc).isoformat()
+                    updated = True
+                ath_price = sig.get("ath_price", sig["price_at_signal"])
+                ath_mult = sig.get("ath_multiplier", 1.0)
+    if updated:
+        save_data(data)
+    return ath_price, ath_mult
 
 def update_signal_result(address: str, current_price: float) -> None:
     data = load_data()
@@ -507,6 +530,10 @@ def update_signal_result(address: str, current_price: float) -> None:
                 multiplier = current_price / sig["price_at_signal"]
                 sig["result_multiplier"] = round(multiplier, 2)
                 sig["result_checked"] = True
+                current_ath = sig.get("ath_price", sig["price_at_signal"])
+                if current_price > current_ath:
+                    sig["ath_price"] = current_price
+                    sig["ath_multiplier"] = round(multiplier, 2)
                 if multiplier >= 2.0:
                     data["model"]["correct_signals"] = data["model"].get("correct_signals", 0) + 1
                 updated = True
@@ -647,6 +674,51 @@ def extract_launch_pattern(transactions: list) -> Optional[dict]:
         }
     except Exception:
         return None
+
+def learn_early_pump(address: str, symbol: str, name: str, pair: dict, 
+                     launch_data: dict, age_seconds: float, multiplier: float) -> tuple:
+    data = load_data()
+    if address and _hash_address(address) in data.get("trained_addresses", []):
+        return False, "ডুপ্লিকেট!"
+
+    pattern = extract_pattern(pair, age_seconds)
+    if not pattern:
+        return False, "ডেটা নেই"
+
+    pattern["symbol"] = symbol
+    pattern["name"] = name
+    pattern["address"] = address
+    pattern["final_multiplier"] = multiplier
+    pattern["source"] = "early_pump"
+    pattern["age_at_signal"] = age_seconds
+    pattern["launch_data"] = launch_data
+    pattern["timestamp"] = datetime.now(timezone.utc).isoformat()
+
+    data["pump_patterns"].append(pattern)
+    data["pump_patterns"] = data["pump_patterns"][-500:]
+
+    if launch_data:
+        launch_pattern = {
+            "buy_count": launch_data.get("buy_count", 0),
+            "sell_count": launch_data.get("sell_count", 0),
+            "unique_wallets": launch_data.get("unique_wallets", 0),
+            "volume": launch_data.get("volume", 0),
+            "buy_sell_ratio": launch_data.get("buy_sell_ratio", 1),
+            "symbol": symbol,
+            "address": address,
+            "final_multiplier": multiplier,
+            "age_seconds": age_seconds,
+            "source": "early_pump",
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
+        data["launch_patterns"].append(launch_pattern)
+        data["launch_patterns"] = data["launch_patterns"][-500:]
+
+    if address:
+        _mark_trained(data, address)
+    _update_model(data)
+    save_data(data)
+    return True, f"✅ Early pump শেখা! {multiplier}x @ {int(age_seconds)}s | মোট: {len(data['pump_patterns'])}"
 
 def learn_pump_with_launch(coin_info: dict, pair: dict, final_multiplier: float, launch_pattern: Optional[dict], address: Optional[str] = None, manual: bool = False) -> tuple:
     data = load_data()
