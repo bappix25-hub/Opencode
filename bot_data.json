@@ -371,6 +371,30 @@
       "final_multiplier": 0,
       "manual": false,
       "timestamp": "2026-06-05T20:46:08.530489+00:00"
+    },
+    {
+      "mcap": 14041.0,
+      "liquidity": 8504.78,
+      "volume_h1": 322416.17,
+      "volume_m5": 7139.95,
+      "age_seconds": 4076.9353959960936,
+      "price_change_5m": -23.08,
+      "price_change_1h": -83.47,
+      "hour_of_day": 21,
+      "buys_m5": 132,
+      "sells_m5": 108,
+      "buys_h1": 4961,
+      "sells_h1": 3556,
+      "vol_liq_ratio": 37.90999532027871,
+      "buy_sell_ratio_m5": 0.55,
+      "buy_sell_ratio_h1": 0.5824820946342609,
+      "mcap_liq_ratio": 1.6509539341405655,
+      "momentum_5m": -23.08,
+      "symbol": "\ud83d\ude2d",
+      "address": "7tme6fpYjz8v6iSuratuyPZKXyXsdSuid8V7MYcZysQe",
+      "final_multiplier": 0,
+      "manual": false,
+      "timestamp": "2026-06-05T21:19:49.935464+00:00"
     }
   ],
   "launch_patterns": [
@@ -510,7 +534,8 @@
     "cc4773f9f5f02c6cea9b9d73ae7e4351",
     "9e67be71ca6440e1bbc748efa2418f10",
     "b59a57ad10e8608f33ff8e6f10cebbbe",
-    "608300541ce7fe83c90efde8be870f0c"
+    "608300541ce7fe83c90efde8be870f0c",
+    "df269a58d0c3b53ca9f4c129f13e2d06"
   ],
   "signals": [
     {
