@@ -293,6 +293,13 @@ class MemeBot:
         )
 
         effective_threshold = max(threshold, self.filter_engine.min_threshold)
+        logger.debug(
+            f"pre-mig {launch_data.symbol}: age={int(age)}s "
+            f"buys={launch_data.buy_count} sells={launch_data.sell_count} "
+            f"ai={ai_score:.2f} soc={social_score:.2f} "
+            f"final={final_score:.2f} thr={effective_threshold:.2f} "
+            f"signal={should_signal} ({filter_reason})"
+        )
         if should_signal and ai_score >= effective_threshold:
             symbol = launch_data.symbol
             name = launch_data.name
@@ -393,6 +400,9 @@ class MemeBot:
                 for addr, coin_info in list((await self._get_tracked_dict()).items()):
                     if await self.state.is_blacklisted(addr):
                         continue
+                    launch_data = await self.state.get_launch_tracking(addr)
+                    if launch_data:
+                        await self.check_pre_migration_signal(addr)
                     await asyncio.sleep(1)
                     pair = await self.dex.fetch_pair_data(addr)
                     if not pair:
