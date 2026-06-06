@@ -30,7 +30,7 @@ start_bot() {
     echo "━━━━━━━━━━━━━━━━━━━━"
 
     kill_session 2>/dev/null
-    tmux new-session -d -s "$SESSION" "python3 meme_bot.py 2>&1 | tee -a $LOG_FILE; echo 'Bot exited — restarting in 5s...'; sleep 5; bash $0"
+    tmux new-session -d -s "$SESSION" "while true; do python3 meme_bot.py 2>&1 | tee -a $LOG_FILE; echo \"Bot exited — restarting in 5s...\"; sleep 5; done"
     echo "✅ Bot started in tmux session: $SESSION"
     echo "📋 View logs: tmux attach -t $SESSION"
     echo "📋 Tail logs: tail -f $LOG_FILE"
