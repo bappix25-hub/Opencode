@@ -99,6 +99,31 @@
       "final_multiplier": 4.32,
       "manual": false,
       "timestamp": "2026-06-05T23:08:02.970773+00:00"
+    },
+    {
+      "mcap": 292256.0,
+      "liquidity": 39996.6,
+      "volume_h1": 221560.19,
+      "volume_m5": 13618.75,
+      "age_seconds": 86089.82097192382,
+      "price_change_5m": -4.49,
+      "price_change_1h": -22.72,
+      "hour_of_day": 5,
+      "buys_m5": 204,
+      "sells_m5": 65,
+      "buys_h1": 2869,
+      "sells_h1": 946,
+      "vol_liq_ratio": 5.539475605426461,
+      "buy_sell_ratio_m5": 0.758364312267658,
+      "buy_sell_ratio_h1": 0.7520314547837483,
+      "mcap_liq_ratio": 7.307021096793227,
+      "momentum_5m": -4.49,
+      "symbol": "POKEHUB",
+      "name": "PokeHub",
+      "address": "2gp9TZWCfNwHFFW6uzZs9f3PixTKtaH3EhLCFFpopump",
+      "final_multiplier": 9.06,
+      "manual": false,
+      "timestamp": "2026-06-06T05:31:40.821076+00:00"
     }
   ],
   "dump_patterns": [
@@ -8231,6 +8256,18 @@
       "symbol": "CWAB",
       "address": "89tYegEbCb6oDfxeRyKV6qgwLWmo2S9ur7Sw81zpump",
       "final_multiplier": 4.32
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 20,
+      "unique_wallets": 20,
+      "volume": 2877457.166073962,
+      "buy_sell_ratio": 0.0,
+      "hour_of_day": 5,
+      "timestamp": "2026-06-06T05:31:40.781051+00:00",
+      "symbol": "POKEHUB",
+      "address": "2gp9TZWCfNwHFFW6uzZs9f3PixTKtaH3EhLCFFpopump",
+      "final_multiplier": 9.06
     }
   ],
   "trained_addresses": [
@@ -10539,7 +10576,8 @@
     "44fdd4c2c89376a43c993861d2d06243",
     "79064f83ca8ce655c100fc051aa90c94",
     "33cc0a14eaabe94914cad89b31695068",
-    "e17bb9fe85e80db36c264778d2160ad0"
+    "e17bb9fe85e80db36c264778d2160ad0",
+    "fb04d9bc1ad12e3d642772e83873f2eb"
   ],
   "signals": [
     {
@@ -10583,19 +10621,21 @@
     }
   ],
   "model": {
-    "avg_pump_mcap": 164406.5,
-    "avg_pump_liquidity": 28847.8975,
-    "avg_pump_volume_h1": 246820.6425,
-    "avg_pump_buys_h1": 2727,
-    "avg_pump_price_change_5m": 1.7999999999999998,
-    "avg_pump_age_at_signal": 17386.682447265626,
+    "avg_pump_mcap": 189976.4,
+    "avg_pump_liquidity": 31077.638,
+    "avg_pump_volume_h1": 241768.552,
+    "avg_pump_buys_h1": 2755.4,
+    "avg_pump_price_change_5m": 0.5419999999999999,
+    "avg_pump_age_at_signal": 31127.310152197264,
     "best_hours": {
       "22": 1,
-      "23": 3
+      "23": 3,
+      "5": 1
     },
     "hourly_success_rate": {
       "22": 1.0,
-      "23": 1.0
+      "23": 1.0,
+      "5": 1.0
     },
     "total_signals": 3,
     "correct_signals": 0,
@@ -10604,19 +10644,20 @@
     "signal_age_min": 761.1364527099608,
     "signal_age_max": 900,
     "launch_avg_buys": 0,
-    "launch_avg_wallets": 19,
-    "launch_avg_volume": 5542124.245737615,
-    "std_pump_mcap": 51533.26802820356,
-    "std_pump_liquidity": 5370.568529025426,
-    "std_pump_volume_h1": 179610.13300591466,
-    "std_pump_buys_h1": 1247.870185556174,
-    "avg_pump_vol_liq_ratio": 8.78564305973997,
-    "std_pump_vol_liq_ratio": 5.998497216679618,
-    "avg_pump_buy_sell_ratio": 0.6387298099615637,
-    "std_pump_buy_sell_ratio": 0.08391162520554173,
+    "launch_avg_wallets": 19.2,
+    "launch_avg_volume": 5009190.829804884,
+    "std_pump_mcap": 72531.76693904541,
+    "std_pump_liquidity": 6818.428574856526,
+    "std_pump_volume_h1": 155956.62217713846,
+    "std_pump_buys_h1": 1082.5515230232693,
+    "avg_pump_vol_liq_ratio": 8.13640956887727,
+    "std_pump_vol_liq_ratio": 5.393885174173964,
+    "avg_pump_buy_sell_ratio": 0.6626567104227825,
+    "std_pump_buy_sell_ratio": 0.0902405311480482,
     "hourly_threshold": {
       "22": 0.35,
-      "23": 0.35
+      "23": 0.35,
+      "5": 0.35
     }
   },
   "honeypot_addresses": [],
