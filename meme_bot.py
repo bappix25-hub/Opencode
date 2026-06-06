@@ -444,7 +444,7 @@ class MemeBot:
                 f"👥 Unique wallets: <b>{unique_wallets}</b>\n"
                 f"👤 Holders: <b>{launch_data.holders}</b>\n"
                 f"🌐 Social: <b>{social_pct}%</b>\n"
-                f"⏱️ বয়স: <b>{int(age)}s</b> (launch time থেকে)\n"
+                f"⏱️ বয়স: <b>{int(age//60)}m {int(age%60)}s</b> (launch time থেকে)\n"
                 f"━━━━━━━━━━━━━━━━\n"
                 f"🔗 <b>Bonding Curve Analysis:</b>\n"
                 f"{bonding_text}\n"
@@ -704,7 +704,7 @@ class MemeBot:
                                 f"👥 হোল্ডার: <b>{holders}</b>\n"
                                 f"🔒 LP লক: <b>{lp}%</b>\n"
                                 f"🌐 Social: <b>{social_pct}%</b>\n"
-                                f"⏱️ বয়স: <b>{int(age)}s</b> (launch time থেকে)\n"
+                f"⏱️ বয়স: <b>{int(age//60)}m {int(age%60)}s</b> (launch time থেকে)\n"
                                 f"━━━━━━━━━━━━━━━━\n"
                                 f"🔗 <a href='{link}'>GMGN</a>"
                             )
@@ -917,8 +917,6 @@ class MemeBot:
 
                     pair = await self.dex.fetch_pair_data(addr)
                     if not pair:
-                    setattr(ld, f"_eval_done_{next_offset}", True)
-                    ld.eval_done[str(next_offset)] = True
                         ld.eval_done[str(next_offset)] = True
                         continue
                     current_price = float(pair.get("priceUsd", 0) or 0)
@@ -993,7 +991,7 @@ class MemeBot:
                         logger.info(
                             f"📚 অটো-শেখা: ${ld.symbol} → {kind} {multiplier:.2f}x @ T+{int(next_offset)}s{suffix}"
                         )
-                    setattr(ld, f"_eval_done_{next_offset}", True)
+                    ld.eval_done[str(next_offset)] = True
 
                 await asyncio.sleep(60)
             except asyncio.CancelledError:

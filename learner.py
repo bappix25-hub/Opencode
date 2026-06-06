@@ -764,7 +764,7 @@ def learn_early_pump(address: str, symbol: str, name: str, pair: dict,
         _mark_trained(data, address)
     _update_model(data)
     save_data(data)
-    return True, f"✅ Early pump শেখা! {multiplier}x @ {int(age_seconds)}s | velocity={launch_data.get('buy_velocity', 0):.1f}/min | মোট: {len(data['pump_patterns'])}"
+    return True, f"✅ Early pump শেখা! {multiplier}x @ {int(age_seconds//60)}m{int(age_seconds%60)}s | velocity={launch_data.get('buy_velocity', 0):.1f}/min | মোট: {len(data['pump_patterns'])}"
 
 def learn_pump_with_launch(coin_info: dict, pair: dict, final_multiplier: float, launch_pattern: Optional[dict], address: Optional[str] = None, manual: bool = False, verified_multiplier: Optional[float] = None) -> tuple:
     data = load_data()
