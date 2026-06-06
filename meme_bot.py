@@ -540,6 +540,10 @@ class MemeBot:
                     if pair:
                         ld = self.state.launch_tracking.get(addr)
                         if ld:
+                            if not ld.initial_price:
+                                pair_price = float(pair.get("priceUsd", 0) or 0)
+                                if pair_price > 0:
+                                    ld.initial_price = pair_price
                             txns = pair.get("txns") or {}
                             h1 = txns.get("h1") or {}
                             h24 = txns.get("h24") or {}
@@ -551,6 +555,11 @@ class MemeBot:
                             real_liq = float((pair.get("liquidity") or {}).get("usd", 0) or 0)
                             self._last_pre_mig_pair_mcap = real_mcap
                             self._last_pre_mig_pair_liq = real_liq
+                            unique_from_txns = buys_1h + sells_1h
+                            if len(ld.unique_wallets) > ld.holders:
+                                ld.holders = len(ld.unique_wallets)
+                            elif unique_from_txns > ld.holders:
+                                ld.holders = unique_from_txns
                             if buys_1h > ld.buy_count or sells_1h > ld.sell_count or vol_1h > ld.volume:
                                 if buys_1h > ld.buy_count:
                                     ld.buy_count = buys_1h
@@ -900,8 +909,7 @@ class MemeBot:
                     age = now - ld.launch_time
                     next_offset = None
                     for off in eval_offsets:
-                        marker_attr = f"_eval_done_{off}"
-                        if age >= off and not getattr(ld, marker_attr, False):
+                        if age >= off and not ld.eval_done.get(str(off), False):
                             next_offset = off
                             break
                     if next_offset is None:
@@ -909,10 +917,12 @@ class MemeBot:
 
                     pair = await self.dex.fetch_pair_data(addr)
                     if not pair:
-                        setattr(ld, f"_eval_done_{next_offset}", True)
+                    setattr(ld, f"_eval_done_{next_offset}", True)
+                    ld.eval_done[str(next_offset)] = True
+                        ld.eval_done[str(next_offset)] = True
                         continue
                     current_price = float(pair.get("priceUsd", 0) or 0)
-                    initial_price = float(ld.volume or 0)
+                    initial_price = ld.initial_price
                     if initial_price <= 0:
                         initial_price = current_price or 0.000001
 

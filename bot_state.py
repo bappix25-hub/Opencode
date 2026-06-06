@@ -20,9 +20,11 @@ class LaunchData:
     pre_signal_sent: bool = False
     migration_time: float = 0.0
     migration_price: float = 0.0
+    initial_price: float = 0.0
     buy_timestamps: list = field(default_factory=list)
     buy_velocity: float = 0.0
     curve_fill_pct: float = 0.0
+    eval_done: dict = field(default_factory=dict)
 
 @dataclass
 class TrackedCoin:
