@@ -10,11 +10,53 @@ cd "$(dirname "$0")"
 # Auto-update from GitHub before starting
 if [ -d .git ]; then
     echo "📥 Updating from GitHub..."
-    git pull origin main 2>/dev/null
-    if [ $? -eq 0 ]; then
-        echo "✅ Updated to latest version"
+    if [ -f bot_data.json ]; then
+        cp bot_data.json /tmp/botdata_local_backup.json
+    fi
+
+    git rebase --abort 2>/dev/null
+    git merge --abort 2>/dev/null
+    git fetch origin main 2>/dev/null
+
+    git pull --no-rebase origin main 2>/dev/null
+    PULL_EXIT=$?
+
+    if [ $PULL_EXIT -ne 0 ]; then
+        echo "⚠️ Pull failed, trying smart-merge for bot_data.json..."
+        git checkout origin/main -- bot_data.json 2>/dev/null
+        if [ -f /tmp/botdata_local_backup.json ]; then
+            REMOTE_TMP="/tmp/remote_data_$$.json"
+            cp bot_data.json "$REMOTE_TMP"
+            python3 << PYEOF
+import json
+try:
+    local = json.load(open('/tmp/botdata_local_backup.json'))
+    remote = json.load(open('${REMOTE_TMP}'))
+    def ml(a, b, k='address', c=100):
+        s, o = set(), []
+        for it in (a or []) + (b or []):
+            kk = it.get(k)
+            if kk and kk in s: continue
+            if kk: s.add(kk)
+            o.append(it)
+        return o[:c]
+    merged = dict(remote)
+    merged['pump_patterns'] = ml(local.get('pump_patterns'), remote.get('pump_patterns'))
+    merged['dump_patterns'] = ml(local.get('dump_patterns'), remote.get('dump_patterns'))
+    merged['launch_patterns'] = ml(local.get('launch_patterns'), remote.get('launch_patterns'))
+    merged['trained_addresses'] = {**(local.get('trained_addresses') or {}), **(remote.get('trained_addresses') or {})}
+    json.dump(merged, open('bot_data.json', 'w'), indent=2)
+    print(f"✅ Smart-merge: {len(merged['pump_patterns'])} pumps, {len(merged['dump_patterns'])} dumps")
+except Exception as e:
+    print(f"❌ Smart-merge failed: {e}")
+PYEOF
+            rm -f "$REMOTE_TMP"
+        fi
+        git add bot_data.json
+        git diff --cached --quiet || git commit -m "[merge] bot_data smart-merge on start" 2>/dev/null
+        echo "✅ Smart-merge completed"
     else
-        echo "⚠️ Update failed (no internet or conflict), continuing..."
+        echo "✅ Updated to latest version"
     fi
 fi
 
@@ -23,6 +65,20 @@ if [ "$1" = "v2" ] || [ -n "$BOT_INSTANCE" ]; then
     if [ -f .env.v2 ]; then
         ENV_FILE=".env.v2"
     fi
+fi
+
+if [ ! -f "$ENV_FILE" ]; then
+    echo ""
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "❌ ERROR: $ENV_FILE not found!"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "Your secrets are missing. To fix:"
+    echo "  1. Check if backup exists: ls /tmp/env_backup_* /tmp/.env*"
+    echo "  2. Recreate from example: cp .env.example .env"
+    echo "  3. Edit .env and add BOT_TOKEN, CHAT_ID, HELIUS_API_KEY"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "Refusing to start without env file."
+    exit 1
 fi
 
 if [ -f "$ENV_FILE" ]; then
@@ -63,6 +119,18 @@ else
 fi
 echo "━━━━━━━━━━━━━━━━━━━━"
 
+# Kill any existing bot instance (from previous crash/Ctrl+Z)
+LOCK_FILE="/tmp/meme_bot_${BOT_INSTANCE:-main}.lock"
+if [ -f "$LOCK_FILE" ]; then
+    OLD_PID=$(cat "$LOCK_FILE" 2>/dev/null)
+    if [ -n "$OLD_PID" ] && kill -0 "$OLD_PID" 2>/dev/null; then
+        echo "🛑 Killing old bot instance (PID $OLD_PID)..."
+        kill -9 "$OLD_PID" 2>/dev/null
+        sleep 2
+    fi
+    rm -f "$LOCK_FILE"
+fi
+
 INTERNET_WAIT=15
 ATTEMPT=0
 while true; do
@@ -84,4 +152,3 @@ while true; do
         sleep $INTERNET_WAIT
     fi
 done
-

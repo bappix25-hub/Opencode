@@ -2376,7 +2376,64 @@ async def _async_main():
     await bot.start()
 
 
+LOCK_FILE = f"/tmp/meme_bot_{os.environ.get('BOT_INSTANCE', 'main')}.lock"
+
+
+def _acquire_instance_lock() -> bool:
+    import os
+    if os.path.exists(LOCK_FILE):
+        try:
+            old_pid = int(open(LOCK_FILE).read().strip() or "0")
+            if old_pid > 0:
+                try:
+                    os.kill(old_pid, 0)
+                    logger.error(f"❌ Another bot instance running (PID {old_pid}). Exiting.")
+                    print(f"\n❌ DUPLICATE BOT DETECTED (PID {old_pid})")
+                    print("   Kill it first: kill -9 {0}".format(old_pid))
+                    print(f"   Or remove lock: rm {LOCK_FILE}\n")
+                    try:
+                        import asyncio
+                        from telegram import Bot as _TB
+                        async def _warn():
+                            try:
+                                bot = _TB(token=os.environ.get("BOT_TOKEN", ""))
+                                await bot.send_message(
+                                    chat_id=os.environ.get("CHAT_ID", ""),
+                                    text=f"⚠️ Duplicate bot instance refused to start (PID {old_pid} already running).",
+                                )
+                            except Exception:
+                                pass
+                        asyncio.run(_warn())
+                    except Exception:
+                        pass
+                    return False
+                except OSError:
+                    pass
+        except Exception:
+            pass
+    import os as _os
+    with open(LOCK_FILE, "w") as f:
+        f.write(str(_os.getpid()))
+    return True
+
+
+def _release_instance_lock() -> None:
+    import os
+    try:
+        if os.path.exists(LOCK_FILE):
+            with open(LOCK_FILE) as f:
+                pid_in_file = int(f.read().strip() or "0")
+            if pid_in_file == os.getpid():
+                os.remove(LOCK_FILE)
+    except Exception:
+        pass
+
+
 if __name__ == "__main__":
+    import atexit
+    if not _acquire_instance_lock():
+        sys.exit(1)
+    atexit.register(_release_instance_lock)
     try:
         asyncio.run(_async_main())
     except KeyboardInterrupt:

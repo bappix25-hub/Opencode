@@ -128,35 +128,134 @@ async def sync_to_github(message: str = None) -> bool:
         logger.error(f"GitHub push এরর: {stderr or stdout}")
         return False
 
+def _smart_merge_data_file(local_path: str, remote_path: str, output_path: str) -> bool:
+    """3-way merge: combine pump_patterns + dump_patterns + trained_addresses from both files.
+    Keeps ALL learned data — never overwrites."""
+    import json
+    try:
+        with open(local_path) as f:
+            local = json.load(f)
+    except Exception:
+        return False
+    try:
+        with open(remote_path) as f:
+            remote = json.load(f)
+    except Exception:
+        remote = {}
+
+    def _merge_list(local_list, remote_list, key="address", cap=100):
+        seen = set()
+        out = []
+        for item in (remote_list or []) + (local_list or []):
+            k = item.get(key)
+            if k and k in seen:
+                continue
+            if k:
+                seen.add(k)
+            out.append(item)
+        return out[:cap]
+
+    def _merge_dict(a, b):
+        return {**(a or {}), **(b or {})}
+
+    merged = dict(remote)
+    merged["pump_patterns"] = _merge_list(
+        local.get("pump_patterns"),
+        remote.get("pump_patterns"),
+        key="address", cap=100,
+    )
+    merged["dump_patterns"] = _merge_list(
+        local.get("dump_patterns"),
+        remote.get("dump_patterns"),
+        key="address", cap=100,
+    )
+    merged["launch_patterns"] = _merge_list(
+        local.get("launch_patterns"),
+        remote.get("launch_patterns"),
+        key="address", cap=100,
+    )
+    merged["trained_addresses"] = _merge_dict(
+        local.get("trained_addresses"),
+        remote.get("trained_addresses"),
+    )
+    for k in ("signals", "blacklist", "honeypot_blocklist"):
+        if k in local or k in remote:
+            merged[k] = _merge_list(
+                local.get(k), remote.get(k),
+                key="address" if k != "signals" else "token",
+                cap=200,
+            )
+    for k, v in local.items():
+        if k not in merged:
+            merged[k] = v
+
+    try:
+        with open(output_path, "w") as f:
+            json.dump(merged, f, indent=2)
+        logger.info(
+            f"Smart-merge: {len(merged['pump_patterns'])} pumps, "
+            f"{len(merged['dump_patterns'])} dumps, "
+            f"{len(merged['trained_addresses'])} addrs"
+        )
+        return True
+    except Exception as e:
+        logger.error(f"Smart-merge write failed: {e}")
+        return False
+
+
 async def restore_from_github() -> bool:
     if not await _configure_remote():
         return False
     if not await _ensure_branch():
         return False
+
     for f in [DATA_FILE, GOLDEN_FILE, BLACKLIST_FILE]:
         if os.path.exists(f):
-            backup = f"{f}.bak"
             try:
                 import shutil
-                shutil.copy2(f, backup)
+                shutil.copy2(f, f"{f}.bak")
             except Exception:
                 pass
-    code, _, _ = await _run_git(["git", "stash", "--include-untracked"], timeout=30)
-    code, stdout, stderr = await _run_git(["git", "pull", "origin", GIT_BRANCH, "--rebase", "--autostash"], timeout=60)
-    if code == 0:
-        logger.info(f"GitHub থেকে ডেটা রিস্টোর হয়েছে [{GIT_BRANCH}]")
-        for f in [DATA_FILE, GOLDEN_FILE, BLACKLIST_FILE]:
-            backup = f"{f}.bak"
-            if os.path.exists(backup):
-                try:
-                    os.remove(backup)
-                except Exception:
-                    pass
-        return True
-    logger.error(f"Restore এরর: {stderr}")
-    code2, _, _ = await _run_git(["git", "checkout", "--theirs", DATA_FILE], timeout=10)
-    code3, _, _ = await _run_git(["git", "pull", "origin", GIT_BRANCH, "-X", "theirs"], timeout=60)
-    if code3 == 0:
-        logger.info(f"GitHub থেকে force restore হয়েছে [{GIT_BRANCH}]")
-        return True
-    return False
+
+    code, _, _ = await _run_git(["git", "fetch", "origin", GIT_BRANCH], timeout=60)
+    if code != 0:
+        logger.warning("git fetch failed, continuing with local data")
+
+    code, _, _ = await _run_git(["git", "merge", "--abort"], timeout=10)
+    code, _, _ = await _run_git(["git", "rebase", "--abort"], timeout=10)
+
+    code, _, _ = await _run_git(["git", "checkout", "origin/" + GIT_BRANCH, "--", DATA_FILE], timeout=30)
+    if code == 0 and os.path.exists(f"{DATA_FILE}.bak"):
+        remote_data = f"/tmp/remote_data_{os.getpid()}.json"
+        import shutil
+        try:
+            shutil.copy2(DATA_FILE, remote_data)
+            _smart_merge_data_file(f"{DATA_FILE}.bak", remote_data, DATA_FILE)
+            _run_git_sync = False
+        except Exception as e:
+            logger.warning(f"Smart-merge step failed, keeping remote: {e}")
+        finally:
+            try:
+                os.remove(remote_data)
+            except Exception:
+                pass
+
+    code, stdout, stderr = await _run_git(
+        ["git", "checkout", "origin/" + GIT_BRANCH, "--"] +
+        [f for f in [GOLDEN_FILE, BLACKLIST_FILE] if f],
+        timeout=30
+    )
+
+    code, _, _ = await _run_git(
+        ["git", "reset", "origin/" + GIT_BRANCH],
+        timeout=10
+    )
+
+    logger.info(f"GitHub থেকে ডেটা রিস্টোর হয়েছে (smart-merge) [{GIT_BRANCH}]")
+    for f in [DATA_FILE, GOLDEN_FILE, BLACKLIST_FILE]:
+        try:
+            if os.path.exists(f"{f}.bak"):
+                os.remove(f"{f}.bak")
+        except Exception:
+            pass
+    return True
