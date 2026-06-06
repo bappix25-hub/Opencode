@@ -274,6 +274,31 @@
       "final_multiplier": 3.38,
       "manual": false,
       "timestamp": "2026-06-06T09:50:25.118105+00:00"
+    },
+    {
+      "mcap": 29754.0,
+      "liquidity": 16205.74,
+      "volume_h1": 23274.84,
+      "volume_m5": 4938.15,
+      "age_seconds": 2427.0600649414064,
+      "price_change_5m": 117.0,
+      "price_change_1h": 1225.0,
+      "hour_of_day": 10,
+      "buys_m5": 81,
+      "sells_m5": 30,
+      "buys_h1": 439,
+      "sells_h1": 249,
+      "vol_liq_ratio": 1.436209639300643,
+      "buy_sell_ratio_m5": 0.7297297297297297,
+      "buy_sell_ratio_h1": 0.6380813953488372,
+      "mcap_liq_ratio": 1.8360161276189795,
+      "momentum_5m": 117.0,
+      "symbol": "$ZILLA",
+      "name": "TROLLZILLA",
+      "address": "KdsjV7CSyrwQi1zogdiheLEsdK4wXasZ9KH97cbSmok",
+      "final_multiplier": 13.25,
+      "manual": false,
+      "timestamp": "2026-06-06T10:03:31.060183+00:00"
     }
   ],
   "dump_patterns": [
@@ -8410,6 +8435,18 @@
       "symbol": "USD",
       "address": "Dq51NMUBC5wXyVSw1DWanZmJvVtppWbJZ9vH5Ctkpump",
       "final_multiplier": 3.38
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 20,
+      "unique_wallets": 11,
+      "volume": 27225285.592820104,
+      "buy_sell_ratio": 0.0,
+      "hour_of_day": 10,
+      "timestamp": "2026-06-06T10:03:31.024242+00:00",
+      "symbol": "$ZILLA",
+      "address": "KdsjV7CSyrwQi1zogdiheLEsdK4wXasZ9KH97cbSmok",
+      "final_multiplier": 13.25
     }
   ],
   "trained_addresses": [
@@ -11561,7 +11598,8 @@
     "b3f1be893ddb89accb52c416e95d0a1a",
     "d41477edf3e7fa32795ec9d7ae5ba2de",
     "961019614c87df3d53384f5d9f6488b8",
-    "abacf5aceb2a342cd878b580a7ed24bc"
+    "abacf5aceb2a342cd878b580a7ed24bc",
+    "015ff5ad50bf60c72c49b0f6d8819a6b"
   ],
   "signals": [
     {
@@ -11644,12 +11682,12 @@
     }
   ],
   "model": {
-    "avg_pump_mcap": 149612.0,
-    "avg_pump_liquidity": 26574.756363636363,
-    "avg_pump_volume_h1": 180391.1709090909,
-    "avg_pump_buys_h1": 2380.6363636363635,
-    "avg_pump_price_change_5m": 10.036363636363637,
-    "avg_pump_age_at_signal": 80352.79151336115,
+    "avg_pump_mcap": 139623.83333333334,
+    "avg_pump_liquidity": 25710.671666666665,
+    "avg_pump_volume_h1": 167298.14333333334,
+    "avg_pump_buys_h1": 2218.8333333333335,
+    "avg_pump_price_change_5m": 18.95,
+    "avg_pump_age_at_signal": 73858.98055932617,
     "best_hours": {
       "22": 1,
       "23": 3,
@@ -11657,7 +11695,8 @@
       "6": 2,
       "7": 1,
       "8": 1,
-      "9": 2
+      "9": 2,
+      "10": 1
     },
     "hourly_success_rate": {
       "22": 1.0,
@@ -11666,33 +11705,35 @@
       "6": 1.0,
       "7": 1.0,
       "8": 1.0,
-      "9": 1.0
+      "9": 1.0,
+      "10": 1.0
     },
     "total_signals": 6,
     "correct_signals": 0,
     "accuracy": 0.0,
-    "threshold": 0.6500000000000001,
+    "threshold": 0.7,
     "signal_age_min": 690.7419747070312,
     "signal_age_max": 900,
     "launch_avg_buys": 0,
-    "launch_avg_wallets": 20.90909090909091,
-    "launch_avg_volume": 6257984.274467452,
-    "std_pump_mcap": 68760.73747859312,
-    "std_pump_liquidity": 6891.360369177151,
-    "std_pump_volume_h1": 137668.2525354176,
-    "std_pump_buys_h1": 1511.9724384212348,
-    "avg_pump_vol_liq_ratio": 6.940607416579495,
-    "std_pump_vol_liq_ratio": 5.119359684085966,
-    "avg_pump_buy_sell_ratio": 0.6711347942285749,
-    "std_pump_buy_sell_ratio": 0.12243310443382682,
+    "launch_avg_wallets": 20.083333333333332,
+    "launch_avg_volume": 8005259.384330173,
+    "std_pump_mcap": 74130.82334609334,
+    "std_pump_liquidity": 7220.332839001302,
+    "std_pump_volume_h1": 138876.62626384204,
+    "std_pump_buys_h1": 1546.7383767336369,
+    "avg_pump_vol_liq_ratio": 6.481907601806258,
+    "std_pump_vol_liq_ratio": 5.133242501755183,
+    "avg_pump_buy_sell_ratio": 0.6760177055203378,
+    "std_pump_buy_sell_ratio": 0.11795449939671623,
     "hourly_threshold": {
-      "22": 0.45000000000000007,
-      "23": 0.45000000000000007,
-      "5": 0.45000000000000007,
-      "6": 0.45000000000000007,
-      "7": 0.45000000000000007,
-      "8": 0.45000000000000007,
-      "9": 0.45000000000000007
+      "22": 0.5000000000000001,
+      "23": 0.5000000000000001,
+      "5": 0.5000000000000001,
+      "6": 0.5000000000000001,
+      "7": 0.5000000000000001,
+      "8": 0.5000000000000001,
+      "9": 0.5000000000000001,
+      "10": 0.5000000000000001
     }
   },
   "honeypot_addresses": [],
