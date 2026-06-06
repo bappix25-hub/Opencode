@@ -249,6 +249,31 @@
       "final_multiplier": 3.31,
       "manual": false,
       "timestamp": "2026-06-06T09:39:06.828438+00:00"
+    },
+    {
+      "mcap": 88232.0,
+      "liquidity": 20474.62,
+      "volume_h1": 299287.09,
+      "volume_m5": 27495.11,
+      "age_seconds": 3231.1180571289065,
+      "price_change_5m": 1.87,
+      "price_change_1h": 238.0,
+      "hour_of_day": 9,
+      "buys_m5": 146,
+      "sells_m5": 166,
+      "buys_h1": 2209,
+      "sells_h1": 1809,
+      "vol_liq_ratio": 14.617467381568012,
+      "buy_sell_ratio_m5": 0.46794871794871795,
+      "buy_sell_ratio_h1": 0.5497760079641613,
+      "mcap_liq_ratio": 4.309335167148402,
+      "momentum_5m": 1.87,
+      "symbol": "USD",
+      "name": "Everyone is unstable for $",
+      "address": "Dq51NMUBC5wXyVSw1DWanZmJvVtppWbJZ9vH5Ctkpump",
+      "final_multiplier": 3.38,
+      "manual": false,
+      "timestamp": "2026-06-06T09:50:25.118105+00:00"
     }
   ],
   "dump_patterns": [
@@ -8373,6 +8398,18 @@
       "symbol": "USER",
       "address": "Cft7HEbtx89qdnkRQDCfZChMdZGabbFRtU2gxsfUpump",
       "final_multiplier": 3.31
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 20,
+      "unique_wallets": 22,
+      "volume": 19646833.70313768,
+      "buy_sell_ratio": 0.0,
+      "hour_of_day": 9,
+      "timestamp": "2026-06-06T09:50:25.108786+00:00",
+      "symbol": "USD",
+      "address": "Dq51NMUBC5wXyVSw1DWanZmJvVtppWbJZ9vH5Ctkpump",
+      "final_multiplier": 3.38
     }
   ],
   "trained_addresses": [
@@ -11433,7 +11470,8 @@
     "0c40e1142db4c03b7ee17b88344730b6",
     "e3080d40d71b86cdc8865210fd30486f",
     "461cc4df8c880a2994fff4173ebf58ea",
-    "7642955d9c06f11972fd8fc9be4fb803"
+    "7642955d9c06f11972fd8fc9be4fb803",
+    "ea4349b43d264f14e082c951ed1b0ee7"
   ],
   "signals": [
     {
@@ -11516,12 +11554,12 @@
     }
   ],
   "model": {
-    "avg_pump_mcap": 155750.0,
-    "avg_pump_liquidity": 27184.77,
-    "avg_pump_volume_h1": 168501.579,
-    "avg_pump_buys_h1": 2397.8,
-    "avg_pump_price_change_5m": 10.853,
-    "avg_pump_age_at_signal": 88064.95885898438,
+    "avg_pump_mcap": 149612.0,
+    "avg_pump_liquidity": 26574.756363636363,
+    "avg_pump_volume_h1": 180391.1709090909,
+    "avg_pump_buys_h1": 2380.6363636363635,
+    "avg_pump_price_change_5m": 10.036363636363637,
+    "avg_pump_age_at_signal": 80352.79151336115,
     "best_hours": {
       "22": 1,
       "23": 3,
@@ -11529,7 +11567,7 @@
       "6": 2,
       "7": 1,
       "8": 1,
-      "9": 1
+      "9": 2
     },
     "hourly_success_rate": {
       "22": 1.0,
@@ -11543,28 +11581,28 @@
     "total_signals": 6,
     "correct_signals": 0,
     "accuracy": 0.0,
-    "threshold": 0.6000000000000001,
+    "threshold": 0.6500000000000001,
     "signal_age_min": 690.7419747070312,
     "signal_age_max": 900,
     "launch_avg_buys": 0,
-    "launch_avg_wallets": 20.8,
-    "launch_avg_volume": 4919099.3316004295,
-    "std_pump_mcap": 69230.80186833988,
-    "std_pump_liquidity": 6944.027388564458,
-    "std_pump_volume_h1": 139034.6136069224,
-    "std_pump_buys_h1": 1592.628909835698,
-    "avg_pump_vol_liq_ratio": 6.172921420080644,
-    "std_pump_vol_liq_ratio": 4.681533924025327,
-    "avg_pump_buy_sell_ratio": 0.6914534018565607,
-    "std_pump_buy_sell_ratio": 0.10774744691981193,
+    "launch_avg_wallets": 20.90909090909091,
+    "launch_avg_volume": 6257984.274467452,
+    "std_pump_mcap": 68760.73747859312,
+    "std_pump_liquidity": 6891.360369177151,
+    "std_pump_volume_h1": 137668.2525354176,
+    "std_pump_buys_h1": 1511.9724384212348,
+    "avg_pump_vol_liq_ratio": 6.940607416579495,
+    "std_pump_vol_liq_ratio": 5.119359684085966,
+    "avg_pump_buy_sell_ratio": 0.6711347942285749,
+    "std_pump_buy_sell_ratio": 0.12243310443382682,
     "hourly_threshold": {
-      "22": 0.4,
-      "23": 0.4,
-      "5": 0.4,
-      "6": 0.4,
-      "7": 0.4,
-      "8": 0.4,
-      "9": 0.4
+      "22": 0.45000000000000007,
+      "23": 0.45000000000000007,
+      "5": 0.45000000000000007,
+      "6": 0.45000000000000007,
+      "7": 0.45000000000000007,
+      "8": 0.45000000000000007,
+      "9": 0.45000000000000007
     }
   },
   "honeypot_addresses": [],
