@@ -74,18 +74,7 @@ class VerifyLoop:
                     ath_mult = current_price / signal_price
 
                 if launch_time > 0:
-                    try:
-                        launch_data = await self.dex.fetch_pair_data(address)
-                    except Exception:
-                        launch_data = pair
-                    launch_pair_created = launch_data.get("pairCreatedAt") if launch_data else None
-                    if launch_pair_created:
-                        try:
-                            launch_estimate_price = current_price / (1 + (float(pair.get("priceChange", {}).get("h1", 0)) / 100))
-                        except Exception:
-                            launch_estimate_price = signal_price
-                    else:
-                        launch_estimate_price = signal_price
+                    launch_estimate_price = signal_price
                 else:
                     launch_estimate_price = signal_price
 
@@ -143,6 +132,12 @@ class VerifyLoop:
             )
         except Exception as e:
             logger.error(f"Filter record error: {e}")
+
+        if max_launch_mult < 1.5 and max_signal_mult < 1.2:
+            try:
+                self.filter_engine.add_to_blacklist(address, f"All dumps for {symbol} (launch {max_launch_mult:.2f}x)")
+            except Exception:
+                pass
 
         if self.send_msg:
             await self.send_msg(

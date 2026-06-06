@@ -1402,7 +1402,7 @@ class MemeBot:
             )
             return
 
-        holders = await self.helius.get_holder_count(address)
+        holders = 0
         from bot_state import LaunchData
         raw_price = data.get("initialBuy", 0) or 0
         if isinstance(raw_price, dict):
@@ -1454,10 +1454,10 @@ class MemeBot:
         if unique_wallets < 2:
             logger.debug(f"🚫 {launch_data.symbol}: Red flag - {unique_wallets} unique wallets (min 2)")
             return
-        if launch_data.holders < 5:
-            logger.debug(f"🚫 {launch_data.symbol}: Red flag - {launch_data.holders} holders (min 5)")
-            return
         if launch_data.buy_count < 3:
+            return
+        if buy_sell_ratio < 1.5:
+            logger.debug(f"🚫 {launch_data.symbol}: Red flag - weak buy pressure (ratio {buy_sell_ratio:.2f})")
             return
 
         red_flags = []
@@ -1466,10 +1466,12 @@ class MemeBot:
         if unique_wallets < 3:
             red_flags.append("⚠️ Very few unique wallets")
             red_flag_penalty += 0.3
-        if launch_data.holders < 10:
+        if launch_data.holders == 0 and unique_wallets >= 3:
+            pass
+        elif launch_data.holders < 10 and launch_data.holders > 0:
             red_flags.append("⚠️ Low holder count")
-            red_flag_penalty += 0.15
-        if launch_data.holders < 3:
+            red_flag_penalty += 0.10
+        if launch_data.holders > 0 and launch_data.holders < 3:
             red_flags.append("🚨 Suspiciously low holders")
             red_flag_penalty += 0.4
 

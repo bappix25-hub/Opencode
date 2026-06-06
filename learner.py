@@ -796,6 +796,9 @@ def learn_pump_with_launch(coin_info: dict, pair: dict, final_multiplier: float,
         launch_pattern["symbol"] = coin_info.get("symbol", "???")
         launch_pattern["address"] = address or ""
         launch_pattern["final_multiplier"] = final_multiplier
+        launch_pattern["age_seconds"] = age if age else 0
+        launch_pattern["source"] = "history_pump"
+        launch_pattern["timestamp"] = datetime.now(timezone.utc).isoformat()
         data["launch_patterns"].append(launch_pattern)
         data["launch_patterns"] = data["launch_patterns"][-500:]
 

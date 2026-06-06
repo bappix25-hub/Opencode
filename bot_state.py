@@ -86,6 +86,9 @@ class BotState:
                     age = now - data.launch_time
                     if age > 0:
                         data.buy_velocity = len(data.buy_timestamps) / max(age / 60.0, 1.0)
+                if wallet and wallet not in data.unique_wallets:
+                    if data.holders == 0:
+                        data.holders = len(data.unique_wallets) + 1
                 data.volume += amount
                 estimated_mcap = data.volume * 1000
                 curve_max = 85.0

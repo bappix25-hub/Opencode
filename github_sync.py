@@ -133,9 +133,30 @@ async def restore_from_github() -> bool:
         return False
     if not await _ensure_branch():
         return False
-    code, stdout, stderr = await _run_git(["git", "pull", "origin", GIT_BRANCH], timeout=60)
+    for f in [DATA_FILE, GOLDEN_FILE, BLACKLIST_FILE]:
+        if os.path.exists(f):
+            backup = f"{f}.bak"
+            try:
+                import shutil
+                shutil.copy2(f, backup)
+            except Exception:
+                pass
+    code, _, _ = await _run_git(["git", "stash", "--include-untracked"], timeout=30)
+    code, stdout, stderr = await _run_git(["git", "pull", "origin", GIT_BRANCH, "--rebase", "--autostash"], timeout=60)
     if code == 0:
         logger.info(f"GitHub থেকে ডেটা রিস্টোর হয়েছে [{GIT_BRANCH}]")
+        for f in [DATA_FILE, GOLDEN_FILE, BLACKLIST_FILE]:
+            backup = f"{f}.bak"
+            if os.path.exists(backup):
+                try:
+                    os.remove(backup)
+                except Exception:
+                    pass
         return True
     logger.error(f"Restore এরর: {stderr}")
+    code2, _, _ = await _run_git(["git", "checkout", "--theirs", DATA_FILE], timeout=10)
+    code3, _, _ = await _run_git(["git", "pull", "origin", GIT_BRANCH, "-X", "theirs"], timeout=60)
+    if code3 == 0:
+        logger.info(f"GitHub থেকে force restore হয়েছে [{GIT_BRANCH}]")
+        return True
     return False
