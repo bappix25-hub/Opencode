@@ -130,6 +130,7 @@ class MemeBot:
             asyncio.create_task(self.realtime_scan_loop(), name="realtime"),
             asyncio.create_task(self.history_scan_loop(), name="history"),
             asyncio.create_task(self.cleanup_loop(), name="cleanup"),
+            asyncio.create_task(self.curve_refresh_loop(), name="curve_refresh"),
             asyncio.create_task(self.check_signal_results_loop(), name="signal_check"),
             asyncio.create_task(self.track_outcomes_loop(), name="track_outcomes"),
             asyncio.create_task(self.connection_monitor_loop(), name="conn_monitor"),
@@ -275,6 +276,16 @@ class MemeBot:
         if len(existing_tokens) > 2:
             logger.info(f"⚠️ Bundle detected: {symbol} deployer {deployer[:8]}... has {len(existing_tokens)} tokens")
 
+        curve_progress = 0.0
+        is_migrated = False
+        try:
+            bc_state = await self.helius.get_bonding_curve_state(address)
+            if bc_state:
+                curve_progress = float(bc_state.get("progress_pct", 0) or 0)
+                is_migrated = bool(bc_state.get("complete", False))
+        except Exception as e:
+            logger.debug(f"bonding curve fetch error: {e}")
+
         launch_data = LaunchData(
             name=data.get("name", "Unknown"),
             symbol=symbol,
@@ -282,6 +293,8 @@ class MemeBot:
             launch_time=now_ts,
             volume=price,
             holders=holders or 0,
+            curve_fill_pct=curve_progress,
+            migration_time=now_ts if is_migrated else 0.0,
             lp_locked=rug.lp_locked if rug else 0,
             deployer_wallet=deployer,
         )
@@ -965,6 +978,46 @@ class MemeBot:
             except Exception as e:
                 logger.error(f"ক্লিনআপ এরর: {e}")
 
+    async def curve_refresh_loop(self):
+        while True:
+            try:
+                await asyncio.sleep(45)
+                tracked = await self.state.get_all_tracked()
+                if not tracked:
+                    continue
+                sem = asyncio.Semaphore(3)
+                async def _refresh(addr, ld):
+                    async with sem:
+                        try:
+                            bc = await self.helius.get_bonding_curve_state(addr)
+                            if not bc:
+                                return
+                            new_progress = float(bc.get("progress_pct", 0) or 0)
+                            is_complete = bool(bc.get("complete", False))
+                            updated = False
+                            now = datetime.now(timezone.utc).timestamp()
+                            if new_progress > ld.curve_fill_pct:
+                                ld.curve_fill_pct = new_progress
+                                updated = True
+                            if is_complete and not ld.migration_time:
+                                ld.migration_time = now
+                                logger.info(f"🚀 মাইগ্রেশন: {ld.symbol} (curve {new_progress:.0f}%)")
+                                updated = True
+                                if addr in self.state.signals:
+                                    sig_info = self.state.signals[addr]
+                                    sig_info.is_pre_migration = False
+                                    sig_info.migration_time = now
+                            if updated:
+                                await self.state.add_launch_tracking(addr, ld)
+                        except Exception as e:
+                            logger.debug(f"curve refresh error for {addr}: {e}")
+                await asyncio.gather(*[_refresh(addr, ld) for addr, ld in tracked.items()], return_exceptions=True)
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"curve_refresh_loop error: {e}")
+                await asyncio.sleep(30)
+
     async def track_outcomes_loop(self):
         """
         Stage 2 learning: for every launch tracked, re-check price at T+5/15/60 minutes.
@@ -1289,6 +1342,7 @@ class MemeBot:
             asyncio.create_task(self.realtime_scan_loop(), name="realtime"),
             asyncio.create_task(self.history_scan_loop(), name="history"),
             asyncio.create_task(self.cleanup_loop(), name="cleanup"),
+            asyncio.create_task(self.curve_refresh_loop(), name="curve_refresh"),
             asyncio.create_task(self.check_signal_results_loop(), name="signal_check"),
             asyncio.create_task(self.track_outcomes_loop(), name="track_outcomes"),
             asyncio.create_task(self.connection_monitor_loop(), name="conn_monitor"),
@@ -1898,16 +1952,18 @@ class MemeBot:
                             )
                             record_signal(addr, symbol, final_score, current_price, mcap,
                                           launch_time=coin_info.launch_time or now_ts,
-                                          is_pre_migration=True,
-                                          is_pre_migration_known=True)
+                                          is_pre_migration=False,
+                                          is_pre_migration_known=True,
+                                          migration_time=coin_info.migration_time or now_ts)
                             from bot_state import SignalInfo
                             await self.state.add_signal(addr, SignalInfo(
                                 symbol=symbol,
                                 price_at_signal=current_price,
                                 signal_time=now_ts,
                                 launch_time=coin_info.launch_time or now_ts,
-                                is_pre_migration=True,
+                                is_pre_migration=False,
                                 is_pre_migration_known=True,
+                                migration_time=coin_info.migration_time or now_ts,
                             ))
                             await self.state.add_alerted(addr)
 

@@ -94,9 +94,6 @@ class BotState:
                     if data.holders == 0:
                         data.holders = len(data.unique_wallets) + 1
                 data.volume += amount
-                estimated_mcap = data.volume * 1000
-                curve_max = 85.0
-                data.curve_fill_pct = min(100.0, (data.volume / max(curve_max, 1.0)) * 100)
             elif tx_type == "sell":
                 data.sell_count += 1
 
@@ -113,7 +110,11 @@ class BotState:
     async def get_launch_tracking(self, address: str) -> Optional[LaunchData]:
         async with self._lock:
             return self.launch_tracking.get(address)
-    
+
+    async def get_all_tracked(self) -> dict:
+        async with self._lock:
+            return dict(self.launch_tracking)
+
     async def remove_launch_tracking(self, address: str) -> None:
         async with self._lock:
             self.launch_tracking.pop(address, None)
