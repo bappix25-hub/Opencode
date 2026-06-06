@@ -37,7 +37,7 @@ class Config:
     data_file: str = get_env("DATA_FILE", "./bot_data.json")
     
     pump_multiplier: float = get_env_float("PUMP_MULTIPLIER", 3.0)
-    ai_threshold: float = get_env_float("AI_THRESHOLD", 0.65)
+    ai_threshold: float = get_env_float("AI_THRESHOLD", 0.80)
     min_liquidity: float = get_env_float("MIN_LIQUIDITY", 2000)
     min_volume: float = get_env_float("MIN_VOLUME", 300)
     min_mcap: float = get_env_float("MIN_MCAP", 1000)

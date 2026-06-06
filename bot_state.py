@@ -44,6 +44,10 @@ class SignalInfo:
     price_at_signal: float
     signal_time: float
     checked: bool = False
+    launch_time: float = 0.0
+    is_pre_migration: bool = False
+    migration_time: float = 0.0
+    is_pre_migration_known: bool = False
 
 @dataclass
 class CoinInfo:

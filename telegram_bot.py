@@ -2,7 +2,7 @@ import logging
 import os
 import json
 import asyncio
-from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
+from telegram import Update, ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters
 from bot_state import BotState
 from learner import get_stats, get_daily_report, learn_pump, learn_dump, is_duplicate, verify_pump
@@ -64,10 +64,29 @@ class TelegramHandlers:
 
     async def cmd_threshold(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         current = await self.state.get_threshold()
+        filter_thr = self.filter_engine.effective_threshold() if self.filter_engine else current
+        keyboard = [
+            [
+                InlineKeyboardButton("50%", callback_data="thr_50"),
+                InlineKeyboardButton("65%", callback_data="thr_65"),
+                InlineKeyboardButton("80%", callback_data="thr_80"),
+                InlineKeyboardButton("90%", callback_data="thr_90"),
+            ],
+            [
+                InlineKeyboardButton("📊 স্ট্যাটাস", callback_data="thr_status"),
+            ],
+        ]
         if not context.args:
             await update.message.reply_text(
-                f"⚙️ বর্তমান থ্রেশোল্ড: <b>{int(current*100)}%</b>",
-                parse_mode="HTML"
+                f"🎯 <b>AI কনফিডেন্স / থ্রেশোল্ড</b>\n"
+                f"━━━━━━━━━━━━━━━━\n"
+                f"বর্তমান: <b>{int(current*100)}%</b>\n"
+                f"ফিল্টার থ্রেশোল্ড: <b>{int(filter_thr*100)}%</b>\n"
+                f"ডিফল্ট: <b>80%</b>\n"
+                f"━━━━━━━━━━━━━━━━\n"
+                f"নিচের বাটন থেকে সিলেক্ট করো বা <code>/threshold N</code> লেখো (১-১০০)।",
+                parse_mode="HTML",
+                reply_markup=InlineKeyboardMarkup(keyboard),
             )
             return
         try:
@@ -75,10 +94,61 @@ class TelegramHandlers:
             if not 1 <= val <= 100:
                 await update.message.reply_text("❌ ১-১০০ এর মধ্যে দিন।")
                 return
-            await self.state.set_threshold(val / 100)
-            await update.message.reply_text(f"✅ থ্রেশোল্ড: <b>{val}%</b>", parse_mode="HTML")
+            await self._apply_threshold(val / 100)
+            await update.message.reply_text(
+                f"✅ থ্রেশোল্ড: <b>{val}%</b>\n"
+                f"ফিল্টারে প্রয়োগ হয়েছে।",
+                parse_mode="HTML",
+                reply_markup=InlineKeyboardMarkup(keyboard),
+            )
         except (ValueError, IndexError):
-            await update.message.reply_text("❌ যেমন: /threshold 50")
+            await update.message.reply_text("❌ যেমন: /threshold 80")
+
+    async def _apply_threshold(self, value: float) -> None:
+        await self.state.set_threshold(value)
+        if self.filter_engine and hasattr(self.filter_engine, "set_user_threshold"):
+            self.filter_engine.set_user_threshold(value)
+
+    async def threshold_callback(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        query = update.callback_query
+        await query.answer()
+        data = query.data or ""
+        if data == "thr_status":
+            current = await self.state.get_threshold()
+            filter_thr = self.filter_engine.effective_threshold() if self.filter_engine else current
+            await query.edit_message_text(
+                f"📊 <b>থ্রেশোল্ড স্ট্যাটাস</b>\n"
+                f"━━━━━━━━━━━━━━━━\n"
+                f"State threshold: <b>{int(current*100)}%</b>\n"
+                f"Filter threshold: <b>{int(filter_thr*100)}%</b>\n"
+                f"User override: {'<b>চালু</b>' if self.filter_engine and self.filter_engine.user_threshold is not None else 'বন্ধ'}",
+                parse_mode="HTML",
+                reply_markup=query.message.reply_markup,
+            )
+            return
+        if data.startswith("thr_"):
+            try:
+                val = int(data.split("_", 1)[1])
+            except (ValueError, IndexError):
+                return
+            await self._apply_threshold(val / 100)
+            keyboard = [
+                [
+                    InlineKeyboardButton("50%", callback_data="thr_50"),
+                    InlineKeyboardButton("65%", callback_data="thr_65"),
+                    InlineKeyboardButton("80%", callback_data="thr_80"),
+                    InlineKeyboardButton("90%", callback_data="thr_90"),
+                ],
+                [
+                    InlineKeyboardButton("📊 স্ট্যাটাস", callback_data="thr_status"),
+                ],
+            ]
+            await query.edit_message_text(
+                f"✅ থ্রেশোল্ড সেট: <b>{val}%</b>\n"
+                f"ফিল্টারে প্রয়োগ হয়েছে।",
+                parse_mode="HTML",
+                reply_markup=InlineKeyboardMarkup(keyboard),
+            )
 
     async def cmd_pump(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not context.args:
@@ -427,6 +497,7 @@ class TelegramHandlers:
 
 
 def register_handlers(app, handlers: TelegramHandlers):
+    from telegram.ext import CallbackQueryHandler
     app.add_handler(CommandHandler("start", handlers.cmd_start))
     app.add_handler(CommandHandler("pump", handlers.cmd_pump))
     app.add_handler(CommandHandler("dump", handlers.cmd_dump))
@@ -443,4 +514,5 @@ def register_handlers(app, handlers: TelegramHandlers):
     app.add_handler(CommandHandler("balance", handlers.cmd_balance))
     app.add_handler(CommandHandler("positions", handlers.cmd_positions))
     app.add_handler(CommandHandler("trades", handlers.cmd_trades))
+    app.add_handler(CallbackQueryHandler(handlers.threshold_callback, pattern="^thr_"))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handlers.handle_buttons))

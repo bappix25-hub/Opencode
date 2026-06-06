@@ -497,7 +497,9 @@ def get_signal_age_window() -> tuple:
     model = data["model"]
     return model.get("signal_age_min", 60), model.get("signal_age_max", 600)
 
-def record_signal(address: str, symbol: str, score: float, price_at_signal: float, mcap_at_signal: float) -> None:
+def record_signal(address: str, symbol: str, score: float, price_at_signal: float, mcap_at_signal: float,
+                  launch_time: float = 0.0, is_pre_migration: bool = False,
+                  migration_time: float = 0.0, is_pre_migration_known: bool = False) -> None:
     data = load_data()
     data["signals"].append({
         "address": address,
@@ -506,6 +508,11 @@ def record_signal(address: str, symbol: str, score: float, price_at_signal: floa
         "price_at_signal": price_at_signal,
         "mcap_at_signal": mcap_at_signal,
         "timestamp": datetime.now(timezone.utc).isoformat(),
+        "signal_time": datetime.now(timezone.utc).timestamp(),
+        "launch_time": launch_time,
+        "is_pre_migration": is_pre_migration,
+        "is_pre_migration_known": is_pre_migration_known,
+        "migration_time": migration_time,
         "result_multiplier": None,
         "result_checked": False,
         "ath_price": price_at_signal,

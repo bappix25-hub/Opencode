@@ -744,7 +744,7 @@ class MemeBot:
                                 f"⚡ <b>আর্লি সিগন্যাল!</b>\n"
                                 f"━━━━━━━━━━━━━━━━\n"
                                 f"🏷️ <b>{name}</b> (${symbol})\n"
-                                f"🎯 কনফিডেন্স: {confidence_bar} <b>{confidence_pct}%</b>\n"
+                                f"🎯 কনফিডেন্স: {confidence_bar} <b>{confidence_pct}%</b> (থ্রেশোল্ড {int(effective_threshold*100)}%)\n"
                                 f"🧠 <i>{reason}</i>\n"
                                 f"💵 দাম: <b>{current_price:.8f}</b>\n"
                                 f"💰 MCap: <b>{format_number(mcap)}</b>\n"
@@ -757,12 +757,19 @@ class MemeBot:
                                 f"🔗 <a href='{link}'>GMGN</a>"
                             )
 
-                            record_signal(addr, symbol, final_score, current_price, mcap)
+                            record_signal(addr, symbol, final_score, current_price, mcap,
+                                          launch_time=coin_info.launch_time or now_ts,
+                                          is_pre_migration=False,
+                                          is_pre_migration_known=True,
+                                          migration_time=coin_info.launch_time or now_ts)
                             from bot_state import SignalInfo
                             await self.state.add_signal(addr, SignalInfo(
                                 symbol=symbol,
                                 price_at_signal=current_price,
-                                signal_time=now_ts
+                                signal_time=now_ts,
+                                launch_time=coin_info.launch_time or now_ts,
+                                is_pre_migration=False,
+                                is_pre_migration_known=True,
                             ))
                             await self.state.add_alerted(addr)
 
@@ -1613,7 +1620,7 @@ class MemeBot:
                 f"⚡ <b>প্রি-মাইগ্রেশন সিগন্যাল!</b>\n"
                 f"━━━━━━━━━━━━━━━━\n"
                 f"🏷️ <b>{name}</b> (${symbol})\n"
-                f"🎯 কনফিডেন্স: {confidence_bar} <b>{confidence_pct}%</b>\n"
+                f"🎯 কনফিডেন্স: {confidence_bar} <b>{confidence_pct}%</b> (থ্রেশোল্ড {int(effective_threshold*100)}%)\n"
                 f"🧠 <i>{reason}</i>\n"
                 f"📊 Buy: <b>{launch_data.buy_count}</b> | Sell: <b>{launch_data.sell_count}</b>\n"
                 f"👥 Unique wallets: <b>{unique_wallets}</b>\n"
@@ -1628,6 +1635,12 @@ class MemeBot:
                 f"⚠️ <i>মাইগ্রেশনের আগে! DYOR করুন!</i>\n"
                 f"🔗 <a href='{link}'>GMGN</a>"
             )
+            record_signal(address, launch_data.symbol, final_score,
+                          current_price=getattr(launch_data, "initial_price", 0) or 0,
+                          mcap_at_signal=0,
+                          launch_time=launch_data.launch_time,
+                          is_pre_migration=True,
+                          is_pre_migration_known=True)
             await self.state.add_alerted(address)
             launch_data.pre_signal_sent = True
             logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {symbol} স্কোর: {final_score:.2f} (ai={ai_score:.2f}, social={social_score:.2f}, bond={bonding_boost:.2f}, velocity={launch_data.buy_velocity:.1f}/min)")
@@ -1883,12 +1896,18 @@ class MemeBot:
                                 f"━━━━━━━━━━━━━━━━\n"
                                 f"🔗 <a href='{link}'>GMGN</a>"
                             )
-                            record_signal(addr, symbol, final_score, current_price, mcap)
+                            record_signal(addr, symbol, final_score, current_price, mcap,
+                                          launch_time=coin_info.launch_time or now_ts,
+                                          is_pre_migration=True,
+                                          is_pre_migration_known=True)
                             from bot_state import SignalInfo
                             await self.state.add_signal(addr, SignalInfo(
                                 symbol=symbol,
                                 price_at_signal=current_price,
-                                signal_time=now_ts
+                                signal_time=now_ts,
+                                launch_time=coin_info.launch_time or now_ts,
+                                is_pre_migration=True,
+                                is_pre_migration_known=True,
                             ))
                             await self.state.add_alerted(addr)
 
