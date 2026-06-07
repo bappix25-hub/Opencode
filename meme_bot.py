@@ -1236,7 +1236,6 @@ def main():
     bot = MemeBot()
 
     def handle_signal(signum, frame):
-        logger.info(f"Signal {signum} received")
         asyncio.get_event_loop().call_soon_threadsafe(
             lambda: asyncio.ensure_future(bot.shutdown())
         )
@@ -1247,7 +1246,7 @@ def main():
     try:
         asyncio.run(bot.start())
     except KeyboardInterrupt:
-        logger.info("KeyboardInterrupt")
+        pass
 
 
 if __name__ == "__main__":
