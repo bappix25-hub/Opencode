@@ -4,27 +4,35 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def get_env(key: str, default: str = "") -> str:
-    value = os.getenv(key, default)
-    if not value and not default:
+_UNSET = object()
+
+def get_env(key: str, default=_UNSET) -> str:
+    value = os.getenv(key)
+    if value is not None:
+        return value
+    if default is _UNSET:
         raise ValueError(f"Required environment variable {key} is not set")
-    return value
+    return default
 
 def get_env_float(key: str, default: float) -> float:
     try:
-        return float(os.getenv(key, str(default)))
+        val = os.getenv(key)
+        return float(val) if val is not None else default
     except ValueError:
         return default
 
 def get_env_int(key: str, default: int) -> int:
     try:
-        return int(os.getenv(key, str(default)))
+        val = os.getenv(key)
+        return int(val) if val is not None else default
     except ValueError:
         return default
 
 def get_env_bool(key: str, default: bool) -> bool:
-    value = os.getenv(key, str(default)).lower()
-    return value in ("true", "1", "yes", "on")
+    val = os.getenv(key)
+    if val is not None:
+        return val.lower() in ("true", "1", "yes", "on")
+    return default
 
 @dataclass
 class Config:
