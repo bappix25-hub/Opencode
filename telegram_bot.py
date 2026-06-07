@@ -48,6 +48,7 @@ class TelegramHandlers:
             "/config — কনফিগারেশন\n"
             "/backtest 30 — ৩০ দিনের backtest\n"
             "/lastbacktest — শেষ backtest দেখাও\n"
+            "/backtesttrend — backtest উন্নতি ট্র্যাক করুন\n"
             "/signalstats — সিগন্যাল পরিসংখ্যান\n"
             "/golden — golden patterns (5x+ proven)\n"
             "/blacklist — blacklisted patterns\n"
@@ -342,6 +343,73 @@ class TelegramHandlers:
         except Exception as e:
             await update.message.reply_text(f"❌ রিপোর্ট পড়তে এরর: {e}")
 
+    async def cmd_backtest_trend(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        if not os.path.exists(REPORTS_DIR):
+            await update.message.reply_text("❌ কোনো backtest রিপোর্ট নেই।")
+            return
+        files = sorted(
+            [f for f in os.listdir(REPORTS_DIR) if f.startswith("backtest_") and f.endswith(".json")]
+        )
+        if not files:
+            await update.message.reply_text("❌ কোনো backtest রিপোর্ট নেই।")
+            return
+        
+        trend_data = []
+        for f in files[-10:]:  # Last 10 backtests
+            try:
+                with open(os.path.join(REPORTS_DIR, f), "r") as fp:
+                    data = json.load(fp)
+                metrics = data.get("metrics", {})
+                trend_data.append({
+                    "date": f.replace("backtest_", "").replace(".json", ""),
+                    "period_days": data.get("period_days", 30),
+                    "total_tokens": metrics.get("total_tokens", 0),
+                    "actual_pumps": metrics.get("actual_pumps", 0),
+                    "actual_5x": metrics.get("actual_5x", 0),
+                    "win_rate": metrics.get("win_rate", 0),
+                    "precision": metrics.get("precision", 0),
+                    "recall": metrics.get("recall", 0),
+                    "f1_score": metrics.get("f1_score", 0),
+                    "accuracy": metrics.get("accuracy", 0),
+                    "avg_multiplier": metrics.get("avg_multiplier", 0),
+                    "trained_pumps": metrics.get("trained_pumps", 0),
+                    "trained_early_pumps": metrics.get("trained_early_pumps", 0),
+                    "golden_promoted": metrics.get("golden_promoted", 0),
+                })
+            except Exception:
+                continue
+        
+        if not trend_data:
+            await update.message.reply_text("❌ কোনো valid backtest data নেই।")
+            return
+        
+        text = "📈 <b>Backtest Trend (Last 10)</b>\n"
+        text += "━━━━━━━━━━━━━━━━\n\n"
+        
+        for d in trend_data:
+            date_short = d["date"][-12:]  # HHMMSS
+            text += (
+                f"📅 <b>{date_short}</b> ({d['period_days']}d)\n"
+                f"  Tokens: {d['total_tokens']} | Pumps: {d['actual_pumps']} | 5x: {d['actual_5x']}\n"
+                f"  Win Rate: {d['win_rate']}% | Prec: {d['precision']}% | Rec: {d['recall']}%\n"
+                f"  F1: {d['f1_score']} | Acc: {d['accuracy']}% | Avg M: {d['avg_multiplier']}x\n"
+            )
+            if d.get('trained_pumps', 0) > 0 or d.get('trained_early_pumps', 0) > 0 or d.get('golden_promoted', 0) > 0:
+                text += f"  📚 Trained: {d['trained_pumps']} pumps, {d['trained_early_pumps']} early, {d['golden_promoted']} golden\n"
+            text += "\n"
+        
+        # Trend arrows
+        if len(trend_data) >= 2:
+            last = trend_data[-1]
+            prev = trend_data[-2]
+            wr_trend = "📈" if last['win_rate'] > prev['win_rate'] else "📉" if last['win_rate'] < prev['win_rate'] else "➡️"
+            pr_trend = "📈" if last['precision'] > prev['precision'] else "📉" if last['precision'] < prev['precision'] else "➡️"
+            text += f"📊 <b>Trend vs Previous:</b>\n"
+            text += f"  Win Rate: {wr_trend} ({prev['win_rate']}% → {last['win_rate']}%)\n"
+            text += f"  Precision: {pr_trend} ({prev['precision']}% → {last['precision']}%)\n"
+        
+        await update.message.reply_text(text, parse_mode="HTML")
+
     async def cmd_signalstats(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not self.verify_loop:
             await update.message.reply_text("❌ Verify loop not initialized")
@@ -507,6 +575,7 @@ def register_handlers(app, handlers: TelegramHandlers):
     app.add_handler(CommandHandler("config", handlers.cmd_config))
     app.add_handler(CommandHandler("backtest", handlers.cmd_backtest))
     app.add_handler(CommandHandler("lastbacktest", handlers.cmd_lastbacktest))
+    app.add_handler(CommandHandler("backtesttrend", handlers.cmd_backtest_trend))
     app.add_handler(CommandHandler("signalstats", handlers.cmd_signalstats))
     app.add_handler(CommandHandler("golden", handlers.cmd_golden))
     app.add_handler(CommandHandler("blacklist", handlers.cmd_blacklist))

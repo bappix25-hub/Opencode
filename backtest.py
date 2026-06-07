@@ -76,6 +76,18 @@ class BacktestEngine:
                     all_addrs.add(addr)
             logger.info(f"Found {len(boosted)} from boosted")
 
+        # Also fetch historical top pairs (for pumped tokens that may not be in new/boosted)
+        try:
+            top_pairs = await self._fetch_with_protection(self.dex.fetch_top_pairs, 100)
+            if top_pairs:
+                for pair in top_pairs:
+                    addr = pair.get("tokenAddress") or pair.get("address")
+                    if addr:
+                        all_addrs.add(addr)
+                logger.info(f"Found {len(top_pairs)} from top_pairs (historical)")
+        except Exception as e:
+            logger.debug(f"fetch_top_pairs failed: {e}")
+
         cutoff_ms = int((datetime.now(timezone.utc) - timedelta(days=days)).timestamp() * 1000)
         valid_tokens = []
 

@@ -78,6 +78,10 @@ SYNC_FILES = [
     GOLDEN_FILE, BLACKLIST_FILE
 ]
 
+SYNC_DIRS = [
+    "backtest_reports",
+]
+
 async def sync_to_github(message: str = None) -> bool:
     if not message:
         message = f"[{BOT_INSTANCE}] auto sync {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')}"
@@ -92,6 +96,12 @@ async def sync_to_github(message: str = None) -> bool:
             code, _, stderr = await _run_git(["git", "add", f])
             if code != 0:
                 logger.warning(f"git add {f} failed: {stderr}")
+
+    for d in SYNC_DIRS:
+        if os.path.isdir(d):
+            code, _, stderr = await _run_git(["git", "add", d])
+            if code != 0:
+                logger.warning(f"git add {d} failed: {stderr}")
 
     code, stdout, stderr = await _run_git(["git", "commit", "-m", message])
     if "nothing to commit" in stdout or "nothing to commit" in stderr:

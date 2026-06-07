@@ -66,3 +66,19 @@ class DexScreenerClient:
                 pairs.sort(key=lambda x: float(x.get("liquidity", {}).get("usd", 0) or 0), reverse=True)
                 return pairs[0]
         return None
+
+    async def fetch_top_pairs(self, limit: int = 100) -> list:
+        """Fetch top pairs by volume/h24 for historical pump discovery."""
+        url = f"{self.base_url}/token-profiles/latest/v1"
+        data = await self._request_with_retry("GET", url)
+        if not data:
+            return []
+        solana_tokens = [p for p in data if p.get("chainId") == "solana"]
+        addresses = [p.get("tokenAddress") for p in solana_tokens if p.get("tokenAddress")]
+        
+        all_pairs = []
+        for addr in addresses[:limit]:
+            pair = await self.fetch_pair_data(addr)
+            if pair:
+                all_pairs.append(pair)
+        return all_pairs
