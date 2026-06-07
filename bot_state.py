@@ -1,9 +1,7 @@
 import asyncio
-import json
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Optional
-from config import config
 
 @dataclass
 class LaunchData:
@@ -29,17 +27,6 @@ class LaunchData:
     eval_done: dict = field(default_factory=dict)
     ath_price: float = 0.0
 
-    def to_dict(self) -> dict:
-        d = asdict(self)
-        d["unique_wallets"] = list(self.unique_wallets)
-        return d
-
-    @classmethod
-    def from_dict(cls, d: dict) -> "LaunchData":
-        d = d.copy()
-        d["unique_wallets"] = set(d.get("unique_wallets", []))
-        return cls(**d)
-
 @dataclass
 class TrackedCoin:
     initial_price: float
@@ -52,13 +39,6 @@ class TrackedCoin:
     deployer_wallet: str = ""
     initial_holders: int = 0
 
-    def to_dict(self) -> dict:
-        return asdict(self)
-
-    @classmethod
-    def from_dict(cls, d: dict) -> "TrackedCoin":
-        return cls(**d)
-
 @dataclass
 class SignalInfo:
     symbol: str
@@ -70,25 +50,11 @@ class SignalInfo:
     migration_time: float = 0.0
     is_pre_migration_known: bool = False
 
-    def to_dict(self) -> dict:
-        return asdict(self)
-
-    @classmethod
-    def from_dict(cls, d: dict) -> "SignalInfo":
-        return cls(**d)
-
 @dataclass
 class CoinInfo:
     name: str
     symbol: str
     first_seen: float = field(default_factory=lambda: datetime.now(timezone.utc).timestamp())
-
-    def to_dict(self) -> dict:
-        return asdict(self)
-
-    @classmethod
-    def from_dict(cls, d: dict) -> "CoinInfo":
-        return cls(**d)
 
 class BotState:
     def __init__(self):
@@ -268,68 +234,3 @@ class BotState:
     async def get_threshold(self) -> float:
         async with self._lock:
             return self.current_threshold
-
-    def to_dict(self) -> dict:
-        with asyncio.Lock():
-            pass
-        # Since we're not in async context, use a simple lock approach
-        # Note: In practice, callers should ensure they hold the lock or call from async context
-        return {
-            "launch_tracking": {k: v.to_dict() for k, v in self.launch_tracking.items()},
-            "tracked_coins": {k: v.to_dict() for k, v in self.tracked_coins.items()},
-            "alerted_coins": list(self.alerted_coins),
-            "blacklisted": list(self.blacklisted),
-            "blocked_deployers": list(self.blocked_deployers),
-            "honeypot_addresses": list(self.honeypot_addresses),
-            "signal_tracking": {k: v.to_dict() for k, v in self.signal_tracking.items()},
-            "pump_coins": {k: v.to_dict() for k, v in self.pump_coins.items()},
-            "dump_coins": {k: v.to_dict() for k, v in self.dump_coins.items()},
-            "bot_active": self.bot_active,
-            "current_threshold": self.current_threshold,
-        }
-
-    @classmethod
-    def from_dict(cls, d: dict) -> "BotState":
-        state = cls()
-        state.launch_tracking = {k: LaunchData.from_dict(v) for k, v in d.get("launch_tracking", {}).items()}
-        state.tracked_coins = {k: TrackedCoin.from_dict(v) for k, v in d.get("tracked_coins", {}).items()}
-        state.alerted_coins = set(d.get("alerted_coins", []))
-        state.blacklisted = set(d.get("blacklisted", []))
-        state.blocked_deployers = set(d.get("blocked_deployers", []))
-        state.honeypot_addresses = set(d.get("honeypot_addresses", []))
-        state.signal_tracking = {k: SignalInfo.from_dict(v) for k, v in d.get("signal_tracking", {}).items()}
-        state.pump_coins = {k: CoinInfo.from_dict(v) for k, v in d.get("pump_coins", {}).items()}
-        state.dump_coins = {k: CoinInfo.from_dict(v) for k, v in d.get("dump_coins", {}).items()}
-        state.bot_active = d.get("bot_active", True)
-        state.current_threshold = d.get("current_threshold", 0.50)
-        return state
-
-    async def to_dict_async(self) -> dict:
-        async with self._lock:
-            return {
-                "launch_tracking": {k: v.to_dict() for k, v in self.launch_tracking.items()},
-                "tracked_coins": {k: v.to_dict() for k, v in self.tracked_coins.items()},
-                "alerted_coins": list(self.alerted_coins),
-                "blacklisted": list(self.blacklisted),
-                "blocked_deployers": list(self.blocked_deployers),
-                "honeypot_addresses": list(self.honeypot_addresses),
-                "signal_tracking": {k: v.to_dict() for k, v in self.signal_tracking.items()},
-                "pump_coins": {k: v.to_dict() for k, v in self.pump_coins.items()},
-                "dump_coins": {k: v.to_dict() for k, v in self.dump_coins.items()},
-                "bot_active": self.bot_active,
-                "current_threshold": self.current_threshold,
-            }
-
-    async def save_to_data_file(self) -> None:
-        from learner import load_data, save_data
-        data = load_data()
-        bot_dict = await self.to_dict_async()
-        for key, value in bot_dict.items():
-            data[key] = value
-        save_data(data)
-
-    @classmethod
-    def load_from_data_file(cls) -> "BotState":
-        from learner import load_data
-        data = load_data()
-        return cls.from_dict(data)
