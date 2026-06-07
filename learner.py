@@ -32,6 +32,7 @@ DEFAULT_DATA = {
         "launch_avg_buys": 0.0,
         "launch_avg_wallets": 0.0,
         "launch_avg_volume": 0.0,
+        "signal_results": [],
     }
 }
 
@@ -268,14 +269,36 @@ def _update_model(data: dict) -> None:
             hourly_threshold[hour_str] = model["threshold"]
     model["hourly_threshold"] = hourly_threshold
 
-    total = model.get("total_signals", 0)
-    correct = model.get("correct_signals", 0)
+    signal_results = model.get("signal_results", [])
+    total = len(signal_results)
+    correct = sum(1 for r in signal_results if r.get("verdict") in ("PUMP", "STRONG_PUMP"))
+    model["total_signals"] = total
+    model["correct_signals"] = correct
     if total >= 5:
         model["accuracy"] = round(correct / total * 100, 1)
         if model["accuracy"] < 40:
             model["threshold"] = min(0.7, model["threshold"] + 0.05)
         elif model["accuracy"] > 70:
             model["threshold"] = max(0.25, model["threshold"] - 0.05)
+
+    symbol_stats = {}
+    for r in signal_results:
+        sym = r.get("symbol", "")
+        if sym not in symbol_stats:
+            symbol_stats[sym] = {"pumps": 0, "dumps": 0, "max_mult": 0}
+        if r.get("verdict") in ("PUMP", "STRONG_PUMP"):
+            symbol_stats[sym]["pumps"] += 1
+            symbol_stats[sym]["max_mult"] = max(symbol_stats[sym]["max_mult"], r.get("multiplier", 0))
+        else:
+            symbol_stats[sym]["dumps"] += 1
+
+    for sym, stats in symbol_stats.items():
+        if stats["pumps"] >= 3 and stats["max_mult"] >= 5.0:
+            model.setdefault("golden_symbols", {})[sym] = {
+                "count": stats["pumps"],
+                "max_multiplier": stats["max_mult"],
+                "timestamp": datetime.now(timezone.utc).isoformat()
+            }
 
     launches = data["launch_patterns"]
     if len(launches) >= 3:
@@ -550,14 +573,32 @@ def update_signal_result(address: str, current_price: float) -> None:
         if sig["address"] == address and not sig["result_checked"]:
             if sig["price_at_signal"] > 0:
                 multiplier = current_price / sig["price_at_signal"]
-                sig["result_multiplier"] = round(multiplier, 2)
+                result_mult = round(multiplier, 2)
+                sig["result_multiplier"] = result_mult
                 sig["result_checked"] = True
                 current_ath = sig.get("ath_price", sig["price_at_signal"])
                 if current_price > current_ath:
                     sig["ath_price"] = current_price
-                    sig["ath_multiplier"] = round(multiplier, 2)
-                if multiplier >= 2.0:
-                    data["model"]["correct_signals"] = data["model"].get("correct_signals", 0) + 1
+                    sig["ath_multiplier"] = result_mult
+                
+                verdict = "DUMP"
+                if result_mult >= 5.0:
+                    verdict = "STRONG_PUMP"
+                elif result_mult >= 3.0:
+                    verdict = "PUMP"
+                
+                results = data["model"].setdefault("signal_results", [])
+                results.append({
+                    "address": address,
+                    "symbol": sig.get("symbol", ""),
+                    "verdict": verdict,
+                    "multiplier": result_mult,
+                    "social_score": sig.get("social_score", 0),
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                })
+                results = results[-500:]
+                data["model"]["signal_results"] = results
+                
                 updated = True
     if updated:
         _update_model(data)

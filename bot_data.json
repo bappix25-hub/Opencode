@@ -777,54 +777,7 @@
     "58b101f6d8fb7d99c5bb3efb69f5ef9f",
     "4c4abcce9a846d13573d2fefcc00c623"
   ],
-  "signals": [
-    {
-      "address": "FadjXFzVukYwxEXFURzdXZBXntziXfamnPdvUb6Ypump",
-      "symbol": "dPIN",
-      "score": 0.7899999999999999,
-      "price_at_signal": 5.55e-05,
-      "mcap_at_signal": 55501.0,
-      "timestamp": "2026-06-05T19:28:46.942348+00:00",
-      "result_multiplier": null,
-      "result_checked": false
-    },
-    {
-      "address": "3G8zFxHAnuWXiiC9MobE9EUUqV6m6MjL51YnN6tGpump",
-      "symbol": "$tupid",
-      "score": 0.7899999999999999,
-      "price_at_signal": 3.232e-05,
-      "mcap_at_signal": 32323.0,
-      "timestamp": "2026-06-05T19:31:48.747136+00:00",
-      "result_multiplier": null,
-      "result_checked": false
-    },
-    {
-      "address": "5BLqz3M12k2scR72GNuM9v4U6sM1J75s3wNPDJwtpump",
-      "symbol": "Derp",
-      "score": 0.73,
-      "price_at_signal": 3.156e-05,
-      "mcap_at_signal": 31561.0,
-      "timestamp": "2026-06-05T19:53:51.228081+00:00",
-      "result_multiplier": null,
-      "result_checked": false,
-      "ath_price": 3.292e-05,
-      "ath_multiplier": 1.04,
-      "ath_timestamp": "2026-06-05T19:55:21.698035+00:00"
-    },
-    {
-      "address": "PACKvjoWX8HKo5jVxEzfH6joyJ86xJB6LsuxU4u5kY4",
-      "symbol": "PACKS",
-      "score": 0.7749999999999999,
-      "price_at_signal": 3.758e-05,
-      "mcap_at_signal": 37588.0,
-      "timestamp": "2026-06-05T20:45:14.578716+00:00",
-      "result_multiplier": null,
-      "result_checked": false,
-      "ath_price": 4.958e-05,
-      "ath_multiplier": 1.32,
-      "ath_timestamp": "2026-06-05T20:45:41.398642+00:00"
-    }
-  ],
+  "signals": [],
   "model": {
     "avg_pump_mcap": 145743.33333333334,
     "avg_pump_liquidity": 30896.482307692306,
@@ -844,10 +797,10 @@
       "20": 1.0,
       "21": 1.0
     },
-    "total_signals": 4,
-    "correct_signals": 0,
-    "accuracy": 0.0,
-    "threshold": 0.65,
+    "total_signals": 5,
+    "correct_signals": 5,
+    "accuracy": 100.0,
+    "threshold": 0.5499999999999999,
     "signal_age_min": 311.597211328125,
     "signal_age_max": 900,
     "launch_avg_buys": 0,
@@ -862,10 +815,137 @@
     "avg_pump_buy_sell_ratio": 0.56516302256336,
     "std_pump_buy_sell_ratio": 0.18896502387391634,
     "hourly_threshold": {
-      "18": 0.5,
-      "19": 0.5,
-      "20": 0.5,
-      "21": 0.5
+      "18": 0.44999999999999996,
+      "19": 0.44999999999999996,
+      "20": 0.44999999999999996,
+      "21": 0.44999999999999996
+    },
+    "signal_results": [
+      {
+        "address": "addr1",
+        "symbol": "GOLDEN",
+        "verdict": "STRONG_PUMP",
+        "multiplier": 5.5,
+        "social_score": 0.8,
+        "timestamp": "2026-06-07T18:59:47"
+      },
+      {
+        "address": "addr2",
+        "symbol": "GOLDEN",
+        "verdict": "STRONG_PUMP",
+        "multiplier": 6.0,
+        "social_score": 0.8,
+        "timestamp": "2026-06-07T18:59:47"
+      },
+      {
+        "address": "addr3",
+        "symbol": "GOLDEN",
+        "verdict": "STRONG_PUMP",
+        "multiplier": 7.5,
+        "social_score": 0.8,
+        "timestamp": "2026-06-07T18:59:47"
+      },
+      {
+        "address": "addr4",
+        "symbol": "NOTGOLDEN",
+        "verdict": "PUMP",
+        "multiplier": 3.0,
+        "social_score": 0.8,
+        "timestamp": "2026-06-07T18:59:47"
+      },
+      {
+        "address": "addr5",
+        "symbol": "NOTGOLDEN",
+        "verdict": "PUMP",
+        "multiplier": 3.5,
+        "social_score": 0.8,
+        "timestamp": "2026-06-07T18:59:47"
+      }
+    ],
+    "golden_symbols": {
+      "TEST1": {
+        "count": 3,
+        "max_multiplier": 7.0,
+        "timestamp": "2026-06-07T18:41:35.179857+00:00"
+      },
+      "GOLDEN": {
+        "count": 3,
+        "max_multiplier": 7.5,
+        "timestamp": "2026-06-07T18:59:47.176898+00:00"
+      }
     }
-  }
+  },
+  "launch_tracking": {
+    "addr1": {
+      "name": "Test",
+      "symbol": "TST",
+      "first_seen": 1780828544.3309104,
+      "launch_time": 1780828544.3309104,
+      "buy_count": 5,
+      "sell_count": 0,
+      "unique_wallets": [
+        "wallet1",
+        "wallet2"
+      ],
+      "volume": 100,
+      "holders": 0,
+      "lp_locked": 0.0,
+      "deployer_wallet": "",
+      "tx_history": [],
+      "pre_signal_sent": false,
+      "migration_time": 0.0,
+      "migration_price": 0.0,
+      "initial_price": 0.0,
+      "buy_timestamps": [],
+      "buy_velocity": 0.0,
+      "curve_fill_pct": 0.0,
+      "eval_done": {},
+      "ath_price": 0.0001
+    }
+  },
+  "tracked_coins": {
+    "addr2": {
+      "initial_price": 0.001,
+      "name": "Test",
+      "symbol": "TST",
+      "first_seen": 1780828544.3309104,
+      "launch_time": 1780828544.3309104,
+      "holders": 0,
+      "lp_locked": 0.0,
+      "deployer_wallet": "",
+      "initial_holders": 0
+    }
+  },
+  "alerted_coins": [],
+  "blacklisted": [],
+  "blocked_deployers": [],
+  "honeypot_addresses": [],
+  "signal_tracking": {
+    "addr3": {
+      "symbol": "TST",
+      "price_at_signal": 0.001,
+      "signal_time": 1780828544.3309104,
+      "checked": false,
+      "launch_time": 1780828544.3309104,
+      "is_pre_migration": true,
+      "migration_time": 0.0,
+      "is_pre_migration_known": false
+    }
+  },
+  "pump_coins": {
+    "addr4": {
+      "name": "Pump",
+      "symbol": "PUMP",
+      "first_seen": 1780828544.33096
+    }
+  },
+  "dump_coins": {
+    "addr5": {
+      "name": "Dump",
+      "symbol": "DMP",
+      "first_seen": 1780828544.330979
+    }
+  },
+  "bot_active": true,
+  "current_threshold": 0.5
 }
