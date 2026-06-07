@@ -189,3 +189,59 @@ class HeliusClient:
         except Exception as e:
             logger.debug(f"pump.fun migration check error for {mint_address}: {e}")
         return False
+
+    async def get_whale_transactions(self, address: str, min_sol: float = 5.0) -> dict:
+        result = {"whale_buys": 0, "whale_sells": 0, "largest_buy_sol": 0.0, "whale_wallets": set()}
+        try:
+            txs = await self.get_launch_transactions(address)
+            for tx in txs:
+                try:
+                    sol_amount = 0
+                    for transfer in tx.get("tokenTransfers", []):
+                        amt = float(transfer.get("tokenAmount", 0) or 0)
+                        sol_amount += amt
+                    native = tx.get("nativeTransfers", [])
+                    for nt in native:
+                        sol_amount += float(nt.get("amount", 0) or 0) / 1e9
+
+                    if sol_amount < min_sol:
+                        continue
+
+                    tx_type = tx.get("type", "")
+                    fee_payer = tx.get("feePayer", "")
+                    source = tx.get("source", "")
+
+                    if tx_type == "SWAP" and source == "PUMP_FUN":
+                        result["whale_buys"] += 1
+                        result["whale_wallets"].add(fee_payer)
+                        if sol_amount > result["largest_buy_sol"]:
+                            result["largest_buy_sol"] = sol_amount
+                    elif tx_type == "SWAP":
+                        result["whale_sells"] += 1
+                        result["whale_wallets"].add(fee_payer)
+                except Exception:
+                    continue
+            result["whale_wallets"] = len(result["whale_wallets"])
+        except Exception as e:
+            logger.debug(f"Whale transaction error for {address}: {e}")
+        return result
+
+    async def get_deployer_history(self, deployer_address: str) -> dict:
+        result = {"total_launches": 0, "rugged_count": 0, "success_rate": 0.0}
+        if not deployer_address:
+            return result
+        try:
+            url = f"https://api.helius.xyz/v0/addresses/{deployer_address}/transactions?api-key={self.api_key}&limit=50&type=TRANSFER"
+            async with self.session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as resp:
+                if resp.status == 200:
+                    txs = await resp.json()
+                    seen_mints = set()
+                    for tx in txs:
+                        for transfer in tx.get("tokenTransfers", []):
+                            mint = transfer.get("mint", "")
+                            if mint and mint not in seen_mints:
+                                seen_mints.add(mint)
+                    result["total_launches"] = len(seen_mints)
+        except Exception as e:
+            logger.debug(f"Deployer history error for {deployer_address}: {e}")
+        return result

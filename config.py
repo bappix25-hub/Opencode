@@ -61,4 +61,17 @@ class Config:
     paper_trade_max_positions: int = get_env_int("PAPER_TRADE_MAX_POSITIONS", 5)
     paper_trade_timeout_hours: int = get_env_int("PAPER_TRADE_TIMEOUT_HOURS", 3)
 
+    birdeye_api_key: str = get_env("BIRDEYE_API_KEY", "")
+    twitter_bearer_token: str = get_env("TWITTER_BEARER_TOKEN", "")
+    twitter_client_id: str = get_env("TWITTER_CLIENT_ID", "")
+    twitter_client_secret: str = get_env("TWITTER_CLIENT_SECRET", "")
+
+    whale_min_sol: float = get_env_float("WHALE_MIN_SOL", 5.0)
+    whale_boost_score: float = get_env_float("WHALE_BOOST_SCORE", 0.2)
+    sentiment_boost_score: float = get_env_float("SENTIMENT_BOOST_SCORE", 0.15)
+    influencer_boost_score: float = get_env_float("INFLUENCER_BOOST_SCORE", 0.2)
+    viral_boost_score: float = get_env_float("VIRAL_BOOST_SCORE", 0.25)
+    price_impact_max_pct: float = get_env_float("PRICE_IMPACT_MAX_PCT", 5.0)
+    top10_holder_max_pct: float = get_env_float("TOP10_HOLDER_MAX_PCT", 50.0)
+
 config = Config()

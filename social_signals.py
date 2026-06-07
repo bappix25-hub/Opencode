@@ -1,6 +1,7 @@
 import asyncio
 import logging
 import os
+import re
 import aiohttp
 from typing import Optional
 from config import config
@@ -9,6 +10,18 @@ logger = logging.getLogger("social_signals")
 
 TWITTER_API_BASE = "https://api.twitter.com/2"
 TWITTER_BEARER_TOKEN = os.getenv("TWITTER_BEARER_TOKEN", "")
+
+POSITIVE_WORDS = {
+    "pump", "bullish", "moon", "gem", "launch", "partnership", "listing",
+    "viral", "trending", "buy", "hold", "diamond", "hands", "explosive",
+    "breakout", "soar", "rocket", "gains", "undervalued", "sleeping",
+    "next", "big", "early", "massive", "huge", "love", "fire", "letsgo",
+}
+NEGATIVE_WORDS = {
+    "rug", "scam", "dump", "honeypot", "rugpull", "dead", "sell",
+    "shitcoin", "ponzi", "fraud", "stolen", "exit", "rekt", "loss",
+    "crash", "collapse", "avoid", "warning", "beware", "fake",
+}
 
 class SocialSignalEngine:
     def __init__(self, session: aiohttp.ClientSession):
@@ -73,10 +86,126 @@ class SocialSignalEngine:
             logger.warning(f"DexScreener boost count error: {e}")
         return 0
 
+    async def _get_twitter_tweets(self, symbol: str, max_results: int = 100) -> list:
+        if not self.twitter_enabled:
+            return []
+        try:
+            query = f"${symbol} -is:retweet lang:en"
+            url = f"{TWITTER_API_BASE}/tweets/search/recent?query={query}&max_results={min(max_results, 100)}&tweet.fields=public_metrics,author_id,created_at"
+            headers = {"Authorization": f"Bearer {TWITTER_BEARER_TOKEN}"}
+            async with self.session.get(url, headers=headers, timeout=aiohttp.ClientTimeout(total=10)) as resp:
+                if resp.status == 200:
+                    data = await resp.json()
+                    return data.get("data", [])
+                elif resp.status == 429:
+                    logger.warning("Twitter API rate limited")
+        except Exception as e:
+            logger.debug(f"Twitter tweets error: {e}")
+        return []
+
+    async def get_twitter_sentiment(self, symbol: str) -> dict:
+        result = {"positive": 0, "negative": 0, "neutral": 0, "score": 0.0, "total": 0}
+        if not self.twitter_enabled:
+            return result
+        try:
+            tweets = await self._get_twitter_tweets(symbol, max_results=50)
+            if not tweets:
+                return result
+
+            for tweet in tweets:
+                text = (tweet.get("text", "") or "").lower()
+                words = set(re.findall(r'\b\w+\b', text))
+                pos = len(words & POSITIVE_WORDS)
+                neg = len(words & NEGATIVE_WORDS)
+
+                if pos > neg:
+                    result["positive"] += 1
+                elif neg > pos:
+                    result["negative"] += 1
+                else:
+                    result["neutral"] += 1
+
+            result["total"] = len(tweets)
+            if result["total"] > 0:
+                result["score"] = round(
+                    (result["positive"] - result["negative"]) / result["total"], 3
+                )
+        except Exception as e:
+            logger.debug(f"Twitter sentiment error: {e}")
+        return result
+
+    async def get_influencer_mentions(self, symbol: str) -> dict:
+        result = {"count": 0, "names": [], "combined_reach": 0}
+        if not self.twitter_enabled:
+            return result
+        try:
+            tweets = await self._get_twitter_tweets(symbol, max_results=100)
+            if not tweets:
+                return result
+
+            author_ids = list(set(t.get("author_id", "") for t in tweets if t.get("author_id")))
+            if not author_ids:
+                return result
+
+            headers = {"Authorization": f"Bearer {TWITTER_BEARER_TOKEN}"}
+            batch_size = 100
+            for i in range(0, len(author_ids), batch_size):
+                batch = author_ids[i:i+batch_size]
+                ids_param = ",".join(batch)
+                url = f"{TWITTER_API_BASE}/users?ids={ids_param}&user.fields=public_metrics,name,username"
+                try:
+                    async with self.session.get(url, headers=headers, timeout=aiohttp.ClientTimeout(total=10)) as resp:
+                        if resp.status == 200:
+                            data = await resp.json()
+                            for user in data.get("data", []):
+                                metrics = user.get("public_metrics", {})
+                                followers = metrics.get("followers_count", 0)
+                                if followers >= 10000:
+                                    result["count"] += 1
+                                    result["names"].append(f"@{user.get('username', '?')}")
+                                    result["combined_reach"] += followers
+                except Exception:
+                    continue
+                await asyncio.sleep(0.5)
+
+            result["names"] = result["names"][:5]
+        except Exception as e:
+            logger.debug(f"Influencer mention error: {e}")
+        return result
+
+    async def detect_viral_trend(self, symbol: str) -> dict:
+        result = {"is_viral": False, "mention_rate": 0.0, "trend_strength": 0.0}
+        if not self.twitter_enabled:
+            return result
+        try:
+            tweets = await self._get_twitter_tweets(symbol, max_results=100)
+            if not tweets:
+                return result
+
+            now_ts = asyncio.get_event_loop().time()
+            recent_1h = 0
+            for tweet in tweets:
+                created = tweet.get("created_at", "")
+                if created:
+                    recent_1h += 1
+
+            result["mention_rate"] = recent_1h
+            if recent_1h > 20:
+                result["is_viral"] = True
+                result["trend_strength"] = min(1.0, recent_1h / 100)
+            elif recent_1h > 10:
+                result["trend_strength"] = min(0.7, recent_1h / 50)
+        except Exception as e:
+            logger.debug(f"Viral trend error: {e}")
+        return result
+
     async def calculate_social_score(self, token_address: str, symbol: str) -> tuple:
         result = {
             "score": 0.0,
             "twitter_mentions": 0,
+            "sentiment_score": 0.0,
+            "influencer_count": 0,
+            "is_viral": False,
             "has_telegram": False,
             "has_twitter": False,
             "has_website": False,
@@ -117,9 +246,33 @@ class SocialSignalEngine:
                 elif mentions > 0:
                     score += 0.05
 
-            result["score"] = min(1.0, score)
+                sentiment = await self.get_twitter_sentiment(symbol)
+                result["sentiment_score"] = sentiment.get("score", 0)
+                if sentiment.get("score", 0) > 0.5:
+                    score += 0.15
+                elif sentiment.get("score", 0) > 0.2:
+                    score += 0.1
+                elif sentiment.get("score", 0) < -0.3:
+                    score -= 0.1
+
+                influencers = await self.get_influencer_mentions(symbol)
+                result["influencer_count"] = influencers.get("count", 0)
+                if influencers.get("count", 0) > 0:
+                    score += min(0.2, influencers["count"] * 0.1)
+
+                viral = await self.detect_viral_trend(symbol)
+                result["is_viral"] = viral.get("is_viral", False)
+                if viral.get("is_viral"):
+                    score += 0.25
+                elif viral.get("trend_strength", 0) > 0.3:
+                    score += 0.1
+
+            result["score"] = max(0.0, min(1.0, score))
             result["details"] = (
                 f"Twitter:{result['twitter_mentions']} "
+                f"Sent:{result['sentiment_score']:.2f} "
+                f"Inf:{result['influencer_count']} "
+                f"{'🔥VIRAL' if result['is_viral'] else ''} "
                 f"TG:{'Y' if result['has_telegram'] else 'N'} "
                 f"Web:{'Y' if result['has_website'] else 'N'} "
                 f"Boost:{boost_count}"

@@ -38,24 +38,22 @@ class TelegramHandlers:
     async def cmd_start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         text = (
             "🤖 <b>Bappis Trade Bot v3 চালু!</b>\n"
-            "🌟 5x filter + Auto-verify + Social signals + Paper Trading সক্রিয়\n\n"
+            "🌟 AI + Whale + Sentiment + Paper Trading সক্রিয়\n\n"
             "📚 কমান্ড:\n"
-            "/pump ADDRESS — পাম্প শেখান\n"
-            "/dump ADDRESS — ডাম্প শেখান\n"
-            "/forcepump ADDRESS — ফোর্স পাম্প\n"
-            "/threshold 50 — থ্রেশোল্ড সেট (১-১০০)\n"
+            "/pump — পাম্প শেখান\n"
+            "/dump — ডাম্প শেখান\n"
+            "/threshold — থ্রেশোল্ড সেট\n"
             "/health — বটের স্বাস্থ্য\n"
             "/config — কনফিগারেশন\n"
-            "/backtest 30 — ৩০ দিনের backtest\n"
-            "/lastbacktest — শেষ backtest দেখাও\n"
-            "/backtesttrend — backtest উন্নতি ট্র্যাক করুন\n"
+            "/backtest 30 — backtest\n"
+            "/lastbacktest — শেষ backtest\n"
+            "/backtesttrend — backtest উন্নতি\n"
             "/signalstats — সিগন্যাল পরিসংখ্যান\n"
-            "/golden — golden patterns (5x+ proven)\n"
-            "/blacklist — blacklisted patterns\n"
-            "/retrain — model retrain\n\n"
-            "💰 <b>Paper Trading:</b>\n"
-            "/balance — ব্যালেন্স ও P&L\n"
-            "/positions — ওপেন পজিশন\n"
+            "/golden — golden patterns\n"
+            "/blacklist — blacklisted\n"
+            "/retrain — model retrain\n"
+            "/balance — ব্যালেন্স\n"
+            "/positions — পজিশন\n"
             "/trades — ট্রেড হিস্ট্রি"
         )
         await update.message.reply_text(
@@ -235,6 +233,9 @@ class TelegramHandlers:
         )
 
     async def cmd_config(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        from config import config
+        birdeye_status = "✅" if config.birdeye_api_key else "❌"
+        twitter_status = "✅" if config.twitter_bearer_token else "❌"
         await update.message.reply_text(
             f"⚙️ <b>কনফিগারেশন</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
@@ -243,7 +244,12 @@ class TelegramHandlers:
             f"💧 মিন লিকুইডিটি: <b>{format_number(config.min_liquidity)}</b>\n"
             f"💰 MCap: {format_number(config.min_mcap)} - {format_number(config.max_mcap)}\n"
             f"⏱️ স্ক্যান ইন্টারভাল: <b>{config.scan_interval}s</b>\n"
-            f"🔄 প্রি-মাইগ্রেশন: <b>{'চালু' if config.enable_pre_migration else 'বন্ধ'}</b>",
+            f"🔄 প্রি-মাইগ্রেশন: <b>{'চালু' if config.enable_pre_migration else 'বন্ধ'}</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"🐋 Whale tracking: {birdeye_status} (min {config.whale_min_sol} SOL)\n"
+            f"🐦 Twitter sentiment: {twitter_status}\n"
+            f"📊 Birdeye: {birdeye_status}\n"
+            f"🔄 Jupiter price: ✅",
             parse_mode="HTML"
         )
 
@@ -511,21 +517,7 @@ class TelegramHandlers:
     async def handle_buttons(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         text = update.message.text
         if text == "📊 স্ট্যাটাস":
-            stats = await self.state.get_stats()
-            learner_stats = get_stats()
-            status = "🟢 চালু" if stats["bot_active"] else "🔴 বন্ধ"
-            await update.message.reply_text(
-                f"📊 <b>বটের অবস্থা: {status}</b>\n"
-                f"🆕 লঞ্চ ট্র্যাক: <b>{stats['launch_tracking']}</b>\n"
-                f"🔍 মাইগ্রেশন ট্র্যাক: <b>{stats['tracked_coins']}</b>\n"
-                f"🚫 ব্ল্যাকলিস্ট: <b>{stats['blacklisted']}</b>\n"
-                f"🚀 পাম্প: <b>{stats['pump_coins']}</b>\n"
-                f"🧠 পাম্প প্যাটার্ন: <b>{learner_stats['pump_patterns']}</b>\n"
-                f"📚 লঞ্চ প্যাটার্ন: <b>{learner_stats['launch_patterns']}</b>\n"
-                f"📉 ডাম্প প্যাটার্ন: <b>{learner_stats['dump_patterns']}</b>\n"
-                f"🎯 থ্রেশোল্ড: <b>{int(stats['current_threshold']*100)}%</b>",
-                parse_mode="HTML"
-            )
+            await self.cmd_health(update, context)
         elif text == "📈 পারফরম্যান্স":
             learner_stats = get_stats()
             await update.message.reply_text(
@@ -546,8 +538,7 @@ class TelegramHandlers:
                 f"📉 ডাম্প প্যাটার্ন: <b>{learner_stats['dump_patterns']}</b>\n"
                 f"✍️ ম্যানুয়াল পাম্প: <b>{learner_stats['manual_pumps']}</b>\n"
                 f"🎯 থ্রেশোল্ড: <b>{int(learner_stats['threshold']*100)}%</b>\n"
-                f"📊 একুরেসি: <b>{learner_stats['accuracy']}%</b>\n"
-                f"\n/pump ADDRESS\n/dump ADDRESS\n/threshold 50",
+                f"📊 একুরেসি: <b>{learner_stats['accuracy']}%</b>",
                 parse_mode="HTML"
             )
         elif text == "⚙️ সেটিংস":

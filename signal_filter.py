@@ -35,9 +35,11 @@ class SignalFilter:
         self.min_threshold = _env_float("SIGNAL_MIN_THRESHOLD", 0.80)
         self.warmup_min_threshold = _env_float("SIGNAL_WARMUP_THRESHOLD", 0.70)
         self.warmup_signal_count = int(os.getenv("SIGNAL_WARMUP_COUNT", "20"))
-        self.onchain_weight = 0.60
+        self.onchain_weight = 0.45
         self.social_weight = 0.30
         self.timing_weight = 0.10
+        self.whale_weight = 0.10
+        self.safety_weight = 0.05
         self.user_threshold: Optional[float] = None
 
     def set_user_threshold(self, value: float) -> None:
@@ -165,6 +167,8 @@ class SignalFilter:
         ai_score: float,
         social_score: float,
         age_seconds: float,
+        whale_data: Optional[dict] = None,
+        safety_data: Optional[dict] = None,
     ) -> tuple:
         if self.is_blacklisted(address):
             return False, 0.0, "🚫 Blacklisted pattern"
@@ -186,10 +190,35 @@ class SignalFilter:
 
         timing = self.calculate_timing_score(age_seconds)
 
+        whale_score = 0.0
+        if whale_data:
+            whale_buys = whale_data.get("whale_buys", 0)
+            whale_sells = whale_data.get("whale_sells", 0)
+            if whale_buys > whale_sells and whale_buys >= 2:
+                whale_score = min(1.0, whale_buys * 0.15)
+            elif whale_buys > 0:
+                whale_score = 0.3
+
+        safety_score = 1.0
+        if safety_data:
+            if safety_data.get("is_manipulated"):
+                safety_score = 0.0
+            elif safety_data.get("price_impact_pct", 0) > 10:
+                safety_score = 0.2
+            elif safety_data.get("price_impact_pct", 0) > 5:
+                safety_score = 0.5
+            top10 = safety_data.get("top10_holder_pct", 0)
+            if top10 > 80:
+                safety_score = min(safety_score, 0.1)
+            elif top10 > 60:
+                safety_score = min(safety_score, 0.5)
+
         final_score = (
             onchain * self.onchain_weight
             + social_score * self.social_weight
             + timing * self.timing_weight
+            + whale_score * self.whale_weight
+            + safety_score * self.safety_weight
         )
 
         thr = self.effective_threshold()
