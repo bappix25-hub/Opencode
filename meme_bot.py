@@ -456,6 +456,10 @@ class MemeBot:
             return
 
         if final_score >= effective_threshold and bonding_boost > 0:
+            momentum_ok, momentum_reason = await self._check_momentum(address, launch_data)
+            if not momentum_ok:
+                logger.info(f"🚫 {launch_data.symbol}: Blocked by momentum check - {momentum_reason}")
+                return
             symbol = launch_data.symbol
             name = launch_data.name
             confidence_pct = int(final_score * 100)
@@ -618,6 +622,9 @@ class MemeBot:
                                         ld.sell_count = sells_1h
                                     if vol_1h > ld.volume:
                                         ld.volume = vol_1h
+                                    pair_price = float(pair.get("priceUsd", 0) or 0)
+                                    if pair_price > 0 and pair_price > ld.ath_price:
+                                        ld.ath_price = pair_price
                                     await self.check_pre_migration_signal(addr)
                         await asyncio.sleep(0.3)
 
@@ -646,6 +653,11 @@ class MemeBot:
                     current_price = float(pair.get("priceUsd", 0) or 0)
                     if coin_info.initial_price <= 0 or current_price <= 0:
                         continue
+
+                    ld = await self.state.get_launch_tracking(addr)
+                    if ld and current_price > ld.ath_price:
+                        ld.ath_price = current_price
+                        await self.state.add_launch_tracking(addr, ld)
 
                     multiplier = current_price / coin_info.initial_price
                     mcap = float(pair.get("fdv", 0) or 0)
@@ -747,6 +759,10 @@ class MemeBot:
                         effective_threshold = max(threshold, self.filter_engine.min_threshold)
 
                         if should_signal and ai_score >= effective_threshold:
+                            momentum_ok, momentum_reason = await self._check_momentum(addr, launch_data)
+                            if not momentum_ok:
+                                logger.info(f"🚫 {symbol}: Blocked by momentum check - {momentum_reason}")
+                                continue
                             holders = coin_info.holders
                             lp = coin_info.lp_locked
                             confidence_pct = int(final_score * 100)
@@ -987,30 +1003,36 @@ class MemeBot:
                     continue
                 sem = asyncio.Semaphore(3)
                 async def _refresh(addr, ld):
-                    async with sem:
-                        try:
-                            bc = await self.helius.get_bonding_curve_state(addr)
-                            if not bc:
-                                return
-                            new_progress = float(bc.get("progress_pct", 0) or 0)
-                            is_complete = bool(bc.get("complete", False))
-                            updated = False
-                            now = datetime.now(timezone.utc).timestamp()
-                            if new_progress > ld.curve_fill_pct:
-                                ld.curve_fill_pct = new_progress
-                                updated = True
-                            if is_complete and not ld.migration_time:
-                                ld.migration_time = now
-                                logger.info(f"🚀 মাইগ্রেশন: {ld.symbol} (curve {new_progress:.0f}%)")
-                                updated = True
-                                if addr in self.state.signals:
-                                    sig_info = self.state.signals[addr]
-                                    sig_info.is_pre_migration = False
-                                    sig_info.migration_time = now
-                            if updated:
-                                await self.state.add_launch_tracking(addr, ld)
-                        except Exception as e:
-                            logger.debug(f"curve refresh error for {addr}: {e}")
+                            async with sem:
+                                try:
+                                    bc = await self.helius.get_bonding_curve_state(addr)
+                                    if not bc:
+                                        return
+                                    new_progress = float(bc.get("progress_pct", 0) or 0)
+                                    is_complete = bool(bc.get("complete", False))
+                                    updated = False
+                                    now = datetime.now(timezone.utc).timestamp()
+                                    if new_progress > ld.curve_fill_pct:
+                                        ld.curve_fill_pct = new_progress
+                                        updated = True
+                                    if is_complete and not ld.migration_time:
+                                        ld.migration_time = now
+                                        logger.info(f"🚀 মাইগ্রেশন: {ld.symbol} (curve {new_progress:.0f}%)")
+                                        updated = True
+                                        if addr in self.state.signals:
+                                            sig_info = self.state.signals[addr]
+                                            sig_info.is_pre_migration = False
+                                            sig_info.migration_time = now
+                                    pair = await self.dex.fetch_pair_data(addr)
+                                    if pair:
+                                        pair_price = float(pair.get("priceUsd", 0) or 0)
+                                        if pair_price > 0 and pair_price > ld.ath_price:
+                                            ld.ath_price = pair_price
+                                            updated = True
+                                    if updated:
+                                        await self.state.add_launch_tracking(addr, ld)
+                                except Exception as e:
+                                    logger.debug(f"curve refresh error for {addr}: {e}")
                 await asyncio.gather(*[_refresh(addr, ld) for addr, ld in tracked.items()], return_exceptions=True)
             except asyncio.CancelledError:
                 break
@@ -1049,6 +1071,9 @@ class MemeBot:
                         continue
 
                     current_price = float(pair.get("priceUsd", 0) or 0)
+                    if current_price > ld.ath_price:
+                        ld.ath_price = current_price
+                        await self.state.add_launch_tracking(addr, ld)
                     initial_price = ld.initial_price
                     if initial_price <= 0:
                         initial_price = current_price or 0.000001
@@ -1494,6 +1519,41 @@ class MemeBot:
         else:
             logger.info(f"🆕 লঞ্চ ট্র্যাক: {symbol} (deployer: {deployer[:8] if deployer else 'unknown'}...)")
 
+    async def _check_momentum(self, address: str, launch_data: 'LaunchData' = None) -> tuple[bool, str]:
+        """
+        Check if token has positive momentum before sending signal.
+        Returns (ok, reason).
+        """
+        try:
+            pair = await self.dex.fetch_pair_data(address)
+            if not pair:
+                return False, "No pair data"
+            
+            price_change = pair.get("priceChange", {}) or {}
+            m5_change = float(price_change.get("m5", 0) or 0)
+            h1_change = float(price_change.get("h1", 0) or 0)
+            current_price = float(pair.get("priceUsd", 0) or 0)
+            
+            if current_price <= 0:
+                return False, "No current price"
+            
+            if m5_change <= 0 and h1_change <= 0:
+                return False, f"Negative momentum (5m: {m5_change:.1f}%, 1h: {h1_change:.1f}%)"
+            
+            if launch_data and launch_data.ath_price > 0:
+                drop_from_ath = (launch_data.ath_price - current_price) / launch_data.ath_price
+                if drop_from_ath > 0.30:
+                    return False, f"Dumped >30% from ATH (${launch_data.ath_price:.8f} -> ${current_price:.8f})"
+            
+            if launch_data and current_price > launch_data.ath_price:
+                launch_data.ath_price = current_price
+                await self.state.add_launch_tracking(address, launch_data)
+            
+            return True, "OK"
+        except Exception as e:
+            logger.debug(f"Momentum check error for {address}: {e}")
+            return True, "Check failed, allowing"
+
     async def check_pre_migration_signal(self, address: str):
         if await self.state.is_alerted(address):
             return
@@ -1646,6 +1706,11 @@ class MemeBot:
         if final_score >= effective_threshold and bonding_boost > 0:
             if red_flags:
                 logger.info(f"🚫 {launch_data.symbol}: Blocked by red flags: {red_flags}")
+                return
+
+            momentum_ok, momentum_reason = await self._check_momentum(address, launch_data)
+            if not momentum_ok:
+                logger.info(f"🚫 {launch_data.symbol}: Blocked by momentum check - {momentum_reason}")
                 return
 
             if logger.isEnabledFor(logging.INFO):
@@ -1809,6 +1874,9 @@ class MemeBot:
                                     ld.sell_count = sells_1h
                                 if vol_1h > ld.volume:
                                     ld.volume = vol_1h
+                            pair_price = float(pair.get("priceUsd", 0) or 0)
+                            if pair_price > 0 and pair_price > ld.ath_price:
+                                ld.ath_price = pair_price
                     await self.check_pre_migration_signal(addr)
                     await asyncio.sleep(0.3)
 
@@ -1833,6 +1901,10 @@ class MemeBot:
                     if coin_info.initial_price <= 0 or current_price <= 0:
                         continue
                     multiplier = current_price / coin_info.initial_price
+                    ld = await self.state.get_launch_tracking(addr)
+                    if ld and current_price > ld.ath_price:
+                        ld.ath_price = current_price
+                        await self.state.add_launch_tracking(addr, ld)
                     mcap = float(pair.get("fdv", 0) or 0)
                     liquidity = float(pair.get("liquidity", {}).get("usd", 0) or 0)
                     name = coin_info.name
@@ -1929,6 +2001,10 @@ class MemeBot:
 
                         effective_threshold = max(threshold, self.filter_engine.min_threshold)
                         if should_signal and ai_score >= effective_threshold:
+                            momentum_ok, momentum_reason = await self._check_momentum(addr, launch_data)
+                            if not momentum_ok:
+                                logger.info(f"🚫 {symbol}: Blocked by momentum check - {momentum_reason}")
+                                continue
                             holders = coin_info.holders
                             lp = coin_info.lp_locked
                             confidence_pct = int(final_score * 100)
@@ -2170,6 +2246,9 @@ class MemeBot:
                         ld.eval_done[str(next_offset)] = True
                         continue
                     current_price = float(pair.get("priceUsd", 0) or 0)
+                    if current_price > ld.ath_price:
+                        ld.ath_price = current_price
+                        await self.state.add_launch_tracking(addr, ld)
                     initial_price = ld.initial_price
                     if initial_price <= 0:
                         initial_price = current_price or 0.000001

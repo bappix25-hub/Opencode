@@ -25,6 +25,7 @@ class LaunchData:
     buy_velocity: float = 0.0
     curve_fill_pct: float = 0.0
     eval_done: dict = field(default_factory=dict)
+    ath_price: float = 0.0
 
 @dataclass
 class TrackedCoin:
