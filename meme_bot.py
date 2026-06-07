@@ -12,30 +12,6 @@ from bot_state import BotState, TrackedCoin, CoinInfo
 from config import config
 from dex_client import DexScreenerClient
 from rugcheck_client import RugcheckClient
-"""
-meme_bot.py — FIXED VERSION
-Bugs fixed:
-1. track_outcomes_loop: sleep missing at end of loop → CPU 100%
-2. shutdown(): tasks not awaited after cancel
-3. check_pre_migration_signal: red_flags block inside wrong if-block
-4. connection_monitor_loop: missing implementation placeholder fixed
-5. paper_trading_loop / daily_summary_loop / backtest_loop: added proper sleep guards
-"""
-
-import asyncio
-import logging
-import signal
-import sys
-from datetime import datetime, timezone
-
-import aiohttp
-from telegram import Bot
-from telegram.ext import Application
-
-from bot_state import BotState, TrackedCoin, CoinInfo
-from config import config
-from dex_client import DexScreenerClient
-from rugcheck_client import RugcheckClient
 from helius_client import HeliusClient
 from birdeye_client import BirdeyeClient
 from jupiter_client import JupiterClient
