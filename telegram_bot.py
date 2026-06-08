@@ -20,7 +20,6 @@ logger = logging.getLogger("telegram_bot")
 def main_keyboard():
     keyboard = [
         [KeyboardButton("📊 স্ট্যাটাস"), KeyboardButton("📈 পারফরম্যান্স")],
-        [KeyboardButton("🏆 ট্রেন"), KeyboardButton("⚙️ সেটিংস")],
         [KeyboardButton("💰 ব্যালেন্স"), KeyboardButton("📦 পজিশন")],
         [KeyboardButton("✅ অন"), KeyboardButton("❌ অফ")]
     ]
@@ -37,25 +36,17 @@ class TelegramHandlers:
 
     async def cmd_start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         text = (
-            "🤖 <b>Bappis Trade Bot v3 চালু!</b>\n"
-            "🌟 AI + Whale + Sentiment + Paper Trading সক্রিয়\n\n"
+            "🤖 <b>Bappis Trade Bot v3</b>\n"
+            "🌟 AI + Whale + Sentiment + Paper Trading\n\n"
             "📚 কমান্ড:\n"
             "/pump — পাম্প শেখান\n"
             "/dump — ডাম্প শেখান\n"
             "/forcepump — ফোর্স পাম্প শেখান\n"
             "/threshold — থ্রেশোল্ড সেট\n"
-            "/health — বটের স্বাস্থ্য\n"
             "/config — কনফিগারেশন\n"
-            "/backtest 30 — backtest\n"
-            "/lastbacktest — শেষ backtest\n"
-            "/backtesttrend — backtest উন্নতি\n"
+            "/backtest — backtest\n"
             "/signalstats — সিগন্যাল পরিসংখ্যান\n"
-            "/golden — golden patterns\n"
-            "/blacklist — blacklisted\n"
-            "/retrain — model retrain\n"
-            "/balance — ব্যালেন্স\n"
-            "/positions — পজিশন\n"
-            "/trades — ট্রেড হিস্ট্রি"
+            "/retrain — model retrain"
         )
         await update.message.reply_text(
             text,
@@ -218,18 +209,24 @@ class TelegramHandlers:
         stats = await self.state.get_stats()
         learner_stats = get_stats()
         active = "🟢 চালু" if stats["bot_active"] else "🔴 বন্ধ"
+        thr = self.filter_engine.effective_threshold() if self.filter_engine else 0.60
         await update.message.reply_text(
-            f"🏥 <b>বট স্বাস্থ্য</b>\n"
+            f"📊 <b>বট স্ট্যাটাস</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"অবস্থা: {active}\n"
-            f"🆕 লঞ্চ ট্র্যাক: <b>{stats['launch_tracking']}</b>\n"
-            f"🔍 মাইগ্রেশন ট্র্যাক: <b>{stats['tracked_coins']}</b>\n"
+            f"🆕 লঞ্চ: <b>{stats['launch_tracking']}</b> | "
+            f"🔍 মাইগ্রেশন: <b>{stats['tracked_coins']}</b>\n"
             f"🚫 ব্ল্যাকলিস্ট: <b>{stats['blacklisted']}</b>\n"
-            f"🚀 পাম্প: <b>{stats['pump_coins']}</b>\n"
-            f"📚 শেখা প্যাটার্ন: <b>{learner_stats['pump_patterns']}</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"📚 পাম্প প্যাটার্ন: <b>{learner_stats['pump_patterns']}</b>\n"
+            f"📖 লঞ্চ প্যাটার্ন: <b>{learner_stats['launch_patterns']}</b>\n"
+            f"📉 ডাম্প প্যাটার্ন: <b>{learner_stats['dump_patterns']}</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
             f"⚡ সিগন্যাল পাঠানো: <b>{learner_stats['total_signals']}</b>\n"
-            f"✅ সফলতা: <b>{learner_stats['accuracy']}%</b>\n"
-            f"🎯 থ্রেশোল্ড: <b>{int(stats['current_threshold']*100)}%</b>",
+            f"🏆 সফল (2x+): <b>{learner_stats['successful_signals']}</b>\n"
+            f"🎯 একুরেসি: <b>{learner_stats['accuracy']}%</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"🎯 থ্রেশোল্ড: <b>{int(thr*100)}%</b>",
             parse_mode="HTML"
         )
 
@@ -521,29 +518,19 @@ class TelegramHandlers:
             await self.cmd_health(update, context)
         elif text == "📈 পারফরম্যান্স":
             learner_stats = get_stats()
+            v = self.verify_loop.get_stats() if self.verify_loop else {}
             await update.message.reply_text(
                 f"📈 <b>পারফরম্যান্স</b>\n"
+                f"━━━━━━━━━━━━━━━━\n"
                 f"⚡ মোট সিগন্যাল: <b>{learner_stats['total_signals']}</b>\n"
-                f"✅ চেক হয়েছে: <b>{learner_stats['checked_signals']}</b>\n"
-                f"🏆 সফল (2x+): <b>{learner_stats['successful_signals']}</b>\n"
-                f"🎯 একুরেসি: <b>{learner_stats['accuracy']}%</b>\n"
+                f"✅ চেক হয়েছে: <b>{v.get('total_verified', 0)}</b>\n"
+                f"🏆 সফল (2x+): <b>{v.get('pumps', 0)}</b>\n"
+                f"🌟 স্ট্রং (5x+): <b>{v.get('strong_pumps', 0)}</b>\n"
+                f"❌ ডাম্প: <b>{v.get('dumps', 0)}</b>\n"
+                f"🎯 একুরেসি: <b>{v.get('win_rate', 0)}%</b>\n"
                 f"⏰ সেরা সময়: <b>{learner_stats['best_hour']}:00 UTC</b>",
                 parse_mode="HTML"
             )
-        elif text == "🏆 ট্রেন":
-            learner_stats = get_stats()
-            await update.message.reply_text(
-                f"🏆 <b>লার্নিং স্ট্যাটাস</b>\n"
-                f"🧠 পাম্প প্যাটার্ন: <b>{learner_stats['pump_patterns']}</b>\n"
-                f"📚 লঞ্চ প্যাটার্ন: <b>{learner_stats['launch_patterns']}</b>\n"
-                f"📉 ডাম্প প্যাটার্ন: <b>{learner_stats['dump_patterns']}</b>\n"
-                f"✍️ ম্যানুয়াল পাম্প: <b>{learner_stats['manual_pumps']}</b>\n"
-                f"🎯 থ্রেশোল্ড: <b>{int(learner_stats['threshold']*100)}%</b>\n"
-                f"📊 একুরেসি: <b>{learner_stats['accuracy']}%</b>",
-                parse_mode="HTML"
-            )
-        elif text == "⚙️ সেটিংস":
-            await self.cmd_config(update, context)
         elif text == "💰 ব্যালেন্স":
             await self.cmd_balance(update, context)
         elif text == "📦 পজিশন":

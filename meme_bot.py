@@ -430,6 +430,10 @@ class MemeBot:
                 bonding_boost += 0.05
                 bonding_reasons.append("📈 Curve progressing")
 
+        if bonding_boost == 0 and launch_data.buy_count >= 3:
+            bonding_boost += 0.05
+            bonding_reasons.append("📊 Minimum activity")
+
         logger.info(
             f"pre-mig eval {launch_data.symbol}: age={int(age)}s "
             f"buys={launch_data.buy_count} sells={launch_data.sell_count} "
