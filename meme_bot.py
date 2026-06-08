@@ -564,6 +564,7 @@ class MemeBot:
                 lp_locked=launch_data.lp_locked,
                 deployer_wallet=launch_data.deployer_wallet,
                 initial_holders=launch_data.holders,
+                ath_price=price,
             )
             await self.state.add_tracked_coin(address, tracked)
             logger.info(f"✅ মাইগ্রেশন ট্র্যাক: {symbol} | price: ${price:.8f}")
@@ -623,6 +624,7 @@ class MemeBot:
                             symbol=pair.get("baseToken", {}).get("symbol", "???"),
                             first_seen=launch_ts,
                             launch_time=launch_ts,
+                            ath_price=price,
                         )
                         await self.state.add_tracked_coin(addr, tracked)
 
@@ -698,6 +700,9 @@ class MemeBot:
                     if coin_info.initial_price <= 0 or current_price <= 0:
                         continue
 
+                    if current_price > coin_info.ath_price:
+                        coin_info.ath_price = current_price
+
                     ld = await self.state.get_launch_tracking(addr)
                     if ld and current_price > ld.ath_price:
                         ld.ath_price = current_price
@@ -732,8 +737,9 @@ class MemeBot:
                         logger.info(f"🚫 লিকুইডিটি pull: {symbol}")
                         continue
 
-                    if age > 86400:
-                        verified, actual_multi = verify_pump(pair, config.pump_multiplier)
+                    if 21600 <= age <= 25200:
+                        verified, actual_multi = verify_pump(pair, config.pump_multiplier,
+                            ath_price=coin_info.ath_price, initial_price=coin_info.initial_price)
                         if verified:
                             await self.state.add_pump_coin(addr, CoinInfo(name=name, symbol=symbol))
                             txs = await self.helius.get_launch_transactions(addr)
@@ -760,9 +766,11 @@ class MemeBot:
                             )
                             if config.enable_github_sync:
                                 await sync_to_github(f"পাম্প: {symbol} {actual_multi}x")
-                        else:
+                        elif actual_multi <= 3.0:
                             await self.state.add_dump_coin(addr, CoinInfo(name=name, symbol=symbol))
                             learn_dump({"name": name, "symbol": symbol}, pair, addr, manual=False)
+                        else:
+                            logger.info(f"⏭️ Skip {symbol}: {actual_multi}x (3x-4x zone)")
                         continue
 
                     if not await self.state.is_alerted(addr) and 0 < age <= 600:

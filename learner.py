@@ -77,7 +77,13 @@ def get_launch_age(pair: dict) -> Optional[float]:
         pass
     return None
 
-def verify_pump(pair: dict, multiplier_threshold: float = 3.0) -> tuple:
+def verify_pump(pair: dict, multiplier_threshold: float = 4.0, ath_price: float = 0.0, initial_price: float = 0.0) -> tuple:
+    try:
+        if ath_price > 0 and initial_price > 0:
+            multiplier = ath_price / initial_price
+            return multiplier >= multiplier_threshold, round(multiplier, 2)
+    except Exception:
+        pass
     try:
         h1 = float(pair.get("priceChange", {}).get("h1", 0) or 0)
         h6 = float(pair.get("priceChange", {}).get("h6", 0) or 0)
