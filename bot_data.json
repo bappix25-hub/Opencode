@@ -1103,22 +1103,6 @@
   ],
   "dump_patterns": [
     {
-      "mcap": 17590163969.029,
-      "liquidity": 879508198.4514499,
-      "vol_liq_ratio": 0.3,
-      "buy_sell_ratio": 0.0,
-      "buy_count": 0,
-      "sell_count": 0,
-      "holders": 2,
-      "lp_locked": 0,
-      "price_change_5m": 0.0,
-      "age_at_signal": 1871.8498919010162,
-      "symbol": "Crash",
-      "address": "B5o9ckvnRSo9s7dx5EScpoQWNMUXVbym6AEyaJdbpump",
-      "source": "auto_track",
-      "timestamp": "2026-06-08T04:58:50.776552+00:00"
-    },
-    {
       "mcap": 3564784053.1549997,
       "liquidity": 178239202.65774998,
       "vol_liq_ratio": 0.3,
@@ -9637,6 +9621,30 @@
       "final_multiplier": 0,
       "manual": false,
       "timestamp": "2026-06-08T19:57:01.509305+00:00"
+    },
+    {
+      "mcap": 2283.0,
+      "liquidity": 3425.37,
+      "volume_h1": 191095.49,
+      "volume_m5": 20.34,
+      "age_seconds": 3827.212182128906,
+      "price_change_5m": -3.02,
+      "price_change_1h": -94.08,
+      "hour_of_day": 20,
+      "buys_m5": 0,
+      "sells_m5": 5,
+      "buys_h1": 3064,
+      "sells_h1": 4791,
+      "vol_liq_ratio": 55.78827688687645,
+      "buy_sell_ratio_m5": 0.0,
+      "buy_sell_ratio_h1": 0.3900700190961171,
+      "mcap_liq_ratio": 0.6664973418929926,
+      "momentum_5m": -3.02,
+      "symbol": "STREAM",
+      "address": "2uLuQn13UP5Qsv5TLfKYtsmbdzeNpSFaEy6KBFH8pump",
+      "final_multiplier": 0,
+      "manual": false,
+      "timestamp": "2026-06-08T20:03:04.212310+00:00"
     }
   ],
   "launch_patterns": [
@@ -17136,7 +17144,8 @@
     "4fa668f3c25a19911c1a39134154de01",
     "e4d0cf7a3e42ce70e61dca4bceecc702",
     "acc1b48601d4b8020f7ac7d736ff78e2",
-    "be4f1e2150c50f698eea3823e9ba7414"
+    "be4f1e2150c50f698eea3823e9ba7414",
+    "28a078383a37dfee6f093778a16d0243"
   ],
   "signals": [],
   "model": {
