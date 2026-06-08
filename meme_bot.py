@@ -414,6 +414,15 @@ class MemeBot:
                 bonding_boost += 0.10
                 bonding_reasons.append("📈 Curve filling fast")
 
+        logger.debug(
+            f"pre-mig eval {launch_data.symbol}: age={int(age)}s "
+            f"buys={launch_data.buy_count} sells={launch_data.sell_count} "
+            f"unique={unique_wallets} holders={launch_data.holders} "
+            f"ai={ai_score:.2f} soc={social_score:.2f} bond={bonding_boost:.2f} "
+            f"red={red_flag_penalty:.2f} "
+            f"buy_sell_ratio={buy_sell_ratio:.1f} curve={launch_data.curve_fill_pct:.0f}%"
+        )
+
         real_mcap = getattr(self, "_last_pre_mig_pair_mcap", 0) or 0
         real_liq = getattr(self, "_last_pre_mig_pair_liq", 0) or 0
         real_vol_liq = (real_mcap / max(real_liq, 1)) if (real_mcap and real_liq) else 0.3

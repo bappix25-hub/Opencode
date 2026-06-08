@@ -30,6 +30,7 @@ class PumpPortalWS:
                     self._ws = ws
                     await ws.send(json.dumps({"method": "subscribeNewToken"}))
                     await ws.send(json.dumps({"method": "subscribeMigration"}))
+                    await ws.send(json.dumps({"method": "subscribeTokenTrade"}))
                     logger.info("PumpPortal connected!")
                     
                     async for message in ws:
