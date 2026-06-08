@@ -194,11 +194,20 @@ class MemeBot:
             return
         launch_data = await self.state.get_launch_tracking(address)
         if not launch_data:
+            if not hasattr(self, '_trade_no_track_logged'):
+                self._trade_no_track_logged = set()
+            if address not in self._trade_no_track_logged:
+                self._trade_no_track_logged.add(address)
+                logger.info(f"TRADE NO TRACK: {address[:8]}... txType={data.get('txType')}")
             return
         tx_type = data.get("txType", "")
         wallet = data.get("traderPublicKey", "")
-        if not wallet and launch_data.buy_count == 0:
-            logger.info(f"TRADE DEBUG keys={list(data.keys())} traderPK={data.get('traderPublicKey', 'MISSING')}")
+        if not wallet:
+            if not hasattr(self, '_trade_debug_logged'):
+                self._trade_debug_logged = set()
+            if address not in self._trade_debug_logged:
+                self._trade_debug_logged.add(address)
+                logger.info(f"TRADE DEBUG keys={list(data.keys())} traderPK={data.get('traderPublicKey', 'MISSING')}")
         amount = float(data.get("solAmount", 0) or data.get("tokenAmount", 0) or 0)
         await self.state.update_launch_tx(address, tx_type, wallet, amount)
         await self.check_pre_migration_signal(address)
