@@ -112,6 +112,18 @@ class BotState:
         async with self._lock:
             return self.launch_tracking.get(address)
 
+    async def save_migration_launch_pattern(self, address: str, launch_pattern: dict) -> None:
+        """Save launch pattern at migration time for post-migration learning."""
+        async with self._lock:
+            if not hasattr(self, '_migration_launch_patterns'):
+                self._migration_launch_patterns = {}
+            self._migration_launch_patterns[address] = launch_pattern
+
+    async def get_migration_launch_pattern(self, address: str) -> Optional[dict]:
+        """Get saved launch pattern for post-migration learning."""
+        async with self._lock:
+            return getattr(self, '_migration_launch_patterns', {}).get(address)
+
     async def get_all_tracked(self) -> dict:
         async with self._lock:
             return dict(self.launch_tracking)

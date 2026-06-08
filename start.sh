@@ -10,8 +10,9 @@ cd "$(dirname "$0")"
 # Auto-update from GitHub before starting
 if [ -d .git ]; then
     echo "📥 Updating from GitHub..."
+    mkdir -p "$HOME/.tmp_opencode"
     if [ -f bot_data.json ]; then
-        cp bot_data.json /tmp/botdata_local_backup.json
+        cp bot_data.json "$HOME/.tmp_opencode/botdata_local_backup.json"
     fi
 
     git rebase --abort 2>/dev/null
@@ -24,13 +25,13 @@ if [ -d .git ]; then
     if [ $PULL_EXIT -ne 0 ]; then
         echo "⚠️ Pull failed, trying smart-merge for bot_data.json..."
         git checkout origin/main -- bot_data.json 2>/dev/null
-        if [ -f /tmp/botdata_local_backup.json ]; then
-            REMOTE_TMP="/tmp/remote_data_$$.json"
+        if [ -f "$HOME/.tmp_opencode/botdata_local_backup.json" ]; then
+            REMOTE_TMP="$HOME/.tmp_opencode/remote_data_$$.json"
             cp bot_data.json "$REMOTE_TMP"
             python3 << PYEOF
 import json
 try:
-    local = json.load(open('/tmp/botdata_local_backup.json'))
+    local = json.load(open('$HOME/.tmp_opencode/botdata_local_backup.json'))
     remote = json.load(open('${REMOTE_TMP}'))
     def ml(a, b, k='address', c=100):
         s, o = set(), []

@@ -283,7 +283,7 @@ class MemeBot:
         await self.state.add_launch_tracking(address, launch_data)
 
         if holders is not None and holders < 3:
-            logger.info(f"📊 শেখার জন্য ট্র্যাক (low holders): {symbol} ({holders}h)")
+            logger.info(f"📊 ট্র্যাক (low holders): {symbol} ({holders}h)")
         else:
             logger.info(f"🆕 লঞ্চ ট্র্যাক: {symbol} (deployer: {deployer[:8] if deployer else 'unknown'}...)")
 
@@ -304,7 +304,7 @@ class MemeBot:
 
         if unique_wallets < 2:
             return
-        if launch_data.holders < 5:
+        if launch_data.holders < 2:
             return
         if launch_data.buy_count < 3:
             return
@@ -315,13 +315,13 @@ class MemeBot:
 
         if unique_wallets < 3:
             red_flags.append("⚠️ Very few unique wallets")
-            red_flag_penalty += 0.3
+            red_flag_penalty += 0.2
         if launch_data.holders < 10:
             red_flags.append("⚠️ Low holder count")
-            red_flag_penalty += 0.15
+            red_flag_penalty += 0.1
         if launch_data.holders < 3:
             red_flags.append("🚨 Suspiciously low holders")
-            red_flag_penalty += 0.4
+            red_flag_penalty += 0.2
 
         launch_dict = {
             "buy_count": launch_data.buy_count,
@@ -372,6 +372,9 @@ class MemeBot:
             if unique_wallets >= 5 and launch_data.buy_count >= 10:
                 bonding_boost += 0.20
                 bonding_reasons.append("👥 Multi-wallet demand (5+ wallets)")
+            elif launch_data.buy_count >= 5 and buy_sell_ratio >= 3.0:
+                bonding_boost += 0.10
+                bonding_reasons.append("📈 Early buy pressure")
         elif age < 180:
             if launch_data.buy_count >= 15 and buy_sell_ratio >= 3.0 and unique_wallets >= 5:
                 bonding_boost += 0.20
@@ -379,6 +382,9 @@ class MemeBot:
             if unique_wallets >= 8:
                 bonding_boost += 0.15
                 bonding_reasons.append("🌐 Diverse buyers (8+ wallets)")
+            elif unique_wallets >= 5:
+                bonding_boost += 0.10
+                bonding_reasons.append("👥 Growing wallets")
         elif age < 300:
             if launch_data.buy_count >= 20 and buy_sell_ratio >= 2.5 and unique_wallets >= 8:
                 bonding_boost += 0.15
@@ -387,7 +393,7 @@ class MemeBot:
                 bonding_boost += 0.10
                 bonding_reasons.append("👥 Growing community")
 
-        if launch_data.holders >= 10 and launch_data.holders <= 100:
+        if launch_data.holders >= 5 and launch_data.holders <= 100:
             bonding_boost += 0.10
             bonding_reasons.append("👥 Healthy holder range")
 
@@ -401,8 +407,15 @@ class MemeBot:
                         bonding_boost += 0.25
                         bonding_reasons.append("⚡ High velocity frenzy")
                     elif launch_data.buy_velocity >= avg_vel:
-                        bonding_boost += 0.15
                         bonding_reasons.append("⚡ Above avg velocity")
+                        bonding_boost += 0.15
+                else:
+                    if launch_data.buy_velocity >= 5:
+                        bonding_boost += 0.15
+                        bonding_reasons.append("⚡ High velocity")
+                    elif launch_data.buy_velocity >= 2:
+                        bonding_boost += 0.10
+                        bonding_reasons.append("⚡ Active buying")
             except Exception:
                 pass
 
@@ -413,8 +426,11 @@ class MemeBot:
             elif launch_data.curve_fill_pct >= 60:
                 bonding_boost += 0.10
                 bonding_reasons.append("📈 Curve filling fast")
+            elif launch_data.curve_fill_pct >= 40:
+                bonding_boost += 0.05
+                bonding_reasons.append("📈 Curve progressing")
 
-        logger.debug(
+        logger.info(
             f"pre-mig eval {launch_data.symbol}: age={int(age)}s "
             f"buys={launch_data.buy_count} sells={launch_data.sell_count} "
             f"unique={unique_wallets} holders={launch_data.holders} "
@@ -450,7 +466,7 @@ class MemeBot:
         effective_threshold = max(threshold, self.filter_engine.min_threshold)
         effective_threshold += red_flag_penalty * 0.5
 
-        logger.debug(
+        logger.info(
             f"pre-mig {launch_data.symbol}: age={int(age)}s "
             f"buys={launch_data.buy_count} sells={launch_data.sell_count} "
             f"ai={ai_score:.2f} soc={social_score:.2f} bond={bonding_boost:.2f} "
@@ -460,7 +476,7 @@ class MemeBot:
 
         # FIX: red_flags now block BEFORE signalling (was inside wrong if-block before)
         if red_flags and red_flag_penalty >= 0.5:
-            logger.debug(f"🚫 {launch_data.symbol}: Blocked by red flags: {red_flags}")
+            logger.info(f"🚫 {launch_data.symbol}: Blocked by red flags: {red_flags}")
             return
 
         if final_score >= effective_threshold and bonding_boost > 0:
@@ -547,6 +563,22 @@ class MemeBot:
             )
             await self.state.add_tracked_coin(address, tracked)
             logger.info(f"✅ মাইগ্রেশন ট্র্যাক: {symbol} | price: ${price:.8f}")
+
+            launch_pattern = {
+                "buy_count": launch_data.buy_count,
+                "sell_count": launch_data.sell_count,
+                "unique_wallets": len(launch_data.unique_wallets),
+                "volume": launch_data.volume,
+                "buy_sell_ratio": launch_data.buy_count / max(launch_data.sell_count, 1),
+                "buy_velocity": getattr(launch_data, 'buy_velocity', 0),
+                "curve_fill_pct": getattr(launch_data, 'curve_fill_pct', 0),
+                "avg_buy_gap": 0,
+                "symbol": symbol,
+                "address": address,
+                "source": "migration_snapshot",
+                "timestamp": datetime.now(timezone.utc).isoformat()
+            }
+            await self.state.save_migration_launch_pattern(address, launch_pattern)
 
     async def realtime_scan_loop(self):
         sync_counter = 0
@@ -702,6 +734,8 @@ class MemeBot:
                             await self.state.add_pump_coin(addr, CoinInfo(name=name, symbol=symbol))
                             txs = await self.helius.get_launch_transactions(addr)
                             launch_pat = extract_launch_pattern(txs) if txs else None
+                            if not launch_pat:
+                                launch_pat = await self.state.get_migration_launch_pattern(addr)
                             learn_pump_with_launch(
                                 {"name": name, "symbol": symbol}, pair, actual_multi,
                                 launch_pat, addr, manual=False
@@ -1065,10 +1099,9 @@ class MemeBot:
 
     async def track_outcomes_loop(self):
         """
-        Stage 2 learning: for every launch tracked, re-check price at T+5/15/60 minutes.
-        FIX: Added proper sleep at end of loop to prevent CPU 100%.
+        Monitoring-only: ATH + honeypot detection at T+5/15/60.
+        NO pre-migration learning. Learning ONLY post-migration via verify_pump().
         """
-        from bot_state import LaunchData
         eval_offsets = [300, 900, 3600]
         await asyncio.sleep(120)
 
@@ -1097,9 +1130,6 @@ class MemeBot:
                     if current_price > ld.ath_price:
                         ld.ath_price = current_price
                         await self.state.add_launch_tracking(addr, ld)
-                    initial_price = ld.initial_price
-                    if initial_price <= 0:
-                        initial_price = current_price or 0.000001
 
                     hp_report = None
                     try:
@@ -1114,57 +1144,6 @@ class MemeBot:
                             await self.state.add_blocked_deployer(ld.deployer_wallet)
                         logger.info(f"🍯 লেট-রিভিল হানিপট: {ld.symbol} @ T+{int(next_offset)}s")
 
-                    launch_dict = {
-                        "buy_count": ld.buy_count,
-                        "sell_count": ld.sell_count,
-                        "unique_wallets": len(ld.unique_wallets),
-                        "volume": ld.volume,
-                    }
-
-                    if next_offset == 300 and not is_hp:
-                        multiplier = current_price / initial_price if initial_price else 0
-                        if multiplier >= 2.0:
-                            try:
-                                ok, msg = learn_early_pump(
-                                    addr, ld.symbol, ld.name, pair,
-                                    launch_dict, age, multiplier
-                                )
-                                if ok:
-                                    logger.info(f"🎯 Early pump trained: ${ld.symbol} {multiplier:.2f}x @ T+5min")
-                                    if self.telegram_app and self.telegram_app.bot:
-                                        link = gmgn_link(addr)
-                                        await send_msg(self.telegram_app.bot,
-                                            f"🎯 <b>Early Pump শেখা!</b>\n"
-                                            f"🏷️ ${ld.symbol}\n"
-                                            f"📈 {multiplier:.2f}x @ T+5min\n"
-                                            f"📊 Buy: {ld.buy_count} | Wallets: {len(ld.unique_wallets)}\n"
-                                            f"🔗 <a href='{link}'>GMGN</a>"
-                                        )
-                            except Exception as e:
-                                logger.debug(f"Early pump learn error: {e}")
-
-                    learned, kind, msg = auto_learn_from_tracking(
-                        address=addr,
-                        symbol=ld.symbol,
-                        name=ld.name,
-                        launch_dict=launch_dict,
-                        current_price=current_price,
-                        initial_price=initial_price,
-                        holders=ld.holders,
-                        lp_locked=ld.lp_locked,
-                        deployer_wallet=ld.deployer_wallet,
-                        tx_history=ld.tx_history,
-                        age_seconds=age,
-                        pump_threshold=config.pump_multiplier,
-                        is_honeypot=is_hp,
-                        honeypot_reasons=hp_report.reasons if hp_report else None,
-                    )
-
-                    if learned:
-                        multiplier = current_price / initial_price if initial_price else 0
-                        suffix = " (honeypot)" if is_hp else ""
-                        logger.info(f"📚 অটো-শেখা: ${ld.symbol} → {kind} {multiplier:.2f}x @ T+{int(next_offset)}s{suffix}")
-
                     ld.eval_done[str(next_offset)] = True
 
             except asyncio.CancelledError:
@@ -1172,7 +1151,6 @@ class MemeBot:
             except Exception as e:
                 logger.error(f"track_outcomes_loop error: {e}")
 
-            # FIX: This sleep was missing — caused CPU 100% busy loop
             await asyncio.sleep(60)
 
     async def connection_monitor_loop(self):
