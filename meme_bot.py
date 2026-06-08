@@ -529,6 +529,34 @@ class MemeBot:
             launch_data.pre_signal_sent = True
             logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {symbol} স্কোর: {final_score:.2f}")
 
+    async def _check_momentum(self, address: str, launch_data=None):
+        """Check price/buy momentum. Returns (ok, reason)."""
+        try:
+            pair = await self.dex.fetch_pair_data(address)
+            if not pair:
+                if launch_data:
+                    bsr = launch_data.buy_count / max(launch_data.sell_count, 1)
+                    if bsr < 1.0:
+                        return False, f"No pair, buy/sell={bsr:.1f}"
+                return True, "No pair data"
+
+            price_change_5m = float(pair.get("priceChange", {}).get("m5", 0) or 0)
+            price_change_1h = float(pair.get("priceChange", {}).get("h1", 0) or 0)
+
+            if price_change_5m < -15:
+                return False, f"5m dump: {price_change_5m:+.1f}%"
+            if price_change_5m < 0 and price_change_1h < -10:
+                return False, f"5m={price_change_5m:+.1f}% 1h={price_change_1h:+.1f}%"
+            if launch_data and launch_data.ath_price > 0:
+                current_price = float(pair.get("priceUsd", 0) or 0)
+                if current_price > 0:
+                    ath_drop = ((launch_data.ath_price - current_price) / launch_data.ath_price) * 100
+                    if ath_drop > 40:
+                        return False, f"ATH drop {ath_drop:.0f}%"
+        except Exception as e:
+            logger.debug(f"Momentum check error: {e}")
+        return True, "OK"
+
     async def _on_migration(self, data: dict):
         await self.handle_migration(data)
 
@@ -1243,7 +1271,8 @@ class MemeBot:
             try:
                 await asyncio.sleep(300)  # Check every 5 min
                 now = datetime.now(timezone.utc).timestamp()
-                for addr, pos in list(self.paper_trader.state.open_positions.items()):
+                for pos in self.paper_trader.get_open_positions():
+                    addr = pos.address
                     age = now - pos.entry_time
                     if age > 10800:  # 3h timeout
                         pair = await self.dex.fetch_pair_data(addr)
