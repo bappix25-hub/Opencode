@@ -1003,22 +1003,6 @@
   ],
   "dump_patterns": [
     {
-      "mcap": 3564784088.685,
-      "liquidity": 178239204.43425,
-      "vol_liq_ratio": 0.3,
-      "buy_sell_ratio": 0.0,
-      "buy_count": 0,
-      "sell_count": 0,
-      "holders": 3,
-      "lp_locked": 100,
-      "price_change_5m": 0.0,
-      "age_at_signal": 1891.3814678192139,
-      "symbol": "PANGER",
-      "address": "6uybr15xtmuQdm7tyq1jZ7j24wWz8axA2fGnjEETpump",
-      "source": "auto_track",
-      "timestamp": "2026-06-08T04:58:45.497670+00:00"
-    },
-    {
       "mcap": 17376518166.91,
       "liquidity": 868825908.3455,
       "vol_liq_ratio": 0.3,
@@ -9505,6 +9489,30 @@
       "final_multiplier": 0,
       "manual": false,
       "timestamp": "2026-06-08T19:06:30.952500+00:00"
+    },
+    {
+      "mcap": 35648.0,
+      "liquidity": 13106.14,
+      "volume_h1": 1456.43,
+      "volume_m5": 145.57,
+      "age_seconds": 1134099.1210319824,
+      "price_change_5m": 6.29,
+      "price_change_1h": 15.97,
+      "hour_of_day": 19,
+      "buys_m5": 4,
+      "sells_m5": 2,
+      "buys_h1": 21,
+      "sells_h1": 16,
+      "vol_liq_ratio": 0.11112577768893055,
+      "buy_sell_ratio_m5": 0.6666666666666666,
+      "buy_sell_ratio_h1": 0.5675675675675675,
+      "mcap_liq_ratio": 2.719946528878831,
+      "momentum_5m": 6.29,
+      "symbol": "DEMBELE",
+      "address": "C8TkeNnVUuwVTLg77vLhKLMHYnvVvFxS4YEJPPZJpump",
+      "final_multiplier": 0,
+      "manual": false,
+      "timestamp": "2026-06-08T19:06:48.121109+00:00"
     }
   ],
   "launch_patterns": [
@@ -16940,7 +16948,8 @@
     "de11188a4899371e36b5811f9bba9db9",
     "63123e81fa8d2ed599dc15c8db41d802",
     "fc52330bc01ec9b26ea16663dfbf7c02",
-    "27231b94617faafd7518fe5471093f6a"
+    "27231b94617faafd7518fe5471093f6a",
+    "78eb64320231a53e7fb493283c97e3cd"
   ],
   "signals": [],
   "model": {
