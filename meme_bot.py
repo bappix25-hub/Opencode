@@ -197,6 +197,8 @@ class MemeBot:
             return
         tx_type = data.get("txType", "")
         wallet = data.get("traderPublicKey", "")
+        if not wallet and launch_data.buy_count == 0:
+            logger.info(f"TRADE DEBUG keys={list(data.keys())} traderPK={data.get('traderPublicKey', 'MISSING')}")
         amount = float(data.get("solAmount", 0) or data.get("tokenAmount", 0) or 0)
         await self.state.update_launch_tx(address, tx_type, wallet, amount)
         await self.check_pre_migration_signal(address)
@@ -670,8 +672,6 @@ class MemeBot:
                                 unique_from_txns = buys_1h + sells_1h
                                 if len(ld.unique_wallets) > ld.holders:
                                     ld.holders = len(ld.unique_wallets)
-                                elif unique_from_txns > ld.holders:
-                                    ld.holders = unique_from_txns
 
                                 if buys_1h > ld.buy_count or sells_1h > ld.sell_count or vol_1h > ld.volume:
                                     if buys_1h > ld.buy_count:
