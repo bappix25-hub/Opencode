@@ -698,25 +698,34 @@
       "final_multiplier": 5.04,
       "manual": false,
       "timestamp": "2026-06-08T09:36:59.050564+00:00"
+    },
+    {
+      "mcap": 66591.0,
+      "liquidity": 25211.86,
+      "volume_h1": 59228.15,
+      "volume_m5": 10945.89,
+      "age_seconds": 3469.709416015625,
+      "price_change_5m": 83.76,
+      "price_change_1h": 2724.0,
+      "hour_of_day": 12,
+      "buys_m5": 86,
+      "sells_m5": 49,
+      "buys_h1": 842,
+      "sells_h1": 591,
+      "vol_liq_ratio": 2.3492177887708405,
+      "buy_sell_ratio_m5": 0.6370370370370371,
+      "buy_sell_ratio_h1": 0.5875785066294487,
+      "mcap_liq_ratio": 2.6412569322533126,
+      "momentum_5m": 83.76,
+      "symbol": "$DON",
+      "name": "Omerta",
+      "address": "XFDQy6C5DfCaoyVAGpJAkyKsGf8zw5LnkP8zU3eSaoo",
+      "final_multiplier": 28.24,
+      "manual": false,
+      "timestamp": "2026-06-08T12:34:22.709495+00:00"
     }
   ],
   "dump_patterns": [
-    {
-      "mcap": 50494117566.461,
-      "liquidity": 2524705878.32305,
-      "vol_liq_ratio": 0.3,
-      "buy_sell_ratio": 0.0,
-      "buy_count": 0,
-      "sell_count": 0,
-      "holders": 3,
-      "lp_locked": 0,
-      "price_change_5m": 0.0,
-      "age_at_signal": 2028.7302658557892,
-      "symbol": "9u",
-      "address": "Eu2VmYYggSKpAtZg5Pt8LPAC5GF2vHmFFGwarr1Npump",
-      "source": "auto_track",
-      "timestamp": "2026-06-08T04:57:26.375438+00:00"
-    },
     {
       "mcap": 35323892.708,
       "liquidity": 1766194.6354,
@@ -8828,6 +8837,30 @@
       "final_multiplier": 0,
       "manual": false,
       "timestamp": "2026-06-08T11:32:06.154042+00:00"
+    },
+    {
+      "mcap": 45367.0,
+      "liquidity": 15077.37,
+      "volume_h1": 87952.2,
+      "volume_m5": 2785.95,
+      "age_seconds": 6784.252415039063,
+      "price_change_5m": 24.53,
+      "price_change_1h": -41.37,
+      "hour_of_day": 12,
+      "buys_m5": 46,
+      "sells_m5": 32,
+      "buys_h1": 1164,
+      "sells_h1": 931,
+      "vol_liq_ratio": 5.833391367327325,
+      "buy_sell_ratio_m5": 0.5897435897435898,
+      "buy_sell_ratio_h1": 0.5556085918854415,
+      "mcap_liq_ratio": 3.008946520513856,
+      "momentum_5m": 24.53,
+      "symbol": "POG",
+      "address": "2WoyrRkeWn84fZTG2eeqTiUMcpmfpUnvSdwJNdXnfund",
+      "final_multiplier": 0,
+      "manual": false,
+      "timestamp": "2026-06-08T12:34:44.252508+00:00"
     }
   ],
   "launch_patterns": [
@@ -9012,6 +9045,20 @@
       "address": "2dLn3Gc5YvK7j6Mc8xmFfswZRByA7Rx77uyVhSvdpump",
       "final_multiplier": 5.04,
       "age_seconds": 5453.050514892579,
+      "source": "history_pump"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 20,
+      "unique_wallets": 13,
+      "volume": 53683417.065105096,
+      "buy_sell_ratio": 0.0,
+      "hour_of_day": 12,
+      "timestamp": "2026-06-08T12:34:22.709531+00:00",
+      "symbol": "$DON",
+      "address": "XFDQy6C5DfCaoyVAGpJAkyKsGf8zw5LnkP8zU3eSaoo",
+      "final_multiplier": 28.24,
+      "age_seconds": 3469.709416015625,
       "source": "history_pump"
     }
   ],
@@ -16050,16 +16097,18 @@
     "c602fad0ea97bd55e778f5d38d29d692",
     "26ae1ff611bd64c470ae412ab2857764",
     "7b8071c80ee5734e635507a01a886fe1",
-    "7a177b92c08b89823146f0f7c5225401"
+    "7a177b92c08b89823146f0f7c5225401",
+    "ad75954ab57fa1113b178e40cd8eb0c7",
+    "5be27e015a5ef27c52dd6b15b7a9f266"
   ],
   "signals": [],
   "model": {
-    "avg_pump_mcap": 356428.84,
-    "avg_pump_liquidity": 40019.54222222222,
-    "avg_pump_volume_h1": 149659.95222222223,
-    "avg_pump_buys_h1": 2031.9259259259259,
-    "avg_pump_price_change_5m": 10.825555555555555,
-    "avg_pump_age_at_signal": 29130.190320538557,
+    "avg_pump_mcap": 345281.23076923075,
+    "avg_pump_liquidity": 39490.69642857143,
+    "avg_pump_volume_h1": 146430.245,
+    "avg_pump_buys_h1": 1989.4285714285713,
+    "avg_pump_price_change_5m": 13.430357142857144,
+    "avg_pump_age_at_signal": 28213.744573948454,
     "best_hours": {
       "18": 7,
       "19": 3,
@@ -16067,7 +16116,8 @@
       "21": 7,
       "22": 2,
       "5": 2,
-      "9": 3
+      "9": 3,
+      "12": 1
     },
     "hourly_success_rate": {
       "18": 1.0,
@@ -16076,7 +16126,8 @@
       "21": 1.0,
       "22": 1.0,
       "5": 1.0,
-      "9": 1.0
+      "9": 1.0,
+      "12": 1.0
     },
     "total_signals": 5,
     "correct_signals": 5,
@@ -16084,17 +16135,17 @@
     "threshold": 0.25,
     "signal_age_min": 311.597211328125,
     "signal_age_max": 900,
-    "launch_avg_buys": 80.76923076923077,
-    "launch_avg_wallets": 23.846153846153847,
-    "launch_avg_volume": 11208732.773607366,
-    "std_pump_mcap": 753289.2914692358,
-    "std_pump_liquidity": 39619.59179853295,
-    "std_pump_volume_h1": 184201.93478976717,
-    "std_pump_buys_h1": 3075.2031943612583,
-    "avg_pump_vol_liq_ratio": 5.153926340314829,
-    "std_pump_vol_liq_ratio": 5.973590819900488,
-    "avg_pump_buy_sell_ratio": 0.5388899017290252,
-    "std_pump_buy_sell_ratio": 0.21473202888966295,
+    "launch_avg_buys": 75,
+    "launch_avg_wallets": 23.071428571428573,
+    "launch_avg_volume": 14242638.794428632,
+    "std_pump_mcap": 740255.3379457284,
+    "std_pump_liquidity": 38979.55298932223,
+    "std_pump_volume_h1": 181564.70277134224,
+    "std_pump_buys_h1": 3026.0847265876037,
+    "avg_pump_vol_liq_ratio": 5.053758177759686,
+    "std_pump_vol_liq_ratio": 5.88583962017874,
+    "avg_pump_buy_sell_ratio": 0.5423951565614541,
+    "std_pump_buy_sell_ratio": 0.21153274673875042,
     "hourly_threshold": {
       "18": 0.25,
       "19": 0.25,
@@ -16102,7 +16153,8 @@
       "21": 0.25,
       "22": 0.25,
       "5": 0.25,
-      "9": 0.25
+      "9": 0.25,
+      "12": 0.25
     },
     "signal_results": [
       {
