@@ -342,6 +342,22 @@ class MemeBot:
         except Exception as e:
             logger.debug(f"Social score error: {e}")
 
+        whale_data = None
+        try:
+            whale_data = await self.helius.get_whale_transactions(address, config.whale_min_sol)
+            if whale_data and whale_data.get("whale_buys", 0) > 0:
+                logger.debug(f"🐋 Whale buys: {whale_data['whale_buys']} for {launch_data.symbol}")
+        except Exception as e:
+            logger.debug(f"Whale data error: {e}")
+
+        safety_data = None
+        try:
+            holders_data = await self.birdeye.get_top_holders(address)
+            if holders_data:
+                safety_data = {"top10_holder_pct": holders_data.get("top10_holder_pct", 0)}
+        except Exception as e:
+            logger.debug(f"Safety data error: {e}")
+
         if social_score < 0.1:
             red_flags.append("⚠️ No social presence")
             red_flag_penalty += 0.2
@@ -414,7 +430,8 @@ class MemeBot:
 
         should_signal, final_score, filter_reason = self.filter_engine.should_signal(
             address, pattern, ai_score=ai_score,
-            social_score=social_score, age_seconds=age
+            social_score=social_score, age_seconds=age,
+            whale_data=whale_data, safety_data=safety_data
         )
 
         final_score += bonding_boost
@@ -733,9 +750,24 @@ class MemeBot:
                         except Exception as e:
                             logger.debug(f"Social score error: {e}")
 
+                        whale_data = None
+                        try:
+                            whale_data = await self.helius.get_whale_transactions(addr, config.whale_min_sol)
+                        except Exception:
+                            pass
+
+                        safety_data = None
+                        try:
+                            holders_data = await self.birdeye.get_top_holders(addr)
+                            if holders_data:
+                                safety_data = {"top10_holder_pct": holders_data.get("top10_holder_pct", 0)}
+                        except Exception:
+                            pass
+
                         should_signal, final_score, filter_reason = self.filter_engine.should_signal(
                             addr, pattern, ai_score=ai_score,
-                            social_score=social_score, age_seconds=age
+                            social_score=social_score, age_seconds=age,
+                            whale_data=whale_data, safety_data=safety_data
                         )
 
                         effective_threshold = max(threshold, self.filter_engine.min_threshold)

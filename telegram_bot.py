@@ -42,6 +42,7 @@ class TelegramHandlers:
             "📚 কমান্ড:\n"
             "/pump — পাম্প শেখান\n"
             "/dump — ডাম্প শেখান\n"
+            "/forcepump — ফোর্স পাম্প শেখান\n"
             "/threshold — থ্রেশোল্ড সেট\n"
             "/health — বটের স্বাস্থ্য\n"
             "/config — কনফিগারেশন\n"
