@@ -44,7 +44,7 @@ class Config:
     rugcheck_url: str = get_env("RUGCHECK_URL", "https://api.rugcheck.xyz/v1")
     data_file: str = get_env("DATA_FILE", "./bot_data.json")
     
-    pump_multiplier: float = get_env_float("PUMP_MULTIPLIER", 4.0)
+    pump_multiplier: float = get_env_float("PUMP_MULTIPLIER", 8.0)
     ai_threshold: float = get_env_float("AI_THRESHOLD", 0.80)
     min_liquidity: float = get_env_float("MIN_LIQUIDITY", 2000)
     min_volume: float = get_env_float("MIN_VOLUME", 300)

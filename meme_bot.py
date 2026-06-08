@@ -758,7 +758,7 @@ class MemeBot:
                         logger.info(f"🚫 লিকুইডিটি pull: {symbol}")
                         continue
 
-                    if 21600 <= age <= 25200:
+                    if 0 < age <= 21600:
                         verified, actual_multi = verify_pump(pair, config.pump_multiplier,
                             ath_price=coin_info.ath_price, initial_price=coin_info.initial_price)
                         if verified:
@@ -787,11 +787,11 @@ class MemeBot:
                             )
                             if config.enable_github_sync:
                                 await sync_to_github(f"পাম্প: {symbol} {actual_multi}x")
-                        elif actual_multi <= 3.0:
+                        elif actual_multi <= 5.0:
                             await self.state.add_dump_coin(addr, CoinInfo(name=name, symbol=symbol))
                             learn_dump({"name": name, "symbol": symbol}, pair, addr, manual=False)
                         else:
-                            logger.info(f"⏭️ Skip {symbol}: {actual_multi}x (3x-4x zone)")
+                            logger.info(f"⏭️ Skip {symbol}: {actual_multi}x (5x-8x zone)")
                         continue
 
                     if not await self.state.is_alerted(addr) and 0 < age <= 600:
