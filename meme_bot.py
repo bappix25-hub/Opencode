@@ -302,26 +302,11 @@ class MemeBot:
         buy_sell_ratio = launch_data.buy_count / max(launch_data.sell_count, 1)
         unique_wallets = len(launch_data.unique_wallets)
 
-        if unique_wallets < 2:
-            return
-        if launch_data.holders < 2:
-            return
-        if launch_data.buy_count < 3:
+        if launch_data.buy_count == 0 and unique_wallets == 0:
             return
 
-        # Collect red flags but don't block yet — apply as penalty first
         red_flags = []
         red_flag_penalty = 0.0
-
-        if unique_wallets < 3:
-            red_flags.append("⚠️ Very few unique wallets")
-            red_flag_penalty += 0.2
-        if launch_data.holders < 10:
-            red_flags.append("⚠️ Low holder count")
-            red_flag_penalty += 0.1
-        if launch_data.holders < 3:
-            red_flags.append("🚨 Suspiciously low holders")
-            red_flag_penalty += 0.2
 
         launch_dict = {
             "buy_count": launch_data.buy_count,
@@ -360,7 +345,7 @@ class MemeBot:
 
         if social_score < 0.1:
             red_flags.append("⚠️ No social presence")
-            red_flag_penalty += 0.2
+            red_flag_penalty += 0.15
 
         bonding_boost = 0.0
         bonding_reasons = []
@@ -478,12 +463,11 @@ class MemeBot:
             f"signal={should_signal} ({filter_reason})"
         )
 
-        # FIX: red_flags now block BEFORE signalling (was inside wrong if-block before)
-        if red_flags and red_flag_penalty >= 0.5:
+        if red_flags and red_flag_penalty >= 0.8:
             logger.info(f"🚫 {launch_data.symbol}: Blocked by red flags: {red_flags}")
             return
 
-        if final_score >= effective_threshold and bonding_boost > 0:
+        if final_score >= effective_threshold:
             momentum_ok, momentum_reason = await self._check_momentum(address, launch_data)
             if not momentum_ok:
                 logger.info(f"🚫 {launch_data.symbol}: Blocked by momentum check - {momentum_reason}")
