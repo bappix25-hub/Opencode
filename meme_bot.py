@@ -682,13 +682,8 @@ class MemeBot:
                                 if len(ld.unique_wallets) > ld.holders:
                                     ld.holders = len(ld.unique_wallets)
 
-                                if buys_1h > ld.buy_count or sells_1h > ld.sell_count or vol_1h > ld.volume:
-                                    if buys_1h > ld.buy_count:
-                                        ld.buy_count = buys_1h
-                                    if sells_1h > ld.sell_count:
-                                        ld.sell_count = sells_1h
-                                    if vol_1h > ld.volume:
-                                        ld.volume = vol_1h
+                                if vol_1h > ld.volume:
+                                    ld.volume = vol_1h
                                     pair_price = float(pair.get("priceUsd", 0) or 0)
                                     if pair_price > 0 and pair_price > ld.ath_price:
                                         ld.ath_price = pair_price
