@@ -1230,22 +1230,6 @@
   ],
   "dump_patterns": [
     {
-      "mcap": 7107063358.206,
-      "liquidity": 355353167.9103,
-      "vol_liq_ratio": 0.3,
-      "buy_sell_ratio": 0.0,
-      "buy_count": 0,
-      "sell_count": 0,
-      "holders": 3,
-      "lp_locked": 0,
-      "price_change_5m": 0.0,
-      "age_at_signal": 1781.6813588142395,
-      "symbol": "$BANDER",
-      "address": "ATzVwnXmS3kTgEMEqhMY26k9T5GAqUaaDAVsuoFfpump",
-      "source": "auto_track",
-      "timestamp": "2026-06-08T05:00:40.398355+00:00"
-    },
-    {
       "mcap": 2467071716.4579997,
       "liquidity": 123353585.82289998,
       "vol_liq_ratio": 0.3,
@@ -10116,6 +10100,30 @@
       "final_multiplier": 0,
       "manual": false,
       "timestamp": "2026-06-09T00:20:03.049881+00:00"
+    },
+    {
+      "mcap": 910.0,
+      "liquidity": 425.2,
+      "volume_h1": 419.95,
+      "volume_m5": 419.95,
+      "age_seconds": 117.13757397460938,
+      "price_change_5m": -80.48,
+      "price_change_1h": -80.48,
+      "hour_of_day": 0,
+      "buys_m5": 14,
+      "sells_m5": 15,
+      "buys_h1": 14,
+      "sells_h1": 15,
+      "vol_liq_ratio": 0.9876528692380057,
+      "buy_sell_ratio_m5": 0.4827586206896552,
+      "buy_sell_ratio_h1": 0.4827586206896552,
+      "mcap_liq_ratio": 2.140169332079022,
+      "momentum_5m": -80.48,
+      "symbol": "Orb ",
+      "address": "8khgg1eMfXgo69FuUGWAiZ3UESxgbxSxakwnaMCKpump",
+      "final_multiplier": 0,
+      "manual": false,
+      "timestamp": "2026-06-09T00:22:44.137626+00:00"
     }
   ],
   "launch_patterns": [
@@ -17694,7 +17702,8 @@
     "45ff86550d3b15919078f3720d2bf215",
     "c044da9c8b44886c5f0f3a46e8f5b189",
     "23b72ea7a092afb53fd1d9aaa692e138",
-    "81bff04ea0e1dd6db7a56127dacdef3b"
+    "81bff04ea0e1dd6db7a56127dacdef3b",
+    "3def1be6a89c6a3fd5d40b5b739563fa"
   ],
   "signals": [
     {
