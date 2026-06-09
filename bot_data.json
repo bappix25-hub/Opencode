@@ -919,7 +919,7 @@
       "mcap_liq_ratio": 4.624585169160371,
       "momentum_5m": -3.72,
       "symbol": "Mimu",
-      "name": "M\u0130MU",
+      "name": "MİMU",
       "address": "7esrjyaEC5N1pRZ6DumxQ1GCXJwyGJQUrEm7BBKHpump",
       "final_multiplier": 3.13,
       "manual": false,
@@ -13888,7 +13888,15 @@
       "0": 0.25,
       "11": 0.25
     },
-    "signal_results": [],
+    "signal_results": [
+      {
+        "address": "ECxKs7Fq4DcCJffGszqVb6efFYNYYFKytYunLvG4pump",
+        "symbol": "JOAT",
+        "verdict": "PUMP",
+        "multiplier": 4.4,
+        "timestamp": "2026-06-09T20:30:02.761571+00:00"
+      }
+    ],
     "golden_symbols": {}
   },
   "alerted_coins": [],
@@ -13929,5 +13937,7 @@
     "GYwMSbDxFBmz1Nd79SpAdgonhXQbxrwZ4hunw3Kfpump",
     "GnbJESynwagNRHsn8uVPHQzNpkcBVnkgM3MGe5YSpump"
   ],
-  "golden_snapshots": []
+  "golden_snapshots": [],
+  "signal_results": [],
+  "launches_tracked": []
 }
