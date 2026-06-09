@@ -14111,6 +14111,55 @@
         "verdict": "PUMP",
         "multiplier": 3.59,
         "timestamp": "2026-06-09T21:01:09.755579+00:00"
+      },
+      {
+        "address": "DUqdfMcdzM5haF3t9hDsmVqY7nFMev9UkfKfpAE4pump",
+        "symbol": "BETCUP",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T21:01:14.231365+00:00"
+      },
+      {
+        "address": "QNTcSEN5iqJrkQJd8P7pb4hLL7NTrd8EA5ADULMpump",
+        "symbol": "CHAIRG",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T21:01:19.032484+00:00"
+      },
+      {
+        "address": "8HjpMRNqjZWWhw3S3sksr9f8K1ExKW2G6qoaiMPfpump",
+        "symbol": "STEPPA",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T21:01:28.597220+00:00"
+      },
+      {
+        "address": "DF12JV9hFJbMWFuG7ff1wqaydj6HSkvwyt6mJnNVuGiR",
+        "symbol": "OINK",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T21:01:31.128893+00:00"
+      },
+      {
+        "address": "D6RcGUfNTkWdnNheCNqdQ6JWo8dX138tr1QB2AVbpump",
+        "symbol": "PURGE",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T21:01:38.526790+00:00"
+      },
+      {
+        "address": "6VotjDtQgqEKCjzyYSNzarHUJvTwVK4tvr1iCYUhpump",
+        "symbol": "MOSAIC",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T21:01:43.391612+00:00"
+      },
+      {
+        "address": "6p3Y3WBXcVwMbYNoVsU4EuVb3gdMmzSKhkEfo8Vcpump",
+        "symbol": "Pnut",
+        "verdict": "PUMP",
+        "multiplier": 3.53,
+        "timestamp": "2026-06-09T21:02:16.981328+00:00"
       }
     ],
     "golden_symbols": {}
