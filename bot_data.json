@@ -1230,22 +1230,6 @@
   ],
   "dump_patterns": [
     {
-      "mcap": 35323892.708,
-      "liquidity": 1766194.6354,
-      "vol_liq_ratio": 0.3,
-      "buy_sell_ratio": 0.0,
-      "buy_count": 0,
-      "sell_count": 0,
-      "holders": 2,
-      "lp_locked": 0,
-      "price_change_5m": 0.0,
-      "age_at_signal": 1782.55623793602,
-      "symbol": "PUP",
-      "address": "soTyvBTsGH34PWqwWr3GxqyNdaKt9WRFcTwR2UWpump",
-      "source": "auto_track",
-      "timestamp": "2026-06-08T05:00:38.915501+00:00"
-    },
-    {
       "mcap": 7107063358.206,
       "liquidity": 355353167.9103,
       "vol_liq_ratio": 0.3,
@@ -10108,6 +10092,30 @@
       "final_multiplier": 0,
       "manual": false,
       "timestamp": "2026-06-09T00:12:51.734255+00:00"
+    },
+    {
+      "mcap": 75986.0,
+      "liquidity": 28625.52,
+      "volume_h1": 55880.57,
+      "volume_m5": 5515.41,
+      "age_seconds": 12289.049817138672,
+      "price_change_5m": -12.98,
+      "price_change_1h": -33.67,
+      "hour_of_day": 0,
+      "buys_m5": 54,
+      "sells_m5": 41,
+      "buys_h1": 606,
+      "sells_h1": 403,
+      "vol_liq_ratio": 1.9521241884863576,
+      "buy_sell_ratio_m5": 0.5684210526315789,
+      "buy_sell_ratio_h1": 0.6005946481665014,
+      "mcap_liq_ratio": 2.6544845298880158,
+      "momentum_5m": -12.98,
+      "symbol": "SPONZI",
+      "address": "A3B7qE7cKH12WhdLCNUeLmprEsYtnFf6eQVV1tgepump",
+      "final_multiplier": 0,
+      "manual": false,
+      "timestamp": "2026-06-09T00:20:03.049881+00:00"
     }
   ],
   "launch_patterns": [
@@ -17685,7 +17693,8 @@
     "29ee77d45aa9ca6c90e45eece8448028",
     "45ff86550d3b15919078f3720d2bf215",
     "c044da9c8b44886c5f0f3a46e8f5b189",
-    "23b72ea7a092afb53fd1d9aaa692e138"
+    "23b72ea7a092afb53fd1d9aaa692e138",
+    "81bff04ea0e1dd6db7a56127dacdef3b"
   ],
   "signals": [
     {
