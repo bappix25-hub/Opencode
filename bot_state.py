@@ -39,6 +39,7 @@ class TrackedCoin:
     deployer_wallet: str = ""
     initial_holders: int = 0
     ath_price: float = 0.0
+    migration_time: float = 0.0
 
 @dataclass
 class SignalInfo:

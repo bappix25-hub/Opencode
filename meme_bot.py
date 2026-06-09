@@ -588,6 +588,7 @@ class MemeBot:
                 deployer_wallet=launch_data.deployer_wallet,
                 initial_holders=launch_data.holders,
                 ath_price=price,
+                migration_time=launch_data.migration_time,
             )
             await self.state.add_tracked_coin(address, tracked)
             logger.info(f"✅ মাইগ্রেশন ট্র্যাক: {symbol} | price: ${price:.8f}")
@@ -705,7 +706,8 @@ class MemeBot:
                         continue
 
                     now_ts = datetime.now(timezone.utc).timestamp()
-                    age = now_ts - coin_info.launch_time if coin_info.launch_time > 0 else 0
+                    ref_time = coin_info.migration_time if coin_info.migration_time > 0 else coin_info.launch_time
+                    age = now_ts - ref_time if ref_time > 0 else 0
                     if age <= 0:
                         pair_age = get_launch_age(pair) or 0
                         age = pair_age
@@ -762,29 +764,37 @@ class MemeBot:
                             launch_pat = extract_launch_pattern(txs) if txs else None
                             if not launch_pat:
                                 launch_pat = await self.state.get_migration_launch_pattern(addr)
-                            learn_pump_with_launch(
+                            learned, learn_msg = learn_pump_with_launch(
                                 {"name": name, "symbol": symbol}, pair, actual_multi,
-                                launch_pat, addr, manual=False
+                                launch_pat, addr, manual=False, verified_multiplier=actual_multi
                             )
-                            holders = coin_info.holders
-                            lp = coin_info.lp_locked
-                            await send_msg(self.telegram_app.bot,
-                                f"🚀 <b>পাম্প কয়েন!</b>\n"
-                                f"━━━━━━━━━━━━━━━━\n"
-                                f"🏷️ <b>{name}</b> (${symbol})\n"
-                                f"📈 পাম্প: <b>{actual_multi}x</b>\n"
-                                f"💰 MCap: <b>{format_number(mcap)}</b>\n"
-                                f"💧 লিকুইডিটি: <b>{format_number(liquidity)}</b>\n"
-                                f"👥 হোল্ডার: <b>{holders}</b>\n"
-                                f"🔒 LP লক: <b>{lp}%</b>\n"
-                                f"🧠 <i>লঞ্চ প্যাটার্ন শেখা হয়েছে!</i>\n"
-                                f"🔗 <a href='{link}'>GMGN</a>"
-                            )
-                            if config.enable_github_sync:
-                                await sync_to_github(f"পাম্প: {symbol} {actual_multi}x")
+                            if learned:
+                                holders = coin_info.holders
+                                lp = coin_info.lp_locked
+                                await send_msg(self.telegram_app.bot,
+                                    f"🚀 <b>পাম্প কয়েন!</b>\n"
+                                    f"━━━━━━━━━━━━━━━━\n"
+                                    f"🏷️ <b>{name}</b> (${symbol})\n"
+                                    f"📈 পাম্প: <b>{actual_multi}x</b>\n"
+                                    f"💰 MCap: <b>{format_number(mcap)}</b>\n"
+                                    f"💧 লিকুইডিটি: <b>{format_number(liquidity)}</b>\n"
+                                    f"👥 হোল্ডার: <b>{holders}</b>\n"
+                                    f"🔒 LP লক: <b>{lp}%</b>\n"
+                                    f"🧠 <i>লঞ্চ প্যাটার্ন শেখা হয়েছে!</i>\n"
+                                    f"🔗 <a href='{link}'>GMGN</a>"
+                                )
+                                if config.enable_github_sync:
+                                    await sync_to_github(f"পাম্প: {symbol} {actual_multi}x")
                         elif actual_multi <= 5.0:
                             await self.state.add_dump_coin(addr, CoinInfo(name=name, symbol=symbol))
-                            learn_dump({"name": name, "symbol": symbol}, pair, addr, manual=False)
+                            learned_dump, dump_msg = learn_dump({"name": name, "symbol": symbol}, pair, addr, manual=False)
+                            if learned_dump:
+                                await send_msg(self.telegram_app.bot,
+                                    f"📉 <b>ডাম্প কয়েন!</b>\n"
+                                    f"🏷️ ${symbol}\n"
+                                    f"📉 ডাম্প: <b>{actual_multi}x</b>\n"
+                                    f"🧠 <i>ডাম্প প্যাটার্ন শেখা হয়েছে!</i>"
+                                )
                         else:
                             logger.info(f"⏭️ Skip {symbol}: {actual_multi}x (5x-8x zone)")
                         continue
