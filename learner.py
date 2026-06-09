@@ -1,10 +1,13 @@
 import json
 import os
 import hashlib
+import logging
 import statistics
 from datetime import datetime, timezone
 from typing import Optional
 from config import config
+
+logger = logging.getLogger("learner")
 
 DATA_FILE = config.data_file
 
@@ -647,7 +650,9 @@ def score_launch(launch_data: dict) -> tuple:
         if curve_fill_pct > 60:
             score += 0.1
             reasons.append("Curve filling ✅")
-        return round(min(score, 1.0), 2), "⏳ শিখছি | " + " | ".join(reasons)
+        score = round(min(score, 1.0), 2)
+        logger.info(f"[SCORE] buys={buys} wallets={unique} vol={volume:.0f} bs={buy_sell:.1f} vel={buy_velocity:.1f} curve={curve_fill_pct:.0f} → score={score} ({' | '.join(reasons) if reasons else 'প্যাটার্ন দুর্বল'})")
+        return score, "⏳ শিখছি | " + " | ".join(reasons)
 
     score = 0.0
     reasons = []
@@ -709,7 +714,9 @@ def score_launch(launch_data: dict) -> tuple:
         score += 0.1
         reasons.append("সেরা সময় ✅")
 
-    return round(min(score, 1.0), 2), " | ".join(reasons) if reasons else "প্যাটার্ন দুর্বল"
+    score = round(min(score, 1.0), 2)
+    logger.info(f"[SCORE] buys={buys} wallets={unique} vol={volume:.0f} bs={buy_sell:.1f} vel={buy_velocity:.1f} curve={curve_fill_pct:.0f} → score={score} ({' | '.join(reasons) if reasons else 'প্যাটার্ন দুর্বল'})")
+    return score, " | ".join(reasons) if reasons else "প্যাটার্ন দুর্বল"
 
 def extract_launch_pattern(transactions: list) -> Optional[dict]:
     try:

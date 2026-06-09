@@ -304,22 +304,26 @@ class MemeBot:
             logger.info(f"🆕 লঞ্চ ট্র্যাক: {symbol} (deployer: {deployer[:8] if deployer else 'unknown'}...)")
 
     async def check_pre_migration_signal(self, address: str):
-        if await self.state.is_alerted(address):
-            return
-
         launch_data = await self.state.get_launch_tracking(address)
         if not launch_data:
             return
 
         age = datetime.now(timezone.utc).timestamp() - launch_data.launch_time
+        symbol = launch_data.symbol
+
         if age < 30:
+            logger.info(f"[EVAL] {symbol}: age={int(age)}s → SKIP (too young)")
             return
 
         buy_sell_ratio = launch_data.buy_count / max(launch_data.sell_count, 1)
         unique_wallets = len(launch_data.unique_wallets)
 
         if launch_data.buy_count == 0 and unique_wallets == 0:
-            logger.debug(f"[EVAL] {launch_data.symbol}: no activity yet, skipping")
+            logger.info(f"[EVAL] {symbol}: buys=0 wallets=0 → SKIP (no activity)")
+            return
+
+        if await self.state.is_alerted(address):
+            logger.info(f"[EVAL] {symbol}: already alerted → SKIP")
             return
 
         red_flags = []
