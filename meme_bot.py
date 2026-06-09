@@ -18,19 +18,16 @@ from jupiter_client import JupiterClient
 from pumpportal_ws import PumpPortalWS
 from telegram_bot import TelegramHandlers, register_handlers
 from learner import (
-    score_coin, score_launch, record_signal, update_signal_result, update_signal_ath,
-    get_stats, get_daily_report, learn_pump, learn_dump,
-    extract_launch_pattern, learn_pump_with_launch, verify_pump, get_launch_age,
-    get_adaptive_threshold, is_duplicate, auto_learn_from_tracking,
-    purge_honeypot_patterns, save_honeypot_blocklist, load_honeypot_blocklist,
-    learn_early_pump
+    extract_launch_features, record_launch, check_and_record_outcome,
+    match_pump_patterns, record_signal_result, get_stats, get_daily_report,
+    get_launch_age, is_duplicate, purge_honeypot_patterns,
+    save_honeypot_blocklist, load_honeypot_blocklist,
+    load_data, save_data
 )
 from github_sync import sync_to_github, restore_from_github
 from utils import format_number, gmgn_link, setup_logging
 from backtest import BacktestEngine, REPORTS_DIR, MAX_REPORTS
 from social_signals import SocialSignalEngine
-from signal_filter import SignalFilter
-from verify_loop import VerifyLoop
 from honeypot_detector import HoneypotDetector
 from paper_trader import get_paper_trader
 
@@ -57,8 +54,6 @@ class MemeBot:
         self.birdeye: BirdeyeClient = None
         self.jupiter: JupiterClient = None
         self.social: SocialSignalEngine = None
-        self.filter_engine: SignalFilter = None
-        self.verify_loop: VerifyLoop = None
         self.honeypot: HoneypotDetector = None
         self.pumpportal: PumpPortalWS = None
         self.telegram_app: Application = None
@@ -76,8 +71,6 @@ class MemeBot:
         self.birdeye = BirdeyeClient(self.session, config.birdeye_api_key)
         self.jupiter = JupiterClient(self.session)
         self.social = SocialSignalEngine(self.session)
-        self.filter_engine = SignalFilter()
-        self.verify_loop = VerifyLoop(self.dex, self.filter_engine, lambda t: send_msg(self.telegram_app.bot, t))
         self.honeypot = HoneypotDetector(self.session, rugcheck=self.rugcheck, helius=self.helius, dex=self.dex)
         self.pumpportal = PumpPortalWS(
             on_new_token=self._on_new_token,
@@ -86,7 +79,7 @@ class MemeBot:
         )
 
         self.telegram_app = Application.builder().token(config.bot_token).build()
-        self.handlers = TelegramHandlers(self.state, self.dex, self.session, self.filter_engine, self.verify_loop, self.paper_trader)
+        self.handlers = TelegramHandlers(self.state, self.dex, self.session, self.paper_trader)
         register_handlers(self.telegram_app, self.handlers)
 
         await restore_from_github()
@@ -312,228 +305,64 @@ class MemeBot:
         symbol = launch_data.symbol
 
         if age < 30:
-            logger.info(f"[EVAL] {symbol}: age={int(age)}s → SKIP (too young)")
             return
 
         buy_sell_ratio = launch_data.buy_count / max(launch_data.sell_count, 1)
         unique_wallets = len(launch_data.unique_wallets)
 
         if launch_data.buy_count == 0 and unique_wallets == 0:
-            logger.info(f"[EVAL] {symbol}: buys=0 wallets=0 → SKIP (no activity)")
             return
 
         if await self.state.is_alerted(address):
-            logger.info(f"[EVAL] {symbol}: already alerted → SKIP")
             return
 
-        red_flags = []
-        red_flag_penalty = 0.0
-
-        launch_dict = {
-            "buy_count": launch_data.buy_count,
-            "sell_count": launch_data.sell_count,
-            "unique_wallets": unique_wallets,
-            "volume": launch_data.volume,
-            "buy_sell_ratio": buy_sell_ratio
-        }
-
-        ai_score, reason = score_launch(launch_dict)
-        threshold = get_adaptive_threshold()
-
-        social_score = 0.0
+        pair_data = None
         try:
-            social_score, _ = await self.social.calculate_social_score(address, launch_data.symbol)
-            if not isinstance(social_score, (int, float)):
-                social_score = 0.0
-        except Exception as e:
-            logger.debug(f"Social score error: {e}")
+            pair_data = await self.dex.fetch_pair_data(address)
+        except Exception:
+            pass
 
-        whale_data = None
-        try:
-            whale_data = await self.helius.get_whale_transactions(address, config.whale_min_sol)
-            if whale_data and whale_data.get("whale_buys", 0) > 0:
-                logger.debug(f"🐋 Whale buys: {whale_data['whale_buys']} for {launch_data.symbol}")
-        except Exception as e:
-            logger.debug(f"Whale data error: {e}")
+        features = extract_launch_features(
+            launch_data, pair_data=pair_data, unique_wallets=unique_wallets
+        )
+        features["launch_time"] = launch_data.launch_time
 
-        safety_data = None
-        try:
-            holders_data = await self.birdeye.get_top_holders(address)
-            if holders_data:
-                safety_data = {"top10_holder_pct": holders_data.get("top10_holder_pct", 0)}
-        except Exception as e:
-            logger.debug(f"Safety data error: {e}")
+        record_launch(address, symbol, features)
 
-        if social_score < 0.1:
-            red_flags.append("⚠️ No social presence")
-            red_flag_penalty += 0.05
-
-        bonding_boost = 0.0
-        bonding_reasons = []
-
-        if age < 60:
-            if launch_data.buy_count >= 8 and buy_sell_ratio >= 4.0 and unique_wallets >= 5:
-                bonding_boost += 0.25
-                bonding_reasons.append("🔥 Strong early frenzy")
-            if unique_wallets >= 5 and launch_data.buy_count >= 10:
-                bonding_boost += 0.20
-                bonding_reasons.append("👥 Multi-wallet demand (5+ wallets)")
-            elif launch_data.buy_count >= 5 and buy_sell_ratio >= 3.0:
-                bonding_boost += 0.10
-                bonding_reasons.append("📈 Early buy pressure")
-        elif age < 180:
-            if launch_data.buy_count >= 15 and buy_sell_ratio >= 3.0 and unique_wallets >= 5:
-                bonding_boost += 0.20
-                bonding_reasons.append("📈 Strong buy pressure (verified)")
-            if unique_wallets >= 8:
-                bonding_boost += 0.15
-                bonding_reasons.append("🌐 Diverse buyers (8+ wallets)")
-            elif unique_wallets >= 5:
-                bonding_boost += 0.10
-                bonding_reasons.append("👥 Growing wallets")
-        elif age < 300:
-            if launch_data.buy_count >= 20 and buy_sell_ratio >= 2.5 and unique_wallets >= 8:
-                bonding_boost += 0.15
-                bonding_reasons.append("📊 Sustained demand")
-            if unique_wallets >= 10:
-                bonding_boost += 0.10
-                bonding_reasons.append("👥 Growing community")
-
-        if launch_data.holders >= 5 and launch_data.holders <= 100:
-            bonding_boost += 0.10
-            bonding_reasons.append("👥 Healthy holder range")
-
-        if launch_data.buy_velocity > 0:
-            try:
-                from learner import load_data
-                model = load_data().get("model", {})
-                avg_vel = model.get("avg_early_pump_velocity", 0)
-                if avg_vel > 0:
-                    if launch_data.buy_velocity >= avg_vel * 1.5:
-                        bonding_boost += 0.25
-                        bonding_reasons.append("⚡ High velocity frenzy")
-                    elif launch_data.buy_velocity >= avg_vel:
-                        bonding_reasons.append("⚡ Above avg velocity")
-                        bonding_boost += 0.15
-                else:
-                    if launch_data.buy_velocity >= 5:
-                        bonding_boost += 0.15
-                        bonding_reasons.append("⚡ High velocity")
-                    elif launch_data.buy_velocity >= 2:
-                        bonding_boost += 0.10
-                        bonding_reasons.append("⚡ Active buying")
-            except Exception:
-                pass
-
-        if launch_data.curve_fill_pct > 0:
-            if launch_data.curve_fill_pct >= 80:
-                bonding_boost += 0.15
-                bonding_reasons.append("📈 Curve nearly full")
-            elif launch_data.curve_fill_pct >= 60:
-                bonding_boost += 0.10
-                bonding_reasons.append("📈 Curve filling fast")
-            elif launch_data.curve_fill_pct >= 40:
-                bonding_boost += 0.05
-                bonding_reasons.append("📈 Curve progressing")
-
-        if bonding_boost == 0 and launch_data.buy_count >= 3:
-            bonding_boost += 0.05
-            bonding_reasons.append("📊 Minimum activity")
+        match, match_score, match_reason = match_pump_patterns(features)
 
         logger.info(
-            f"pre-mig eval {launch_data.symbol}: age={int(age)}s "
-            f"buys={launch_data.buy_count} sells={launch_data.sell_count} "
-            f"unique={unique_wallets} holders={launch_data.holders} "
-            f"ai={ai_score:.2f} soc={social_score:.2f} bond={bonding_boost:.2f} "
-            f"red={red_flag_penalty:.2f} "
-            f"buy_sell_ratio={buy_sell_ratio:.1f} curve={launch_data.curve_fill_pct:.0f}%"
+            f"[EVAL] {symbol}: age={int(age)}s buys={launch_data.buy_count} "
+            f"bsr={buy_sell_ratio:.1f} wallets={unique_wallets} "
+            f"liq={features.get('initial_liq', 0):.0f} "
+            f"snipers={features.get('snipers_30s', 0)} "
+            f"→ match={match:.0%} {match_reason}"
         )
 
-        real_mcap = getattr(self, "_last_pre_mig_pair_mcap", 0) or 0
-        real_liq = getattr(self, "_last_pre_mig_pair_liq", 0) or 0
-        real_vol_liq = (real_mcap / max(real_liq, 1)) if (real_mcap and real_liq) else 0.3
-
-        safe_volume = launch_data.volume if isinstance(launch_data.volume, (int, float)) else 0.0
-        pattern = {
-            "mcap": real_mcap if real_mcap > 0 else safe_volume * 1000,
-            "liquidity": real_liq if real_liq > 0 else safe_volume * 50,
-            "vol_liq_ratio": real_vol_liq,
-            "buy_sell_ratio": buy_sell_ratio,
-            "buy_count": launch_data.buy_count,
-            "sell_count": launch_data.sell_count,
-        }
-
-        should_signal, final_score, filter_reason = self.filter_engine.should_signal(
-            address, pattern, ai_score=ai_score,
-            social_score=social_score, age_seconds=age,
-            whale_data=whale_data, safety_data=safety_data,
-            pre_migration=True
-        )
-
-        final_score += bonding_boost
-        final_score -= red_flag_penalty
-        final_score = max(0.0, final_score)
-
-        effective_threshold = max(threshold, self.filter_engine.pre_migration_threshold)
-        effective_threshold += red_flag_penalty * 0.5
-
-        verdict = "SIGNAL ✅" if (should_signal and final_score >= effective_threshold) else "REJECTED ❌"
-        reason_short = filter_reason if not should_signal else (f"momentum fail" if final_score >= effective_threshold else filter_reason)
-        logger.info(
-            f"[EVAL] {launch_data.symbol}: ai={ai_score:.2f} soc={social_score:.2f} "
-            f"bond={bonding_boost:.2f} red={red_flag_penalty:.2f} "
-            f"final={final_score:.2f} thr={effective_threshold:.2f} → {verdict}"
-        )
-
-        if red_flags and red_flag_penalty >= 0.8:
-            logger.info(f"🚫 {launch_data.symbol}: Blocked by red flags: {red_flags}")
+        if not match:
             return
 
-        if final_score >= effective_threshold:
-            momentum_ok, momentum_reason = await self._check_momentum(address, launch_data)
-            if not momentum_ok:
-                logger.info(f"🚫 {launch_data.symbol}: Blocked by momentum check - {momentum_reason}")
-                return
-            symbol = launch_data.symbol
-            name = launch_data.name
-            confidence_pct = int(final_score * 100)
-            confidence_bar = "🟢" * int(confidence_pct/20) + "⚪" * (5 - int(confidence_pct/20))
-            link = gmgn_link(address)
-            social_pct = int(social_score * 100)
-            bonding_text = "\n".join([f" • {r}" for r in bonding_reasons]) if bonding_reasons else " • Standard scoring"
-            velocity_text = f"⚡ {launch_data.buy_velocity:.1f} buys/min" if launch_data.buy_velocity > 0 else ""
-            curve_text = f"📈 Curve: ~{launch_data.curve_fill_pct:.0f}%" if launch_data.curve_fill_pct > 0 else ""
+        link = gmgn_link(address)
+        confidence_pct = int(match_score * 100)
+        confidence_bar = "🟢" * max(1, int(confidence_pct / 20)) + "⚪" * (5 - max(1, int(confidence_pct / 20)))
 
-            avg_time_between = ""
-            if len(launch_data.buy_timestamps) >= 2:
-                diffs = [launch_data.buy_timestamps[i+1] - launch_data.buy_timestamps[i]
-                         for i in range(len(launch_data.buy_timestamps)-1)]
-                avg_diff = sum(diffs) / len(diffs)
-                avg_time_between = f"⏱️ Avg buy gap: {avg_diff:.0f}s"
+        await send_msg(self.telegram_app.bot,
+            f"⚡ <b>প্রি-মাইগ্রেশন সিগন্যাল!</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"🏷️ <b>{launch_data.name}</b> (${symbol})\n"
+            f"🎯 কনফিডেন্স: {confidence_bar} <b>{confidence_pct}%</b>\n"
+            f"🧠 <i>{match_reason}</i>\n"
+            f"📊 Buy: <b>{launch_data.buy_count}</b> | Sell: <b>{launch_data.sell_count}</b>\n"
+            f"👥 Unique wallets: <b>{unique_wallets}</b>\n"
+            f"👤 Holders: <b>{launch_data.holders}</b>\n"
+            f"⏱️ বয়স: <b>{int(age//60)}m {int(age%60)}s</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"🔗 <a href='{link}'>GMGN</a>"
+        )
 
-            await send_msg(self.telegram_app.bot,
-                f"⚡ <b>প্রি-মাইগ্রেশন সিগন্যাল!</b>\n"
-                f"━━━━━━━━━━━━━━━━\n"
-                f"🏷️ <b>{name}</b> (${symbol})\n"
-                f"🎯 কনফিডেন্স: {confidence_bar} <b>{confidence_pct}%</b>\n"
-                f"🧠 <i>{reason}</i>\n"
-                f"📊 Buy: <b>{launch_data.buy_count}</b> | Sell: <b>{launch_data.sell_count}</b>\n"
-                f"👥 Unique wallets: <b>{unique_wallets}</b>\n"
-                f"👤 Holders: <b>{launch_data.holders}</b>\n"
-                f"🌐 Social: <b>{social_pct}%</b>\n"
-                f"⏱️ বয়স: <b>{int(age//60)}m {int(age%60)}s</b>\n"
-                f"━━━━━━━━━━━━━━━━\n"
-                f"🔗 <b>Bonding Curve Analysis:</b>\n"
-                f"{bonding_text}\n"
-                f"{velocity_text}\n{curve_text}\n{avg_time_between}\n"
-                f"━━━━━━━━━━━━━━━━\n"
-                f"⚠️ <i>মাইগ্রেশনের আগে! DYOR করুন!</i>\n"
-                f"🔗 <a href='{link}'>GMGN</a>"
-            )
-
-            await self.state.add_alerted(address)
-            launch_data.pre_signal_sent = True
-            logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {symbol} স্কোর: {final_score:.2f}")
+        await self.state.add_alerted(address)
+        launch_data.pre_signal_sent = True
+        logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {symbol} match={match_score:.0%}")
 
     async def _check_momentum(self, address: str, launch_data=None):
         """Check price/buy momentum. Returns (ok, reason)."""
@@ -770,170 +599,133 @@ class MemeBot:
                             ath_price=coin_info.ath_price, initial_price=coin_info.initial_price)
                         if verified:
                             await self.state.add_pump_coin(addr, CoinInfo(name=name, symbol=symbol))
-                            txs = await self.helius.get_launch_transactions(addr)
-                            launch_pat = extract_launch_pattern(txs) if txs else None
-                            if not launch_pat:
-                                launch_pat = await self.state.get_migration_launch_pattern(addr)
-                            learned, learn_msg = learn_pump_with_launch(
-                                {"name": name, "symbol": symbol}, pair, actual_multi,
-                                launch_pat, addr, manual=False, verified_multiplier=actual_multi
+                            record_signal_result(addr, symbol, actual_multi)
+                            await send_msg(self.telegram_app.bot,
+                                f"🚀 <b>পাম্প কয়েন!</b>\n"
+                                f"━━━━━━━━━━━━━━━━\n"
+                                f"🏷️ <b>{name}</b> (${symbol})\n"
+                                f"📈 পাম্প: <b>{actual_multi}x</b>\n"
+                                f"💰 MCap: <b>{format_number(mcap)}</b>\n"
+                                f"💧 লিকুইডিটি: <b>{format_number(liquidity)}</b>\n"
+                                f"👥 হোল্ডার: <b>{coin_info.holders}</b>\n"
+                                f"🔒 LP লক: <b>{coin_info.lp_locked}%</b>\n"
+                                f"🧠 <i>পাম্প প্যাটার্ন শেখা হয়েছে!</i>\n"
+                                f"🔗 <a href='{link}'>GMGN</a>"
                             )
-                            if learned:
-                                holders = coin_info.holders
-                                lp = coin_info.lp_locked
-                                await send_msg(self.telegram_app.bot,
-                                    f"🚀 <b>পাম্প কয়েন!</b>\n"
-                                    f"━━━━━━━━━━━━━━━━\n"
-                                    f"🏷️ <b>{name}</b> (${symbol})\n"
-                                    f"📈 পাম্প: <b>{actual_multi}x</b>\n"
-                                    f"💰 MCap: <b>{format_number(mcap)}</b>\n"
-                                    f"💧 লিকুইডিটি: <b>{format_number(liquidity)}</b>\n"
-                                    f"👥 হোল্ডার: <b>{holders}</b>\n"
-                                    f"🔒 LP লক: <b>{lp}%</b>\n"
-                                    f"🧠 <i>লঞ্চ প্যাটার্ন শেখা হয়েছে!</i>\n"
-                                    f"🔗 <a href='{link}'>GMGN</a>"
-                                )
-                                if config.enable_github_sync:
-                                    await sync_to_github(f"পাম্প: {symbol} {actual_multi}x")
+                            if config.enable_github_sync:
+                                await sync_to_github(f"পাম্প: {symbol} {actual_multi}x")
                         elif actual_multi <= 5.0:
                             await self.state.add_dump_coin(addr, CoinInfo(name=name, symbol=symbol))
-                            learn_dump({"name": name, "symbol": symbol}, pair, addr, manual=False)
+                            record_signal_result(addr, symbol, actual_multi)
                         else:
                             logger.info(f"⏭️ Skip {symbol}: {actual_multi}x (5x-8x zone)")
                         continue
 
                     if not await self.state.is_alerted(addr) and 0 < age <= 600:
                         launch_data = await self.state.get_launch_tracking(addr)
-                        launch_dict = None
-                        if launch_data:
-                            launch_dict = {
-                                "buy_count": launch_data.buy_count,
-                                "unique_wallets": len(launch_data.unique_wallets),
-                                "volume": launch_data.volume,
-                            }
 
-                        ai_score, reason = score_coin(
-                            pair, {"name": name, "symbol": symbol}, age,
-                            launch_data=launch_dict, is_post_migration=True
+                        pair_data = pair
+                        features = extract_launch_features(
+                            launch_data, pair_data=pair_data,
+                            unique_wallets=len(launch_data.unique_wallets) if launch_data else 0
                         )
-                        threshold = get_adaptive_threshold()
 
                         vol_24h = float((pair.get("volume") or {}).get("h24", 0) or 0)
-                        pattern = {
-                            "mcap": mcap,
-                            "liquidity": liquidity,
-                            "vol_liq_ratio": vol_24h / max(liquidity, 1) if liquidity > 0 else 0,
-                            "buy_sell_ratio": launch_data.buy_count / max(launch_data.sell_count, 1) if launch_data else 1,
-                        }
+                        vol_liq = vol_24h / max(liquidity, 1) if liquidity > 0 else 0
+                        buys_5m = int(((pair.get("txns") or {}).get("m5") or {}).get("buys", 0) or 0)
+                        sells_5m = int(((pair.get("txns") or {}).get("m5") or {}).get("sells", 0) or 0)
+                        buy_sell_5m = buys_5m / max(sells_5m, 1)
+
+                        score = 0.0
+                        reasons = []
+
+                        if mcap >= 50000 and mcap <= 500000:
+                            score += 0.2
+                            reasons.append(f"MCap {format_number(mcap)}")
+                        if liquidity >= 5000:
+                            score += 0.15
+                            reasons.append(f"Liq ${int(liquidity)}")
+                        if vol_liq >= 0.3:
+                            score += 0.2
+                            reasons.append(f"Vol/Liq {vol_liq:.1f}")
+                        if buy_sell_5m >= 2.0:
+                            score += 0.15
+                            reasons.append(f"5m B/S {buy_sell_5m:.1f}")
+                        if buys_5m >= 10:
+                            score += 0.1
+                            reasons.append(f"{buys_5m} buys/5m")
 
                         social_score = 0.0
                         try:
                             social_score, _ = await self.social.calculate_social_score(addr, symbol)
                             if not isinstance(social_score, (int, float)):
                                 social_score = 0.0
-                        except Exception as e:
-                            logger.debug(f"Social score error: {e}")
-
-                        whale_data = None
-                        try:
-                            whale_data = await self.helius.get_whale_transactions(addr, config.whale_min_sol)
                         except Exception:
                             pass
+                        if social_score > 0.3:
+                            score += 0.1
+                            reasons.append(f"Soc {int(social_score*100)}%")
 
-                        safety_data = None
-                        try:
-                            holders_data = await self.birdeye.get_top_holders(addr)
-                            if holders_data:
-                                safety_data = {"top10_holder_pct": holders_data.get("top10_holder_pct", 0)}
-                        except Exception:
-                            pass
+                        if score < 0.4:
+                            logger.info(f"[EVAL] {symbol}: score={score:.2f} → SKIP")
+                            continue
 
-                        should_signal, final_score, filter_reason = self.filter_engine.should_signal(
-                            addr, pattern, ai_score=ai_score,
-                            social_score=social_score, age_seconds=age,
-                            whale_data=whale_data, safety_data=safety_data
+                        momentum_ok, momentum_reason = await self._check_momentum(addr, launch_data)
+                        if not momentum_ok:
+                            logger.info(f"🚫 {symbol}: {momentum_reason}")
+                            continue
+
+                        confidence_pct = int(score * 100)
+                        confidence_bar = "🟢" * max(1, int(confidence_pct/20)) + "⚪" * (5 - max(1, int(confidence_pct/20)))
+                        reason_text = ", ".join(reasons[:3])
+
+                        await send_msg(self.telegram_app.bot,
+                            f"⚡ <b>আর্লি সিগন্যাল!</b>\n"
+                            f"━━━━━━━━━━━━━━━━\n"
+                            f"🏷️ <b>{name}</b> (${symbol})\n"
+                            f"🎯 কনফিডেন্স: {confidence_bar} <b>{confidence_pct}%</b>\n"
+                            f"🧠 <i>{reason_text}</i>\n"
+                            f"💵 দাম: <b>{current_price:.8f}</b>\n"
+                            f"💰 MCap: <b>{format_number(mcap)}</b>\n"
+                            f"💧 লিকুইডিটি: <b>{format_number(liquidity)}</b>\n"
+                            f"👥 হোল্ডার: <b>{coin_info.holders}</b>\n"
+                            f"🔒 LP লক: <b>{coin_info.lp_locked}%</b>\n"
+                            f"⏱️ বয়স: <b>{int(age//60)}m {int(age%60)}s</b>\n"
+                            f"━━━━━━━━━━━━━━━━\n"
+                            f"🔗 <a href='{link}'>GMGN</a>"
                         )
 
-                        effective_threshold = max(threshold, self.filter_engine.min_threshold)
+                        from bot_state import SignalInfo
+                        await self.state.add_signal(addr, SignalInfo(
+                            symbol=symbol,
+                            price_at_signal=current_price,
+                            signal_time=now_ts,
+                            launch_time=coin_info.launch_time or now_ts,
+                            is_pre_migration=False,
+                            is_pre_migration_known=True,
+                        ))
+                        await self.state.add_alerted(addr)
 
-                        verdict = "SIGNAL ✅" if (should_signal and final_score >= effective_threshold) else "REJECTED ❌"
-                        logger.info(
-                            f"[EVAL] {symbol}: ai={ai_score:.2f} soc={social_score:.2f} "
-                            f"final={final_score:.2f} thr={effective_threshold:.2f} → {verdict}"
-                        )
-
-                        if should_signal and final_score >= effective_threshold:
-                            momentum_ok, momentum_reason = await self._check_momentum(addr, launch_data)
-                            if not momentum_ok:
-                                logger.info(f"🚫 {symbol}: Blocked by momentum check - {momentum_reason}")
-                                continue
-                            holders = coin_info.holders
-                            lp = coin_info.lp_locked
-                            confidence_pct = int(final_score * 100)
-                            confidence_bar = "🟢" * int(confidence_pct/20) + "⚪" * (5 - int(confidence_pct/20))
-                            social_pct = int(social_score * 100)
-
-                            await send_msg(self.telegram_app.bot,
-                                f"⚡ <b>আর্লি সিগন্যাল!</b>\n"
-                                f"━━━━━━━━━━━━━━━━\n"
-                                f"🏷️ <b>{name}</b> (${symbol})\n"
-                                f"🎯 কনফিডেন্স: {confidence_bar} <b>{confidence_pct}%</b> (থ্রেশোল্ড {int(effective_threshold*100)}%)\n"
-                                f"🧠 <i>{reason}</i>\n"
-                                f"💵 দাম: <b>{current_price:.8f}</b>\n"
-                                f"💰 MCap: <b>{format_number(mcap)}</b>\n"
-                                f"💧 লিকুইডিটি: <b>{format_number(liquidity)}</b>\n"
-                                f"👥 হোল্ডার: <b>{holders}</b>\n"
-                                f"🔒 LP লক: <b>{lp}%</b>\n"
-                                f"🌐 Social: <b>{social_pct}%</b>\n"
-                                f"⏱️ বয়স: <b>{int(age//60)}m {int(age%60)}s</b>\n"
-                                f"━━━━━━━━━━━━━━━━\n"
-                                f"🔗 <a href='{link}'>GMGN</a>"
-                            )
-
-                            record_signal(addr, symbol, final_score, current_price, mcap,
-                                          launch_time=coin_info.launch_time or now_ts,
-                                          is_pre_migration=False,
-                                          is_pre_migration_known=True,
-                                          migration_time=coin_info.launch_time or now_ts)
-                            from bot_state import SignalInfo
-                            await self.state.add_signal(addr, SignalInfo(
-                                symbol=symbol,
-                                price_at_signal=current_price,
-                                signal_time=now_ts,
-                                launch_time=coin_info.launch_time or now_ts,
-                                is_pre_migration=False,
-                                is_pre_migration_known=True,
-                            ))
-                            await self.state.add_alerted(addr)
-
-                            if config.paper_trading:
-                                try:
-                                    launch_vel = getattr(launch_data, 'buy_velocity', 0)
-                                    launch_curve = getattr(launch_data, 'curve_fill_pct', 0)
-                                    pos = await self.paper_trader.buy(
-                                        addr, symbol, name, current_price,
-                                        ai_score, social_score, final_score, age,
-                                        launch_vel, launch_curve
-                                    )
-                                    if pos:
-                                        await send_msg(self.telegram_app.bot,
-                                            f"🟢 <b>Paper Buy!</b>\n"
-                                            f"🏷️ ${symbol} @ ${current_price:.8f}\n"
-                                            f"💰 {pos.sol_amount:.4f} SOL\n"
-                                            f"🎯 TP: ${pos.tp_price:.8f} ({((pos.tp_price/pos.entry_price)-1)*100:+.0f}%)\n"
-                                            f"🛑 SL: ${pos.sl_price:.8f} ({((pos.sl_price/pos.entry_price)-1)*100:+.0f}%)\n"
-                                            f"💵 ব্যালেন্স: {self.paper_trader.state.current_sol:.4f} SOL"
-                                        )
-                                except Exception as e:
-                                    logger.debug(f"Paper buy error: {e}")
-
+                        if config.paper_trading:
                             try:
-                                self.verify_loop.schedule_verification(
-                                    addr, symbol, coin_info.launch_time or now_ts,
-                                    current_price, social_score, final_score
+                                launch_vel = getattr(launch_data, 'buy_velocity', 0) if launch_data else 0
+                                launch_curve = getattr(launch_data, 'curve_fill_pct', 0) if launch_data else 0
+                                pos = await self.paper_trader.buy(
+                                    addr, symbol, name, current_price,
+                                    score, social_score, score, age,
+                                    launch_vel, launch_curve
                                 )
+                                if pos:
+                                    await send_msg(self.telegram_app.bot,
+                                        f"🟢 <b>Paper Buy!</b>\n"
+                                        f"🏷️ ${symbol} @ ${current_price:.8f}\n"
+                                        f"💰 {pos.sol_amount:.4f} SOL\n"
+                                        f"🎯 TP: ${pos.tp_price:.8f} ({((pos.tp_price/pos.entry_price)-1)*100:+.0f}%)\n"
+                                        f"🛑 SL: ${pos.sl_price:.8f} ({((pos.sl_price/pos.entry_price)-1)*100:+.0f}%)\n"
+                                        f"💵 ব্যালেন্স: {self.paper_trader.state.current_sol:.4f} SOL"
+                                    )
                             except Exception as e:
-                                logger.debug(f"Verify schedule error: {e}")
+                                logger.debug(f"Paper buy error: {e}")
 
                 sync_counter += 1
                 if sync_counter >= config.github_sync_interval // max(config.scan_interval, 1):
@@ -998,16 +790,16 @@ class MemeBot:
 
                     if verified:
                         txs = await self.helius.get_launch_transactions(addr)
-                        launch_pat = extract_launch_pattern(txs) if txs else None
-                        ok, msg = learn_pump_with_launch(coin_info, pair, actual_multi, launch_pat, addr, manual=False)
-                        if ok:
-                            learned_pump += 1
+                        launch_pat = None
+                        if txs:
+                            launch_pat = {"txns": txs, "source": "helius_history"}
+                        record_signal_result(addr, coin_info["symbol"], actual_multi)
+                        learned_pump += 1
                     elif age and age > 3600:
                         h24 = float(pair.get("priceChange", {}).get("h24", 0) or 0)
                         if h24 < 100:
-                            ok, msg = learn_dump(coin_info, pair, addr, manual=False)
-                            if ok:
-                                learned_dump += 1
+                            record_signal_result(addr, coin_info["symbol"], 0.5)
+                            learned_dump += 1
 
                 if learned_pump > 0 or learned_dump > 0:
                     if config.enable_github_sync:
@@ -1037,16 +829,16 @@ class MemeBot:
                     if current_price <= 0:
                         continue
 
-                    ath_price, ath_mult = update_signal_ath(addr, current_price)
-
                     if age < 10800:
                         continue
 
-                    update_signal_result(addr, current_price)
                     multiplier = current_price / sig_info.price_at_signal if sig_info.price_at_signal > 0 else 0
+                    record_signal_result(addr, sig_info.symbol, multiplier)
+
                     emoji = "✅" if multiplier >= 2.0 else "❌"
-                    ath_emoji = "📈" if ath_mult >= 3 else "📊" if ath_mult >= 2 else "📉"
-                    ath_text = f"{ath_emoji} ATH: <b>{ath_mult:.2f}x</b> (${ath_price:.8f})" if ath_mult > 1.0 else ""
+                    ath_text = ""
+                    if multiplier >= 2:
+                        ath_text = f"\n📈 Multiplier: <b>{multiplier:.2f}x</b>"
 
                     pnl_text = ""
                     if config.paper_trading and self.paper_trader:
@@ -1241,23 +1033,12 @@ class MemeBot:
             await asyncio.sleep(7 * 24 * 3600)  # Every 7 days
 
     async def daily_summary_loop(self):
-        """Send daily performance summary."""
+        """Send daily learning summary."""
         while True:
             try:
                 await asyncio.sleep(86400)
                 report = get_daily_report()
-                stats = get_stats()
-                await send_msg(self.telegram_app.bot,
-                    f"📊 <b>দৈনিক রিপোর্ট</b>\n"
-                    f"━━━━━━━━━━━━━━━━\n"
-                    f"📅 তারিখ: <b>{report['date']}</b>\n"
-                    f"📡 সিগন্যাল পাঠানো: <b>{report['signals_sent']}</b>\n"
-                    f"🚀 পাম্প শেখা: <b>{report['pumps_learned']}</b>\n"
-                    f"✅ সফল: <b>{report['successful']}/{report['checked']}</b>\n"
-                    f"🎯 Accuracy: <b>{stats['accuracy']}%</b>\n"
-                    f"━━━━━━━━━━━━━━━━\n"
-                    f"📚 মোট পাম্প: <b>{stats['pump_patterns']}</b> | ডাম্প: <b>{stats['dump_patterns']}</b>"
-                )
+                await send_msg(self.telegram_app.bot, report)
             except asyncio.CancelledError:
                 break
             except Exception as e:
