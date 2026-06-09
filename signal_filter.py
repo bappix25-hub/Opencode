@@ -32,12 +32,13 @@ class SignalFilter:
     def __init__(self):
         self.golden_patterns = self._load_golden()
         self.blacklist = self._load_blacklist()
-        self.min_threshold = _env_float("SIGNAL_MIN_THRESHOLD", 0.80)
-        self.warmup_min_threshold = _env_float("SIGNAL_WARMUP_THRESHOLD", 0.70)
+        self.min_threshold = _env_float("SIGNAL_MIN_THRESHOLD", 0.50)
+        self.warmup_min_threshold = _env_float("SIGNAL_WARMUP_THRESHOLD", 0.35)
+        self.pre_migration_threshold = _env_float("SIGNAL_PRE_MIGRATION_THRESHOLD", 0.30)
         self.warmup_signal_count = int(os.getenv("SIGNAL_WARMUP_COUNT", "20"))
-        self.onchain_weight = 0.45
-        self.social_weight = 0.30
-        self.timing_weight = 0.10
+        self.onchain_weight = 0.55
+        self.social_weight = 0.15
+        self.timing_weight = 0.15
         self.whale_weight = 0.10
         self.safety_weight = 0.05
         self.user_threshold: Optional[float] = None
@@ -57,7 +58,9 @@ class SignalFilter:
         except Exception:
             return True
 
-    def effective_threshold(self) -> float:
+    def effective_threshold(self, pre_migration: bool = False) -> float:
+        if pre_migration:
+            return self.pre_migration_threshold
         if self.user_threshold is not None:
             return self.user_threshold
         return self.warmup_min_threshold if self._warmup_active() else self.min_threshold
@@ -169,6 +172,7 @@ class SignalFilter:
         age_seconds: float,
         whale_data: Optional[dict] = None,
         safety_data: Optional[dict] = None,
+        pre_migration: bool = False,
     ) -> tuple:
         if self.is_blacklisted(address):
             return False, 0.0, "🚫 Blacklisted pattern"
@@ -221,7 +225,7 @@ class SignalFilter:
             + safety_score * self.safety_weight
         )
 
-        thr = self.effective_threshold()
+        thr = self.effective_threshold(pre_migration=pre_migration)
         if final_score < thr:
             return False, final_score, f"Below threshold ({final_score:.2f} < {thr:.2f})"
 

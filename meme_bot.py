@@ -459,14 +459,15 @@ class MemeBot:
         should_signal, final_score, filter_reason = self.filter_engine.should_signal(
             address, pattern, ai_score=ai_score,
             social_score=social_score, age_seconds=age,
-            whale_data=whale_data, safety_data=safety_data
+            whale_data=whale_data, safety_data=safety_data,
+            pre_migration=True
         )
 
         final_score += bonding_boost
         final_score -= red_flag_penalty
         final_score = max(0.0, final_score)
 
-        effective_threshold = max(threshold, self.filter_engine.min_threshold)
+        effective_threshold = max(threshold, self.filter_engine.pre_migration_threshold)
         effective_threshold += red_flag_penalty * 0.5
 
         logger.info(
@@ -848,7 +849,7 @@ class MemeBot:
 
                         effective_threshold = max(threshold, self.filter_engine.min_threshold)
 
-                        if should_signal and ai_score >= effective_threshold:
+                        if should_signal and final_score >= effective_threshold:
                             momentum_ok, momentum_reason = await self._check_momentum(addr, launch_data)
                             if not momentum_ok:
                                 logger.info(f"🚫 {symbol}: Blocked by momentum check - {momentum_reason}")
