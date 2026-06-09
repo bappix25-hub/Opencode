@@ -5,12 +5,14 @@ import asyncio
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters
 from bot_state import BotState
-from learner import get_stats, get_daily_report, is_duplicate
+from learner import get_stats, get_daily_report, learn_pump, learn_dump, is_duplicate, verify_pump
 from dex_client import DexScreenerClient
 from helius_client import HeliusClient
 from config import config
 from utils import format_number
 from backtest import BacktestEngine, REPORTS_DIR
+from signal_filter import SignalFilter
+from verify_loop import VerifyLoop
 from paper_trader import PaperTrader
 
 logger = logging.getLogger("telegram_bot")
@@ -24,10 +26,12 @@ def main_keyboard():
     return ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
 
 class TelegramHandlers:
-    def __init__(self, state: BotState, dex: DexScreenerClient, session, paper_trader: PaperTrader = None):
+    def __init__(self, state: BotState, dex: DexScreenerClient, session, filter_engine: SignalFilter = None, verify_loop: VerifyLoop = None, paper_trader: PaperTrader = None):
         self.state = state
         self.dex = dex
         self.session = session
+        self.filter_engine = filter_engine
+        self.verify_loop = verify_loop
         self.paper_trader = paper_trader
 
     async def cmd_start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -51,6 +55,7 @@ class TelegramHandlers:
 
     async def cmd_threshold(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         current = await self.state.get_threshold()
+        filter_thr = self.filter_engine.effective_threshold() if self.filter_engine else current
         keyboard = [
             [
                 InlineKeyboardButton("50%", callback_data="thr_50"),
@@ -67,6 +72,7 @@ class TelegramHandlers:
                 f"🎯 <b>AI কনফিডেন্স / থ্রেশোল্ড</b>\n"
                 f"━━━━━━━━━━━━━━━━\n"
                 f"বর্তমান: <b>{int(current*100)}%</b>\n"
+                f"ফিল্টার থ্রেশোল্ড: <b>{int(filter_thr*100)}%</b>\n"
                 f"ডিফল্ট: <b>80%</b>\n"
                 f"━━━━━━━━━━━━━━━━\n"
                 f"নিচের বাটন থেকে সিলেক্ট করো বা <code>/threshold N</code> লেখো (১-১০০)।",
@@ -81,7 +87,8 @@ class TelegramHandlers:
                 return
             await self._apply_threshold(val / 100)
             await update.message.reply_text(
-                f"✅ থ্রেশোল্ড: <b>{val}%</b>",
+                f"✅ থ্রেশোল্ড: <b>{val}%</b>\n"
+                f"ফিল্টারে প্রয়োগ হয়েছে।",
                 parse_mode="HTML",
                 reply_markup=InlineKeyboardMarkup(keyboard),
             )
@@ -90,6 +97,8 @@ class TelegramHandlers:
 
     async def _apply_threshold(self, value: float) -> None:
         await self.state.set_threshold(value)
+        if self.filter_engine and hasattr(self.filter_engine, "set_user_threshold"):
+            self.filter_engine.set_user_threshold(value)
 
     async def threshold_callback(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         query = update.callback_query
@@ -97,10 +106,13 @@ class TelegramHandlers:
         data = query.data or ""
         if data == "thr_status":
             current = await self.state.get_threshold()
+            filter_thr = self.filter_engine.effective_threshold() if self.filter_engine else current
             await query.edit_message_text(
                 f"📊 <b>থ্রেশোল্ড স্ট্যাটাস</b>\n"
                 f"━━━━━━━━━━━━━━━━\n"
-                f"State threshold: <b>{int(current*100)}%</b>",
+                f"State threshold: <b>{int(current*100)}%</b>\n"
+                f"Filter threshold: <b>{int(filter_thr*100)}%</b>\n"
+                f"User override: {'<b>চালু</b>' if self.filter_engine and self.filter_engine.user_threshold is not None else 'বন্ধ'}",
                 parse_mode="HTML",
                 reply_markup=query.message.reply_markup,
             )
@@ -144,7 +156,7 @@ class TelegramHandlers:
             return
         name = pair.get("baseToken", {}).get("name", "Unknown")
         symbol = pair.get("baseToken", {}).get("symbol", "???")
-        from utils import verify_pump
+        coin_info = {"name": name, "symbol": symbol}
         verified, actual_multi = verify_pump(pair, config.pump_multiplier)
         if not verified:
             await update.message.reply_text(
@@ -152,9 +164,8 @@ class TelegramHandlers:
                 parse_mode="HTML"
             )
             return
-        from learner import record_signal_result
-        record_signal_result(address, symbol, actual_multi)
-        await update.message.reply_text(f"✅ <b>{name}</b>\nPump learned: {actual_multi}x", parse_mode="HTML")
+        ok, msg = learn_pump(coin_info, pair, actual_multi, address, manual=True)
+        await update.message.reply_text(f"{'✅' if ok else '❌'} <b>{name}</b>\n{msg}", parse_mode="HTML")
 
     async def cmd_forcepump(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not context.args:
@@ -171,10 +182,9 @@ class TelegramHandlers:
             return
         name = pair.get("baseToken", {}).get("name", "Unknown")
         symbol = pair.get("baseToken", {}).get("symbol", "???")
-        from learner import record_signal_result
-        from config import config as cfg
-        record_signal_result(address, symbol, cfg.pump_multiplier)
-        await update.message.reply_text(f"✅ <b>{name}</b>\nForce pump learned: {cfg.pump_multiplier}x", parse_mode="HTML")
+        coin_info = {"name": name, "symbol": symbol}
+        ok, msg = learn_pump(coin_info, pair, config.pump_multiplier, address, manual=True)
+        await update.message.reply_text(f"{'✅' if ok else '❌'} <b>{name}</b>\n{msg}", parse_mode="HTML")
 
     async def cmd_dump(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not context.args:
@@ -191,14 +201,15 @@ class TelegramHandlers:
             return
         name = pair.get("baseToken", {}).get("name", "Unknown")
         symbol = pair.get("baseToken", {}).get("symbol", "???")
-        from learner import record_signal_result
-        record_signal_result(address, symbol, 0.5)
-        await update.message.reply_text(f"✅ <b>{name}</b>\nDump learned (0.5x)", parse_mode="HTML")
+        coin_info = {"name": name, "symbol": symbol}
+        ok, msg = learn_dump(coin_info, pair, address, manual=True)
+        await update.message.reply_text(f"{'✅' if ok else '❌'} <b>{name}</b>\n{msg}", parse_mode="HTML")
 
     async def cmd_health(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         stats = await self.state.get_stats()
         learner_stats = get_stats()
         active = "🟢 চালু" if stats["bot_active"] else "🔴 বন্ধ"
+        thr = self.filter_engine.effective_threshold() if self.filter_engine else 0.60
         await update.message.reply_text(
             f"📊 <b>বট স্ট্যাটাস</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
@@ -208,11 +219,14 @@ class TelegramHandlers:
             f"🚫 ব্ল্যাকলিস্ট: <b>{stats['blacklisted']}</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"📚 পাম্প প্যাটার্ন: <b>{learner_stats['pump_patterns']}</b>\n"
+            f"📖 লঞ্চ প্যাটার্ন: <b>{learner_stats['launch_patterns']}</b>\n"
             f"📉 ডাম্প প্যাটার্ন: <b>{learner_stats['dump_patterns']}</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"⚡ সিগন্যাল পাঠানো: <b>{learner_stats['total_signals']}</b>\n"
             f"🏆 সফল (2x+): <b>{learner_stats['successful_signals']}</b>\n"
-            f"🎯 একুরেসি: <b>{learner_stats['accuracy']}%</b>",
+            f"🎯 একুরেসি: <b>{learner_stats['accuracy']}%</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"🎯 থ্রেশোল্ড: <b>{int(thr*100)}%</b>",
             parse_mode="HTML"
         )
 
@@ -401,23 +415,44 @@ class TelegramHandlers:
         await update.message.reply_text(text, parse_mode="HTML")
 
     async def cmd_signalstats(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        learner_stats = get_stats()
+        if not self.verify_loop:
+            await update.message.reply_text("❌ Verify loop not initialized")
+            return
+        v = self.verify_loop.get_stats()
+        f = self.filter_engine.get_stats() if self.filter_engine else {}
         text = (
             f"📊 <b>Signal Statistics</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"⚡ Total signals: <b>{learner_stats['total_signals']}</b>\n"
-            f"🏆 Successful (2x+): <b>{learner_stats['successful_signals']}</b>\n"
-            f"🎯 Accuracy: <b>{learner_stats['accuracy']}%</b>\n"
-            f"📚 Pump patterns: <b>{learner_stats['pump_patterns']}</b>\n"
-            f"📉 Dump patterns: <b>{learner_stats['dump_patterns']}</b>"
+            f"<b>Verification:</b>\n"
+            f"⚡ Total verified: <b>{v['total_verified']}</b>\n"
+            f"✅ Pumps: <b>{v['pumps']}</b>\n"
+            f"🌟 Strong pumps (5x+): <b>{v['strong_pumps']}</b>\n"
+            f"❌ Dumps: <b>{v['dumps']}</b>\n"
+            f"💰 Win rate: <b>{v['win_rate']}%</b>\n"
+            f"🌟 5x rate: <b>{v['strong_rate']}%</b>\n\n"
+            f"<b>Filter:</b>\n"
+            f"🌟 Golden patterns: <b>{f.get('golden_count', 0)}</b>\n"
+            f"🚫 Blacklisted: <b>{f.get('blacklist_count', 0)}</b>\n"
         )
         await update.message.reply_text(text, parse_mode="HTML")
 
     async def cmd_golden(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        await update.message.reply_text("❌ Golden patterns removed in v4. Use /signalstats instead.")
-
-    async def cmd_blacklist(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        await update.message.reply_text("❌ Blacklist removed in v4. Honeypot detection is automatic.")
+        if not self.filter_engine:
+            await update.message.reply_text("❌ Filter not initialized")
+            return
+        goldens = self.filter_engine.golden_patterns.get("patterns", [])
+        if not goldens:
+            await update.message.reply_text("❌ কোনো golden pattern নেই এখনো (5+ সফল সিগন্যাল দরকার)")
+            return
+        text = "🌟 <b>Golden Patterns (5x+ proven):</b>\n━━━━━━━━━━━━━━━━\n"
+        for i, gp in enumerate(goldens[:10], 1):
+            text += (
+                f"{i}. <b>{gp.get('symbol', '?')}</b>\n"
+                f"   Count: {gp.get('count', 0)} | "
+                f"Max: {gp.get('max_multiplier', 0)}x | "
+                f"Avg: {gp.get('avg_multiplier', 0)}x\n"
+            )
+        await update.message.reply_text(text, parse_mode="HTML")
 
     async def cmd_feature(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not context.args:
@@ -445,12 +480,27 @@ class TelegramHandlers:
         )
         logger.info(f"📝 Feature request: {request_text[:100]}")
 
+    async def cmd_blacklist(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        if not self.filter_engine:
+            await update.message.reply_text("❌ Filter not initialized")
+            return
+        count = len(self.filter_engine.blacklist.get("patterns", []))
+        await update.message.reply_text(
+            f"🚫 <b>Blacklisted Patterns:</b> {count} টি\n"
+            f"3+ বার ব্যর্থ হলে auto-blacklist হয়।"
+        )
+
     async def cmd_retrain(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        await update.message.reply_text("🔄 Retraining...")
+        await update.message.reply_text("🔄 Model retraining triggered...")
+        from learner import _update_model, load_data
+        data = load_data()
+        _update_model(data)
+        from learner import save_data
+        save_data(data)
         learner_stats = get_stats()
         await update.message.reply_text(
-            f"✅ Current stats:\n"
-            f"📚 Patterns: {learner_stats['pump_patterns']}\n"
+            f"✅ Model updated!\n"
+            f"🧠 Patterns: {learner_stats['pump_patterns']}\n"
             f"🎯 Accuracy: {learner_stats['accuracy']}%"
         )
 
@@ -494,12 +544,17 @@ class TelegramHandlers:
             await self.cmd_health(update, context)
         elif text == "📈 পারফরম্যান্স":
             learner_stats = get_stats()
+            v = self.verify_loop.get_stats() if self.verify_loop else {}
             await update.message.reply_text(
                 f"📈 <b>পারফরম্যান্স</b>\n"
                 f"━━━━━━━━━━━━━━━━\n"
                 f"⚡ মোট সিগন্যাল: <b>{learner_stats['total_signals']}</b>\n"
-                f"🏆 সফল (2x+): <b>{learner_stats['successful_signals']}</b>\n"
-                f"🎯 একুরেসি: <b>{learner_stats['accuracy']}%</b>",
+                f"✅ চেক হয়েছে: <b>{v.get('total_verified', 0)}</b>\n"
+                f"🏆 সফল (2x+): <b>{v.get('pumps', 0)}</b>\n"
+                f"🌟 স্ট্রং (5x+): <b>{v.get('strong_pumps', 0)}</b>\n"
+                f"❌ ডাম্প: <b>{v.get('dumps', 0)}</b>\n"
+                f"🎯 একুরেসি: <b>{v.get('win_rate', 0)}%</b>\n"
+                f"⏰ সেরা সময়: <b>{learner_stats['best_hour']}:00 UTC</b>",
                 parse_mode="HTML"
             )
         elif text == "💰 ব্যালেন্স":
