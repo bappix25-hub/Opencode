@@ -166,7 +166,14 @@ def _smart_merge_data_file(local_path: str, remote_path: str, output_path: str) 
         return out[:cap]
 
     def _merge_dict(a, b):
+        if isinstance(a, list) and isinstance(b, list):
+            return list(dict.fromkeys(a + b))
         return {**(a or {}), **(b or {})}
+
+    def _merge_list_simple(a, b):
+        if isinstance(a, list) and isinstance(b, list):
+            return list(dict.fromkeys(a + b))
+        return a or b or []
 
     merged = dict(remote)
     merged["pump_patterns"] = _merge_list(
@@ -184,17 +191,13 @@ def _smart_merge_data_file(local_path: str, remote_path: str, output_path: str) 
         remote.get("launch_patterns"),
         key="address", cap=100,
     )
-    merged["trained_addresses"] = _merge_dict(
+    merged["trained_addresses"] = _merge_list_simple(
         local.get("trained_addresses"),
         remote.get("trained_addresses"),
     )
-    for k in ("signals", "blacklist", "honeypot_blocklist"):
+    for k in ("signals", "blacklisted", "honeypot_addresses", "blocked_deployers"):
         if k in local or k in remote:
-            merged[k] = _merge_list(
-                local.get(k), remote.get(k),
-                key="address" if k != "signals" else "token",
-                cap=200,
-            )
+            merged[k] = _merge_list_simple(local.get(k), remote.get(k))
     for k, v in local.items():
         if k not in merged:
             merged[k] = v
