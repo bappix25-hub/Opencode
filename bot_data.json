@@ -919,7 +919,7 @@
       "mcap_liq_ratio": 4.624585169160371,
       "momentum_5m": -3.72,
       "symbol": "Mimu",
-      "name": "M\u0130MU",
+      "name": "MİMU",
       "address": "7esrjyaEC5N1pRZ6DumxQ1GCXJwyGJQUrEm7BBKHpump",
       "final_multiplier": 3.13,
       "manual": false,
@@ -14020,6 +14020,69 @@
         "verdict": "PUMP",
         "multiplier": 4.4,
         "timestamp": "2026-06-09T20:30:02.761571+00:00"
+      },
+      {
+        "address": "WLJWMrvdAVxuALyPtgfC8iZTyUYaXtb3AvPqQXfpump",
+        "symbol": "WerldKup",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T20:56:45.770403+00:00"
+      },
+      {
+        "address": "uaeY9NBLS8cKKB6jxoF1ctUi6dMR97y2ASEUGXZpump",
+        "symbol": "Godzilla",
+        "verdict": "DUMP",
+        "multiplier": 0.44,
+        "timestamp": "2026-06-09T20:56:50.260755+00:00"
+      },
+      {
+        "address": "6p3Y3WBXcVwMbYNoVsU4EuVb3gdMmzSKhkEfo8Vcpump",
+        "symbol": "Pnut",
+        "verdict": "PUMP",
+        "multiplier": 2.3,
+        "timestamp": "2026-06-09T20:56:51.338620+00:00"
+      },
+      {
+        "address": "DUqdfMcdzM5haF3t9hDsmVqY7nFMev9UkfKfpAE4pump",
+        "symbol": "BETCUP",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T20:56:55.672278+00:00"
+      },
+      {
+        "address": "QNTcSEN5iqJrkQJd8P7pb4hLL7NTrd8EA5ADULMpump",
+        "symbol": "CHAIRG",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T20:57:00.481917+00:00"
+      },
+      {
+        "address": "8HjpMRNqjZWWhw3S3sksr9f8K1ExKW2G6qoaiMPfpump",
+        "symbol": "STEPPA",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T20:57:10.087963+00:00"
+      },
+      {
+        "address": "DF12JV9hFJbMWFuG7ff1wqaydj6HSkvwyt6mJnNVuGiR",
+        "symbol": "OINK",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T20:57:12.545377+00:00"
+      },
+      {
+        "address": "D6RcGUfNTkWdnNheCNqdQ6JWo8dX138tr1QB2AVbpump",
+        "symbol": "PURGE",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T20:57:19.710144+00:00"
+      },
+      {
+        "address": "6VotjDtQgqEKCjzyYSNzarHUJvTwVK4tvr1iCYUhpump",
+        "symbol": "MOSAIC",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T20:57:24.707946+00:00"
       }
     ],
     "golden_symbols": {}
