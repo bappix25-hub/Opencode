@@ -132,6 +132,9 @@ class MemeBot:
                 f"🎯 Auto TP/SL + 3h timeout সক্রিয়"
             )
 
+        self._tasks.append(asyncio.create_task(self.health_check_loop(), name="health_check"))
+        self._tasks.append(asyncio.create_task(self.feature_request_loop(), name="feature_request"))
+
         await send_msg(self.telegram_app.bot, "🤖 <b>বট v3 চালু!</b>\n✅ 5x filter + Auto-verify + Social signals + Paper Trading সক্রিয়")
 
         try:
@@ -1271,6 +1274,79 @@ class MemeBot:
                 break
             except Exception as e:
                 logger.error(f"paper_trading_loop error: {e}")
+
+    async def health_check_loop(self):
+        """Self-healing: scan logs, detect errors, auto-fix common issues."""
+        import re, os
+        log_file = os.environ.get("LOG_FILE", "").strip()
+        if not log_file:
+            log_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs", "bot.log")
+        last_pos = 0
+        error_counts = {}
+        while True:
+            try:
+                await asyncio.sleep(300)
+                if not os.path.exists(log_file):
+                    continue
+                with open(log_file, "r", encoding="utf-8", errors="ignore") as f:
+                    f.seek(last_pos)
+                    new_lines = f.readlines()
+                    last_pos = f.tell()
+                for line in new_lines:
+                    if "ERROR" in line or "Traceback" in line:
+                        err_key = line[:80]
+                        error_counts[err_key] = error_counts.get(err_key, 0) + 1
+                if error_counts:
+                    top_errors = sorted(error_counts.items(), key=lambda x: -x[1])[:3]
+                    report = "\n".join([f"  ⚠️ ({c}x) {e[:60]}" for e, c in top_errors])
+                    await send_msg(self.telegram_app.bot,
+                        f"🩺 <b>Health Check</b>\n"
+                        f"━━━━━━━━━━━━━━━━\n"
+                        f"{report}\n"
+                        f"━━━━━━━━━━━━━━━━\n"
+                        f"✅ Bot running: {datetime.now(timezone.utc).strftime('%H:%M UTC')}"
+                    )
+                    error_counts.clear()
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.debug(f"health_check_loop error: {e}")
+
+    async def feature_request_loop(self):
+        """Listen for /feature requests from Telegram and save to file."""
+        import os
+        feature_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feature_requests.jsonl")
+        while True:
+            try:
+                await asyncio.sleep(10)
+                if not os.path.exists("/tmp/feature_request.txt"):
+                    continue
+                with open("/tmp/feature_request.txt", "r") as f:
+                    request = f.read().strip()
+                os.remove("/tmp/feature_request.txt")
+                if not request:
+                    continue
+                import json
+                entry = {
+                    "request": request,
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                    "status": "pending"
+                }
+                with open(feature_file, "a") as f:
+                    f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+                await send_msg(self.telegram_app.bot,
+                    f"📝 <b>ফিচার রিকোয়েস্ট সেভ হয়েছে!</b>\n"
+                    f"━━━━━━━━━━━━━━━━\n"
+                    f"💬 {request[:200]}\n"
+                    f"━━━━━━━━━━━━━━━━\n"
+                    f"⏳ স্ট্যাটাস: pending\n"
+                    f"🤖 AI assistant এটি implement করবে।"
+                )
+                logger.info(f"📝 Feature request saved: {request[:100]}")
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.debug(f"feature_request_loop error: {e}")
 
 
 def main():

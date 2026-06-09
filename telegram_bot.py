@@ -454,6 +454,32 @@ class TelegramHandlers:
             )
         await update.message.reply_text(text, parse_mode="HTML")
 
+    async def cmd_feature(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        if not context.args:
+            await update.message.reply_text(
+                "📝 <b>ফিচার রিকোয়েস্ট:</b>\n"
+                "━━━━━━━━━━━━━━━━\n"
+                "Usage: /feature ফিচারের বিবরণ\n\n"
+                "Example:\n"
+                "/feature whale wallet ট্র্যাক করার সিস্টেম যোগ করো\n"
+                "/feature signal accuracy ৯০% এর উপরে আনো"
+            )
+            return
+        request_text = " ".join(context.args)
+        import json as _json
+        feature_file = "/tmp/feature_request.txt"
+        with open(feature_file, "w") as f:
+            _json.dump({"request": request_text, "user": update.effective_user.id}, f)
+        await update.message.reply_text(
+            f"📝 <b>ফিচার রিকোয়েস্ট সেভ হয়েছে!</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"💬 {request_text[:200]}\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"⏳ স্ট্যাটাস: pending\n"
+            f"🤖 AI assistant এটি implement করবে।"
+        )
+        logger.info(f"📝 Feature request: {request_text[:100]}")
+
     async def cmd_blacklist(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not self.filter_engine:
             await update.message.reply_text("❌ Filter not initialized")
@@ -562,5 +588,6 @@ def register_handlers(app, handlers: TelegramHandlers):
     app.add_handler(CommandHandler("balance", handlers.cmd_balance))
     app.add_handler(CommandHandler("positions", handlers.cmd_positions))
     app.add_handler(CommandHandler("trades", handlers.cmd_trades))
+    app.add_handler(CommandHandler("feature", handlers.cmd_feature))
     app.add_handler(CallbackQueryHandler(handlers.threshold_callback, pattern="^thr_"))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handlers.handle_buttons))
