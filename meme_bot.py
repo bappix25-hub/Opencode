@@ -929,10 +929,10 @@ class MemeBot:
 
     async def track_outcomes_loop(self):
         """
-        Monitoring-only: ATH + honeypot detection at T+5/15/60.
-        NO pre-migration learning. Learning ONLY post-migration via verify_pump().
+        Monitoring: ATH + honeypot detection at T+5/15/60/3600.
+        Outcome recording at T+6h for pump/dump classification.
         """
-        eval_offsets = [300, 900, 3600]
+        eval_offsets = [300, 900, 3600, 21600]
         await asyncio.sleep(120)
 
         while True:
@@ -973,6 +973,12 @@ class MemeBot:
                         if ld.deployer_wallet:
                             await self.state.add_blocked_deployer(ld.deployer_wallet)
                         logger.info(f"🍯 লেট-রিভিল হানিপট: {ld.symbol} @ T+{int(next_offset)}s")
+
+                    if next_offset == 21600:
+                        mcap = float(pair.get("fdv", 0) or 0)
+                        result = check_and_record_outcome(addr, mcap)
+                        if result:
+                            logger.info(f"📊 Outcome {ld.symbol}: {result} (mcap={int(mcap)})")
 
                     ld.eval_done[str(next_offset)] = True
 
