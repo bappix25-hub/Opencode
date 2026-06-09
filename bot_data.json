@@ -14160,6 +14160,20 @@
         "verdict": "PUMP",
         "multiplier": 3.53,
         "timestamp": "2026-06-09T21:02:16.981328+00:00"
+      },
+      {
+        "address": "uaeY9NBLS8cKKB6jxoF1ctUi6dMR97y2ASEUGXZpump",
+        "symbol": "Godzilla",
+        "verdict": "DUMP",
+        "multiplier": 0.46,
+        "timestamp": "2026-06-09T21:03:57.114978+00:00"
+      },
+      {
+        "address": "6p3Y3WBXcVwMbYNoVsU4EuVb3gdMmzSKhkEfo8Vcpump",
+        "symbol": "Pnut",
+        "verdict": "PUMP",
+        "multiplier": 3.08,
+        "timestamp": "2026-06-09T21:03:58.675180+00:00"
       }
     ],
     "golden_symbols": {}
