@@ -786,14 +786,7 @@ class MemeBot:
                                     await sync_to_github(f"পাম্প: {symbol} {actual_multi}x")
                         elif actual_multi <= 5.0:
                             await self.state.add_dump_coin(addr, CoinInfo(name=name, symbol=symbol))
-                            learned_dump, dump_msg = learn_dump({"name": name, "symbol": symbol}, pair, addr, manual=False)
-                            if learned_dump:
-                                await send_msg(self.telegram_app.bot,
-                                    f"📉 <b>ডাম্প কয়েন!</b>\n"
-                                    f"🏷️ ${symbol}\n"
-                                    f"📉 ডাম্প: <b>{actual_multi}x</b>\n"
-                                    f"🧠 <i>ডাম্প প্যাটার্ন শেখা হয়েছে!</i>"
-                                )
+                            learn_dump({"name": name, "symbol": symbol}, pair, addr, manual=False)
                         else:
                             logger.info(f"⏭️ Skip {symbol}: {actual_multi}x (5x-8x zone)")
                         continue
@@ -992,15 +985,6 @@ class MemeBot:
                         ok, msg = learn_pump_with_launch(coin_info, pair, actual_multi, launch_pat, addr, manual=False)
                         if ok:
                             learned_pump += 1
-                            link = gmgn_link(addr)
-                            launch_info = " | লঞ্চ ডেটা: ✅" if launch_pat else ""
-                            await send_msg(self.telegram_app.bot,
-                                f"📚 <b>পাম্প শেখা!</b>\n"
-                                f"🏷️ <b>{coin_info['name']}</b> (${coin_info['symbol']})\n"
-                                f"📈 <b>{actual_multi}x</b> | ⏱️ {int((age or 0)/60)}m{launch_info}\n"
-                                f"💰 {format_number(pair.get('fdv', 0))}\n"
-                                f"🔗 <a href='{link}'>GMGN</a>"
-                            )
                     elif age and age > 3600:
                         h24 = float(pair.get("priceChange", {}).get("h24", 0) or 0)
                         if h24 < 100:
