@@ -236,7 +236,9 @@ async def restore_from_github() -> bool:
 
     code, _, _ = await _run_git(["git", "checkout", "origin/" + GIT_BRANCH, "--", DATA_FILE], timeout=30)
     if code == 0 and os.path.exists(f"{DATA_FILE}.bak"):
-        remote_data = f"/tmp/remote_data_{os.getpid()}.json"
+        tmp_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".tmp")
+        os.makedirs(tmp_dir, exist_ok=True)
+        remote_data = os.path.join(tmp_dir, f"remote_data_{os.getpid()}.json")
         import shutil
         try:
             shutil.copy2(DATA_FILE, remote_data)

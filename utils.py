@@ -10,6 +10,7 @@ def setup_logging(name: str = "meme_bot") -> logging.Logger:
         return logger
 
     logger.setLevel(logging.INFO)
+    logger.propagate = False
     formatter = logging.Formatter(
         "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S"
