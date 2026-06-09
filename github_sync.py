@@ -157,12 +157,20 @@ def _smart_merge_data_file(local_path: str, remote_path: str, output_path: str) 
         seen = set()
         out = []
         for item in (remote_list or []) + (local_list or []):
-            k = item.get(key)
-            if k and k in seen:
-                continue
-            if k:
-                seen.add(k)
-            out.append(item)
+            if isinstance(item, str):
+                if item in seen:
+                    continue
+                seen.add(item)
+                out.append(item)
+            elif isinstance(item, dict):
+                k = item.get(key)
+                if k and k in seen:
+                    continue
+                if k:
+                    seen.add(k)
+                out.append(item)
+            else:
+                out.append(item)
         return out[:cap]
 
     def _merge_dict(a, b):

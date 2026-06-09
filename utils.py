@@ -16,28 +16,29 @@ def setup_logging(name: str = "meme_bot") -> logging.Logger:
         datefmt="%Y-%m-%d %H:%M:%S"
     )
 
-    console = logging.StreamHandler()
-    console.setFormatter(formatter)
-    logger.addHandler(console)
-
     log_file = os.environ.get("LOG_FILE", "").strip()
-    if log_file:
-        try:
-            os.makedirs(os.path.dirname(log_file) or ".", exist_ok=True)
-            daily = TimedRotatingFileHandler(
-                log_file, when="midnight", backupCount=7, encoding="utf-8"
-            )
-            daily.setFormatter(formatter)
-            logger.addHandler(daily)
+    if not log_file:
+        log_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs", "bot.log")
 
-            size_cap = RotatingFileHandler(
-                log_file + ".size", maxBytes=10 * 1024 * 1024,
-                backupCount=3, encoding="utf-8"
-            )
-            size_cap.setFormatter(formatter)
-            logger.addHandler(size_cap)
-        except Exception as e:
-            logger.warning(f"⚠️ File logging disabled: {e}")
+    try:
+        os.makedirs(os.path.dirname(log_file) or ".", exist_ok=True)
+        daily = TimedRotatingFileHandler(
+            log_file, when="midnight", backupCount=7, encoding="utf-8"
+        )
+        daily.setFormatter(formatter)
+        logger.addHandler(daily)
+
+        size_cap = RotatingFileHandler(
+            log_file + ".size", maxBytes=10 * 1024 * 1024,
+            backupCount=3, encoding="utf-8"
+        )
+        size_cap.setFormatter(formatter)
+        logger.addHandler(size_cap)
+    except Exception as e:
+        console = logging.StreamHandler()
+        console.setFormatter(formatter)
+        logger.addHandler(console)
+        logger.warning(f"⚠️ File logging disabled, using console: {e}")
 
     return logger
 

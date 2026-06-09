@@ -140,15 +140,15 @@ while true; do
             echo "🌐 Internet back at $(date) (after $ATTEMPT retries)" >> "$LOG_FILE"
         fi
         ATTEMPT=0
-        echo "🚀 Launching at $(date)" >> "$LOG_FILE"
-        python3 meme_bot.py >> "$LOG_FILE" 2>&1
+        echo "🚀 Launching at $(date)"
+        python3 meme_bot.py 2>&1
         EXIT_CODE=$?
-        echo "❌ Exited code=$EXIT_CODE at $(date), restart in 10s" >> "$LOG_FILE"
+        echo "❌ Exited code=$EXIT_CODE at $(date), restart in 10s"
         sleep 10
     else
         ATTEMPT=$((ATTEMPT + 1))
         if [ $((ATTEMPT % 4)) -eq 1 ]; then
-            echo "⏳ No internet (try $ATTEMPT) — waiting ${INTERNET_WAIT}s" >> "$LOG_FILE"
+            echo "⏳ No internet (try $ATTEMPT) — waiting ${INTERNET_WAIT}s"
         fi
         sleep $INTERNET_WAIT
     fi

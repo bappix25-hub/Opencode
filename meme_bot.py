@@ -1283,6 +1283,8 @@ class MemeBot:
             log_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs", "bot.log")
         last_pos = 0
         error_counts = {}
+        fixed_count = 0
+        env_fix_applied = False
         while True:
             try:
                 await asyncio.sleep(300)
@@ -1292,10 +1294,62 @@ class MemeBot:
                     f.seek(last_pos)
                     new_lines = f.readlines()
                     last_pos = f.tell()
+
+                fixes = []
                 for line in new_lines:
                     if "ERROR" in line or "Traceback" in line:
                         err_key = line[:80]
                         error_counts[err_key] = error_counts.get(err_key, 0) + 1
+
+                    if "Smart-merge step failed" in line and "list" in line:
+                        fixes.append("smart_merge_list")
+
+                    if "Duplicate" in line.lower() or (new_lines.count(line) > 1 and line.strip()):
+                        fixes.append("duplicate_log")
+
+                if not env_fix_applied and os.environ.get("LOG_FILE", "").strip():
+                    try:
+                        env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+                        if os.path.exists(env_path):
+                            with open(env_path, "r") as f:
+                                lines = f.readlines()
+                            new_lines = [l for l in lines if not l.strip().startswith("LOG_FILE=")]
+                            if len(new_lines) < len(lines):
+                                with open(env_path, "w") as f:
+                                    f.writelines(new_lines)
+                                env_fix_applied = True
+                                fixes.append("env_log_file_removed")
+                    except Exception as e:
+                        logger.debug(f"auto-fix env LOG_FILE failed: {e}")
+
+                if "smart_merge_list" in fixes:
+                    try:
+                        data_file = os.environ.get("DATA_FILE", "bot_data.json")
+                        if os.path.exists(data_file):
+                            import json
+                            with open(data_file) as f:
+                                data = json.load(f)
+                            ta = data.get("trained_addresses", [])
+                            if isinstance(ta, list) and ta and isinstance(ta[0], dict):
+                                data["trained_addresses"] = [a.get("address", str(a)) for a in ta]
+                                with open(data_file, "w") as f:
+                                    json.dump(data, f, indent=2)
+                                fixed_count += 1
+                                fixes = [f for f in fixes if f != "smart_merge_list"]
+                    except Exception as e:
+                        logger.debug(f"auto-fix smart_merge failed: {e}")
+
+                if fixes:
+                    unique_fixes = list(set(fixes))
+                    await send_msg(self.telegram_app.bot,
+                        f"🔧 <b>Auto-Fix Applied</b>\n"
+                        f"━━━━━━━━━━━━━━━━\n"
+                        f"Fixed: {', '.join(unique_fixes)}\n"
+                        f"Total fixes: {fixed_count}\n"
+                        f"━━━━━━━━━━━━━━━━\n"
+                        f"✅ Bot running: {datetime.now(timezone.utc).strftime('%H:%M UTC')}"
+                    )
+
                 if error_counts:
                     top_errors = sorted(error_counts.items(), key=lambda x: -x[1])[:3]
                     report = "\n".join([f"  ⚠️ ({c}x) {e[:60]}" for e, c in top_errors])
