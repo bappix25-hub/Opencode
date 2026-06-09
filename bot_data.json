@@ -1386,6 +1386,31 @@
         "curve_fill_pct": 72.2
       },
       "timestamp": "2026-06-09T17:33:38.793582+00:00"
+    },
+    {
+      "mcap": 55019.0,
+      "liquidity": 15902.67,
+      "volume_h1": 29006.18,
+      "volume_m5": 29006.18,
+      "age_seconds": 173.4649619140625,
+      "price_change_5m": 105.0,
+      "price_change_1h": 105.0,
+      "hour_of_day": 17,
+      "buys_m5": 348,
+      "sells_m5": 228,
+      "buys_h1": 348,
+      "sells_h1": 228,
+      "vol_liq_ratio": 1.8239817590379477,
+      "buy_sell_ratio_m5": 0.6041666666666666,
+      "buy_sell_ratio_h1": 0.6041666666666666,
+      "mcap_liq_ratio": 3.4597334912942292,
+      "momentum_5m": 105.0,
+      "symbol": "CHAIRG",
+      "name": "Gorilla Chair",
+      "address": "QNTcSEN5iqJrkQJd8P7pb4hLL7NTrd8EA5ADULMpump",
+      "final_multiplier": 3.64,
+      "manual": false,
+      "timestamp": "2026-06-09T17:54:28.465113+00:00"
     }
   ],
   "dump_patterns": [
@@ -5852,6 +5877,30 @@
       "final_multiplier": 0,
       "manual": false,
       "timestamp": "2026-06-09T17:33:54.487472+00:00"
+    },
+    {
+      "mcap": 24990.0,
+      "liquidity": 10695.24,
+      "volume_h1": 4738.26,
+      "volume_m5": 4738.26,
+      "age_seconds": 88.15109887695313,
+      "price_change_5m": -7.67,
+      "price_change_1h": -7.67,
+      "hour_of_day": 17,
+      "buys_m5": 88,
+      "sells_m5": 61,
+      "buys_h1": 88,
+      "sells_h1": 61,
+      "vol_liq_ratio": 0.44302512145590006,
+      "buy_sell_ratio_m5": 0.5906040268456376,
+      "buy_sell_ratio_h1": 0.5906040268456376,
+      "mcap_liq_ratio": 2.3365534574259206,
+      "momentum_5m": -7.67,
+      "symbol": "Coin",
+      "address": "56kRV9hzroSyrsZ45adweuHpQCetMsBSqGFiv6AUpump",
+      "final_multiplier": 0,
+      "manual": false,
+      "timestamp": "2026-06-09T17:45:11.151315+00:00"
     }
   ],
   "launch_patterns": [
@@ -6340,6 +6389,22 @@
       "age_seconds": 1684.6126188964843,
       "source": "early_pump_backtest",
       "timestamp": "2026-06-09T17:33:38.793606+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "unique_wallets": 0,
+      "volume": 1763077.748892,
+      "buy_sell_ratio": 0.0,
+      "buy_velocity": 0.0,
+      "curve_fill_pct": 0.0,
+      "avg_buy_gap": 0,
+      "symbol": "CHAIRG",
+      "address": "QNTcSEN5iqJrkQJd8P7pb4hLL7NTrd8EA5ADULMpump",
+      "source": "history_pump",
+      "timestamp": "2026-06-09T17:54:28.465212+00:00",
+      "final_multiplier": 3.64,
+      "age_seconds": 173.4649619140625
     }
   ],
   "trained_addresses": [
@@ -13574,7 +13639,9 @@
     "d0480f3c4680f24cfa9332644a5c46ab",
     "bfe32342c45190d04e8be00c0f72773e",
     "c7b6bf5b9d88c3e192e6f18b24cccdfd",
-    "fb5812d36c49e2f83556379fd3d40aff"
+    "fb5812d36c49e2f83556379fd3d40aff",
+    "c087997366b960aaea20d095c80fc2aa",
+    "a71bcaedaea4946887290ade9ff33f73"
   ],
   "signals": [
     {
@@ -13597,12 +13664,12 @@
     }
   ],
   "model": {
-    "avg_pump_mcap": 556645820.7884616,
-    "avg_pump_liquidity": 49487.195925925924,
-    "avg_pump_volume_h1": 167762.3777777778,
-    "avg_pump_buys_h1": 2045.037037037037,
-    "avg_pump_price_change_5m": 22.934814814814814,
-    "avg_pump_age_at_signal": 35058.93817289225,
+    "avg_pump_mcap": 546144107.5471698,
+    "avg_pump_liquidity": 48876.568181818184,
+    "avg_pump_volume_h1": 165239.53781818182,
+    "avg_pump_buys_h1": 2014.1818181818182,
+    "avg_pump_price_change_5m": 24.426909090909092,
+    "avg_pump_age_at_signal": 34424.65684178356,
     "best_hours": {
       "18": 8,
       "19": 10,
@@ -13615,7 +13682,7 @@
       "13": 1,
       "14": 4,
       "16": 4,
-      "17": 3,
+      "17": 4,
       "23": 2,
       "0": 1,
       "11": 1
@@ -13643,17 +13710,17 @@
     "threshold": 0.25,
     "signal_age_min": 42.58651560058594,
     "signal_age_max": 900,
-    "launch_avg_buys": 71.88235294117646,
-    "launch_avg_wallets": 18.58823529411765,
-    "launch_avg_volume": 22897954.80122856,
-    "std_pump_mcap": 4011142657.632931,
-    "std_pump_liquidity": 92019.64776612622,
-    "std_pump_volume_h1": 236492.40882985562,
-    "std_pump_buys_h1": 3145.3361458356862,
-    "avg_pump_vol_liq_ratio": 5.025616965355989,
-    "std_pump_vol_liq_ratio": 5.268986871351989,
-    "avg_pump_buy_sell_ratio": 0.5807491893576621,
-    "std_pump_buy_sell_ratio": 0.19471116903846417,
+    "launch_avg_buys": 69.82857142857142,
+    "launch_avg_wallets": 18.057142857142857,
+    "launch_avg_volume": 22294101.1711618,
+    "std_pump_mcap": 3973122402.6567993,
+    "std_pump_liquidity": 91276.04024316373,
+    "std_pump_volume_h1": 235038.30155763074,
+    "std_pump_buys_h1": 3124.4672558688517,
+    "avg_pump_vol_liq_ratio": 4.967405416150206,
+    "std_pump_vol_liq_ratio": 5.237793386681363,
+    "avg_pump_buy_sell_ratio": 0.5811749616723713,
+    "std_pump_buy_sell_ratio": 0.19292570500503475,
     "hourly_threshold": {
       "18": 0.25,
       "19": 0.25,
