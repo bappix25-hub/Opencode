@@ -1276,91 +1276,115 @@ class MemeBot:
                 logger.error(f"paper_trading_loop error: {e}")
 
     async def health_check_loop(self):
-        """Self-healing: scan logs, detect errors, auto-fix common issues."""
-        import re, os
-        log_file = os.environ.get("LOG_FILE", "").strip()
-        if not log_file:
-            log_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs", "bot.log")
-        last_pos = 0
-        error_counts = {}
-        fixed_count = 0
-        env_fix_applied = False
+        """Silent self-healing: kill duplicate processes, fix common errors, notify only on real fixes."""
+        import os, subprocess
+        my_pid = os.getpid()
+        last_notify = 0
+        notified = set()
+
         while True:
             try:
-                await asyncio.sleep(300)
-                if not os.path.exists(log_file):
-                    continue
-                with open(log_file, "r", encoding="utf-8", errors="ignore") as f:
-                    f.seek(last_pos)
-                    new_lines = f.readlines()
-                    last_pos = f.tell()
+                await asyncio.sleep(60)
 
-                fixes = []
-                for line in new_lines:
-                    if "ERROR" in line or "Traceback" in line:
-                        err_key = line[:80]
-                        error_counts[err_key] = error_counts.get(err_key, 0) + 1
+                # --- 1. Kill duplicate meme_bot.py processes ---
+                try:
+                    out = subprocess.check_output(
+                        ["pgrep", "-f", "meme_bot.py"],
+                        text=True, timeout=5
+                    ).strip()
+                    if out:
+                        pids = [int(p) for p in out.split("\n") if p.strip() and int(p) != my_pid]
+                        for pid in pids:
+                            try:
+                                os.kill(pid, 9)
+                                logger.info(f"🔧 Self-heal: killed duplicate PID {pid}")
+                            except ProcessLookupError:
+                                pass
+                except Exception:
+                    pass
 
-                    if "Smart-merge step failed" in line and "list" in line:
-                        fixes.append("smart_merge_list")
-
-                    if "Duplicate" in line.lower() or (new_lines.count(line) > 1 and line.strip()):
-                        fixes.append("duplicate_log")
-
-                if not env_fix_applied and os.environ.get("LOG_FILE", "").strip():
+                # --- 2. Kill zombie daemon.sh / run_247.sh ---
+                for zombie in ["daemon.sh", "run_247.sh", "watchdog.sh"]:
                     try:
-                        env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
-                        if os.path.exists(env_path):
-                            with open(env_path, "r") as f:
-                                lines = f.readlines()
-                            new_lines = [l for l in lines if not l.strip().startswith("LOG_FILE=")]
-                            if len(new_lines) < len(lines):
-                                with open(env_path, "w") as f:
-                                    f.writelines(new_lines)
-                                env_fix_applied = True
-                                fixes.append("env_log_file_removed")
-                    except Exception as e:
-                        logger.debug(f"auto-fix env LOG_FILE failed: {e}")
+                        out = subprocess.check_output(
+                            ["pgrep", "-f", zombie],
+                            text=True, timeout=5
+                        ).strip()
+                        if out:
+                            for pid in out.split("\n"):
+                                if pid.strip():
+                                    try:
+                                        os.kill(int(pid), 9)
+                                        logger.info(f"🔧 Self-heal: killed zombie {zombie} PID {pid}")
+                                    except (ProcessLookupError, ValueError):
+                                        pass
+                    except Exception:
+                        pass
 
-                if "smart_merge_list" in fixes:
+                # --- 3. Fix LOG_FILE in .env (once) ---
+                try:
+                    env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+                    if os.path.exists(env_path) and os.environ.get("LOG_FILE", "").strip():
+                        with open(env_path, "r") as f:
+                            lines = f.readlines()
+                        new_lines = [l for l in lines if not l.strip().startswith("LOG_FILE=")]
+                        if len(new_lines) < len(lines):
+                            with open(env_path, "w") as f:
+                                f.writelines(new_lines)
+                            now = datetime.now(timezone.utc).timestamp()
+                            if "env_log" not in notified and now - last_notify > 300:
+                                notified.add("env_log")
+                                last_notify = now
+                                await send_msg(self.telegram_app.bot, "🔧 <b>Auto-fix:</b> removed LOG_FILE from .env")
+                except Exception:
+                    pass
+
+                # --- 4. Fix trained_addresses list-of-dicts (once) ---
+                try:
+                    data_file = os.environ.get("DATA_FILE", "bot_data.json")
+                    if os.path.exists(data_file) and "trained_merge" not in notified:
+                        import json
+                        with open(data_file) as f:
+                            data = json.load(f)
+                        ta = data.get("trained_addresses", [])
+                        if isinstance(ta, list) and ta and isinstance(ta[0], dict):
+                            data["trained_addresses"] = [a.get("address", str(a)) for a in ta]
+                            with open(data_file, "w") as f:
+                                json.dump(data, f, indent=2)
+                            now = datetime.now(timezone.utc).timestamp()
+                            if now - last_notify > 300:
+                                notified.add("trained_merge")
+                                last_notify = now
+                                await send_msg(self.telegram_app.bot, "🔧 <b>Auto-fix:</b> converted trained_addresses from dicts to strings")
+                except Exception:
+                    pass
+
+                # --- 5. Detect repeated errors in log → notify once per unique error ---
+                log_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs", "bot.log")
+                if os.path.exists(log_file):
                     try:
-                        data_file = os.environ.get("DATA_FILE", "bot_data.json")
-                        if os.path.exists(data_file):
-                            import json
-                            with open(data_file) as f:
-                                data = json.load(f)
-                            ta = data.get("trained_addresses", [])
-                            if isinstance(ta, list) and ta and isinstance(ta[0], dict):
-                                data["trained_addresses"] = [a.get("address", str(a)) for a in ta]
-                                with open(data_file, "w") as f:
-                                    json.dump(data, f, indent=2)
-                                fixed_count += 1
-                                fixes = [f for f in fixes if f != "smart_merge_list"]
-                    except Exception as e:
-                        logger.debug(f"auto-fix smart_merge failed: {e}")
+                        with open(log_file, "r", encoding="utf-8", errors="ignore") as f:
+                            f.seek(0, 2)
+                            size = f.tell()
+                            f.seek(max(0, size - 8192))
+                            tail = f.readlines()
+                        err_patterns = {}
+                        for line in tail:
+                            if "ERROR" in line or "Traceback" in line:
+                                key = line.strip()[:60]
+                                err_patterns[key] = err_patterns.get(key, 0) + 1
+                        now = datetime.now(timezone.utc).timestamp()
+                        for key, count in err_patterns.items():
+                            if count >= 5 and key not in notified and now - last_notify > 600:
+                                notified.add(key)
+                                last_notify = now
+                                await send_msg(self.telegram_app.bot,
+                                    f"⚠️ <b>Repeated error ({count}x)</b>\n<code>{key[:100]}</code>"
+                                )
+                                break
+                    except Exception:
+                        pass
 
-                if fixes:
-                    unique_fixes = list(set(fixes))
-                    await send_msg(self.telegram_app.bot,
-                        f"🔧 <b>Auto-Fix Applied</b>\n"
-                        f"━━━━━━━━━━━━━━━━\n"
-                        f"Fixed: {', '.join(unique_fixes)}\n"
-                        f"Total fixes: {fixed_count}\n"
-                        f"━━━━━━━━━━━━━━━━\n"
-                        f"✅ Bot running: {datetime.now(timezone.utc).strftime('%H:%M UTC')}"
-                    )
-
-                if error_counts:
-                    top_errors = sorted(error_counts.items(), key=lambda x: -x[1])[:3]
-                    report = "\n".join([f"  ⚠️ ({c}x) {e[:60]}" for e, c in top_errors])
-                    await send_msg(self.telegram_app.bot,
-                        f"🩺 <b>Health Check</b>\n"
-                        f"━━━━━━━━━━━━━━━━\n"
-                        f"{report}\n"
-                        f"━━━━━━━━━━━━━━━━\n"
-                        f"✅ Bot running: {datetime.now(timezone.utc).strftime('%H:%M UTC')}"
-                    )
-                    error_counts.clear()
             except asyncio.CancelledError:
                 break
             except Exception as e:

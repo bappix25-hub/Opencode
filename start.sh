@@ -120,17 +120,16 @@ else
 fi
 echo "━━━━━━━━━━━━━━━━━━━━"
 
-# Kill any existing bot instance (from previous crash/Ctrl+Z)
+# Kill ALL existing bot instances (previous crash / parallel scripts)
+echo "🧹 Cleaning up old processes..."
+pkill -9 -f "meme_bot.py" 2>/dev/null
+pkill -9 -f "daemon.sh" 2>/dev/null
+pkill -9 -f "run_247.sh" 2>/dev/null
+pkill -9 -f "watchdog.sh" 2>/dev/null
+sleep 2
+
 LOCK_FILE="/tmp/meme_bot_${BOT_INSTANCE:-main}.lock"
-if [ -f "$LOCK_FILE" ]; then
-    OLD_PID=$(cat "$LOCK_FILE" 2>/dev/null)
-    if [ -n "$OLD_PID" ] && kill -0 "$OLD_PID" 2>/dev/null; then
-        echo "🛑 Killing old bot instance (PID $OLD_PID)..."
-        kill -9 "$OLD_PID" 2>/dev/null
-        sleep 2
-    fi
-    rm -f "$LOCK_FILE"
-fi
+rm -f "$LOCK_FILE"
 
 INTERNET_WAIT=15
 ATTEMPT=0
@@ -141,7 +140,10 @@ while true; do
         fi
         ATTEMPT=0
         echo "🚀 Launching at $(date)"
-        python3 meme_bot.py 2>&1
+        python3 meme_bot.py 2>&1 &
+        BOT_PID=$!
+        echo "$BOT_PID" > "$LOCK_FILE"
+        wait "$BOT_PID" 2>/dev/null
         EXIT_CODE=$?
         echo "❌ Exited code=$EXIT_CODE at $(date), restart in 10s"
         sleep 10
