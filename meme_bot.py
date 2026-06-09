@@ -706,8 +706,7 @@ class MemeBot:
                         continue
 
                     now_ts = datetime.now(timezone.utc).timestamp()
-                    ref_time = coin_info.migration_time if coin_info.migration_time > 0 else coin_info.launch_time
-                    age = now_ts - ref_time if ref_time > 0 else 0
+                    age = now_ts - coin_info.launch_time if coin_info.launch_time > 0 else 0
                     if age <= 0:
                         pair_age = get_launch_age(pair) or 0
                         age = pair_age
