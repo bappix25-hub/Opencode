@@ -8,7 +8,7 @@ import aiohttp
 from telegram import Bot
 from telegram.ext import Application
 
-from bot_state import BotState, TrackedCoin, CoinInfo
+from bot_state import BotState, TrackedCoin, CoinInfo, LaunchSnapshot
 from config import config
 from dex_client import DexScreenerClient
 from rugcheck_client import RugcheckClient
@@ -23,7 +23,7 @@ from learner import (
     extract_launch_pattern, learn_pump_with_launch, verify_pump, get_launch_age,
     get_adaptive_threshold, is_duplicate, auto_learn_from_tracking,
     purge_honeypot_patterns, save_honeypot_blocklist, load_honeypot_blocklist,
-    learn_early_pump
+    learn_early_pump, score_pattern_match
 )
 from github_sync import sync_to_github, restore_from_github
 from utils import format_number, gmgn_link, setup_logging
@@ -293,6 +293,18 @@ class MemeBot:
         )
         await self.state.add_launch_tracking(address, launch_data)
 
+        snapshot = LaunchSnapshot(
+            address=address,
+            symbol=symbol,
+            name=data.get("name", "Unknown"),
+            timestamp=now_ts,
+            initial_liquidity=0,
+            initial_mcap=0,
+            initial_price=price,
+            curve_30s=curve_progress,
+        )
+        await self.state.add_launch_snapshot(address, snapshot)
+
         if holders is not None and holders < 3:
             logger.info(f"📊 ট্র্যাক (low holders): {symbol} ({holders}h)")
         else:
@@ -459,7 +471,27 @@ class MemeBot:
             whale_data=whale_data, safety_data=safety_data
         )
 
+        snapshot = await self.state.get_launch_snapshot(address)
+        snap_dict = {}
+        if snapshot:
+            snap_dict = {
+                "initial_liquidity": snapshot.initial_liquidity,
+                "initial_mcap": snapshot.initial_mcap,
+                "buyers_30s": snapshot.buyers_30s,
+                "velocity_30s": snapshot.velocity_30s,
+                "curve_30s": snapshot.curve_30s,
+                "buyers_60s": snapshot.buyers_60s,
+                "velocity_60s": snapshot.velocity_60s,
+                "curve_60s": snapshot.curve_60s,
+                "buyers_300s": snapshot.buyers_300s,
+                "volume_300s": snapshot.volume_300s,
+                "unique_300s": snapshot.unique_300s,
+                "curve_300s": snapshot.curve_300s,
+            }
+        pattern_score, pattern_reason = score_pattern_match(snap_dict) if snap_dict else (0.0, "no_snapshot")
+
         final_score += bonding_boost
+        final_score += pattern_score * 0.30
         final_score -= red_flag_penalty
         final_score = max(0.0, final_score)
 
@@ -725,6 +757,32 @@ class MemeBot:
                         ld.ath_price = current_price
                         await self.state.add_launch_tracking(addr, ld)
 
+                    snapshot = await self.state.get_launch_snapshot(addr)
+                    if snapshot:
+                        elapsed = age
+                        if elapsed >= 30 and snapshot.buyers_30s == 0:
+                            snapshot.buyers_30s = ld.buy_count if ld else 0
+                            snapshot.velocity_30s = ld.buy_velocity if ld else 0
+                            snapshot.curve_30s = ld.curve_fill_pct if ld else 0
+                        if elapsed >= 60 and snapshot.buyers_60s == 0:
+                            snapshot.buyers_60s = ld.buy_count if ld else 0
+                            snapshot.velocity_60s = ld.buy_velocity if ld else 0
+                            snapshot.curve_60s = ld.curve_fill_pct if ld else 0
+                        if elapsed >= 300 and snapshot.buyers_300s == 0:
+                            snapshot.buyers_300s = ld.buy_count if ld else 0
+                            snapshot.volume_300s = ld.volume if ld else 0
+                            snapshot.unique_300s = len(ld.unique_wallets) if ld else 0
+                            snapshot.curve_300s = ld.curve_fill_pct if ld else 0
+                            snapshot.initial_liquidity = liquidity
+                            snapshot.initial_mcap = mcap
+                        if mcap > snapshot.ath_mcap:
+                            snapshot.ath_mcap = mcap
+                            snapshot.ath_price = current_price
+                        if not snapshot.migrated and ld and ld.migration_time > 0:
+                            snapshot.migrated = True
+                            snapshot.final_multiplier = current_price / coin_info.initial_price if coin_info.initial_price > 0 else 0
+                        await self.state.add_launch_snapshot(addr, snapshot)
+
                     multiplier = current_price / coin_info.initial_price
                     mcap = float(pair.get("fdv", 0) or 0)
                     liquidity = float(pair.get("liquidity", {}).get("usd", 0) or 0)
@@ -784,6 +842,33 @@ class MemeBot:
                                 )
                                 if config.enable_github_sync:
                                     await sync_to_github(f"পাম্প: {symbol} {actual_multi}x")
+                                snapshot = await self.state.get_launch_snapshot(addr)
+                                if snapshot and snapshot.ath_mcap >= 300000:
+                                    golden = {
+                                        "address": addr,
+                                        "symbol": symbol,
+                                        "name": name,
+                                        "initial_liquidity": snapshot.initial_liquidity,
+                                        "initial_mcap": snapshot.initial_mcap,
+                                        "initial_price": snapshot.initial_price,
+                                        "buyers_30s": snapshot.buyers_30s,
+                                        "velocity_30s": snapshot.velocity_30s,
+                                        "curve_30s": snapshot.curve_30s,
+                                        "buyers_60s": snapshot.buyers_60s,
+                                        "velocity_60s": snapshot.velocity_60s,
+                                        "curve_60s": snapshot.curve_60s,
+                                        "buyers_300s": snapshot.buyers_300s,
+                                        "volume_300s": snapshot.volume_300s,
+                                        "unique_300s": snapshot.unique_300s,
+                                        "curve_300s": snapshot.curve_300s,
+                                        "migrated": snapshot.migrated,
+                                        "final_multiplier": snapshot.final_multiplier,
+                                        "ath_mcap": snapshot.ath_mcap,
+                                        "ath_price": snapshot.ath_price,
+                                        "timestamp": datetime.now(timezone.utc).isoformat(),
+                                    }
+                                    await self.state.add_golden_snapshot(golden)
+                                    logger.info(f"⭐ গোল্ডেন স্নাপশট: {symbol} (ATH MCap: ${snapshot.ath_mcap:,.0f})")
                         elif actual_multi <= 5.0:
                             await self.state.add_dump_coin(addr, CoinInfo(name=name, symbol=symbol))
                             learn_dump({"name": name, "symbol": symbol}, pair, addr, manual=False)
@@ -842,6 +927,26 @@ class MemeBot:
                             social_score=social_score, age_seconds=age,
                             whale_data=whale_data, safety_data=safety_data
                         )
+
+                        snap = await self.state.get_launch_snapshot(addr)
+                        snap_dict = {}
+                        if snap:
+                            snap_dict = {
+                                "initial_liquidity": snap.initial_liquidity,
+                                "initial_mcap": snap.initial_mcap,
+                                "buyers_30s": snap.buyers_30s,
+                                "velocity_30s": snap.velocity_30s,
+                                "curve_30s": snap.curve_30s,
+                                "buyers_60s": snap.buyers_60s,
+                                "velocity_60s": snap.velocity_60s,
+                                "curve_60s": snap.curve_60s,
+                                "buyers_300s": snap.buyers_300s,
+                                "volume_300s": snap.volume_300s,
+                                "unique_300s": snap.unique_300s,
+                                "curve_300s": snap.curve_300s,
+                            }
+                        pattern_score, pattern_reason = score_pattern_match(snap_dict) if snap_dict else (0.0, "no_snapshot")
+                        final_score += pattern_score * 0.30
 
                         effective_threshold = max(threshold, self.filter_engine.min_threshold)
 

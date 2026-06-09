@@ -58,6 +58,30 @@ class CoinInfo:
     symbol: str
     first_seen: float = field(default_factory=lambda: datetime.now(timezone.utc).timestamp())
 
+@dataclass
+class LaunchSnapshot:
+    address: str
+    symbol: str
+    name: str
+    timestamp: float
+    initial_liquidity: float = 0.0
+    initial_mcap: float = 0.0
+    initial_price: float = 0.0
+    buyers_30s: int = 0
+    velocity_30s: float = 0.0
+    curve_30s: float = 0.0
+    buyers_60s: int = 0
+    velocity_60s: float = 0.0
+    curve_60s: float = 0.0
+    buyers_300s: int = 0
+    volume_300s: float = 0.0
+    unique_300s: int = 0
+    curve_300s: float = 0.0
+    migrated: bool = False
+    final_multiplier: float = 0.0
+    ath_price: float = 0.0
+    ath_mcap: float = 0.0
+
 class BotState:
     def __init__(self):
         self._lock = asyncio.Lock()
@@ -248,3 +272,31 @@ class BotState:
     async def get_threshold(self) -> float:
         async with self._lock:
             return self.current_threshold
+
+    async def add_launch_snapshot(self, address: str, snapshot: LaunchSnapshot) -> None:
+        async with self._lock:
+            if not hasattr(self, '_launch_snapshots'):
+                self._launch_snapshots = {}
+            self._launch_snapshots[address] = snapshot
+
+    async def get_launch_snapshot(self, address: str) -> Optional[LaunchSnapshot]:
+        async with self._lock:
+            return getattr(self, '_launch_snapshots', {}).get(address)
+
+    async def remove_launch_snapshot(self, address: str) -> None:
+        async with self._lock:
+            getattr(self, '_launch_snapshots', {}).pop(address, None)
+
+    async def add_golden_snapshot(self, snapshot: dict) -> None:
+        from learner import load_data, save_data
+        data = load_data()
+        if 'golden_snapshots' not in data:
+            data['golden_snapshots'] = []
+        data['golden_snapshots'].append(snapshot)
+        data['golden_snapshots'] = data['golden_snapshots'][-100:]
+        save_data(data)
+
+    async def get_golden_snapshots(self) -> list:
+        from learner import load_data
+        data = load_data()
+        return data.get('golden_snapshots', [])
