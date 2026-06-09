@@ -1201,6 +1201,31 @@
       "manual": false,
       "source": "backtest",
       "timestamp": "2026-06-08T23:19:35.054922+00:00"
+    },
+    {
+      "mcap": 99680.0,
+      "liquidity": 21811.17,
+      "volume_h1": 14875.42,
+      "volume_m5": 10899.36,
+      "age_seconds": 584.542830078125,
+      "price_change_5m": 303.0,
+      "price_change_1h": 216.0,
+      "hour_of_day": 0,
+      "buys_m5": 24,
+      "sells_m5": 26,
+      "buys_h1": 78,
+      "sells_h1": 76,
+      "vol_liq_ratio": 0.6820092640605708,
+      "buy_sell_ratio_m5": 0.48,
+      "buy_sell_ratio_h1": 0.5064935064935064,
+      "mcap_liq_ratio": 4.570135393928891,
+      "momentum_5m": 303.0,
+      "symbol": "TRILLION",
+      "name": "Trillion",
+      "address": "2sDCRhLKeUF7c1dG2cqQFuY2VZQqPVrZRSGxqy8Gpump",
+      "final_multiplier": 3.16,
+      "manual": false,
+      "timestamp": "2026-06-09T00:19:20.542964+00:00"
     }
   ],
   "dump_patterns": [
@@ -10492,6 +10517,22 @@
       "final_multiplier": 7.57,
       "age_seconds": 3946.902930908203,
       "source": "history_pump"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "unique_wallets": 0,
+      "volume": 81581879.532353,
+      "buy_sell_ratio": 0.0,
+      "buy_velocity": 0.0,
+      "curve_fill_pct": 0.0,
+      "avg_buy_gap": 0,
+      "symbol": "TRILLION",
+      "address": "2sDCRhLKeUF7c1dG2cqQFuY2VZQqPVrZRSGxqy8Gpump",
+      "source": "history_pump",
+      "timestamp": "2026-06-09T00:19:20.543035+00:00",
+      "final_multiplier": 3.16,
+      "age_seconds": 584.542830078125
     }
   ],
   "trained_addresses": [
@@ -17643,7 +17684,8 @@
     "274448a387c4af9af9208d54cc956321",
     "29ee77d45aa9ca6c90e45eece8448028",
     "45ff86550d3b15919078f3720d2bf215",
-    "c044da9c8b44886c5f0f3a46e8f5b189"
+    "c044da9c8b44886c5f0f3a46e8f5b189",
+    "23b72ea7a092afb53fd1d9aaa692e138"
   ],
   "signals": [
     {
@@ -17666,12 +17708,12 @@
     }
   ],
   "model": {
-    "avg_pump_mcap": 442889.97777777776,
-    "avg_pump_liquidity": 40465.22,
-    "avg_pump_volume_h1": 151285.47340425532,
-    "avg_pump_buys_h1": 2266.68085106383,
-    "avg_pump_price_change_5m": 11.132340425531915,
-    "avg_pump_age_at_signal": 39512.94533721015,
+    "avg_pump_mcap": 435428.89130434784,
+    "avg_pump_liquidity": 40076.59395833333,
+    "avg_pump_volume_h1": 148443.59729166667,
+    "avg_pump_buys_h1": 2221.0833333333335,
+    "avg_pump_price_change_5m": 17.21291666666667,
+    "avg_pump_age_at_signal": 38701.9369516449,
     "best_hours": {
       "18": 8,
       "19": 10,
@@ -17685,7 +17727,8 @@
       "14": 2,
       "16": 2,
       "17": 2,
-      "23": 2
+      "23": 2,
+      "0": 1
     },
     "hourly_success_rate": {
       "18": 1.0,
@@ -17700,25 +17743,26 @@
       "14": 1.0,
       "16": 1.0,
       "17": 1.0,
-      "23": 1.0
+      "23": 1.0,
+      "0": 1.0
     },
     "total_signals": 6,
     "correct_signals": 5,
     "accuracy": 83.3,
     "threshold": 0.25,
-    "signal_age_min": 308.45238208007817,
+    "signal_age_min": 175.3628490234375,
     "signal_age_max": 900,
-    "launch_avg_buys": 36.206896551724135,
-    "launch_avg_wallets": 21.448275862068964,
-    "launch_avg_volume": 13928294.972057933,
-    "std_pump_mcap": 921984.9449620907,
-    "std_pump_liquidity": 39669.59508537983,
-    "std_pump_volume_h1": 167671.9919040615,
-    "std_pump_buys_h1": 3312.4968981536454,
-    "avg_pump_vol_liq_ratio": 5.1148261536096165,
-    "std_pump_vol_liq_ratio": 5.364408504299094,
-    "avg_pump_buy_sell_ratio": 0.5795760296044487,
-    "std_pump_buy_sell_ratio": 0.20611809786199958,
+    "launch_avg_buys": 35,
+    "launch_avg_wallets": 20.733333333333334,
+    "launch_avg_volume": 16183414.457401102,
+    "std_pump_mcap": 913086.4249461269,
+    "std_pump_liquidity": 39337.56143042281,
+    "std_pump_volume_h1": 167043.07624942492,
+    "std_pump_buys_h1": 3292.259676900023,
+    "avg_pump_vol_liq_ratio": 5.022475801744011,
+    "std_pump_vol_liq_ratio": 5.345463196741227,
+    "avg_pump_buy_sell_ratio": 0.5775015289876892,
+    "std_pump_buy_sell_ratio": 0.20441945026458874,
     "hourly_threshold": {
       "18": 0.25,
       "19": 0.25,
@@ -17732,7 +17776,8 @@
       "14": 0.25,
       "16": 0.25,
       "17": 0.25,
-      "23": 0.25
+      "23": 0.25,
+      "0": 0.25
     },
     "signal_results": [
       {
@@ -17841,6 +17886,7 @@
     "8WzXZmX3zNem3bUzajLEM55VBL2MJCNNhphjj3HKQz38",
     "9cNtmYjVqbnjfinMJfFund4Y66HnZMsq9e5VjebwWKU1",
     "9xq3MueEjiQPDAXTekC3iRgtchG7ygBg9DL1Yu33HXif",
+    "Ao9dPUfHLBC5vQX3ggY6XQSF8g8wZWt4TPoFVFZGzKBt",
     "Aq5rf22xjNSDARxL5jHJ78YRtPY8d5d3VbcfjVpG1Nxs",
     "BtMBMPkoNbnLF9Xn552guQq528KKXcsNBNNBre3oaQtr",
     "DMka2ZP69ykjLCEdmYZTBytbSWzgxnbsWnvbFnKSBsDw",
@@ -17861,6 +17907,7 @@
     "DDW9x7Drg8BxkupRm6ENEfguK6MJEHTdQRH9JiRgpump",
     "DWtpe1tzd3Zfg9NDYEYM98FWgqRiGWBpQ7C3ryampump",
     "EEzR7LcBWcq1bLqFvEwGFTKXiTDrWywPdpuiQfFrpump",
+    "FZn8XbGgp3MMfKELH3k5JxzMHqL8jdMrFfEV37pcpump",
     "GDRmUsbzm5FyLZWsXhMvNSP8YzN46an9cvRjuQpmE37Y",
     "GVLuZzL6acAKJRjdtJd3KwJHaVVgsoWnfnMcdYAApump",
     "GYwMSbDxFBmz1Nd79SpAdgonhXQbxrwZ4hunw3Kfpump",
