@@ -14083,6 +14083,34 @@
         "verdict": "DUMP",
         "multiplier": 0.5,
         "timestamp": "2026-06-09T20:57:24.707946+00:00"
+      },
+      {
+        "address": "8Uu1dSAwKPVVSVYU5HT76TnR9Q5TXWREYmBHzyUypump",
+        "symbol": "POKE",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T21:01:02.222934+00:00"
+      },
+      {
+        "address": "WLJWMrvdAVxuALyPtgfC8iZTyUYaXtb3AvPqQXfpump",
+        "symbol": "WerldKup",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T21:01:04.623730+00:00"
+      },
+      {
+        "address": "uaeY9NBLS8cKKB6jxoF1ctUi6dMR97y2ASEUGXZpump",
+        "symbol": "Godzilla",
+        "verdict": "DUMP",
+        "multiplier": 0.43,
+        "timestamp": "2026-06-09T21:01:08.686230+00:00"
+      },
+      {
+        "address": "6p3Y3WBXcVwMbYNoVsU4EuVb3gdMmzSKhkEfo8Vcpump",
+        "symbol": "Pnut",
+        "verdict": "PUMP",
+        "multiplier": 3.59,
+        "timestamp": "2026-06-09T21:01:09.755579+00:00"
       }
     ],
     "golden_symbols": {}
