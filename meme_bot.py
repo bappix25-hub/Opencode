@@ -220,8 +220,10 @@ class MemeBot:
         if not address:
             return
         if await self.state.is_blacklisted(address):
+            logger.debug(f"[SKIP] {data.get('symbol','?')} blacklisted")
             return
         if await self.state.is_honeypot(address):
+            logger.debug(f"[SKIP] {data.get('symbol','?')} honeypot")
             return
         if await self.state.get_tracked_coin(address):
             return
@@ -317,6 +319,7 @@ class MemeBot:
         unique_wallets = len(launch_data.unique_wallets)
 
         if launch_data.buy_count == 0 and unique_wallets == 0:
+            logger.debug(f"[EVAL] {launch_data.symbol}: no activity yet, skipping")
             return
 
         red_flags = []
@@ -359,7 +362,7 @@ class MemeBot:
 
         if social_score < 0.1:
             red_flags.append("⚠️ No social presence")
-            red_flag_penalty += 0.15
+            red_flag_penalty += 0.05
 
         bonding_boost = 0.0
         bonding_reasons = []
@@ -470,12 +473,12 @@ class MemeBot:
         effective_threshold = max(threshold, self.filter_engine.pre_migration_threshold)
         effective_threshold += red_flag_penalty * 0.5
 
+        verdict = "SIGNAL ✅" if (should_signal and final_score >= effective_threshold) else "REJECTED ❌"
+        reason_short = filter_reason if not should_signal else (f"momentum fail" if final_score >= effective_threshold else filter_reason)
         logger.info(
-            f"pre-mig {launch_data.symbol}: age={int(age)}s "
-            f"buys={launch_data.buy_count} sells={launch_data.sell_count} "
-            f"ai={ai_score:.2f} soc={social_score:.2f} bond={bonding_boost:.2f} "
-            f"red={red_flag_penalty:.2f} final={final_score:.2f} thr={effective_threshold:.2f} "
-            f"signal={should_signal} ({filter_reason})"
+            f"[EVAL] {launch_data.symbol}: ai={ai_score:.2f} soc={social_score:.2f} "
+            f"bond={bonding_boost:.2f} red={red_flag_penalty:.2f} "
+            f"final={final_score:.2f} thr={effective_threshold:.2f} → {verdict}"
         )
 
         if red_flags and red_flag_penalty >= 0.8:
@@ -848,6 +851,12 @@ class MemeBot:
                         )
 
                         effective_threshold = max(threshold, self.filter_engine.min_threshold)
+
+                        verdict = "SIGNAL ✅" if (should_signal and final_score >= effective_threshold) else "REJECTED ❌"
+                        logger.info(
+                            f"[EVAL] {symbol}: ai={ai_score:.2f} soc={social_score:.2f} "
+                            f"final={final_score:.2f} thr={effective_threshold:.2f} → {verdict}"
+                        )
 
                         if should_signal and final_score >= effective_threshold:
                             momentum_ok, momentum_reason = await self._check_momentum(addr, launch_data)

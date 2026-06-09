@@ -32,13 +32,13 @@ class SignalFilter:
     def __init__(self):
         self.golden_patterns = self._load_golden()
         self.blacklist = self._load_blacklist()
-        self.min_threshold = _env_float("SIGNAL_MIN_THRESHOLD", 0.50)
-        self.warmup_min_threshold = _env_float("SIGNAL_WARMUP_THRESHOLD", 0.35)
-        self.pre_migration_threshold = _env_float("SIGNAL_PRE_MIGRATION_THRESHOLD", 0.30)
+        self.min_threshold = _env_float("SIGNAL_MIN_THRESHOLD", 0.65)
+        self.warmup_min_threshold = _env_float("SIGNAL_WARMUP_THRESHOLD", 0.40)
+        self.pre_migration_threshold = _env_float("SIGNAL_PRE_MIGRATION_THRESHOLD", 0.45)
         self.warmup_signal_count = int(os.getenv("SIGNAL_WARMUP_COUNT", "20"))
-        self.onchain_weight = 0.55
-        self.social_weight = 0.15
-        self.timing_weight = 0.15
+        self.onchain_weight = 0.45
+        self.social_weight = 0.30
+        self.timing_weight = 0.10
         self.whale_weight = 0.10
         self.safety_weight = 0.05
         self.user_threshold: Optional[float] = None
@@ -217,12 +217,25 @@ class SignalFilter:
             elif top10 > 60:
                 safety_score = min(safety_score, 0.5)
 
+        if social_score < 0.01:
+            w_onchain = min(1.0, self.onchain_weight + self.social_weight)
+            w_social = 0.0
+            w_timing = self.timing_weight
+            w_whale = self.whale_weight
+            w_safety = self.safety_weight
+        else:
+            w_onchain = self.onchain_weight
+            w_social = self.social_weight
+            w_timing = self.timing_weight
+            w_whale = self.whale_weight
+            w_safety = self.safety_weight
+
         final_score = (
-            onchain * self.onchain_weight
-            + social_score * self.social_weight
-            + timing * self.timing_weight
-            + whale_score * self.whale_weight
-            + safety_score * self.safety_weight
+            onchain * w_onchain
+            + social_score * w_social
+            + timing * w_timing
+            + whale_score * w_whale
+            + safety_score * w_safety
         )
 
         thr = self.effective_threshold(pre_migration=pre_migration)

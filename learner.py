@@ -656,18 +656,33 @@ def score_launch(launch_data: dict) -> tuple:
     avg_volume = model.get("launch_avg_volume", 0)
     avg_velocity = model.get("avg_early_pump_velocity", 0)
 
-    if avg_buys > 0 and buys >= avg_buys * 0.7:
-        score += 0.25
-        reasons.append("Buy count ✅")
-    if avg_wallets > 0 and unique >= avg_wallets * 0.7:
-        score += 0.25
-        reasons.append("Unique wallets ✅")
-    if avg_volume > 0 and volume >= avg_volume * 0.5:
-        score += 0.2
+    if buys >= 5:
+        score += 0.20
+        reasons.append("Buys ✅")
+    elif avg_buys > 0 and buys >= avg_buys * 0.3:
+        score += 0.15
+        reasons.append("Buys OK")
+
+    if unique >= 3:
+        score += 0.20
+        reasons.append("Wallets ✅")
+    elif avg_wallets > 0 and unique >= avg_wallets * 0.3:
+        score += 0.15
+        reasons.append("Wallets OK")
+
+    if volume > 0:
+        score += 0.15
         reasons.append("Volume ✅")
+    elif avg_volume > 0 and volume >= avg_volume * 0.2:
+        score += 0.10
+        reasons.append("Volume OK")
+
     if buy_sell > 2:
-        score += 0.2
+        score += 0.20
         reasons.append("Buy pressure ✅")
+    elif buy_sell > 1.2:
+        score += 0.10
+        reasons.append("Buy > Sell")
 
     if buy_velocity > 0 and avg_velocity > 0:
         if buy_velocity >= avg_velocity * 1.5:
