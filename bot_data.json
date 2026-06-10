@@ -8141,6 +8141,48 @@
         "verdict": "DUMP",
         "multiplier": 0.5,
         "timestamp": "2026-06-10T08:21:06.863964+00:00"
+      },
+      {
+        "address": "A4cXNCYugscWtkftjqw8PA3mNCu1ZDjPChuHnMkpump",
+        "symbol": "Backrooms",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T08:25:49.065213+00:00"
+      },
+      {
+        "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
+        "symbol": "Lumi",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T08:26:02.207822+00:00"
+      },
+      {
+        "address": "8fUCxNf4LeheQLHAdi2qsufwLBDVQBtZoZVzCpEUpump",
+        "symbol": "LIZARD",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T08:26:55.883393+00:00"
+      },
+      {
+        "address": "HN7EP8PrKbxCMbCCCHRPrZYaru267QGkY45MS58qpump",
+        "symbol": "WIF",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T08:26:58.649385+00:00"
+      },
+      {
+        "address": "GQM8tG2z4hDrRw9o7QasnQtAeX1xYSoVNCcw6eCFpump",
+        "symbol": "USDLC",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T08:27:04.174313+00:00"
+      },
+      {
+        "address": "3T7L9WbowomiYGUZujHPcJQsrQnoXQT2ekVM45UCpump",
+        "symbol": "SLANTIX",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T08:27:12.530075+00:00"
       }
     ],
     "golden_symbols": {},
@@ -8188,5 +8230,19 @@
   ],
   "golden_snapshots": [],
   "signal_results": [],
-  "launches_tracked": []
+  "launches_tracked": [
+    {
+      "address": "8HzRWh3zdW7ewhjE16sCowoxeKZZ9hF3TjhCwqVMpump",
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781079980.853097,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    }
+  ]
 }
