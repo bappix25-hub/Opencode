@@ -8225,6 +8225,48 @@
         "verdict": "DUMP",
         "multiplier": 0.5,
         "timestamp": "2026-06-10T08:35:49.106705+00:00"
+      },
+      {
+        "address": "A4cXNCYugscWtkftjqw8PA3mNCu1ZDjPChuHnMkpump",
+        "symbol": "Backrooms",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T08:52:31.170047+00:00"
+      },
+      {
+        "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
+        "symbol": "Lumi",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T08:52:42.974351+00:00"
+      },
+      {
+        "address": "8fUCxNf4LeheQLHAdi2qsufwLBDVQBtZoZVzCpEUpump",
+        "symbol": "LIZARD",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T08:53:09.695378+00:00"
+      },
+      {
+        "address": "HN7EP8PrKbxCMbCCCHRPrZYaru267QGkY45MS58qpump",
+        "symbol": "WIF",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T08:53:12.191295+00:00"
+      },
+      {
+        "address": "GQM8tG2z4hDrRw9o7QasnQtAeX1xYSoVNCcw6eCFpump",
+        "symbol": "USDLC",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T08:53:16.997543+00:00"
+      },
+      {
+        "address": "3T7L9WbowomiYGUZujHPcJQsrQnoXQT2ekVM45UCpump",
+        "symbol": "SLANTIX",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T08:53:24.408953+00:00"
       }
     ],
     "golden_symbols": {},
