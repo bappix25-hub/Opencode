@@ -184,6 +184,121 @@
       "outcome": "DUMP",
       "multiplier": 1.0,
       "learned_at": "2026-06-10T09:27:23.689247+00:00"
+    },
+    {
+      "symbol": "Blue Balls",
+      "features": {
+        "buy_count": 174,
+        "sell_count": 174,
+        "buy_sell_ratio": 1.0,
+        "volume": 968.68,
+        "holders": 348,
+        "unique_wallets": 348,
+        "initial_liq": 0,
+        "initial_mcap": 1798.98,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082676.214554,
+        "liquidity": 0.0,
+        "mcap": 1798.98
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.9894327030033371,
+      "learned_at": "2026-06-10T09:28:26.261344+00:00"
+    },
+    {
+      "symbol": "DOGECOIN",
+      "features": {
+        "buy_count": 71,
+        "sell_count": 32,
+        "buy_sell_ratio": 2.22,
+        "volume": 1058707.43,
+        "holders": 103,
+        "unique_wallets": 103,
+        "initial_liq": 0,
+        "initial_mcap": 9756.55,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082686.034774,
+        "liquidity": 0.0,
+        "mcap": 9756.55
+      },
+      "outcome": "DUMP",
+      "multiplier": 1.0342353423534236,
+      "learned_at": "2026-06-10T09:28:28.213788+00:00"
+    },
+    {
+      "symbol": "FWOG",
+      "features": {
+        "buy_count": 276,
+        "sell_count": 290,
+        "buy_sell_ratio": 0.95,
+        "volume": 887.51,
+        "holders": 566,
+        "unique_wallets": 566,
+        "initial_liq": 0,
+        "initial_mcap": 1806.99,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082800.814889,
+        "liquidity": 0.0,
+        "mcap": 1806.99
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.9778516057585824,
+      "learned_at": "2026-06-10T09:31:48.699716+00:00"
+    },
+    {
+      "symbol": "USEC",
+      "features": {
+        "buy_count": 9,
+        "sell_count": 3,
+        "buy_sell_ratio": 3.0,
+        "volume": 3520918.71,
+        "holders": 12,
+        "unique_wallets": 12,
+        "initial_liq": 0,
+        "initial_mcap": 1892.91,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082831.048549,
+        "liquidity": 0.0,
+        "mcap": 1892.91
+      },
+      "outcome": "DUMP",
+      "multiplier": 1.0591966173361522,
+      "learned_at": "2026-06-10T09:31:50.928581+00:00"
+    },
+    {
+      "symbol": "KOMT",
+      "features": {
+        "buy_count": 3,
+        "sell_count": 3,
+        "buy_sell_ratio": 1.0,
+        "volume": 300.28,
+        "holders": 6,
+        "unique_wallets": 6,
+        "initial_liq": 0,
+        "initial_mcap": 1778.19,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082720.783887,
+        "liquidity": 0.0,
+        "mcap": 1778.19
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.9715224534501643,
+      "learned_at": "2026-06-10T09:37:01.795465+00:00"
     }
   ],
   "launch_patterns": [
@@ -8599,11 +8714,46 @@
         "verdict": "DUMP",
         "multiplier": 1.0,
         "timestamp": "2026-06-10T09:27:23.688909+00:00"
+      },
+      {
+        "address": "5SRBwvFMqyw2NeFT9nCTCix77j99whSqy3UBoYPspump",
+        "symbol": "Blue Balls",
+        "verdict": "DUMP",
+        "multiplier": 0.9894327030033371,
+        "timestamp": "2026-06-10T09:28:26.261292+00:00"
+      },
+      {
+        "address": "AvwBELQTqgm6dkV6qSeqD1gx85Jq3uHJ1qfLuaUspump",
+        "symbol": "DOGECOIN",
+        "verdict": "DUMP",
+        "multiplier": 1.0342353423534236,
+        "timestamp": "2026-06-10T09:28:28.213636+00:00"
+      },
+      {
+        "address": "8ouP337reteav37qj6Y6sofu36rrgJDqiXv38eaZpump",
+        "symbol": "FWOG",
+        "verdict": "DUMP",
+        "multiplier": 0.9778516057585824,
+        "timestamp": "2026-06-10T09:31:48.699459+00:00"
+      },
+      {
+        "address": "4TfhXpxx83eE6mnwx7Kw3KBY5oj9DN23y1vKNBTxpump",
+        "symbol": "USEC",
+        "verdict": "DUMP",
+        "multiplier": 1.0591966173361522,
+        "timestamp": "2026-06-10T09:31:50.928403+00:00"
+      },
+      {
+        "address": "C3nF4q2d8icWeZmL8doDvbTAuRmu3UWhArM1KrwwPumP",
+        "symbol": "KOMT",
+        "verdict": "DUMP",
+        "multiplier": 0.9715224534501643,
+        "timestamp": "2026-06-10T09:37:01.795118+00:00"
       }
     ],
     "golden_symbols": {},
     "total_pumps": 0,
-    "total_dumps": 8,
+    "total_dumps": 13,
     "total_skipped": 0
   },
   "alerted_coins": [],
