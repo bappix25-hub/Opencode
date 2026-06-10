@@ -1,34 +1,13 @@
 {
   "initial_sol": 0.1,
-  "current_sol": 0.1568613912890711,
-  "total_trades": 26,
-  "wins": 8,
+  "current_sol": 0.1668613912890711,
+  "total_trades": 27,
+  "wins": 9,
   "losses": 18,
   "total_pnl_sol": 0.066861391289071,
-  "peak_sol": 0.16025571541155056,
+  "peak_sol": 0.1668613912890711,
   "max_drawdown_pct": 44.08,
-  "positions": [
-    {
-      "address": "JTD9xJWEwvcTNTNbmky194tu8mhgA47aDeyWyLGpump",
-      "symbol": "NILL",
-      "name": "Nillionaire",
-      "entry_price": 0.0,
-      "entry_time": 1780688923.542916,
-      "sol_amount": 0.01,
-      "token_amount": 0,
-      "tp_price": 0.0,
-      "sl_price": 0.0,
-      "ai_score": 0.5,
-      "social_score": 0.0,
-      "signal_score": 0.75,
-      "status": "open",
-      "exit_price": 0.0,
-      "exit_time": 0.0,
-      "exit_reason": "",
-      "pnl_sol": 0.0,
-      "pnl_pct": 0.0
-    }
-  ],
+  "positions": [],
   "closed_trades": [
     {
       "address": "5BLqz3M12k2scR72GNuM9v4U6sM1J75s3wNPDJwtpump",
@@ -549,6 +528,26 @@
       "exit_reason": "sl_hit",
       "pnl_sol": -0.003394324122479463,
       "pnl_pct": -33.943241224794626
+    },
+    {
+      "address": "JTD9xJWEwvcTNTNbmky194tu8mhgA47aDeyWyLGpump",
+      "symbol": "NILL",
+      "name": "Nillionaire",
+      "entry_price": 0.0,
+      "entry_time": 1780688923.542916,
+      "sol_amount": 0.01,
+      "token_amount": 0,
+      "tp_price": 0.0,
+      "sl_price": 0.0,
+      "ai_score": 0.5,
+      "social_score": 0.0,
+      "signal_score": 0.75,
+      "status": "closed",
+      "exit_price": 0.0,
+      "exit_time": 1781078166.48515,
+      "exit_reason": "manual",
+      "pnl_sol": 0,
+      "pnl_pct": 0
     }
   ]
 }
