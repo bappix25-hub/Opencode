@@ -538,6 +538,96 @@
       "outcome": "DUMP",
       "multiplier": 1.034355179704017,
       "learned_at": "2026-06-10T10:16:17.150492+00:00"
+    },
+    {
+      "symbol": "$BEAR",
+      "features": {
+        "buy_count": 5,
+        "sell_count": 3,
+        "buy_sell_ratio": 1.67,
+        "volume": 1785357.77,
+        "holders": 8,
+        "unique_wallets": 8,
+        "initial_liq": 0,
+        "initial_mcap": 1775.75,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 11,
+        "lp_locked": 0,
+        "deployer": "9Wv4sxi9x7Mx",
+        "ath_price": 0.0,
+        "launch_time": 1781089725.209217,
+        "liquidity": 0.0,
+        "mcap": 1775.75,
+        "outcome": "DUMP",
+        "outcome_mcap": 2466.0,
+        "symbol": "$BEAR",
+        "ath_multiplier": 1.3892957746478876
+      },
+      "outcome": "DUMP",
+      "ath_multiplier": 1.3892957746478876,
+      "learned_at": "2026-06-10T17:12:06.929906+00:00"
+    },
+    {
+      "symbol": "PEMP",
+      "features": {
+        "buy_count": 38,
+        "sell_count": 38,
+        "buy_sell_ratio": 1.0,
+        "volume": 16420307.96,
+        "holders": 76,
+        "unique_wallets": 76,
+        "initial_liq": 0,
+        "initial_mcap": 1777.23,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 11,
+        "lp_locked": 0,
+        "deployer": "D1fUxNzmTxvP",
+        "ath_price": 0.0,
+        "launch_time": 1781089753.192092,
+        "liquidity": 0.0,
+        "mcap": 1777.23,
+        "outcome": "DUMP",
+        "outcome_mcap": 1775.4,
+        "symbol": "PEMP",
+        "ath_multiplier": 1.0
+      },
+      "outcome": "DUMP",
+      "ath_multiplier": 1.0,
+      "learned_at": "2026-06-10T17:12:08.721383+00:00"
+    },
+    {
+      "symbol": "PENAI",
+      "features": {
+        "buy_count": 14,
+        "sell_count": 12,
+        "buy_sell_ratio": 1.17,
+        "volume": 17583243.17,
+        "holders": 26,
+        "unique_wallets": 26,
+        "initial_liq": 0,
+        "initial_mcap": 1842.15,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 11,
+        "lp_locked": 0,
+        "deployer": "6S1VvyvPxejw",
+        "ath_price": 0.0,
+        "launch_time": 1781089774.43295,
+        "liquidity": 0.0,
+        "mcap": 1842.15,
+        "outcome": "DUMP",
+        "outcome_mcap": 1977.37,
+        "symbol": "PENAI",
+        "ath_multiplier": 1.0732899022801303
+      },
+      "outcome": "DUMP",
+      "ath_multiplier": 1.0732899022801303,
+      "learned_at": "2026-06-10T17:12:10.238156+00:00"
     }
   ],
   "launch_patterns": [
@@ -9636,11 +9726,35 @@
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T16:34:59.055516+00:00"
+      },
+      {
+        "address": "5hUb64uVRX7to8Soh4risFbB4UT87ZRZp71QXsewpump",
+        "symbol": "$BEAR",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.3892957746478876,
+        "current_multiplier": 1.3892957746478876,
+        "timestamp": "2026-06-10T17:12:06.929771+00:00"
+      },
+      {
+        "address": "7t59fz5xS4cHhjwuQBxZQtqSSkJw9CERh7E4EZQ5pump",
+        "symbol": "PEMP",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0,
+        "current_multiplier": 0.9988745075970736,
+        "timestamp": "2026-06-10T17:12:08.721328+00:00"
+      },
+      {
+        "address": "HpbAzneBWNvmkBS5t5TranyZism2DnyPUFix7bmEpump",
+        "symbol": "PENAI",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0732899022801303,
+        "current_multiplier": 1.0732899022801303,
+        "timestamp": "2026-06-10T17:12:10.238082+00:00"
       }
     ],
     "golden_symbols": {},
     "total_pumps": 5,
-    "total_dumps": 21,
+    "total_dumps": 24,
     "total_skipped": 0,
     "last_auto_learn": "2026-06-10T14:34:35.986536+00:00",
     "auto_learn_insights": {
@@ -10131,9 +10245,10 @@
         "launch_time": 1781089725.209217,
         "liquidity": 0.0,
         "mcap": 1775.75,
-        "outcome": "dump",
+        "outcome": "DUMP",
         "outcome_mcap": 2466.0,
-        "symbol": "$BEAR"
+        "symbol": "$BEAR",
+        "ath_multiplier": 1.3892957746478876
       },
       "launch_time": 1781089725.209217,
       "outcome": "dump",
@@ -10163,9 +10278,10 @@
         "launch_time": 1781089753.192092,
         "liquidity": 0.0,
         "mcap": 1777.23,
-        "outcome": "dump",
+        "outcome": "DUMP",
         "outcome_mcap": 1775.4,
-        "symbol": "PEMP"
+        "symbol": "PEMP",
+        "ath_multiplier": 1.0
       },
       "launch_time": 1781089753.192092,
       "outcome": "dump",
@@ -10195,9 +10311,10 @@
         "launch_time": 1781089774.43295,
         "liquidity": 0.0,
         "mcap": 1842.15,
-        "outcome": "dump",
+        "outcome": "DUMP",
         "outcome_mcap": 1977.37,
-        "symbol": "PENAI"
+        "symbol": "PENAI",
+        "ath_multiplier": 1.0732899022801303
       },
       "launch_time": 1781089774.43295,
       "outcome": "dump",
@@ -10226,12 +10343,15 @@
         "ath_price": 0.0,
         "launch_time": 1781089805.779578,
         "liquidity": 0.0,
-        "mcap": 4000.0
+        "mcap": 4000.0,
+        "outcome": "dump",
+        "outcome_mcap": 4000.0,
+        "symbol": "JOE"
       },
       "launch_time": 1781089805.779578,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 4000.0,
+      "outcome_time": "2026-06-10T17:12:00.781417+00:00",
       "signal_sent": false
     },
     {
