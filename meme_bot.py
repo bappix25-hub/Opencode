@@ -267,8 +267,20 @@ class MemeBot:
 
         now_ts = datetime.now(timezone.utc).timestamp()
         existing_tokens = await self.state.get_deployer_tokens(deployer) if deployer else []
-        if len(existing_tokens) > 2:
-            logger.info(f"⚠️ Bundle detected: {symbol} deployer {deployer[:8]}... has {len(existing_tokens)} tokens")
+        if len(existing_tokens) > 1:
+            await self.state.add_blocked_deployer(deployer)
+            logger.info(f"🚫 Serial deployer blocked: {symbol} deployer {deployer[:8]}... has {len(existing_tokens)} tokens")
+            return
+
+        if deployer:
+            try:
+                history = await self.helius.get_deployer_history(deployer)
+                if history.get("total_launches", 0) > 3:
+                    await self.state.add_blocked_deployer(deployer)
+                    logger.info(f"🚫 Deployer blocked (history): {symbol} deployer {deployer[:8]}... created {history['total_launches']} tokens")
+                    return
+            except Exception:
+                pass
 
         curve_progress = 0.0
         is_migrated = False
@@ -347,18 +359,15 @@ class MemeBot:
 
         if launch_data.lp_locked == 0:
             try:
-                from dex_client import get_rugcheck
-                rug = await get_rugcheck(address)
+                rug = await self.rugcheck.check_token(address, symbol)
                 if rug and hasattr(rug, "risks"):
-                    lp = 0
+                    import re
                     for r in rug.risks:
                         if "LP" in r:
-                            import re
                             m = re.search(r"(\d+)%", r)
                             if m:
-                                lp = int(m.group(1))
-                    if lp > 0:
-                        launch_data.lp_locked = lp
+                                launch_data.lp_locked = int(m.group(1))
+                                break
             except Exception:
                 pass
 
@@ -391,18 +400,19 @@ class MemeBot:
             criteria = get_signal_criteria()
             h_score = 0.0
             h_reasons = []
+            effective_wallets = min(real_holders, unique_wallets) if real_holders > 0 else unique_wallets
             if launch_data.buy_count >= 10:
                 h_score += 0.35
                 h_reasons.append(f"buys={launch_data.buy_count}")
             elif launch_data.buy_count >= 5:
                 h_score += 0.2
                 h_reasons.append(f"buys={launch_data.buy_count}")
-            if unique_wallets >= criteria.get("min_wallets", 3) * 2:
+            if effective_wallets >= criteria.get("min_wallets", 3) * 2:
                 h_score += 0.3
-                h_reasons.append(f"wallets={unique_wallets}")
-            elif unique_wallets >= criteria.get("min_wallets", 3):
+                h_reasons.append(f"wallets={effective_wallets}")
+            elif effective_wallets >= criteria.get("min_wallets", 3):
                 h_score += 0.15
-                h_reasons.append(f"wallets={unique_wallets}")
+                h_reasons.append(f"wallets={effective_wallets}")
             if buy_sell_ratio >= criteria.get("min_bsr", 1.2) * 1.3:
                 h_score += 0.2
                 h_reasons.append(f"bsr={buy_sell_ratio:.1f}")
@@ -447,6 +457,15 @@ class MemeBot:
         if real_holders < 3:
             logger.info(f"[SKIP] {symbol}: signal rejected — holders={real_holders} < 3")
             return
+
+        try:
+            hp = await self.honeypot.check(address, symbol)
+            if hp and hp.is_honeypot:
+                logger.info(f"[SKIP] {symbol}: honeypot detected — {hp.reasons[:2]}")
+                await self.state.add_blacklisted(address)
+                return
+        except Exception:
+            pass
 
         link = gmgn_link(address)
         confidence_pct = int(match_score * 100)
@@ -658,7 +677,7 @@ class MemeBot:
                                 if unique_from_txns > len(ld.unique_wallets):
                                     for i in range(len(ld.unique_wallets), unique_from_txns):
                                         ld.unique_wallets.add(f"dex_{i}")
-                                if len(ld.unique_wallets) > ld.holders:
+                                if ld.holders == 0 and len(ld.unique_wallets) > 0:
                                     ld.holders = len(ld.unique_wallets)
 
                                 if vol_1h > ld.volume:
