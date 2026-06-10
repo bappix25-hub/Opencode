@@ -1,10 +1,11 @@
 """
 learner.py — Pattern-based signal system v2
 - Track every launch for 6 hours
-- 400k+ mcap = PUMP → learn pattern
-- Below 300k = DUMP → learn to avoid
-- 300k-400k = SKIP
+- 250k+ mcap = PUMP → learn pattern
+- Below 150k = DUMP → learn to avoid
+- 150k-250k = SKIP
 - Pattern match → signal
+- Dynamic criteria: learns optimal thresholds from pump vs dump patterns
 """
 
 import json
@@ -18,8 +19,8 @@ logger = logging.getLogger("learner")
 
 DATA_FILE = config.data_file
 
-PUMP_THRESHOLD = 400000   # 400k mcap = pump
-DUMP_THRESHOLD = 300000   # below 300k = dump
+PUMP_THRESHOLD = 250000   # 250k mcap = pump
+DUMP_THRESHOLD = 150000   # below 150k = dump
 OUTCOME_WINDOW = 21600    # 6 hours
 MAX_PATTERNS = 200        # keep top 200 pump patterns
 
@@ -34,6 +35,20 @@ DEFAULT_DATA = {
         "total_skipped": 0,
         "last_update": None,
     }
+}
+
+DEFAULT_SIGNAL_CRITERIA = {
+    "min_bsr": 1.2,
+    "min_holders": 3,
+    "min_wallets": 3,
+    "min_liq": 1500,
+    "min_liq_pct": 3.0,
+    "min_lp_locked": 0,
+    "heuristic_threshold": 0.70,
+    "pattern_threshold": 0.55,
+    "max_age_seconds": 3600,
+    "updated_at": None,
+    "sample_size": 0,
 }
 
 
@@ -274,9 +289,13 @@ def _learn_dump(launch: dict) -> None:
     data["model"]["last_update"] = datetime.now(timezone.utc).isoformat()
 
 
-def match_pump_patterns(features: dict, min_similarity: float = 0.55) -> tuple[bool, float, str]:
+def match_pump_patterns(features: dict, min_similarity: float = None) -> tuple[bool, float, str]:
     """Check if features match known pump patterns.
     Returns (match, score, reason)."""
+    if min_similarity is None:
+        criteria = get_signal_criteria()
+        min_similarity = criteria.get("pattern_threshold", 0.55)
+
     data = load_data()
     pump_patterns = data.get("pump_patterns", [])
 
@@ -573,3 +592,114 @@ def auto_learn_update() -> dict:
                 f"liq: {insights['avg_win_liq']} vs {insights['avg_loss_liq']}")
 
     return insights
+
+
+def compute_signal_criteria(min_patterns: int = 10) -> dict:
+    """Analyze pump vs dump patterns and compute optimal signal criteria.
+    Sets thresholds that best separate winning from losing features.
+    Called after each learn cycle and 6h outcome check."""
+    data = load_data()
+    pump_patterns = data.get("pump_patterns", [])
+    dump_patterns = data.get("dump_patterns", [])
+
+    if len(pump_patterns) < min_patterns or len(dump_patterns) < min_patterns:
+        criteria = dict(DEFAULT_SIGNAL_CRITERIA)
+        criteria["updated_at"] = datetime.now(timezone.utc).isoformat()
+        criteria["sample_size"] = len(pump_patterns) + len(dump_patterns)
+        data["model"]["signal_criteria"] = criteria
+        save_data(data)
+        return criteria
+
+    def _median(lst, key):
+        vals = sorted([f.get(key, 0) for f in lst if f.get(key, 0) > 0])
+        if not vals:
+            return 0
+        n = len(vals)
+        if n % 2 == 1:
+            return vals[n // 2]
+        return (vals[n // 2 - 1] + vals[n // 2]) / 2
+
+    def _pct_above(lst, key, threshold):
+        vals = [f.get(key, 0) for f in lst if f.get(key, 0) > 0]
+        if not vals:
+            return 0
+        return sum(1 for v in vals if v >= threshold) / len(vals) * 100
+
+    features_to_analyze = [
+        ("buy_sell_ratio", "min_bsr", "median"),
+        ("holders", "min_holders", "median"),
+        ("unique_wallets", "min_wallets", "median"),
+        ("initial_liq", "min_liq", "median"),
+        ("liq_pct", "min_liq_pct", "median"),
+        ("lp_locked", "min_lp_locked", "median"),
+    ]
+
+    pump_medians = {}
+    dump_medians = {}
+    for feat_key, _, _ in features_to_analyze:
+        pump_medians[feat_key] = _median(pump_patterns, feat_key)
+        dump_medians[feat_key] = _median(dump_patterns, feat_key)
+
+    criteria = {}
+    for feat_key, criterion_key, method in features_to_analyze:
+        p_med = pump_medians[feat_key]
+        d_med = dump_medians[feat_key]
+
+        if p_med > d_med:
+            threshold = (p_med + d_med) / 2
+        elif p_med > 0:
+            threshold = p_med * 0.8
+        else:
+            threshold = DEFAULT_SIGNAL_CRITERIA.get(criterion_key, 0)
+
+        criteria[criterion_key] = round(threshold, 2)
+
+    p_bsr_above = _pct_above(pump_patterns, "buy_sell_ratio", 1.5)
+    d_bsr_above = _pct_above(dump_patterns, "buy_sell_ratio", 1.5)
+    if p_bsr_above > 60 and d_bsr_above < 40:
+        criteria["min_bsr"] = max(criteria["min_bsr"], 1.3)
+
+    p_holders_above = _pct_above(pump_patterns, "holders", 5)
+    d_holders_above = _pct_above(dump_patterns, "holders", 5)
+    if p_holders_above > 50 and d_holders_above < 30:
+        criteria["min_holders"] = max(criteria["min_holders"], 4)
+
+    p_liq_above = _pct_above(pump_patterns, "initial_liq", 3000)
+    d_liq_above = _pct_above(dump_patterns, "initial_liq", 3000)
+    if p_liq_above > 60 and d_liq_above < 30:
+        criteria["min_liq"] = max(criteria["min_liq"], 2000)
+
+    criteria["heuristic_threshold"] = 0.70
+    criteria["pattern_threshold"] = 0.55
+    criteria["max_age_seconds"] = 3600
+
+    criteria["updated_at"] = datetime.now(timezone.utc).isoformat()
+    criteria["sample_size"] = len(pump_patterns) + len(dump_patterns)
+
+    data["model"]["signal_criteria"] = criteria
+    data["model"]["signal_criteria_stats"] = {
+        "pump_medians": {k: round(v, 2) for k, v in pump_medians.items()},
+        "dump_medians": {k: round(v, 2) for k, v in dump_medians.items()},
+        "pump_count": len(pump_patterns),
+        "dump_count": len(dump_patterns),
+    }
+    save_data(data)
+
+    logger.info(
+        f"🎯 Signal criteria updated: "
+        f"bsr≥{criteria['min_bsr']} holders≥{criteria['min_holders']} "
+        f"wallets≥{criteria['min_wallets']} liq≥${int(criteria['min_liq'])} "
+        f"liq%≥{criteria['min_liq_pct']} lp≥{criteria['min_lp_locked']}% "
+        f"(from {len(pump_patterns)} pumps + {len(dump_patterns)} dumps)"
+    )
+
+    return criteria
+
+
+def get_signal_criteria() -> dict:
+    """Get current signal criteria, compute if not enough data."""
+    data = load_data()
+    criteria = data.get("model", {}).get("signal_criteria")
+    if not criteria or not criteria.get("updated_at"):
+        return compute_signal_criteria()
+    return criteria

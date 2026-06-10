@@ -23,7 +23,8 @@ from learner import (
     get_launch_age, is_duplicate, purge_honeypot_patterns,
     save_honeypot_blocklist, load_honeypot_blocklist,
     load_data, save_data, PUMP_THRESHOLD, DUMP_THRESHOLD,
-    record_missed_pump, auto_learn_update
+    record_missed_pump, auto_learn_update, get_signal_criteria,
+    compute_signal_criteria
 )
 from github_sync import sync_to_github, restore_from_github
 from utils import format_number, gmgn_link, setup_logging
@@ -392,6 +393,7 @@ class MemeBot:
         match, match_score, match_reason = match_pump_patterns(features)
 
         if not match:
+            criteria = get_signal_criteria()
             h_score = 0.0
             h_reasons = []
             if launch_data.buy_count >= 10:
@@ -400,31 +402,33 @@ class MemeBot:
             elif launch_data.buy_count >= 5:
                 h_score += 0.2
                 h_reasons.append(f"buys={launch_data.buy_count}")
-            if unique_wallets >= 5:
+            if unique_wallets >= criteria.get("min_wallets", 3) * 2:
                 h_score += 0.3
                 h_reasons.append(f"wallets={unique_wallets}")
-            elif unique_wallets >= 3:
+            elif unique_wallets >= criteria.get("min_wallets", 3):
                 h_score += 0.15
                 h_reasons.append(f"wallets={unique_wallets}")
-            if buy_sell_ratio >= 1.5:
+            if buy_sell_ratio >= criteria.get("min_bsr", 1.2) * 1.3:
                 h_score += 0.2
                 h_reasons.append(f"bsr={buy_sell_ratio:.1f}")
-            if real_holders >= 5:
+            if real_holders >= criteria.get("min_holders", 3) * 2:
                 h_score += 0.2
                 h_reasons.append(f"holders={real_holders}")
-            elif real_holders >= 3:
+            elif real_holders >= criteria.get("min_holders", 3):
                 h_score += 0.1
                 h_reasons.append(f"holders={real_holders}")
-            if liquidity >= 5000:
+            if liquidity >= criteria.get("min_liq", 1500) * 3:
                 h_score += 0.15
                 h_reasons.append(f"liq=${int(liquidity)}")
-            elif liquidity >= 2000:
+            elif liquidity >= criteria.get("min_liq", 1500):
                 h_score += 0.1
                 h_reasons.append(f"liq=${int(liquidity)}")
-            if mcap >= 50000:
+            lp_locked = launch_data.lp_locked
+            if lp_locked >= criteria.get("min_lp_locked", 0) + 20:
                 h_score += 0.1
-                h_reasons.append(f"mcap={format_number(mcap)}")
-            if h_score >= 0.75:
+                h_reasons.append(f"lp={lp_locked}%")
+            h_threshold = criteria.get("heuristic_threshold", 0.70)
+            if h_score >= h_threshold:
                 match = True
                 match_score = h_score
                 match_reason = "Heuristic: " + " ".join(h_reasons)
@@ -764,7 +768,7 @@ class MemeBot:
                             await self.state.add_dump_coin(addr, CoinInfo(name=name, symbol=symbol))
                             logger.info(f"📉 ডাম্প কয়েন: {symbol} mcap={format_number(mcap)}")
                         else:
-                            logger.info(f"⏭️ Skip {symbol}: mcap={format_number(mcap)} (300k-400k zone)")
+                            logger.info(f"⏭️ Skip {symbol}: mcap={format_number(mcap)} ({format_number(DUMP_THRESHOLD)}-{format_number(PUMP_THRESHOLD)} zone)")
                         continue
 
                     if not await self.state.is_alerted(addr) and 0 < age <= 600:
@@ -1007,6 +1011,10 @@ class MemeBot:
                         record_signal_result(addr, sig_info.symbol, ath_multiplier, current_multiplier)
                         await self.state.mark_signal_checked(addr)
                         logger.info(f"[OUTCOME] {sig_info.symbol}: ATH={ath_multiplier:.2f}x current={current_multiplier:.2f}x @ T+6h")
+                        try:
+                            compute_signal_criteria()
+                        except Exception:
+                            pass
                     else:
                         logger.debug(f"[CHECK] {sig_info.symbol}: T+{next_check//60}m ath={ath_multiplier:.2f}x cur={current_multiplier:.2f}x")
 
@@ -1208,7 +1216,7 @@ class MemeBot:
                 logger.error(f"daily_summary_loop error: {e}")
 
     async def auto_learn_loop(self):
-        """Periodic auto-learn: analyze outcomes and adjust heuristic weights."""
+        """Periodic auto-learn: analyze outcomes, adjust heuristic weights, recompute signal criteria."""
         await asyncio.sleep(600)
         while True:
             try:
@@ -1220,6 +1228,10 @@ class MemeBot:
                                 f"holders: {insights.get('avg_win_holders',0)} vs {insights.get('avg_loss_holders',0)} | "
                                 f"liq: {insights.get('avg_win_liq',0)} vs {insights.get('avg_loss_liq',0)} | "
                                 f"lp: {insights.get('avg_win_lp_locked',0)} vs {insights.get('avg_loss_lp_locked',0)}")
+                criteria = compute_signal_criteria()
+                logger.info(f"🎯 Criteria: bsr≥{criteria['min_bsr']} holders≥{criteria['min_holders']} "
+                            f"wallets≥{criteria['min_wallets']} liq≥${int(criteria['min_liq'])} "
+                            f"liq%≥{criteria['min_liq_pct']} lp≥{criteria['min_lp_locked']}%")
                 data = load_data()
                 pump_count = len(data.get("pump_patterns", []))
                 dump_count = len(data.get("dump_patterns", []))
