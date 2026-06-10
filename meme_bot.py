@@ -22,10 +22,10 @@ from learner import (
     match_pump_patterns, record_signal_result, get_stats, get_daily_report,
     get_launch_age, is_duplicate, purge_honeypot_patterns,
     save_honeypot_blocklist, load_honeypot_blocklist,
-    load_data, save_data
+    load_data, save_data, PUMP_THRESHOLD, DUMP_THRESHOLD
 )
 from github_sync import sync_to_github, restore_from_github
-from utils import format_number, gmgn_link, setup_logging, verify_pump
+from utils import format_number, gmgn_link, setup_logging
 from backtest import BacktestEngine, REPORTS_DIR, MAX_REPORTS
 from social_signals import SocialSignalEngine
 from honeypot_detector import HoneypotDetector
@@ -331,6 +331,28 @@ class MemeBot:
 
         match, match_score, match_reason = match_pump_patterns(features)
 
+        if not match:
+            data = load_data()
+            if not data.get("pump_patterns"):
+                h_score = 0.0
+                h_reasons = []
+                if launch_data.buy_count >= 5:
+                    h_score += 0.3
+                    h_reasons.append(f"buys={launch_data.buy_count}")
+                if unique_wallets >= 3:
+                    h_score += 0.25
+                    h_reasons.append(f"wallets={unique_wallets}")
+                if buy_sell_ratio >= 2.0:
+                    h_score += 0.25
+                    h_reasons.append(f"bsr={buy_sell_ratio:.1f}")
+                if launch_data.holders >= 3:
+                    h_score += 0.2
+                    h_reasons.append(f"holders={launch_data.holders}")
+                if h_score >= 0.6:
+                    match = True
+                    match_score = h_score
+                    match_reason = "Heuristic (no patterns yet): " + " ".join(h_reasons)
+
         logger.info(
             f"[EVAL] {symbol}: age={int(age)}s buys={launch_data.buy_count} "
             f"bsr={buy_sell_ratio:.1f} wallets={unique_wallets} "
@@ -391,9 +413,6 @@ class MemeBot:
         except Exception as e:
             logger.debug(f"Momentum check error: {e}")
         return True, "OK"
-
-    async def _on_migration(self, data: dict):
-        await self.handle_migration(data)
 
     async def handle_migration(self, data: dict):
         address = data.get("mint")
@@ -595,15 +614,13 @@ class MemeBot:
                         continue
 
                     if 0 < age <= 21600:
-                        verified, actual_multi = verify_pump(pair, config.pump_multiplier)
-                        if verified:
+                        if mcap >= PUMP_THRESHOLD:
                             await self.state.add_pump_coin(addr, CoinInfo(name=name, symbol=symbol))
-                            record_signal_result(addr, symbol, actual_multi)
+                            logger.info(f"🚀 পাম্প কয়েন! {symbol} mcap={format_number(mcap)}")
                             await send_msg(self.telegram_app.bot,
                                 f"🚀 <b>পাম্প কয়েন!</b>\n"
                                 f"━━━━━━━━━━━━━━━━\n"
                                 f"🏷️ <b>{name}</b> (${symbol})\n"
-                                f"📈 পাম্প: <b>{actual_multi}x</b>\n"
                                 f"💰 MCap: <b>{format_number(mcap)}</b>\n"
                                 f"💧 লিকুইডিটি: <b>{format_number(liquidity)}</b>\n"
                                 f"👥 হোল্ডার: <b>{coin_info.holders}</b>\n"
@@ -612,21 +629,23 @@ class MemeBot:
                                 f"🔗 <a href='{link}'>GMGN</a>"
                             )
                             if config.enable_github_sync:
-                                await sync_to_github(f"পাম্প: {symbol} {actual_multi}x")
-                        elif actual_multi <= 5.0:
+                                await sync_to_github(f"পাম্প: {symbol} mcap={format_number(mcap)}")
+                        elif mcap < DUMP_THRESHOLD:
                             await self.state.add_dump_coin(addr, CoinInfo(name=name, symbol=symbol))
-                            record_signal_result(addr, symbol, actual_multi)
+                            logger.info(f"📉 ডাম্প কয়েন: {symbol} mcap={format_number(mcap)}")
                         else:
-                            logger.info(f"⏭️ Skip {symbol}: {actual_multi}x (5x-8x zone)")
+                            logger.info(f"⏭️ Skip {symbol}: mcap={format_number(mcap)} (300k-400k zone)")
                         continue
 
                     if not await self.state.is_alerted(addr) and 0 < age <= 600:
                         launch_data = await self.state.get_launch_tracking(addr)
+                        if not launch_data:
+                            continue
 
                         pair_data = pair
                         features = extract_launch_features(
                             launch_data, pair_data=pair_data,
-                            unique_wallets=len(launch_data.unique_wallets) if launch_data else 0
+                            unique_wallets=len(launch_data.unique_wallets)
                         )
 
                         vol_24h = float((pair.get("volume") or {}).get("h24", 0) or 0)
@@ -781,20 +800,19 @@ class MemeBot:
                     if liquidity < 1000 or age is None or age > 86400:
                         continue
 
-                    verified, actual_multi = verify_pump(pair, config.pump_multiplier)
                     coin_info = {
                         "name": pair.get("baseToken", {}).get("name", "Unknown"),
                         "symbol": pair.get("baseToken", {}).get("symbol", "???"),
                     }
 
-                    if verified:
-                        txs = await self.helius.get_launch_transactions(addr)
-                        launch_pat = None
-                        if txs:
-                            launch_pat = {"txns": txs, "source": "helius_history"}
-                        record_signal_result(addr, coin_info["symbol"], actual_multi)
+                    mcap = float(pair.get("fdv", 0) or 0)
+                    if mcap >= PUMP_THRESHOLD:
+                        record_launch(addr, coin_info["symbol"], {
+                            "launch_time": datetime.now(timezone.utc).timestamp(),
+                            "source": "historical_scan",
+                        })
                         learned_pump += 1
-                    elif age and age > 3600:
+                    elif mcap < DUMP_THRESHOLD and age and age > 3600:
                         h24 = float(pair.get("priceChange", {}).get("h24", 0) or 0)
                         if h24 < 100:
                             record_signal_result(addr, coin_info["symbol"], 0.5)
@@ -905,8 +923,8 @@ class MemeBot:
                                         ld.migration_time = now
                                         logger.info(f"🚀 মাইগ্রেশন: {ld.symbol} (curve {new_progress:.0f}%)")
                                         updated = True
-                                        if addr in self.state.signals:
-                                            sig_info = self.state.signals[addr]
+                                        if addr in self.state.signal_tracking:
+                                            sig_info = self.state.signal_tracking[addr]
                                             sig_info.is_pre_migration = False
                                             sig_info.migration_time = now
                                     pair = await self.dex.fetch_pair_data(addr)
