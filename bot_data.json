@@ -9556,6 +9556,86 @@
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T15:33:27.004214+00:00"
+      },
+      {
+        "address": "7RHxQQUWG9fCskqocSV9zPkWPLJqcceWTcUCjnwMpump",
+        "symbol": "EMBER",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T16:34:21.772682+00:00"
+      },
+      {
+        "address": "FbNc2KRUrLf8TXzYpKe5fx6uuTRVny68H5fa1e1Wpump",
+        "symbol": "Hobbes",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T16:34:28.548938+00:00"
+      },
+      {
+        "address": "YZYbAx6GokTodmzgXLXMZuWU5RkdB9tFXAzaDuqVBNK",
+        "symbol": "YZYB",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T16:34:30.949597+00:00"
+      },
+      {
+        "address": "2gB4ytQos9dphSGF9YDC6SpoTNu1PeqX6FSGzBvopump",
+        "symbol": "Bagachu",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T16:34:33.075298+00:00"
+      },
+      {
+        "address": "BFBwDbNpf5QponVJyaAGFpKPiCXnbtuXqGWzugHzpump",
+        "symbol": "AURA",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T16:34:35.534968+00:00"
+      },
+      {
+        "address": "ET8kG3dbefg7uwqY4d4GGhkwvNmBdvBqf5UcvVERpump",
+        "symbol": "SOLFC",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T16:34:37.943344+00:00"
+      },
+      {
+        "address": "6vcMitr3itPTTGDDBMCwgEMZD167SJgTk8hkvYdqpump",
+        "symbol": "Brötchen",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T16:34:44.749500+00:00"
+      },
+      {
+        "address": "5mVMJLBq1ebxwWuSZMzzk8CzsMSHkCD9dELeDntRpump",
+        "symbol": "$WCUP",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T16:34:49.506661+00:00"
+      },
+      {
+        "address": "D3NJzpkfr8Nh5S4WDXXkFsh9hn5qExsHnoj8ra71pump",
+        "symbol": "HOARD",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T16:34:54.277341+00:00"
+      },
+      {
+        "address": "Hg45Qr91T5ekze7Rog4buMU3MbzTMzN7LCnjptbjnYXG",
+        "symbol": "SALT",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T16:34:59.055516+00:00"
       }
     ],
     "golden_symbols": {},
