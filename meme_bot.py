@@ -336,19 +336,25 @@ class MemeBot:
             if not data.get("pump_patterns"):
                 h_score = 0.0
                 h_reasons = []
-                if launch_data.buy_count >= 5:
-                    h_score += 0.3
+                if launch_data.buy_count >= 10:
+                    h_score += 0.35
                     h_reasons.append(f"buys={launch_data.buy_count}")
-                if unique_wallets >= 3:
-                    h_score += 0.25
+                elif launch_data.buy_count >= 5:
+                    h_score += 0.2
+                    h_reasons.append(f"buys={launch_data.buy_count}")
+                if unique_wallets >= 5:
+                    h_score += 0.3
                     h_reasons.append(f"wallets={unique_wallets}")
-                if buy_sell_ratio >= 2.0:
-                    h_score += 0.25
+                elif unique_wallets >= 3:
+                    h_score += 0.15
+                    h_reasons.append(f"wallets={unique_wallets}")
+                if buy_sell_ratio >= 1.5:
+                    h_score += 0.2
                     h_reasons.append(f"bsr={buy_sell_ratio:.1f}")
                 if launch_data.holders >= 3:
-                    h_score += 0.2
+                    h_score += 0.15
                     h_reasons.append(f"holders={launch_data.holders}")
-                if h_score >= 0.6:
+                if h_score >= 0.5:
                     match = True
                     match_score = h_score
                     match_reason = "Heuristic (no patterns yet): " + " ".join(h_reasons)
@@ -542,7 +548,8 @@ class MemeBot:
                                 ld.buy_count = max(ld.buy_count, buys_1h)
                                 ld.sell_count = max(ld.sell_count, sells_1h)
                                 if unique_from_txns > len(ld.unique_wallets):
-                                    ld.unique_wallets = set(range(unique_from_txns))
+                                    for i in range(len(ld.unique_wallets), unique_from_txns):
+                                        ld.unique_wallets.add(f"dex_{i}")
                                 if len(ld.unique_wallets) > ld.holders:
                                     ld.holders = len(ld.unique_wallets)
 
