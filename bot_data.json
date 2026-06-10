@@ -11678,6 +11678,30 @@
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T19:58:55.380099+00:00"
+      },
+      {
+        "address": "3tVz9uAzzhZ6JrEGCmEuLKX9TL9Hq5zgHXarboTfeQg4",
+        "symbol": "ASTEROID",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T19:59:10.582996+00:00"
+      },
+      {
+        "address": "46N587j4xukNGuTFzWF2FE8iLcTisL1K6TNBYgAJpump",
+        "symbol": "ROBTY",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T19:59:20.681251+00:00"
+      },
+      {
+        "address": "HQgrQoR6136KZUbPSu3gNeZC8717yY9TnXXfFoEpump",
+        "symbol": "Roadster",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T19:59:58.537282+00:00"
       }
     ],
     "golden_symbols": {},
@@ -13449,6 +13473,19 @@
         "mcap": 1811.14
       },
       "launch_time": 1781118865.943658,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "6MLWMbv4yP67A1zHFLHgDSEDTQBx7z9BWr8Zxyt3pump",
+      "symbol": "BIBI",
+      "features": {
+        "launch_time": 1781121601.060461,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781121601.060461,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
