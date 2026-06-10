@@ -539,6 +539,10 @@ class MemeBot:
                                 self._last_pre_mig_pair_liq = real_liq
 
                                 unique_from_txns = buys_1h + sells_1h
+                                ld.buy_count = max(ld.buy_count, buys_1h)
+                                ld.sell_count = max(ld.sell_count, sells_1h)
+                                if unique_from_txns > len(ld.unique_wallets):
+                                    ld.unique_wallets = set(range(unique_from_txns))
                                 if len(ld.unique_wallets) > ld.holders:
                                     ld.holders = len(ld.unique_wallets)
 
