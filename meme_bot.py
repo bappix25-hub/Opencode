@@ -332,32 +332,30 @@ class MemeBot:
         match, match_score, match_reason = match_pump_patterns(features)
 
         if not match:
-            data = load_data()
-            if not data.get("pump_patterns"):
-                h_score = 0.0
-                h_reasons = []
-                if launch_data.buy_count >= 10:
-                    h_score += 0.35
-                    h_reasons.append(f"buys={launch_data.buy_count}")
-                elif launch_data.buy_count >= 5:
-                    h_score += 0.2
-                    h_reasons.append(f"buys={launch_data.buy_count}")
-                if unique_wallets >= 5:
-                    h_score += 0.3
-                    h_reasons.append(f"wallets={unique_wallets}")
-                elif unique_wallets >= 3:
-                    h_score += 0.15
-                    h_reasons.append(f"wallets={unique_wallets}")
-                if buy_sell_ratio >= 1.5:
-                    h_score += 0.2
-                    h_reasons.append(f"bsr={buy_sell_ratio:.1f}")
-                if launch_data.holders >= 3:
-                    h_score += 0.15
-                    h_reasons.append(f"holders={launch_data.holders}")
-                if h_score >= 0.5:
-                    match = True
-                    match_score = h_score
-                    match_reason = "Heuristic (no patterns yet): " + " ".join(h_reasons)
+            h_score = 0.0
+            h_reasons = []
+            if launch_data.buy_count >= 10:
+                h_score += 0.35
+                h_reasons.append(f"buys={launch_data.buy_count}")
+            elif launch_data.buy_count >= 5:
+                h_score += 0.2
+                h_reasons.append(f"buys={launch_data.buy_count}")
+            if unique_wallets >= 5:
+                h_score += 0.3
+                h_reasons.append(f"wallets={unique_wallets}")
+            elif unique_wallets >= 3:
+                h_score += 0.15
+                h_reasons.append(f"wallets={unique_wallets}")
+            if buy_sell_ratio >= 1.5:
+                h_score += 0.2
+                h_reasons.append(f"bsr={buy_sell_ratio:.1f}")
+            if launch_data.holders >= 3:
+                h_score += 0.15
+                h_reasons.append(f"holders={launch_data.holders}")
+            if h_score >= 0.5:
+                match = True
+                match_score = h_score
+                match_reason = "Heuristic: " + " ".join(h_reasons)
 
         logger.info(
             f"[EVAL] {symbol}: age={int(age)}s buys={launch_data.buy_count} "
