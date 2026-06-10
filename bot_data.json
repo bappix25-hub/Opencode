@@ -10130,12 +10130,15 @@
         "ath_price": 0.0,
         "launch_time": 1781089725.209217,
         "liquidity": 0.0,
-        "mcap": 1775.75
+        "mcap": 1775.75,
+        "outcome": "dump",
+        "outcome_mcap": 2466.0,
+        "symbol": "$BEAR"
       },
       "launch_time": 1781089725.209217,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2466.0,
+      "outcome_time": "2026-06-10T17:11:39.300820+00:00",
       "signal_sent": false
     },
     {
@@ -10159,12 +10162,15 @@
         "ath_price": 0.0,
         "launch_time": 1781089753.192092,
         "liquidity": 0.0,
-        "mcap": 1777.23
+        "mcap": 1777.23,
+        "outcome": "dump",
+        "outcome_mcap": 1775.4,
+        "symbol": "PEMP"
       },
       "launch_time": 1781089753.192092,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1775.4,
+      "outcome_time": "2026-06-10T17:11:42.916284+00:00",
       "signal_sent": false
     },
     {
@@ -10188,12 +10194,15 @@
         "ath_price": 0.0,
         "launch_time": 1781089774.43295,
         "liquidity": 0.0,
-        "mcap": 1842.15
+        "mcap": 1842.15,
+        "outcome": "dump",
+        "outcome_mcap": 1977.37,
+        "symbol": "PENAI"
       },
       "launch_time": 1781089774.43295,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1977.37,
+      "outcome_time": "2026-06-10T17:11:55.595306+00:00",
       "signal_sent": false
     },
     {
