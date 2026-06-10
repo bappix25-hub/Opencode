@@ -9814,6 +9814,70 @@
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T17:37:07.762921+00:00"
+      },
+      {
+        "address": "46N587j4xukNGuTFzWF2FE8iLcTisL1K6TNBYgAJpump",
+        "symbol": "ROBTY",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T18:38:40.965003+00:00"
+      },
+      {
+        "address": "7RHxQQUWG9fCskqocSV9zPkWPLJqcceWTcUCjnwMpump",
+        "symbol": "EMBER",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T18:39:12.421295+00:00"
+      },
+      {
+        "address": "FbNc2KRUrLf8TXzYpKe5fx6uuTRVny68H5fa1e1Wpump",
+        "symbol": "Hobbes",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T18:39:19.624989+00:00"
+      },
+      {
+        "address": "YZYbAx6GokTodmzgXLXMZuWU5RkdB9tFXAzaDuqVBNK",
+        "symbol": "YZYB",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T18:39:22.305538+00:00"
+      },
+      {
+        "address": "2gB4ytQos9dphSGF9YDC6SpoTNu1PeqX6FSGzBvopump",
+        "symbol": "Bagachu",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T18:39:24.765030+00:00"
+      },
+      {
+        "address": "BFBwDbNpf5QponVJyaAGFpKPiCXnbtuXqGWzugHzpump",
+        "symbol": "AURA",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T18:39:27.365085+00:00"
+      },
+      {
+        "address": "GJmJ3ZFXg4XBYspccpsRsMUhEoNfmqxTYN18GH1rpump",
+        "symbol": "APELORD ",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T18:39:29.842747+00:00"
+      },
+      {
+        "address": "4EjSzThNDV8oQx7QDKDVCRLfMQ1bCgvHzfihzmNWbUkK",
+        "symbol": "STARGRACE",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T18:39:57.076760+00:00"
       }
     ],
     "golden_symbols": {},
@@ -10453,6 +10517,19 @@
         "source": "historical_scan"
       },
       "launch_time": 1781112954.190536,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "SazTMRSh1SoWPCgE9yBr451n8zsRdnHLu2cKdrS3Gga",
+      "symbol": "SAZN",
+      "features": {
+        "launch_time": 1781116794.593795,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781116794.593795,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
