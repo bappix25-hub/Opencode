@@ -11926,6 +11926,38 @@
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T20:36:35.415601+00:00"
+      },
+      {
+        "address": "3tVz9uAzzhZ6JrEGCmEuLKX9TL9Hq5zgHXarboTfeQg4",
+        "symbol": "ASTEROID",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T20:36:50.013581+00:00"
+      },
+      {
+        "address": "46N587j4xukNGuTFzWF2FE8iLcTisL1K6TNBYgAJpump",
+        "symbol": "ROBTY",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T20:36:59.818392+00:00"
+      },
+      {
+        "address": "2kZZXuJRoZt3DKtWn6q8zQtbmmeJ9QKtx5QyU6jXpump",
+        "symbol": "LMAO!",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T20:37:32.299916+00:00"
+      },
+      {
+        "address": "7fCWcBAUdvUrfSigDBvVFkXUydcBqykpaVhDTmmZpump",
+        "symbol": "FIT",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T20:37:34.738261+00:00"
       }
     ],
     "golden_symbols": {},
