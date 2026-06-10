@@ -167,6 +167,14 @@ def record_launch(address: str, symbol: str, features: dict) -> None:
 
     existing = [l for l in launches if l.get("address") == address]
     if existing:
+        existing_features = existing[0].get("features", {})
+        old_count = sum(1 for v in existing_features.values() if v not in (None, 0, 0.0, "", []))
+        new_count = sum(1 for v in features.values() if v not in (None, 0, 0.0, "", []))
+        if new_count > old_count:
+            existing[0]["features"] = features
+            launches[-500:] = launches
+            data["launches_tracked"] = launches
+            save_data(data)
         return
 
     launches.append({

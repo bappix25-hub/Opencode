@@ -341,8 +341,30 @@ class MemeBot:
             if h is not None and h > 0:
                 real_holders = h
                 launch_data.holders = h
+            elif unique_wallets > real_holders:
+                real_holders = unique_wallets
+                launch_data.holders = unique_wallets
         except Exception:
-            pass
+            if unique_wallets > real_holders:
+                real_holders = unique_wallets
+                launch_data.holders = unique_wallets
+
+        if launch_data.lp_locked == 0:
+            try:
+                from dex_client import get_rugcheck
+                rug = await get_rugcheck(address)
+                if rug and hasattr(rug, "risks"):
+                    lp = 0
+                    for r in rug.risks:
+                        if "LP" in r:
+                            import re
+                            m = re.search(r"(\d+)%", r)
+                            if m:
+                                lp = int(m.group(1))
+                    if lp > 0:
+                        launch_data.lp_locked = lp
+            except Exception:
+                pass
 
         if real_holders < 3:
             logger.info(f"[SKIP] {symbol}: holders={real_holders} < 3")
@@ -711,7 +733,7 @@ class MemeBot:
                         continue
 
                     if 0 < age <= 21600:
-                        if mcap >= PUMP_THRESHOLD:
+                        if mcap >= PUMP_THRESHOLD and not await self.state.is_alerted(addr):
                             await self.state.add_pump_coin(addr, CoinInfo(name=name, symbol=symbol))
                             logger.info(f"🚀 পাম্প কয়েন! {symbol} mcap={format_number(mcap)}")
                             await send_msg(self.telegram_app.bot,
