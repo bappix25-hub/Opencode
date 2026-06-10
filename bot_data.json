@@ -863,6 +863,222 @@
       "outcome": "STRONG_PUMP",
       "ath_multiplier": 1588460.66,
       "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 1588460.66,
+      "learned_at": "2026-06-10T10:11:46.943672+00:00"
+    },
+    {
+      "symbol": "ABEL",
+      "features": {
+        "launch_time": 1781080498.924696,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 18.55,
+      "learned_at": "2026-06-10T10:11:46.954728+00:00"
+    },
+    {
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 8.17,
+      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 1588460.66,
+      "learned_at": "2026-06-10T10:11:46.943672+00:00"
+    },
+    {
+      "symbol": "ABEL",
+      "features": {
+        "launch_time": 1781080498.924696,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 18.55,
+      "learned_at": "2026-06-10T10:11:46.954728+00:00"
+    },
+    {
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 8.17,
+      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 1588460.66,
+      "learned_at": "2026-06-10T10:11:46.943672+00:00"
+    },
+    {
+      "symbol": "ABEL",
+      "features": {
+        "launch_time": 1781080498.924696,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 18.55,
+      "learned_at": "2026-06-10T10:11:46.954728+00:00"
+    },
+    {
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 8.17,
+      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 1588460.66,
+      "learned_at": "2026-06-10T10:11:46.943672+00:00"
+    },
+    {
+      "symbol": "ABEL",
+      "features": {
+        "launch_time": 1781080498.924696,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 18.55,
+      "learned_at": "2026-06-10T10:11:46.954728+00:00"
+    },
+    {
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 8.17,
+      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
     }
   ],
   "dump_patterns": [
@@ -11664,14 +11880,6 @@
         "timestamp": "2026-06-10T19:00:05.557903+00:00"
       },
       {
-        "address": "95LqAprdEk9eMtyjrXoVXWLFqLWx3FY5uqYYt4dQpump",
-        "symbol": "PUP",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T19:58:47.674271+00:00"
-      },
-      {
         "address": "ELhriEvcdPujdfm35eaRAXpLSNAEtVHm8Cdukqtxpump",
         "symbol": "listeria ",
         "verdict": "DUMP",
@@ -11680,28 +11888,36 @@
         "timestamp": "2026-06-10T19:58:55.380099+00:00"
       },
       {
-        "address": "3tVz9uAzzhZ6JrEGCmEuLKX9TL9Hq5zgHXarboTfeQg4",
-        "symbol": "ASTEROID",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T19:59:10.582996+00:00"
-      },
-      {
-        "address": "46N587j4xukNGuTFzWF2FE8iLcTisL1K6TNBYgAJpump",
-        "symbol": "ROBTY",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T19:59:20.681251+00:00"
-      },
-      {
         "address": "HQgrQoR6136KZUbPSu3gNeZC8717yY9TnXXfFoEpump",
         "symbol": "Roadster",
         "verdict": "DUMP",
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T19:59:58.537282+00:00"
+      },
+      {
+        "address": "95LqAprdEk9eMtyjrXoVXWLFqLWx3FY5uqYYt4dQpump",
+        "symbol": "PUP",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T20:08:31.453620+00:00"
+      },
+      {
+        "address": "ELhriEvcdPujdfm35eaRAXpLSNAEtVHm8Cdukqtxpump",
+        "symbol": "listeria ",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T20:08:38.829876+00:00"
+      },
+      {
+        "address": "3tVz9uAzzhZ6JrEGCmEuLKX9TL9Hq5zgHXarboTfeQg4",
+        "symbol": "ASTEROID",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T20:08:54.743795+00:00"
       }
     ],
     "golden_symbols": {},
@@ -13486,6 +13702,383 @@
         "source": "historical_scan"
       },
       "launch_time": 1781121601.060461,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "7atAjk7fuThg71oEKEhV2rwthF3UZaFTRaQdAvpBpump",
+      "symbol": "Shapes",
+      "features": {
+        "buy_count": 10,
+        "sell_count": 12,
+        "buy_sell_ratio": 0.83,
+        "volume": 15009823.96,
+        "holders": 22,
+        "unique_wallets": 22,
+        "initial_liq": 0,
+        "initial_mcap": 4000,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 19,
+        "lp_locked": 0,
+        "deployer": "BSEY6gDXnFKk",
+        "ath_price": 4e-06,
+        "launch_time": 1781121524.177323,
+        "liquidity": 0.0,
+        "mcap": 4000.0
+      },
+      "launch_time": 1781121524.177323,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "Ci4BVsRfLjLHNH9nqmdASm9BwtNZ2JGSDThD5oGppump",
+      "symbol": "BLZ",
+      "features": {
+        "buy_count": 15,
+        "sell_count": 9,
+        "buy_sell_ratio": 1.67,
+        "volume": 67062500.03,
+        "holders": 24,
+        "unique_wallets": 24,
+        "initial_liq": 0,
+        "initial_mcap": 2340.83,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 19,
+        "lp_locked": 0,
+        "deployer": "wBhqvzfR7ZZ3",
+        "ath_price": 0.0,
+        "launch_time": 1781121561.661638,
+        "liquidity": 0.0,
+        "mcap": 2340.83
+      },
+      "launch_time": 1781121561.661638,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "2ay76r8Lbgk15ySJ8jSrRvqyF1v5w7oEiYBXSZHtpump",
+      "symbol": "TOKENS",
+      "features": {
+        "buy_count": 5,
+        "sell_count": 5,
+        "buy_sell_ratio": 1.0,
+        "volume": 34199203.12,
+        "holders": 10,
+        "unique_wallets": 10,
+        "initial_liq": 0,
+        "initial_mcap": 1772.32,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 19,
+        "lp_locked": 0,
+        "deployer": "5Cn8sWRYXaZh",
+        "ath_price": 1.77e-06,
+        "launch_time": 1781121588.27262,
+        "liquidity": 0.0,
+        "mcap": 1772.32
+      },
+      "launch_time": 1781121588.27262,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "3QxaqwZRULV7szNyQtHfwGqQ5WjLPp3JFhGUFFxypump",
+      "symbol": "clawker",
+      "features": {
+        "buy_count": 8,
+        "sell_count": 6,
+        "buy_sell_ratio": 1.33,
+        "volume": 916.69,
+        "holders": 14,
+        "unique_wallets": 14,
+        "initial_liq": 0,
+        "initial_mcap": 1811.54,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 19,
+        "lp_locked": 0,
+        "deployer": "7XYnycCpEg3E",
+        "ath_price": 1.81e-06,
+        "launch_time": 1781121590.234173,
+        "liquidity": 0.0,
+        "mcap": 1811.54
+      },
+      "launch_time": 1781121590.234173,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "8m56GFTqgoJEY29NdixVyD9dWnHNaUrbB1Eh8u7Vpump",
+      "symbol": "Kirk",
+      "features": {
+        "buy_count": 45,
+        "sell_count": 56,
+        "buy_sell_ratio": 0.8,
+        "volume": 60027971.97,
+        "holders": 101,
+        "unique_wallets": 101,
+        "initial_liq": 0,
+        "initial_mcap": 1774,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 19,
+        "lp_locked": 0,
+        "deployer": "EnYY75ZLcddA",
+        "ath_price": 1.77e-06,
+        "launch_time": 1781121592.900593,
+        "liquidity": 0.0,
+        "mcap": 1774.0
+      },
+      "launch_time": 1781121592.900593,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "6a2Ry9MiajWCFbWkL5gYj7SXewqzv8q48VoyoV4pump",
+      "symbol": "BOUTTA",
+      "features": {
+        "buy_count": 39,
+        "sell_count": 31,
+        "buy_sell_ratio": 1.26,
+        "volume": 25851479.11,
+        "holders": 70,
+        "unique_wallets": 70,
+        "initial_liq": 0,
+        "initial_mcap": 1781.21,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 19,
+        "lp_locked": 0,
+        "deployer": "6j8RHmBhyKkA",
+        "ath_price": 1.78e-06,
+        "launch_time": 1781121599.759075,
+        "liquidity": 0.0,
+        "mcap": 1781.21
+      },
+      "launch_time": 1781121599.759075,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "Exnjz6c7EdcwVJR4mGo3GJvL3BUaSV4tmVmxigigpUMp",
+      "symbol": "Mentality",
+      "features": {
+        "buy_count": 3,
+        "sell_count": 0,
+        "buy_sell_ratio": 3.0,
+        "volume": 142.24,
+        "holders": 3,
+        "unique_wallets": 3,
+        "initial_liq": 0,
+        "initial_mcap": 2050.42,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 20,
+        "lp_locked": 0,
+        "deployer": "HSiafQh57s8u",
+        "ath_price": 2.05e-06,
+        "launch_time": 1781121626.283662,
+        "liquidity": 0.0,
+        "mcap": 2050.42
+      },
+      "launch_time": 1781121626.283662,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "Aab7gyB1bhVzQdLUFhFNy6UKYNP4bohVTaC783KJpump",
+      "symbol": "宣传币",
+      "features": {
+        "buy_count": 2,
+        "sell_count": 3,
+        "buy_sell_ratio": 0.67,
+        "volume": 153285714.29,
+        "holders": 5,
+        "unique_wallets": 5,
+        "initial_liq": 0,
+        "initial_mcap": 1774.56,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 20,
+        "lp_locked": 0,
+        "deployer": "C8rLpLSU7uoL",
+        "ath_price": 0.0,
+        "launch_time": 1781121635.140444,
+        "liquidity": 0.0,
+        "mcap": 1774.56
+      },
+      "launch_time": 1781121635.140444,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "FGcC4mhCtwj6G6B71EHwJqz6gyCkXJz55yBvyXvKpump",
+      "symbol": "HEART",
+      "features": {
+        "buy_count": 3,
+        "sell_count": 3,
+        "buy_sell_ratio": 1.0,
+        "volume": 66285714.22,
+        "holders": 6,
+        "unique_wallets": 6,
+        "initial_liq": 0,
+        "initial_mcap": 1772.32,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 20,
+        "lp_locked": 0,
+        "deployer": "A5y6BPgUL9te",
+        "ath_price": 1.77e-06,
+        "launch_time": 1781121655.157742,
+        "liquidity": 0.0,
+        "mcap": 1772.32
+      },
+      "launch_time": 1781121655.157742,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "743ih6Mky4qs1QbLeJUnnjbEFkfVWNa8SR5PfCYApump",
+      "symbol": "GOY",
+      "features": {
+        "buy_count": 8,
+        "sell_count": 5,
+        "buy_sell_ratio": 1.6,
+        "volume": 1788384.0,
+        "holders": 13,
+        "unique_wallets": 13,
+        "initial_liq": 0,
+        "initial_mcap": 2079.83,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 20,
+        "lp_locked": 0,
+        "deployer": "CfBoFQ3tRrKh",
+        "ath_price": 0.0,
+        "launch_time": 1781121655.767067,
+        "liquidity": 0.0,
+        "mcap": 2079.83
+      },
+      "launch_time": 1781121655.767067,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "2yTsRVt7TvYBsckjzeYKdvjYdeo4dU3Gdeqx6cr4pump",
+      "symbol": "Navi",
+      "features": {
+        "buy_count": 7,
+        "sell_count": 11,
+        "buy_sell_ratio": 0.64,
+        "volume": 67062500.0,
+        "holders": 18,
+        "unique_wallets": 18,
+        "initial_liq": 0,
+        "initial_mcap": 1778.47,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 20,
+        "lp_locked": 0,
+        "deployer": "AqsW2qxwaKKn",
+        "ath_price": 1.78e-06,
+        "launch_time": 1781121656.381599,
+        "liquidity": 0.0,
+        "mcap": 1778.47
+      },
+      "launch_time": 1781121656.381599,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "8taQuQCUQZMmzzLJNnYYWMWwLPf5Y6CaGvVXrxsupump",
+      "symbol": "x",
+      "features": {
+        "buy_count": 3,
+        "sell_count": 0,
+        "buy_sell_ratio": 3.0,
+        "volume": 17590163.97,
+        "holders": 3,
+        "unique_wallets": 3,
+        "initial_liq": 0,
+        "initial_mcap": 2308.69,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 20,
+        "lp_locked": 0,
+        "deployer": "FPN6ChAMqvY6",
+        "ath_price": 0.0,
+        "launch_time": 1781121666.721728,
+        "liquidity": 0.0,
+        "mcap": 2308.69
+      },
+      "launch_time": 1781121666.721728,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "8xRMpoX2f955aj7d7cfifCE4yRbscXcY2fkL2na5pump",
+      "symbol": "Tsuki",
+      "features": {
+        "buy_count": 2,
+        "sell_count": 1,
+        "buy_sell_ratio": 2.0,
+        "volume": 3169866.99,
+        "holders": 3,
+        "unique_wallets": 3,
+        "initial_liq": 0,
+        "initial_mcap": 1777.57,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 19,
+        "lp_locked": 0,
+        "deployer": "oVQQKX516nAt",
+        "ath_price": 1.78e-06,
+        "launch_time": 1781121597.602111,
+        "liquidity": 0.0,
+        "mcap": 1777.57
+      },
+      "launch_time": 1781121597.602111,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
