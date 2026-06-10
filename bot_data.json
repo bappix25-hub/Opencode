@@ -11918,6 +11918,22 @@
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T20:08:54.743795+00:00"
+      },
+      {
+        "address": "46N587j4xukNGuTFzWF2FE8iLcTisL1K6TNBYgAJpump",
+        "symbol": "ROBTY",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T20:09:04.620273+00:00"
+      },
+      {
+        "address": "HQgrQoR6136KZUbPSu3gNeZC8717yY9TnXXfFoEpump",
+        "symbol": "Roadster",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T20:09:45.105687+00:00"
       }
     ],
     "golden_symbols": {},
