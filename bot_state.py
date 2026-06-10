@@ -52,6 +52,7 @@ class SignalInfo:
     migration_time: float = 0.0
     is_pre_migration_known: bool = False
     eval_done: dict = field(default_factory=dict)
+    ath_price: float = 0.0
 
 @dataclass
 class CoinInfo:

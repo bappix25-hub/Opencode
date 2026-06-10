@@ -22,7 +22,8 @@ from learner import (
     match_pump_patterns, record_signal_result, get_stats, get_daily_report,
     get_launch_age, is_duplicate, purge_honeypot_patterns,
     save_honeypot_blocklist, load_honeypot_blocklist,
-    load_data, save_data, PUMP_THRESHOLD, DUMP_THRESHOLD
+    load_data, save_data, PUMP_THRESHOLD, DUMP_THRESHOLD,
+    record_missed_pump, auto_learn_update
 )
 from github_sync import sync_to_github, restore_from_github
 from utils import format_number, gmgn_link, setup_logging
@@ -115,6 +116,7 @@ class MemeBot:
             self._tasks.append(asyncio.create_task(self.github_sync_loop(), name="github_sync"))
         self._tasks.append(asyncio.create_task(self.backtest_loop(), name="backtest"))
         self._tasks.append(asyncio.create_task(self.daily_summary_loop(), name="daily_summary"))
+        self._tasks.append(asyncio.create_task(self.auto_learn_loop(), name="auto_learn"))
 
         if config.paper_trading:
             self._tasks.append(asyncio.create_task(self.paper_trading_loop(), name="paper_trading"))
@@ -564,6 +566,21 @@ class MemeBot:
                     if price > 0:
                         pair_age = get_launch_age(pair) or 0
                         launch_ts = datetime.now(timezone.utc).timestamp() - pair_age
+                        holders = 0
+                        lp_locked = 0.0
+                        deployer = ""
+                        try:
+                            h = await self.helius.get_holder_count(addr)
+                            if h is not None and h > 0:
+                                holders = h
+                        except Exception:
+                            pass
+                        try:
+                            rug = await self.rugcheck.check_token(addr, pair.get("baseToken", {}).get("symbol", "???"))
+                            if rug:
+                                lp_locked = rug.lp_locked
+                        except Exception:
+                            pass
                         tracked = TrackedCoin(
                             initial_price=price,
                             name=pair.get("baseToken", {}).get("name", "Unknown"),
@@ -571,6 +588,9 @@ class MemeBot:
                             first_seen=launch_ts,
                             launch_time=launch_ts,
                             ath_price=price,
+                            holders=holders,
+                            lp_locked=lp_locked,
+                            deployer_wallet=deployer,
                         )
                         await self.state.add_tracked_coin(addr, tracked)
 
@@ -615,6 +635,15 @@ class MemeBot:
                                     pair_price = float(pair.get("priceUsd", 0) or 0)
                                     if pair_price > 0 and pair_price > ld.ath_price:
                                         ld.ath_price = pair_price
+
+                                if ld.holders == 0:
+                                    try:
+                                        h = await self.helius.get_holder_count(addr)
+                                        if h is not None and h > 0:
+                                            ld.holders = h
+                                    except Exception:
+                                        pass
+
                                 await self.check_pre_migration_signal(addr)
                         await asyncio.sleep(0.3)
 
@@ -696,6 +725,17 @@ class MemeBot:
                                 f"🧠 <i>পাম্প প্যাটার্ন শেখা হয়েছে!</i>\n"
                                 f"🔗 <a href='{link}'>GMGN</a>"
                             )
+
+                            launch_data = await self.state.get_launch_tracking(addr)
+                            if launch_data and not launch_data.pre_signal_sent:
+                                features = extract_launch_features(launch_data, pair_data=pair, unique_wallets=len(launch_data.unique_wallets))
+                                features["launch_time"] = launch_data.launch_time
+                                features["liquidity"] = liquidity
+                                features["mcap"] = mcap
+                                ath_mult = coin_info.ath_price / coin_info.initial_price if coin_info.initial_price > 0 else 1
+                                record_missed_pump(addr, symbol, features, ath_mult)
+                                logger.info(f"📚 Missed pump recorded: {symbol} (no pre-mig signal)")
+
                             if config.enable_github_sync:
                                 await sync_to_github(f"পাম্প: {symbol} mcap={format_number(mcap)}")
                         elif mcap < DUMP_THRESHOLD:
@@ -898,7 +938,7 @@ class MemeBot:
             await asyncio.sleep(config.history_scan_interval)
 
     async def check_signal_results_loop(self):
-        CHECK_INTERVALS = [300, 900, 3600]
+        CHECK_INTERVALS = [300, 900, 3600, 21600]
         while True:
             try:
                 await asyncio.sleep(60)
@@ -907,6 +947,17 @@ class MemeBot:
 
                 for addr, sig_info in list(unchecked.items()):
                     age = now - sig_info.signal_time
+
+                    pair = await self.dex.fetch_pair_data(addr)
+                    if not pair:
+                        continue
+
+                    current_price = float(pair.get("priceUsd", 0) or 0)
+                    if current_price <= 0:
+                        continue
+
+                    if current_price > sig_info.ath_price:
+                        sig_info.ath_price = current_price
 
                     next_check = None
                     for interval in CHECK_INTERVALS:
@@ -917,32 +968,25 @@ class MemeBot:
                     if next_check is None:
                         continue
 
-                    pair = await self.dex.fetch_pair_data(addr)
-                    if not pair:
-                        sig_info.eval_done[str(next_check)] = True
-                        continue
-
-                    current_price = float(pair.get("priceUsd", 0) or 0)
-                    if current_price <= 0:
-                        continue
-
                     sig_info.eval_done[str(next_check)] = True
-                    multiplier = current_price / sig_info.price_at_signal if sig_info.price_at_signal > 0 else 0
 
-                    emoji = "✅" if multiplier >= 2.0 else ("😐" if multiplier >= 0.8 else "❌")
-                    await send_msg(self.telegram_app.bot,
-                        f"{emoji} <b>সিগন্যাল ফলাফল ({next_check // 60}m)!</b>\n"
-                        f"🏷️ ${sig_info.symbol}\n"
-                        f"📊 বর্তমান: <b>{multiplier:.2f}x</b>\n"
-                        f"💰 {'🟢 Profit' if multiplier >= 2 else '🔴 Loss' if multiplier < 0.8 else '➡️ Neutral'}"
-                    )
+                    ath_multiplier = sig_info.ath_price / sig_info.price_at_signal if sig_info.price_at_signal > 0 else 0
+                    current_multiplier = current_price / sig_info.price_at_signal if sig_info.price_at_signal > 0 else 0
 
-                    record_signal_result(addr, sig_info.symbol, multiplier)
-
-                    if next_check == 3600:
+                    if next_check == 21600:
+                        emoji = "✅" if ath_multiplier >= 2.0 else ("😐" if ath_multiplier >= 0.8 else "❌")
+                        await send_msg(self.telegram_app.bot,
+                            f"{emoji} <b>সিগন্যাল ফলাফল (6h)!</b>\n"
+                            f"🏷️ ${sig_info.symbol}\n"
+                            f"📈 ATH: <b>{ath_multiplier:.2f}x</b>\n"
+                            f"📊 বর্তমান: <b>{current_multiplier:.2f}x</b>\n"
+                            f"💰 {'🟢 ATH 2x+' if ath_multiplier >= 2 else '🔴 Missed' if ath_multiplier < 0.8 else '➡️ Neutral'}"
+                        )
+                        record_signal_result(addr, sig_info.symbol, ath_multiplier, current_multiplier)
                         await self.state.mark_signal_checked(addr)
-
-                    logger.info(f"[OUTCOME] {sig_info.symbol}: {multiplier:.2f}x @ T+{next_check}s")
+                        logger.info(f"[OUTCOME] {sig_info.symbol}: ATH={ath_multiplier:.2f}x current={current_multiplier:.2f}x @ T+6h")
+                    else:
+                        logger.debug(f"[CHECK] {sig_info.symbol}: T+{next_check//60}m ath={ath_multiplier:.2f}x cur={current_multiplier:.2f}x")
 
                     await asyncio.sleep(1)
 
@@ -1140,6 +1184,31 @@ class MemeBot:
                 break
             except Exception as e:
                 logger.error(f"daily_summary_loop error: {e}")
+
+    async def auto_learn_loop(self):
+        """Periodic auto-learn: analyze outcomes and adjust heuristic weights."""
+        await asyncio.sleep(600)
+        while True:
+            try:
+                insights = auto_learn_update()
+                if insights.get("win_rate") and insights.get("total_recent", 0) >= 20:
+                    wr = insights["win_rate"]
+                    logger.info(f"🧠 Auto-learn: win_rate={wr}% | "
+                                f"bsr: {insights.get('avg_win_bsr',0)} vs {insights.get('avg_loss_bsr',0)} | "
+                                f"holders: {insights.get('avg_win_holders',0)} vs {insights.get('avg_loss_holders',0)} | "
+                                f"liq: {insights.get('avg_win_liq',0)} vs {insights.get('avg_loss_liq',0)} | "
+                                f"lp: {insights.get('avg_win_lp_locked',0)} vs {insights.get('avg_loss_lp_locked',0)}")
+                data = load_data()
+                pump_count = len(data.get("pump_patterns", []))
+                dump_count = len(data.get("dump_patterns", []))
+                missed = len(data.get("missed_pumps", []))
+                if pump_count > 0 or dump_count > 0:
+                    logger.info(f"🧠 Patterns: {pump_count} pump + {dump_count} dump + {missed} missed")
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"auto_learn_loop error: {e}")
+            await asyncio.sleep(3600)
 
     async def paper_trading_loop(self):
         """Monitor paper trading positions and timeout old ones."""

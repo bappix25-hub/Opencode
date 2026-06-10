@@ -71,6 +71,9 @@ def extract_launch_features(launch_data, pair_data=None, unique_wallets=0) -> di
     volume = launch_data.volume if hasattr(launch_data, 'volume') else launch_data.get("volume", 0)
     holders = launch_data.holders if hasattr(launch_data, 'holders') else launch_data.get("holders", 0)
     launch_time = launch_data.launch_time if hasattr(launch_data, 'launch_time') else launch_data.get("launch_time", 0)
+    lp_locked = launch_data.lp_locked if hasattr(launch_data, 'lp_locked') else launch_data.get("lp_locked", 0)
+    deployer = launch_data.deployer_wallet if hasattr(launch_data, 'deployer_wallet') else launch_data.get("deployer_wallet", "")
+    ath_price = launch_data.ath_price if hasattr(launch_data, 'ath_price') else launch_data.get("ath_price", 0)
 
     buy_sell_ratio = buy_count / max(sell_count, 1)
 
@@ -110,6 +113,9 @@ def extract_launch_features(launch_data, pair_data=None, unique_wallets=0) -> di
         "snipers_30s": snipers_30s,
         "insiders_30s": insiders_30s,
         "launch_hour": launch_hour,
+        "lp_locked": round(lp_locked, 1),
+        "deployer": deployer[:12] if deployer else "",
+        "ath_price": round(ath_price, 8),
     }
 
 
@@ -137,6 +143,7 @@ def _pattern_similarity(features: dict, pattern: dict) -> float:
     _compare("holders", "holders", 0.5)
     _compare("unique_wallets", "unique_wallets", 0.3)
     _compare("snipers_30s", "snipers_30s", 0.3)
+    _compare("lp_locked", "lp_locked", 0.3)
 
     if features.get("liq_pct", 0) > 0 and pattern.get("liq_pct", 0) > 0:
         ratio = min(features["liq_pct"], pattern["liq_pct"]) / max(features["liq_pct"], pattern["liq_pct"])
@@ -294,22 +301,23 @@ def match_pump_patterns(features: dict, min_similarity: float = 0.55) -> tuple[b
     return False, best_score, f"Best match {best_score:.0%} < {min_similarity:.0%}"
 
 
-def record_signal_result(address: str, symbol: str, multiplier: float) -> None:
+def record_signal_result(address: str, symbol: str, ath_multiplier: float, current_multiplier: float = 0.0) -> None:
     """Record signal outcome and learn from it."""
     data = load_data()
     results = data["model"].setdefault("signal_results", [])
 
     verdict = "DUMP"
-    if multiplier >= 5.0:
+    if ath_multiplier >= 5.0:
         verdict = "STRONG_PUMP"
-    elif multiplier >= 2.0:
+    elif ath_multiplier >= 2.0:
         verdict = "PUMP"
 
     results.append({
         "address": address,
         "symbol": symbol,
         "verdict": verdict,
-        "multiplier": multiplier,
+        "ath_multiplier": ath_multiplier,
+        "current_multiplier": current_multiplier,
         "timestamp": datetime.now(timezone.utc).isoformat(),
     })
     data["model"]["signal_results"] = results[-500:]
@@ -319,28 +327,30 @@ def record_signal_result(address: str, symbol: str, multiplier: float) -> None:
 
     if launch and launch.get("features"):
         features = launch["features"]
+        features["ath_multiplier"] = ath_multiplier
+        features["outcome"] = verdict
         if verdict in ("PUMP", "STRONG_PUMP"):
             pump_patterns = data.setdefault("pump_patterns", [])
             pump_patterns.append({
                 "symbol": symbol,
                 "features": features,
                 "outcome": verdict,
-                "multiplier": multiplier,
+                "ath_multiplier": ath_multiplier,
                 "learned_at": datetime.now(timezone.utc).isoformat(),
             })
             data["model"]["total_pumps"] = data["model"].get("total_pumps", 0) + 1
-            logger.info(f"📚 পাম্প প্যাটার্ন শেখা: {symbol} ({multiplier:.1f}x)")
+            logger.info(f"📚 পাম্প প্যাটার্ন শেখা: {symbol} (ATH {ath_multiplier:.1f}x)")
         elif verdict == "DUMP":
             dump_patterns = data.setdefault("dump_patterns", [])
             dump_patterns.append({
                 "symbol": symbol,
                 "features": features,
                 "outcome": "DUMP",
-                "multiplier": multiplier,
+                "ath_multiplier": ath_multiplier,
                 "learned_at": datetime.now(timezone.utc).isoformat(),
             })
             data["model"]["total_dumps"] = data["model"].get("total_dumps", 0) + 1
-            logger.info(f"📚 ডাম্প প্যাটার্ন শেখা: {symbol} ({multiplier:.1f}x)")
+            logger.info(f"📚 ডাম্প প্যাটার্ন শেখা: {symbol} (ATH {ath_multiplier:.1f}x)")
 
         if len(data.get("pump_patterns", [])) > MAX_PATTERNS:
             data["pump_patterns"] = data["pump_patterns"][-MAX_PATTERNS:]
@@ -387,6 +397,8 @@ def get_daily_report() -> str:
     pumps_today = [l for l in launches_today if l.get("outcome") == "pump"]
     dumps_today = [l for l in launches_today if l.get("outcome") == "dump"]
     pending = [l for l in launches_today if l.get("outcome") is None]
+    missed = data.get("missed_pumps", [])
+    missed_today = [m for m in missed if m.get("learned_at", "").startswith(today)]
 
     report = (
         f"📊 <b>দৈনিক রিপোর্ট — {today}</b>\n"
@@ -398,7 +410,20 @@ def get_daily_report() -> str:
         f"━━━━━━━━━━━━━━━━\n"
         f"📈 মোট পাম্প প্যাটার্ন: <b>{model.get('total_pumps', 0)}</b>\n"
         f"📉 মোট ডাম্প প্যাটার্ন: <b>{model.get('total_dumps', 0)}</b>\n"
+        f"🚨 মিসড পাম্প: <b>{len(missed)}</b> (আজ: {len(missed_today)})\n"
     )
+
+    insights = model.get("auto_learn_insights", {})
+    if insights:
+        report += (
+            f"━━━━━━━━━━━━━━━━\n"
+            f"🧠 <b>Auto-Learn:</b>\n"
+            f"  Win Rate: <b>{insights.get('win_rate', 0)}%</b>\n"
+            f"  BSR: {insights.get('avg_win_bsr', 0)} vs {insights.get('avg_loss_bsr', 0)}\n"
+            f"  Holders: {insights.get('avg_win_holders', 0)} vs {insights.get('avg_loss_holders', 0)}\n"
+            f"  Liq: ${insights.get('avg_win_liq', 0)} vs ${insights.get('avg_loss_liq', 0)}\n"
+            f"  LP Lock: {insights.get('avg_win_lp_locked', 0)}% vs {insights.get('avg_loss_lp_locked', 0)}%\n"
+        )
 
     if pumps_today:
         pump_syms = ", ".join([l.get("symbol", "?") for l in pumps_today[:10]])
@@ -453,3 +478,90 @@ def load_honeypot_blocklist() -> tuple[set, set]:
     """Load honeypot blocklist."""
     data = load_data()
     return set(data.get("honeypot_addresses", [])), set(data.get("blocked_deployers", []))
+
+
+def record_missed_pump(address: str, symbol: str, features: dict, ath_multiplier: float) -> None:
+    """Record a post-migration pump that wasn't caught by pre-migration signals.
+    These are valuable training examples for what the bot missed."""
+    data = load_data()
+    missed = data.setdefault("missed_pumps", [])
+    features["outcome"] = "missed_pump"
+    features["ath_multiplier"] = ath_multiplier
+    features["symbol"] = symbol
+    features["address"] = address
+    features["learned_at"] = datetime.now(timezone.utc).isoformat()
+    missed.append(features)
+    data["missed_pumps"] = missed[-200:]
+
+    pump_patterns = data.setdefault("pump_patterns", [])
+    pump_patterns.append(features)
+    data["pump_patterns"] = pump_patterns[-MAX_PATTERNS:]
+
+    data["model"]["total_pumps"] = data["model"].get("total_pumps", 0) + 1
+    save_data(data)
+    logger.info(f"📚 Missed pump learned: {symbol} ATH={ath_multiplier:.1f}x (post-migration)")
+
+
+def auto_learn_update() -> dict:
+    """Periodic auto-learn: analyze recent outcomes and adjust heuristic weights.
+    Returns summary of what was learned."""
+    data = load_data()
+    results = data.get("model", {}).get("signal_results", [])
+    if len(results) < 10:
+        return {"status": "insufficient_data", "count": len(results)}
+
+    recent = results[-50:]
+    wins = [r for r in recent if r.get("verdict") in ("PUMP", "STRONG_PUMP")]
+    losses = [r for r in recent if r.get("verdict") == "DUMP"]
+
+    if not wins and not losses:
+        return {"status": "no_outcomes"}
+
+    launches = data.get("launches_tracked", [])
+    launch_map = {l.get("address"): l for l in launches}
+
+    win_features = []
+    loss_features = []
+    for r in recent:
+        launch = launch_map.get(r.get("address", ""))
+        if not launch or not launch.get("features"):
+            continue
+        if r.get("verdict") in ("PUMP", "STRONG_PUMP"):
+            win_features.append(launch["features"])
+        elif r.get("verdict") == "DUMP":
+            loss_features.append(launch["features"])
+
+    if not win_features or not loss_features:
+        return {"status": "insufficient_feature_data", "wins": len(win_features), "losses": len(loss_features)}
+
+    def avg(lst, key):
+        vals = [f.get(key, 0) for f in lst if f.get(key, 0) > 0]
+        return sum(vals) / len(vals) if vals else 0
+
+    insights = {
+        "avg_win_bsr": round(avg(win_features, "buy_sell_ratio"), 2),
+        "avg_loss_bsr": round(avg(loss_features, "buy_sell_ratio"), 2),
+        "avg_win_holders": round(avg(win_features, "holders"), 1),
+        "avg_loss_holders": round(avg(loss_features, "holders"), 1),
+        "avg_win_wallets": round(avg(win_features, "unique_wallets"), 1),
+        "avg_loss_wallets": round(avg(loss_features, "unique_wallets"), 1),
+        "avg_win_liq": round(avg(win_features, "initial_liq"), 0),
+        "avg_loss_liq": round(avg(loss_features, "initial_liq"), 0),
+        "avg_win_mcap": round(avg(win_features, "initial_mcap"), 0),
+        "avg_loss_mcap": round(avg(loss_features, "initial_mcap"), 0),
+        "avg_win_lp_locked": round(avg(win_features, "lp_locked"), 1),
+        "avg_loss_lp_locked": round(avg(loss_features, "lp_locked"), 1),
+        "total_recent": len(recent),
+        "win_rate": round(len(wins) / len(recent) * 100, 1),
+    }
+
+    data["model"]["last_auto_learn"] = datetime.now(timezone.utc).isoformat()
+    data["model"]["auto_learn_insights"] = insights
+    save_data(data)
+
+    logger.info(f"🧠 Auto-learn: win_rate={insights['win_rate']}% "
+                f"bsr: {insights['avg_win_bsr']} vs {insights['avg_loss_bsr']} "
+                f"holders: {insights['avg_win_holders']} vs {insights['avg_loss_holders']} "
+                f"liq: {insights['avg_win_liq']} vs {insights['avg_loss_liq']}")
+
+    return insights

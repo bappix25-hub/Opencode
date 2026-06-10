@@ -1,5 +1,36 @@
 {
-  "pump_patterns": [],
+  "pump_patterns": [
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 1588460.66,
+      "learned_at": "2026-06-10T10:11:46.943672+00:00"
+    },
+    {
+      "symbol": "ABEL",
+      "features": {
+        "launch_time": 1781080498.924696,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 18.55,
+      "learned_at": "2026-06-10T10:11:46.954728+00:00"
+    },
+    {
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 8.17,
+      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+    }
+  ],
   "dump_patterns": [
     {
       "symbol": "Blue Balls",
@@ -299,6 +330,52 @@
       "outcome": "DUMP",
       "multiplier": 0.9715224534501643,
       "learned_at": "2026-06-10T09:37:01.795465+00:00"
+    },
+    {
+      "symbol": "SSS",
+      "features": {
+        "buy_count": 2,
+        "sell_count": 1,
+        "buy_sell_ratio": 2.0,
+        "volume": 114.44,
+        "holders": 3,
+        "unique_wallets": 3,
+        "initial_liq": 0,
+        "initial_mcap": 1836.23,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082741.971782,
+        "liquidity": 0.0,
+        "mcap": 1836.23
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.8128146453089246,
+      "learned_at": "2026-06-10T10:01:04.232131+00:00"
+    },
+    {
+      "symbol": "SSS",
+      "features": {
+        "buy_count": 2,
+        "sell_count": 1,
+        "buy_sell_ratio": 2.0,
+        "volume": 114.44,
+        "holders": 3,
+        "unique_wallets": 3,
+        "initial_liq": 0,
+        "initial_mcap": 1836.23,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082741.971782,
+        "liquidity": 0.0,
+        "mcap": 1836.23
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.8128146453089246,
+      "learned_at": "2026-06-10T10:11:06.824103+00:00"
     }
   ],
   "launch_patterns": [
@@ -8749,49 +8826,181 @@
         "verdict": "DUMP",
         "multiplier": 0.9715224534501643,
         "timestamp": "2026-06-10T09:37:01.795118+00:00"
+      },
+      {
+        "address": "J6SBkJEcY3VfZkymDDsrK8B7HcEvwFAq32EqfsJnJ4wd",
+        "symbol": "SSS",
+        "verdict": "DUMP",
+        "multiplier": 0.8128146453089246,
+        "timestamp": "2026-06-10T10:01:04.231996+00:00"
+      },
+      {
+        "address": "J6SBkJEcY3VfZkymDDsrK8B7HcEvwFAq32EqfsJnJ4wd",
+        "symbol": "SSS",
+        "verdict": "DUMP",
+        "multiplier": 0.8128146453089246,
+        "timestamp": "2026-06-10T10:11:06.823915+00:00"
+      },
+      {
+        "address": "uidS7gReVyhCWkQFUZapyuMmCjQc8zX344VwoCnpump",
+        "symbol": "ネネ",
+        "verdict": "STRONG_PUMP",
+        "multiplier": 5.19,
+        "timestamp": "2026-06-10T10:11:46.827391+00:00"
+      },
+      {
+        "address": "9CYaxA6hzTtZwuHv5QjXZLPLRbtFZvfDBPzW8a1dpump",
+        "symbol": "SHABANI",
+        "verdict": "PUMP",
+        "multiplier": 4.01,
+        "timestamp": "2026-06-10T10:11:46.882116+00:00"
+      },
+      {
+        "address": "EmS9iUuR2LWuHDt9N1t7sWSrkib1KoamkLoE84BhMpo",
+        "symbol": "$ARCADE",
+        "verdict": "PUMP",
+        "multiplier": 4.61,
+        "timestamp": "2026-06-10T10:11:46.903640+00:00"
+      },
+      {
+        "address": "2ia5p5S3zp6xwcpunTJt1q32KJHQgFCZCXoYctpTf555",
+        "symbol": "SPCX",
+        "verdict": "STRONG_PUMP",
+        "multiplier": 261148.3,
+        "timestamp": "2026-06-10T10:11:46.919128+00:00"
+      },
+      {
+        "address": "q2yC2PPhZqjru2c6UWZfKJqJUtG1xJGTJKx8oy2pump",
+        "symbol": "PUMPI",
+        "verdict": "PUMP",
+        "multiplier": 3.18,
+        "timestamp": "2026-06-10T10:11:46.932301+00:00"
+      },
+      {
+        "address": "7vSPDeLj8kRopQmtxP7cuFXgQej82whwC8c8DaM1BNNh",
+        "symbol": "SPCX",
+        "verdict": "STRONG_PUMP",
+        "multiplier": 1588460.66,
+        "timestamp": "2026-06-10T10:11:46.943636+00:00"
+      },
+      {
+        "address": "EaAAwVnGWn7d3QUfT8qToKyxebs1qKEPjdqfCxQZpump",
+        "symbol": "ABEL",
+        "verdict": "STRONG_PUMP",
+        "multiplier": 18.55,
+        "timestamp": "2026-06-10T10:11:46.954689+00:00"
+      },
+      {
+        "address": "A4cXNCYugscWtkftjqw8PA3mNCu1ZDjPChuHnMkpump",
+        "symbol": "Backrooms",
+        "verdict": "PUMP",
+        "multiplier": 3.04,
+        "timestamp": "2026-06-10T10:11:46.968276+00:00"
+      },
+      {
+        "address": "8HzRWh3zdW7ewhjE16sCowoxeKZZ9hF3TjhCwqVMpump",
+        "symbol": "CAINYABEL",
+        "verdict": "STRONG_PUMP",
+        "multiplier": 8.17,
+        "timestamp": "2026-06-10T10:11:46.979883+00:00"
+      },
+      {
+        "address": "7AnojH8Ua97AMc86HbwHkm8envARFWhXES5YX78Xpump",
+        "symbol": "COLLECTOR",
+        "verdict": "STRONG_PUMP",
+        "multiplier": 9.93,
+        "timestamp": "2026-06-10T10:11:46.991300+00:00"
+      },
+      {
+        "address": "14XEn3jXunfGXL6S97VVyqDMEzvjwVQUzCqts4Repump",
+        "symbol": "STORE",
+        "verdict": "PUMP",
+        "multiplier": 3.92,
+        "timestamp": "2026-06-10T10:11:47.002959+00:00"
+      },
+      {
+        "address": "AsTtCBhYgtZwEgnSbN9MHQhs1pwCYJLxX543bDq7pump",
+        "symbol": "TRUMPCHANCE",
+        "verdict": "PUMP",
+        "multiplier": 3.28,
+        "timestamp": "2026-06-10T10:11:47.014409+00:00"
+      },
+      {
+        "address": "ChhGrQdTYBicu6CBhj9xiVZudyeNGv1r1WR6CrCCpump",
+        "symbol": "STEPHEN",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T10:11:50.330627+00:00"
+      },
+      {
+        "address": "9DrAiELhyY4X4NFguX6ud12UoRAHC49VoAUgMURYpump",
+        "symbol": "Virgin",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T10:11:55.132277+00:00"
+      },
+      {
+        "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
+        "symbol": "Lumi",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T10:12:16.655504+00:00"
+      },
+      {
+        "address": "5rEkWxPbgq2LVULyCcsGUUqopH7PxLy7mXmxagzepump",
+        "symbol": "CERBY",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T10:12:26.461781+00:00"
       }
     ],
     "golden_symbols": {},
-    "total_pumps": 0,
-    "total_dumps": 13,
+    "total_pumps": 3,
+    "total_dumps": 15,
     "total_skipped": 0
   },
   "alerted_coins": [],
   "blacklisted": [],
   "blocked_deployers": [
-    "2ZqwSX2W5PT9MRsePFfaqTKck7828hyEGiK32oagKHbF",
-    "3YTjFWXKCYbnEdbJH9XzQmbTgEnSzJDcUPpWYcTKtAWU",
-    "3k4SYfu8BSEsJqiJR7kgCmN1CDc1zsjfWYL4jCSSieDt",
-    "5SW7p56x22LKj8gYcE8DVVd1S59UJUGR9jKq2PFdKiKg",
-    "6PX4xuN4TLPCL2GqtUZf2Q6iTjwfGbc9vcK33sinN3wP",
-    "8WzXZmX3zNem3bUzajLEM55VBL2MJCNNhphjj3HKQz38",
-    "9cNtmYjVqbnjfinMJfFund4Y66HnZMsq9e5VjebwWKU1",
-    "9xq3MueEjiQPDAXTekC3iRgtchG7ygBg9DL1Yu33HXif",
-    "Ao9dPUfHLBC5vQX3ggY6XQSF8g8wZWt4TPoFVFZGzKBt",
-    "Aq5rf22xjNSDARxL5jHJ78YRtPY8d5d3VbcfjVpG1Nxs",
-    "BtMBMPkoNbnLF9Xn552guQq528KKXcsNBNNBre3oaQtr",
-    "DMka2ZP69ykjLCEdmYZTBytbSWzgxnbsWnvbFnKSBsDw",
-    "DqEfyE5xJZt7rvp6BeaAwq1qVTaLqawmnUrXh8jY3SE2",
-    "FGGeLFNYZd5ggbYLAtDUrLb1zL5MWZcgHYJ7B6VayBCn",
     "G4krkerMkeYw7ffTUgdf7qXEXnuMGHpWUESBQpYqvtwU",
-    "bwamJzztZsepfkteWRChggmXuiiCQvpLqPietdNfSXa"
+    "FGGeLFNYZd5ggbYLAtDUrLb1zL5MWZcgHYJ7B6VayBCn",
+    "9yHr1J8sT6W2oWEPBbyikDVx6bWtccKKScR1x1Gxaznc",
+    "8WzXZmX3zNem3bUzajLEM55VBL2MJCNNhphjj3HKQz38",
+    "2ZqwSX2W5PT9MRsePFfaqTKck7828hyEGiK32oagKHbF",
+    "CG5EF8eKwezmBwJdXfWeTS6XnBpyPhfVXh6EV5CirNzy",
+    "5SW7p56x22LKj8gYcE8DVVd1S59UJUGR9jKq2PFdKiKg",
+    "8x3e2tkQyHxHktyXxngho67nmNg2Qfe1vZ2P4R1ELfh5",
+    "BtMBMPkoNbnLF9Xn552guQq528KKXcsNBNNBre3oaQtr",
+    "8eRqKaZProoVrmhUtCPtUotP3XT2xq9Pj7697jjoHiQB",
+    "DqEfyE5xJZt7rvp6BeaAwq1qVTaLqawmnUrXh8jY3SE2",
+    "Aq5rf22xjNSDARxL5jHJ78YRtPY8d5d3VbcfjVpG1Nxs",
+    "bwamJzztZsepfkteWRChggmXuiiCQvpLqPietdNfSXa",
+    "9xq3MueEjiQPDAXTekC3iRgtchG7ygBg9DL1Yu33HXif",
+    "9cNtmYjVqbnjfinMJfFund4Y66HnZMsq9e5VjebwWKU1",
+    "6PX4xuN4TLPCL2GqtUZf2Q6iTjwfGbc9vcK33sinN3wP",
+    "61HucvjfNGaifD1akkG61Nh4ipug3VaVLZ6jVVrEQmmV",
+    "3k4SYfu8BSEsJqiJR7kgCmN1CDc1zsjfWYL4jCSSieDt",
+    "3YTjFWXKCYbnEdbJH9XzQmbTgEnSzJDcUPpWYcTKtAWU",
+    "AFVGP2HVbbozJUK7kvqwesga6PFQnBehJjd8RYM5PXR6",
+    "DMka2ZP69ykjLCEdmYZTBytbSWzgxnbsWnvbFnKSBsDw",
+    "Ao9dPUfHLBC5vQX3ggY6XQSF8g8wZWt4TPoFVFZGzKBt"
   ],
   "honeypot_addresses": [
-    "4Hm5Br3D9dBuJ8zSxP8LPSQrvKy8p4iV3KosF2Tipump",
-    "5k3WqB3UPCyWWgbgxNdxSKZXQqZxWyPJiDd1nN2pump",
     "6U1jqxYozKH7o3cpXjUx6UQbm8Lfst6SFg3MeVv1pump",
     "6tFz9gud3QWEpLdgKr1YFeKisEzk6qWiyMpqFTdVpump",
-    "79nP3DpBHnrVgzBoHk6AaxbQP5UihtHkAZYohaKVpump",
-    "95G6HrWf5N9q7JNXksr7j6fsWMEXdoN6Cx7pebB8pump",
-    "Cah7W9Sjm6qg5SeSpKTp5kzuKpxTqFwsuMeSsRW1pump",
-    "DAVRg8EA1r5uyG8th6FuhhzhFMdaCgD9BBGLX8x6Rby1",
-    "DDW9x7Drg8BxkupRm6ENEfguK6MJEHTdQRH9JiRgpump",
-    "DWtpe1tzd3Zfg9NDYEYM98FWgqRiGWBpQ7C3ryampump",
-    "EEzR7LcBWcq1bLqFvEwGFTKXiTDrWywPdpuiQfFrpump",
-    "FZn8XbGgp3MMfKELH3k5JxzMHqL8jdMrFfEV37pcpump",
+    "5k3WqB3UPCyWWgbgxNdxSKZXQqZxWyPJiDd1nN2pump",
     "GDRmUsbzm5FyLZWsXhMvNSP8YzN46an9cvRjuQpmE37Y",
-    "GVLuZzL6acAKJRjdtJd3KwJHaVVgsoWnfnMcdYAApump",
+    "DWtpe1tzd3Zfg9NDYEYM98FWgqRiGWBpQ7C3ryampump",
+    "95G6HrWf5N9q7JNXksr7j6fsWMEXdoN6Cx7pebB8pump",
+    "DDW9x7Drg8BxkupRm6ENEfguK6MJEHTdQRH9JiRgpump",
+    "EEzR7LcBWcq1bLqFvEwGFTKXiTDrWywPdpuiQfFrpump",
     "GYwMSbDxFBmz1Nd79SpAdgonhXQbxrwZ4hunw3Kfpump",
+    "79nP3DpBHnrVgzBoHk6AaxbQP5UihtHkAZYohaKVpump",
+    "4Hm5Br3D9dBuJ8zSxP8LPSQrvKy8p4iV3KosF2Tipump",
+    "Cah7W9Sjm6qg5SeSpKTp5kzuKpxTqFwsuMeSsRW1pump",
+    "FZn8XbGgp3MMfKELH3k5JxzMHqL8jdMrFfEV37pcpump",
+    "GVLuZzL6acAKJRjdtJd3KwJHaVVgsoWnfnMcdYAApump",
+    "DAVRg8EA1r5uyG8th6FuhhzhFMdaCgD9BBGLX8x6Rby1",
     "GnbJESynwagNRHsn8uVPHQzNpkcBVnkgM3MGe5YSpump"
   ],
   "golden_snapshots": [],
@@ -9143,6 +9352,45 @@
         "mcap": 1892.91
       },
       "launch_time": 1781082831.048549,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "J6SBkJEcY3VfZkymDDsrK8B7HcEvwFAq32EqfsJnJ4wd",
+      "symbol": "SSS",
+      "features": {
+        "buy_count": 2,
+        "sell_count": 1,
+        "buy_sell_ratio": 2.0,
+        "volume": 114.44,
+        "holders": 3,
+        "unique_wallets": 3,
+        "initial_liq": 0,
+        "initial_mcap": 1836.23,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082741.971782,
+        "liquidity": 0.0,
+        "mcap": 1836.23
+      },
+      "launch_time": 1781082741.971782,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "2ia5p5S3zp6xwcpunTJt1q32KJHQgFCZCXoYctpTf555",
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781086312.721899,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
