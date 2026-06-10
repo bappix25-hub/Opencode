@@ -9132,6 +9132,78 @@
         "verdict": "DUMP",
         "multiplier": 1.034355179704017,
         "timestamp": "2026-06-10T10:16:17.150436+00:00"
+      },
+      {
+        "address": "HZZCEMtpeyYHNUCAiJRL1iSzu5w4ja1ACBKcDiFGpump",
+        "symbol": "WORTHLESS",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T11:08:50.584505+00:00"
+      },
+      {
+        "address": "ChhGrQdTYBicu6CBhj9xiVZudyeNGv1r1WR6CrCCpump",
+        "symbol": "STEPHEN",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T11:08:53.231278+00:00"
+      },
+      {
+        "address": "9DrAiELhyY4X4NFguX6ud12UoRAHC49VoAUgMURYpump",
+        "symbol": "Virgin",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T11:08:55.739275+00:00"
+      },
+      {
+        "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
+        "symbol": "Lumi",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T11:09:20.053968+00:00"
+      },
+      {
+        "address": "5rEkWxPbgq2LVULyCcsGUUqopH7PxLy7mXmxagzepump",
+        "symbol": "CERBY",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T11:09:30.723467+00:00"
+      },
+      {
+        "address": "7skdRzYMnZ9KGg5QCh8J5QKoUNYKCLYQ15gaSLxBpump",
+        "symbol": "PeachCoin",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T11:09:49.127052+00:00"
+      },
+      {
+        "address": "97bMMJD7ev3eZzyBgHLpacpNSDWH9Vrke6gBE6p6pump",
+        "symbol": "Wallace",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T11:09:57.475334+00:00"
+      },
+      {
+        "address": "EmS9iUuR2LWuHDt9N1t7sWSrkib1KoamkLoE84BhMpo",
+        "symbol": "$ARCADE",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T11:10:02.725754+00:00"
+      },
+      {
+        "address": "14XEn3jXunfGXL6S97VVyqDMEzvjwVQUzCqts4Repump",
+        "symbol": "STORE",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T11:10:08.436644+00:00"
       }
     ],
     "golden_symbols": {},
