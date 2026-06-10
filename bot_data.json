@@ -9750,6 +9750,62 @@
         "ath_multiplier": 1.0732899022801303,
         "current_multiplier": 1.0732899022801303,
         "timestamp": "2026-06-10T17:12:10.238082+00:00"
+      },
+      {
+        "address": "7RHxQQUWG9fCskqocSV9zPkWPLJqcceWTcUCjnwMpump",
+        "symbol": "EMBER",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T17:36:18.155903+00:00"
+      },
+      {
+        "address": "FbNc2KRUrLf8TXzYpKe5fx6uuTRVny68H5fa1e1Wpump",
+        "symbol": "Hobbes",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T17:36:25.317936+00:00"
+      },
+      {
+        "address": "YZYbAx6GokTodmzgXLXMZuWU5RkdB9tFXAzaDuqVBNK",
+        "symbol": "YZYB",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T17:36:27.720820+00:00"
+      },
+      {
+        "address": "2gB4ytQos9dphSGF9YDC6SpoTNu1PeqX6FSGzBvopump",
+        "symbol": "Bagachu",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T17:36:29.821441+00:00"
+      },
+      {
+        "address": "BFBwDbNpf5QponVJyaAGFpKPiCXnbtuXqGWzugHzpump",
+        "symbol": "AURA",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T17:36:32.238812+00:00"
+      },
+      {
+        "address": "6vcMitr3itPTTGDDBMCwgEMZD167SJgTk8hkvYdqpump",
+        "symbol": "Brötchen",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T17:36:41.774697+00:00"
+      },
+      {
+        "address": "5mVMJLBq1ebxwWuSZMzzk8CzsMSHkCD9dELeDntRpump",
+        "symbol": "$WCUP",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T17:36:46.593913+00:00"
       }
     ],
     "golden_symbols": {},
@@ -10364,6 +10420,19 @@
         "source": "historical_scan"
       },
       "launch_time": 1781093423.732638,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "EJu78KrhDyaLn3p8Y89dgVGDgLKxU4rzSE7fER5yNVDA",
+      "symbol": "英伟达",
+      "features": {
+        "launch_time": 1781112954.190536,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781112954.190536,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
