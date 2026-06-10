@@ -205,6 +205,7 @@ class BotState:
     async def add_pump_coin(self, address: str, coin: CoinInfo) -> None:
         async with self._lock:
             self.pump_coins[address] = coin
+            self.alerted_coins.add(address)
     
     async def add_dump_coin(self, address: str, coin: CoinInfo) -> None:
         async with self._lock:

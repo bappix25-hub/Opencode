@@ -342,13 +342,8 @@ class MemeBot:
             if h is not None and h > 0:
                 real_holders = h
                 launch_data.holders = h
-            elif unique_wallets > real_holders:
-                real_holders = unique_wallets
-                launch_data.holders = unique_wallets
         except Exception:
-            if unique_wallets > real_holders:
-                real_holders = unique_wallets
-                launch_data.holders = unique_wallets
+            pass
 
         if launch_data.lp_locked == 0:
             try:
@@ -441,6 +436,16 @@ class MemeBot:
         )
 
         if not match:
+            return
+
+        if liquidity < 500:
+            logger.info(f"[SKIP] {symbol}: signal rejected — liq=${int(liquidity)} < $500")
+            return
+        if mcap < 5000:
+            logger.info(f"[SKIP] {symbol}: signal rejected — mcap={format_number(mcap)} < $5K")
+            return
+        if real_holders < 3:
+            logger.info(f"[SKIP] {symbol}: signal rejected — holders={real_holders} < 3")
             return
 
         link = gmgn_link(address)
