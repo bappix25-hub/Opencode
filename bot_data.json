@@ -8267,6 +8267,48 @@
         "verdict": "DUMP",
         "multiplier": 0.5,
         "timestamp": "2026-06-10T08:53:24.408953+00:00"
+      },
+      {
+        "address": "A4cXNCYugscWtkftjqw8PA3mNCu1ZDjPChuHnMkpump",
+        "symbol": "Backrooms",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T09:02:04.672074+00:00"
+      },
+      {
+        "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
+        "symbol": "Lumi",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T09:02:16.685552+00:00"
+      },
+      {
+        "address": "8fUCxNf4LeheQLHAdi2qsufwLBDVQBtZoZVzCpEUpump",
+        "symbol": "LIZARD",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T09:02:43.448997+00:00"
+      },
+      {
+        "address": "HN7EP8PrKbxCMbCCCHRPrZYaru267QGkY45MS58qpump",
+        "symbol": "WIF",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T09:02:45.905866+00:00"
+      },
+      {
+        "address": "GQM8tG2z4hDrRw9o7QasnQtAeX1xYSoVNCcw6eCFpump",
+        "symbol": "USDLC",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T09:02:50.835732+00:00"
+      },
+      {
+        "address": "Drv7SrSQJUcAN6WcXYrFM4EZDkzP4AjhSJv1AZGxpump",
+        "symbol": "WORTHLESS",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T09:03:22.479834+00:00"
       }
     ],
     "golden_symbols": {},
@@ -8336,6 +8378,19 @@
         "source": "historical_scan"
       },
       "launch_time": 1781080498.924696,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "7vSPDeLj8kRopQmtxP7cuFXgQej82whwC8c8DaM1BNNh",
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781082117.876315,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
