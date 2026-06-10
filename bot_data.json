@@ -9806,6 +9806,14 @@
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T17:36:46.593913+00:00"
+      },
+      {
+        "address": "4jVaX13roo7jCKaGhCuCUk4hntM194F8LxzbjM1uxvAC",
+        "symbol": "WCUP",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T17:37:07.762921+00:00"
       }
     ],
     "golden_symbols": {},
