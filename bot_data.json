@@ -53,9 +53,636 @@
       "outcome": "STRONG_PUMP",
       "ath_multiplier": 1588460.66,
       "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 1588460.66,
+      "learned_at": "2026-06-10T10:11:46.943672+00:00"
+    },
+    {
+      "symbol": "ABEL",
+      "features": {
+        "launch_time": 1781080498.924696,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 18.55,
+      "learned_at": "2026-06-10T10:11:46.954728+00:00"
+    },
+    {
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 8.17,
+      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
     }
   ],
   "dump_patterns": [
+    {
+      "symbol": "Blue Balls",
+      "features": {
+        "buy_count": 174,
+        "sell_count": 174,
+        "buy_sell_ratio": 1.0,
+        "volume": 968.68,
+        "holders": 348,
+        "unique_wallets": 348,
+        "initial_liq": 0,
+        "initial_mcap": 1798.98,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082676.214554,
+        "liquidity": 0.0,
+        "mcap": 1798.98
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.9894327030033371,
+      "learned_at": "2026-06-10T09:18:07.375438+00:00"
+    },
+    {
+      "symbol": "DOGECOIN",
+      "features": {
+        "buy_count": 71,
+        "sell_count": 32,
+        "buy_sell_ratio": 2.22,
+        "volume": 1058707.43,
+        "holders": 103,
+        "unique_wallets": 103,
+        "initial_liq": 0,
+        "initial_mcap": 9756.55,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082686.034774,
+        "liquidity": 0.0,
+        "mcap": 9756.55
+      },
+      "outcome": "DUMP",
+      "multiplier": 1.0434604346043461,
+      "learned_at": "2026-06-10T09:18:09.549364+00:00"
+    },
+    {
+      "symbol": "アイ",
+      "features": {
+        "buy_count": 6,
+        "sell_count": 2,
+        "buy_sell_ratio": 3.0,
+        "volume": 3520918.75,
+        "holders": 8,
+        "unique_wallets": 8,
+        "initial_liq": 0,
+        "initial_mcap": 1831.69,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082728.983679,
+        "liquidity": 0.0,
+        "mcap": 1831.69
+      },
+      "outcome": "DUMP",
+      "multiplier": 1.0010922992900055,
+      "learned_at": "2026-06-10T09:21:12.066467+00:00"
+    },
+    {
+      "symbol": "Blub",
+      "features": {
+        "buy_count": 102,
+        "sell_count": 49,
+        "buy_sell_ratio": 2.08,
+        "volume": 5984.31,
+        "holders": 151,
+        "unique_wallets": 151,
+        "initial_liq": 0,
+        "initial_mcap": 5905.28,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082796.023961,
+        "liquidity": 0.0,
+        "mcap": 5905.28
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.897883149872989,
+      "learned_at": "2026-06-10T09:21:14.014946+00:00"
+    },
+    {
+      "symbol": "FWOG",
+      "features": {
+        "buy_count": 276,
+        "sell_count": 290,
+        "buy_sell_ratio": 0.95,
+        "volume": 887.51,
+        "holders": 566,
+        "unique_wallets": 566,
+        "initial_liq": 0,
+        "initial_mcap": 1806.99,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082800.814889,
+        "liquidity": 0.0,
+        "mcap": 1806.99
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.9817275747508306,
+      "learned_at": "2026-06-10T09:21:15.867164+00:00"
+    },
+    {
+      "symbol": "USEC",
+      "features": {
+        "buy_count": 9,
+        "sell_count": 3,
+        "buy_sell_ratio": 3.0,
+        "volume": 3520918.71,
+        "holders": 12,
+        "unique_wallets": 12,
+        "initial_liq": 0,
+        "initial_mcap": 1892.91,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082831.048549,
+        "liquidity": 0.0,
+        "mcap": 1892.91
+      },
+      "outcome": "DUMP",
+      "multiplier": 1.072938689217759,
+      "learned_at": "2026-06-10T09:21:17.819038+00:00"
+    },
+    {
+      "symbol": "VT",
+      "features": {
+        "buy_count": 3,
+        "sell_count": 2,
+        "buy_sell_ratio": 1.5,
+        "volume": 34612903.26,
+        "holders": 5,
+        "unique_wallets": 5,
+        "initial_liq": 0,
+        "initial_mcap": 1898.71,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082654.404669,
+        "liquidity": 0.0,
+        "mcap": 1898.71
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.9964679911699781,
+      "learned_at": "2026-06-10T09:24:21.184049+00:00"
+    },
+    {
+      "symbol": "KOMT",
+      "features": {
+        "buy_count": 3,
+        "sell_count": 3,
+        "buy_sell_ratio": 1.0,
+        "volume": 300.28,
+        "holders": 6,
+        "unique_wallets": 6,
+        "initial_liq": 0,
+        "initial_mcap": 1778.19,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082720.783887,
+        "liquidity": 0.0,
+        "mcap": 1778.19
+      },
+      "outcome": "DUMP",
+      "multiplier": 1.0,
+      "learned_at": "2026-06-10T09:27:23.689247+00:00"
+    },
+    {
+      "symbol": "Blue Balls",
+      "features": {
+        "buy_count": 174,
+        "sell_count": 174,
+        "buy_sell_ratio": 1.0,
+        "volume": 968.68,
+        "holders": 348,
+        "unique_wallets": 348,
+        "initial_liq": 0,
+        "initial_mcap": 1798.98,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082676.214554,
+        "liquidity": 0.0,
+        "mcap": 1798.98
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.9894327030033371,
+      "learned_at": "2026-06-10T09:28:26.261344+00:00"
+    },
+    {
+      "symbol": "DOGECOIN",
+      "features": {
+        "buy_count": 71,
+        "sell_count": 32,
+        "buy_sell_ratio": 2.22,
+        "volume": 1058707.43,
+        "holders": 103,
+        "unique_wallets": 103,
+        "initial_liq": 0,
+        "initial_mcap": 9756.55,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082686.034774,
+        "liquidity": 0.0,
+        "mcap": 9756.55
+      },
+      "outcome": "DUMP",
+      "multiplier": 1.0342353423534236,
+      "learned_at": "2026-06-10T09:28:28.213788+00:00"
+    },
+    {
+      "symbol": "FWOG",
+      "features": {
+        "buy_count": 276,
+        "sell_count": 290,
+        "buy_sell_ratio": 0.95,
+        "volume": 887.51,
+        "holders": 566,
+        "unique_wallets": 566,
+        "initial_liq": 0,
+        "initial_mcap": 1806.99,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082800.814889,
+        "liquidity": 0.0,
+        "mcap": 1806.99
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.9778516057585824,
+      "learned_at": "2026-06-10T09:31:48.699716+00:00"
+    },
+    {
+      "symbol": "USEC",
+      "features": {
+        "buy_count": 9,
+        "sell_count": 3,
+        "buy_sell_ratio": 3.0,
+        "volume": 3520918.71,
+        "holders": 12,
+        "unique_wallets": 12,
+        "initial_liq": 0,
+        "initial_mcap": 1892.91,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082831.048549,
+        "liquidity": 0.0,
+        "mcap": 1892.91
+      },
+      "outcome": "DUMP",
+      "multiplier": 1.0591966173361522,
+      "learned_at": "2026-06-10T09:31:50.928581+00:00"
+    },
+    {
+      "symbol": "KOMT",
+      "features": {
+        "buy_count": 3,
+        "sell_count": 3,
+        "buy_sell_ratio": 1.0,
+        "volume": 300.28,
+        "holders": 6,
+        "unique_wallets": 6,
+        "initial_liq": 0,
+        "initial_mcap": 1778.19,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082720.783887,
+        "liquidity": 0.0,
+        "mcap": 1778.19
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.9715224534501643,
+      "learned_at": "2026-06-10T09:37:01.795465+00:00"
+    },
+    {
+      "symbol": "SSS",
+      "features": {
+        "buy_count": 2,
+        "sell_count": 1,
+        "buy_sell_ratio": 2.0,
+        "volume": 114.44,
+        "holders": 3,
+        "unique_wallets": 3,
+        "initial_liq": 0,
+        "initial_mcap": 1836.23,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082741.971782,
+        "liquidity": 0.0,
+        "mcap": 1836.23
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.8128146453089246,
+      "learned_at": "2026-06-10T10:01:04.232131+00:00"
+    },
+    {
+      "symbol": "SSS",
+      "features": {
+        "buy_count": 2,
+        "sell_count": 1,
+        "buy_sell_ratio": 2.0,
+        "volume": 114.44,
+        "holders": 3,
+        "unique_wallets": 3,
+        "initial_liq": 0,
+        "initial_mcap": 1836.23,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082741.971782,
+        "liquidity": 0.0,
+        "mcap": 1836.23
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.8128146453089246,
+      "learned_at": "2026-06-10T10:11:06.824103+00:00"
+    },
+    {
+      "symbol": "Blue Balls",
+      "features": {
+        "buy_count": 174,
+        "sell_count": 174,
+        "buy_sell_ratio": 1.0,
+        "volume": 968.68,
+        "holders": 348,
+        "unique_wallets": 348,
+        "initial_liq": 0,
+        "initial_mcap": 1798.98,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082676.214554,
+        "liquidity": 0.0,
+        "mcap": 1798.98
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.9894327030033371,
+      "learned_at": "2026-06-10T10:13:08.736919+00:00"
+    },
+    {
+      "symbol": "DOGECOIN",
+      "features": {
+        "buy_count": 71,
+        "sell_count": 32,
+        "buy_sell_ratio": 2.22,
+        "volume": 1058707.43,
+        "holders": 103,
+        "unique_wallets": 103,
+        "initial_liq": 0,
+        "initial_mcap": 9756.55,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082686.034774,
+        "liquidity": 0.0,
+        "mcap": 9756.55
+      },
+      "outcome": "DUMP",
+      "multiplier": 1.1705617056170563,
+      "learned_at": "2026-06-10T10:13:10.537289+00:00"
+    },
+    {
+      "symbol": "アイ",
+      "features": {
+        "buy_count": 6,
+        "sell_count": 2,
+        "buy_sell_ratio": 3.0,
+        "volume": 3520918.75,
+        "holders": 8,
+        "unique_wallets": 8,
+        "initial_liq": 0,
+        "initial_mcap": 1831.69,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082728.983679,
+        "liquidity": 0.0,
+        "mcap": 1831.69
+      },
+      "outcome": "DUMP",
+      "multiplier": 1.083560895685418,
+      "learned_at": "2026-06-10T10:16:12.543230+00:00"
+    },
+    {
+      "symbol": "Blub",
+      "features": {
+        "buy_count": 102,
+        "sell_count": 49,
+        "buy_sell_ratio": 2.08,
+        "volume": 5984.31,
+        "holders": 151,
+        "unique_wallets": 151,
+        "initial_liq": 0,
+        "initial_mcap": 5905.28,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082796.023961,
+        "liquidity": 0.0,
+        "mcap": 5905.28
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.6777307366638442,
+      "learned_at": "2026-06-10T10:16:14.000618+00:00"
+    },
+    {
+      "symbol": "FWOG",
+      "features": {
+        "buy_count": 276,
+        "sell_count": 290,
+        "buy_sell_ratio": 0.95,
+        "volume": 887.51,
+        "holders": 566,
+        "unique_wallets": 566,
+        "initial_liq": 0,
+        "initial_mcap": 1806.99,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082800.814889,
+        "liquidity": 0.0,
+        "mcap": 1806.99
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.9778516057585824,
+      "learned_at": "2026-06-10T10:16:15.558949+00:00"
+    },
+    {
+      "symbol": "USEC",
+      "features": {
+        "buy_count": 9,
+        "sell_count": 3,
+        "buy_sell_ratio": 3.0,
+        "volume": 3520918.71,
+        "holders": 12,
+        "unique_wallets": 12,
+        "initial_liq": 0,
+        "initial_mcap": 1892.91,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082831.048549,
+        "liquidity": 0.0,
+        "mcap": 1892.91
+      },
+      "outcome": "DUMP",
+      "multiplier": 1.034355179704017,
+      "learned_at": "2026-06-10T10:16:17.150492+00:00"
+    },
+    {
+      "symbol": "$BEAR",
+      "features": {
+        "buy_count": 5,
+        "sell_count": 3,
+        "buy_sell_ratio": 1.67,
+        "volume": 1785357.77,
+        "holders": 8,
+        "unique_wallets": 8,
+        "initial_liq": 0,
+        "initial_mcap": 1775.75,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 11,
+        "lp_locked": 0,
+        "deployer": "9Wv4sxi9x7Mx",
+        "ath_price": 0.0,
+        "launch_time": 1781089725.209217,
+        "liquidity": 0.0,
+        "mcap": 1775.75,
+        "outcome": "DUMP",
+        "outcome_mcap": 2466.0,
+        "symbol": "$BEAR",
+        "ath_multiplier": 1.3892957746478876
+      },
+      "outcome": "DUMP",
+      "ath_multiplier": 1.3892957746478876,
+      "learned_at": "2026-06-10T17:12:06.929906+00:00"
+    },
+    {
+      "symbol": "PEMP",
+      "features": {
+        "buy_count": 38,
+        "sell_count": 38,
+        "buy_sell_ratio": 1.0,
+        "volume": 16420307.96,
+        "holders": 76,
+        "unique_wallets": 76,
+        "initial_liq": 0,
+        "initial_mcap": 1777.23,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 11,
+        "lp_locked": 0,
+        "deployer": "D1fUxNzmTxvP",
+        "ath_price": 0.0,
+        "launch_time": 1781089753.192092,
+        "liquidity": 0.0,
+        "mcap": 1777.23,
+        "outcome": "DUMP",
+        "outcome_mcap": 1775.4,
+        "symbol": "PEMP",
+        "ath_multiplier": 1.0
+      },
+      "outcome": "DUMP",
+      "ath_multiplier": 1.0,
+      "learned_at": "2026-06-10T17:12:08.721383+00:00"
+    },
+    {
+      "symbol": "PENAI",
+      "features": {
+        "buy_count": 14,
+        "sell_count": 12,
+        "buy_sell_ratio": 1.17,
+        "volume": 17583243.17,
+        "holders": 26,
+        "unique_wallets": 26,
+        "initial_liq": 0,
+        "initial_mcap": 1842.15,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 11,
+        "lp_locked": 0,
+        "deployer": "6S1VvyvPxejw",
+        "ath_price": 0.0,
+        "launch_time": 1781089774.43295,
+        "liquidity": 0.0,
+        "mcap": 1842.15,
+        "outcome": "DUMP",
+        "outcome_mcap": 1977.37,
+        "symbol": "PENAI",
+        "ath_multiplier": 1.0732899022801303
+      },
+      "outcome": "DUMP",
+      "ath_multiplier": 1.0732899022801303,
+      "learned_at": "2026-06-10T17:12:10.238156+00:00"
+    },
     {
       "symbol": "Blue Balls",
       "features": {
@@ -8555,102 +9182,11 @@
         "timestamp": "2026-06-09T21:01:02.222934+00:00"
       },
       {
-        "address": "WLJWMrvdAVxuALyPtgfC8iZTyUYaXtb3AvPqQXfpump",
-        "symbol": "WerldKup",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-09T21:01:04.623730+00:00"
-      },
-      {
-        "address": "uaeY9NBLS8cKKB6jxoF1ctUi6dMR97y2ASEUGXZpump",
-        "symbol": "Godzilla",
-        "verdict": "DUMP",
-        "multiplier": 0.43,
-        "timestamp": "2026-06-09T21:01:08.686230+00:00"
-      },
-      {
-        "address": "6p3Y3WBXcVwMbYNoVsU4EuVb3gdMmzSKhkEfo8Vcpump",
-        "symbol": "Pnut",
-        "verdict": "PUMP",
-        "multiplier": 3.59,
-        "timestamp": "2026-06-09T21:01:09.755579+00:00"
-      },
-      {
-        "address": "DUqdfMcdzM5haF3t9hDsmVqY7nFMev9UkfKfpAE4pump",
-        "symbol": "BETCUP",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-09T21:01:14.231365+00:00"
-      },
-      {
-        "address": "QNTcSEN5iqJrkQJd8P7pb4hLL7NTrd8EA5ADULMpump",
-        "symbol": "CHAIRG",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-09T21:01:19.032484+00:00"
-      },
-      {
-        "address": "8HjpMRNqjZWWhw3S3sksr9f8K1ExKW2G6qoaiMPfpump",
-        "symbol": "STEPPA",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-09T21:01:28.597220+00:00"
-      },
-      {
-        "address": "DF12JV9hFJbMWFuG7ff1wqaydj6HSkvwyt6mJnNVuGiR",
-        "symbol": "OINK",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-09T21:01:31.128893+00:00"
-      },
-      {
-        "address": "D6RcGUfNTkWdnNheCNqdQ6JWo8dX138tr1QB2AVbpump",
-        "symbol": "PURGE",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-09T21:01:38.526790+00:00"
-      },
-      {
-        "address": "6VotjDtQgqEKCjzyYSNzarHUJvTwVK4tvr1iCYUhpump",
-        "symbol": "MOSAIC",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-09T21:01:43.391612+00:00"
-      },
-      {
-        "address": "6p3Y3WBXcVwMbYNoVsU4EuVb3gdMmzSKhkEfo8Vcpump",
-        "symbol": "Pnut",
-        "verdict": "PUMP",
-        "multiplier": 3.53,
-        "timestamp": "2026-06-09T21:02:16.981328+00:00"
-      },
-      {
-        "address": "uaeY9NBLS8cKKB6jxoF1ctUi6dMR97y2ASEUGXZpump",
-        "symbol": "Godzilla",
-        "verdict": "DUMP",
-        "multiplier": 0.46,
-        "timestamp": "2026-06-09T21:03:57.114978+00:00"
-      },
-      {
-        "address": "6p3Y3WBXcVwMbYNoVsU4EuVb3gdMmzSKhkEfo8Vcpump",
-        "symbol": "Pnut",
-        "verdict": "PUMP",
-        "multiplier": 3.08,
-        "timestamp": "2026-06-09T21:03:58.675180+00:00"
-      },
-      {
         "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
         "symbol": "Lumi",
         "verdict": "DUMP",
         "multiplier": 0.5,
         "timestamp": "2026-06-10T07:52:43.683318+00:00"
-      },
-      {
-        "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
-        "symbol": "Lumi",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:07:19.765676+00:00"
       },
       {
         "address": "8fUCxNf4LeheQLHAdi2qsufwLBDVQBtZoZVzCpEUpump",
@@ -8695,244 +9231,6 @@
         "timestamp": "2026-06-10T08:14:16.294717+00:00"
       },
       {
-        "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
-        "symbol": "Lumi",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:14:28.564134+00:00"
-      },
-      {
-        "address": "8fUCxNf4LeheQLHAdi2qsufwLBDVQBtZoZVzCpEUpump",
-        "symbol": "LIZARD",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:14:58.614071+00:00"
-      },
-      {
-        "address": "HN7EP8PrKbxCMbCCCHRPrZYaru267QGkY45MS58qpump",
-        "symbol": "WIF",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:15:01.099020+00:00"
-      },
-      {
-        "address": "GQM8tG2z4hDrRw9o7QasnQtAeX1xYSoVNCcw6eCFpump",
-        "symbol": "USDLC",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:15:06.753466+00:00"
-      },
-      {
-        "address": "3T7L9WbowomiYGUZujHPcJQsrQnoXQT2ekVM45UCpump",
-        "symbol": "SLANTIX",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:15:14.485680+00:00"
-      },
-      {
-        "address": "A4cXNCYugscWtkftjqw8PA3mNCu1ZDjPChuHnMkpump",
-        "symbol": "Backrooms",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:20:11.082198+00:00"
-      },
-      {
-        "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
-        "symbol": "Lumi",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:20:22.997029+00:00"
-      },
-      {
-        "address": "8fUCxNf4LeheQLHAdi2qsufwLBDVQBtZoZVzCpEUpump",
-        "symbol": "LIZARD",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:20:52.253356+00:00"
-      },
-      {
-        "address": "HN7EP8PrKbxCMbCCCHRPrZYaru267QGkY45MS58qpump",
-        "symbol": "WIF",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:20:54.638886+00:00"
-      },
-      {
-        "address": "GQM8tG2z4hDrRw9o7QasnQtAeX1xYSoVNCcw6eCFpump",
-        "symbol": "USDLC",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:20:59.432537+00:00"
-      },
-      {
-        "address": "3T7L9WbowomiYGUZujHPcJQsrQnoXQT2ekVM45UCpump",
-        "symbol": "SLANTIX",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:21:06.863964+00:00"
-      },
-      {
-        "address": "A4cXNCYugscWtkftjqw8PA3mNCu1ZDjPChuHnMkpump",
-        "symbol": "Backrooms",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:25:49.065213+00:00"
-      },
-      {
-        "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
-        "symbol": "Lumi",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:26:02.207822+00:00"
-      },
-      {
-        "address": "8fUCxNf4LeheQLHAdi2qsufwLBDVQBtZoZVzCpEUpump",
-        "symbol": "LIZARD",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:26:55.883393+00:00"
-      },
-      {
-        "address": "HN7EP8PrKbxCMbCCCHRPrZYaru267QGkY45MS58qpump",
-        "symbol": "WIF",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:26:58.649385+00:00"
-      },
-      {
-        "address": "GQM8tG2z4hDrRw9o7QasnQtAeX1xYSoVNCcw6eCFpump",
-        "symbol": "USDLC",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:27:04.174313+00:00"
-      },
-      {
-        "address": "3T7L9WbowomiYGUZujHPcJQsrQnoXQT2ekVM45UCpump",
-        "symbol": "SLANTIX",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:27:12.530075+00:00"
-      },
-      {
-        "address": "A4cXNCYugscWtkftjqw8PA3mNCu1ZDjPChuHnMkpump",
-        "symbol": "Backrooms",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:34:43.383349+00:00"
-      },
-      {
-        "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
-        "symbol": "Lumi",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:34:56.543902+00:00"
-      },
-      {
-        "address": "8fUCxNf4LeheQLHAdi2qsufwLBDVQBtZoZVzCpEUpump",
-        "symbol": "LIZARD",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:35:28.958541+00:00"
-      },
-      {
-        "address": "HN7EP8PrKbxCMbCCCHRPrZYaru267QGkY45MS58qpump",
-        "symbol": "WIF",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:35:31.586933+00:00"
-      },
-      {
-        "address": "GQM8tG2z4hDrRw9o7QasnQtAeX1xYSoVNCcw6eCFpump",
-        "symbol": "USDLC",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:35:40.061760+00:00"
-      },
-      {
-        "address": "3T7L9WbowomiYGUZujHPcJQsrQnoXQT2ekVM45UCpump",
-        "symbol": "SLANTIX",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:35:49.106705+00:00"
-      },
-      {
-        "address": "A4cXNCYugscWtkftjqw8PA3mNCu1ZDjPChuHnMkpump",
-        "symbol": "Backrooms",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:52:31.170047+00:00"
-      },
-      {
-        "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
-        "symbol": "Lumi",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:52:42.974351+00:00"
-      },
-      {
-        "address": "8fUCxNf4LeheQLHAdi2qsufwLBDVQBtZoZVzCpEUpump",
-        "symbol": "LIZARD",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:53:09.695378+00:00"
-      },
-      {
-        "address": "HN7EP8PrKbxCMbCCCHRPrZYaru267QGkY45MS58qpump",
-        "symbol": "WIF",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:53:12.191295+00:00"
-      },
-      {
-        "address": "GQM8tG2z4hDrRw9o7QasnQtAeX1xYSoVNCcw6eCFpump",
-        "symbol": "USDLC",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:53:16.997543+00:00"
-      },
-      {
-        "address": "3T7L9WbowomiYGUZujHPcJQsrQnoXQT2ekVM45UCpump",
-        "symbol": "SLANTIX",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T08:53:24.408953+00:00"
-      },
-      {
-        "address": "A4cXNCYugscWtkftjqw8PA3mNCu1ZDjPChuHnMkpump",
-        "symbol": "Backrooms",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T09:02:04.672074+00:00"
-      },
-      {
-        "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
-        "symbol": "Lumi",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T09:02:16.685552+00:00"
-      },
-      {
-        "address": "8fUCxNf4LeheQLHAdi2qsufwLBDVQBtZoZVzCpEUpump",
-        "symbol": "LIZARD",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T09:02:43.448997+00:00"
-      },
-      {
-        "address": "HN7EP8PrKbxCMbCCCHRPrZYaru267QGkY45MS58qpump",
-        "symbol": "WIF",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T09:02:45.905866+00:00"
-      },
-      {
-        "address": "GQM8tG2z4hDrRw9o7QasnQtAeX1xYSoVNCcw6eCFpump",
-        "symbol": "USDLC",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T09:02:50.835732+00:00"
-      },
-      {
         "address": "Drv7SrSQJUcAN6WcXYrFM4EZDkzP4AjhSJv1AZGxpump",
         "symbol": "WORTHLESS",
         "verdict": "DUMP",
@@ -8940,53 +9238,11 @@
         "timestamp": "2026-06-10T09:03:22.479834+00:00"
       },
       {
-        "address": "A4cXNCYugscWtkftjqw8PA3mNCu1ZDjPChuHnMkpump",
-        "symbol": "Backrooms",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T09:10:17.679500+00:00"
-      },
-      {
-        "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
-        "symbol": "Lumi",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T09:10:30.517658+00:00"
-      },
-      {
-        "address": "8fUCxNf4LeheQLHAdi2qsufwLBDVQBtZoZVzCpEUpump",
-        "symbol": "LIZARD",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T09:10:57.247400+00:00"
-      },
-      {
-        "address": "HN7EP8PrKbxCMbCCCHRPrZYaru267QGkY45MS58qpump",
-        "symbol": "WIF",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T09:10:59.833498+00:00"
-      },
-      {
-        "address": "GQM8tG2z4hDrRw9o7QasnQtAeX1xYSoVNCcw6eCFpump",
-        "symbol": "USDLC",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T09:11:04.825253+00:00"
-      },
-      {
         "address": "A4ST3hBvL8TSjBPveX6AN2HD9TdbzQJgCHz2xoXKpump",
         "symbol": "Jimmy",
         "verdict": "DUMP",
         "multiplier": 0.5,
         "timestamp": "2026-06-10T09:11:24.373407+00:00"
-      },
-      {
-        "address": "Drv7SrSQJUcAN6WcXYrFM4EZDkzP4AjhSJv1AZGxpump",
-        "symbol": "WORTHLESS",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T09:11:36.251803+00:00"
       },
       {
         "address": "5SRBwvFMqyw2NeFT9nCTCix77j99whSqy3UBoYPspump",
@@ -9045,53 +9301,11 @@
         "timestamp": "2026-06-10T09:27:23.688909+00:00"
       },
       {
-        "address": "5SRBwvFMqyw2NeFT9nCTCix77j99whSqy3UBoYPspump",
-        "symbol": "Blue Balls",
-        "verdict": "DUMP",
-        "multiplier": 0.9894327030033371,
-        "timestamp": "2026-06-10T09:28:26.261292+00:00"
-      },
-      {
-        "address": "AvwBELQTqgm6dkV6qSeqD1gx85Jq3uHJ1qfLuaUspump",
-        "symbol": "DOGECOIN",
-        "verdict": "DUMP",
-        "multiplier": 1.0342353423534236,
-        "timestamp": "2026-06-10T09:28:28.213636+00:00"
-      },
-      {
-        "address": "8ouP337reteav37qj6Y6sofu36rrgJDqiXv38eaZpump",
-        "symbol": "FWOG",
-        "verdict": "DUMP",
-        "multiplier": 0.9778516057585824,
-        "timestamp": "2026-06-10T09:31:48.699459+00:00"
-      },
-      {
-        "address": "4TfhXpxx83eE6mnwx7Kw3KBY5oj9DN23y1vKNBTxpump",
-        "symbol": "USEC",
-        "verdict": "DUMP",
-        "multiplier": 1.0591966173361522,
-        "timestamp": "2026-06-10T09:31:50.928403+00:00"
-      },
-      {
-        "address": "C3nF4q2d8icWeZmL8doDvbTAuRmu3UWhArM1KrwwPumP",
-        "symbol": "KOMT",
-        "verdict": "DUMP",
-        "multiplier": 0.9715224534501643,
-        "timestamp": "2026-06-10T09:37:01.795118+00:00"
-      },
-      {
         "address": "J6SBkJEcY3VfZkymDDsrK8B7HcEvwFAq32EqfsJnJ4wd",
         "symbol": "SSS",
         "verdict": "DUMP",
         "multiplier": 0.8128146453089246,
         "timestamp": "2026-06-10T10:01:04.231996+00:00"
-      },
-      {
-        "address": "J6SBkJEcY3VfZkymDDsrK8B7HcEvwFAq32EqfsJnJ4wd",
-        "symbol": "SSS",
-        "verdict": "DUMP",
-        "multiplier": 0.8128146453089246,
-        "timestamp": "2026-06-10T10:11:06.823915+00:00"
       },
       {
         "address": "uidS7gReVyhCWkQFUZapyuMmCjQc8zX344VwoCnpump",
@@ -9143,13 +9357,6 @@
         "timestamp": "2026-06-10T10:11:46.954689+00:00"
       },
       {
-        "address": "A4cXNCYugscWtkftjqw8PA3mNCu1ZDjPChuHnMkpump",
-        "symbol": "Backrooms",
-        "verdict": "PUMP",
-        "multiplier": 3.04,
-        "timestamp": "2026-06-10T10:11:46.968276+00:00"
-      },
-      {
         "address": "8HzRWh3zdW7ewhjE16sCowoxeKZZ9hF3TjhCwqVMpump",
         "symbol": "CAINYABEL",
         "verdict": "STRONG_PUMP",
@@ -9192,60 +9399,11 @@
         "timestamp": "2026-06-10T10:11:55.132277+00:00"
       },
       {
-        "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
-        "symbol": "Lumi",
-        "verdict": "DUMP",
-        "multiplier": 0.5,
-        "timestamp": "2026-06-10T10:12:16.655504+00:00"
-      },
-      {
         "address": "5rEkWxPbgq2LVULyCcsGUUqopH7PxLy7mXmxagzepump",
         "symbol": "CERBY",
         "verdict": "DUMP",
         "multiplier": 0.5,
         "timestamp": "2026-06-10T10:12:26.461781+00:00"
-      },
-      {
-        "address": "5SRBwvFMqyw2NeFT9nCTCix77j99whSqy3UBoYPspump",
-        "symbol": "Blue Balls",
-        "verdict": "DUMP",
-        "multiplier": 0.9894327030033371,
-        "timestamp": "2026-06-10T10:13:08.736695+00:00"
-      },
-      {
-        "address": "AvwBELQTqgm6dkV6qSeqD1gx85Jq3uHJ1qfLuaUspump",
-        "symbol": "DOGECOIN",
-        "verdict": "DUMP",
-        "multiplier": 1.1705617056170563,
-        "timestamp": "2026-06-10T10:13:10.537185+00:00"
-      },
-      {
-        "address": "3VAsHKJ1whEtqMPjyvzx6yEB5A49B7vsLK12E9gXpump",
-        "symbol": "アイ",
-        "verdict": "DUMP",
-        "multiplier": 1.083560895685418,
-        "timestamp": "2026-06-10T10:16:12.543116+00:00"
-      },
-      {
-        "address": "ATPsUcKmoZDohbhb6ymvDJYZfc25tCuFh9HKEm5Mpump",
-        "symbol": "Blub",
-        "verdict": "DUMP",
-        "multiplier": 0.6777307366638442,
-        "timestamp": "2026-06-10T10:16:14.000485+00:00"
-      },
-      {
-        "address": "8ouP337reteav37qj6Y6sofu36rrgJDqiXv38eaZpump",
-        "symbol": "FWOG",
-        "verdict": "DUMP",
-        "multiplier": 0.9778516057585824,
-        "timestamp": "2026-06-10T10:16:15.558800+00:00"
-      },
-      {
-        "address": "4TfhXpxx83eE6mnwx7Kw3KBY5oj9DN23y1vKNBTxpump",
-        "symbol": "USEC",
-        "verdict": "DUMP",
-        "multiplier": 1.034355179704017,
-        "timestamp": "2026-06-10T10:16:17.150436+00:00"
       },
       {
         "address": "HZZCEMtpeyYHNUCAiJRL1iSzu5w4ja1ACBKcDiFGpump",
@@ -9254,38 +9412,6 @@
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T11:08:50.584505+00:00"
-      },
-      {
-        "address": "ChhGrQdTYBicu6CBhj9xiVZudyeNGv1r1WR6CrCCpump",
-        "symbol": "STEPHEN",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T11:08:53.231278+00:00"
-      },
-      {
-        "address": "9DrAiELhyY4X4NFguX6ud12UoRAHC49VoAUgMURYpump",
-        "symbol": "Virgin",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T11:08:55.739275+00:00"
-      },
-      {
-        "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
-        "symbol": "Lumi",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T11:09:20.053968+00:00"
-      },
-      {
-        "address": "5rEkWxPbgq2LVULyCcsGUUqopH7PxLy7mXmxagzepump",
-        "symbol": "CERBY",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T11:09:30.723467+00:00"
       },
       {
         "address": "7skdRzYMnZ9KGg5QCh8J5QKoUNYKCLYQ15gaSLxBpump",
@@ -9304,60 +9430,12 @@
         "timestamp": "2026-06-10T11:09:57.475334+00:00"
       },
       {
-        "address": "EmS9iUuR2LWuHDt9N1t7sWSrkib1KoamkLoE84BhMpo",
-        "symbol": "$ARCADE",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T11:10:02.725754+00:00"
-      },
-      {
-        "address": "14XEn3jXunfGXL6S97VVyqDMEzvjwVQUzCqts4Repump",
-        "symbol": "STORE",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T11:10:08.436644+00:00"
-      },
-      {
-        "address": "2ia5p5S3zp6xwcpunTJt1q32KJHQgFCZCXoYctpTf555",
-        "symbol": "SPCX",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 387612.83,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T12:10:21.725498+00:00"
-      },
-      {
-        "address": "7vSPDeLj8kRopQmtxP7cuFXgQej82whwC8c8DaM1BNNh",
-        "symbol": "SPCX",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 1588460.66,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T12:10:21.774205+00:00"
-      },
-      {
         "address": "EL8kVP3PkiAVmEsguUprDCeJBsfa4teGxFE6ujC65j66",
         "symbol": "SPCX",
         "verdict": "STRONG_PUMP",
         "ath_multiplier": 59.18,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T12:10:21.799681+00:00"
-      },
-      {
-        "address": "9CYaxA6hzTtZwuHv5QjXZLPLRbtFZvfDBPzW8a1dpump",
-        "symbol": "SHABANI",
-        "verdict": "PUMP",
-        "ath_multiplier": 4.57,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T12:10:21.816090+00:00"
-      },
-      {
-        "address": "7AnojH8Ua97AMc86HbwHkm8envARFWhXES5YX78Xpump",
-        "symbol": "COLLECTOR",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 9.35,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T12:10:21.829797+00:00"
       },
       {
         "address": "An9cGvL6bHtWHDdtgpt7CQd9byMpPg7TpnFWofgLpump",
@@ -9374,38 +9452,6 @@
         "ath_multiplier": 4.58,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T12:10:21.853948+00:00"
-      },
-      {
-        "address": "HZZCEMtpeyYHNUCAiJRL1iSzu5w4ja1ACBKcDiFGpump",
-        "symbol": "WORTHLESS",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T12:10:54.730347+00:00"
-      },
-      {
-        "address": "ChhGrQdTYBicu6CBhj9xiVZudyeNGv1r1WR6CrCCpump",
-        "symbol": "STEPHEN",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T12:10:57.700145+00:00"
-      },
-      {
-        "address": "9DrAiELhyY4X4NFguX6ud12UoRAHC49VoAUgMURYpump",
-        "symbol": "Virgin",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T12:11:00.134295+00:00"
-      },
-      {
-        "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
-        "symbol": "Lumi",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T12:11:21.929999+00:00"
       },
       {
         "address": "FbNc2KRUrLf8TXzYpKe5fx6uuTRVny68H5fa1e1Wpump",
@@ -9448,30 +9494,6 @@
         "timestamp": "2026-06-10T13:19:25.104427+00:00"
       },
       {
-        "address": "HZZCEMtpeyYHNUCAiJRL1iSzu5w4ja1ACBKcDiFGpump",
-        "symbol": "WORTHLESS",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T13:19:44.152725+00:00"
-      },
-      {
-        "address": "ChhGrQdTYBicu6CBhj9xiVZudyeNGv1r1WR6CrCCpump",
-        "symbol": "STEPHEN",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T13:19:46.567161+00:00"
-      },
-      {
-        "address": "9DrAiELhyY4X4NFguX6ud12UoRAHC49VoAUgMURYpump",
-        "symbol": "Virgin",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T13:19:49.570802+00:00"
-      },
-      {
         "address": "GsMGZxCUbc2wvVVmFL4SaDgLKBAbnrkbU6S49MkFpump",
         "symbol": "Teracorn",
         "verdict": "DUMP",
@@ -9486,22 +9508,6 @@
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T13:20:12.260003+00:00"
-      },
-      {
-        "address": "FbNc2KRUrLf8TXzYpKe5fx6uuTRVny68H5fa1e1Wpump",
-        "symbol": "Hobbes",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T13:20:17.080078+00:00"
-      },
-      {
-        "address": "FbNc2KRUrLf8TXzYpKe5fx6uuTRVny68H5fa1e1Wpump",
-        "symbol": "Hobbes",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T14:29:58.663595+00:00"
       },
       {
         "address": "BFBwDbNpf5QponVJyaAGFpKPiCXnbtuXqGWzugHzpump",
@@ -9560,14 +9566,6 @@
         "timestamp": "2026-06-10T15:32:02.578932+00:00"
       },
       {
-        "address": "FbNc2KRUrLf8TXzYpKe5fx6uuTRVny68H5fa1e1Wpump",
-        "symbol": "Hobbes",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T15:32:09.879577+00:00"
-      },
-      {
         "address": "2gB4ytQos9dphSGF9YDC6SpoTNu1PeqX6FSGzBvopump",
         "symbol": "Bagachu",
         "verdict": "DUMP",
@@ -9576,60 +9574,12 @@
         "timestamp": "2026-06-10T15:32:14.853412+00:00"
       },
       {
-        "address": "BFBwDbNpf5QponVJyaAGFpKPiCXnbtuXqGWzugHzpump",
-        "symbol": "AURA",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T15:32:17.497482+00:00"
-      },
-      {
-        "address": "ET8kG3dbefg7uwqY4d4GGhkwvNmBdvBqf5UcvVERpump",
-        "symbol": "SOLFC",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T15:32:19.907041+00:00"
-      },
-      {
-        "address": "6vcMitr3itPTTGDDBMCwgEMZD167SJgTk8hkvYdqpump",
-        "symbol": "Brötchen",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T15:32:28.746078+00:00"
-      },
-      {
-        "address": "5mVMJLBq1ebxwWuSZMzzk8CzsMSHkCD9dELeDntRpump",
-        "symbol": "$WCUP",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T15:32:34.425613+00:00"
-      },
-      {
-        "address": "D3NJzpkfr8Nh5S4WDXXkFsh9hn5qExsHnoj8ra71pump",
-        "symbol": "HOARD",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T15:32:39.324160+00:00"
-      },
-      {
         "address": "Hg45Qr91T5ekze7Rog4buMU3MbzTMzN7LCnjptbjnYXG",
         "symbol": "SALT",
         "verdict": "DUMP",
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T15:32:44.092948+00:00"
-      },
-      {
-        "address": "9ZtbETDNjnST9Y2zs82FZYy49xUMPgqXRh46YjjRpump",
-        "symbol": "Brötchen",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T15:32:58.564017+00:00"
       },
       {
         "address": "hN3We4GugC1HZRwFWahKXTunRoziMCHzpo7FU5jpump",
@@ -9648,84 +9598,12 @@
         "timestamp": "2026-06-10T15:33:27.004214+00:00"
       },
       {
-        "address": "7RHxQQUWG9fCskqocSV9zPkWPLJqcceWTcUCjnwMpump",
-        "symbol": "EMBER",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T16:34:21.772682+00:00"
-      },
-      {
-        "address": "FbNc2KRUrLf8TXzYpKe5fx6uuTRVny68H5fa1e1Wpump",
-        "symbol": "Hobbes",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T16:34:28.548938+00:00"
-      },
-      {
         "address": "YZYbAx6GokTodmzgXLXMZuWU5RkdB9tFXAzaDuqVBNK",
         "symbol": "YZYB",
         "verdict": "DUMP",
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T16:34:30.949597+00:00"
-      },
-      {
-        "address": "2gB4ytQos9dphSGF9YDC6SpoTNu1PeqX6FSGzBvopump",
-        "symbol": "Bagachu",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T16:34:33.075298+00:00"
-      },
-      {
-        "address": "BFBwDbNpf5QponVJyaAGFpKPiCXnbtuXqGWzugHzpump",
-        "symbol": "AURA",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T16:34:35.534968+00:00"
-      },
-      {
-        "address": "ET8kG3dbefg7uwqY4d4GGhkwvNmBdvBqf5UcvVERpump",
-        "symbol": "SOLFC",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T16:34:37.943344+00:00"
-      },
-      {
-        "address": "6vcMitr3itPTTGDDBMCwgEMZD167SJgTk8hkvYdqpump",
-        "symbol": "Brötchen",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T16:34:44.749500+00:00"
-      },
-      {
-        "address": "5mVMJLBq1ebxwWuSZMzzk8CzsMSHkCD9dELeDntRpump",
-        "symbol": "$WCUP",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T16:34:49.506661+00:00"
-      },
-      {
-        "address": "D3NJzpkfr8Nh5S4WDXXkFsh9hn5qExsHnoj8ra71pump",
-        "symbol": "HOARD",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T16:34:54.277341+00:00"
-      },
-      {
-        "address": "Hg45Qr91T5ekze7Rog4buMU3MbzTMzN7LCnjptbjnYXG",
-        "symbol": "SALT",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T16:34:59.055516+00:00"
       },
       {
         "address": "5hUb64uVRX7to8Soh4risFbB4UT87ZRZp71QXsewpump",
@@ -9752,62 +9630,6 @@
         "timestamp": "2026-06-10T17:12:10.238082+00:00"
       },
       {
-        "address": "7RHxQQUWG9fCskqocSV9zPkWPLJqcceWTcUCjnwMpump",
-        "symbol": "EMBER",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T17:36:18.155903+00:00"
-      },
-      {
-        "address": "FbNc2KRUrLf8TXzYpKe5fx6uuTRVny68H5fa1e1Wpump",
-        "symbol": "Hobbes",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T17:36:25.317936+00:00"
-      },
-      {
-        "address": "YZYbAx6GokTodmzgXLXMZuWU5RkdB9tFXAzaDuqVBNK",
-        "symbol": "YZYB",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T17:36:27.720820+00:00"
-      },
-      {
-        "address": "2gB4ytQos9dphSGF9YDC6SpoTNu1PeqX6FSGzBvopump",
-        "symbol": "Bagachu",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T17:36:29.821441+00:00"
-      },
-      {
-        "address": "BFBwDbNpf5QponVJyaAGFpKPiCXnbtuXqGWzugHzpump",
-        "symbol": "AURA",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T17:36:32.238812+00:00"
-      },
-      {
-        "address": "6vcMitr3itPTTGDDBMCwgEMZD167SJgTk8hkvYdqpump",
-        "symbol": "Brötchen",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T17:36:41.774697+00:00"
-      },
-      {
-        "address": "5mVMJLBq1ebxwWuSZMzzk8CzsMSHkCD9dELeDntRpump",
-        "symbol": "$WCUP",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T17:36:46.593913+00:00"
-      },
-      {
         "address": "4jVaX13roo7jCKaGhCuCUk4hntM194F8LxzbjM1uxvAC",
         "symbol": "WCUP",
         "verdict": "DUMP",
@@ -9822,46 +9644,6 @@
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T18:38:40.965003+00:00"
-      },
-      {
-        "address": "7RHxQQUWG9fCskqocSV9zPkWPLJqcceWTcUCjnwMpump",
-        "symbol": "EMBER",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T18:39:12.421295+00:00"
-      },
-      {
-        "address": "FbNc2KRUrLf8TXzYpKe5fx6uuTRVny68H5fa1e1Wpump",
-        "symbol": "Hobbes",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T18:39:19.624989+00:00"
-      },
-      {
-        "address": "YZYbAx6GokTodmzgXLXMZuWU5RkdB9tFXAzaDuqVBNK",
-        "symbol": "YZYB",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T18:39:22.305538+00:00"
-      },
-      {
-        "address": "2gB4ytQos9dphSGF9YDC6SpoTNu1PeqX6FSGzBvopump",
-        "symbol": "Bagachu",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T18:39:24.765030+00:00"
-      },
-      {
-        "address": "BFBwDbNpf5QponVJyaAGFpKPiCXnbtuXqGWzugHzpump",
-        "symbol": "AURA",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T18:39:27.365085+00:00"
       },
       {
         "address": "GJmJ3ZFXg4XBYspccpsRsMUhEoNfmqxTYN18GH1rpump",
@@ -9880,12 +9662,20 @@
         "timestamp": "2026-06-10T18:39:57.076760+00:00"
       },
       {
+        "address": "3tVz9uAzzhZ6JrEGCmEuLKX9TL9Hq5zgHXarboTfeQg4",
+        "symbol": "ASTEROID",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T19:00:05.557903+00:00"
+      },
+      {
         "address": "46N587j4xukNGuTFzWF2FE8iLcTisL1K6TNBYgAJpump",
         "symbol": "ROBTY",
         "verdict": "DUMP",
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T18:46:35.282881+00:00"
+        "timestamp": "2026-06-10T19:00:15.604276+00:00"
       },
       {
         "address": "7RHxQQUWG9fCskqocSV9zPkWPLJqcceWTcUCjnwMpump",
@@ -9893,7 +9683,39 @@
         "verdict": "DUMP",
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T18:47:08.320686+00:00"
+        "timestamp": "2026-06-10T19:00:47.945249+00:00"
+      },
+      {
+        "address": "FbNc2KRUrLf8TXzYpKe5fx6uuTRVny68H5fa1e1Wpump",
+        "symbol": "Hobbes",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T19:00:55.424075+00:00"
+      },
+      {
+        "address": "YZYbAx6GokTodmzgXLXMZuWU5RkdB9tFXAzaDuqVBNK",
+        "symbol": "YZYB",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T19:00:57.860289+00:00"
+      },
+      {
+        "address": "2gB4ytQos9dphSGF9YDC6SpoTNu1PeqX6FSGzBvopump",
+        "symbol": "Bagachu",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T19:01:00.428583+00:00"
+      },
+      {
+        "address": "GJmJ3ZFXg4XBYspccpsRsMUhEoNfmqxTYN18GH1rpump",
+        "symbol": "APELORD ",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T19:01:12.823506+00:00"
       }
     ],
     "golden_symbols": {},
@@ -10662,6 +10484,325 @@
         "mcap": 1988.98
       },
       "launch_time": 1781117211.621366,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "7saHBkpcYnAGBeUNPYPekAfi5WScciUJKn4RkjtKpump",
+      "symbol": "NIGGA",
+      "features": {
+        "buy_count": 14,
+        "sell_count": 13,
+        "buy_sell_ratio": 1.08,
+        "volume": 5338308.46,
+        "holders": 27,
+        "unique_wallets": 27,
+        "initial_liq": 0,
+        "initial_mcap": 1774.81,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 18,
+        "lp_locked": 0,
+        "deployer": "4rvJhA2cpq58",
+        "ath_price": 0.0,
+        "launch_time": 1781117216.474332,
+        "liquidity": 0.0,
+        "mcap": 1774.81
+      },
+      "launch_time": 1781117216.474332,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "97gj3wWgnjma5Z22sRj5jLNbHhGZWETuKC7sQAGGpump",
+      "symbol": "BVD",
+      "features": {
+        "buy_count": 91,
+        "sell_count": 62,
+        "buy_sell_ratio": 1.47,
+        "volume": 1785357.77,
+        "holders": 153,
+        "unique_wallets": 153,
+        "initial_liq": 0,
+        "initial_mcap": 1966.48,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 18,
+        "lp_locked": 0,
+        "deployer": "9zZu1w91ULX9",
+        "ath_price": 0.0,
+        "launch_time": 1781117219.331405,
+        "liquidity": 0.0,
+        "mcap": 1966.48
+      },
+      "launch_time": 1781117219.331405,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "AWJLLnFRmaWzLWQ8vNVF8NReaiJ6xAwpv3udCn5wpump",
+      "symbol": "ASTR",
+      "features": {
+        "buy_count": 50,
+        "sell_count": 66,
+        "buy_sell_ratio": 0.76,
+        "volume": 153285714.29,
+        "holders": 116,
+        "unique_wallets": 116,
+        "initial_liq": 0,
+        "initial_mcap": 1774.56,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 18,
+        "lp_locked": 0,
+        "deployer": "whamNNP9tHox",
+        "ath_price": 0.0,
+        "launch_time": 1781117225.871123,
+        "liquidity": 0.0,
+        "mcap": 1774.56
+      },
+      "launch_time": 1781117225.871123,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "7rq3a4QWRMpDDspXG7hhM2wuwKHCGkFTe9qYj2DHpump",
+      "symbol": "MUNDANE",
+      "features": {
+        "buy_count": 73,
+        "sell_count": 54,
+        "buy_sell_ratio": 1.35,
+        "volume": 97545454.55,
+        "holders": 127,
+        "unique_wallets": 127,
+        "initial_liq": 0,
+        "initial_mcap": 4984.88,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 18,
+        "lp_locked": 0,
+        "deployer": "F5XvCe4233m6",
+        "ath_price": 0.0,
+        "launch_time": 1781117236.723889,
+        "liquidity": 0.0,
+        "mcap": 4984.88
+      },
+      "launch_time": 1781117236.723889,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "87Fkt4tBkNB1sURMpnXYjQYzjwQiUBRuxK5eoLRBpump",
+      "symbol": "OPAI",
+      "features": {
+        "buy_count": 15,
+        "sell_count": 8,
+        "buy_sell_ratio": 1.88,
+        "volume": 26863745.74,
+        "holders": 23,
+        "unique_wallets": 23,
+        "initial_liq": 0,
+        "initial_mcap": 2069.16,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 18,
+        "lp_locked": 0,
+        "deployer": "CdArFsVLwFUf",
+        "ath_price": 0.0,
+        "launch_time": 1781117250.699519,
+        "liquidity": 0.0,
+        "mcap": 2069.16
+      },
+      "launch_time": 1781117250.699519,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "AuWQLudmyJhDtTz4CUbTjn9mNjPxvnyLJSXfDvxUpump",
+      "symbol": "StockX",
+      "features": {
+        "buy_count": 5,
+        "sell_count": 4,
+        "buy_sell_ratio": 1.25,
+        "volume": 10493887.49,
+        "holders": 9,
+        "unique_wallets": 9,
+        "initial_liq": 0,
+        "initial_mcap": 1811.9,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 18,
+        "lp_locked": 100,
+        "deployer": "7Eh4u2VVVWs3",
+        "ath_price": 1.81e-06,
+        "launch_time": 1781117205.52297,
+        "liquidity": 0.0,
+        "mcap": 1811.9
+      },
+      "launch_time": 1781117205.52297,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "EnsjqJpfSAAtZnsEF1vmwvAuCzoBssRBUCjdmCEnpump",
+      "symbol": "Gwynocide",
+      "features": {
+        "buy_count": 2,
+        "sell_count": 1,
+        "buy_sell_ratio": 2.0,
+        "volume": 47209969.7,
+        "holders": 3,
+        "unique_wallets": 3,
+        "initial_liq": 0,
+        "initial_mcap": 4001.17,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 18,
+        "lp_locked": 0,
+        "deployer": "Dx8RyzEeAs6m",
+        "ath_price": 0.0,
+        "launch_time": 1781117394.099658,
+        "liquidity": 0.0,
+        "mcap": 4001.17
+      },
+      "launch_time": 1781117394.099658,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "FbwmzFJcR5dDCP3jepVvmCKoXLLUfbRwZ5UMXYQWpump",
+      "symbol": "MM",
+      "features": {
+        "buy_count": 26,
+        "sell_count": 24,
+        "buy_sell_ratio": 1.08,
+        "volume": 29983254.7,
+        "holders": 50,
+        "unique_wallets": 50,
+        "initial_liq": 0,
+        "initial_mcap": 1887.47,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 18,
+        "lp_locked": 0,
+        "deployer": "6UTiHHmhFujc",
+        "ath_price": 0.0,
+        "launch_time": 1781117402.926738,
+        "liquidity": 0.0,
+        "mcap": 1887.47
+      },
+      "launch_time": 1781117402.926738,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "9FAdwZmTvBWGF4KjcTuNRiYB9LwGzGnz8MQSrXCpump",
+      "symbol": "TCON",
+      "features": {
+        "buy_count": 3,
+        "sell_count": 1,
+        "buy_sell_ratio": 3.0,
+        "volume": 1788384.0,
+        "holders": 4,
+        "unique_wallets": 4,
+        "initial_liq": 0,
+        "initial_mcap": 2053.32,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 18,
+        "lp_locked": 0,
+        "deployer": "GTLjtHsq7DEY",
+        "ath_price": 0.0,
+        "launch_time": 1781117416.038998,
+        "liquidity": 0.0,
+        "mcap": 2053.32
+      },
+      "launch_time": 1781117416.038998,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "6GnjnidzuxyPURzn8AHkH47dYfXcXJjbniKt53QQpump",
+      "symbol": "ZGC",
+      "features": {
+        "buy_count": 76,
+        "sell_count": 113,
+        "buy_sell_ratio": 0.67,
+        "volume": 178833333.33,
+        "holders": 189,
+        "unique_wallets": 189,
+        "initial_liq": 0,
+        "initial_mcap": 1774.28,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 18,
+        "lp_locked": 0,
+        "deployer": "2PRRnXA528yv",
+        "ath_price": 0.0,
+        "launch_time": 1781117418.47372,
+        "liquidity": 0.0,
+        "mcap": 1774.28
+      },
+      "launch_time": 1781117418.47372,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "Ddx7aL5CELaN8BmuL3bnbbajEeYBJ4XZxnMFj2T4bonk",
+      "symbol": "MONITORING",
+      "features": {
+        "buy_count": 9,
+        "sell_count": 9,
+        "buy_sell_ratio": 1.0,
+        "volume": 86053235.33,
+        "holders": 18,
+        "unique_wallets": 18,
+        "initial_liq": 0,
+        "initial_mcap": 2697.33,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 18,
+        "lp_locked": 0,
+        "deployer": "7naFFwuEJWeW",
+        "ath_price": 0.0,
+        "launch_time": 1781117423.803997,
+        "liquidity": 0.0,
+        "mcap": 2697.33
+      },
+      "launch_time": 1781117423.803997,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
