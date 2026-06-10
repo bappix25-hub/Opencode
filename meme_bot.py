@@ -330,10 +330,10 @@ class MemeBot:
         price_usd = float(pair_data.get("priceUsd", 0) or 0)
 
         if liquidity < 500:
-            logger.debug(f"[SKIP] {symbol}: liquidity ${liquidity:.0f} < $500")
+            logger.info(f"[SKIP] {symbol}: liquidity ${liquidity:.0f} < $500")
             return
         if mcap < 1000:
-            logger.debug(f"[SKIP] {symbol}: mcap ${mcap:.0f} < $1K")
+            logger.info(f"[SKIP] {symbol}: mcap ${mcap:.0f} < $1K")
             return
 
         real_holders = launch_data.holders
@@ -346,13 +346,17 @@ class MemeBot:
             pass
 
         if real_holders < 3:
-            logger.debug(f"[SKIP] {symbol}: holders={real_holders} < 3")
+            logger.info(f"[SKIP] {symbol}: holders={real_holders} < 3")
             return
 
         if deployer := launch_data.deployer_wallet:
+            if await self.state.is_deployer_blocked(deployer):
+                logger.info(f"[SKIP] {symbol}: deployer {deployer[:8]}... blocked (bundle)")
+                return
             existing = await self.state.get_deployer_tokens(deployer)
-            if len(existing) > 3:
-                logger.debug(f"[SKIP] {symbol}: deployer {deployer[:8]}... has {len(existing)} tokens (bundle)")
+            if len(existing) >= 2:
+                logger.info(f"[SKIP] {symbol}: deployer {deployer[:8]}... has {len(existing)} tokens (bundle)")
+                await self.state.add_blocked_deployer(deployer)
                 return
 
         features = extract_launch_features(
