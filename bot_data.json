@@ -215,6 +215,222 @@
       "outcome": "STRONG_PUMP",
       "ath_multiplier": 1588460.66,
       "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 1588460.66,
+      "learned_at": "2026-06-10T10:11:46.943672+00:00"
+    },
+    {
+      "symbol": "ABEL",
+      "features": {
+        "launch_time": 1781080498.924696,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 18.55,
+      "learned_at": "2026-06-10T10:11:46.954728+00:00"
+    },
+    {
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 8.17,
+      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 1588460.66,
+      "learned_at": "2026-06-10T10:11:46.943672+00:00"
+    },
+    {
+      "symbol": "ABEL",
+      "features": {
+        "launch_time": 1781080498.924696,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 18.55,
+      "learned_at": "2026-06-10T10:11:46.954728+00:00"
+    },
+    {
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 8.17,
+      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 1588460.66,
+      "learned_at": "2026-06-10T10:11:46.943672+00:00"
+    },
+    {
+      "symbol": "ABEL",
+      "features": {
+        "launch_time": 1781080498.924696,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 18.55,
+      "learned_at": "2026-06-10T10:11:46.954728+00:00"
+    },
+    {
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 8.17,
+      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 1588460.66,
+      "learned_at": "2026-06-10T10:11:46.943672+00:00"
+    },
+    {
+      "symbol": "ABEL",
+      "features": {
+        "launch_time": 1781080498.924696,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 18.55,
+      "learned_at": "2026-06-10T10:11:46.954728+00:00"
+    },
+    {
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 8.17,
+      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
     }
   ],
   "dump_patterns": [
@@ -2509,6 +2725,98 @@
       "outcome": "DUMP",
       "ath_multiplier": 1.0732899022801303,
       "learned_at": "2026-06-10T17:12:10.238156+00:00"
+    },
+    {
+      "symbol": "Blue Balls",
+      "features": {
+        "buy_count": 174,
+        "sell_count": 174,
+        "buy_sell_ratio": 1.0,
+        "volume": 968.68,
+        "holders": 348,
+        "unique_wallets": 348,
+        "initial_liq": 0,
+        "initial_mcap": 1798.98,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082676.214554,
+        "liquidity": 0.0,
+        "mcap": 1798.98
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.9894327030033371,
+      "learned_at": "2026-06-10T09:18:07.375438+00:00"
+    },
+    {
+      "symbol": "DOGECOIN",
+      "features": {
+        "buy_count": 71,
+        "sell_count": 32,
+        "buy_sell_ratio": 2.22,
+        "volume": 1058707.43,
+        "holders": 103,
+        "unique_wallets": 103,
+        "initial_liq": 0,
+        "initial_mcap": 9756.55,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082686.034774,
+        "liquidity": 0.0,
+        "mcap": 9756.55
+      },
+      "outcome": "DUMP",
+      "multiplier": 1.0434604346043461,
+      "learned_at": "2026-06-10T09:18:09.549364+00:00"
+    },
+    {
+      "symbol": "アイ",
+      "features": {
+        "buy_count": 6,
+        "sell_count": 2,
+        "buy_sell_ratio": 3.0,
+        "volume": 3520918.75,
+        "holders": 8,
+        "unique_wallets": 8,
+        "initial_liq": 0,
+        "initial_mcap": 1831.69,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082728.983679,
+        "liquidity": 0.0,
+        "mcap": 1831.69
+      },
+      "outcome": "DUMP",
+      "multiplier": 1.0010922992900055,
+      "learned_at": "2026-06-10T09:21:12.066467+00:00"
+    },
+    {
+      "symbol": "Blub",
+      "features": {
+        "buy_count": 102,
+        "sell_count": 49,
+        "buy_sell_ratio": 2.08,
+        "volume": 5984.31,
+        "holders": 151,
+        "unique_wallets": 151,
+        "initial_liq": 0,
+        "initial_mcap": 5905.28,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 9,
+        "launch_time": 1781082796.023961,
+        "liquidity": 0.0,
+        "mcap": 5905.28
+      },
+      "outcome": "DUMP",
+      "multiplier": 0.897883149872989,
+      "learned_at": "2026-06-10T09:21:14.014946+00:00"
     }
   ],
   "launch_patterns": [
@@ -10922,46 +11230,6 @@
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T19:00:05.557903+00:00"
-      },
-      {
-        "address": "46N587j4xukNGuTFzWF2FE8iLcTisL1K6TNBYgAJpump",
-        "symbol": "ROBTY",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T19:13:57.455897+00:00"
-      },
-      {
-        "address": "7RHxQQUWG9fCskqocSV9zPkWPLJqcceWTcUCjnwMpump",
-        "symbol": "EMBER",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T19:14:29.463736+00:00"
-      },
-      {
-        "address": "FbNc2KRUrLf8TXzYpKe5fx6uuTRVny68H5fa1e1Wpump",
-        "symbol": "Hobbes",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T19:14:37.008431+00:00"
-      },
-      {
-        "address": "YZYbAx6GokTodmzgXLXMZuWU5RkdB9tFXAzaDuqVBNK",
-        "symbol": "YZYB",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T19:14:39.517906+00:00"
-      },
-      {
-        "address": "GJmJ3ZFXg4XBYspccpsRsMUhEoNfmqxTYN18GH1rpump",
-        "symbol": "APELORD ",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "timestamp": "2026-06-10T19:14:51.848949+00:00"
       }
     ],
     "golden_symbols": {},
