@@ -9404,33 +9404,90 @@
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T13:20:17.080078+00:00"
+      },
+      {
+        "address": "FbNc2KRUrLf8TXzYpKe5fx6uuTRVny68H5fa1e1Wpump",
+        "symbol": "Hobbes",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T14:29:58.663595+00:00"
+      },
+      {
+        "address": "BFBwDbNpf5QponVJyaAGFpKPiCXnbtuXqGWzugHzpump",
+        "symbol": "AURA",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T14:30:06.490282+00:00"
+      },
+      {
+        "address": "ET8kG3dbefg7uwqY4d4GGhkwvNmBdvBqf5UcvVERpump",
+        "symbol": "SOLFC",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T14:30:09.048155+00:00"
+      },
+      {
+        "address": "6vcMitr3itPTTGDDBMCwgEMZD167SJgTk8hkvYdqpump",
+        "symbol": "Brötchen",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T14:30:16.284958+00:00"
+      },
+      {
+        "address": "5mVMJLBq1ebxwWuSZMzzk8CzsMSHkCD9dELeDntRpump",
+        "symbol": "$WCUP",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T14:30:21.087032+00:00"
+      },
+      {
+        "address": "D3NJzpkfr8Nh5S4WDXXkFsh9hn5qExsHnoj8ra71pump",
+        "symbol": "HOARD",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T14:30:25.908392+00:00"
+      },
+      {
+        "address": "DKSeC2hTQ6jBVYzQ5CPKncQ6BrqQfWYWARz3LHNpump",
+        "symbol": "FREDDY",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T14:31:08.862405+00:00"
       }
     ],
     "golden_symbols": {},
     "total_pumps": 5,
     "total_dumps": 21,
     "total_skipped": 0,
-    "last_auto_learn": "2026-06-10T12:18:29.347268+00:00",
+    "last_auto_learn": "2026-06-10T13:25:20.534220+00:00",
     "auto_learn_insights": {
       "avg_win_bsr": 0,
-      "avg_loss_bsr": 2.02,
+      "avg_loss_bsr": 2.04,
       "avg_win_holders": 0,
-      "avg_loss_holders": 121.2,
+      "avg_loss_holders": 198.0,
       "avg_win_wallets": 0,
-      "avg_loss_wallets": 121.2,
+      "avg_loss_wallets": 198.0,
       "avg_win_liq": 0,
       "avg_loss_liq": 0,
       "avg_win_mcap": 0,
-      "avg_loss_mcap": 3034.0,
+      "avg_loss_mcap": 3832.0,
       "avg_win_lp_locked": 0,
       "avg_loss_lp_locked": 0,
       "total_recent": 50,
-      "win_rate": 38.0
+      "win_rate": 32.0
     }
   },
   "alerted_coins": [],
   "blacklisted": [],
   "blocked_deployers": [
+    "FadTNu4vWVisBdoN14Lr8QAitNgvnjbt3uGgBiinrspz",
     "5SW7p56x22LKj8gYcE8DVVd1S59UJUGR9jKq2PFdKiKg",
     "DqEfyE5xJZt7rvp6BeaAwq1qVTaLqawmnUrXh8jY3SE2",
     "5FqUo9aBjsp7QeeyN6Vi2ZmF2fjS4H5EU7wnAQwPy17z",
@@ -9464,6 +9521,7 @@
     "DAVRg8EA1r5uyG8th6FuhhzhFMdaCgD9BBGLX8x6Rby1",
     "Aewm9TtughBapQA6WWVTtw596pcRrJWCYF51QbuZpump",
     "DDW9x7Drg8BxkupRm6ENEfguK6MJEHTdQRH9JiRgpump",
+    "2w7jo9r8yw8WkpzUn2NES1JZvxCWzAq4AgUpGHK5pump",
     "5k3WqB3UPCyWWgbgxNdxSKZXQqZxWyPJiDd1nN2pump",
     "4Hm5Br3D9dBuJ8zSxP8LPSQrvKy8p4iV3KosF2Tipump",
     "GDRmUsbzm5FyLZWsXhMvNSP8YzN46an9cvRjuQpmE37Y",
