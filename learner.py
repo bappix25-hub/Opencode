@@ -295,7 +295,7 @@ def match_pump_patterns(features: dict, min_similarity: float = 0.55) -> tuple[b
 
 
 def record_signal_result(address: str, symbol: str, multiplier: float) -> None:
-    """Record signal outcome for stats."""
+    """Record signal outcome and learn from it."""
     data = load_data()
     results = data["model"].setdefault("signal_results", [])
 
@@ -313,6 +313,40 @@ def record_signal_result(address: str, symbol: str, multiplier: float) -> None:
         "timestamp": datetime.now(timezone.utc).isoformat(),
     })
     data["model"]["signal_results"] = results[-500:]
+
+    launches = data.get("launches_tracked", [])
+    launch = next((l for l in launches if l.get("address") == address), None)
+
+    if launch and launch.get("features"):
+        features = launch["features"]
+        if verdict in ("PUMP", "STRONG_PUMP"):
+            pump_patterns = data.setdefault("pump_patterns", [])
+            pump_patterns.append({
+                "symbol": symbol,
+                "features": features,
+                "outcome": verdict,
+                "multiplier": multiplier,
+                "learned_at": datetime.now(timezone.utc).isoformat(),
+            })
+            data["model"]["total_pumps"] = data["model"].get("total_pumps", 0) + 1
+            logger.info(f"📚 পাম্প প্যাটার্ন শেখা: {symbol} ({multiplier:.1f}x)")
+        elif verdict == "DUMP":
+            dump_patterns = data.setdefault("dump_patterns", [])
+            dump_patterns.append({
+                "symbol": symbol,
+                "features": features,
+                "outcome": "DUMP",
+                "multiplier": multiplier,
+                "learned_at": datetime.now(timezone.utc).isoformat(),
+            })
+            data["model"]["total_dumps"] = data["model"].get("total_dumps", 0) + 1
+            logger.info(f"📚 ডাম্প প্যাটার্ন শেখা: {symbol} ({multiplier:.1f}x)")
+
+        if len(data.get("pump_patterns", [])) > MAX_PATTERNS:
+            data["pump_patterns"] = data["pump_patterns"][-MAX_PATTERNS:]
+        if len(data.get("dump_patterns", [])) > MAX_PATTERNS:
+            data["dump_patterns"] = data["dump_patterns"][-MAX_PATTERNS:]
+
     save_data(data)
 
 

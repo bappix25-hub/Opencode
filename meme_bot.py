@@ -322,10 +322,45 @@ class MemeBot:
         except Exception:
             pass
 
+        if not pair_data:
+            return
+
+        liquidity = float((pair_data.get("liquidity") or {}).get("usd", 0) or 0)
+        mcap = float(pair_data.get("fdv", 0) or 0)
+        price_usd = float(pair_data.get("priceUsd", 0) or 0)
+
+        if liquidity < 500:
+            logger.debug(f"[SKIP] {symbol}: liquidity ${liquidity:.0f} < $500")
+            return
+        if mcap < 1000:
+            logger.debug(f"[SKIP] {symbol}: mcap ${mcap:.0f} < $1K")
+            return
+
+        real_holders = launch_data.holders
+        try:
+            h = await self.helius.get_holder_count(address)
+            if h is not None and h > 0:
+                real_holders = h
+                launch_data.holders = h
+        except Exception:
+            pass
+
+        if real_holders < 3:
+            logger.debug(f"[SKIP] {symbol}: holders={real_holders} < 3")
+            return
+
+        if deployer := launch_data.deployer_wallet:
+            existing = await self.state.get_deployer_tokens(deployer)
+            if len(existing) > 3:
+                logger.debug(f"[SKIP] {symbol}: deployer {deployer[:8]}... has {len(existing)} tokens (bundle)")
+                return
+
         features = extract_launch_features(
             launch_data, pair_data=pair_data, unique_wallets=unique_wallets
         )
         features["launch_time"] = launch_data.launch_time
+        features["liquidity"] = liquidity
+        features["mcap"] = mcap
 
         record_launch(address, symbol, features)
 
@@ -349,9 +384,21 @@ class MemeBot:
             if buy_sell_ratio >= 1.5:
                 h_score += 0.2
                 h_reasons.append(f"bsr={buy_sell_ratio:.1f}")
-            if launch_data.holders >= 3:
+            if real_holders >= 5:
+                h_score += 0.2
+                h_reasons.append(f"holders={real_holders}")
+            elif real_holders >= 3:
+                h_score += 0.1
+                h_reasons.append(f"holders={real_holders}")
+            if liquidity >= 5000:
                 h_score += 0.15
-                h_reasons.append(f"holders={launch_data.holders}")
+                h_reasons.append(f"liq=${int(liquidity)}")
+            elif liquidity >= 2000:
+                h_score += 0.1
+                h_reasons.append(f"liq=${int(liquidity)}")
+            if mcap >= 50000:
+                h_score += 0.1
+                h_reasons.append(f"mcap={format_number(mcap)}")
             if h_score >= 0.75:
                 match = True
                 match_score = h_score
@@ -360,8 +407,7 @@ class MemeBot:
         logger.info(
             f"[EVAL] {symbol}: age={int(age)}s buys={launch_data.buy_count} "
             f"bsr={buy_sell_ratio:.1f} wallets={unique_wallets} "
-            f"liq={features.get('initial_liq', 0):.0f} "
-            f"snipers={features.get('snipers_30s', 0)} "
+            f"liq=${int(liquidity)} holders={real_holders} mcap={format_number(mcap)} "
             f"→ match={match:.0%} {match_reason}"
         )
 
@@ -378,9 +424,10 @@ class MemeBot:
             f"🏷️ <b>{launch_data.name}</b> (${symbol})\n"
             f"🎯 কনফিডেন্স: {confidence_bar} <b>{confidence_pct}%</b>\n"
             f"🧠 <i>{match_reason}</i>\n"
+            f"💰 MCap: <b>{format_number(mcap)}</b>\n"
+            f"💧 লিকুইডিটি: <b>${int(liquidity)}</b>\n"
             f"📊 Buy: <b>{launch_data.buy_count}</b> | Sell: <b>{launch_data.sell_count}</b>\n"
-            f"👥 Unique wallets: <b>{unique_wallets}</b>\n"
-            f"👤 Holders: <b>{launch_data.holders}</b>\n"
+            f"👥 Wallets: <b>{unique_wallets}</b> | Holders: <b>{real_holders}</b>\n"
             f"⏱️ বয়স: <b>{int(age//60)}m {int(age%60)}s</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"🔗 <a href='{link}'>GMGN</a>"
@@ -388,7 +435,18 @@ class MemeBot:
 
         await self.state.add_alerted(address)
         launch_data.pre_signal_sent = True
-        logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {symbol} match={match_score:.0%}")
+
+        from bot_state import SignalInfo
+        await self.state.add_signal(address, SignalInfo(
+            symbol=symbol,
+            price_at_signal=price_usd,
+            signal_time=datetime.now(timezone.utc).timestamp(),
+            launch_time=launch_data.launch_time,
+            is_pre_migration=True,
+        ))
+
+        logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {symbol} match={match_score:.0%} "
+                     f"liq=${int(liquidity)} holders={real_holders} mcap={format_number(mcap)}")
 
     async def _check_momentum(self, address: str, launch_data=None):
         """Check price/buy momentum. Returns (ok, reason)."""
@@ -839,6 +897,7 @@ class MemeBot:
             await asyncio.sleep(config.history_scan_interval)
 
     async def check_signal_results_loop(self):
+        CHECK_INTERVALS = [300, 900, 3600]
         while True:
             try:
                 await asyncio.sleep(60)
@@ -847,38 +906,43 @@ class MemeBot:
 
                 for addr, sig_info in list(unchecked.items()):
                     age = now - sig_info.signal_time
+
+                    next_check = None
+                    for interval in CHECK_INTERVALS:
+                        if age >= interval and not sig_info.eval_done.get(str(interval), False):
+                            next_check = interval
+                            break
+
+                    if next_check is None:
+                        continue
+
                     pair = await self.dex.fetch_pair_data(addr)
                     if not pair:
+                        sig_info.eval_done[str(next_check)] = True
                         continue
 
                     current_price = float(pair.get("priceUsd", 0) or 0)
                     if current_price <= 0:
                         continue
 
-                    if age < 10800:
-                        continue
-
+                    sig_info.eval_done[str(next_check)] = True
                     multiplier = current_price / sig_info.price_at_signal if sig_info.price_at_signal > 0 else 0
-                    record_signal_result(addr, sig_info.symbol, multiplier)
 
-                    emoji = "✅" if multiplier >= 2.0 else "❌"
-                    ath_text = ""
-                    if multiplier >= 2:
-                        ath_text = f"\n📈 Multiplier: <b>{multiplier:.2f}x</b>"
-
-                    pnl_text = ""
-                    if config.paper_trading and self.paper_trader:
-                        closed = await self.paper_trader.force_close(addr, current_price)
-                        if closed:
-                            pnl_text = f"\n💰 Paper PnL: <b>{closed.pnl_sol:+.4f} SOL ({closed.pnl_pct:+.1f}%)</b>"
-
+                    emoji = "✅" if multiplier >= 2.0 else ("😐" if multiplier >= 0.8 else "❌")
                     await send_msg(self.telegram_app.bot,
-                        f"{emoji} <b>সিগন্যাল ফলাফল (3h)!</b>\n"
+                        f"{emoji} <b>সিগন্যাল ফলাফল ({next_check // 60}m)!</b>\n"
                         f"🏷️ ${sig_info.symbol}\n"
                         f"📊 বর্তমান: <b>{multiplier:.2f}x</b>\n"
-                        f"{ath_text}{pnl_text}"
+                        f"💰 {'🟢 Profit' if multiplier >= 2 else '🔴 Loss' if multiplier < 0.8 else '➡️ Neutral'}"
                     )
-                    await self.state.mark_signal_checked(addr)
+
+                    record_signal_result(addr, sig_info.symbol, multiplier)
+
+                    if next_check == 3600:
+                        await self.state.mark_signal_checked(addr)
+
+                    logger.info(f"[OUTCOME] {sig_info.symbol}: {multiplier:.2f}x @ T+{next_check}s")
+
                     await asyncio.sleep(1)
 
             except asyncio.CancelledError:
