@@ -32,14 +32,25 @@ from backtest import BacktestEngine, REPORTS_DIR, MAX_REPORTS
 from social_signals import SocialSignalEngine
 from honeypot_detector import HoneypotDetector
 from paper_trader import get_paper_trader
+import os
+
+CHAT_ID_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".chat_id")
 
 logger = setup_logging("meme_bot")
 
 
 async def send_msg(bot: Bot, text: str) -> None:
     try:
+        chat_id = config.chat_id
+        if not chat_id or chat_id == "0":
+            if os.path.exists(CHAT_ID_FILE):
+                with open(CHAT_ID_FILE) as f:
+                    chat_id = f.read().strip()
+        if not chat_id or chat_id == "0":
+            logger.warning("No chat_id configured yet. Message the bot first!")
+            return
         await bot.send_message(
-            chat_id=config.chat_id, text=text,
+            chat_id=chat_id, text=text,
             parse_mode="HTML", disable_web_page_preview=True
         )
     except Exception as e:
@@ -1298,27 +1309,37 @@ class MemeBot:
         """Silent self-healing: kill duplicate processes, fix common errors, notify only on real fixes."""
         import os, subprocess
         my_pid = os.getpid()
+        instance_name = os.environ.get("BOT_INSTANCE", "main")
+        lock_file = f"/tmp/meme_bot_{instance_name}.lock"
         last_notify = 0
         notified = set()
+
+        # Write current PID to lock file
+        try:
+            with open(lock_file, "w") as f:
+                f.write(str(my_pid))
+        except Exception:
+            pass
 
         while True:
             try:
                 await asyncio.sleep(60)
 
-                # --- 1. Kill duplicate meme_bot.py processes ---
+                # --- 1. Kill duplicate processes for THIS instance only ---
                 try:
-                    out = subprocess.check_output(
-                        ["pgrep", "-f", "meme_bot.py"],
-                        text=True, timeout=5
-                    ).strip()
-                    if out:
-                        pids = [int(p) for p in out.split("\n") if p.strip() and int(p) != my_pid]
-                        for pid in pids:
+                    if os.path.exists(lock_file):
+                        with open(lock_file) as f:
+                            old_pid = int(f.read().strip())
+                        if old_pid != my_pid:
                             try:
-                                os.kill(pid, 9)
-                                logger.info(f"🔧 Self-heal: killed duplicate PID {pid}")
+                                os.kill(old_pid, 0)  # check if alive
+                                os.kill(old_pid, 9)
+                                logger.info(f"🔧 Self-heal: killed stale PID {old_pid} (instance: {instance_name})")
                             except ProcessLookupError:
                                 pass
+                        # Update lock file with current PID
+                        with open(lock_file, "w") as f:
+                            f.write(str(my_pid))
                 except Exception:
                     pass
 
@@ -1340,25 +1361,7 @@ class MemeBot:
                     except Exception:
                         pass
 
-                # --- 3. Fix LOG_FILE in .env (once) ---
-                try:
-                    env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
-                    if os.path.exists(env_path) and os.environ.get("LOG_FILE", "").strip():
-                        with open(env_path, "r") as f:
-                            lines = f.readlines()
-                        new_lines = [l for l in lines if not l.strip().startswith("LOG_FILE=")]
-                        if len(new_lines) < len(lines):
-                            with open(env_path, "w") as f:
-                                f.writelines(new_lines)
-                            now = datetime.now(timezone.utc).timestamp()
-                            if "env_log" not in notified and now - last_notify > 300:
-                                notified.add("env_log")
-                                last_notify = now
-                                await send_msg(self.telegram_app.bot, "🔧 <b>Auto-fix:</b> removed LOG_FILE from .env")
-                except Exception:
-                    pass
-
-                # --- 4. Fix trained_addresses list-of-dicts (once) ---
+                # --- 3. Fix trained_addresses list-of-dicts (once) ---
                 try:
                     data_file = os.environ.get("DATA_FILE", "bot_data.json")
                     if os.path.exists(data_file) and "trained_merge" not in notified:
@@ -1379,7 +1382,9 @@ class MemeBot:
                     pass
 
                 # --- 5. Detect repeated errors in log → notify once per unique error ---
-                log_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs", "bot.log")
+                log_file = os.environ.get("LOG_FILE", "").strip()
+                if not log_file:
+                    log_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs", "bot.log")
                 if os.path.exists(log_file):
                     try:
                         with open(log_file, "r", encoding="utf-8", errors="ignore") as f:

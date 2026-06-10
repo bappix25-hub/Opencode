@@ -8,11 +8,20 @@
 cd "$(dirname "$0")"
 
 # Auto-update from GitHub before starting
+# Load env first to get DATA_FILE for smart-merge
+if [ -f ".env" ]; then
+    set -a; source ".env"; set +a
+fi
+if [ -f ".env.${1:-main}" ]; then
+    set -a; source ".env.${1:-main}"; set +a
+fi
+INSTANCE_DATA="${DATA_FILE:-./bot_data.json}"
+
 if [ -d .git ]; then
     echo "📥 Updating from GitHub..."
     mkdir -p "$HOME/.tmp_opencode"
-    if [ -f bot_data.json ]; then
-        cp bot_data.json "$HOME/.tmp_opencode/botdata_local_backup.json"
+    if [ -f "$INSTANCE_DATA" ]; then
+        cp "$INSTANCE_DATA" "$HOME/.tmp_opencode/botdata_local_backup.json"
     fi
 
     git rebase --abort 2>/dev/null
@@ -23,11 +32,11 @@ if [ -d .git ]; then
     PULL_EXIT=$?
 
     if [ $PULL_EXIT -ne 0 ]; then
-        echo "⚠️ Pull failed, trying smart-merge for bot_data.json..."
-        git checkout origin/main -- bot_data.json 2>/dev/null
+        echo "⚠️ Pull failed, trying smart-merge..."
+        git checkout origin/main -- "$INSTANCE_DATA" 2>/dev/null
         if [ -f "$HOME/.tmp_opencode/botdata_local_backup.json" ]; then
             REMOTE_TMP="$HOME/.tmp_opencode/remote_data_$$.json"
-            cp bot_data.json "$REMOTE_TMP"
+            cp "$INSTANCE_DATA" "$REMOTE_TMP"
             python3 << PYEOF
 import json
 try:
@@ -46,14 +55,14 @@ try:
     merged['dump_patterns'] = ml(local.get('dump_patterns'), remote.get('dump_patterns'))
     merged['launch_patterns'] = ml(local.get('launch_patterns'), remote.get('launch_patterns'))
     merged['trained_addresses'] = {**(local.get('trained_addresses') or {}), **(remote.get('trained_addresses') or {})}
-    json.dump(merged, open('bot_data.json', 'w'), indent=2)
+    json.dump(merged, open('${INSTANCE_DATA}', 'w'), indent=2)
     print(f"✅ Smart-merge: {len(merged['pump_patterns'])} pumps, {len(merged['dump_patterns'])} dumps")
 except Exception as e:
     print(f"❌ Smart-merge failed: {e}")
 PYEOF
             rm -f "$REMOTE_TMP"
         fi
-        git add bot_data.json
+        git add "$INSTANCE_DATA"
         git diff --cached --quiet || git commit -m "[merge] bot_data smart-merge on start" 2>/dev/null
         echo "✅ Smart-merge completed"
     else
@@ -63,7 +72,10 @@ fi
 
 ENV_FILE=".env"
 if [ "$1" = "v2" ] || [ -n "$BOT_INSTANCE" ]; then
-    if [ -f .env.v2 ]; then
+    BOT_INSTANCE="${1:-$BOT_INSTANCE}"
+    if [ -f ".env.${BOT_INSTANCE}" ]; then
+        ENV_FILE=".env.${BOT_INSTANCE}"
+    elif [ "$1" = "v2" ] && [ -f ".env.v2" ]; then
         ENV_FILE=".env.v2"
     fi
 fi
@@ -89,6 +101,8 @@ if [ -f "$ENV_FILE" ]; then
     set +a
 fi
 
+BOT_INSTANCE="${BOT_INSTANCE:-main}"
+
 LOG_FILE="${LOG_FILE:-./bot.log}"
 DATA_FILE="${DATA_FILE:-./bot_data.json}"
 mkdir -p "$(dirname "$LOG_FILE")" 2>/dev/null
@@ -108,7 +122,7 @@ check_internet() {
     return $?
 }
 
-echo "🤖 Opencode Bot Starting..."
+echo "🤖 Opencode Bot Starting... [instance: $BOT_INSTANCE]"
 echo "📅 $(date)"
 echo "📂 Data: $DATA_FILE"
 echo "📝 Log:  $LOG_FILE"
@@ -120,12 +134,27 @@ else
 fi
 echo "━━━━━━━━━━━━━━━━━━━━"
 
-# Kill ALL existing bot instances (previous crash / parallel scripts)
-echo "🧹 Cleaning up old processes..."
-pkill -9 -f "meme_bot.py" 2>/dev/null
-pkill -9 -f "daemon.sh" 2>/dev/null
-pkill -9 -f "run_247.sh" 2>/dev/null
-pkill -9 -f "watchdog.sh" 2>/dev/null
+# Kill ONLY this instance's old processes (not other instances)
+echo "🧹 Cleaning up old processes for instance: $BOT_INSTANCE..."
+if [ "$BOT_INSTANCE" = "main" ]; then
+    # Main instance: kill processes matching meme_bot.py with default .env
+    pkill -9 -f "meme_bot.py" 2>/dev/null || true
+else
+    # Non-main instance: kill only processes that loaded this instance's env
+    pkill -9 -f "meme_bot.py.*$BOT_INSTANCE" 2>/dev/null || true
+    # Also kill by lock file
+    LOCK_CHECK="/tmp/meme_bot_${BOT_INSTANCE}.lock"
+    if [ -f "$LOCK_CHECK" ]; then
+        OLD_PID=$(cat "$LOCK_CHECK" 2>/dev/null)
+        if [ -n "$OLD_PID" ] && [ -d "/proc/$OLD_PID" ]; then
+            kill -9 "$OLD_PID" 2>/dev/null || true
+        fi
+        rm -f "$LOCK_CHECK"
+    fi
+fi
+pkill -9 -f "daemon.sh" 2>/dev/null || true
+pkill -9 -f "run_247.sh" 2>/dev/null || true
+pkill -9 -f "watchdog.sh" 2>/dev/null || true
 sleep 2
 
 LOCK_FILE="/tmp/meme_bot_${BOT_INSTANCE:-main}.lock"
