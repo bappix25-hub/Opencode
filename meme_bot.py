@@ -547,7 +547,7 @@ class MemeBot:
                                     pair_price = float(pair.get("priceUsd", 0) or 0)
                                     if pair_price > 0 and pair_price > ld.ath_price:
                                         ld.ath_price = pair_price
-                                    await self.check_pre_migration_signal(addr)
+                                await self.check_pre_migration_signal(addr)
                         await asyncio.sleep(0.3)
 
                 # Tracked coins scan
