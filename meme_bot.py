@@ -352,7 +352,7 @@ class MemeBot:
             if launch_data.holders >= 3:
                 h_score += 0.15
                 h_reasons.append(f"holders={launch_data.holders}")
-            if h_score >= 0.5:
+            if h_score >= 0.75:
                 match = True
                 match_score = h_score
                 match_reason = "Heuristic: " + " ".join(h_reasons)
