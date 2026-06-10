@@ -9348,28 +9348,84 @@
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T12:11:54.213069+00:00"
+      },
+      {
+        "address": "9ZtbETDNjnST9Y2zs82FZYy49xUMPgqXRh46YjjRpump",
+        "symbol": "Brötchen",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T13:19:25.104427+00:00"
+      },
+      {
+        "address": "HZZCEMtpeyYHNUCAiJRL1iSzu5w4ja1ACBKcDiFGpump",
+        "symbol": "WORTHLESS",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T13:19:44.152725+00:00"
+      },
+      {
+        "address": "ChhGrQdTYBicu6CBhj9xiVZudyeNGv1r1WR6CrCCpump",
+        "symbol": "STEPHEN",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T13:19:46.567161+00:00"
+      },
+      {
+        "address": "9DrAiELhyY4X4NFguX6ud12UoRAHC49VoAUgMURYpump",
+        "symbol": "Virgin",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T13:19:49.570802+00:00"
+      },
+      {
+        "address": "GsMGZxCUbc2wvVVmFL4SaDgLKBAbnrkbU6S49MkFpump",
+        "symbol": "Teracorn",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T13:20:00.554410+00:00"
+      },
+      {
+        "address": "EDDsnHma3X8bbzYcqMqaRR8noruX6uemzQThg1prpump",
+        "symbol": "PXR",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T13:20:12.260003+00:00"
+      },
+      {
+        "address": "FbNc2KRUrLf8TXzYpKe5fx6uuTRVny68H5fa1e1Wpump",
+        "symbol": "Hobbes",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T13:20:17.080078+00:00"
       }
     ],
     "golden_symbols": {},
     "total_pumps": 5,
     "total_dumps": 21,
     "total_skipped": 0,
-    "last_auto_learn": "2026-06-10T11:18:29.191601+00:00",
+    "last_auto_learn": "2026-06-10T12:18:29.347268+00:00",
     "auto_learn_insights": {
       "avg_win_bsr": 0,
-      "avg_loss_bsr": 1.87,
+      "avg_loss_bsr": 2.02,
       "avg_win_holders": 0,
-      "avg_loss_holders": 163.2,
+      "avg_loss_holders": 121.2,
       "avg_win_wallets": 0,
-      "avg_loss_wallets": 163.2,
+      "avg_loss_wallets": 121.2,
       "avg_win_liq": 0,
       "avg_loss_liq": 0,
       "avg_win_mcap": 0,
-      "avg_loss_mcap": 3351.0,
+      "avg_loss_mcap": 3034.0,
       "avg_win_lp_locked": 0,
       "avg_loss_lp_locked": 0,
       "total_recent": 50,
-      "win_rate": 24.0
+      "win_rate": 38.0
     }
   },
   "alerted_coins": [],
@@ -9397,6 +9453,7 @@
     "G4krkerMkeYw7ffTUgdf7qXEXnuMGHpWUESBQpYqvtwU",
     "9yHr1J8sT6W2oWEPBbyikDVx6bWtccKKScR1x1Gxaznc",
     "9xq3MueEjiQPDAXTekC3iRgtchG7ygBg9DL1Yu33HXif",
+    "EozbB1qr8LYb9nEryY5fuTGstLzerFs9JazirHAc6hj7",
     "8x3e2tkQyHxHktyXxngho67nmNg2Qfe1vZ2P4R1ELfh5",
     "BtMBMPkoNbnLF9Xn552guQq528KKXcsNBNNBre3oaQtr",
     "8WzXZmX3zNem3bUzajLEM55VBL2MJCNNhphjj3HKQz38",
@@ -9405,6 +9462,7 @@
   "honeypot_addresses": [
     "GVLuZzL6acAKJRjdtJd3KwJHaVVgsoWnfnMcdYAApump",
     "DAVRg8EA1r5uyG8th6FuhhzhFMdaCgD9BBGLX8x6Rby1",
+    "Aewm9TtughBapQA6WWVTtw596pcRrJWCYF51QbuZpump",
     "DDW9x7Drg8BxkupRm6ENEfguK6MJEHTdQRH9JiRgpump",
     "5k3WqB3UPCyWWgbgxNdxSKZXQqZxWyPJiDd1nN2pump",
     "4Hm5Br3D9dBuJ8zSxP8LPSQrvKy8p4iV3KosF2Tipump",
