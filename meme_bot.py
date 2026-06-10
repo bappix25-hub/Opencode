@@ -75,6 +75,15 @@ class MemeBot:
         self._shutdown_event = asyncio.Event()
         self._tasks: list = []
         self._last_internet_ok: bool = True
+        self._telegram_started = False
+        self._telegram_retries = 0
+
+    def _telegram_error_handler(self, update, error):
+        logger.error(f"Telegram error: {error}")
+        if "Conflict" in str(error):
+            self._telegram_retries += 1
+            if self._telegram_retries > 5:
+                logger.warning("Too many 409 conflicts, assuming another instance is running")
 
     async def start(self):
         self.session = aiohttp.ClientSession()
@@ -145,12 +154,17 @@ class MemeBot:
         await send_msg(self.telegram_app.bot, "🤖 <b>বট v3 চালু!</b>\n✅ 5x filter + Auto-verify + Social signals + Paper Trading সক্রিয়")
 
         try:
+            self.telegram_app.add_error_handler(self._telegram_error_handler)
             await self.telegram_app.initialize()
             await self.telegram_app.start()
-            await self.telegram_app.updater.start_polling()
+            await self.telegram_app.updater.start_polling(
+                allowed_updates=["message", "callback_query"],
+            )
             await self._shutdown_event.wait()
         except asyncio.CancelledError:
             pass
+        except Exception as e:
+            logger.error(f"Telegram polling error: {e}")
         finally:
             await self.shutdown()
 
@@ -1451,21 +1465,41 @@ class MemeBot:
                 logger.debug(f"feature_request_loop error: {e}")
 
 
+def _global_exception_handler(loop, context):
+    msg = context.get("exception", context["message"])
+    logger.error(f"💥 UNHANDLED EXCEPTION: {msg}", exc_info=context.get("exception"))
+
 def main():
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    loop.set_exception_handler(_global_exception_handler)
+
     bot = MemeBot()
 
     def handle_signal(signum, frame):
-        asyncio.get_event_loop().call_soon_threadsafe(
-            lambda: asyncio.ensure_future(bot.shutdown())
-        )
+        try:
+            logger.info(f"📴 Signal {signum} received, shutting down...")
+            loop.call_soon_threadsafe(
+                lambda: asyncio.ensure_future(bot.shutdown(), loop=loop)
+            )
+        except:
+            pass
 
     signal.signal(signal.SIGINT, handle_signal)
     signal.signal(signal.SIGTERM, handle_signal)
 
     try:
-        asyncio.run(bot.start())
+        loop.run_until_complete(bot.start())
     except KeyboardInterrupt:
         pass
+    except Exception as e:
+        logger.error(f"💥 MAIN CRASH: {e}", exc_info=True)
+    finally:
+        try:
+            loop.run_until_complete(loop.shutdown_asyncgens())
+        except:
+            pass
+        loop.close()
 
 
 if __name__ == "__main__":
