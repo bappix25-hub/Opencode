@@ -14174,6 +14174,13 @@
         "verdict": "PUMP",
         "multiplier": 3.08,
         "timestamp": "2026-06-09T21:03:58.675180+00:00"
+      },
+      {
+        "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
+        "symbol": "Lumi",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T07:52:43.683318+00:00"
       }
     ],
     "golden_symbols": {}
