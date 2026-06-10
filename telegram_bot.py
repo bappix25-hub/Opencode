@@ -13,6 +13,8 @@ from utils import format_number
 from backtest import BacktestEngine, REPORTS_DIR
 from paper_trader import PaperTrader
 
+CHAT_ID_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".chat_id")
+
 logger = logging.getLogger("telegram_bot")
 
 def main_keyboard():
@@ -23,6 +25,13 @@ def main_keyboard():
     ]
     return ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
 
+def _save_chat_id(chat_id: str):
+    try:
+        with open(CHAT_ID_FILE, "w") as f:
+            f.write(str(chat_id))
+    except Exception:
+        pass
+
 class TelegramHandlers:
     def __init__(self, state: BotState, dex: DexScreenerClient, session, paper_trader: PaperTrader = None):
         self.state = state
@@ -31,16 +40,19 @@ class TelegramHandlers:
         self.paper_trader = paper_trader
 
     async def cmd_start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        _save_chat_id(update.effective_chat.id)
         text = (
-            "🤖 <b>Bappis Trade Bot v3</b>\n"
-            "🌟 AI + Whale + Sentiment + Paper Trading\n\n"
+            "🤖 <b>Meme Coin Auto-Trade Bot</b>\n"
+            "🌟 AI লার্নিং + পেপার ট্রেডিং\n\n"
             "📚 কমান্ড:\n"
             "/pump — পাম্প শেখান\n"
             "/dump — ডাম্প শেখান\n"
             "/forcepump — ফোর্স পাম্প শেখান\n"
             "/threshold — থ্রেশোল্ড সেট\n"
             "/config — কনফিগারেশন\n"
-            "/backtest — backtest\n"
+            "/balance — ব্যালেন্স দেখুন\n"
+            "/positions — ওপেন পজিশন দেখুন\n"
+            "/trades — ট্রেড হিস্ট্রি\n"
             "/signalstats — সিগন্যাল পরিসংখ্যান\n"
             "/retrain — model retrain"
         )
@@ -489,6 +501,7 @@ class TelegramHandlers:
         )
 
     async def handle_buttons(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        _save_chat_id(update.effective_chat.id)
         text = update.message.text
         if text == "📊 স্ট্যাটাস":
             await self.cmd_health(update, context)
