@@ -329,11 +329,8 @@ class MemeBot:
         mcap = float(pair_data.get("fdv", 0) or 0)
         price_usd = float(pair_data.get("priceUsd", 0) or 0)
 
-        if liquidity < 500:
-            logger.info(f"[SKIP] {symbol}: liquidity ${liquidity:.0f} < $500")
-            return
-        if mcap < 1000:
-            logger.info(f"[SKIP] {symbol}: mcap ${mcap:.0f} < $1K")
+        if mcap < 1000 and liquidity < 100:
+            logger.info(f"[SKIP] {symbol}: mcap ${mcap:.0f} + liq ${liquidity:.0f} too low")
             return
 
         real_holders = launch_data.holders
