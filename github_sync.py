@@ -180,7 +180,18 @@ def _smart_merge_data_file(local_path: str, remote_path: str, output_path: str) 
 
     def _merge_list_simple(a, b):
         if isinstance(a, list) and isinstance(b, list):
-            return list(dict.fromkeys(a + b))
+            combined = a + b
+            if combined and isinstance(combined[0], dict):
+                seen = set()
+                out = []
+                for item in combined:
+                    k = item.get("address", item.get("symbol", str(item)))
+                    if k in seen:
+                        continue
+                    seen.add(k)
+                    out.append(item)
+                return out
+            return list(dict.fromkeys(combined))
         return a or b or []
 
     merged = dict(remote)
@@ -203,9 +214,38 @@ def _smart_merge_data_file(local_path: str, remote_path: str, output_path: str) 
         local.get("trained_addresses"),
         remote.get("trained_addresses"),
     )
-    for k in ("signals", "blacklisted", "honeypot_addresses", "blocked_deployers"):
+    merged["signals"] = _merge_list(
+        local.get("signals"),
+        remote.get("signals"),
+        key="address", cap=200,
+    )
+    merged["launches_tracked"] = _merge_list(
+        local.get("launches_tracked"),
+        remote.get("launches_tracked"),
+        key="address", cap=500,
+    )
+    for k in ("signal_results", "alerted_coins", "golden_snapshots"):
+        merged[k] = _merge_list(
+            local.get(k),
+            remote.get(k),
+            key="address", cap=200,
+        )
+    for k in ("blacklisted", "honeypot_addresses", "blocked_deployers"):
         if k in local or k in remote:
             merged[k] = _merge_list_simple(local.get(k), remote.get(k))
+    if "model" in local or "model" in remote:
+        r_model = remote.get("model", {})
+        l_model = local.get("model", {})
+        merged_model = dict(r_model)
+        for mk, mv in l_model.items():
+            if mk == "signal_results":
+                existing = merged_model.get("signal_results", [])
+                merged_model["signal_results"] = _merge_list(
+                    mv, existing, key="address", cap=500,
+                )
+            elif mv and (mk not in merged_model or not merged_model[mk]):
+                merged_model[mk] = mv
+        merged["model"] = merged_model
     for k, v in local.items():
         if k not in merged:
             merged[k] = v
@@ -216,6 +256,8 @@ def _smart_merge_data_file(local_path: str, remote_path: str, output_path: str) 
         logger.info(
             f"Smart-merge: {len(merged['pump_patterns'])} pumps, "
             f"{len(merged['dump_patterns'])} dumps, "
+            f"{len(merged.get('signals', []))} signals, "
+            f"{len(merged.get('launches_tracked', []))} launches, "
             f"{len(merged['trained_addresses'])} addrs"
         )
         return True
