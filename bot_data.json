@@ -431,6 +431,438 @@
       "outcome": "STRONG_PUMP",
       "ath_multiplier": 1588460.66,
       "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 1588460.66,
+      "learned_at": "2026-06-10T10:11:46.943672+00:00"
+    },
+    {
+      "symbol": "ABEL",
+      "features": {
+        "launch_time": 1781080498.924696,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 18.55,
+      "learned_at": "2026-06-10T10:11:46.954728+00:00"
+    },
+    {
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 8.17,
+      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 1588460.66,
+      "learned_at": "2026-06-10T10:11:46.943672+00:00"
+    },
+    {
+      "symbol": "ABEL",
+      "features": {
+        "launch_time": 1781080498.924696,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 18.55,
+      "learned_at": "2026-06-10T10:11:46.954728+00:00"
+    },
+    {
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 8.17,
+      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 1588460.66,
+      "learned_at": "2026-06-10T10:11:46.943672+00:00"
+    },
+    {
+      "symbol": "ABEL",
+      "features": {
+        "launch_time": 1781080498.924696,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 18.55,
+      "learned_at": "2026-06-10T10:11:46.954728+00:00"
+    },
+    {
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 8.17,
+      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 1588460.66,
+      "learned_at": "2026-06-10T10:11:46.943672+00:00"
+    },
+    {
+      "symbol": "ABEL",
+      "features": {
+        "launch_time": 1781080498.924696,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 18.55,
+      "learned_at": "2026-06-10T10:11:46.954728+00:00"
+    },
+    {
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 8.17,
+      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 1588460.66,
+      "learned_at": "2026-06-10T10:11:46.943672+00:00"
+    },
+    {
+      "symbol": "ABEL",
+      "features": {
+        "launch_time": 1781080498.924696,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 18.55,
+      "learned_at": "2026-06-10T10:11:46.954728+00:00"
+    },
+    {
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 8.17,
+      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 1588460.66,
+      "learned_at": "2026-06-10T10:11:46.943672+00:00"
+    },
+    {
+      "symbol": "ABEL",
+      "features": {
+        "launch_time": 1781080498.924696,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 18.55,
+      "learned_at": "2026-06-10T10:11:46.954728+00:00"
+    },
+    {
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 8.17,
+      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 1588460.66,
+      "learned_at": "2026-06-10T10:11:46.943672+00:00"
+    },
+    {
+      "symbol": "ABEL",
+      "features": {
+        "launch_time": 1781080498.924696,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 18.55,
+      "learned_at": "2026-06-10T10:11:46.954728+00:00"
+    },
+    {
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 8.17,
+      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 1588460.66,
+      "learned_at": "2026-06-10T10:11:46.943672+00:00"
+    },
+    {
+      "symbol": "ABEL",
+      "features": {
+        "launch_time": 1781080498.924696,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 18.55,
+      "learned_at": "2026-06-10T10:11:46.954728+00:00"
+    },
+    {
+      "symbol": "CAINYABEL",
+      "features": {
+        "launch_time": 1781079980.853097,
+        "source": "historical_scan"
+      },
+      "outcome": "STRONG_PUMP",
+      "multiplier": 8.17,
+      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
     }
   ],
   "dump_patterns": [
@@ -11230,6 +11662,22 @@
         "ath_multiplier": 0.5,
         "current_multiplier": 0.0,
         "timestamp": "2026-06-10T19:00:05.557903+00:00"
+      },
+      {
+        "address": "95LqAprdEk9eMtyjrXoVXWLFqLWx3FY5uqYYt4dQpump",
+        "symbol": "PUP",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T19:58:47.674271+00:00"
+      },
+      {
+        "address": "ELhriEvcdPujdfm35eaRAXpLSNAEtVHm8Cdukqtxpump",
+        "symbol": "listeria ",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T19:58:55.380099+00:00"
       }
     ],
     "golden_symbols": {},
