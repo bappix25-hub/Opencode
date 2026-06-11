@@ -557,6 +557,31 @@
       "symbol": "ERBAI",
       "address": "acuUEuDhv4Spg4fxSfSew4SJm41SRzoKutiymAepump",
       "learned_at": "2026-06-11T14:24:56.864966+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 176989690.67,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 36512.7,
+      "initial_mcap": 279383,
+      "liq_pct": 13.07,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 14,
+      "lp_locked": 0,
+      "deployer": "6v67LcXfRiHT",
+      "ath_price": 0.0002793,
+      "launch_time": 1781187605.992718,
+      "liquidity": 36512.7,
+      "mcap": 279383.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 15.413907284768213,
+      "symbol": "FEFA26",
+      "address": "6UWKH52eCz27jc7ap5SDxqdy1edeRRJ2cCgrAHfJpump",
+      "learned_at": "2026-06-11T17:13:22.769886+00:00"
     }
   ],
   "dump_patterns": [
@@ -12336,7 +12361,7 @@
       }
     ],
     "golden_symbols": {},
-    "total_pumps": 10,
+    "total_pumps": 11,
     "total_dumps": 26,
     "total_skipped": 0,
     "last_auto_learn": "2026-06-11T10:45:02.255488+00:00",
@@ -16100,12 +16125,16 @@
         "ath_price": 1.001,
         "launch_time": 1781159093.573606,
         "liquidity": 3783399.17,
-        "mcap": 9352408702.0
+        "mcap": 9352408702.0,
+        "outcome": "pump",
+        "outcome_mcap": 9350436813.0,
+        "symbol": "ORANGIE",
+        "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
       },
       "launch_time": 1781159093.573606,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "pump",
+      "outcome_mcap": 9350436813.0,
+      "outcome_time": "2026-06-11T16:57:29.973698+00:00",
       "signal_sent": false
     },
     {
@@ -17152,6 +17181,31 @@
       "symbol": "ERBAI",
       "address": "acuUEuDhv4Spg4fxSfSew4SJm41SRzoKutiymAepump",
       "learned_at": "2026-06-11T14:24:56.864966+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 176989690.67,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 36512.7,
+      "initial_mcap": 279383,
+      "liq_pct": 13.07,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 14,
+      "lp_locked": 0,
+      "deployer": "6v67LcXfRiHT",
+      "ath_price": 0.0002793,
+      "launch_time": 1781187605.992718,
+      "liquidity": 36512.7,
+      "mcap": 279383.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 15.413907284768213,
+      "symbol": "FEFA26",
+      "address": "6UWKH52eCz27jc7ap5SDxqdy1edeRRJ2cCgrAHfJpump",
+      "learned_at": "2026-06-11T17:13:22.769886+00:00"
     }
   ]
 }
