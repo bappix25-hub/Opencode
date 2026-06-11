@@ -12615,6 +12615,15 @@
         "current_multiplier": 0.0,
         "signal_age": 0.0,
         "timestamp": "2026-06-11T22:03:09.372414+00:00"
+      },
+      {
+        "address": "5kcMbMWWfUPNzXwbWA1T4fYBjtMGAXyRMS399DMSLn6E",
+        "symbol": "KARMELON",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:03:16.526716+00:00"
       }
     ],
     "golden_symbols": {},
