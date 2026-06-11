@@ -632,6 +632,646 @@
       "symbol": "FIFADAY",
       "address": "HGii9wjcuj31g9uAQu3ncpEj4LGwzT3vj2AxUyMypump",
       "learned_at": "2026-06-11T21:58:38.405465+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "Gaejuki",
+      "features": {
+        "launch_time": 1781174109.973018,
+        "source": "historical_scan",
+        "ath_multiplier": 5.26,
+        "outcome": "STRONG_PUMP",
+        "signal_age": 0.0
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 5.26,
+      "signal_age": 0.0,
+      "learned_at": "2026-06-11T11:36:11.128591+00:00"
+    },
+    {
+      "symbol": "DragonWorm",
+      "features": {
+        "launch_time": 1781170186.358553,
+        "source": "historical_scan",
+        "ath_multiplier": 41.49,
+        "outcome": "STRONG_PUMP",
+        "signal_age": 0.0
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 41.49,
+      "signal_age": 0.0,
+      "learned_at": "2026-06-11T11:36:11.186956+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781082117.876315,
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
     }
   ],
   "dump_patterns": [
@@ -3018,70 +3658,6 @@
       "outcome": "DUMP",
       "multiplier": 0.897883149872989,
       "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "symbol": "OKAI",
-      "features": {
-        "buy_count": 20,
-        "sell_count": 14,
-        "buy_sell_ratio": 1.43,
-        "volume": 22818752.96,
-        "holders": 34,
-        "unique_wallets": 34,
-        "initial_liq": 0,
-        "initial_mcap": 6090.16,
-        "liq_pct": 0,
-        "snipers_30s": 0,
-        "insiders_30s": 0,
-        "launch_hour": 10,
-        "lp_locked": 0,
-        "deployer": "Ep8r1jHZp7ko",
-        "ath_price": 0.0,
-        "launch_time": 1781174117.164719,
-        "liquidity": 0.0,
-        "mcap": 6090.16,
-        "outcome": "DUMP",
-        "outcome_mcap": 6090.16,
-        "symbol": "OKAI",
-        "ath_multiplier": 1.0,
-        "signal_age": 160.35829401016235
-      },
-      "outcome": "DUMP",
-      "ath_multiplier": 1.0,
-      "signal_age": 160.35829401016235,
-      "learned_at": "2026-06-11T16:41:54.284671+00:00"
-    },
-    {
-      "symbol": "dih",
-      "features": {
-        "buy_count": 230,
-        "sell_count": 147,
-        "buy_sell_ratio": 1.56,
-        "volume": 96449438.14,
-        "holders": 115,
-        "unique_wallets": 377,
-        "initial_liq": 0,
-        "initial_mcap": 6796.92,
-        "liq_pct": 0,
-        "snipers_30s": 0,
-        "insiders_30s": 0,
-        "launch_hour": 10,
-        "lp_locked": 100,
-        "deployer": "42LQ2ZC1U8WB",
-        "ath_price": 3.89e-06,
-        "launch_time": 1781174209.578303,
-        "liquidity": 0.0,
-        "mcap": 6796.92,
-        "outcome": "DUMP",
-        "outcome_mcap": 1842.83,
-        "symbol": "dih",
-        "ath_multiplier": 1.1474396703943497,
-        "signal_age": 421.57364296913147
-      },
-      "outcome": "DUMP",
-      "ath_multiplier": 1.1474396703943497,
-      "signal_age": 421.57364296913147,
-      "learned_at": "2026-06-11T16:48:01.839600+00:00"
     }
   ],
   "launch_patterns": [
@@ -11753,15 +12329,6 @@
         "timestamp": "2026-06-11T10:12:55.111773+00:00"
       },
       {
-        "address": "CUqCTtiMuwbgknv1XA8uvw7yXsxTt4VUsVhiUxGXpump",
-        "symbol": "STONKRIDER",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T10:35:15.137843+00:00"
-      },
-      {
         "address": "6QxpY5yxS9qo9XY8ipCELfUBbDwFRsyG5dKfV7vrpump",
         "symbol": "BOOST",
         "verdict": "DUMP",
@@ -11771,60 +12338,6 @@
         "timestamp": "2026-06-11T10:35:19.968577+00:00"
       },
       {
-        "address": "7VAwrugAtjvRRSeAou71McQrBt4bhppDcSEX4DDLpump",
-        "symbol": "speedrun",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T10:35:24.730945+00:00"
-      },
-      {
-        "address": "Gh364stpEM3U2RzYv4WTtc99Y5Z6bw1oUU6vdxpWpump",
-        "symbol": "100M",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T10:35:26.855305+00:00"
-      },
-      {
-        "address": "ADFUs5gU2V3Q6Mcaxy9KkrEVxwc9DpL4yf8ZoRU4pump",
-        "symbol": "VSC",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T10:35:31.692689+00:00"
-      },
-      {
-        "address": "6cbLNDeEWfSRfq3nSbkjZRmBv7tEWXBG1uAJbintpump",
-        "symbol": "trumpunc",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T10:35:39.033258+00:00"
-      },
-      {
-        "address": "MiLL4FP4Y6JxW9qskY1ejKpBHw4RtbUQTrikTL2QBJg",
-        "symbol": "1M",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T10:35:43.914396+00:00"
-      },
-      {
-        "address": "9zkm2GwEeqRvdXKw799ddTBspouZsCDNxQigL1ypump",
-        "symbol": "GOAT",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T10:36:06.464847+00:00"
-      },
-      {
         "address": "2bh49NR2bFTVjDXDNrkeQTZUgxZEW5EKCqXjPMh6pump",
         "symbol": "ELE",
         "verdict": "DUMP",
@@ -11832,33 +12345,6 @@
         "current_multiplier": 0.0,
         "signal_age": 0.0,
         "timestamp": "2026-06-11T10:36:11.222856+00:00"
-      },
-      {
-        "address": "AReenah8rAPqFxBPEahpQtJSsYRPm7LzrHETFX4pump",
-        "symbol": "REPLA",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T10:36:18.452481+00:00"
-      },
-      {
-        "address": "GkwLAdFGA6d6NvvJ3YuxssbN6AE2HbuDJBCWR3BVpump",
-        "symbol": "Chikuwa",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T10:36:28.483664+00:00"
-      },
-      {
-        "address": "MJSV3dH2bhsK7jAFuHmM3knf63zCRuhw57cjwKxpump",
-        "symbol": "NATION",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T10:36:30.930395+00:00"
       },
       {
         "address": "2ZcrrjkHkCoyoqx37t2njhTqXkq32di2QKdzHtAEpump",
@@ -11879,15 +12365,6 @@
         "timestamp": "2026-06-11T11:36:11.128491+00:00"
       },
       {
-        "address": "9qpDk7hGSHqyfMGDT7p4zFQ35aGff248Qes48CgLpump",
-        "symbol": "SPCX",
-        "verdict": "PUMP",
-        "ath_multiplier": 3.92,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T11:36:11.162013+00:00"
-      },
-      {
         "address": "xLyhQfSW8UKjsJaisszVS5SRjVTmy9WiEVsq6Afpump",
         "symbol": "DragonWorm",
         "verdict": "STRONG_PUMP",
@@ -11897,15 +12374,6 @@
         "timestamp": "2026-06-11T11:36:11.186884+00:00"
       },
       {
-        "address": "CUqCTtiMuwbgknv1XA8uvw7yXsxTt4VUsVhiUxGXpump",
-        "symbol": "STONKRIDER",
-        "verdict": "PUMP",
-        "ath_multiplier": 3.75,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T11:36:11.212035+00:00"
-      },
-      {
         "address": "5tGjtzEE3rTHL121wpP5vcK4fYRtAS7otMtze3R8mosh",
         "symbol": "MOSH",
         "verdict": "DUMP",
@@ -11913,69 +12381,6 @@
         "current_multiplier": 0.0,
         "signal_age": 0.0,
         "timestamp": "2026-06-11T11:36:48.337075+00:00"
-      },
-      {
-        "address": "CUqCTtiMuwbgknv1XA8uvw7yXsxTt4VUsVhiUxGXpump",
-        "symbol": "STONKRIDER",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T11:36:53.209332+00:00"
-      },
-      {
-        "address": "6QxpY5yxS9qo9XY8ipCELfUBbDwFRsyG5dKfV7vrpump",
-        "symbol": "BOOST",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T11:36:58.122165+00:00"
-      },
-      {
-        "address": "7VAwrugAtjvRRSeAou71McQrBt4bhppDcSEX4DDLpump",
-        "symbol": "speedrun",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T11:37:03.021171+00:00"
-      },
-      {
-        "address": "Gh364stpEM3U2RzYv4WTtc99Y5Z6bw1oUU6vdxpWpump",
-        "symbol": "100M",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T11:37:05.469082+00:00"
-      },
-      {
-        "address": "ADFUs5gU2V3Q6Mcaxy9KkrEVxwc9DpL4yf8ZoRU4pump",
-        "symbol": "VSC",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T11:37:10.458465+00:00"
-      },
-      {
-        "address": "6cbLNDeEWfSRfq3nSbkjZRmBv7tEWXBG1uAJbintpump",
-        "symbol": "trumpunc",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T11:37:17.753830+00:00"
-      },
-      {
-        "address": "MiLL4FP4Y6JxW9qskY1ejKpBHw4RtbUQTrikTL2QBJg",
-        "symbol": "1M",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T11:37:22.626312+00:00"
       },
       {
         "address": "8oDeytEn1XAfLY6yK6tn1GW1sB5dSWw3reY8S4kmpump",
@@ -11996,96 +12401,6 @@
         "timestamp": "2026-06-11T11:37:49.165620+00:00"
       },
       {
-        "address": "9zkm2GwEeqRvdXKw799ddTBspouZsCDNxQigL1ypump",
-        "symbol": "GOAT",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T11:37:51.686249+00:00"
-      },
-      {
-        "address": "2bh49NR2bFTVjDXDNrkeQTZUgxZEW5EKCqXjPMh6pump",
-        "symbol": "ELE",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T11:37:56.500782+00:00"
-      },
-      {
-        "address": "AReenah8rAPqFxBPEahpQtJSsYRPm7LzrHETFX4pump",
-        "symbol": "REPLA",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T11:38:03.802825+00:00"
-      },
-      {
-        "address": "YZYbAx6GokTodmzgXLXMZuWU5RkdB9tFXAzaDuqVBNK",
-        "symbol": "YZYB",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T12:38:12.886180+00:00"
-      },
-      {
-        "address": "5tGjtzEE3rTHL121wpP5vcK4fYRtAS7otMtze3R8mosh",
-        "symbol": "MOSH",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T12:38:32.278147+00:00"
-      },
-      {
-        "address": "CUqCTtiMuwbgknv1XA8uvw7yXsxTt4VUsVhiUxGXpump",
-        "symbol": "STONKRIDER",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T12:38:37.031755+00:00"
-      },
-      {
-        "address": "6QxpY5yxS9qo9XY8ipCELfUBbDwFRsyG5dKfV7vrpump",
-        "symbol": "BOOST",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T12:38:41.785007+00:00"
-      },
-      {
-        "address": "7VAwrugAtjvRRSeAou71McQrBt4bhppDcSEX4DDLpump",
-        "symbol": "speedrun",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T12:38:46.663532+00:00"
-      },
-      {
-        "address": "Gh364stpEM3U2RzYv4WTtc99Y5Z6bw1oUU6vdxpWpump",
-        "symbol": "100M",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T12:38:49.009443+00:00"
-      },
-      {
-        "address": "ADFUs5gU2V3Q6Mcaxy9KkrEVxwc9DpL4yf8ZoRU4pump",
-        "symbol": "VSC",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T12:38:53.801892+00:00"
-      },
-      {
         "address": "DzMMvk7RkGXZ6XH8RrvkwMc8NGwfdL4iXJMzpY3bpump",
         "symbol": "SLM",
         "verdict": "DUMP",
@@ -12093,42 +12408,6 @@
         "current_multiplier": 0.0,
         "signal_age": 0.0,
         "timestamp": "2026-06-11T12:39:14.916828+00:00"
-      },
-      {
-        "address": "8oDeytEn1XAfLY6yK6tn1GW1sB5dSWw3reY8S4kmpump",
-        "symbol": "Sam",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T12:39:24.261231+00:00"
-      },
-      {
-        "address": "213TrmJBFCwrACFPR5FHcZiDgFmRdpHjwnA64knEpump",
-        "symbol": "TOOF",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T12:39:26.344237+00:00"
-      },
-      {
-        "address": "9zkm2GwEeqRvdXKw799ddTBspouZsCDNxQigL1ypump",
-        "symbol": "GOAT",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T12:39:28.757630+00:00"
-      },
-      {
-        "address": "2bh49NR2bFTVjDXDNrkeQTZUgxZEW5EKCqXjPMh6pump",
-        "symbol": "ELE",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T12:39:33.510273+00:00"
       },
       {
         "address": "6nNWQ3N7aCrg36YAyRP4BNJois8xp1kdr9dctY52pump",
@@ -12158,15 +12437,6 @@
         "timestamp": "2026-06-11T13:50:34.489423+00:00"
       },
       {
-        "address": "YZYbAx6GokTodmzgXLXMZuWU5RkdB9tFXAzaDuqVBNK",
-        "symbol": "YZYB",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T13:50:47.820960+00:00"
-      },
-      {
         "address": "39XVpTokUrKbNDdCCxC1fFmHJZ3iJzC8NTofzp6Tpump",
         "symbol": "SPCX",
         "verdict": "DUMP",
@@ -12174,24 +12444,6 @@
         "current_multiplier": 0.0,
         "signal_age": 0.0,
         "timestamp": "2026-06-11T13:50:57.362597+00:00"
-      },
-      {
-        "address": "5tGjtzEE3rTHL121wpP5vcK4fYRtAS7otMtze3R8mosh",
-        "symbol": "MOSH",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T13:51:07.707329+00:00"
-      },
-      {
-        "address": "CUqCTtiMuwbgknv1XA8uvw7yXsxTt4VUsVhiUxGXpump",
-        "symbol": "STONKRIDER",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T13:51:13.397856+00:00"
       },
       {
         "address": "GQU8znxKLRjUCphgYJcy6pMymdUgEyBx11ZKm7v8pump",
@@ -12221,15 +12473,6 @@
         "timestamp": "2026-06-11T14:52:21.630372+00:00"
       },
       {
-        "address": "6nNWQ3N7aCrg36YAyRP4BNJois8xp1kdr9dctY52pump",
-        "symbol": "MARU",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T14:52:29.863005+00:00"
-      },
-      {
         "address": "8FFRqqeiW11k5UAArAVe26cz3HNHBwBfDzTQnqhpump",
         "symbol": "MARS",
         "verdict": "DUMP",
@@ -12239,24 +12482,6 @@
         "timestamp": "2026-06-11T14:52:35.383268+00:00"
       },
       {
-        "address": "E7D4GPUUi7Vfrz3BFNpoYcEaNMLu83MSbRPRqKkKpump",
-        "symbol": "GTA6",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T14:52:43.348527+00:00"
-      },
-      {
-        "address": "BuzVgHAMDvNNz4zNvxcXN4EiTXzij1e7AjCzfmzVpump",
-        "symbol": "ACAT",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T14:52:45.770607+00:00"
-      },
-      {
         "address": "CinHRrjkMMRYyYe6zfn9cGL8kGjeJNhdT6Lg4a4Hpump",
         "symbol": "FEFA",
         "verdict": "DUMP",
@@ -12264,69 +12489,6 @@
         "current_multiplier": 0.0,
         "signal_age": 0.0,
         "timestamp": "2026-06-11T14:52:52.996047+00:00"
-      },
-      {
-        "address": "39XVpTokUrKbNDdCCxC1fFmHJZ3iJzC8NTofzp6Tpump",
-        "symbol": "SPCX",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T14:53:09.855023+00:00"
-      },
-      {
-        "address": "5tGjtzEE3rTHL121wpP5vcK4fYRtAS7otMtze3R8mosh",
-        "symbol": "MOSH",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T14:53:19.248281+00:00"
-      },
-      {
-        "address": "4zeDXMWZBAZ6cLHBxARCRyjAfduWChaE93HPvmDypump",
-        "symbol": "Trionda",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T15:54:23.776155+00:00"
-      },
-      {
-        "address": "6nNWQ3N7aCrg36YAyRP4BNJois8xp1kdr9dctY52pump",
-        "symbol": "MARU",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T15:54:30.970404+00:00"
-      },
-      {
-        "address": "8FFRqqeiW11k5UAArAVe26cz3HNHBwBfDzTQnqhpump",
-        "symbol": "MARS",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T15:54:35.700964+00:00"
-      },
-      {
-        "address": "BuzVgHAMDvNNz4zNvxcXN4EiTXzij1e7AjCzfmzVpump",
-        "symbol": "ACAT",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T15:54:45.963302+00:00"
-      },
-      {
-        "address": "CinHRrjkMMRYyYe6zfn9cGL8kGjeJNhdT6Lg4a4Hpump",
-        "symbol": "FEFA",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T15:54:54.158675+00:00"
       },
       {
         "address": "ioBd2pYPfUn4PeAYekFyo6iaNuzWCTRNuk4vyaupump",
@@ -12365,51 +12527,6 @@
         "timestamp": "2026-06-11T16:55:57.770032+00:00"
       },
       {
-        "address": "4zeDXMWZBAZ6cLHBxARCRyjAfduWChaE93HPvmDypump",
-        "symbol": "Trionda",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T16:56:25.442216+00:00"
-      },
-      {
-        "address": "6nNWQ3N7aCrg36YAyRP4BNJois8xp1kdr9dctY52pump",
-        "symbol": "MARU",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T16:56:33.636358+00:00"
-      },
-      {
-        "address": "8FFRqqeiW11k5UAArAVe26cz3HNHBwBfDzTQnqhpump",
-        "symbol": "MARS",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T16:56:39.380118+00:00"
-      },
-      {
-        "address": "BuzVgHAMDvNNz4zNvxcXN4EiTXzij1e7AjCzfmzVpump",
-        "symbol": "ACAT",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T16:56:48.878135+00:00"
-      },
-      {
-        "address": "CinHRrjkMMRYyYe6zfn9cGL8kGjeJNhdT6Lg4a4Hpump",
-        "symbol": "FEFA",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T16:56:55.788318+00:00"
-      },
-      {
         "address": "AgqYyytQ5hHkYwCkrpVLNwigQPSwBwE5gH7JUhtUpump",
         "symbol": "POKECR",
         "verdict": "DUMP",
@@ -12437,24 +12554,6 @@
         "timestamp": "2026-06-11T17:59:30.923174+00:00"
       },
       {
-        "address": "2DkrY8hFQ47GCqMkUGCabbnm1sQMUJnMJhZjQW1Mpump",
-        "symbol": "SPC",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T17:59:47.679367+00:00"
-      },
-      {
-        "address": "D1zjT2QQcj59wPGsonM5aWnijobt2VNu22WzAS7npump",
-        "symbol": "FIFA",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T17:59:50.230572+00:00"
-      },
-      {
         "address": "WUrToByF8yhPGJSPGsSAYuMxLUnHEUuTRDgwzgKpump",
         "symbol": "CUPC",
         "verdict": "DUMP",
@@ -12471,15 +12570,6 @@
         "current_multiplier": 0.0,
         "signal_age": 0.0,
         "timestamp": "2026-06-11T19:44:57.397810+00:00"
-      },
-      {
-        "address": "DrESFkkBLL7Bcx9f1vdGBSAq9Cq8jUeXeoM4uZBZpump",
-        "symbol": "Vox",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T19:45:02.407004+00:00"
       },
       {
         "address": "EBc6YWysUJsQJh9UayAiyS5j9voLdJUAVQBxzBNtpump",
@@ -12509,24 +12599,6 @@
         "timestamp": "2026-06-11T19:45:15.371576+00:00"
       },
       {
-        "address": "AgqYyytQ5hHkYwCkrpVLNwigQPSwBwE5gH7JUhtUpump",
-        "symbol": "POKECR",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T19:45:31.011612+00:00"
-      },
-      {
-        "address": "jcrUTfAyGYTWu3hkHmEXHktDdkdHVhfrxTL2ciVpump",
-        "symbol": "Constructer",
-        "verdict": "DUMP",
-        "ath_multiplier": 0.5,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-11T19:45:36.019508+00:00"
-      },
-      {
         "address": "iVTa6XpnBN51rkyfMRd5M9st2n4QgRywaLyuRJVpump",
         "symbol": "SOLPICKS",
         "verdict": "DUMP",
@@ -12534,6 +12606,15 @@
         "current_multiplier": 0.0,
         "signal_age": 0.0,
         "timestamp": "2026-06-11T19:46:11.210465+00:00"
+      },
+      {
+        "address": "HQ7Jac4qoUoYDtUTbjEe6BZKsuNxDmFxVQW6kdv5pump",
+        "symbol": "135$",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:03:09.372414+00:00"
       }
     ],
     "golden_symbols": {},
@@ -17434,6 +17515,32 @@
         "source": "historical_scan"
       },
       "launch_time": 1781185878.424868,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "HGii9wjcuj31g9uAQu3ncpEj4LGwzT3vj2AxUyMypump",
+      "symbol": "FIFADAY",
+      "features": {
+        "launch_time": 1781215370.473469,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781215370.473469,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "6aoSWHohMdCfEXKkUjJEVazb4qrfZWGYCVSinp5wpump",
+      "symbol": "TROPHY",
+      "features": {
+        "launch_time": 1781215372.631706,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781215372.631706,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
