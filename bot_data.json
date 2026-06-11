@@ -12633,6 +12633,42 @@
         "current_multiplier": 0.0,
         "signal_age": 0.0,
         "timestamp": "2026-06-11T22:03:23.841160+00:00"
+      },
+      {
+        "address": "3oza9n1yE7mPsugsB7AjZyeP63CNxqndo8Qwycnspump",
+        "symbol": "FIFA26",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:03:28.619411+00:00"
+      },
+      {
+        "address": "Hn9C7mijuGejPu9ZCvWfhQfFEoJpHEcNHMqgxZGEpump",
+        "symbol": "AUTA",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:03:51.740626+00:00"
+      },
+      {
+        "address": "8eepcHa4XaQdKa5vhjRGcyz2XuRAjY5V7WkZ4mU4pump",
+        "symbol": "SHITHOLE",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:03:59.125736+00:00"
+      },
+      {
+        "address": "3GzCHtzUABmT6zbfbVKxgUFvFwWcZpeUkCQrGTtWpump",
+        "symbol": "$GIMNK",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:04:04.079410+00:00"
       }
     ],
     "golden_symbols": {},
@@ -17559,6 +17595,19 @@
         "source": "historical_scan"
       },
       "launch_time": 1781215372.631706,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "DB8uVHRZw6284XmfDyChcvMsPs5NvMfTe9kHPPqkGaqV",
+      "symbol": "UAIT",
+      "features": {
+        "launch_time": 1781215429.623817,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781215429.623817,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
