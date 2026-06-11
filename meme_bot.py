@@ -483,8 +483,9 @@ class MemeBot:
         if not is_pre_migration and liquidity < 500:
             logger.info(f"[SKIP] {symbol}: signal rejected — liq=${int(liquidity)} < $500")
             return
-        if mcap < 5000:
-            logger.info(f"[SKIP] {symbol}: signal rejected — mcap={format_number(mcap)} < $5K")
+        min_mcap = 500 if is_pre_migration else 5000
+        if mcap < min_mcap:
+            logger.info(f"[SKIP] {symbol}: signal rejected — mcap={format_number(mcap)} < ${min_mcap}")
             return
         if real_holders < 3:
             logger.info(f"[SKIP] {symbol}: signal rejected — holders={real_holders} < 3")
