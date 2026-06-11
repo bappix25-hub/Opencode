@@ -582,6 +582,31 @@
       "symbol": "FEFA26",
       "address": "6UWKH52eCz27jc7ap5SDxqdy1edeRRJ2cCgrAHfJpump",
       "learned_at": "2026-06-11T17:13:22.769886+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 151660777.33,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 37516.03,
+      "initial_mcap": 278438,
+      "liq_pct": 13.47,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 18,
+      "lp_locked": 0,
+      "deployer": "H1QPnWAfW6eB",
+      "ath_price": 0.0002784,
+      "launch_time": 1781202356.711444,
+      "liquidity": 37516.03,
+      "mcap": 278438.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 1.0426966292134832,
+      "symbol": "TROPHY",
+      "address": "6aoSWHohMdCfEXKkUjJEVazb4qrfZWGYCVSinp5wpump",
+      "learned_at": "2026-06-11T21:58:31.296497+00:00"
     }
   ],
   "dump_patterns": [
@@ -12487,7 +12512,7 @@
       }
     ],
     "golden_symbols": {},
-    "total_pumps": 11,
+    "total_pumps": 12,
     "total_dumps": 26,
     "total_skipped": 0,
     "last_auto_learn": "2026-06-11T10:45:02.255488+00:00",
@@ -17465,6 +17490,31 @@
       "symbol": "FEFA26",
       "address": "6UWKH52eCz27jc7ap5SDxqdy1edeRRJ2cCgrAHfJpump",
       "learned_at": "2026-06-11T17:13:22.769886+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 151660777.33,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 37516.03,
+      "initial_mcap": 278438,
+      "liq_pct": 13.47,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 18,
+      "lp_locked": 0,
+      "deployer": "H1QPnWAfW6eB",
+      "ath_price": 0.0002784,
+      "launch_time": 1781202356.711444,
+      "liquidity": 37516.03,
+      "mcap": 278438.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 1.0426966292134832,
+      "symbol": "TROPHY",
+      "address": "6aoSWHohMdCfEXKkUjJEVazb4qrfZWGYCVSinp5wpump",
+      "learned_at": "2026-06-11T21:58:31.296497+00:00"
     }
   ]
 }
