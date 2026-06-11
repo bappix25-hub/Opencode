@@ -475,7 +475,8 @@ class MemeBot:
         if not match:
             return
 
-        if liquidity < 500:
+        is_pre_migration = launch_data.migration_time == 0
+        if not is_pre_migration and liquidity < 500:
             logger.info(f"[SKIP] {symbol}: signal rejected — liq=${int(liquidity)} < $500")
             return
         if mcap < 5000:
