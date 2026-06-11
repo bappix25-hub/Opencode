@@ -3,32 +3,26 @@
     {
       "symbol": "SPCX",
       "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
         "launch_time": 1781082117.876315,
-        "source": "historical_scan"
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
       },
       "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
     },
     {
       "symbol": "SPCX",
@@ -57,32 +51,26 @@
     {
       "symbol": "SPCX",
       "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
         "launch_time": 1781082117.876315,
-        "source": "historical_scan"
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
       },
       "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
     },
     {
       "symbol": "SPCX",
@@ -111,32 +99,26 @@
     {
       "symbol": "SPCX",
       "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
         "launch_time": 1781082117.876315,
-        "source": "historical_scan"
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
       },
       "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
     },
     {
       "symbol": "SPCX",
@@ -165,32 +147,26 @@
     {
       "symbol": "SPCX",
       "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
         "launch_time": 1781082117.876315,
-        "source": "historical_scan"
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
       },
       "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
     },
     {
       "symbol": "SPCX",
@@ -219,32 +195,26 @@
     {
       "symbol": "SPCX",
       "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
         "launch_time": 1781082117.876315,
-        "source": "historical_scan"
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
       },
       "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
     },
     {
       "symbol": "SPCX",
@@ -273,32 +243,26 @@
     {
       "symbol": "SPCX",
       "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
         "launch_time": 1781082117.876315,
-        "source": "historical_scan"
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
       },
       "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
     },
     {
       "symbol": "SPCX",
@@ -327,32 +291,26 @@
     {
       "symbol": "SPCX",
       "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
         "launch_time": 1781082117.876315,
-        "source": "historical_scan"
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
       },
       "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
     },
     {
       "symbol": "SPCX",
@@ -381,32 +339,26 @@
     {
       "symbol": "SPCX",
       "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
         "launch_time": 1781082117.876315,
-        "source": "historical_scan"
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
       },
       "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
     },
     {
       "symbol": "SPCX",
@@ -435,32 +387,26 @@
     {
       "symbol": "SPCX",
       "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
         "launch_time": 1781082117.876315,
-        "source": "historical_scan"
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
       },
       "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
     },
     {
       "symbol": "SPCX",
@@ -489,32 +435,26 @@
     {
       "symbol": "SPCX",
       "features": {
+        "launch_time": 1781086312.721899,
+        "source": "historical_scan",
+        "ath_multiplier": 387612.83,
+        "outcome": "STRONG_PUMP"
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 387612.83,
+      "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "symbol": "SPCX",
+      "features": {
         "launch_time": 1781082117.876315,
-        "source": "historical_scan"
+        "source": "historical_scan",
+        "ath_multiplier": 1588460.66,
+        "outcome": "STRONG_PUMP"
       },
       "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
+      "ath_multiplier": 1588460.66,
+      "learned_at": "2026-06-10T12:10:21.774269+00:00"
     },
     {
       "symbol": "SPCX",
@@ -541,544 +481,29 @@
       "learned_at": "2026-06-10T12:10:21.774269+00:00"
     },
     {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781086312.721899,
-        "source": "historical_scan",
-        "ath_multiplier": 387612.83,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 387612.83,
-      "learned_at": "2026-06-10T12:10:21.725899+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan",
-        "ath_multiplier": 1588460.66,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 1588460.66,
-      "learned_at": "2026-06-10T12:10:21.774269+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781086312.721899,
-        "source": "historical_scan",
-        "ath_multiplier": 387612.83,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 387612.83,
-      "learned_at": "2026-06-10T12:10:21.725899+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan",
-        "ath_multiplier": 1588460.66,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 1588460.66,
-      "learned_at": "2026-06-10T12:10:21.774269+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781086312.721899,
-        "source": "historical_scan",
-        "ath_multiplier": 387612.83,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 387612.83,
-      "learned_at": "2026-06-10T12:10:21.725899+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan",
-        "ath_multiplier": 1588460.66,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 1588460.66,
-      "learned_at": "2026-06-10T12:10:21.774269+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781086312.721899,
-        "source": "historical_scan",
-        "ath_multiplier": 387612.83,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 387612.83,
-      "learned_at": "2026-06-10T12:10:21.725899+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan",
-        "ath_multiplier": 1588460.66,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 1588460.66,
-      "learned_at": "2026-06-10T12:10:21.774269+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781086312.721899,
-        "source": "historical_scan",
-        "ath_multiplier": 387612.83,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 387612.83,
-      "learned_at": "2026-06-10T12:10:21.725899+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan",
-        "ath_multiplier": 1588460.66,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 1588460.66,
-      "learned_at": "2026-06-10T12:10:21.774269+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781086312.721899,
-        "source": "historical_scan",
-        "ath_multiplier": 387612.83,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 387612.83,
-      "learned_at": "2026-06-10T12:10:21.725899+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan",
-        "ath_multiplier": 1588460.66,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 1588460.66,
-      "learned_at": "2026-06-10T12:10:21.774269+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781086312.721899,
-        "source": "historical_scan",
-        "ath_multiplier": 387612.83,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 387612.83,
-      "learned_at": "2026-06-10T12:10:21.725899+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan",
-        "ath_multiplier": 1588460.66,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 1588460.66,
-      "learned_at": "2026-06-10T12:10:21.774269+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781086312.721899,
-        "source": "historical_scan",
-        "ath_multiplier": 387612.83,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 387612.83,
-      "learned_at": "2026-06-10T12:10:21.725899+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan",
-        "ath_multiplier": 1588460.66,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 1588460.66,
-      "learned_at": "2026-06-10T12:10:21.774269+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781086312.721899,
-        "source": "historical_scan",
-        "ath_multiplier": 387612.83,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 387612.83,
-      "learned_at": "2026-06-10T12:10:21.725899+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan",
-        "ath_multiplier": 1588460.66,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 1588460.66,
-      "learned_at": "2026-06-10T12:10:21.774269+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 1588460.66,
-      "learned_at": "2026-06-10T10:11:46.943672+00:00"
-    },
-    {
-      "symbol": "ABEL",
-      "features": {
-        "launch_time": 1781080498.924696,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 18.55,
-      "learned_at": "2026-06-10T10:11:46.954728+00:00"
-    },
-    {
-      "symbol": "CAINYABEL",
-      "features": {
-        "launch_time": 1781079980.853097,
-        "source": "historical_scan"
-      },
-      "outcome": "STRONG_PUMP",
-      "multiplier": 8.17,
-      "learned_at": "2026-06-10T10:11:46.979920+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781086312.721899,
-        "source": "historical_scan",
-        "ath_multiplier": 387612.83,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 387612.83,
-      "learned_at": "2026-06-10T12:10:21.725899+00:00"
-    },
-    {
-      "symbol": "SPCX",
-      "features": {
-        "launch_time": 1781082117.876315,
-        "source": "historical_scan",
-        "ath_multiplier": 1588460.66,
-        "outcome": "STRONG_PUMP"
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 1588460.66,
-      "learned_at": "2026-06-10T12:10:21.774269+00:00"
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 1214690.23,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 37323.17,
+      "initial_mcap": 272761,
+      "liq_pct": 13.68,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 10,
+      "lp_locked": 0,
+      "deployer": "7ARnw2exp6QN",
+      "ath_price": 0.0002727,
+      "launch_time": 1781174721.632159,
+      "liquidity": 37323.17,
+      "mcap": 272761.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 37.17284623773174,
+      "symbol": "MORT",
+      "address": "2ZcrrjkHkCoyoqx37t2njhTqXkq32di2QKdzHtAEpump",
+      "learned_at": "2026-06-11T11:24:56.151057+00:00"
     }
   ],
   "dump_patterns": [
@@ -12245,21 +11670,21 @@
       }
     ],
     "golden_symbols": {},
-    "total_pumps": 6,
+    "total_pumps": 7,
     "total_dumps": 24,
     "total_skipped": 0,
-    "last_auto_learn": "2026-06-11T08:33:44.482733+00:00",
+    "last_auto_learn": "2026-06-11T10:45:02.255488+00:00",
     "auto_learn_insights": {
       "avg_win_bsr": 0,
-      "avg_loss_bsr": 1.28,
+      "avg_loss_bsr": 1.17,
       "avg_win_holders": 0,
-      "avg_loss_holders": 36.7,
+      "avg_loss_holders": 26.0,
       "avg_win_wallets": 0,
-      "avg_loss_wallets": 36.7,
+      "avg_loss_wallets": 26.0,
       "avg_win_liq": 0,
       "avg_loss_liq": 0,
       "avg_win_mcap": 0,
-      "avg_loss_mcap": 1798.0,
+      "avg_loss_mcap": 1842.0,
       "avg_win_lp_locked": 0,
       "avg_loss_lp_locked": 0,
       "total_recent": 50,
@@ -12275,8 +11700,8 @@
       "heuristic_threshold": 0.7,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-11T08:33:44.538377+00:00",
-      "sample_size": 201
+      "updated_at": "2026-06-11T10:45:02.304076+00:00",
+      "sample_size": 140
     },
     "signal_criteria_stats": {
       "pump_medians": {
@@ -12295,7 +11720,7 @@
         "liq_pct": 0,
         "lp_locked": 0
       },
-      "pump_count": 101,
+      "pump_count": 40,
       "dump_count": 100
     }
   },
@@ -16080,6 +15505,497 @@
       "outcome_mcap": 0,
       "outcome_time": null,
       "signal_sent": false
+    },
+    {
+      "address": "ioBd2pYPfUn4PeAYekFyo6iaNuzWCTRNuk4vyaupump",
+      "symbol": "OKAI",
+      "features": {
+        "buy_count": 20,
+        "sell_count": 14,
+        "buy_sell_ratio": 1.43,
+        "volume": 22818752.96,
+        "holders": 34,
+        "unique_wallets": 34,
+        "initial_liq": 0,
+        "initial_mcap": 6090.16,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 10,
+        "lp_locked": 0,
+        "deployer": "Ep8r1jHZp7ko",
+        "ath_price": 0.0,
+        "launch_time": 1781174117.164719,
+        "liquidity": 0.0,
+        "mcap": 6090.16
+      },
+      "launch_time": 1781174117.164719,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "6RwzVXic1uqpHrVcZRTSdfBvNKU2tfuxQd3wjxa9pump",
+      "symbol": "Slurcoin",
+      "features": {
+        "buy_count": 55,
+        "sell_count": 61,
+        "buy_sell_ratio": 0.9,
+        "volume": 67062500.0,
+        "holders": 116,
+        "unique_wallets": 116,
+        "initial_liq": 0,
+        "initial_mcap": 1831.03,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 10,
+        "lp_locked": 0,
+        "deployer": "CXoUJHtBGnuN",
+        "ath_price": 1.83e-06,
+        "launch_time": 1781174127.034238,
+        "liquidity": 0.0,
+        "mcap": 1831.03
+      },
+      "launch_time": 1781174127.034238,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "5UNL8hPcaNLjfx1nAqNGZe7iJWXaYPiycLoqzwESpump",
+      "symbol": "Chit",
+      "features": {
+        "buy_count": 3,
+        "sell_count": 4,
+        "buy_sell_ratio": 0.75,
+        "volume": 35323.89,
+        "holders": 4,
+        "unique_wallets": 7,
+        "initial_liq": 0,
+        "initial_mcap": 1831.09,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 10,
+        "lp_locked": 0,
+        "deployer": "5pPRkoQfXojL",
+        "ath_price": 1.84e-06,
+        "launch_time": 1781174129.04358,
+        "liquidity": 0.0,
+        "mcap": 1831.09
+      },
+      "launch_time": 1781174129.04358,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "HviZGXmoNUHUMH1Rdxq6iTKmi5Lanj2kRoTEgjCQpump",
+      "symbol": "SML",
+      "features": {
+        "buy_count": 7,
+        "sell_count": 6,
+        "buy_sell_ratio": 1.17,
+        "volume": 1785357.77,
+        "holders": 11,
+        "unique_wallets": 13,
+        "initial_liq": 0,
+        "initial_mcap": 1832.15,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 10,
+        "lp_locked": 0,
+        "deployer": "wBhqvzfR7ZZ3",
+        "ath_price": 1.83e-06,
+        "launch_time": 1781174134.859621,
+        "liquidity": 0.0,
+        "mcap": 1832.15
+      },
+      "launch_time": 1781174134.859621,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "5zMiatdFRvMHwj6s3mZ125bet2QiVeLufDiNUipDpump",
+      "symbol": "CUM",
+      "features": {
+        "buy_count": 35,
+        "sell_count": 33,
+        "buy_sell_ratio": 1.06,
+        "volume": 97545454.55,
+        "holders": 68,
+        "unique_wallets": 68,
+        "initial_liq": 0,
+        "initial_mcap": 1833.14,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 10,
+        "lp_locked": 0,
+        "deployer": "2r9ZAGjERSiN",
+        "ath_price": 0.0,
+        "launch_time": 1781174158.661814,
+        "liquidity": 0.0,
+        "mcap": 1833.14
+      },
+      "launch_time": 1781174158.661814,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "DYJSJXbL9V3ZBi5MUHmD7hxBVdwRtVMxkWSR9Yfkpump",
+      "symbol": "TAGOH",
+      "features": {
+        "buy_count": 20,
+        "sell_count": 14,
+        "buy_sell_ratio": 1.43,
+        "volume": 20784503.58,
+        "holders": 34,
+        "unique_wallets": 34,
+        "initial_liq": 0,
+        "initial_mcap": 2181.69,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 10,
+        "lp_locked": 100,
+        "deployer": "c3sqL5D4iSf9",
+        "ath_price": 0.0,
+        "launch_time": 1781174165.910599,
+        "liquidity": 0.0,
+        "mcap": 2181.69
+      },
+      "launch_time": 1781174165.910599,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "75urriMF6nL93azCmLfy48EjBFrKW2scusrfJnK1pump",
+      "symbol": "FAGGOTS",
+      "features": {
+        "buy_count": 60,
+        "sell_count": 58,
+        "buy_sell_ratio": 1.03,
+        "volume": 34199203.12,
+        "holders": 118,
+        "unique_wallets": 118,
+        "initial_liq": 0,
+        "initial_mcap": 2191.76,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 10,
+        "lp_locked": 0,
+        "deployer": "3jBqTnG6Q7Yb",
+        "ath_price": 0.0,
+        "launch_time": 1781174188.312701,
+        "liquidity": 0.0,
+        "mcap": 2191.76
+      },
+      "launch_time": 1781174188.312701,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "4dcJc5AnaYdytWMJoXujPGDFs9MgivJYx8wXGfzHi3Tz",
+      "symbol": "レンズ",
+      "features": {
+        "buy_count": 152,
+        "sell_count": 159,
+        "buy_sell_ratio": 0.96,
+        "volume": 66285714.22,
+        "holders": 192,
+        "unique_wallets": 311,
+        "initial_liq": 0,
+        "initial_mcap": 2317.64,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 10,
+        "lp_locked": 0,
+        "deployer": "Dfv8M6RUAeDV",
+        "ath_price": 1.84e-06,
+        "launch_time": 1781174197.310389,
+        "liquidity": 0.0,
+        "mcap": 2317.64
+      },
+      "launch_time": 1781174197.310389,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "AdgP7ysHKr1ozDr82waKbb2waz8FBYDWNJAb2Vt2pump",
+      "symbol": "WARDOG",
+      "features": {
+        "buy_count": 8,
+        "sell_count": 6,
+        "buy_sell_ratio": 1.33,
+        "volume": 8867768.63,
+        "holders": 9,
+        "unique_wallets": 14,
+        "initial_liq": 0,
+        "initial_mcap": 1842.25,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 10,
+        "lp_locked": 0,
+        "deployer": "HFLwnoSzNqQL",
+        "ath_price": 1.85e-06,
+        "launch_time": 1781174201.059526,
+        "liquidity": 0.0,
+        "mcap": 1842.25
+      },
+      "launch_time": 1781174201.059526,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "2mxHaqqwaNDBryXCxVy6epEoaqDqQAWvPpimbBvppump",
+      "symbol": "speedrun ",
+      "features": {
+        "buy_count": 2,
+        "sell_count": 2,
+        "buy_sell_ratio": 1.0,
+        "volume": 34199203.15,
+        "holders": 4,
+        "unique_wallets": 4,
+        "initial_liq": 0,
+        "initial_mcap": 1832.71,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 10,
+        "lp_locked": 0,
+        "deployer": "GXKX5mdhRrid",
+        "ath_price": 1.83e-06,
+        "launch_time": 1781174205.719974,
+        "liquidity": 0.0,
+        "mcap": 1832.71
+      },
+      "launch_time": 1781174205.719974,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "9TsPLnXxApXfLc3XmfvtvtVFhYjndYF4c8kNrRp6pump",
+      "symbol": "dih",
+      "features": {
+        "buy_count": 230,
+        "sell_count": 147,
+        "buy_sell_ratio": 1.56,
+        "volume": 96449438.14,
+        "holders": 115,
+        "unique_wallets": 377,
+        "initial_liq": 0,
+        "initial_mcap": 6796.92,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 10,
+        "lp_locked": 100,
+        "deployer": "42LQ2ZC1U8WB",
+        "ath_price": 3.89e-06,
+        "launch_time": 1781174209.578303,
+        "liquidity": 0.0,
+        "mcap": 6796.92
+      },
+      "launch_time": 1781174209.578303,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "9F4fJdvaDXDNEXiEiFcFkqGv6i81jpyWX4aMDsfpump",
+      "symbol": "PWR",
+      "features": {
+        "buy_count": 59,
+        "sell_count": 1,
+        "buy_sell_ratio": 59.0,
+        "volume": 425.94,
+        "holders": 60,
+        "unique_wallets": 60,
+        "initial_liq": 0,
+        "initial_mcap": 2652.65,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 10,
+        "lp_locked": 0,
+        "deployer": "7jfqDEfgL6YM",
+        "ath_price": 2.65e-06,
+        "launch_time": 1781174239.220304,
+        "liquidity": 0.0,
+        "mcap": 2652.65
+      },
+      "launch_time": 1781174239.220304,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "EqmU53K4s75u2C2YyBs9hwwQVipufqwhqsrSdHhNpump",
+      "symbol": "שיקו",
+      "features": {
+        "buy_count": 141,
+        "sell_count": 144,
+        "buy_sell_ratio": 0.98,
+        "volume": 67062500.0,
+        "holders": 81,
+        "unique_wallets": 285,
+        "initial_liq": 0,
+        "initial_mcap": 1831.03,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 10,
+        "lp_locked": 0,
+        "deployer": "866SrsMfwKsE",
+        "ath_price": 1.83e-06,
+        "launch_time": 1781174250.495603,
+        "liquidity": 0.0,
+        "mcap": 1831.03
+      },
+      "launch_time": 1781174250.495603,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "Ck1HjQCwuom5Tqd1e7UVHSRFYrBLV6qk8EvNaaJApump",
+      "symbol": "GROK",
+      "features": {
+        "buy_count": 8,
+        "sell_count": 3,
+        "buy_sell_ratio": 2.67,
+        "volume": 34612903.23,
+        "holders": 4,
+        "unique_wallets": 11,
+        "initial_liq": 0,
+        "initial_mcap": 2013.06,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 10,
+        "lp_locked": 0,
+        "deployer": "JQqFTRUZF7fn",
+        "ath_price": 1.83e-06,
+        "launch_time": 1781174250.106569,
+        "liquidity": 0.0,
+        "mcap": 2013.06
+      },
+      "launch_time": 1781174250.106569,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "GmdaHFGaNCk74PrLZKZxm8NZ4taeqUXbrcod8dCUpump",
+      "symbol": "SISYPHUS",
+      "features": {
+        "buy_count": 18,
+        "sell_count": 16,
+        "buy_sell_ratio": 1.12,
+        "volume": 17718309.8,
+        "holders": 34,
+        "unique_wallets": 34,
+        "initial_liq": 0,
+        "initial_mcap": 1317.56,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 10,
+        "lp_locked": 0,
+        "deployer": "AFfn9ZzYgtnZ",
+        "ath_price": 1.32e-06,
+        "launch_time": 1781174279.318606,
+        "liquidity": 0.0,
+        "mcap": 1317.56
+      },
+      "launch_time": 1781174279.318606,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "Bu66XyqGQP5CjSwrPKQK1DAPQScdEwuGC31CJtDDpump",
+      "symbol": "LPS",
+      "features": {
+        "buy_count": 25,
+        "sell_count": 8,
+        "buy_sell_ratio": 3.12,
+        "volume": 34199203.15,
+        "holders": 23,
+        "unique_wallets": 33,
+        "initial_liq": 0,
+        "initial_mcap": 1835.82,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 10,
+        "lp_locked": 0,
+        "deployer": "9nFpvLp8N2Kz",
+        "ath_price": 1.84e-06,
+        "launch_time": 1781174333.401468,
+        "liquidity": 0.0,
+        "mcap": 1835.82
+      },
+      "launch_time": 1781174333.401468,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    }
+  ],
+  "missed_pumps": [
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 1214690.23,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 37323.17,
+      "initial_mcap": 272761,
+      "liq_pct": 13.68,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 10,
+      "lp_locked": 0,
+      "deployer": "7ARnw2exp6QN",
+      "ath_price": 0.0002727,
+      "launch_time": 1781174721.632159,
+      "liquidity": 37323.17,
+      "mcap": 272761.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 37.17284623773174,
+      "symbol": "MORT",
+      "address": "2ZcrrjkHkCoyoqx37t2njhTqXkq32di2QKdzHtAEpump",
+      "learned_at": "2026-06-11T11:24:56.151057+00:00"
     }
   ]
 }
