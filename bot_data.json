@@ -532,6 +532,31 @@
       "ath_multiplier": 41.49,
       "signal_age": 0.0,
       "learned_at": "2026-06-11T11:36:11.186956+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 1763352.47,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 34786.36,
+      "initial_mcap": 250790,
+      "liq_pct": 13.87,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 13,
+      "lp_locked": 0,
+      "deployer": "FmmCLuQYzbty",
+      "ath_price": 0.0002507,
+      "launch_time": 1781183932.805365,
+      "liquidity": 34786.36,
+      "mcap": 250790.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 1.3602821486706458,
+      "symbol": "ERBAI",
+      "address": "acuUEuDhv4Spg4fxSfSew4SJm41SRzoKutiymAepump",
+      "learned_at": "2026-06-11T14:24:56.864966+00:00"
     }
   ],
   "dump_patterns": [
@@ -12049,7 +12074,7 @@
       }
     ],
     "golden_symbols": {},
-    "total_pumps": 9,
+    "total_pumps": 10,
     "total_dumps": 24,
     "total_skipped": 0,
     "last_auto_learn": "2026-06-11T10:45:02.255488+00:00",
@@ -12079,7 +12104,7 @@
       "heuristic_threshold": 0.7,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-11T12:51:42.100464+00:00",
+      "updated_at": "2026-06-11T13:55:32.678605+00:00",
       "sample_size": 143
     },
     "signal_criteria_stats": {
@@ -16562,6 +16587,31 @@
       "symbol": "MORT",
       "address": "2ZcrrjkHkCoyoqx37t2njhTqXkq32di2QKdzHtAEpump",
       "learned_at": "2026-06-11T11:24:56.151057+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 1763352.47,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 34786.36,
+      "initial_mcap": 250790,
+      "liq_pct": 13.87,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 13,
+      "lp_locked": 0,
+      "deployer": "FmmCLuQYzbty",
+      "ath_price": 0.0002507,
+      "launch_time": 1781183932.805365,
+      "liquidity": 34786.36,
+      "mcap": 250790.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 1.3602821486706458,
+      "symbol": "ERBAI",
+      "address": "acuUEuDhv4Spg4fxSfSew4SJm41SRzoKutiymAepump",
+      "learned_at": "2026-06-11T14:24:56.864966+00:00"
     }
   ]
 }
