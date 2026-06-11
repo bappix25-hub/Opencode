@@ -429,38 +429,59 @@ class MemeBot:
             h_score = 0.0
             h_reasons = []
             effective_wallets = min(real_holders, unique_wallets) if real_holders > 0 else unique_wallets
-            if launch_data.buy_count >= 10:
-                h_score += 0.35
+
+            # Buy velocity: buys per minute (must have enough data)
+            buy_velocity = 0
+            if age > 60:
+                buy_velocity = launch_data.buy_count / (age / 60)
+
+            # Buy count: need high activity
+            if launch_data.buy_count >= 30:
+                h_score += 0.30
                 h_reasons.append(f"buys={launch_data.buy_count}")
-            elif launch_data.buy_count >= 5:
-                h_score += 0.2
-                h_reasons.append(f"buys={launch_data.buy_count}")
-            if effective_wallets >= criteria.get("min_wallets", 3) * 2:
-                h_score += 0.3
-                h_reasons.append(f"wallets={effective_wallets}")
-            elif effective_wallets >= criteria.get("min_wallets", 3):
+            elif launch_data.buy_count >= 15:
                 h_score += 0.15
+                h_reasons.append(f"buys={launch_data.buy_count}")
+
+            # Buy velocity: must be actively buying (not old token with many buys)
+            if buy_velocity >= 5:
+                h_score += 0.25
+                h_reasons.append(f"vel={buy_velocity:.1f}/min")
+            elif buy_velocity >= 2:
+                h_score += 0.10
+                h_reasons.append(f"vel={buy_velocity:.1f}/min")
+
+            # Wallets: real unique buyers
+            if effective_wallets >= 50:
+                h_score += 0.20
                 h_reasons.append(f"wallets={effective_wallets}")
-            if buy_sell_ratio >= criteria.get("min_bsr", 1.2) * 1.3:
-                h_score += 0.2
+            elif effective_wallets >= 20:
+                h_score += 0.10
+                h_reasons.append(f"wallets={effective_wallets}")
+
+            # BSR: buying pressure
+            if buy_sell_ratio >= 2.0:
+                h_score += 0.15
                 h_reasons.append(f"bsr={buy_sell_ratio:.1f}")
-            if real_holders >= criteria.get("min_holders", 3) * 2:
-                h_score += 0.2
-                h_reasons.append(f"holders={real_holders}")
-            elif real_holders >= criteria.get("min_holders", 3):
-                h_score += 0.1
-                h_reasons.append(f"holders={real_holders}")
-            if liquidity >= criteria.get("min_liq", 1500) * 3:
+            elif buy_sell_ratio >= 1.5:
+                h_score += 0.08
+                h_reasons.append(f"bsr={buy_sell_ratio:.1f}")
+
+            # Holders: real holders from Helius
+            if real_holders >= 30:
                 h_score += 0.15
-                h_reasons.append(f"liq=${int(liquidity)}")
-            elif liquidity >= criteria.get("min_liq", 1500):
-                h_score += 0.1
-                h_reasons.append(f"liq=${int(liquidity)}")
+                h_reasons.append(f"holders={real_holders}")
+            elif real_holders >= 10:
+                h_score += 0.07
+                h_reasons.append(f"holders={real_holders}")
+
+            # LP locked
             lp_locked = launch_data.lp_locked
-            if lp_locked >= criteria.get("min_lp_locked", 0) + 20:
-                h_score += 0.1
+            if lp_locked >= 80:
+                h_score += 0.10
                 h_reasons.append(f"lp={lp_locked}%")
-            h_threshold = criteria.get("heuristic_threshold", 0.70)
+
+            h_threshold = 0.80  # Much stricter threshold
             if h_score >= h_threshold:
                 match = True
                 match_score = h_score
@@ -1077,74 +1098,75 @@ class MemeBot:
                 logger.error(f"সিগন্যাল চেক এরর: {e}")
 
     async def signal_confirmation_loop(self):
-        """Re-check pending signals after confirmation delay. Send only if price stable/rising."""
-        DEFAULT_CONFIRM_DELAY = 180  # 3 minutes default
-        MIN_PRICE_RATIO = 0.92  # price must be >= 92% of match price (allow 8% dip)
-        MAX_PRICE_RATIO = 50.0  # if price >50x, it already pumped — still send
-        CHECK_INTERVAL = 30  # check every 30s
+        """Multi-stage confirmation: require price INCREASE + momentum, not just stability."""
+        CHECK_INTERVAL = 30
+        STAGE1_DELAY = 180   # 3 min: first check
+        STAGE2_DELAY = 300   # 5 min: final check
+        MAX_WAIT = 480       # 8 min: expire
 
         while True:
             try:
                 await asyncio.sleep(CHECK_INTERVAL)
                 now = datetime.now(timezone.utc).timestamp()
-
-                # Use learned optimal delay if available
-                try:
-                    data = load_data()
-                    div = data.get("model", {}).get("divergence_insights", {})
-                    CONFIRM_DELAY = div.get("optimal_confirm_delay", DEFAULT_CONFIRM_DELAY)
-                    CONFIRM_DELAY = max(60, min(600, CONFIRM_DELAY))  # clamp 1-10 min
-                except Exception:
-                    CONFIRM_DELAY = DEFAULT_CONFIRM_DELAY
-
                 expired = []
+
                 for addr, pending in list(self.state.pending_signals.items()):
                     elapsed = now - pending.pending_since
-
-                    if elapsed < CONFIRM_DELAY:
-                        continue
 
                     # Fetch current price
                     pair = await self.dex.fetch_pair_data(addr)
                     if not pair:
-                        expired.append(addr)
+                        if elapsed > MAX_WAIT:
+                            expired.append(addr)
                         continue
 
                     current_price = float(pair.get("priceUsd", 0) or 0)
                     if current_price <= 0:
-                        expired.append(addr)
+                        if elapsed > MAX_WAIT:
+                            expired.append(addr)
                         continue
 
+                    price_ratio = current_price / pending.price_at_match if pending.price_at_match > 0 else 0
                     pending.check_count += 1
                     pending.last_check_price = current_price
 
-                    price_ratio = current_price / pending.price_at_match if pending.price_at_match > 0 else 0
+                    # STAGE 1: After 3 minutes — reject dumps, check for any momentum
+                    if elapsed >= STAGE1_DELAY and not pending.price_stable:
+                        if price_ratio < 0.90:
+                            # Dropped >10% → dump
+                            logger.info(f"[CONFIRM REJECT] {pending.symbol}: dropped {(1-price_ratio)*100:.0f}% at T+{elapsed:.0f}s")
+                            expired.append(addr)
+                            continue
+                        if price_ratio >= 1.05:
+                            # Up 5%+ → strong momentum, send now
+                            logger.info(f"[CONFIRMED-FAST] {pending.symbol}: +{(price_ratio-1)*100:.0f}% momentum at T+{elapsed:.0f}s")
+                            await self._send_confirmed_signal(addr, pending, current_price)
+                            expired.append(addr)
+                            continue
+                        # Stable but no momentum → mark as stage1 checked, wait for stage2
+                        pending.price_stable = True
+                        logger.info(f"[STAGE1] {pending.symbol}: stable at {price_ratio:.2f}x, waiting for momentum")
+                        continue
 
-                    # Price dropped too much → dump, skip signal
-                    if price_ratio < MIN_PRICE_RATIO:
-                        logger.info(f"[CONFIRM REJECT] {pending.symbol}: price dropped "
-                                    f"{(1-price_ratio)*100:.0f}% ({pending.price_at_match:.8f} → {current_price:.8f})")
+                    # STAGE 2: After 5 minutes — require positive price action
+                    if elapsed >= STAGE2_DELAY:
+                        if price_ratio < 0.93:
+                            logger.info(f"[CONFIRM REJECT] {pending.symbol}: weak at {(price_ratio-1)*100:+.0f}% T+{elapsed:.0f}s")
+                            expired.append(addr)
+                            continue
+                        if price_ratio >= 1.03:
+                            # Up 3%+ → confirmed
+                            logger.info(f"[CONFIRMED] {pending.symbol}: +{(price_ratio-1)*100:.0f}% at T+{elapsed:.0f}s")
+                            await self._send_confirmed_signal(addr, pending, current_price)
+                            expired.append(addr)
+                            continue
+                        # Flat after 5 min → no interest, expire
+                        logger.info(f"[CONFIRM EXPIRED] {pending.symbol}: flat {price_ratio:.2f}x after {elapsed:.0f}s")
                         expired.append(addr)
                         continue
 
-                    # Price already pumped big → still send (momentum)
-                    if price_ratio >= MAX_PRICE_RATIO:
-                        logger.info(f"[CONFIRM SEND-FAST] {pending.symbol}: price {price_ratio:.1f}x — already pumped")
-                        await self._send_confirmed_signal(addr, pending, current_price)
-                        expired.append(addr)
-                        continue
-
-                    # Price stable or rising → confirmed, send signal
-                    if price_ratio >= MIN_PRICE_RATIO:
-                        logger.info(f"[CONFIRMED] {pending.symbol}: price stable at {price_ratio:.2f}x "
-                                    f"({pending.price_at_match:.8f} → {current_price:.8f})")
-                        await self._send_confirmed_signal(addr, pending, current_price)
-                        expired.append(addr)
-                        continue
-
-                    # Max waiting 10 minutes → expire
-                    if elapsed > 600:
-                        logger.info(f"[CONFIRM EXPIRED] {pending.symbol}: waited {elapsed:.0f}s, price={price_ratio:.2f}x")
+                    # Expire after MAX_WAIT
+                    if elapsed > MAX_WAIT:
                         expired.append(addr)
 
                 for addr in expired:
