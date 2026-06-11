@@ -2943,6 +2943,38 @@
       "outcome": "DUMP",
       "multiplier": 0.897883149872989,
       "learned_at": "2026-06-10T09:21:14.014946+00:00"
+    },
+    {
+      "symbol": "OKAI",
+      "features": {
+        "buy_count": 20,
+        "sell_count": 14,
+        "buy_sell_ratio": 1.43,
+        "volume": 22818752.96,
+        "holders": 34,
+        "unique_wallets": 34,
+        "initial_liq": 0,
+        "initial_mcap": 6090.16,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 10,
+        "lp_locked": 0,
+        "deployer": "Ep8r1jHZp7ko",
+        "ath_price": 0.0,
+        "launch_time": 1781174117.164719,
+        "liquidity": 0.0,
+        "mcap": 6090.16,
+        "outcome": "DUMP",
+        "outcome_mcap": 6090.16,
+        "symbol": "OKAI",
+        "ath_multiplier": 1.0,
+        "signal_age": 160.35829401016235
+      },
+      "outcome": "DUMP",
+      "ath_multiplier": 1.0,
+      "signal_age": 160.35829401016235,
+      "learned_at": "2026-06-11T16:41:54.284671+00:00"
     }
   ],
   "launch_patterns": [
@@ -12188,11 +12220,20 @@
         "current_multiplier": 0.0,
         "signal_age": 0.0,
         "timestamp": "2026-06-11T15:54:54.158675+00:00"
+      },
+      {
+        "address": "ioBd2pYPfUn4PeAYekFyo6iaNuzWCTRNuk4vyaupump",
+        "symbol": "OKAI",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0,
+        "current_multiplier": 1.0,
+        "signal_age": 160.35829401016235,
+        "timestamp": "2026-06-11T16:41:54.284501+00:00"
       }
     ],
     "golden_symbols": {},
     "total_pumps": 10,
-    "total_dumps": 24,
+    "total_dumps": 25,
     "total_skipped": 0,
     "last_auto_learn": "2026-06-11T10:45:02.255488+00:00",
     "auto_learn_insights": {
@@ -12221,8 +12262,8 @@
       "heuristic_threshold": 0.7,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-11T14:55:48.240214+00:00",
-      "sample_size": 144
+      "updated_at": "2026-06-11T16:41:54.344871+00:00",
+      "sample_size": 145
     },
     "signal_criteria_stats": {
       "pump_medians": {
@@ -12242,7 +12283,7 @@
         "lp_locked": 0
       },
       "pump_count": 44,
-      "dump_count": 100
+      "dump_count": 101
     }
   },
   "alerted_coins": [
@@ -16357,12 +16398,17 @@
         "ath_price": 0.0,
         "launch_time": 1781174117.164719,
         "liquidity": 0.0,
-        "mcap": 6090.16
+        "mcap": 6090.16,
+        "outcome": "DUMP",
+        "outcome_mcap": 6090.16,
+        "symbol": "OKAI",
+        "ath_multiplier": 1.0,
+        "signal_age": 160.35829401016235
       },
       "launch_time": 1781174117.164719,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 6090.16,
+      "outcome_time": "2026-06-11T16:36:09.882444+00:00",
       "signal_sent": false
     },
     {
@@ -16386,12 +16432,15 @@
         "ath_price": 1.83e-06,
         "launch_time": 1781174127.034238,
         "liquidity": 0.0,
-        "mcap": 1831.03
+        "mcap": 1831.03,
+        "outcome": "dump",
+        "outcome_mcap": 1846.76,
+        "symbol": "Slurcoin"
       },
       "launch_time": 1781174127.034238,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1846.76,
+      "outcome_time": "2026-06-11T16:36:11.616230+00:00",
       "signal_sent": false
     },
     {
@@ -16415,12 +16464,15 @@
         "ath_price": 1.84e-06,
         "launch_time": 1781174129.04358,
         "liquidity": 0.0,
-        "mcap": 1831.09
+        "mcap": 1831.09,
+        "outcome": "dump",
+        "outcome_mcap": 1831.59,
+        "symbol": "Chit"
       },
       "launch_time": 1781174129.04358,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1831.59,
+      "outcome_time": "2026-06-11T16:36:12.996074+00:00",
       "signal_sent": false
     },
     {
@@ -16444,12 +16496,15 @@
         "ath_price": 1.83e-06,
         "launch_time": 1781174134.859621,
         "liquidity": 0.0,
-        "mcap": 1832.15
+        "mcap": 1832.15,
+        "outcome": "dump",
+        "outcome_mcap": 460.92,
+        "symbol": "SML"
       },
       "launch_time": 1781174134.859621,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 460.92,
+      "outcome_time": "2026-06-11T16:36:14.367086+00:00",
       "signal_sent": false
     },
     {
@@ -16473,12 +16528,15 @@
         "ath_price": 0.0,
         "launch_time": 1781174158.661814,
         "liquidity": 0.0,
-        "mcap": 1833.14
+        "mcap": 1833.14,
+        "outcome": "dump",
+        "outcome_mcap": 1819.08,
+        "symbol": "CUM"
       },
       "launch_time": 1781174158.661814,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1819.08,
+      "outcome_time": "2026-06-11T16:36:18.211236+00:00",
       "signal_sent": false
     },
     {
@@ -16502,12 +16560,15 @@
         "ath_price": 0.0,
         "launch_time": 1781174165.910599,
         "liquidity": 0.0,
-        "mcap": 2181.69
+        "mcap": 2181.69,
+        "outcome": "dump",
+        "outcome_mcap": 453.76,
+        "symbol": "TAGOH"
       },
       "launch_time": 1781174165.910599,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 453.76,
+      "outcome_time": "2026-06-11T16:36:19.629533+00:00",
       "signal_sent": false
     },
     {
@@ -16531,12 +16592,15 @@
         "ath_price": 0.0,
         "launch_time": 1781174188.312701,
         "liquidity": 0.0,
-        "mcap": 2191.76
+        "mcap": 2191.76,
+        "outcome": "dump",
+        "outcome_mcap": 1851.46,
+        "symbol": "FAGGOTS"
       },
       "launch_time": 1781174188.312701,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1851.46,
+      "outcome_time": "2026-06-11T16:37:43.511765+00:00",
       "signal_sent": false
     },
     {
@@ -16560,12 +16624,15 @@
         "ath_price": 1.84e-06,
         "launch_time": 1781174197.310389,
         "liquidity": 0.0,
-        "mcap": 2317.64
+        "mcap": 2317.64,
+        "outcome": "dump",
+        "outcome_mcap": 1829.92,
+        "symbol": "レンズ"
       },
       "launch_time": 1781174197.310389,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1829.92,
+      "outcome_time": "2026-06-11T16:37:44.402490+00:00",
       "signal_sent": false
     },
     {
@@ -16589,12 +16656,15 @@
         "ath_price": 1.85e-06,
         "launch_time": 1781174201.059526,
         "liquidity": 0.0,
-        "mcap": 1842.25
+        "mcap": 1842.25,
+        "outcome": "dump",
+        "outcome_mcap": 1831.87,
+        "symbol": "WARDOG"
       },
       "launch_time": 1781174201.059526,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1831.87,
+      "outcome_time": "2026-06-11T16:37:45.527854+00:00",
       "signal_sent": false
     },
     {
@@ -16618,12 +16688,15 @@
         "ath_price": 1.83e-06,
         "launch_time": 1781174205.719974,
         "liquidity": 0.0,
-        "mcap": 1832.71
+        "mcap": 1832.71,
+        "outcome": "dump",
+        "outcome_mcap": 1832.71,
+        "symbol": "speedrun "
       },
       "launch_time": 1781174205.719974,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1832.71,
+      "outcome_time": "2026-06-11T16:37:47.297421+00:00",
       "signal_sent": false
     },
     {
@@ -16647,12 +16720,15 @@
         "ath_price": 3.89e-06,
         "launch_time": 1781174209.578303,
         "liquidity": 0.0,
-        "mcap": 6796.92
+        "mcap": 6796.92,
+        "outcome": "dump",
+        "outcome_mcap": 1842.83,
+        "symbol": "dih"
       },
       "launch_time": 1781174209.578303,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1842.83,
+      "outcome_time": "2026-06-11T16:37:48.191338+00:00",
       "signal_sent": false
     },
     {
@@ -16676,12 +16752,15 @@
         "ath_price": 2.65e-06,
         "launch_time": 1781174239.220304,
         "liquidity": 0.0,
-        "mcap": 2652.65
+        "mcap": 2652.65,
+        "outcome": "dump",
+        "outcome_mcap": 1835.52,
+        "symbol": "PWR"
       },
       "launch_time": 1781174239.220304,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1835.52,
+      "outcome_time": "2026-06-11T16:37:51.512478+00:00",
       "signal_sent": false
     },
     {
@@ -16705,12 +16784,15 @@
         "ath_price": 1.83e-06,
         "launch_time": 1781174250.495603,
         "liquidity": 0.0,
-        "mcap": 1831.03
+        "mcap": 1831.03,
+        "outcome": "dump",
+        "outcome_mcap": 1831.03,
+        "symbol": "שיקו"
       },
       "launch_time": 1781174250.495603,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1831.03,
+      "outcome_time": "2026-06-11T16:37:52.372922+00:00",
       "signal_sent": false
     },
     {
@@ -16734,12 +16816,15 @@
         "ath_price": 1.83e-06,
         "launch_time": 1781174250.106569,
         "liquidity": 0.0,
-        "mcap": 2013.06
+        "mcap": 2013.06,
+        "outcome": "dump",
+        "outcome_mcap": 1829.36,
+        "symbol": "GROK"
       },
       "launch_time": 1781174250.106569,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1829.36,
+      "outcome_time": "2026-06-11T16:37:53.546637+00:00",
       "signal_sent": false
     },
     {
@@ -16763,12 +16848,15 @@
         "ath_price": 1.32e-06,
         "launch_time": 1781174279.318606,
         "liquidity": 0.0,
-        "mcap": 1317.56
+        "mcap": 1317.56,
+        "outcome": "dump",
+        "outcome_mcap": 246.71,
+        "symbol": "SISYPHUS"
       },
       "launch_time": 1781174279.318606,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 246.71,
+      "outcome_time": "2026-06-11T16:39:22.396861+00:00",
       "signal_sent": false
     },
     {
@@ -16792,12 +16880,15 @@
         "ath_price": 1.84e-06,
         "launch_time": 1781174333.401468,
         "liquidity": 0.0,
-        "mcap": 1835.82
+        "mcap": 1835.82,
+        "outcome": "dump",
+        "outcome_mcap": 1830.75,
+        "symbol": "LPS"
       },
       "launch_time": 1781174333.401468,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1830.75,
+      "outcome_time": "2026-06-11T16:39:27.651848+00:00",
       "signal_sent": false
     },
     {
