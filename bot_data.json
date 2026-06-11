@@ -607,6 +607,31 @@
       "symbol": "TROPHY",
       "address": "6aoSWHohMdCfEXKkUjJEVazb4qrfZWGYCVSinp5wpump",
       "learned_at": "2026-06-11T21:58:31.296497+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 7018806.17,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 73323.18,
+      "initial_mcap": 989052,
+      "liq_pct": 7.41,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 16,
+      "lp_locked": 0,
+      "deployer": "E13ZhWFy2GjA",
+      "ath_price": 0.000989,
+      "launch_time": 1781194125.020663,
+      "liquidity": 73323.18,
+      "mcap": 989052.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 1.1702757070169212,
+      "symbol": "FIFADAY",
+      "address": "HGii9wjcuj31g9uAQu3ncpEj4LGwzT3vj2AxUyMypump",
+      "learned_at": "2026-06-11T21:58:38.405465+00:00"
     }
   ],
   "dump_patterns": [
@@ -12512,7 +12537,7 @@
       }
     ],
     "golden_symbols": {},
-    "total_pumps": 12,
+    "total_pumps": 13,
     "total_dumps": 26,
     "total_skipped": 0,
     "last_auto_learn": "2026-06-11T10:45:02.255488+00:00",
@@ -17515,6 +17540,31 @@
       "symbol": "TROPHY",
       "address": "6aoSWHohMdCfEXKkUjJEVazb4qrfZWGYCVSinp5wpump",
       "learned_at": "2026-06-11T21:58:31.296497+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 7018806.17,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 73323.18,
+      "initial_mcap": 989052,
+      "liq_pct": 7.41,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 16,
+      "lp_locked": 0,
+      "deployer": "E13ZhWFy2GjA",
+      "ath_price": 0.000989,
+      "launch_time": 1781194125.020663,
+      "liquidity": 73323.18,
+      "mcap": 989052.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 1.1702757070169212,
+      "symbol": "FIFADAY",
+      "address": "HGii9wjcuj31g9uAQu3ncpEj4LGwzT3vj2AxUyMypump",
+      "learned_at": "2026-06-11T21:58:38.405465+00:00"
     }
   ]
 }
