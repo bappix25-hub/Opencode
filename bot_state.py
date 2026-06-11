@@ -53,6 +53,30 @@ class SignalInfo:
     is_pre_migration_known: bool = False
     eval_done: dict = field(default_factory=dict)
     ath_price: float = 0.0
+    signal_age: float = 0.0  # age in seconds at signal time
+
+@dataclass
+class PendingSignal:
+    """Signal candidate awaiting confirmation before sending."""
+    symbol: str
+    address: str
+    name: str
+    match_score: float
+    match_reason: str
+    price_at_match: float
+    mcap: float
+    liquidity: float
+    holders: int
+    unique_wallets: int
+    buy_count: int
+    sell_count: int
+    buy_sell_ratio: float
+    lp_locked: float
+    age_seconds: float
+    pending_since: float
+    last_check_price: float = 0.0
+    check_count: int = 0
+    price_stable: bool = False
 
 @dataclass
 class CoinInfo:
@@ -72,6 +96,7 @@ class BotState:
         self.signal_tracking: dict[str, SignalInfo] = {}
         self.pump_coins: dict[str, CoinInfo] = {}
         self.dump_coins: dict[str, CoinInfo] = {}
+        self.pending_signals: dict[str, PendingSignal] = {}
         self.bot_active: bool = True
         self.current_threshold: float = 0.50
     

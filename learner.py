@@ -328,7 +328,7 @@ def match_pump_patterns(features: dict, min_similarity: float = None) -> tuple[b
     return False, best_score, f"Best match {best_score:.0%} < {min_similarity:.0%}"
 
 
-def record_signal_result(address: str, symbol: str, ath_multiplier: float, current_multiplier: float = 0.0) -> None:
+def record_signal_result(address: str, symbol: str, ath_multiplier: float, current_multiplier: float = 0.0, signal_age: float = 0.0) -> None:
     """Record signal outcome and learn from it."""
     data = load_data()
     results = data["model"].setdefault("signal_results", [])
@@ -345,6 +345,7 @@ def record_signal_result(address: str, symbol: str, ath_multiplier: float, curre
         "verdict": verdict,
         "ath_multiplier": ath_multiplier,
         "current_multiplier": current_multiplier,
+        "signal_age": signal_age,
         "timestamp": datetime.now(timezone.utc).isoformat(),
     })
     data["model"]["signal_results"] = results[-500:]
@@ -356,6 +357,7 @@ def record_signal_result(address: str, symbol: str, ath_multiplier: float, curre
         features = launch["features"]
         features["ath_multiplier"] = ath_multiplier
         features["outcome"] = verdict
+        features["signal_age"] = signal_age
         if verdict in ("PUMP", "STRONG_PUMP"):
             pump_patterns = data.setdefault("pump_patterns", [])
             pump_patterns.append({
@@ -363,10 +365,11 @@ def record_signal_result(address: str, symbol: str, ath_multiplier: float, curre
                 "features": features,
                 "outcome": verdict,
                 "ath_multiplier": ath_multiplier,
+                "signal_age": signal_age,
                 "learned_at": datetime.now(timezone.utc).isoformat(),
             })
             data["model"]["total_pumps"] = data["model"].get("total_pumps", 0) + 1
-            logger.info(f"📚 পাম্প প্যাটার্ন শেখা: {symbol} (ATH {ath_multiplier:.1f}x)")
+            logger.info(f"📚 পাম্প প্যাটার্ন শেখা: {symbol} (ATH {ath_multiplier:.1f}x, age={signal_age:.0f}s)")
         elif verdict == "DUMP":
             dump_patterns = data.setdefault("dump_patterns", [])
             dump_patterns.append({
@@ -374,10 +377,11 @@ def record_signal_result(address: str, symbol: str, ath_multiplier: float, curre
                 "features": features,
                 "outcome": "DUMP",
                 "ath_multiplier": ath_multiplier,
+                "signal_age": signal_age,
                 "learned_at": datetime.now(timezone.utc).isoformat(),
             })
             data["model"]["total_dumps"] = data["model"].get("total_dumps", 0) + 1
-            logger.info(f"📚 ডাম্প প্যাটার্ন শেখা: {symbol} (ATH {ath_multiplier:.1f}x)")
+            logger.info(f"📚 ডাম্প প্যাটার্ন শেখা: {symbol} (ATH {ath_multiplier:.1f}x, age={signal_age:.0f}s)")
 
         if len(data.get("pump_patterns", [])) > MAX_PATTERNS:
             data["pump_patterns"] = data["pump_patterns"][-MAX_PATTERNS:]
@@ -592,6 +596,76 @@ def auto_learn_update() -> dict:
                 f"bsr: {insights['avg_win_bsr']} vs {insights['avg_loss_bsr']} "
                 f"holders: {insights['avg_win_holders']} vs {insights['avg_loss_holders']} "
                 f"liq: {insights['avg_win_liq']} vs {insights['avg_loss_liq']}")
+
+    return insights
+
+
+def learn_divergence_point() -> dict:
+    """Learn at what signal_age pump and dump coins diverge.
+    Compares signal_age distributions of pump vs dump outcomes.
+    Returns optimal confirmation delay suggestion."""
+    data = load_data()
+    results = data.get("model", {}).get("signal_results", [])
+
+    if len(results) < 5:
+        return {"status": "insufficient_data", "count": len(results)}
+
+    pump_ages = []
+    dump_ages = []
+    for r in results:
+        age = r.get("signal_age", 0)
+        if age <= 0:
+            continue
+        if r.get("verdict") in ("PUMP", "STRONG_PUMP"):
+            pump_ages.append(age)
+        elif r.get("verdict") == "DUMP":
+            dump_ages.append(age)
+
+    if len(pump_ages) < 3 or len(dump_ages) < 3:
+        return {"status": "insufficient_age_data", "pumps": len(pump_ages), "dumps": len(dump_ages)}
+
+    pump_ages.sort()
+    dump_ages.sort()
+
+    pump_avg = sum(pump_ages) / len(pump_ages)
+    dump_avg = sum(dump_ages) / len(dump_ages)
+    pump_median = pump_ages[len(pump_ages) // 2]
+    dump_median = dump_ages[len(dump_ages) // 2]
+
+    # Find optimal split point: iterate possible age thresholds
+    # and find which age best separates pumps from dumps
+    all_ages = sorted(set(pump_ages + dump_ages))
+    best_threshold = 180  # default 3 min
+    best_separation = 0
+
+    for threshold in all_ages:
+        # Above threshold = likely pump, below = likely dump
+        pumps_above = sum(1 for a in pump_ages if a >= threshold)
+        dumps_below = sum(1 for a in dump_ages if a < threshold)
+        pumps_below = sum(1 for a in pump_ages if a < threshold)
+        dumps_above = sum(1 for a in dump_ages if a >= threshold)
+
+        separation = (pumps_above + dumps_below - pumps_below - dumps_above) / (len(pump_ages) + len(dump_ages))
+        if separation > best_separation:
+            best_separation = separation
+            best_threshold = threshold
+
+    insights = {
+        "pump_avg_age": round(pump_avg, 0),
+        "dump_avg_age": round(dump_avg, 0),
+        "pump_median_age": round(pump_median, 0),
+        "dump_median_age": round(dump_median, 0),
+        "optimal_confirm_delay": round(best_threshold, 0),
+        "separation_score": round(best_separation, 3),
+        "pump_count": len(pump_ages),
+        "dump_count": len(dump_ages),
+    }
+
+    data["model"]["divergence_insights"] = insights
+    save_data(data)
+
+    logger.info(f"🔬 Divergence: pump_avg={pump_avg:.0f}s vs dump_avg={dump_avg:.0f}s "
+                f"→ optimal_delay={best_threshold:.0f}s separation={best_separation:.3f}")
 
     return insights
 

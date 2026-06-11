@@ -24,7 +24,7 @@ from learner import (
     save_honeypot_blocklist, load_honeypot_blocklist,
     load_data, save_data, PUMP_THRESHOLD, DUMP_THRESHOLD,
     record_missed_pump, auto_learn_update, get_signal_criteria,
-    compute_signal_criteria
+    compute_signal_criteria, learn_divergence_point
 )
 from github_sync import sync_to_github, restore_from_github
 from utils import format_number, gmgn_link, setup_logging
@@ -131,6 +131,7 @@ class MemeBot:
             asyncio.create_task(self.cleanup_loop(), name="cleanup"),
             asyncio.create_task(self.curve_refresh_loop(), name="curve_refresh"),
             asyncio.create_task(self.check_signal_results_loop(), name="signal_check"),
+            asyncio.create_task(self.signal_confirmation_loop(), name="signal_confirm"),
             asyncio.create_task(self.track_outcomes_loop(), name="track_outcomes"),
             asyncio.create_task(self.connection_monitor_loop(), name="conn_monitor"),
         ]
@@ -475,6 +476,9 @@ class MemeBot:
         if not match:
             return
 
+        if address in self.state.pending_signals:
+            return
+
         is_pre_migration = launch_data.migration_time == 0
         if not is_pre_migration and liquidity < 500:
             logger.info(f"[SKIP] {symbol}: signal rejected — liq=${int(liquidity)} < $500")
@@ -499,35 +503,29 @@ class MemeBot:
         confidence_pct = int(match_score * 100)
         confidence_bar = "🟢" * max(1, int(confidence_pct / 20)) + "⚪" * (5 - max(1, int(confidence_pct / 20)))
 
-        await send_msg(self.telegram_app.bot,
-            f"⚡ <b>প্রি-মাইগ্রেশন সিগন্যাল!</b>\n"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"🏷️ <b>{launch_data.name}</b> (${symbol})\n"
-            f"🎯 কনফিডেন্স: {confidence_bar} <b>{confidence_pct}%</b>\n"
-            f"🧠 <i>{match_reason}</i>\n"
-            f"💰 MCap: <b>{format_number(mcap)}</b>\n"
-            f"💧 লিকুইডিটি: <b>${int(liquidity)}</b>\n"
-            f"📊 Buy: <b>{launch_data.buy_count}</b> | Sell: <b>{launch_data.sell_count}</b>\n"
-            f"👥 Wallets: <b>{unique_wallets}</b> | Holders: <b>{real_holders}</b>\n"
-            f"⏱️ বয়স: <b>{int(age//60)}m {int(age%60)}s</b>\n"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"🔗 <a href='{link}'>GMGN</a>"
-        )
-
-        await self.state.add_alerted(address)
-        launch_data.pre_signal_sent = True
-
-        from bot_state import SignalInfo
-        await self.state.add_signal(address, SignalInfo(
+        from bot_state import PendingSignal
+        pending = PendingSignal(
             symbol=symbol,
-            price_at_signal=price_usd,
-            signal_time=datetime.now(timezone.utc).timestamp(),
-            launch_time=launch_data.launch_time,
-            is_pre_migration=True,
-        ))
-
-        logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {symbol} match={match_score:.0%} "
-                     f"liq=${int(liquidity)} holders={real_holders} mcap={format_number(mcap)}")
+            address=address,
+            name=launch_data.name,
+            match_score=match_score,
+            match_reason=match_reason,
+            price_at_match=price_usd,
+            mcap=mcap,
+            liquidity=liquidity,
+            holders=real_holders,
+            unique_wallets=unique_wallets,
+            buy_count=launch_data.buy_count,
+            sell_count=launch_data.sell_count,
+            buy_sell_ratio=buy_sell_ratio,
+            lp_locked=launch_data.lp_locked,
+            age_seconds=age,
+            pending_since=datetime.now(timezone.utc).timestamp(),
+            last_check_price=price_usd,
+        )
+        self.state.pending_signals[address] = pending
+        logger.info(f"[PENDING] {symbol}: match={match_score:.0%} — waiting for confirmation "
+                     f"(price={price_usd:.8f})")
 
     async def _check_momentum(self, address: str, launch_data=None):
         """Check price/buy momentum. Returns (ok, reason)."""
@@ -1060,7 +1058,7 @@ class MemeBot:
                             f"📊 বর্তমান: <b>{current_multiplier:.2f}x</b>\n"
                             f"💰 {'🟢 ATH 2x+' if ath_multiplier >= 2 else '🔴 Missed' if ath_multiplier < 0.8 else '➡️ Neutral'}"
                         )
-                        record_signal_result(addr, sig_info.symbol, ath_multiplier, current_multiplier)
+                        record_signal_result(addr, sig_info.symbol, ath_multiplier, current_multiplier, sig_info.signal_age)
                         await self.state.mark_signal_checked(addr)
                         logger.info(f"[OUTCOME] {sig_info.symbol}: ATH={ath_multiplier:.2f}x current={current_multiplier:.2f}x @ T+6h")
                         try:
@@ -1076,6 +1074,125 @@ class MemeBot:
                 break
             except Exception as e:
                 logger.error(f"সিগন্যাল চেক এরর: {e}")
+
+    async def signal_confirmation_loop(self):
+        """Re-check pending signals after confirmation delay. Send only if price stable/rising."""
+        DEFAULT_CONFIRM_DELAY = 180  # 3 minutes default
+        MIN_PRICE_RATIO = 0.92  # price must be >= 92% of match price (allow 8% dip)
+        MAX_PRICE_RATIO = 50.0  # if price >50x, it already pumped — still send
+        CHECK_INTERVAL = 30  # check every 30s
+
+        while True:
+            try:
+                await asyncio.sleep(CHECK_INTERVAL)
+                now = datetime.now(timezone.utc).timestamp()
+
+                # Use learned optimal delay if available
+                try:
+                    data = load_data()
+                    div = data.get("model", {}).get("divergence_insights", {})
+                    CONFIRM_DELAY = div.get("optimal_confirm_delay", DEFAULT_CONFIRM_DELAY)
+                    CONFIRM_DELAY = max(60, min(600, CONFIRM_DELAY))  # clamp 1-10 min
+                except Exception:
+                    CONFIRM_DELAY = DEFAULT_CONFIRM_DELAY
+
+                expired = []
+                for addr, pending in list(self.state.pending_signals.items()):
+                    elapsed = now - pending.pending_since
+
+                    if elapsed < CONFIRM_DELAY:
+                        continue
+
+                    # Fetch current price
+                    pair = await self.dex.fetch_pair_data(addr)
+                    if not pair:
+                        expired.append(addr)
+                        continue
+
+                    current_price = float(pair.get("priceUsd", 0) or 0)
+                    if current_price <= 0:
+                        expired.append(addr)
+                        continue
+
+                    pending.check_count += 1
+                    pending.last_check_price = current_price
+
+                    price_ratio = current_price / pending.price_at_match if pending.price_at_match > 0 else 0
+
+                    # Price dropped too much → dump, skip signal
+                    if price_ratio < MIN_PRICE_RATIO:
+                        logger.info(f"[CONFIRM REJECT] {pending.symbol}: price dropped "
+                                    f"{(1-price_ratio)*100:.0f}% ({pending.price_at_match:.8f} → {current_price:.8f})")
+                        expired.append(addr)
+                        continue
+
+                    # Price already pumped big → still send (momentum)
+                    if price_ratio >= MAX_PRICE_RATIO:
+                        logger.info(f"[CONFIRM SEND-FAST] {pending.symbol}: price {price_ratio:.1f}x — already pumped")
+                        await self._send_confirmed_signal(addr, pending, current_price)
+                        expired.append(addr)
+                        continue
+
+                    # Price stable or rising → confirmed, send signal
+                    if price_ratio >= MIN_PRICE_RATIO:
+                        logger.info(f"[CONFIRMED] {pending.symbol}: price stable at {price_ratio:.2f}x "
+                                    f"({pending.price_at_match:.8f} → {current_price:.8f})")
+                        await self._send_confirmed_signal(addr, pending, current_price)
+                        expired.append(addr)
+                        continue
+
+                    # Max waiting 10 minutes → expire
+                    if elapsed > 600:
+                        logger.info(f"[CONFIRM EXPIRED] {pending.symbol}: waited {elapsed:.0f}s, price={price_ratio:.2f}x")
+                        expired.append(addr)
+
+                for addr in expired:
+                    self.state.pending_signals.pop(addr, None)
+
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"signal_confirmation_loop error: {e}")
+
+    async def _send_confirmed_signal(self, address: str, pending, current_price: float):
+        """Send a confirmed signal to Telegram."""
+        link = gmgn_link(address)
+        confidence_pct = int(pending.match_score * 100)
+        confidence_bar = "🟢" * max(1, int(confidence_pct / 20)) + "⚪" * (5 - max(1, int(confidence_pct / 20)))
+        price_change = ((current_price - pending.price_at_match) / pending.price_at_match * 100) if pending.price_at_match > 0 else 0
+        price_emoji = "📈" if price_change >= 0 else "📉"
+
+        await send_msg(self.telegram_app.bot,
+            f"⚡ <b>প্রি-মাইগ্রেশন সিগন্যাল!</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"🏷️ <b>{pending.name}</b> (${pending.symbol})\n"
+            f"🎯 কনফিডেন্স: {confidence_bar} <b>{confidence_pct}%</b>\n"
+            f"🧠 <i>{pending.match_reason}</i>\n"
+            f"💰 MCap: <b>{format_number(pending.mcap)}</b>\n"
+            f"💧 লিকুইডিটি: <b>${int(pending.liquidity)}</b>\n"
+            f"📊 Buy: <b>{pending.buy_count}</b> | Sell: <b>{pending.sell_count}</b>\n"
+            f"👥 Wallets: <b>{pending.unique_wallets}</b> | Holders: <b>{pending.holders}</b>\n"
+            f"⏱️ বয়স: <b>{int(pending.age_seconds//60)}m {int(pending.age_seconds%60)}s</b>\n"
+            f"{price_emoji} কনফার্মেশনের পর মূল্য পরিবর্তন: <b>{price_change:+.1f}%</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"🔗 <a href='{link}'>GMGN</a>"
+        )
+
+        await self.state.add_alerted(address)
+
+        from bot_state import SignalInfo
+        await self.state.add_signal(address, SignalInfo(
+            symbol=pending.symbol,
+            price_at_signal=pending.price_at_match,
+            signal_time=datetime.now(timezone.utc).timestamp(),
+            launch_time=0,
+            is_pre_migration=True,
+            signal_age=pending.age_seconds,
+        ))
+
+        logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {pending.symbol} match={pending.match_score:.0%} "
+                     f"liq=${int(pending.liquidity)} holders={pending.holders} "
+                     f"mcap={format_number(pending.mcap)} confirmed_after={pending.check_count}x checks")
 
     async def cleanup_loop(self):
         while True:
@@ -1285,6 +1402,12 @@ class MemeBot:
                 logger.info(f"🎯 Criteria: bsr≥{criteria['min_bsr']} holders≥{criteria['min_holders']} "
                             f"wallets≥{criteria['min_wallets']} liq≥${int(criteria['min_liq'])} "
                             f"liq%≥{criteria['min_liq_pct']} lp≥{criteria['min_lp_locked']}%")
+                divergence = learn_divergence_point()
+                if divergence.get("optimal_confirm_delay"):
+                    delay = divergence["optimal_confirm_delay"]
+                    logger.info(f"🔬 Divergence: pump_avg={divergence.get('pump_avg_age',0)}s "
+                                f"dump_avg={divergence.get('dump_avg_age',0)}s "
+                                f"→ optimal_delay={delay:.0f}s sep={divergence.get('separation_score',0):.3f}")
                 data = load_data()
                 pump_count = len(data.get("pump_patterns", []))
                 dump_count = len(data.get("dump_patterns", []))
