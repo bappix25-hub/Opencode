@@ -107,11 +107,13 @@ class MemeBot:
         await restore_from_github()
 
         try:
-            hp_set, dep_set = load_honeypot_blocklist()
+            hp_set, dep_set, alerted_set = load_honeypot_blocklist()
             for a in hp_set:
                 await self.state.mark_honeypot(a)
             for d in dep_set:
                 await self.state.add_blocked_deployer(d)
+            async with self.state._lock:
+                self.state.alerted_coins.update(alerted_set)
             if hp_set or dep_set:
                 logger.info(f"♻️ হানিপট ব্লকলিস্ট লোড: {len(hp_set)} addr, {len(dep_set)} deployer")
             purged = purge_honeypot_patterns(hp_set)
@@ -1084,7 +1086,8 @@ class MemeBot:
                     async with self.state._lock:
                         hp_snapshot = set(self.state.honeypot_addresses)
                         dep_snapshot = set(self.state.blocked_deployers)
-                    save_honeypot_blocklist(hp_snapshot, dep_snapshot)
+                        alerted_snapshot = set(self.state.alerted_coins)
+                    save_honeypot_blocklist(hp_snapshot, dep_snapshot, alerted_snapshot)
                 except Exception as e:
                     logger.debug(f"save blocklist error: {e}")
 

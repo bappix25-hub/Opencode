@@ -493,18 +493,20 @@ def purge_honeypot_patterns(honeypot_set: set) -> dict:
     return {"moved": before - after}
 
 
-def save_honeypot_blocklist(addr_set: set, deployer_set: set) -> None:
-    """Save honeypot blocklist."""
+def save_honeypot_blocklist(addr_set: set, deployer_set: set, alerted_set: set = None) -> None:
+    """Save honeypot blocklist and alerted coins."""
     data = load_data()
     data["honeypot_addresses"] = list(addr_set)
     data["blocked_deployers"] = list(deployer_set)
+    if alerted_set is not None:
+        data["alerted_coins"] = list(alerted_set)
     save_data(data)
 
 
-def load_honeypot_blocklist() -> tuple[set, set]:
-    """Load honeypot blocklist."""
+def load_honeypot_blocklist() -> tuple[set, set, set]:
+    """Load honeypot blocklist and alerted coins."""
     data = load_data()
-    return set(data.get("honeypot_addresses", [])), set(data.get("blocked_deployers", []))
+    return set(data.get("honeypot_addresses", [])), set(data.get("blocked_deployers", [])), set(data.get("alerted_coins", []))
 
 
 def record_missed_pump(address: str, symbol: str, features: dict, ath_multiplier: float) -> None:

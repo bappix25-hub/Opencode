@@ -42,7 +42,7 @@ def setup_logging(name: str = "meme_bot") -> logging.Logger:
 
     return logger
 
-def format_number(n: float) -> str:
+def format_number(n) -> str:
     try:
         n = float(n)
         if n >= 1_000_000:
