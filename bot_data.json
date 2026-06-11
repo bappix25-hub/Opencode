@@ -12176,7 +12176,7 @@
     "total_pumps": 6,
     "total_dumps": 24,
     "total_skipped": 0,
-    "last_auto_learn": "2026-06-11T07:33:26.814886+00:00",
+    "last_auto_learn": "2026-06-11T08:33:44.482733+00:00",
     "auto_learn_insights": {
       "avg_win_bsr": 0,
       "avg_loss_bsr": 1.28,
@@ -12203,7 +12203,7 @@
       "heuristic_threshold": 0.7,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-11T07:33:26.879431+00:00",
+      "updated_at": "2026-06-11T08:33:44.538377+00:00",
       "sample_size": 201
     },
     "signal_criteria_stats": {
