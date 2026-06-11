@@ -12678,6 +12678,69 @@
         "current_multiplier": 0.0,
         "signal_age": 0.0,
         "timestamp": "2026-06-11T22:19:17.965583+00:00"
+      },
+      {
+        "address": "5kcMbMWWfUPNzXwbWA1T4fYBjtMGAXyRMS399DMSLn6E",
+        "symbol": "KARMELON",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:19:25.227014+00:00"
+      },
+      {
+        "address": "WUrToByF8yhPGJSPGsSAYuMxLUnHEUuTRDgwzgKpump",
+        "symbol": "CUPC",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:19:32.461024+00:00"
+      },
+      {
+        "address": "EnyxcNqeFy72CV1Yd1TgysemhEgNvCQ7ZkYu587Fpump",
+        "symbol": "ANISOL",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:19:48.622257+00:00"
+      },
+      {
+        "address": "HuareADwRcW4c9JZrQPHPZWQq6TDHA3iL7s5ZcHopump",
+        "symbol": "CUPS",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:19:53.506273+00:00"
+      },
+      {
+        "address": "BQPgDTffNP5Z4WK9E9tdpcSq22o1nL8gidE23Yowpump",
+        "symbol": "Ball Kid",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:19:58.209798+00:00"
+      },
+      {
+        "address": "Hn9C7mijuGejPu9ZCvWfhQfFEoJpHEcNHMqgxZGEpump",
+        "symbol": "AUTA",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:20:02.928071+00:00"
+      },
+      {
+        "address": "8eepcHa4XaQdKa5vhjRGcyz2XuRAjY5V7WkZ4mU4pump",
+        "symbol": "SHITHOLE",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:20:09.975003+00:00"
       }
     ],
     "golden_symbols": {},
