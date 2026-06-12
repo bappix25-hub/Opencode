@@ -1485,12 +1485,59 @@ class MemeBot:
             await asyncio.sleep(7 * 24 * 3600)  # Every 7 days
 
     async def daily_summary_loop(self):
-        """Send daily learning summary."""
+        """Send midnight signal summary: signals in 24h with price → ATH."""
+        from datetime import timedelta
         while True:
             try:
-                await asyncio.sleep(86400)
-                report = get_daily_report()
-                await send_msg(self.telegram_app.bot, report)
+                now = datetime.now(timezone.utc)
+                midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
+                if now >= midnight:
+                    midnight += timedelta(days=1)
+                wait_sec = (midnight - now).total_seconds()
+                logger.info(f"📊 Midnight summary in {int(wait_sec//3600)}h {int((wait_sec%3600)//60)}m")
+                await asyncio.sleep(wait_sec)
+
+                signals = await self.state.get_unchecked_signals()
+                all_signals = self.state.signal_tracking
+                yesterday = datetime.now(timezone.utc).timestamp() - 86400
+
+                recent = {k: v for k, v in all_signals.items() if v.signal_time >= yesterday}
+
+                if not recent:
+                    await send_msg(self.telegram_app.bot,
+                        f"📊 <b>মিডনাইট সামারি</b>\n"
+                        f"━━━━━━━━━━━━━━━━\n"
+                        f"📡 ২৪ ঘন্টায় সিগন্যাল: <b>0</b>\n"
+                        f"━━━━━━━━━━━━━━━━\n"
+                        f"🕐 <i>{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')} UTC</i>"
+                    )
+                    continue
+
+                total = len(recent)
+                rows = []
+                for addr, sig in sorted(recent.items(), key=lambda x: x[1].signal_time, reverse=True):
+                    ath_mult = sig.ath_price / sig.price_at_signal if sig.price_at_signal > 0 else 0
+                    if ath_mult >= 5:
+                        emoji = "🔥"
+                    elif ath_mult >= 2:
+                        emoji = "✅"
+                    elif ath_mult >= 1:
+                        emoji = "😐"
+                    else:
+                        emoji = "❌"
+                    rows.append(f"{emoji} <b>{sig.symbol}</b>: {ath_mult:.1f}x")
+
+                body = "\n".join(rows)
+                await send_msg(self.telegram_app.bot,
+                    f"📊 <b>মিডনাইট সামারি</b>\n"
+                    f"━━━━━━━━━━━━━━━━\n"
+                    f"📡 ২৪ ঘন্টায় সিগন্যাল: <b>{total}</b>\n"
+                    f"━━━━━━━━━━━━━━━━\n"
+                    f"{body}\n"
+                    f"━━━━━━━━━━━━━━━━\n"
+                    f"🕐 <i>{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')} UTC</i>"
+                )
+                logger.info(f"📊 Midnight summary sent: {total} signals")
             except asyncio.CancelledError:
                 break
             except Exception as e:
