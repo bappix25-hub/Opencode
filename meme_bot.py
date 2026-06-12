@@ -839,6 +839,84 @@ class MemeBot:
                         elif mcap < 500:
                             await self.state.add_dump_coin(addr, CoinInfo(name=name, symbol=symbol))
                             logger.info(f"📉 ডাম্প কয়েন: {symbol} mcap={format_number(mcap)}")
+                            continue
+                        elif not await self.state.is_alerted(addr) and 500 <= mcap < PUMP_THRESHOLD:
+                            pair_data = pair
+                            price_change_1h = float(pair_data.get("priceChange", {}).get("h1", 0) or 0)
+                            price_change_5m = float(pair_data.get("priceChange", {}).get("m5", 0) or 0)
+                            vol_24h = float((pair_data.get("volume") or {}).get("h24", 0) or 0)
+                            vol_liq = vol_24h / max(liquidity, 1) if liquidity > 0 else 0
+                            buys_5m = int(((pair_data.get("txns") or {}).get("m5") or {}).get("buys", 0) or 0)
+                            sells_5m = int(((pair_data.get("txns") or {}).get("m5") or {}).get("sells", 0) or 0)
+                            buy_sell_5m = buys_5m / max(sells_5m, 1)
+
+                            climbing_score = 0.0
+                            climb_reasons = []
+                            if price_change_1h > 50:
+                                climbing_score += 0.35
+                                climb_reasons.append(f"1h +{price_change_1h:.0f}%")
+                            elif price_change_1h > 20:
+                                climbing_score += 0.2
+                                climb_reasons.append(f"1h +{price_change_1h:.0f}%")
+                            if price_change_5m > 10:
+                                climbing_score += 0.15
+                                climb_reasons.append(f"5m +{price_change_5m:.0f}%")
+                            if vol_liq >= 0.3:
+                                climbing_score += 0.15
+                                climb_reasons.append(f"Vol/Liq {vol_liq:.1f}")
+                            if buy_sell_5m >= 2.0:
+                                climbing_score += 0.15
+                                climb_reasons.append(f"B/S {buy_sell_5m:.1f}")
+                            if buys_5m >= 10:
+                                climbing_score += 0.1
+                                climb_reasons.append(f"{buys_5m} buys/5m")
+
+                            if climbing_score >= 0.5:
+                                confidence_pct = int(climbing_score * 100)
+                                confidence_bar = "🟢" * max(1, int(confidence_pct/20)) + "⚪" * (5 - max(1, int(confidence_pct/20)))
+                                reason_text = ", ".join(climb_reasons[:3])
+                                age_min = int(age // 60)
+                                age_sec = int(age % 60)
+
+                                await send_msg(self.telegram_app.bot,
+                                    f"📈 <b>ক্লাইম্বিং টোকেন!</b>\n"
+                                    f"━━━━━━━━━━━━━━━━\n"
+                                    f"🏷️ <b>{name}</b> (${symbol})\n"
+                                    f"🎯 কনফিডেন্স: {confidence_bar} <b>{confidence_pct}%</b>\n"
+                                    f"🧠 <i>{reason_text}</i>\n"
+                                    f"💵 দাম: <b>{current_price:.8f}</b>\n"
+                                    f"💰 MCap: <b>{format_number(mcap)}</b>\n"
+                                    f"💧 লিকুইডিটি: <b>{format_number(liquidity)}</b>\n"
+                                    f"👥 হোল্ডার: <b>{coin_info.holders}</b>\n"
+                                    f"🔒 LP লক: <b>{coin_info.lp_locked}%</b>\n"
+                                    f"⏱️ বয়স: <b>{age_min}m {age_sec}s</b>\n"
+                                    f"━━━━━━━━━━━━━━━━\n"
+                                    f"🔗 <a href='{link}'>GMGN</a>"
+                                )
+
+                                from bot_state import SignalInfo
+                                await self.state.add_signal(addr, SignalInfo(
+                                    symbol=symbol,
+                                    price_at_signal=current_price,
+                                    signal_time=now_ts,
+                                    launch_time=coin_info.launch_time or now_ts,
+                                    is_pre_migration=False,
+                                    is_pre_migration_known=True,
+                                ))
+                                await self.state.add_alerted(addr)
+                                logger.info(f"📈 ক্লাইম্বিং সিগন্যাল: {symbol} mcap={format_number(mcap)} score={climbing_score:.2f}")
+
+                                if config.paper_trading:
+                                    try:
+                                        ok, msg = await self.paper_trader.buy(
+                                            symbol, addr, current_price, liquidity=liquidity, mcap=mcap,
+                                            holders=coin_info.holders, lp_locked=coin_info.lp_locked,
+                                            confidence=climbing_score, reason=", ".join(climb_reasons[:2]),
+                                        )
+                                        if ok:
+                                            logger.info(f"📝 Paper buy: {msg}")
+                                    except Exception as e:
+                                        logger.debug(f"Paper buy error: {e}")
                         continue
 
                     if not await self.state.is_alerted(addr) and 0 < age <= 600:
