@@ -836,11 +836,9 @@ class MemeBot:
 
                             if config.enable_github_sync:
                                 await sync_to_github(f"পাম্প: {symbol} mcap={format_number(mcap)}")
-                        elif mcap < DUMP_THRESHOLD:
+                        elif mcap < 500:
                             await self.state.add_dump_coin(addr, CoinInfo(name=name, symbol=symbol))
                             logger.info(f"📉 ডাম্প কয়েন: {symbol} mcap={format_number(mcap)}")
-                        else:
-                            logger.info(f"⏭️ Skip {symbol}: mcap={format_number(mcap)} ({format_number(DUMP_THRESHOLD)}-{format_number(PUMP_THRESHOLD)} zone)")
                         continue
 
                     if not await self.state.is_alerted(addr) and 0 < age <= 600:
@@ -860,17 +858,20 @@ class MemeBot:
                         sells_5m = int(((pair.get("txns") or {}).get("m5") or {}).get("sells", 0) or 0)
                         buy_sell_5m = buys_5m / max(sells_5m, 1)
 
+                        price_change_1h = float(pair.get("priceChange", {}).get("h1", 0) or 0)
+                        price_change_5m = float(pair.get("priceChange", {}).get("m5", 0) or 0)
+
                         score = 0.0
                         reasons = []
 
-                        if mcap >= 50000 and mcap <= 500000:
+                        if mcap >= 5000 and mcap <= 500000:
                             score += 0.2
                             reasons.append(f"MCap {format_number(mcap)}")
-                        if liquidity >= 5000:
+                        if liquidity >= 1000:
                             score += 0.15
                             reasons.append(f"Liq ${int(liquidity)}")
                         if vol_liq >= 0.3:
-                            score += 0.2
+                            score += 0.15
                             reasons.append(f"Vol/Liq {vol_liq:.1f}")
                         if buy_sell_5m >= 2.0:
                             score += 0.15
@@ -878,6 +879,15 @@ class MemeBot:
                         if buys_5m >= 10:
                             score += 0.1
                             reasons.append(f"{buys_5m} buys/5m")
+                        if price_change_1h > 50:
+                            score += 0.2
+                            reasons.append(f"1h +{price_change_1h:.0f}%")
+                        elif price_change_1h > 20:
+                            score += 0.1
+                            reasons.append(f"1h +{price_change_1h:.0f}%")
+                        if price_change_5m > 10:
+                            score += 0.1
+                            reasons.append(f"5m +{price_change_5m:.0f}%")
 
                         social_score = 0.0
                         try:
@@ -1018,9 +1028,9 @@ class MemeBot:
                             "source": "historical_scan",
                         })
                         learned_pump += 1
-                    elif mcap < DUMP_THRESHOLD and age and age > 3600:
+                    elif mcap < 500 and age and age > 3600:
                         h24 = float(pair.get("priceChange", {}).get("h24", 0) or 0)
-                        if h24 < 100:
+                        if h24 < -30:
                             record_signal_result(addr, coin_info["symbol"], 0.5)
                             learned_dump += 1
 
