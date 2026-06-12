@@ -440,7 +440,10 @@ class MemeBot:
                 h_score += 0.30
                 h_reasons.append(f"buys={launch_data.buy_count}")
             elif launch_data.buy_count >= 15:
-                h_score += 0.15
+                h_score += 0.20
+                h_reasons.append(f"buys={launch_data.buy_count}")
+            elif launch_data.buy_count >= 8:
+                h_score += 0.10
                 h_reasons.append(f"buys={launch_data.buy_count}")
 
             # Buy velocity: must be actively buying (not old token with many buys)
@@ -448,7 +451,10 @@ class MemeBot:
                 h_score += 0.25
                 h_reasons.append(f"vel={buy_velocity:.1f}/min")
             elif buy_velocity >= 2:
-                h_score += 0.10
+                h_score += 0.15
+                h_reasons.append(f"vel={buy_velocity:.1f}/min")
+            elif buy_velocity >= 1:
+                h_score += 0.08
                 h_reasons.append(f"vel={buy_velocity:.1f}/min")
 
             # Wallets: real unique buyers
@@ -456,7 +462,10 @@ class MemeBot:
                 h_score += 0.20
                 h_reasons.append(f"wallets={effective_wallets}")
             elif effective_wallets >= 20:
-                h_score += 0.10
+                h_score += 0.12
+                h_reasons.append(f"wallets={effective_wallets}")
+            elif effective_wallets >= 10:
+                h_score += 0.06
                 h_reasons.append(f"wallets={effective_wallets}")
 
             # BSR: buying pressure
@@ -464,7 +473,10 @@ class MemeBot:
                 h_score += 0.15
                 h_reasons.append(f"bsr={buy_sell_ratio:.1f}")
             elif buy_sell_ratio >= 1.5:
-                h_score += 0.08
+                h_score += 0.10
+                h_reasons.append(f"bsr={buy_sell_ratio:.1f}")
+            elif buy_sell_ratio >= 1.2:
+                h_score += 0.05
                 h_reasons.append(f"bsr={buy_sell_ratio:.1f}")
 
             # Holders: real holders from Helius
@@ -472,7 +484,10 @@ class MemeBot:
                 h_score += 0.15
                 h_reasons.append(f"holders={real_holders}")
             elif real_holders >= 10:
-                h_score += 0.07
+                h_score += 0.10
+                h_reasons.append(f"holders={real_holders}")
+            elif real_holders >= 3:
+                h_score += 0.05
                 h_reasons.append(f"holders={real_holders}")
 
             # LP locked
@@ -481,7 +496,7 @@ class MemeBot:
                 h_score += 0.10
                 h_reasons.append(f"lp={lp_locked}%")
 
-            h_threshold = 0.80  # Much stricter threshold
+            h_threshold = 0.45
             if h_score >= h_threshold:
                 match = True
                 match_score = h_score
@@ -908,13 +923,12 @@ class MemeBot:
 
                                 if config.paper_trading:
                                     try:
-                                        ok, msg = await self.paper_trader.buy(
-                                            symbol, addr, current_price, liquidity=liquidity, mcap=mcap,
-                                            holders=coin_info.holders, lp_locked=coin_info.lp_locked,
-                                            confidence=climbing_score, reason=", ".join(climb_reasons[:2]),
+                                        pos = await self.paper_trader.buy(
+                                            addr, symbol, name, current_price,
+                                            climbing_score, 0.0, climbing_score, age,
                                         )
-                                        if ok:
-                                            logger.info(f"📝 Paper buy: {msg}")
+                                        if pos:
+                                            logger.info(f"📝 Paper buy: {symbol} @ ${current_price:.8f}")
                                     except Exception as e:
                                         logger.debug(f"Paper buy error: {e}")
                         continue
