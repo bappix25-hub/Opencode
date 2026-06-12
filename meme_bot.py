@@ -861,15 +861,10 @@ class MemeBot:
                             logger.info(f"📉 ডাম্প কয়েন: {symbol} mcap={format_number(mcap)}")
                             continue
                         elif not await self.state.is_alerted(addr) and 500 <= mcap < PUMP_THRESHOLD:
-                            real_holders = 0
-                            try:
-                                h = await self.helius.get_holder_count(addr)
-                                if h is not None and h > 0:
-                                    real_holders = h
-                            except Exception:
-                                pass
-                            if real_holders < 5:
-                                logger.info(f"[SKIP] {symbol}: climbing — real holders={real_holders} < 5")
+                            h1_buys = int(((pair or {}).get("txns") or {}).get("h1", {}).get("buys", 0) or 0)
+                            h1_sells = int(((pair or {}).get("txns") or {}).get("h1", {}).get("sells", 0) or 0)
+                            if h1_buys < 5:
+                                logger.info(f"[SKIP] {symbol}: climbing — h1 buys={h1_buys} < 5")
                                 continue
 
                             pair_data = pair
@@ -918,7 +913,7 @@ class MemeBot:
                                     f"💵 দাম: <b>{current_price:.8f}</b>\n"
                                     f"💰 MCap: <b>{format_number(mcap)}</b>\n"
                                     f"💧 লিকুইডিটি: <b>{format_number(liquidity)}</b>\n"
-                                    f"👥 হোল্ডার: <b>{real_holders}</b>\n"
+                                    f"📊 ১h বাই: <b>{h1_buys}</b> | সেল: <b>{h1_sells}</b>\n"
                                     f"🔒 LP লক: <b>{coin_info.lp_locked}%</b>\n"
                                     f"⏱️ বয়স: <b>{age_min}m {age_sec}s</b>\n"
                                     f"━━━━━━━━━━━━━━━━\n"
