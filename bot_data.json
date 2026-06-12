@@ -1272,6 +1272,31 @@
       "outcome": "STRONG_PUMP",
       "ath_multiplier": 387612.83,
       "learned_at": "2026-06-10T12:10:21.725899+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 105149220.48,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 39306.96,
+      "initial_mcap": 295343,
+      "liq_pct": 13.31,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 14,
+      "lp_locked": 0,
+      "deployer": "B4B6F2hEDprd",
+      "ath_price": 0.0002953,
+      "launch_time": 1781274996.722434,
+      "liquidity": 39306.96,
+      "mcap": 295343.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 1.0,
+      "symbol": "🚀",
+      "address": "EJr92VMZUDZ6Wbbmjt5hbwngkM4EYJFSsiAdrEqKpump",
+      "learned_at": "2026-06-12T15:35:59.780933+00:00"
     }
   ],
   "dump_patterns": [
@@ -12744,10 +12769,10 @@
       }
     ],
     "golden_symbols": {},
-    "total_pumps": 13,
+    "total_pumps": 14,
     "total_dumps": 26,
     "total_skipped": 0,
-    "last_auto_learn": "2026-06-12T14:27:46.582303+00:00",
+    "last_auto_learn": "2026-06-12T15:27:59.678832+00:00",
     "auto_learn_insights": {
       "avg_win_bsr": 0,
       "avg_loss_bsr": 1.5,
@@ -12774,7 +12799,7 @@
       "heuristic_threshold": 0.7,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-12T14:27:46.633369+00:00",
+      "updated_at": "2026-06-12T15:27:59.744757+00:00",
       "sample_size": 200
     },
     "signal_criteria_stats": {
@@ -20138,6 +20163,31 @@
       "symbol": "FIFADAY",
       "address": "HGii9wjcuj31g9uAQu3ncpEj4LGwzT3vj2AxUyMypump",
       "learned_at": "2026-06-11T21:58:38.405465+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 105149220.48,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 39306.96,
+      "initial_mcap": 295343,
+      "liq_pct": 13.31,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 14,
+      "lp_locked": 0,
+      "deployer": "B4B6F2hEDprd",
+      "ath_price": 0.0002953,
+      "launch_time": 1781274996.722434,
+      "liquidity": 39306.96,
+      "mcap": 295343.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 1.0,
+      "symbol": "🚀",
+      "address": "EJr92VMZUDZ6Wbbmjt5hbwngkM4EYJFSsiAdrEqKpump",
+      "learned_at": "2026-06-12T15:35:59.780933+00:00"
     }
   ]
 }
