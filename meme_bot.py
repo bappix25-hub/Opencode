@@ -382,8 +382,13 @@ class MemeBot:
             if h is not None and h > 0:
                 real_holders = h
                 launch_data.holders = h
+            elif launch_data.holders == 0:
+                real_holders = len(launch_data.unique_wallets)
+                launch_data.holders = real_holders
         except Exception:
-            pass
+            if launch_data.holders == 0:
+                real_holders = len(launch_data.unique_wallets)
+                launch_data.holders = real_holders
 
         if launch_data.lp_locked == 0:
             try:
@@ -856,6 +861,17 @@ class MemeBot:
                             logger.info(f"📉 ডাম্প কয়েন: {symbol} mcap={format_number(mcap)}")
                             continue
                         elif not await self.state.is_alerted(addr) and 500 <= mcap < PUMP_THRESHOLD:
+                            real_holders = 0
+                            try:
+                                h = await self.helius.get_holder_count(addr)
+                                if h is not None and h > 0:
+                                    real_holders = h
+                            except Exception:
+                                pass
+                            if real_holders < 5:
+                                logger.info(f"[SKIP] {symbol}: climbing — real holders={real_holders} < 5")
+                                continue
+
                             pair_data = pair
                             price_change_1h = float(pair_data.get("priceChange", {}).get("h1", 0) or 0)
                             price_change_5m = float(pair_data.get("priceChange", {}).get("m5", 0) or 0)
@@ -902,7 +918,7 @@ class MemeBot:
                                     f"💵 দাম: <b>{current_price:.8f}</b>\n"
                                     f"💰 MCap: <b>{format_number(mcap)}</b>\n"
                                     f"💧 লিকুইডিটি: <b>{format_number(liquidity)}</b>\n"
-                                    f"👥 হোল্ডার: <b>{coin_info.holders}</b>\n"
+                                    f"👥 হোল্ডার: <b>{real_holders}</b>\n"
                                     f"🔒 LP লক: <b>{coin_info.lp_locked}%</b>\n"
                                     f"⏱️ বয়স: <b>{age_min}m {age_sec}s</b>\n"
                                     f"━━━━━━━━━━━━━━━━\n"

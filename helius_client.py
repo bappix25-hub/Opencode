@@ -60,6 +60,26 @@ class HeliusClient:
         try:
             payload = {
                 "jsonrpc": "2.0",
+                "id": "helius-largest",
+                "method": "getTokenLargestAccounts",
+                "params": [address],
+            }
+            async with self.session.post(
+                self.rpc_url, json=payload, timeout=aiohttp.ClientTimeout(total=8)
+            ) as resp:
+                if resp.status == 200:
+                    data = await resp.json()
+                    accounts = (data.get("result") or {}).get("value", [])
+                    if accounts:
+                        meaningful = [a for a in accounts if float(a.get("uiAmount", 0) or 0) > 1]
+                        count = len(meaningful) if meaningful else len(accounts)
+                        if count > 0:
+                            return count
+        except Exception as e:
+            logger.debug(f"Helius getTokenLargestAccounts error for {address}: {e}")
+        try:
+            payload = {
+                "jsonrpc": "2.0",
                 "id": "helius-holders",
                 "method": "getTokenAccounts",
                 "params": {
@@ -76,7 +96,8 @@ class HeliusClient:
                     result = data.get("result", {}) or {}
                     accounts = result.get("token_accounts", []) or result.get("accounts", []) or []
                     if accounts:
-                        return len(accounts)
+                        meaningful = [a for a in accounts if float(a.get("uiAmount", 0) or 0) > 1]
+                        return len(meaningful) if meaningful else len(accounts)
         except Exception as e:
             logger.debug(f"Helius DAS getTokenAccounts error for {address}: {e}")
         try:
