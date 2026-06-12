@@ -1297,6 +1297,31 @@
       "symbol": "🚀",
       "address": "EJr92VMZUDZ6Wbbmjt5hbwngkM4EYJFSsiAdrEqKpump",
       "learned_at": "2026-06-12T15:35:59.780933+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 53468032.76,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 43361.77,
+      "initial_mcap": 368766,
+      "liq_pct": 11.76,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 14,
+      "lp_locked": 0,
+      "deployer": "FK5bj3nQw2SY",
+      "ath_price": 0.0003687,
+      "launch_time": 1781272975.482197,
+      "liquidity": 43361.77,
+      "mcap": 368766.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 1.0,
+      "symbol": "SPCX69",
+      "address": "SPCXwBHVrKpRqMRawL3NNvt1sXP2Yf3edwRbta53N69",
+      "learned_at": "2026-06-12T15:36:05.340967+00:00"
     }
   ],
   "dump_patterns": [
@@ -12769,7 +12794,7 @@
       }
     ],
     "golden_symbols": {},
-    "total_pumps": 14,
+    "total_pumps": 15,
     "total_dumps": 26,
     "total_skipped": 0,
     "last_auto_learn": "2026-06-12T15:27:59.678832+00:00",
@@ -20188,6 +20213,31 @@
       "symbol": "🚀",
       "address": "EJr92VMZUDZ6Wbbmjt5hbwngkM4EYJFSsiAdrEqKpump",
       "learned_at": "2026-06-12T15:35:59.780933+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 53468032.76,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 43361.77,
+      "initial_mcap": 368766,
+      "liq_pct": 11.76,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 14,
+      "lp_locked": 0,
+      "deployer": "FK5bj3nQw2SY",
+      "ath_price": 0.0003687,
+      "launch_time": 1781272975.482197,
+      "liquidity": 43361.77,
+      "mcap": 368766.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 1.0,
+      "symbol": "SPCX69",
+      "address": "SPCXwBHVrKpRqMRawL3NNvt1sXP2Yf3edwRbta53N69",
+      "learned_at": "2026-06-12T15:36:05.340967+00:00"
     }
   ]
 }
