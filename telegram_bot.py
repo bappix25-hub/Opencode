@@ -426,104 +426,59 @@ class TelegramHandlers:
         await update.message.reply_text(text, parse_mode="HTML")
 
     async def cmd_perf(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Performance dashboard with realistic TP/SL simulation."""
+        """Scraper-ready TP/SL report — 1 message."""
         perf = get_performance_report()
 
         if perf["total"] == 0:
             await update.message.reply_text(
-                "📊 <b>পারফরম্যান্স</b>\n"
+                "📊 <b>স্ক্রেপার সেটআপ</b>\n"
                 "━━━━━━━━━━━━━━━━\n"
                 "গত ২৪ ঘন্টায় কোনো সিগন্যাল নেই।",
                 parse_mode="HTML"
             )
             return
 
-        # --- Message 1: Optimal TP/SL + Breakdown ---
-        best_text = ""
-        if perf["best"]:
-            b = perf["best"]
-            best_text = f"🏆 সেরা: <b>{b.get('symbol','?')}</b> ({b.get('ath_multiplier',0):.1f}x)\n"
-        worst_text = ""
-        if perf["worst"]:
-            w = perf["worst"]
-            worst_text = f"💔 খারাপ: <b>{w.get('symbol','?')}</b> ({w.get('ath_multiplier',0):.1f}x)\n"
-
+        total = perf["total"]
         tp_h = perf.get("tp_hits", 0)
         sl_h = perf.get("sl_hits", 0)
         hd = perf.get("holds", 0)
-        total = perf["total"]
 
-        msg1 = (
-            f"📊 <b>পারফরম্যান্স (২৪h)</b>\n"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"📡 {total} সিগন্যাল | 🟢 {perf['wins']} জিতেছে | 🔴 {perf['losses']} হারেছে\n"
-            f"📈 গড় ATH: <b>{perf['avg_ath']}x</b>\n"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"{best_text}{worst_text}"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"⭐ <b>সেরা সেটাপ: TP +{perf['optimal_tp']}% / SL {perf['optimal_sl']}%</b>\n"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"🎯 <b>ব্রেকডাউন:</b>\n"
-            f"  ✅ TP হিট: <b>{tp_h}/{total}</b> ({round(tp_h/total*100)}%)\n"
-            f"  🔴 SL হিট: <b>{sl_h}/{total}</b> ({round(sl_h/total*100)}%)\n"
-            f"  ⏳ হোল্ড: <b>{hd}/{total}</b> ({round(hd/total*100)}%)\n"
-            f"  📊 গড় লাভ: <b>{perf['expected_pnl']:+.1f}%</b> প্রতি সিগন্যাল\n"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"💡 <i>TP হিট = সিগন্যাল ATH TP পেরিয়েছে, TP দিয়ে বিক্রি সম্ভব</i>\n"
-            f"💡 <i>SL হিট = মূল্য SL এ নেমে গেছে, লস কাটা হয়েছে</i>\n"
-            f"💡 <i>হোল্ড = TP/SL হয়নি, বর্তমান মূল্যে বিক্রি</i>"
-        )
-        await update.message.reply_text(msg1, parse_mode="HTML")
-
-        # --- Message 2: TP Scenarios Table ---
         scenarios = perf.get("tp_scenarios", [])
         sc_lines = ""
         for sc in scenarios:
+            marker = " ⭐" if sc["tp"] == perf["optimal_tp"] else ""
             hold_note = ""
             if sc.get("hold_better", 0) > 0:
-                hold_note = f" ⚠️{sc['hold_better']}টি SL ছাড়াও লাভজনক ছিল"
+                hold_note = f" ⚠️{sc['hold_better']}"
             sc_lines += (
-                f"TP +{sc['tp']:>3}%: "
-                f"{sc['tp_hits']}/{total} hit ({sc['tp_rate']:>5.1f}%) "
-                f"→ <b>{sc['avg_pnl']:+.0f}%</b>{hold_note}\n"
+                f"  {'→' if sc['tp'] == perf['optimal_tp'] else ' '} "
+                f"+{sc['tp']:>3}%: "
+                f"{sc['tp_hits']}/{total} ({sc['tp_rate']:.0f}%) "
+                f"= <b>{sc['avg_pnl']:+.0f}%</b>{hold_note}\n"
             )
 
-        msg2 = (
-            f"📋 <b>TP সিনারিও (SL -10% সহ):</b>\n"
+        text = (
+            f"📊 <b>স্ক্রেপার সেটআপ (২৪h ডেটা)</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"<i>কোন TP দিলে সবচেয়ে বেশি লাভ হতো:</i>\n\n"
+            f"📡 {total} সিগন্যাল | গড় ATH: <b>{perf['avg_ath']}x</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"⭐ <b>সেট করো: TP +{perf['optimal_tp']}% / SL {perf['optimal_sl']}%</b>\n"
+            f"  → {tp_h}/{total} সিগন্যালে হিট হবে ({round(tp_h/total*100)}%)\n"
+            f"  → গড় লাভ: <b>{perf['expected_pnl']:+.1f}%</b> প্রতি সিগন্যাল\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"📋 <b>TP অপশন:</b>\n"
+            f"<i>SL -10% সহ কোন TP দিলে কত লাভ:</i>\n"
             f"{sc_lines}"
             f"━━━━━━━━━━━━━━━━\n"
-            f"💡 <i>⚠️ = SL হিট হলেও হোল্ড করলে লাভ হতো</i>"
-        )
-        await update.message.reply_text(msg2, parse_mode="HTML")
-
-        # --- Message 3: Per-Signal Breakdown ---
-        sig_lines = ""
-        for s in perf["signals"]:
-            ath = s["ath"]
-            # Show recommended TP for this signal
-            if ath >= 5:
-                rec = "TP +200%+"
-            elif ath >= 3:
-                rec = "TP +150%"
-            elif ath >= 2:
-                rec = "TP +100%"
-            elif ath >= 1.5:
-                rec = "TP +75%"
-            else:
-                rec = "SL -10%"
-            sig_lines += f"{s['emoji']} <b>{s['symbol']}</b>: {ath:.1f}x → {rec}\n"
-
-        msg3 = (
-            f"🪙 <b>সিগন্যাল অনুযায়ী TP/SL:</b>\n"
+            f"🎯 <b>ব্রেকডাউন:</b>\n"
+            f"  ✅ TP হিট: {tp_h}/{total} ({round(tp_h/total*100)}%)\n"
+            f"  🔴 SL হিট: {sl_h}/{total} ({round(sl_h/total*100)}%)\n"
+            f"  ⏳ হোল্ড: {hd}/{total} ({round(hd/total*100)}%)\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"<i>প্রতিটি সিগন্যালে কত TP দিলে লাভ হতো:</i>\n\n"
-            f"{sig_lines}"
-            f"━━━━━━━━━━━━━━━━\n"
+            f"💡 <i>⚠️ = SL হিট হলেও হোল্ড করলে লাভ হতো</i>\n"
             f"🕐 <i>গত ২৪ ঘন্টা</i>"
         )
-        await update.message.reply_text(msg3, parse_mode="HTML")
+        await update.message.reply_text(text, parse_mode="HTML")
 
     async def cmd_golden(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("❌ Golden patterns removed in v4. Use /signalstats instead.")
