@@ -7,6 +7,19 @@
 
 cd "$(dirname "$0")"
 
+# Self-lock: prevent multiple start.sh for same instance
+INSTANCE="${1:-main}"
+START_LOCK="/tmp/start_sh_${INSTANCE}.lock"
+if [ -f "$START_LOCK" ]; then
+    OLD_PID=$(cat "$START_LOCK" 2>/dev/null)
+    if [ -n "$OLD_PID" ] && [ -d "/proc/$OLD_PID" ]; then
+        echo "❌ Another start.sh [instance=$INSTANCE] is already running (PID $OLD_PID). Exiting."
+        exit 0
+    fi
+fi
+echo $$ > "$START_LOCK"
+trap "rm -f '$START_LOCK'" EXIT
+
 # Auto-update from GitHub before starting
 # Load env first to get DATA_FILE for smart-merge
 if [ -f ".env" ]; then

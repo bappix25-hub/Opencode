@@ -160,9 +160,21 @@ class MemeBot:
             self.telegram_app.add_error_handler(self._telegram_error_handler)
             await self.telegram_app.initialize()
             await self.telegram_app.start()
-            await self.telegram_app.updater.start_polling(
-                allowed_updates=["message", "callback_query"],
-            )
+
+            # Retry polling start on Conflict errors (another instance)
+            for attempt in range(10):
+                try:
+                    await self.telegram_app.updater.start_polling(
+                        allowed_updates=["message", "callback_query"],
+                    )
+                    break
+                except Exception as e:
+                    if "Conflict" in str(e) and attempt < 9:
+                        logger.warning(f"Telegram Conflict (attempt {attempt+1}/10), retrying in 5s...")
+                        await asyncio.sleep(5)
+                    else:
+                        raise
+
             await self._shutdown_event.wait()
         except asyncio.CancelledError:
             pass
