@@ -185,7 +185,16 @@ class MemeBot:
             await asyncio.gather(*self._tasks, return_exceptions=True)
 
         if self.pumpportal:
-            await self.pumpportal.close()
+            try:
+                await self.pumpportal.close()
+            except Exception:
+                pass
+
+        if self.session:
+            try:
+                await self.session.close()
+            except Exception:
+                pass
 
         if self.telegram_app:
             try:
@@ -194,9 +203,6 @@ class MemeBot:
                 await self.telegram_app.shutdown()
             except Exception as e:
                 logger.error(f"Telegram shutdown error: {e}")
-
-        if self.session:
-            await self.session.close()
 
         logger.info("✅ Shutdown complete")
 
@@ -1845,9 +1851,14 @@ def main():
     finally:
         try:
             loop.run_until_complete(loop.shutdown_asyncgens())
-        except:
+        except RuntimeError:
             pass
-        loop.close()
+        except Exception:
+            pass
+        try:
+            loop.close()
+        except Exception:
+            pass
 
 
 if __name__ == "__main__":
