@@ -1200,6 +1200,28 @@ class MemeBot:
                             compute_signal_criteria()
                         except Exception:
                             pass
+                        # Send updated TP/SL recommendation after each result
+                        try:
+                            from learner import calculate_optimal_tp_sl, load_data
+                            data = load_data()
+                            all_results = data.get("model", {}).get("signal_results", [])
+                            recent = all_results[-50:]  # last 50 results
+                            if len(recent) >= 5:
+                                opt = calculate_optimal_tp_sl(recent)
+                                await send_msg(self.telegram_app.bot,
+                                    f"🔄 <b>TP/SL আপডেট ({sig_info.symbol} এর পর)</b>\n"
+                                    f"━━━━━━━━━━━━━━━━\n"
+                                    f"⭐ সেটাপ: <b>TP +{opt['optimal_tp']}% / SL {opt['optimal_sl']}%</b>\n"
+                                    f"📊 {len(recent)} সিগন্যাল বিশ্লেষণ\n"
+                                    f"✅ TP হিট: {opt['tp_hits']}/{len(recent)} | "
+                                    f"🔴 SL হিট: {opt['sl_hits']}/{len(recent)} | "
+                                    f"⏳ হোল্ড: {opt['holds']}/{len(recent)}\n"
+                                    f"💰 গড় লাভ: <b>{opt['expected_pnl']:+.1f}%</b> প্রতি সিগন্যাল\n"
+                                    f"━━━━━━━━━━━━━━━━\n"
+                                    f"💡 <i>স্ক্র্যাপারে এই TP/SL সেট করো</i>"
+                                )
+                        except Exception:
+                            pass
                     else:
                         logger.debug(f"[CHECK] {sig_info.symbol}: T+{next_check//60}m ath={ath_multiplier:.2f}x cur={current_multiplier:.2f}x")
 

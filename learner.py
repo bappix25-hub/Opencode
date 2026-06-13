@@ -794,11 +794,29 @@ def get_signal_criteria() -> dict:
     return criteria
 
 
+def _exit_pnl(ath: float, current: float, tp_mult: float, sl_mult: float) -> tuple:
+    """Determine exit PnL for one signal given TP/SL multipliers.
+
+    Price path logic (realistic):
+      1. If ATH >= TP: price reached TP level at some point → TP exit → +TP%
+      2. Else if current <= SL: price is below SL now → SL hit → +SL%
+      3. Else: price is between entry and TP, above SL → hold → (current-1)*100
+
+    Returns (pnl_pct, exit_type) where exit_type is 'tp', 'sl', or 'hold'.
+    """
+    if ath >= tp_mult:
+        return ((tp_mult - 1) * 100, "tp")
+    elif current <= sl_mult:
+        return ((sl_mult - 1) * 100, "sl")
+    else:
+        return ((current - 1) * 100, "hold")
+
+
 def calculate_optimal_tp_sl(results: list) -> dict:
-    """Calculate optimal TP/SL ratios from historical signal results.
-    Simulates different TP/SL combos and finds the most profitable."""
+    """Find the TP/SL combo that maximizes avg PnL across all signals."""
     if not results:
-        return {"optimal_tp": 100, "optimal_sl": -30, "expected_pnl": 0}
+        return {"optimal_tp": 100, "optimal_sl": -30, "expected_pnl": 0,
+                "win_rate": 0, "tp_hits": 0, "sl_hits": 0, "holds": 0}
 
     best_pnl = -999
     best_tp = 100
@@ -806,27 +824,104 @@ def calculate_optimal_tp_sl(results: list) -> dict:
 
     for tp_pct in range(30, 301, 10):
         for sl_pct in range(-50, -5, 5):
+            tp_mult = 1 + tp_pct / 100
+            sl_mult = 1 + sl_pct / 100
             total_pnl = 0
+            tp_hits = 0
+            sl_hits = 0
+            holds = 0
             for r in results:
                 ath = r.get("ath_multiplier", 1)
                 current = r.get("current_multiplier", 1)
-                if ath >= (1 + tp_pct / 100):
-                    total_pnl += tp_pct
-                elif current <= (1 + sl_pct / 100):
-                    total_pnl += sl_pct
+                pnl, exit_type = _exit_pnl(ath, current, tp_mult, sl_mult)
+                total_pnl += pnl
+                if exit_type == "tp":
+                    tp_hits += 1
+                elif exit_type == "sl":
+                    sl_hits += 1
                 else:
-                    total_pnl += (current - 1) * 100
+                    holds += 1
+
             avg_pnl = total_pnl / len(results)
             if avg_pnl > best_pnl:
                 best_pnl = avg_pnl
                 best_tp = tp_pct
                 best_sl = sl_pct
 
+    n = len(results)
+    best_tp_mult = 1 + best_tp / 100
+    best_sl_mult = 1 + best_sl / 100
+    final_tp = final_sl = final_hold = 0
+    for r in results:
+        _, exit_type = _exit_pnl(r.get("ath_multiplier", 1),
+                                  r.get("current_multiplier", 1),
+                                  best_tp_mult, best_sl_mult)
+        if exit_type == "tp":
+            final_tp += 1
+        elif exit_type == "sl":
+            final_sl += 1
+        else:
+            final_hold += 1
+
     return {
         "optimal_tp": best_tp,
         "optimal_sl": best_sl,
         "expected_pnl": round(best_pnl, 1),
+        "win_rate": round(final_tp / n * 100, 1),
+        "tp_hits": final_tp,
+        "sl_hits": final_sl,
+        "holds": final_hold,
     }
+
+
+def simulate_tp_scenarios(results: list) -> list:
+    """For each TP level, show realistic outcomes with hold-through analysis."""
+    if not results:
+        return []
+
+    scenarios = []
+    for tp_pct in range(50, 301, 50):
+        tp_mult = 1 + tp_pct / 100
+        # Use -10% as default SL for scenario display
+        sl_pct = -10
+        sl_mult = 1 + sl_pct / 100
+
+        total_pnl = 0
+        tp_hits = 0
+        sl_hits = 0
+        holds = 0
+        hold_better_than_sl = 0
+
+        for r in results:
+            ath = r.get("ath_multiplier", 1)
+            current = r.get("current_multiplier", 1)
+            pnl, exit_type = _exit_pnl(ath, current, tp_mult, sl_mult)
+            total_pnl += pnl
+
+            if exit_type == "tp":
+                tp_hits += 1
+            elif exit_type == "sl":
+                sl_hits += 1
+                # Check: would holding have been better than SL?
+                hold_pnl = (current - 1) * 100
+                if hold_pnl > sl_pct:
+                    hold_better_than_sl += 1
+            else:
+                holds += 1
+
+        n = len(results)
+        avg_pnl = total_pnl / n
+        scenarios.append({
+            "tp": tp_pct,
+            "sl": sl_pct,
+            "tp_hits": tp_hits,
+            "sl_hits": sl_hits,
+            "holds": holds,
+            "tp_rate": round(tp_hits / n * 100, 1),
+            "avg_pnl": round(avg_pnl, 1),
+            "hold_better": hold_better_than_sl,
+        })
+    return scenarios
 
 
 def get_performance_report() -> dict:
@@ -876,6 +971,8 @@ def get_performance_report() -> dict:
             "verdict": r.get("verdict", "?"),
         })
 
+    scenarios = simulate_tp_scenarios(recent)
+
     return {
         "total": len(recent),
         "wins": len(wins),
@@ -888,5 +985,10 @@ def get_performance_report() -> dict:
         "optimal_tp": optimal["optimal_tp"],
         "optimal_sl": optimal["optimal_sl"],
         "expected_pnl": optimal["expected_pnl"],
+        "optimal_win_rate": optimal.get("win_rate", 0),
+        "tp_hits": optimal.get("tp_hits", 0),
+        "sl_hits": optimal.get("sl_hits", 0),
+        "holds": optimal.get("holds", 0),
+        "tp_scenarios": scenarios,
         "signals": signals,
     }
