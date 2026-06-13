@@ -1323,8 +1323,15 @@ class MemeBot:
         link = gmgn_link(address)
         confidence_pct = int(pending.match_score * 100)
         confidence_bar = "🟢" * max(1, int(confidence_pct / 20)) + "⚪" * (5 - max(1, int(confidence_pct / 20)))
-        price_change = ((current_price - pending.price_at_match) / pending.price_at_match * 100) if pending.price_at_match > 0 else 0
-        price_emoji = "📈" if price_change >= 0 else "📉"
+
+        # Fetch current market cap
+        current_mcap = 0
+        try:
+            pair = await self.dex.fetch_pair_data(address)
+            if pair:
+                current_mcap = float(pair.get("fdv", 0) or 0)
+        except Exception:
+            pass
 
         await send_msg(self.telegram_app.bot,
             f"⚡ <b>প্রি-মাইগ্রেশন সিগন্যাল!</b>\n"
@@ -1337,7 +1344,7 @@ class MemeBot:
             f"📊 Buy: <b>{pending.buy_count}</b> | Sell: <b>{pending.sell_count}</b>\n"
             f"👥 Wallets: <b>{pending.unique_wallets}</b> | Holders: <b>{pending.holders}</b>\n"
             f"⏱️ বয়স: <b>{int(pending.age_seconds//60)}m {int(pending.age_seconds%60)}s</b>\n"
-            f"{price_emoji} কনফার্মেশনের পর মূল্য পরিবর্তন: <b>{price_change:+.1f}%</b>\n"
+            f"📈 বর্তমান MCap: <b>{format_number(current_mcap)}</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"🔗 <a href='{link}'>GMGN</a>"
         )
