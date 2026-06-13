@@ -1272,116 +1272,6 @@
       "outcome": "STRONG_PUMP",
       "ath_multiplier": 387612.83,
       "learned_at": "2026-06-10T12:10:21.725899+00:00"
-    },
-    {
-      "buy_count": 0,
-      "sell_count": 0,
-      "buy_sell_ratio": 0.0,
-      "volume": 105149220.48,
-      "holders": 0,
-      "unique_wallets": 0,
-      "initial_liq": 39306.96,
-      "initial_mcap": 295343,
-      "liq_pct": 13.31,
-      "snipers_30s": 0,
-      "insiders_30s": 0,
-      "launch_hour": 14,
-      "lp_locked": 0,
-      "deployer": "B4B6F2hEDprd",
-      "ath_price": 0.0002953,
-      "launch_time": 1781274996.722434,
-      "liquidity": 39306.96,
-      "mcap": 295343.0,
-      "outcome": "missed_pump",
-      "ath_multiplier": 1.0,
-      "symbol": "🚀",
-      "address": "EJr92VMZUDZ6Wbbmjt5hbwngkM4EYJFSsiAdrEqKpump",
-      "learned_at": "2026-06-12T15:35:59.780933+00:00"
-    },
-    {
-      "buy_count": 0,
-      "sell_count": 0,
-      "buy_sell_ratio": 0.0,
-      "volume": 53468032.76,
-      "holders": 0,
-      "unique_wallets": 0,
-      "initial_liq": 43361.77,
-      "initial_mcap": 368766,
-      "liq_pct": 11.76,
-      "snipers_30s": 0,
-      "insiders_30s": 0,
-      "launch_hour": 14,
-      "lp_locked": 0,
-      "deployer": "FK5bj3nQw2SY",
-      "ath_price": 0.0003687,
-      "launch_time": 1781272975.482197,
-      "liquidity": 43361.77,
-      "mcap": 368766.0,
-      "outcome": "missed_pump",
-      "ath_multiplier": 1.0,
-      "symbol": "SPCX69",
-      "address": "SPCXwBHVrKpRqMRawL3NNvt1sXP2Yf3edwRbta53N69",
-      "learned_at": "2026-06-12T15:36:05.340967+00:00"
-    },
-    {
-      "symbol": "trelon",
-      "features": {
-        "launch_time": 1781274095.660609,
-        "source": "historical_scan",
-        "ath_multiplier": 13.579100145137883,
-        "outcome": "STRONG_PUMP",
-        "signal_age": 0.0
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 13.579100145137883,
-      "signal_age": 0.0,
-      "learned_at": "2026-06-12T18:13:24.690550+00:00"
-    },
-    {
-      "symbol": "Manlets",
-      "features": {
-        "buy_count": 28,
-        "sell_count": 10,
-        "buy_sell_ratio": 2.8,
-        "volume": 39999999.96,
-        "holders": 38,
-        "unique_wallets": 38,
-        "initial_liq": 0,
-        "initial_mcap": 5712.76,
-        "liq_pct": 0,
-        "snipers_30s": 0,
-        "insiders_30s": 0,
-        "launch_hour": 12,
-        "lp_locked": 0,
-        "deployer": "2SA6T5FAMdv4",
-        "ath_price": 0.0,
-        "launch_time": 1781266475.488335,
-        "liquidity": 0.0,
-        "mcap": 5712.76,
-        "outcome": "PUMP",
-        "outcome_mcap": 1872.58,
-        "symbol": "Manlets",
-        "ath_multiplier": 2.391456582633053,
-        "signal_age": 54.862025022506714
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 2.391456582633053,
-      "signal_age": 54.862025022506714,
-      "learned_at": "2026-06-12T18:18:47.100652+00:00"
-    },
-    {
-      "symbol": "WORLDKINS",
-      "features": {
-        "launch_time": 1781277801.605856,
-        "source": "historical_scan",
-        "ath_multiplier": 33830.58071390517,
-        "outcome": "STRONG_PUMP",
-        "signal_age": 0.0
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 33830.58071390517,
-      "signal_age": 0.0,
-      "learned_at": "2026-06-12T18:22:30.898269+00:00"
     }
   ],
   "dump_patterns": [
@@ -3768,70 +3658,6 @@
       "outcome": "DUMP",
       "multiplier": 0.897883149872989,
       "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "symbol": "CatMaxxing",
-      "features": {
-        "buy_count": 57,
-        "sell_count": 13,
-        "buy_sell_ratio": 4.38,
-        "volume": 50494117.57,
-        "holders": 70,
-        "unique_wallets": 70,
-        "initial_liq": 0,
-        "initial_mcap": 8348.19,
-        "liq_pct": 0,
-        "snipers_30s": 0,
-        "insiders_30s": 0,
-        "launch_hour": 12,
-        "lp_locked": 0,
-        "deployer": "FuUxXvkyftoY",
-        "ath_price": 0.0,
-        "launch_time": 1781266364.255134,
-        "liquidity": 0.0,
-        "mcap": 8348.19,
-        "outcome": "DUMP",
-        "outcome_mcap": 1927.11,
-        "symbol": "CatMaxxing",
-        "ath_multiplier": 1.7429324389075227,
-        "signal_age": 144.62297677993774
-      },
-      "outcome": "DUMP",
-      "ath_multiplier": 1.7429324389075227,
-      "signal_age": 144.62297677993774,
-      "learned_at": "2026-06-12T18:18:44.766050+00:00"
-    },
-    {
-      "symbol": "BrazilCup",
-      "features": {
-        "buy_count": 17,
-        "sell_count": 1,
-        "buy_sell_ratio": 17.0,
-        "volume": 1763077.75,
-        "holders": 18,
-        "unique_wallets": 18,
-        "initial_liq": 0,
-        "initial_mcap": 7619.87,
-        "liq_pct": 0,
-        "snipers_30s": 0,
-        "insiders_30s": 0,
-        "launch_hour": 12,
-        "lp_locked": 0,
-        "deployer": "4isY2L4T2Q8x",
-        "ath_price": 0.0,
-        "launch_time": 1781266486.993444,
-        "liquidity": 0.0,
-        "mcap": 7619.87,
-        "outcome": "DUMP",
-        "outcome_mcap": 1864.59,
-        "symbol": "BrazilCup",
-        "ath_multiplier": 0.2513453209082557,
-        "signal_age": 51.70644497871399
-      },
-      "outcome": "DUMP",
-      "ath_multiplier": 0.2513453209082557,
-      "signal_age": 51.70644497871399,
-      "learned_at": "2026-06-12T18:20:05.194424+00:00"
     }
   ],
   "launch_patterns": [
@@ -12917,15 +12743,6 @@
         "timestamp": "2026-06-12T13:19:08.491064+00:00"
       },
       {
-        "address": "Cy1mCA7qAe7AWABiPCBt7V11SfbjhHM7UBpd9TAXpump",
-        "symbol": "trelon",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 13.579100145137883,
-        "current_multiplier": 7.433962264150944,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-12T18:13:24.690323+00:00"
-      },
-      {
         "address": "Fxg9DA6vy3pGXTwG9pVw3nTeQWSdjhYY5Zz3ja4Epump",
         "symbol": "RITTER",
         "verdict": "DUMP",
@@ -12969,15 +12786,6 @@
         "current_multiplier": 0.2446515290720567,
         "signal_age": 51.70644497871399,
         "timestamp": "2026-06-12T18:20:05.194227+00:00"
-      },
-      {
-        "address": "CQMwk88SSp84aECqjk7xfVXwcMEQouymwG7acibMpump",
-        "symbol": "WORLDKINS",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 33830.58071390517,
-        "current_multiplier": 1.2293553542887585,
-        "signal_age": 0.0,
-        "timestamp": "2026-06-12T18:22:30.898059+00:00"
       },
       {
         "address": "6ZQoikLi7Cb1vsu74qbgPQMCAuWo4JCpX7R3gEq5pump",
@@ -20513,6 +20321,32 @@
         "source": "historical_scan"
       },
       "launch_time": 1781281491.556006,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "FFosggieyf6ceEdapfQjeWetyFr9CjUzm9BLoxbopump",
+      "symbol": "SOCCER",
+      "features": {
+        "launch_time": 1781328563.55889,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781328563.55889,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "7YMkZZwdcwUbXKjYpr5gFAVoB6aF4f9iLWK6pUcppump",
+      "symbol": "GUARDIAN",
+      "features": {
+        "launch_time": 1781328578.306402,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781328578.306402,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
