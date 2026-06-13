@@ -5,7 +5,7 @@ import asyncio
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters
 from bot_state import BotState
-from learner import get_stats, get_daily_report, is_duplicate
+from learner import get_stats, get_daily_report, is_duplicate, get_performance_report
 from dex_client import DexScreenerClient
 from helius_client import HeliusClient
 from config import config
@@ -425,6 +425,57 @@ class TelegramHandlers:
         )
         await update.message.reply_text(text, parse_mode="HTML")
 
+    async def cmd_perf(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Performance dashboard: 24h signals, results, optimal TP/SL."""
+        perf = get_performance_report()
+
+        if perf["total"] == 0:
+            await update.message.reply_text(
+                "📊 <b>পারফরম্যান্স</b>\n"
+                "━━━━━━━━━━━━━━━━\n"
+                "গত ২৪ ঘন্টায় কোনো সিগন্যাল নেই।",
+                parse_mode="HTML"
+            )
+            return
+
+        signals_text = ""
+        for s in perf["signals"][:10]:
+            signals_text += f"{s['emoji']} <b>{s['symbol']}</b>: {s['ath']:.1f}x\n"
+        if len(perf["signals"]) > 10:
+            signals_text += f"... এবং {len(perf['signals'])-10}টি আরও\n"
+
+        best_text = ""
+        if perf["best"]:
+            b = perf["best"]
+            best_text = f"🏆 সেরা: <b>{b.get('symbol','?')}</b> ({b.get('ath_multiplier',0):.1f}x)\n"
+
+        worst_text = ""
+        if perf["worst"]:
+            w = perf["worst"]
+            worst_text = f"💔 সবচেয়ে খারাপ: <b>{w.get('symbol','?')}</b> ({w.get('ath_multiplier',0):.1f}x)\n"
+
+        text = (
+            f"📊 <b>পারফরম্যান্স ড্যাশবোর্ড (২৪h)</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"📡 মোট সিগন্যাল: <b>{perf['total']}</b>\n"
+            f"🟢 জিতেছে: <b>{perf['wins']}</b> ({perf['win_rate']}%)\n"
+            f"🔴 হারেছে: <b>{perf['losses']}</b>\n"
+            f"⏳ পেন্ডিং: <b>{perf['pending']}</b>\n"
+            f"📈 গড় ATH: <b>{perf['avg_ath']}x</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"{best_text}{worst_text}"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"🎯 <b>সেটাপ TP/SL (অপটিমাল):</b>\n"
+            f"  TP: <b>+{perf['optimal_tp']}%</b>\n"
+            f"  SL: <b>{perf['optimal_sl']}%</b>\n"
+            f"  প্রতি সিগন্যালে গড় প্রফিট: <b>{perf['expected_pnl']:+.1f}%</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"{signals_text}"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"🕐 <i>গত ২৪ ঘন্টা</i>"
+        )
+        await update.message.reply_text(text, parse_mode="HTML")
+
     async def cmd_golden(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("❌ Golden patterns removed in v4. Use /signalstats instead.")
 
@@ -540,6 +591,7 @@ def register_handlers(app, handlers: TelegramHandlers):
     app.add_handler(CommandHandler("lastbacktest", handlers.cmd_lastbacktest))
     app.add_handler(CommandHandler("backtesttrend", handlers.cmd_backtest_trend))
     app.add_handler(CommandHandler("signalstats", handlers.cmd_signalstats))
+    app.add_handler(CommandHandler("perf", handlers.cmd_perf))
     app.add_handler(CommandHandler("golden", handlers.cmd_golden))
     app.add_handler(CommandHandler("blacklist", handlers.cmd_blacklist))
     app.add_handler(CommandHandler("retrain", handlers.cmd_retrain))

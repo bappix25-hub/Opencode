@@ -792,3 +792,101 @@ def get_signal_criteria() -> dict:
     if not criteria or not criteria.get("updated_at"):
         return compute_signal_criteria()
     return criteria
+
+
+def calculate_optimal_tp_sl(results: list) -> dict:
+    """Calculate optimal TP/SL ratios from historical signal results.
+    Simulates different TP/SL combos and finds the most profitable."""
+    if not results:
+        return {"optimal_tp": 100, "optimal_sl": -30, "expected_pnl": 0}
+
+    best_pnl = -999
+    best_tp = 100
+    best_sl = -30
+
+    for tp_pct in range(30, 301, 10):
+        for sl_pct in range(-50, -5, 5):
+            total_pnl = 0
+            for r in results:
+                ath = r.get("ath_multiplier", 1)
+                current = r.get("current_multiplier", 1)
+                if ath >= (1 + tp_pct / 100):
+                    total_pnl += tp_pct
+                elif current <= (1 + sl_pct / 100):
+                    total_pnl += sl_pct
+                else:
+                    total_pnl += (current - 1) * 100
+            avg_pnl = total_pnl / len(results)
+            if avg_pnl > best_pnl:
+                best_pnl = avg_pnl
+                best_tp = tp_pct
+                best_sl = sl_pct
+
+    return {
+        "optimal_tp": best_tp,
+        "optimal_sl": best_sl,
+        "expected_pnl": round(best_pnl, 1),
+    }
+
+
+def get_performance_report() -> dict:
+    """Generate performance report for last 24h with optimal TP/SL."""
+    data = load_data()
+    results = data.get("model", {}).get("signal_results", [])
+
+    now = datetime.now(timezone.utc).timestamp()
+    yesterday = now - 86400
+
+    recent = [r for r in results if r.get("timestamp", "") >= datetime.fromtimestamp(yesterday, tz=timezone.utc).isoformat()]
+
+    if not recent:
+        return {
+            "total": 0, "wins": 0, "losses": 0, "pending": 0,
+            "win_rate": 0, "avg_ath": 0, "best": None, "worst": None,
+            "optimal_tp": 100, "optimal_sl": -30, "expected_pnl": 0,
+            "signals": [],
+        }
+
+    wins = [r for r in recent if r.get("verdict") in ("PUMP", "STRONG_PUMP")]
+    losses = [r for r in recent if r.get("verdict") == "DUMP"]
+
+    aths = [r.get("ath_multiplier", 1) for r in recent if r.get("ath_multiplier", 0) > 0]
+    avg_ath = sum(aths) / len(aths) if aths else 0
+
+    best = max(recent, key=lambda r: r.get("ath_multiplier", 0)) if recent else None
+    worst = min(recent, key=lambda r: r.get("ath_multiplier", 0)) if recent else None
+
+    optimal = calculate_optimal_tp_sl(recent)
+
+    signals = []
+    for r in sorted(recent, key=lambda x: x.get("timestamp", ""), reverse=True):
+        ath = r.get("ath_multiplier", 1)
+        if ath >= 5:
+            emoji = "🔥"
+        elif ath >= 2:
+            emoji = "✅"
+        elif ath >= 1:
+            emoji = "😐"
+        else:
+            emoji = "❌"
+        signals.append({
+            "symbol": r.get("symbol", "?"),
+            "ath": ath,
+            "emoji": emoji,
+            "verdict": r.get("verdict", "?"),
+        })
+
+    return {
+        "total": len(recent),
+        "wins": len(wins),
+        "losses": len(losses),
+        "pending": len(recent) - len(wins) - len(losses),
+        "win_rate": round(len(wins) / max(len(recent), 1) * 100, 1),
+        "avg_ath": round(avg_ath, 2),
+        "best": best,
+        "worst": worst,
+        "optimal_tp": optimal["optimal_tp"],
+        "optimal_sl": optimal["optimal_sl"],
+        "expected_pnl": optimal["expected_pnl"],
+        "signals": signals,
+    }
