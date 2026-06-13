@@ -590,6 +590,20 @@ def auto_learn_update() -> dict:
 
     data["model"]["last_auto_learn"] = datetime.now(timezone.utc).isoformat()
     data["model"]["auto_learn_insights"] = insights
+
+    win_rate = insights["win_rate"]
+    current_threshold = data.get("model", {}).get("signal_criteria", {}).get("heuristic_threshold", 0.45)
+    if win_rate < 20:
+        new_threshold = min(current_threshold + 0.05, 0.70)
+    elif win_rate > 40:
+        new_threshold = max(current_threshold - 0.03, 0.35)
+    else:
+        new_threshold = current_threshold
+    criteria_data = data.get("model", {}).get("signal_criteria", {})
+    criteria_data["heuristic_threshold"] = round(new_threshold, 2)
+    data["model"]["signal_criteria"] = criteria_data
+    insights["heuristic_threshold"] = round(new_threshold, 2)
+
     save_data(data)
 
     logger.info(f"🧠 Auto-learn: win_rate={insights['win_rate']}% "
@@ -745,7 +759,6 @@ def compute_signal_criteria(min_patterns: int = 10) -> dict:
     if p_liq_above > 60 and d_liq_above < 30:
         criteria["min_liq"] = max(criteria["min_liq"], 2000)
 
-    criteria["heuristic_threshold"] = 0.70
     criteria["pattern_threshold"] = 0.55
     criteria["max_age_seconds"] = 3600
 

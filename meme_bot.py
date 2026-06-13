@@ -1510,7 +1510,7 @@ class MemeBot:
             await asyncio.sleep(7 * 24 * 3600)  # Every 7 days
 
     async def daily_summary_loop(self):
-        """Send midnight signal summary: signals in 24h with price → ATH."""
+        """Send midnight signal summary with full stats."""
         from datetime import timedelta
         while True:
             try:
@@ -1522,23 +1522,22 @@ class MemeBot:
                 logger.info(f"📊 Midnight summary in {int(wait_sec//3600)}h {int((wait_sec%3600)//60)}m")
                 await asyncio.sleep(wait_sec)
 
-                signals = await self.state.get_unchecked_signals()
-                all_signals = self.state.signal_tracking
                 yesterday = datetime.now(timezone.utc).timestamp() - 86400
 
+                all_signals = self.state.signal_tracking
                 recent = {k: v for k, v in all_signals.items() if v.signal_time >= yesterday}
 
-                if not recent:
-                    await send_msg(self.telegram_app.bot,
-                        f"📊 <b>মিডনাইট সামারি</b>\n"
-                        f"━━━━━━━━━━━━━━━━\n"
-                        f"📡 ২৪ ঘন্টায় সিগন্যাল: <b>0</b>\n"
-                        f"━━━━━━━━━━━━━━━━\n"
-                        f"🕐 <i>{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')} UTC</i>"
-                    )
-                    continue
+                data = load_data()
+                results = data.get("model", {}).get("signal_results", [])
+                recent_results = [r for r in results if r.get("timestamp", "") >= datetime.now(timezone.utc).replace(hour=0, minute=0).isoformat()]
 
                 total = len(recent)
+                confirmed = sum(1 for v in recent.values() if v.eval_done.get("21600"))
+
+                wins = [r for r in recent_results if r.get("verdict") in ("PUMP", "STRONG_PUMP")]
+                losses = [r for r in recent_results if r.get("verdict") == "DUMP"]
+                win_rate = len(wins) / max(len(recent_results), 1) * 100
+
                 rows = []
                 for addr, sig in sorted(recent.items(), key=lambda x: x[1].signal_time, reverse=True):
                     ath_mult = sig.ath_price / sig.price_at_signal if sig.price_at_signal > 0 else 0
@@ -1552,17 +1551,34 @@ class MemeBot:
                         emoji = "❌"
                     rows.append(f"{emoji} <b>{sig.symbol}</b>: {ath_mult:.1f}x")
 
-                body = "\n".join(rows)
+                body = "\n".join(rows[:15])
+                if len(rows) > 15:
+                    body += f"\n... এবং {len(rows)-15}টি আরও"
+
+                insights = data.get("model", {}).get("auto_learn_insights", {})
+                learn_text = ""
+                if insights:
+                    learn_text = (
+                        f"━━━━━━━━━━━━━━━━\n"
+                        f"🧠 <b>Auto-Learn:</b>\n"
+                        f"  Win: {insights.get('avg_win_holders',0)} holders, {insights.get('avg_win_bsr',0)} BSR\n"
+                        f"  Loss: {insights.get('avg_loss_holders',0)} holders, {insights.get('avg_loss_bsr',0)} BSR\n"
+                    )
+
                 await send_msg(self.telegram_app.bot,
-                    f"📊 <b>মিডনাইট সামারি</b>\n"
+                    f"📊 <b>দৈনিক সামারি</b>\n"
                     f"━━━━━━━━━━━━━━━━\n"
-                    f"📡 ২৪ ঘন্টায় সিগন্যাল: <b>{total}</b>\n"
+                    f"📡 মোট সিগন্যাল: <b>{total}</b>\n"
+                    f"✅ কনফার্মড: <b>{confirmed}</b>\n"
+                    f"🟢 জিতেছে: <b>{len(wins)}</b> ({win_rate:.0f}%)\n"
+                    f"🔴 হারেছে: <b>{len(losses)}</b>\n"
                     f"━━━━━━━━━━━━━━━━\n"
                     f"{body}\n"
+                    f"{learn_text}"
                     f"━━━━━━━━━━━━━━━━\n"
                     f"🕐 <i>{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')} UTC</i>"
                 )
-                logger.info(f"📊 Midnight summary sent: {total} signals")
+                logger.info(f"📊 Daily summary sent: {total} signals, {win_rate:.0f}% win rate")
             except asyncio.CancelledError:
                 break
             except Exception as e:
