@@ -1229,14 +1229,12 @@ class MemeBot:
                                 await send_msg(self.telegram_app.bot,
                                     f"🔄 <b>TP/SL আপডেট ({sig_info.symbol} এর পর)</b>\n"
                                     f"━━━━━━━━━━━━━━━━\n"
-                                    f"⭐ সেটাপ: <b>TP +{opt['optimal_tp']}% / SL {opt['optimal_sl']}%</b>\n"
-                                    f"📊 {len(recent)} সিগন্যাল বিশ্লেষণ\n"
-                                    f"✅ TP হিট: {opt['tp_hits']}/{len(recent)} | "
-                                    f"🔴 SL হিট: {opt['sl_hits']}/{len(recent)} | "
-                                    f"⏳ হোল্ড: {opt['holds']}/{len(recent)}\n"
-                                    f"💰 গড় লাভ: <b>{opt['expected_pnl']:+.1f}%</b> প্রতি সিগন্যাল\n"
+                                    f"⭐ <b>স্ক্রেপারে সেট করো:</b>\n"
+                                    f"  <b>TP +{opt['optimal_tp']}%</b> / <b>SL {opt['optimal_sl']}%</b>\n"
+                                    f"  → {opt['tp_hits']}/{len(recent)} হিট ({round(opt['tp_hits']/len(recent)*100)}%)\n"
+                                    f"  → গড় লাভ: <b>{opt['expected_pnl']:+.1f}%</b>\n"
                                     f"━━━━━━━━━━━━━━━━\n"
-                                    f"💡 <i>স্ক্র্যাপারে এই TP/SL সেট করো</i>"
+                                    f"📊 {len(recent)} সিগন্যাল বিশ্লেষণ"
                                 )
                         except Exception:
                             pass

@@ -446,28 +446,27 @@ class TelegramHandlers:
         scenarios = perf.get("tp_scenarios", [])
         sc_lines = ""
         for sc in scenarios:
-            marker = " ⭐" if sc["tp"] == perf["optimal_tp"] else ""
             hold_note = ""
             if sc.get("hold_better", 0) > 0:
                 hold_note = f" ⚠️{sc['hold_better']}"
             sc_lines += (
-                f"  {'→' if sc['tp'] == perf['optimal_tp'] else ' '} "
+                f"  {'⭐' if sc['tp'] == perf['optimal_tp'] else '  '} "
                 f"+{sc['tp']:>3}%: "
                 f"{sc['tp_hits']}/{total} ({sc['tp_rate']:.0f}%) "
                 f"= <b>{sc['avg_pnl']:+.0f}%</b>{hold_note}\n"
             )
 
         text = (
-            f"📊 <b>স্ক্রেপার সেটআপ (২৪h ডেটা)</b>\n"
+            f"🤖 <b>অটো-বায়/সেল সেটআপ</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"📡 {total} সিগন্যাল | গড় ATH: <b>{perf['avg_ath']}x</b>\n"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"⭐ <b>সেট করো: TP +{perf['optimal_tp']}% / SL {perf['optimal_sl']}%</b>\n"
+            f"⭐ <b>স্ক্রেপারে সেট করো:</b>\n"
+            f"  <b>TP +{perf['optimal_tp']}%</b> / <b>SL {perf['optimal_sl']}%</b>\n"
             f"  → {tp_h}/{total} সিগন্যালে হিট হবে ({round(tp_h/total*100)}%)\n"
             f"  → গড় লাভ: <b>{perf['expected_pnl']:+.1f}%</b> প্রতি সিগন্যাল\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"📋 <b>TP অপশন:</b>\n"
-            f"<i>SL -10% সহ কোন TP দিলে কত লাভ:</i>\n"
+            f"📊 {total} সিগন্যাল | গড় ATH: <b>{perf['avg_ath']}x</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"📋 <b>TP অপশন (SL -10% সহ):</b>\n"
             f"{sc_lines}"
             f"━━━━━━━━━━━━━━━━\n"
             f"🎯 <b>ব্রেকডাউন:</b>\n"
