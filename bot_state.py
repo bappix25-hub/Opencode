@@ -84,6 +84,16 @@ class CoinInfo:
     symbol: str
     first_seen: float = field(default_factory=lambda: datetime.now(timezone.utc).timestamp())
 
+@dataclass
+class LPSnapshot:
+    address: str
+    symbol: str
+    timestamp: float
+    liquidity_usd: float
+    lp_providers: int
+    deployer_has_lp: bool = False
+    price_at_snapshot: float = 0.0
+
 class BotState:
     def __init__(self):
         self._lock = asyncio.Lock()
@@ -97,6 +107,7 @@ class BotState:
         self.pump_coins: dict[str, CoinInfo] = {}
         self.dump_coins: dict[str, CoinInfo] = {}
         self.pending_signals: dict[str, PendingSignal] = {}
+        self.lp_snapshots: dict[str, LPSnapshot] = {}
         self.bot_active: bool = True
         self.current_threshold: float = 0.50
     
@@ -276,3 +287,29 @@ class BotState:
     async def get_threshold(self) -> float:
         async with self._lock:
             return self.current_threshold
+
+    async def save_lp_snapshot(self, address: str, symbol: str, liquidity_usd: float,
+                                lp_providers: int, deployer_has_lp: bool = False,
+                                price: float = 0.0) -> None:
+        async with self._lock:
+            self.lp_snapshots[address] = LPSnapshot(
+                address=address,
+                symbol=symbol,
+                timestamp=datetime.now(timezone.utc).timestamp(),
+                liquidity_usd=liquidity_usd,
+                lp_providers=lp_providers,
+                deployer_has_lp=deployer_has_lp,
+                price_at_snapshot=price,
+            )
+
+    async def get_lp_snapshot(self, address: str) -> Optional[LPSnapshot]:
+        async with self._lock:
+            return self.lp_snapshots.get(address)
+
+    async def get_all_lp_snapshots(self) -> dict[str, LPSnapshot]:
+        async with self._lock:
+            return dict(self.lp_snapshots)
+
+    async def remove_lp_snapshot(self, address: str) -> None:
+        async with self._lock:
+            self.lp_snapshots.pop(address, None)

@@ -144,3 +144,64 @@ class BirdeyeClient:
         except Exception as e:
             logger.debug(f"Birdeye security error for {address}: {e}")
         return None
+
+    async def get_lp_analysis(self, address: str, deployer: str = "") -> Optional[dict]:
+        """Analyze LP providers: count unique providers, check deployer involvement."""
+        if not self.enabled:
+            return None
+        try:
+            holders_data = await self.get_top_holders(address, limit=20)
+            if not holders_data or not holders_data.get("holders"):
+                return None
+
+            holders = holders_data["holders"]
+            total_amount = sum(float(h.get("amount", 0) or 0) for h in holders)
+            if total_amount <= 0:
+                return None
+
+            lp_providers = []
+            deployer_has_lp = False
+            for h in holders:
+                holder_addr = h.get("address", "")
+                amount = float(h.get("amount", 0) or 0)
+                usd_value = float(h.get("usdValue", 0) or 0)
+                pct = (amount / total_amount * 100) if total_amount > 0 else 0
+
+                if pct >= 1.0:
+                    lp_providers.append({
+                        "address": holder_addr,
+                        "amount": amount,
+                        "pct": round(pct, 1),
+                        "usd_value": round(usd_value, 2),
+                    })
+
+                if deployer and holder_addr == deployer and pct >= 1.0:
+                    deployer_has_lp = True
+
+            providers_count = len(lp_providers)
+            top_pct = lp_providers[0]["pct"] if lp_providers else 0
+
+            if providers_count <= 1:
+                concentration = "high"
+                risk_level = "danger"
+            elif providers_count == 2:
+                concentration = "medium"
+                risk_level = "warning"
+            else:
+                concentration = "low"
+                risk_level = "safe"
+
+            if deployer_has_lp:
+                risk_level = "danger"
+
+            return {
+                "lp_providers_count": providers_count,
+                "deployer_has_lp": deployer_has_lp,
+                "top_lp_holder_pct": top_pct,
+                "lp_concentration": concentration,
+                "risk_level": risk_level,
+                "lp_providers": lp_providers,
+            }
+        except Exception as e:
+            logger.debug(f"Birdeye LP analysis error for {address}: {e}")
+        return None

@@ -28,15 +28,19 @@ class HoneypotReport:
     mint_authority: bool = False
     sell_tax: float = 0.0
     tradable: bool = True
+    lp_providers_count: int = 0
+    deployer_has_lp: bool = False
+    lp_concentration: str = "unknown"
+    lp_risk_level: str = "unknown"
 
 
 class HoneypotDetector:
     """
     Layered detection:
     1. Rugcheck API (Honeypot / Freeze / Mint authority)
-    2. Helius holder distribution (top10 %)
-    3. GMGN security endpoint (sell simulation)
-    4. Pair liquidity (rug pull detection)
+    2. Pair liquidity + top10 holder check
+    3. Helius holder distribution (top10 %)
+    4. Birdeye LP provider analysis (multi-account check)
     """
 
     def __init__(
@@ -45,11 +49,13 @@ class HoneypotDetector:
         rugcheck: Optional[RugcheckClient] = None,
         helius=None,
         dex=None,
+        birdeye=None,
     ):
         self.session = session
         self.rugcheck = rugcheck or RugcheckClient(session)
         self.helius = helius
         self.dex = dex
+        self.birdeye = birdeye
         self._gmgn_cache: dict[str, HoneypotReport] = {}
 
     async def check(
@@ -57,6 +63,7 @@ class HoneypotDetector:
         address: str,
         symbol: str = "?",
         pair: Optional[dict] = None,
+        deployer: str = "",
     ) -> HoneypotReport:
         reasons: list[str] = []
         confidence = 0.0
@@ -67,6 +74,10 @@ class HoneypotDetector:
         top10_pct = 0.0
         sell_tax = 0.0
         tradable = True
+        lp_providers_count = 0
+        deployer_has_lp = False
+        lp_concentration = "unknown"
+        lp_risk_level = "unknown"
 
         if address in self._gmgn_cache:
             cached = self._gmgn_cache[address]
@@ -138,6 +149,31 @@ class HoneypotDetector:
             except Exception as e:
                 logger.debug(f"helius holder check error: {e}")
 
+        # Layer 5: Birdeye LP provider analysis
+        if self.birdeye and not is_honeypot:
+            try:
+                lp_data = await self.birdeye.get_lp_analysis(address, deployer=deployer)
+                if lp_data:
+                    lp_providers_count = lp_data.get("lp_providers_count", 0)
+                    deployer_has_lp = lp_data.get("deployer_has_lp", False)
+                    lp_concentration = lp_data.get("lp_concentration", "unknown")
+                    lp_risk_level = lp_data.get("risk_level", "unknown")
+
+                    if deployer_has_lp:
+                        is_honeypot = True
+                        confidence = max(confidence, 0.80)
+                        reasons.append("deployer has LP (rug risk)")
+                    elif lp_providers_count <= 1 and lp_providers_count > 0:
+                        is_honeypot = True
+                        confidence = max(confidence, 0.70)
+                        reasons.append(f"single LP provider ({lp_providers_count})")
+                    elif lp_providers_count == 2:
+                        reasons.append(f"2 LP providers (medium risk)")
+                    elif lp_providers_count >= 3:
+                        reasons.append(f"{lp_providers_count} LP providers (safe)")
+            except Exception as e:
+                logger.debug(f"birdeye LP analysis error: {e}")
+
         if not is_honeypot and not tradable:
             is_honeypot = True
 
@@ -151,6 +187,10 @@ class HoneypotDetector:
             mint_authority=mint_auth,
             sell_tax=sell_tax,
             tradable=tradable,
+            lp_providers_count=lp_providers_count,
+            deployer_has_lp=deployer_has_lp,
+            lp_concentration=lp_concentration,
+            lp_risk_level=lp_risk_level,
         )
         out.__dict__["_ts"] = asyncio.get_event_loop().time()
         self._gmgn_cache[address] = out

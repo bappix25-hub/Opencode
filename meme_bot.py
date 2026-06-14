@@ -93,7 +93,7 @@ class MemeBot:
         self.birdeye = BirdeyeClient(self.session, config.birdeye_api_key)
         self.jupiter = JupiterClient(self.session)
         self.social = SocialSignalEngine(self.session)
-        self.honeypot = HoneypotDetector(self.session, rugcheck=self.rugcheck, helius=self.helius, dex=self.dex)
+        self.honeypot = HoneypotDetector(self.session, rugcheck=self.rugcheck, helius=self.helius, dex=self.dex, birdeye=self.birdeye)
         self.pumpportal = PumpPortalWS(
             on_new_token=self._on_new_token,
             on_migration=self._on_migration,
@@ -153,6 +153,7 @@ class MemeBot:
 
         self._tasks.append(asyncio.create_task(self.health_check_loop(), name="health_check"))
         self._tasks.append(asyncio.create_task(self.feature_request_loop(), name="feature_request"))
+        self._tasks.append(asyncio.create_task(self.lp_monitoring_loop(), name="lp_monitoring"))
 
         await send_msg(self.telegram_app.bot, "🤖 <b>বট v3 চালু!</b>\n✅ 5x filter + Auto-verify + Social signals + Paper Trading সক্রিয়")
 
@@ -513,11 +514,14 @@ class MemeBot:
                 h_score += 0.05
                 h_reasons.append(f"holders={real_holders}")
 
-            # LP locked
+            # LP locked scoring
             lp_locked = launch_data.lp_locked
             if lp_locked >= 80:
                 h_score += 0.10
                 h_reasons.append(f"lp={lp_locked}%")
+            elif lp_locked < 50 and lp_locked > 0:
+                h_score -= 0.10
+                h_reasons.append(f"lp_low={lp_locked}%")
 
             h_threshold = 0.45
             if h_score >= h_threshold:
@@ -551,11 +555,30 @@ class MemeBot:
             return
 
         try:
-            hp = await self.honeypot.check(address, symbol)
+            deployer = launch_data.deployer_wallet or ""
+            hp = await self.honeypot.check(address, symbol, deployer=deployer)
             if hp and hp.is_honeypot:
                 logger.info(f"[SKIP] {symbol}: honeypot detected — {hp.reasons[:2]}")
                 await self.state.add_blacklisted(address)
                 return
+
+            # LP provider scoring
+            lp_count = hp.lp_providers_count if hp else 0
+            dep_has_lp = hp.deployer_has_lp if hp else False
+            if dep_has_lp:
+                h_score -= 0.20
+                h_reasons.append("deployer_has_lp")
+                logger.info(f"[LP] {symbol}: deployer has LP — high risk")
+            elif lp_count >= 3:
+                h_score += 0.10
+                h_reasons.append(f"lp_providers={lp_count}")
+            elif lp_count == 2:
+                h_score += 0.02
+                h_reasons.append(f"lp_providers={lp_count}")
+            elif lp_count == 1:
+                h_score -= 0.15
+                h_reasons.append("single_lp_provider")
+                logger.info(f"[LP] {symbol}: single LP provider — risky")
         except Exception:
             pass
 
@@ -1334,12 +1357,26 @@ class MemeBot:
         confidence_pct = int(pending.match_score * 100)
         confidence_bar = "🟢" * max(1, int(confidence_pct / 20)) + "⚪" * (5 - max(1, int(confidence_pct / 20)))
 
-        # Fetch current market cap
+        # Fetch current market cap and LP analysis
         current_mcap = 0
+        lp_text = ""
         try:
             pair = await self.dex.fetch_pair_data(address)
             if pair:
                 current_mcap = float(pair.get("fdv", 0) or 0)
+        except Exception:
+            pass
+
+        try:
+            lp_analysis = await self.birdeye.get_lp_analysis(address) if self.birdeye else None
+            if lp_analysis:
+                lp_count = lp_analysis.get("lp_providers_count", 0)
+                dep_lp = lp_analysis.get("deployer_has_lp", False)
+                lp_risk = lp_analysis.get("risk_level", "unknown")
+                lp_emoji = "🟢" if lp_risk == "safe" else ("🟡" if lp_risk == "warning" else "🔴")
+                lp_text = f"{lp_emoji} LP Providers: <b>{lp_count}</b>"
+                if dep_lp:
+                    lp_text += " | ⚠️ Deployer has LP"
         except Exception:
             pass
 
@@ -1354,6 +1391,7 @@ class MemeBot:
             f"📊 Buy: <b>{pending.buy_count}</b> | Sell: <b>{pending.sell_count}</b>\n"
             f"👥 Wallets: <b>{pending.unique_wallets}</b> | Holders: <b>{pending.holders}</b>\n"
             f"⏱️ বয়স: <b>{int(pending.age_seconds//60)}m {int(pending.age_seconds%60)}s</b>\n"
+            f"{lp_text + chr(10) if lp_text else ''}"
             f"📈 বর্তমান MCap: <b>{format_number(current_mcap)}</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"🔗 <a href='{link}'>GMGN</a>"
@@ -1374,6 +1412,18 @@ class MemeBot:
         logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {pending.symbol} match={pending.match_score:.0%} "
                      f"liq=${int(pending.liquidity)} holders={pending.holders} "
                      f"mcap={format_number(pending.mcap)} confirmed_after={pending.check_count}x checks")
+
+        # Save LP snapshot for monitoring
+        try:
+            lp_analysis = await self.birdeye.get_lp_analysis(address) if self.birdeye else None
+            lp_count = lp_analysis.get("lp_providers_count", 0) if lp_analysis else 0
+            dep_has_lp = lp_analysis.get("deployer_has_lp", False) if lp_analysis else False
+            await self.state.save_lp_snapshot(
+                address, pending.symbol, pending.liquidity,
+                lp_count, dep_has_lp, pending.price_at_match,
+            )
+        except Exception:
+            pass
 
     async def cleanup_loop(self):
         while True:
@@ -1798,6 +1848,67 @@ class MemeBot:
                 break
             except Exception as e:
                 logger.debug(f"health_check_loop error: {e}")
+
+    async def lp_monitoring_loop(self):
+        """Monitor LP removal and liquidity decrease for active signals."""
+        CHECK_INTERVAL = 300  # 5 min
+        LIQ_DROP_WARN = 0.20   # 20% drop = warning
+        LIQ_DROP_ALERT = 0.50  # 50% drop = emergency
+
+        while True:
+            try:
+                await asyncio.sleep(CHECK_INTERVAL)
+                snapshots = await self.state.get_all_lp_snapshots()
+
+                for addr, snap in list(snapshots.items()):
+                    try:
+                        pair = await self.dex.fetch_pair_data(addr)
+                        if not pair:
+                            continue
+
+                        current_liq = float(pair.get("liquidity", {}).get("usd", 0) or 0)
+                        if current_liq <= 0 or snap.liquidity_usd <= 0:
+                            continue
+
+                        liq_change = (current_liq - snap.liquidity_usd) / snap.liquidity_usd
+
+                        # LP removal: liquidity dropped significantly
+                        if liq_change <= -LIQ_DROP_ALERT:
+                            await send_msg(self.telegram_app.bot,
+                                f"🔴 <b>LP REMOVAL ALERT!</b>\n"
+                                f"━━━━━━━━━━━━━━━━\n"
+                                f"🏷️ ${snap.symbol}\n"
+                                f"💧 Liquidity: ${snap.liquidity_usd:,.0f} → ${current_liq:,.0f} ({liq_change*100:+.0f}%)\n"
+                                f"👥 LP Providers: {snap.lp_providers}\n"
+                                f"━━━━━━━━━━━━━━━━\n"
+                                f"🔴 <b>বিক্রি করো!</b>"
+                            )
+                            await self.state.remove_lp_snapshot(addr)
+                            logger.warning(f"🔴 LP REMOVAL: {snap.symbol} liq dropped {liq_change*100:.0f}%")
+
+                        elif liq_change <= -LIQ_DROP_WARN:
+                            await send_msg(self.telegram_app.bot,
+                                f"⚠️ <b>Liquidity Decrease!</b>\n"
+                                f"🏷️ ${snap.symbol}\n"
+                                f"💧 ${snap.liquidity_usd:,.0f} → ${current_liq:,.0f} ({liq_change*100:+.0f}%)"
+                            )
+                            logger.warning(f"⚠️ LP WARNING: {snap.symbol} liq dropped {liq_change*100:.0f}%")
+
+                        # Update snapshot with current data
+                        if current_liq > 0:
+                            await self.state.save_lp_snapshot(
+                                addr, snap.symbol, current_liq,
+                                snap.lp_providers, snap.deployer_has_lp,
+                                snap.price_at_snapshot,
+                            )
+
+                    except Exception as e:
+                        logger.debug(f"lp_monitoring error for {addr}: {e}")
+
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.debug(f"lp_monitoring_loop error: {e}")
 
     async def feature_request_loop(self):
         """Listen for /feature requests from Telegram and save to file."""

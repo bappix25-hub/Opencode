@@ -64,8 +64,18 @@ class DexScreenerClient:
             pairs = data.get("pairs", [])
             if pairs:
                 pairs.sort(key=lambda x: float(x.get("liquidity", {}).get("usd", 0) or 0), reverse=True)
-                return pairs[0]
+                pair = pairs[0]
+                # Try to extract deployer from pair data
+                if not pair.get("deployer"):
+                    pair["deployer"] = pair.get("creatorAddress", "") or pair.get("creator", "") or ""
+                return pair
         return None
+
+    def get_deployer(self, pair: dict) -> str:
+        """Extract deployer address from pair data."""
+        if not pair:
+            return ""
+        return pair.get("deployer", "") or pair.get("creatorAddress", "") or pair.get("creator", "") or ""
 
     async def fetch_top_pairs(self, limit: int = 100) -> list:
         """Fetch top pairs by volume/h24 for historical pump discovery."""

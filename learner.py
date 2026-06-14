@@ -131,6 +131,8 @@ def extract_launch_features(launch_data, pair_data=None, unique_wallets=0) -> di
         "lp_locked": round(lp_locked, 1),
         "deployer": deployer[:12] if deployer else "",
         "ath_price": round(ath_price, 8),
+        "lp_providers_count": getattr(launch_data, 'lp_providers_count', 0) if hasattr(launch_data, 'lp_providers_count') else launch_data.get("lp_providers_count", 0) if isinstance(launch_data, dict) else 0,
+        "deployer_has_lp": getattr(launch_data, 'deployer_has_lp', False) if hasattr(launch_data, 'deployer_has_lp') else launch_data.get("deployer_has_lp", False) if isinstance(launch_data, dict) else False,
     }
 
 
@@ -584,6 +586,8 @@ def auto_learn_update() -> dict:
         "avg_loss_mcap": round(avg(loss_features, "initial_mcap"), 0),
         "avg_win_lp_locked": round(avg(win_features, "lp_locked"), 1),
         "avg_loss_lp_locked": round(avg(loss_features, "lp_locked"), 1),
+        "avg_win_lp_providers": round(avg(win_features, "lp_providers_count"), 1),
+        "avg_loss_lp_providers": round(avg(loss_features, "lp_providers_count"), 1),
         "total_recent": len(recent),
         "win_rate": round(len(wins) / len(recent) * 100, 1),
     }
@@ -722,6 +726,7 @@ def compute_signal_criteria(min_patterns: int = 10) -> dict:
         ("initial_liq", "min_liq", "median"),
         ("liq_pct", "min_liq_pct", "median"),
         ("lp_locked", "min_lp_locked", "median"),
+        ("lp_providers_count", "min_lp_providers", "median"),
     ]
 
     pump_medians = {}
