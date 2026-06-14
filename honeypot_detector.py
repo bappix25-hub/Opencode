@@ -99,11 +99,13 @@ class HoneypotDetector:
                     reasons.append(f"rugcheck: {risk}")
                 elif "freeze authority" in risk_lower:
                     freeze_auth = True
-                    confidence = max(confidence, 0.80)
+                    is_honeypot = True
+                    confidence = max(confidence, 0.90)
                     reasons.append(f"rugcheck: {risk}")
                 elif "mint authority" in risk_lower:
                     mint_auth = True
-                    confidence = max(confidence, 0.70)
+                    is_honeypot = True
+                    confidence = max(confidence, 0.85)
                     reasons.append(f"rugcheck: {risk}")
                 elif "high" in risk_lower and "tax" in risk_lower:
                     sell_tax = max(sell_tax, 50.0)

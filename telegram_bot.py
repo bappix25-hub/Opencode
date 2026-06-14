@@ -560,15 +560,7 @@ class TelegramHandlers:
         if text == "📊 স্ট্যাটাস":
             await self.cmd_health(update, context)
         elif text == "📈 পারফরম্যান্স":
-            learner_stats = get_stats()
-            await update.message.reply_text(
-                f"📈 <b>পারফরম্যান্স</b>\n"
-                f"━━━━━━━━━━━━━━━━\n"
-                f"⚡ মোট সিগন্যাল: <b>{learner_stats['total_signals']}</b>\n"
-                f"🏆 সফল (2x+): <b>{learner_stats['successful_signals']}</b>\n"
-                f"🎯 একুরেসি: <b>{learner_stats['accuracy']}%</b>",
-                parse_mode="HTML"
-            )
+            await self.cmd_perf(update, context)
         elif text == "💰 ব্যালেন্স":
             await self.cmd_balance(update, context)
         elif text == "📦 পজিশন":
