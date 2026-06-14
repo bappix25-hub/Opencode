@@ -13374,6 +13374,33 @@
         "current_multiplier": 0.03313782991202346,
         "signal_age": 0.0,
         "timestamp": "2026-06-14T00:50:21.375058+00:00"
+      },
+      {
+        "address": "6yV9ukrWJcUiZnFZDxuW8pSgX47u6u1kiBzxZ28Spump",
+        "symbol": "KINSBANK",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.1345885634588564,
+        "current_multiplier": 0.8117154811715481,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T01:55:44.029331+00:00"
+      },
+      {
+        "address": "FX4GtNGSheFrbSfUoehxX46YNbA2TdERsx3Ro4ympump",
+        "symbol": "WHALIBA",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.675082657048392,
+        "current_multiplier": 0.021370604147880973,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T01:55:46.213353+00:00"
+      },
+      {
+        "address": "BR7R4MF5w8ykQxm4VG86Y5jVkZ8TfYqTqYfuzpspump",
+        "symbol": "LIEN",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.138566166052706,
+        "current_multiplier": 0.06282232927174837,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T01:55:48.555618+00:00"
       }
     ],
     "golden_symbols": {},
@@ -13407,7 +13434,7 @@
       "min_lp_locked": 0,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-14T01:03:51.245552+00:00",
+      "updated_at": "2026-06-14T01:55:48.605841+00:00",
       "sample_size": 206
     },
     "signal_criteria_stats": {
