@@ -26355,6 +26355,63 @@
       "outcome_mcap": 0,
       "outcome_time": null,
       "signal_sent": false
+    },
+    {
+      "address": "Hom17s76fUyhiX23oBMJaKcw3yebkVNVPJWv3SrNpump",
+      "symbol": "OLIVER",
+      "features": {
+        "launch_time": 1781551709.952459,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781551709.952459,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "BMEA6uRATdts1FdsPXP6cya5w4ti44DPQzK2q9Zepump",
+      "symbol": "TREX",
+      "features": {
+        "launch_time": 1781551715.31944,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781551715.31944,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "8sSMKJnLSEsuLagtqDsHAXiTvpyAcFTkabaFwpsspump",
+      "symbol": "Agnes",
+      "features": {
+        "buy_count": 5,
+        "sell_count": 0,
+        "buy_sell_ratio": 5.0,
+        "volume": 34199203.15,
+        "holders": 5,
+        "unique_wallets": 5,
+        "initial_liq": 0,
+        "initial_mcap": 2295.67,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 19,
+        "lp_locked": 0,
+        "deployer": "F3KZt3FmcrpL",
+        "ath_price": 0.0,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781551739.689233,
+        "liquidity": 0.0,
+        "mcap": 2295.67
+      },
+      "launch_time": 1781551739.689233,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
     }
   ],
   "missed_pumps": [
