@@ -1979,8 +1979,6 @@ def main():
     finally:
         try:
             loop.run_until_complete(loop.shutdown_asyncgens())
-        except RuntimeError:
-            pass
         except Exception:
             pass
         try:
