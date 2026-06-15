@@ -27,7 +27,7 @@ from learner import (
     compute_signal_criteria, learn_divergence_point
 )
 from github_sync import sync_to_github, restore_from_github
-from utils import format_number, gmgn_link, setup_logging
+from utils import format_number, gmgn_link, dexscreener_link, setup_logging
 from backtest import BacktestEngine, REPORTS_DIR, MAX_REPORTS
 from social_signals import SocialSignalEngine
 from honeypot_detector import HoneypotDetector
@@ -882,7 +882,7 @@ class MemeBot:
                                 f"👥 হোল্ডার: <b>{coin_info.holders}</b>\n"
                                 f"🔒 LP লক: <b>{coin_info.lp_locked}%</b>\n"
                                 f"🧠 <i>পাম্প প্যাটার্ন শেখা হয়েছে!</i>\n"
-                                f"🔗 <a href='{link}'>GMGN</a>"
+                                f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(addr)}'>DexScreener</a>"
                             )
 
                             launch_data = await self.state.get_launch_tracking(addr)
@@ -958,7 +958,7 @@ class MemeBot:
                                     f"🔒 LP লক: <b>{coin_info.lp_locked}%</b>\n"
                                     f"⏱️ বয়স: <b>{age_min}m {age_sec}s</b>\n"
                                     f"━━━━━━━━━━━━━━━━\n"
-                                    f"🔗 <a href='{link}'>GMGN</a>"
+                                    f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(addr)}'>DexScreener</a>"
                                 )
 
                                 from bot_state import SignalInfo
@@ -1070,7 +1070,7 @@ class MemeBot:
                             f"🔒 LP লক: <b>{coin_info.lp_locked}%</b>\n"
                             f"⏱️ বয়স: <b>{int(age//60)}m {int(age%60)}s</b>\n"
                             f"━━━━━━━━━━━━━━━━\n"
-                            f"🔗 <a href='{link}'>GMGN</a>"
+                            f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(addr)}'>DexScreener</a>"
                         )
 
                         from bot_state import SignalInfo
@@ -1394,7 +1394,7 @@ class MemeBot:
             f"{lp_text + chr(10) if lp_text else ''}"
             f"📈 বর্তমান MCap: <b>{format_number(current_mcap)}</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"🔗 <a href='{link}'>GMGN</a>"
+            f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(address)}'>DexScreener</a>"
         )
 
         await self.state.add_alerted(address)

@@ -57,6 +57,9 @@ def format_number(n) -> str:
 def gmgn_link(address: str) -> str:
     return f"https://gmgn.ai/sol/token/{address}"
 
+def dexscreener_link(address: str) -> str:
+    return f"https://dexscreener.com/solana/{address}"
+
 def get_launch_age(pair: dict) -> Optional[float]:
     try:
         created_at = pair.get("pairCreatedAt")

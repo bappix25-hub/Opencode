@@ -457,24 +457,19 @@ class TelegramHandlers:
             )
 
         text = (
-            f"🤖 <b>অটো-বায়/সেল সেটআপ</b>\n"
+            f"🤖 <b>স্ক্রেপার সেটআপ</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"⭐ <b>স্ক্রেপারে সেট করো:</b>\n"
+            f"⭐ <b>সেট করো:</b>\n"
             f"  <b>TP +{perf['optimal_tp']}%</b> / <b>SL {perf['optimal_sl']}%</b>\n"
-            f"  → {tp_h}/{total} সিগন্যালে হিট হবে ({round(tp_h/total*100)}%)\n"
             f"  → গড় লাভ: <b>{perf['expected_pnl']:+.1f}%</b> প্রতি সিগন্যাল\n"
+            f"  → জিতবে {tp_h}/{total} ({round(tp_h/total*100)}%) | হারবে {sl_h}/{total} ({round(sl_h/total*100)}%)\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"📊 {total} সিগন্যাল | গড় ATH: <b>{perf['avg_ath']}x</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"📋 <b>TP অপশন (SL -10% সহ):</b>\n"
             f"{sc_lines}"
             f"━━━━━━━━━━━━━━━━\n"
-            f"🎯 <b>ব্রেকডাউন:</b>\n"
-            f"  ✅ TP হিট: {tp_h}/{total} ({round(tp_h/total*100)}%)\n"
-            f"  🔴 SL হিট: {sl_h}/{total} ({round(sl_h/total*100)}%)\n"
-            f"  ⏳ হোল্ড: {hd}/{total} ({round(hd/total*100)}%)\n"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"💡 <i>⚠️ = SL হিট হলেও হোল্ড করলে লাভ হতো</i>\n"
+            f"💡 <i>বড় TP = কম হিট, বেশি লাভ। ছোট TP = বেশি হিট, কম লাভ।</i>\n"
             f"🕐 <i>গত ২৪ ঘন্টা</i>"
         )
         await update.message.reply_text(text, parse_mode="HTML")
