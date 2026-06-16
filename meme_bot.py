@@ -1949,6 +1949,8 @@ class MemeBot:
 
 def _global_exception_handler(loop, context):
     msg = context.get("exception", context["message"])
+    if "aclose" in str(msg):
+        return
     logger.error(f"💥 UNHANDLED EXCEPTION: {msg}", exc_info=context.get("exception"))
 
 def main():
@@ -1960,10 +1962,7 @@ def main():
 
     def handle_signal(signum, frame):
         try:
-            logger.info(f"📴 Signal {signum} received, shutting down...")
-            loop.call_soon_threadsafe(
-                lambda: asyncio.ensure_future(bot.shutdown(), loop=loop)
-            )
+            logger.warning(f"📴 Signal {signum} received — ignoring (platform keepalive)")
         except:
             pass
 
