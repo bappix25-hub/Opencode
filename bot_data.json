@@ -14245,6 +14245,15 @@
         "current_multiplier": 0.029468811990301963,
         "signal_age": 0.0,
         "timestamp": "2026-06-16T17:30:10.784753+00:00"
+      },
+      {
+        "address": "EzrXiBWKcr3WSGLdJWeXvfBSkWRHkaymU7gW5fXpump",
+        "symbol": "Kittens",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.5420673076923077,
+        "current_multiplier": 0.11905048076923078,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T18:05:45.533958+00:00"
       }
     ],
     "golden_symbols": {},
@@ -14281,7 +14290,7 @@
       "min_lp_providers": 0,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-16T17:30:10.844128+00:00",
+      "updated_at": "2026-06-16T18:05:45.599948+00:00",
       "sample_size": 203
     },
     "signal_criteria_stats": {
@@ -27801,6 +27810,32 @@
         "source": "historical_scan"
       },
       "launch_time": 1781591172.580852,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "3DyWrAQZ6MmAcQxC1q22N1V3ucPHwEsWk8U68pBnpump",
+      "symbol": "Mitch",
+      "features": {
+        "launch_time": 1781633151.185672,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781633151.185672,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "JB9DFnMki2Mz8S2UEyyzVLWYAufzjajzPN59fKqxpump",
+      "symbol": "Das Kapita",
+      "features": {
+        "launch_time": 1781633203.941951,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781633203.941951,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
