@@ -1299,6 +1299,33 @@
       "symbol": "S-Surprise",
       "address": "C5QvDK7fjJy4CDJNqfcN6M4p1ATDmH7QkWtsBzN8pump",
       "learned_at": "2026-06-16T14:16:11.612242+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 105149220.48,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 47184.94,
+      "initial_mcap": 390440,
+      "liq_pct": 12.09,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 20,
+      "lp_locked": 0,
+      "deployer": "EpDMhauzsyA7",
+      "ath_price": 0.0003904,
+      "lp_providers_count": 0,
+      "deployer_has_lp": false,
+      "launch_time": 1781642789.712383,
+      "liquidity": 47184.94,
+      "mcap": 390440.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 1.159144893111639,
+      "symbol": "Hold SOL",
+      "address": "F6pUWnMCxTdow46BURUjuSYhgGV28qftbY1BsSqwpump",
+      "learned_at": "2026-06-16T21:51:38.525183+00:00"
     }
   ],
   "dump_patterns": [
@@ -14434,10 +14461,46 @@
         "current_multiplier": 0.055614406779661014,
         "signal_age": 0.0,
         "timestamp": "2026-06-16T21:07:02.294131+00:00"
+      },
+      {
+        "address": "GqW2Am8uEXV9FBqujmxtEUTd7PjS4Tcjyy2p3D9vpump",
+        "symbol": "morty",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.020988490182803,
+        "current_multiplier": 0.2849695328368314,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T21:17:29.903440+00:00"
+      },
+      {
+        "address": "J5SkiXLrrixAg6AjXpxUbVwpuQ2qxsUwKssoyyMBpump",
+        "symbol": "EMC",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.84604385128694,
+        "current_multiplier": 0.2592469018112488,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T21:17:31.914289+00:00"
+      },
+      {
+        "address": "76fYLJi1AhPLyx9H2ULBRFxgBFCyGQtjTYhLs9Zppump",
+        "symbol": "ASCEND",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.758710921360694,
+        "current_multiplier": 1.0538493320479274,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T21:37:04.195835+00:00"
+      },
+      {
+        "address": "4npRHa1hdCjudxPzcfzGmimq2mSpHFEcpFMUUrRRLQfQ",
+        "symbol": "BONKCHA",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.5830013280212483,
+        "current_multiplier": 0.04398406374501992,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T21:50:39.367700+00:00"
       }
     ],
     "golden_symbols": {},
-    "total_pumps": 25,
+    "total_pumps": 26,
     "total_dumps": 34,
     "total_skipped": 0,
     "last_auto_learn": "2026-06-16T14:02:23.066937+00:00",
@@ -14470,7 +14533,7 @@
       "min_lp_providers": 0,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-16T21:07:02.376422+00:00",
+      "updated_at": "2026-06-16T21:50:39.425532+00:00",
       "sample_size": 203
     },
     "signal_criteria_stats": {
@@ -28530,6 +28593,33 @@
       "symbol": "S-Surprise",
       "address": "C5QvDK7fjJy4CDJNqfcN6M4p1ATDmH7QkWtsBzN8pump",
       "learned_at": "2026-06-16T14:16:11.612242+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 105149220.48,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 47184.94,
+      "initial_mcap": 390440,
+      "liq_pct": 12.09,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 20,
+      "lp_locked": 0,
+      "deployer": "EpDMhauzsyA7",
+      "ath_price": 0.0003904,
+      "lp_providers_count": 0,
+      "deployer_has_lp": false,
+      "launch_time": 1781642789.712383,
+      "liquidity": 47184.94,
+      "mcap": 390440.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 1.159144893111639,
+      "symbol": "Hold SOL",
+      "address": "F6pUWnMCxTdow46BURUjuSYhgGV28qftbY1BsSqwpump",
+      "learned_at": "2026-06-16T21:51:38.525183+00:00"
     }
   ]
 }
