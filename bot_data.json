@@ -14290,6 +14290,15 @@
         "current_multiplier": 0.49912038200552905,
         "signal_age": 0.0,
         "timestamp": "2026-06-16T18:40:11.250775+00:00"
+      },
+      {
+        "address": "6PrgZw55ujg89gpyfSiefNxtGErq49dcTX6DJvGHpump",
+        "symbol": "AICAST",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.145069274653627,
+        "current_multiplier": 0.25183374083129584,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T18:54:57.181901+00:00"
       }
     ],
     "golden_symbols": {},
@@ -14326,7 +14335,7 @@
       "min_lp_providers": 0,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-16T18:40:11.323736+00:00",
+      "updated_at": "2026-06-16T19:02:49.849850+00:00",
       "sample_size": 203
     },
     "signal_criteria_stats": {
@@ -27929,6 +27938,45 @@
         "source": "historical_scan"
       },
       "launch_time": 1781633203.941951,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "GvUCjmWSXA5hrTh9smmNA1AU55YCtP9mDLQcrKA1pump",
+      "symbol": "WSOLP",
+      "features": {
+        "launch_time": 1781636961.396877,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781636961.396877,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "GPTZwQj18Ei1aCJsiYUqea4CrJxBXPmWH29feAmrD5Yk",
+      "symbol": "GPT",
+      "features": {
+        "launch_time": 1781636966.70489,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781636966.70489,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "ADA9mtno4BVknoSefbqdh7aMPg4wwxZHKByRpJNTpump",
+      "symbol": "RIZZMAS",
+      "features": {
+        "launch_time": 1781637031.788675,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781637031.788675,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
