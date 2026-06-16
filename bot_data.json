@@ -14254,6 +14254,24 @@
         "current_multiplier": 0.11905048076923078,
         "signal_age": 0.0,
         "timestamp": "2026-06-16T18:05:45.533958+00:00"
+      },
+      {
+        "address": "6TwjfJsLjKPM1Aj7jeTM8hq9RxBi977UAiDvjerhpump",
+        "symbol": "Cursor",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.472679509632224,
+        "current_multiplier": 0.4178633975481611,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T18:17:49.359509+00:00"
+      },
+      {
+        "address": "5buZ8UuBX9eBzjUkYqKZaiFkEhXSsnSjmGvnLJYpump",
+        "symbol": "CRYPTO",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0589805177475313,
+        "current_multiplier": 0.04825193488123833,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T18:17:51.860541+00:00"
       }
     ],
     "golden_symbols": {},
@@ -14290,7 +14308,7 @@
       "min_lp_providers": 0,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-16T18:05:45.599948+00:00",
+      "updated_at": "2026-06-16T18:17:51.934741+00:00",
       "sample_size": 203
     },
     "signal_criteria_stats": {
