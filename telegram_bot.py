@@ -657,9 +657,11 @@ class TelegramHandlers:
             return
         _save_chat_id(chat.id)
         text = update.message.text
+        logger.info(f"Button pressed: {repr(text)}")
         if text == "📊 স্ট্যাটাস":
             await self.cmd_health(update, context)
         elif text == "📈 পারফরম্যান্স":
+            logger.info("Calling cmd_perf")
             await self.cmd_perf(update, context)
         elif text == "💰 ব্যালেন্স":
             await self.cmd_balance(update, context)
