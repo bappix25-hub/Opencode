@@ -1300,6 +1300,33 @@
       "ath_multiplier": 9.24,
       "signal_age": 0.0,
       "learned_at": "2026-06-16T23:36:27.281975+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 0.0,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 3892929.17,
+      "initial_mcap": 74890202162,
+      "liq_pct": 0.01,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 0,
+      "lp_locked": 0,
+      "deployer": "3CbUKKmh7ojD",
+      "ath_price": 1.00064,
+      "lp_providers_count": 0,
+      "deployer_has_lp": false,
+      "launch_time": 1781656429.935521,
+      "liquidity": 3892929.17,
+      "mcap": 9348927228.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 1.0,
+      "symbol": "LIZARD",
+      "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "learned_at": "2026-06-17T00:56:04.869261+00:00"
     }
   ],
   "dump_patterns": [
@@ -14464,7 +14491,7 @@
       }
     ],
     "golden_symbols": {},
-    "total_pumps": 28,
+    "total_pumps": 29,
     "total_dumps": 34,
     "total_skipped": 0,
     "last_auto_learn": "2026-06-16T14:02:23.066937+00:00",
@@ -14497,7 +14524,7 @@
       "min_lp_providers": 0,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-16T23:44:50.064292+00:00",
+      "updated_at": "2026-06-17T00:44:52.256846+00:00",
       "sample_size": 202
     },
     "signal_criteria_stats": {
@@ -29185,6 +29212,33 @@
       "symbol": "Hold SOL",
       "address": "F6pUWnMCxTdow46BURUjuSYhgGV28qftbY1BsSqwpump",
       "learned_at": "2026-06-16T21:51:38.525183+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 0.0,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 3892929.17,
+      "initial_mcap": 74890202162,
+      "liq_pct": 0.01,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 0,
+      "lp_locked": 0,
+      "deployer": "3CbUKKmh7ojD",
+      "ath_price": 1.00064,
+      "lp_providers_count": 0,
+      "deployer_has_lp": false,
+      "launch_time": 1781656429.935521,
+      "liquidity": 3892929.17,
+      "mcap": 9348927228.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 1.0,
+      "symbol": "LIZARD",
+      "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "learned_at": "2026-06-17T00:56:04.869261+00:00"
     }
   ]
 }
