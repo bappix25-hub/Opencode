@@ -30954,6 +30954,19 @@
       "outcome_mcap": 0,
       "outcome_time": null,
       "signal_sent": false
+    },
+    {
+      "address": "9cLkdRNFiTxkfGF5DUynxn4kAZKeZ165Cqv9t9JuBAGS",
+      "symbol": "MEMESTOCK",
+      "features": {
+        "launch_time": 1781724826.804652,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781724826.804652,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
     }
   ],
   "missed_pumps": [
