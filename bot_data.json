@@ -14637,6 +14637,42 @@
         "current_multiplier": 0.03135135135135136,
         "signal_age": 0.0,
         "timestamp": "2026-06-17T06:20:18.821517+00:00"
+      },
+      {
+        "address": "Fk5TidwF6UH5PRV5sBkyg5KLV9XBt9SfVc977JvQpump",
+        "symbol": "OG",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2033390410958904,
+        "current_multiplier": 0.17110445205479452,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T07:03:18.795145+00:00"
+      },
+      {
+        "address": "tungXo9vjMeyxRcXMRvejsiAWpCBBD64VNVi8KYX4Ar",
+        "symbol": "TUNGTARDIO",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2953882078225336,
+        "current_multiplier": 0.09929947460595447,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T07:12:39.407952+00:00"
+      },
+      {
+        "address": "5WCwSjeQ84xXLfHYdbvUYbX2spzSFrTaG3omnnvKpump",
+        "symbol": "ELBAF",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.8018648018648014,
+        "current_multiplier": 0.4054390054390054,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T07:12:41.907703+00:00"
+      },
+      {
+        "address": "3q6AA6e5QvxSXZ3sA4kSmZk9phq8M3vxrB9zf5d1pump",
+        "symbol": "STAX",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.6380566801619434,
+        "current_multiplier": 0.057031039136302294,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T07:20:29.092271+00:00"
       }
     ],
     "golden_symbols": {},
@@ -14673,7 +14709,7 @@
       "min_lp_providers": 0,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-17T06:47:38.672904+00:00",
+      "updated_at": "2026-06-17T07:20:29.159850+00:00",
       "sample_size": 204
     },
     "signal_criteria_stats": {
