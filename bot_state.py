@@ -26,6 +26,7 @@ class LaunchData:
     curve_fill_pct: float = 0.0
     eval_done: dict = field(default_factory=dict)
     ath_price: float = 0.0
+    trailing_sl_triggered: bool = False
 
 @dataclass
 class TrackedCoin:

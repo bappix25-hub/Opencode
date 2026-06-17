@@ -56,6 +56,18 @@ async def send_msg(bot: Bot, text: str) -> None:
     except Exception as e:
         logger.error(f"Send error: {e}")
 
+async def send_maestro(bot: Bot, address: str) -> None:
+    """Send token address to @maestro bot for auto-trade."""
+    try:
+        await bot.send_message(
+            chat_id="@maestro",
+            text=address,
+            disable_web_page_preview=True
+        )
+        logger.info(f"📤 Maestro: {address[:8]}...")
+    except Exception as e:
+        logger.debug(f"Maestro send error: {e}")
+
 
 class MemeBot:
     def __init__(self):
@@ -256,6 +268,23 @@ class MemeBot:
                 logger.info(f"TRADE DEBUG keys={list(data.keys())} traderPK={data.get('traderPublicKey', 'MISSING')}")
         amount = float(data.get("solAmount", 0) or data.get("tokenAmount", 0) or 0)
         await self.state.update_launch_tx(address, tx_type, wallet, amount)
+
+        # Large sell detection → instant alert + Maestro sell
+        if tx_type == "sell" and amount >= 0.5:
+            symbol = launch_data.symbol if launch_data else address[:6]
+            name = launch_data.name if launch_data else symbol
+            logger.warning(f"🔴 LARGE SELL: {symbol} {amount:.2f} SOL by {wallet[:8]}...")
+            await send_msg(self.telegram_app.bot,
+                f"🔴 <b>বড় সেল সতর্কতা!</b>\n"
+                f"━━━━━━━━━━━━━━━━\n"
+                f"🏷️ <b>{name}</b> (${symbol})\n"
+                f"💰 Sell: <b>{amount:.2f} SOL</b>\n"
+                f"🔗 <a href='{dexscreener_link(address)}'>DexScreener</a>\n"
+                f"━━━━━━━━━━━━━━━━\n"
+                f"⚠️ <b>দ্রুত বিক্রি করো!</b>"
+            )
+            await send_maestro(self.telegram_app.bot, address)
+
         await self.check_pre_migration_signal(address)
 
     async def process_new_token(self, data: dict):
@@ -840,6 +869,23 @@ class MemeBot:
                         ld.ath_price = current_price
                         await self.state.add_launch_tracking(addr, ld)
 
+                    # Trailing SL: if price drops 30%+ from ATH, send sell alert
+                    if ld and ld.ath_price > 0 and current_price > 0:
+                        ath_drop_pct = ((ld.ath_price - current_price) / ld.ath_price) * 100
+                        if ath_drop_pct >= 30 and not ld.trailing_sl_triggered:
+                            ld.trailing_sl_triggered = True
+                            await self.state.add_launch_tracking(addr, ld)
+                            logger.warning(f"🔴 TRAILING SL: {symbol} ATH drop {ath_drop_pct:.0f}%")
+                            await send_msg(self.telegram_app.bot,
+                                f"🔴 <b>Trailing SL!</b>\n"
+                                f"━━━━━━━━━━━━━━━━\n"
+                                f"🏷️ ${symbol}\n"
+                                f"📈 ATH: ${ld.ath_price:.8f}\n"
+                                f"📉 Now: ${current_price:.8f} ({ath_drop_pct:.0f}% drop)\n"
+                                f"⚠️ <b>বিক্রি করো!</b>"
+                            )
+                            await send_maestro(self.telegram_app.bot, addr)
+
                     multiplier = current_price / coin_info.initial_price
                     mcap = float(pair.get("fdv", 0) or 0)
                     liquidity = float(pair.get("liquidity", {}).get("usd", 0) or 0)
@@ -884,6 +930,7 @@ class MemeBot:
                                 f"🧠 <i>পাম্প প্যাটার্ন শেখা হয়েছে!</i>\n"
                                 f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(addr)}'>DexScreener</a>"
                             )
+                            await send_maestro(self.telegram_app.bot, addr)
 
                             launch_data = await self.state.get_launch_tracking(addr)
                             if launch_data and not launch_data.pre_signal_sent:
@@ -960,6 +1007,7 @@ class MemeBot:
                                     f"━━━━━━━━━━━━━━━━\n"
                                     f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(addr)}'>DexScreener</a>"
                                 )
+                                await send_maestro(self.telegram_app.bot, addr)
 
                                 from bot_state import SignalInfo
                                 await self.state.add_signal(addr, SignalInfo(
@@ -1072,6 +1120,7 @@ class MemeBot:
                             f"━━━━━━━━━━━━━━━━\n"
                             f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(addr)}'>DexScreener</a>"
                         )
+                        await send_maestro(self.telegram_app.bot, addr)
 
                         from bot_state import SignalInfo
                         await self.state.add_signal(addr, SignalInfo(
@@ -1396,6 +1445,7 @@ class MemeBot:
             f"━━━━━━━━━━━━━━━━\n"
             f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(address)}'>DexScreener</a>"
         )
+        await send_maestro(self.telegram_app.bot, address)
 
         await self.state.add_alerted(address)
 
