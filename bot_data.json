@@ -14601,6 +14601,42 @@
         "current_multiplier": 0.076388147357181,
         "signal_age": 0.0,
         "timestamp": "2026-06-17T05:48:29.523881+00:00"
+      },
+      {
+        "address": "FJVis6jGFFiizZ1NSyNdKYHSTnqUWHmM5P3nyco5pump",
+        "symbol": "Meepcat",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 24.008185538881307,
+        "current_multiplier": 15.899045020463847,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T06:07:20.399171+00:00"
+      },
+      {
+        "address": "4pYRbSvdpwPV3D3mK2pPyT5xSjTiisZfMZyuNdSKpump",
+        "symbol": "USWC",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.087139845397049,
+        "current_multiplier": 0.012396345748418833,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T06:07:22.840114+00:00"
+      },
+      {
+        "address": "CqzvAMqqYy3h5rz1AtoCHkp1XTePEBhNzVVCXMiTpump",
+        "symbol": "Shadow",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.213169642857143,
+        "current_multiplier": 1.8498883928571428,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T06:20:16.277751+00:00"
+      },
+      {
+        "address": "6S9EksWRbNy13nB9mw4TRXhbMiMWrvzQUdNBzfHApump",
+        "symbol": "SPOONY",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.6335135135135137,
+        "current_multiplier": 0.03135135135135136,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T06:20:18.821517+00:00"
       }
     ],
     "golden_symbols": {},
@@ -14637,7 +14673,7 @@
       "min_lp_providers": 0,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-17T05:48:29.577872+00:00",
+      "updated_at": "2026-06-17T06:20:18.914270+00:00",
       "sample_size": 204
     },
     "signal_criteria_stats": {
