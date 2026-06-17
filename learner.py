@@ -846,82 +846,8 @@ def record_missed_pump(address: str, symbol: str, features: dict, ath_multiplier
 def auto_learn_update() -> dict:
     """Periodic auto-learn: analyze recent outcomes and adjust heuristic weights.
     Returns summary of what was learned."""
-    data = load_data()
-    results = data.get("model", {}).get("signal_results", [])
-    if len(results) < 10:
-        return {"status": "insufficient_data", "count": len(results)}
-
-    recent = results[-50:]
-    wins = [r for r in recent if r.get("verdict") in ("PUMP", "STRONG_PUMP")]
-    losses = [r for r in recent if r.get("verdict") == "DUMP"]
-
-    if not wins and not losses:
-        return {"status": "no_outcomes"}
-
-    launches = data.get("launches_tracked", [])
-    launch_map = {l.get("address"): l for l in launches}
-
-    win_features = []
-    loss_features = []
-    for r in recent:
-        launch = launch_map.get(r.get("address", ""))
-        if not launch or not launch.get("features"):
-            continue
-        if r.get("verdict") in ("PUMP", "STRONG_PUMP"):
-            win_features.append(launch["features"])
-        elif r.get("verdict") == "DUMP":
-            loss_features.append(launch["features"])
-
-    if not win_features or not loss_features:
-        return {"status": "insufficient_feature_data", "wins": len(win_features), "losses": len(loss_features)}
-
-    def avg(lst, key):
-        vals = [f.get(key, 0) for f in lst if f.get(key, 0) > 0]
-        return sum(vals) / len(vals) if vals else 0
-
-    insights = {
-        "avg_win_bsr": round(avg(win_features, "buy_sell_ratio"), 2),
-        "avg_loss_bsr": round(avg(loss_features, "buy_sell_ratio"), 2),
-        "avg_win_holders": round(avg(win_features, "holders"), 1),
-        "avg_loss_holders": round(avg(loss_features, "holders"), 1),
-        "avg_win_wallets": round(avg(win_features, "unique_wallets"), 1),
-        "avg_loss_wallets": round(avg(loss_features, "unique_wallets"), 1),
-        "avg_win_liq": round(avg(win_features, "initial_liq"), 0),
-        "avg_loss_liq": round(avg(loss_features, "initial_liq"), 0),
-        "avg_win_mcap": round(avg(win_features, "initial_mcap"), 0),
-        "avg_loss_mcap": round(avg(loss_features, "initial_mcap"), 0),
-        "avg_win_lp_locked": round(avg(win_features, "lp_locked"), 1),
-        "avg_loss_lp_locked": round(avg(loss_features, "lp_locked"), 1),
-        "avg_win_lp_providers": round(avg(win_features, "lp_providers_count"), 1),
-        "avg_loss_lp_providers": round(avg(loss_features, "lp_providers_count"), 1),
-        "total_recent": len(recent),
-        "win_rate": round(len(wins) / len(recent) * 100, 1),
-    }
-
-    data["model"]["last_auto_learn"] = datetime.now(timezone.utc).isoformat()
-    data["model"]["auto_learn_insights"] = insights
-
-    win_rate = insights["win_rate"]
-    current_threshold = data.get("model", {}).get("signal_criteria", {}).get("heuristic_threshold", 0.45)
-    if win_rate < 20:
-        new_threshold = min(current_threshold + 0.05, 0.70)
-    elif win_rate > 40:
-        new_threshold = max(current_threshold - 0.03, 0.35)
-    else:
-        new_threshold = current_threshold
-    criteria_data = data.get("model", {}).get("signal_criteria", {})
-    criteria_data["heuristic_threshold"] = round(new_threshold, 2)
-    data["model"]["signal_criteria"] = criteria_data
-    insights["heuristic_threshold"] = round(new_threshold, 2)
-
-    save_data(data)
-
-    logger.info(f"🧠 Auto-learn: win_rate={insights['win_rate']}% "
-                f"bsr: {insights['avg_win_bsr']} vs {insights['avg_loss_bsr']} "
-                f"holders: {insights['avg_win_holders']} vs {insights['avg_loss_holders']} "
-                f"liq: {insights['avg_win_liq']} vs {insights['avg_loss_liq']}")
-
-    return insights
+    # Use enhanced auto-learn for better analysis
+    return enhanced_auto_learn()
 
 
 def learn_divergence_point() -> dict:

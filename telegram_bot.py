@@ -65,7 +65,8 @@ class TelegramHandlers:
             "/trades — ট্রেড হিস্ট্রি\n"
             "/signalstats — সিগন্যাল পরিসংখ্যান\n"
             "/retrain — model retrain\n"
-            "/autolearn — স্মার্ট অথবা"}}, {{"n
+            "/autolearn — স্মার্ট অটো-লার্নিং"
+        )
         await update.message.reply_text(
             text,
             parse_mode="HTML", reply_markup=main_keyboard()
@@ -475,11 +476,16 @@ class TelegramHandlers:
                     f"<li>+{sc['tp']}% (রিস্ক {sc['sl']}%): {sc['avg_pnl']:+.1f}% per সিগন্যাল, {sc['tp_rate']:.1f}% জয়ের হার"
                 )
 
+        if enhanced_metrics:
+            extra_lines = "\n    সেরা বিকল্প:\n" + "\n".join(enhanced_metrics) + "\n"
+        else:
+            extra_lines = ""
+
         text = (
             f"🤖 <b>স্ক্রেপার সেটআপ</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"⭐ <b>সেট করো:</b>\n"
-            f"  <b>TP +{perf['optimal_tp']}%</b> / <b>SL {perf['optimal_sl']}%\n"
+            f"  <b>TP +{perf['optimal_tp']}%</b> / <b>SL {perf['optimal_sl']}%</b>\n"
             f"  → গড় লাভ: <b>{perf['expected_pnl']:+.1f}%</b> প্রতি সিগন্যাল\n"
             f"  → জিতবে {tp_h}/{total} ({round(tp_h/total*100)}%) | হারবে {sl_h}/{total} ({round(sl_h/total*100)}%)\n"
             f"  → পেন্ডিং: {hd} | গড় ATH: {perf['avg_ath']}x\n"
@@ -490,11 +496,8 @@ class TelegramHandlers:
             f"  • অ্যাভারেজ মুনাফা: {perf['expected_pnl']:+.1f}%\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"📋 <b>বেস্ট টিপি/এসএল:</b>\n"
-            f"  • TP +{perf['optimal_tp']}% - {perf['tp_hits']} হিট ({perf.get('optimal_win_rate', 0)}%)")
-            if enhanced_metrics:
-                f"\n    সেরা বিকল্প:\n"
-                for metric in enhanced_metrics:
-                    f"{metric}\n"
+            f"  • TP +{perf['optimal_tp']}% - {perf['tp_hits']} হিট ({perf.get('optimal_win_rate', 0)}%)"
+            f"{extra_lines}"
             f"━━━━━━━━━━━━━━━━\n"
             f"💡 <i>সুবিধা:</i>\n"
             f"  • বড় TP = কম হিট, বেশি লাভ\n"
