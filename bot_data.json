@@ -14497,6 +14497,15 @@
         "current_multiplier": 0.9000494193229552,
         "signal_age": 0.0,
         "timestamp": "2026-06-17T04:36:02.068423+00:00"
+      },
+      {
+        "address": "G97qFFyL4rNVaxpmmZghtJtcgKtoyyene3wJiMi4pump",
+        "symbol": "NULL.EXE",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.7151949085123308,
+        "current_multiplier": 0.04579687085653672,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T04:56:02.500569+00:00"
       }
     ],
     "golden_symbols": {},
@@ -14533,7 +14542,7 @@
       "min_lp_providers": 0,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-17T04:45:02.693427+00:00",
+      "updated_at": "2026-06-17T04:56:02.563941+00:00",
       "sample_size": 203
     },
     "signal_criteria_stats": {
