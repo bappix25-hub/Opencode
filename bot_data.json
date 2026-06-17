@@ -1286,6 +1286,33 @@
       "ath_multiplier": 7.67,
       "signal_age": 0.0,
       "learned_at": "2026-06-17T11:09:17.808043+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 110863468.62,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 39499.73,
+      "initial_mcap": 277856,
+      "liq_pct": 14.22,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 14,
+      "lp_locked": 0,
+      "deployer": "7hskAdt3sXqj",
+      "ath_price": 0.0002778,
+      "lp_providers_count": 0,
+      "deployer_has_lp": false,
+      "launch_time": 1781707561.973953,
+      "liquidity": 39499.73,
+      "mcap": 277856.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 1.0830409356725146,
+      "symbol": "WESLEY",
+      "address": "29qGes79jj1GhktDu2wmy27Yy7NNjcsRvHPob8Aupump",
+      "learned_at": "2026-06-17T15:52:09.124004+00:00"
     }
   ],
   "dump_patterns": [
@@ -14774,7 +14801,7 @@
       }
     ],
     "golden_symbols": {},
-    "total_pumps": 33,
+    "total_pumps": 34,
     "total_dumps": 34,
     "total_skipped": 0,
     "last_auto_learn": "2026-06-16T14:02:23.066937+00:00",
@@ -30741,6 +30768,33 @@
       "symbol": "LIZARD",
       "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
       "learned_at": "2026-06-17T00:56:04.869261+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 110863468.62,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 39499.73,
+      "initial_mcap": 277856,
+      "liq_pct": 14.22,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 14,
+      "lp_locked": 0,
+      "deployer": "7hskAdt3sXqj",
+      "ath_price": 0.0002778,
+      "lp_providers_count": 0,
+      "deployer_has_lp": false,
+      "launch_time": 1781707561.973953,
+      "liquidity": 39499.73,
+      "mcap": 277856.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 1.0830409356725146,
+      "symbol": "WESLEY",
+      "address": "29qGes79jj1GhktDu2wmy27Yy7NNjcsRvHPob8Aupump",
+      "learned_at": "2026-06-17T15:52:09.124004+00:00"
     }
   ]
 }
