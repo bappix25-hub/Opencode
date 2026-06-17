@@ -1341,6 +1341,20 @@
       "ath_multiplier": 4.758384146341464,
       "signal_age": 0.0,
       "learned_at": "2026-06-17T05:39:00.508760+00:00"
+    },
+    {
+      "symbol": "FARM",
+      "features": {
+        "launch_time": 1781675297.166978,
+        "source": "historical_scan",
+        "ath_multiplier": 2.9197299324831207,
+        "outcome": "PUMP",
+        "signal_age": 0.0
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 2.9197299324831207,
+      "signal_age": 0.0,
+      "learned_at": "2026-06-17T07:47:04.414644+00:00"
     }
   ],
   "dump_patterns": [
@@ -14673,10 +14687,28 @@
         "current_multiplier": 0.057031039136302294,
         "signal_age": 0.0,
         "timestamp": "2026-06-17T07:20:29.092271+00:00"
+      },
+      {
+        "address": "BfChhbvFEvjHUXZGC58coM3WnV9JtG1nBCHQ2oY3pump",
+        "symbol": "Yore Coproces",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.047196261682243,
+        "current_multiplier": 0.7705607476635514,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T07:43:33.786939+00:00"
+      },
+      {
+        "address": "yMJPZbnhoHib3ib8n8PfiVcp9yauk1vnaGKLx7epump",
+        "symbol": "FARM",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.9197299324831207,
+        "current_multiplier": 2.360840210052513,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T07:47:04.414468+00:00"
       }
     ],
     "golden_symbols": {},
-    "total_pumps": 30,
+    "total_pumps": 31,
     "total_dumps": 34,
     "total_skipped": 0,
     "last_auto_learn": "2026-06-16T14:02:23.066937+00:00",
@@ -14709,8 +14741,8 @@
       "min_lp_providers": 0,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-17T07:20:29.159850+00:00",
-      "sample_size": 204
+      "updated_at": "2026-06-17T07:50:02.913875+00:00",
+      "sample_size": 205
     },
     "signal_criteria_stats": {
       "pump_medians": {
@@ -14731,7 +14763,7 @@
         "lp_locked": 0,
         "lp_providers_count": 0
       },
-      "pump_count": 104,
+      "pump_count": 105,
       "dump_count": 100
     }
   },
@@ -14816,6 +14848,7 @@
     "FuX28NUACkk8V3XP11AsZeNZJi3roTkbLss4HzpDpump",
     "CmFLTZfo9u7eCrD1Z7rcpPrShDq7XeAhA7EPmBgVpump",
     "3q6AA6e5QvxSXZ3sA4kSmZk9phq8M3vxrB9zf5d1pump",
+    "h5GcHUHG8YXKQYoFxstEzWGUgny6dFk5EG9VxNipump",
     "Fk5TidwF6UH5PRV5sBkyg5KLV9XBt9SfVc977JvQpump",
     "CxoR1nP9W8Tc585ziwA7VuAz5rYUJEXz9CwwNpnpump",
     "Cye8scwmHHaPLpF6vnL3E5MR4bs5fbRHLvPKWd9Zpump",
@@ -14879,6 +14912,7 @@
     "555Bh27dnGYa2MW5Jz7fVjn6HxbcbMggAhVY51Rk4YBr",
     "Ck3mf4hEVXHeFafEfuGJPv7r4ho5Sydb4PD9J8ex2YWK",
     "HBf4EarsNN16wVYRRbxHz8Y8RrZfBJXmsrasaT9Tpump",
+    "7r16rxE9zFKRs1NkC86vpphkmaLjRQhe2aycCDgmpump",
     "4CZ8Rbo5FPi2BCLFZHMbkKjP55vbnUiWNg6dbEi3pump",
     "Hu1GczL7tWCSDZtRycjDFcmfoU4WU2wCP4ZMRdQpump",
     "EjhmGVm9AB15evBjuNTNrVgeynaPrUuKNYHCavuopump",
@@ -14975,6 +15009,7 @@
     "7VjMt2Q3fsdejV28tvXBnqnhzoizSZeqwAAjZmWMpump",
     "DLFqR2jcojXVeVCTWvCXJTcYKxKgoWPdqiw2Nw43pump",
     "3QwSbYMieVftAJr4SHJBwQUcXP4KgErpdHYKgR59pump",
+    "EAnc2dLzmUjuyvvhx7MLZPDM8tQRq4RDfqdymjNfBAGS",
     "G97qFFyL4rNVaxpmmZghtJtcgKtoyyene3wJiMi4pump",
     "A6qAu14HsZcwgpiLEcvJ2KJVQccJFDTT3txCufDJpump",
     "FyAYcYyKBQiMdxzX6hBCvgGMYapH1NwFRUKSL1BPpump",
@@ -15053,6 +15088,7 @@
     "8iKBHwcBKjCcH9sRCQwsosDXuhzRAekwnWRC1tzC73Yi",
     "U1cfARJCPGa4JNZ3FkM6sYPcSLvL1HmEWbMBRBdBxpG",
     "HbWxn5UEpD7pxDNkT5f7DA48HZQwxD7pY2xoTYh9V7n3",
+    "5TAQ82UxrszQVJc6Xf8X2GUtbxaUe8qQ2krMHzwGQxA1",
     "FTTGwytZTPoXrfw9SVcEmk6pL31S1cGdzA1bnCzFekY7",
     "68Q1meeScCLy2FGzLZfEbnr7GeVdj6jrL7PcKDuPPu3P",
     "6wZ2Rd1BbR4n5aFiA4oDon3gjSo1HN8h5ijzZ7wyRjax",
@@ -15103,6 +15139,7 @@
     "2Wqq9jrDmFB1xEYWTjq4F55dmvbABtBvz6a91X7wFNrE",
     "AxqtuDPN81XqtDRVShyhvVKsaf4sELuegvSdQJbjahQc",
     "AFVGP2HVbbozJUK7kvqwesga6PFQnBehJjd8RYM5PXR6",
+    "39yrgeMJgWLhTdYowKauYVEMd4nssHwsVH7gi8nzBT38",
     "HzH8fcz5hBndhWpJPmCwpKCr5mS9ak6cBzvQh7cVAsaX",
     "4wADTGHoSpMb3aQ14bTCsZ4yhSm4Aw4MWH4MPBanJP69",
     "AzZ9zQ5ouemCFmJq49JzS4rBwUqT6pPBMNLZJdxVZBs7",
@@ -15208,6 +15245,7 @@
     "8pUj5LVz4bCbKhsorugLssbxdWFnW9dJvJRTEJ5nsHjj",
     "GEqCXa6GxdE76wCbh98nnoKt3K7FpHzByZdwuuva8MvM",
     "4S8etPw8tSxjzJikupCmc4K2AtDkB6Fk7uMbmyfoCBcE",
+    "HxKLGwYcVbYcyZYVoEGRR7UR33W6beWymGd1phR8UXgS",
     "DYtmWGt8UVNNuzX2zkQX9iwa7BvY798gQYX2dKBC1tnj",
     "29wAJGquQ1SBHM784UdtCcV3wvHr2rsagpQ7tt62BpMo",
     "BcoxwkXcjiwBUvGw7jdwV6jACJTMNEfVmVYy6MzApqzv",
@@ -15874,6 +15912,7 @@
     "A7mijbrCj2d7pgq3iGhxpbpBm8HYpAsMH6RprpXNpsxb",
     "7kFBy74sQS9R1W5MhU2cyJajvHoCN9njun27CNEPm5VN",
     "95ZCf3jKMHeFYvPXVZW3Ek6AEPDyjebosqnc7eNioVMo",
+    "FWpPHiKBtX6opSmhZnXvM5YeJxL6ehyjGRbXFDuh3hU6",
     "DXPmgUjuzVu1zAVZo5SLXGTsRV1KuD3vSsnHehAcv4mW",
     "5taigdQGeW7Vuwa2ewf5mchPGgA9x7o83ixCoNMyRn5a",
     "Gbc6By2YrbQYgAspDD4vuDnwz3uBh2tJAXpmNsJefQpc",
@@ -15989,6 +16028,7 @@
     "f9drLhN6dUyDJx9NvY35xnfDp1vCFQRi6nPLUXWbKSN",
     "6mCnLNAbErPVQPghoCH5XPCkSJAfJgjM8k7NsUSbGrH6",
     "9FfKXbTXe4T5x724ugb1UFDVLGTSvsScLFcPRfG64rnc",
+    "BeyJuk9dX6FisPCyniDaKxDtHqtpRc2Mn5ZYaaxY5gir",
     "E8iJCJHgYpQNfUbzg7e6S5AbpCjxnboKvC4Mg7DbmJgm",
     "EyXruQH5mK6ADncwmZRLQABpoDh51RabtRQs2NCSxUyh",
     "2XLiBehMifx8ZUdcPeteFmdgVFvLyqdTJqum7kmYqfHR",
@@ -16296,6 +16336,7 @@
     "BEhrA9d8ZUxK1d8M8vstqtMwxZyCj7M2CKL8uBNJoUrF",
     "CzWgkrKx2GVmaKWejDyWp3xxYShnPGD8Cj2Y6NriBPPe",
     "5bEzRK7JfadSPDUceEJ5qhe4aRvx1RzXGeHmxnBDrPAw",
+    "61tb82qpLs7fgSqpuVKE5ocShwTLMyetKdSTsnyNKkBA",
     "41cjFgpnS5BcyWAj5wekQFJaPVjB24sRTV2quQv3US37",
     "DwZguksR52vhH3xjktZFgPvXs2LiqrBLpnRZbEdd7DyB",
     "BnGNE2jvRxyB6h8tvJk11kmsXz3D3atBrPds7XwZQ6Wp",
@@ -16333,6 +16374,7 @@
     "9rDMVCH7mQ9N2PkyHw8KT8wraMhF8tyMz9R631yyL1df",
     "6BmSCttbV8ELiyAjPBeBsaCbPWEE1PdMXDtFxcjcGUum",
     "B7opqiV1LELP9QdMhtqsryWTVF3W3xA6TT424VMBMUaP",
+    "EzLu595m6CRxPybAUjSser9FmjDvjS3d3vyX4CPiu8Xn",
     "37vbiPMe2cvTeJ3AdXPQsDyWZQ6p5eHJ9TiBxAs1YP3S",
     "ArkdCAPErAo6KdVDTFA32YKnqaD7jfXsESFoyxQzDgnu",
     "JAWUmCJPxffwGtKkVqxxKXbjKjBRG2QvxguZcR2GS3t4",
@@ -16360,6 +16402,7 @@
     "35c2qeopL6yAdobuAcSYuTqYzkG5YzFzfa1xvfzKka2J",
     "4M5mYS7sCwyuXXZkXXuGTkRd8sxVEYv3py4Zpou9nqiT",
     "EUagBBmqtLHEVWtLeTdafy5gXjPXHiPy7TRKbG6Uxdr9",
+    "BWauZGsvainrWzbpck5aGJgRgcGbyjF2k9beKpJWU2xG",
     "3ekX3FqtR6yhohn3MGhnMQFX4R9mpeVAjNonbnzhgUNn",
     "J925Cw3etiiv3Pk1xHSJ8HA9Siwr7Pe3CMQSwm8fmLuH",
     "29V7Ski68c9oFEPrwJg5SYfGmTHMrfD9ig1V2Nn6bcLP",
@@ -16388,6 +16431,7 @@
     "CMTgCMPch1VaYcUR34MctCR1gi8WMTDvBh6PojjKWBfd",
     "DzasaHCYdU3Af6CwGDXoWtt4qR3mZjvNags7LiELz6yV",
     "C2RosgbFvpcc5Ew64tsAihFsomAvyeL1i4KcAcZvBfxr",
+    "EL1jZMmccPmErSziA6JRPjRtvdhKpB7e8Xm3Nhj4dFui",
     "6u1QcszJYeaNkpfoQLrJqNhV182okKKXqPpP9Y3Bwzh7",
     "HBPgoT57AhtJu9ZrmB9F77Yhe8y3C3z8coLp4iFvDuMj",
     "ED8hdG6eNRULqrKmE84KrXNgui4VcyJJRojbaq7Cs4pW",
@@ -16684,6 +16728,7 @@
     "DmS4wZ6CzPSBNgPe12zWrzQDhs2R5NhRvqfHXN9RTFUf",
     "4tmWAdAw57s8y63Mgm3ea3RuZjvP3trpK5ZXVeEoBXsK",
     "CGRUpyDaDfnk1G4GEZQuqjoRxvDiKyAbXyPgUnQoR8Wk",
+    "B7MK1NwzVmbMXeE6G7sfGhaEUvh4zKSXibrCPwbzmJxx",
     "HP9DuFG88mRfUFzxZu2MS7ziKs2yhPQ4QMERtFtLMYyY",
     "rJEU1pbWqzDijStELRe4UKe6YJn2pcNNWE19GBV867k",
     "Bvc29p2H1xha4jHTMmysUKUSpns2z6wX8wbCFTTxmRsD",
@@ -16693,6 +16738,7 @@
     "4F2SYmy5FTNtxxv46uF6yMX95XaH36GNEdpfUZka4J5y",
     "5V1kWJKUFMkoyvjQzrfF5vsUVKAVLxe4UmZNAYzH43rA",
     "7Wv5fTDCQF8WVadqXG1CGjhJwegNRsi4iVcXNGC3xeDv",
+    "6vuhCZCNVMWNo7xPNdpLaJmhdDBPx5LQHMhVKAJmtzi7",
     "HAc5Q9rm4x8zjbfg6qvBySjEk2291pvS91iG82eBGS3H",
     "4PkTnSMTGUsRZvUZYjzyDL37Jmt3MjacggkQUzMCdKmh",
     "CKWCzRtyNYHeFkjGq2eBE35a19HzKPkTe3CbpiebS5iy",
@@ -16925,6 +16971,7 @@
     "7wppzD9b8TvecXmC7BcQdoUfxKPD8PTT7ZJBfG3Z8JRk",
     "FhxmLLDRb8McTWx6JaeU5Qqr2uHfaCy1AmokKsXscd5o",
     "icex9CXxQHVdVTyLaFzM972zeHESgKmaS8jsJfA8HhA",
+    "DoQi5R1zzGvXBFCLLc1eiZt1JNcJJEc6VKEFPLLnrK3d",
     "zMBwKyezdcjf5ohxGUefjUyQyu1AeYpPgkEH9Hrq7FE",
     "5RWjpwBMG6UFqs3NVoTdGjtskXvJrP8LxQ3punxm9BAq",
     "BTVLAWQDuMq7SHvG8DVssosAqpNpAFaGRGQUd86H7aw3",
@@ -17123,6 +17170,7 @@
     "EzLu1DKTFqy81onnwBp7gSNzfFodqMcY9ABdZM8sTZ3H",
     "xh2uJfpnr6jJ2bfQycLMBsraHYBnK23d6keZjfbkgh5",
     "AhDzDdpW8r9UiXaC6SzduKFfP4WBvnWGVmW4Ef6xvj4C",
+    "BSQfr2AsB8T6yHjPrHUGyNwqWHvFBJrxLvLt28W53BTN",
     "FFiCvjhHnMmW1NGef9gsGWYY4xrVkEG7EcjuQAJAQCBh",
     "C9qWdBnvy4TBJWym7Y2FU5zE3riu4n4p9kAKhRg5MyCb",
     "6gjSPuYLA1tZmD2ayQBDmFWbL5UXXnW39hkXdjG1cWb2",
@@ -17135,6 +17183,7 @@
     "7Li8wQgvzR69drfVQxhxxphyPd1wPHDMpNGqHRYjrxfs",
     "qr7PoEJ1QackuBEpMRU2W1MwF2pXQiNdL52XUPQZThx",
     "4Qq4nYmkdYoQ2ohXP5S62A3CpFJvqTbNkrjDLkcQjGYR",
+    "7ZvpXfQFkazqXZbQHawWmFvQ1WtE9WQN81Y1v4enpAVa",
     "GQPKqpfEm3SmqGVJCyFjd5icjyFuBSD84EbaUzky2ksi",
     "37WqrX9DBzhuCXMCLuiyjhCNfuEogT1sjWv1id8ZArsS",
     "9MSQruhD7zSTpKvMzzLfYjAvNmRKYcmU48isApFdUq98",
@@ -17264,6 +17313,7 @@
     "GXiu9bwhYxDXpe7315bHJCa7pYHJAAPDtwvego6VtdPZ",
     "Hzzt6S4moDoxNKQdBKWfoE9khEA6h9GCJUvpCs1kpbss",
     "6kP94FoZQ3jidM86sGs3yz4jf4e8CvfQj7XTHvxKcmHQ",
+    "9PwMQak8LFpPq1pM9udpjZgJAGZe2GuztjVpmhngXg27",
     "CqcDTHY59DzRwTGsovcf8btRmJQhSXCht9puQtJpE9FZ",
     "DTiXGmedVWGBnrx2SWuNo8iyn5LNhPJ23TNc1R7VUqRn",
     "4TMSbnHXBak5vQzyg3eCZgvGzwA3w3xQuVzUc4ae4iwK",
@@ -17447,6 +17497,7 @@
     "716zvLpj6Mrei2mtbW1XZKzzJPsEBKAXkzKyQG3ZxQQU",
     "BMMDM7oWha9BXDodUzJPQDngqxxsNnMEfwx6kVui4kMF",
     "55CPWPYgp5527Wejj4WRnHMZkWUarKVpzVFyBUhGcMBB",
+    "FpXjH3mmXJVavmLMPuWW3k6uwkA5CUeK4WW9fLWzpyV4",
     "G4RPC76aFw8xXGFGRjz3vpFr4wGZrdnxLaDQ8UuU2mbC",
     "A8AvJDufcifvWJ8gVvzWEi4TvkFYpht3wfLCqNY5QuJ5",
     "GQo1WEviHqYYKGoY1UmGtLeEZKwHgUX1wfN6yxTe1a1Z",
@@ -18061,6 +18112,7 @@
     "Fx1ADCQJawz8CGdzf2Yx2xec65NzpQ62mXoN5jWrazVv",
     "A8dGjFyFZNDH9nN1MJrdmrETE3oiiy2AfDekgLAxQmmM",
     "3cxdcjEEDhFX3FQ87cgw8zz3w58dPPw3dx5L9vYHmxCW",
+    "8izRHYAmyKDuNkHx6QTCbXn3aWtSaTiPKUjTT7JugrTs",
     "7BvETF7Un4fpfZo633a7E6czdNXfwomaxSj9yC8Nj4Fr",
     "8qH7rf5ghnw6gxQionNAui13CsLxy8MyimSRLgk54DeR",
     "EP7PEDXPQKAknoAgksM56yc8UJVE412Wxi3MXQ2usRRS",
@@ -18128,6 +18180,7 @@
     "5abXXvEXQpbSW3ZSbJLZ6msoX5X45ZjTUxP7Znvmr3TG",
     "2qKoMVrLVdDJTipXbBoPHrcNYCv5dwx11gsibuG2C94e",
     "3pCHwkWBivNdtA5k4cNUqsuBqZeyXXS9XNtU1L91AjqU",
+    "6fs9oKa3dEq8y2ypaY9gySmmthebbprZKMh87CdjepfR",
     "GnFGNJA77e1TTGgBDZSJSTn1iP4PfxzynHykBm4oWZnR",
     "5pshURLHWVAZYxVSEWVTCtxht3RrnV38WRCApu9f35aN",
     "DLWcfYpEwNpgKWhWVBBZxsVJPLLKtmqK8VsfZneEoa9Y",
@@ -18190,6 +18243,7 @@
     "6RoaNNvDaKt2YjYCWpR7ypEAqGPYmbbpRyxCzXkwpump",
     "4TRttb335QjPoku9upLx8m7yzqqPFe4GW1ASJ7oWpump",
     "H3iQhDGEBAJbTxp9x6Tykqpym9Txfka9QY9HwpHdpump",
+    "3F9Qe6CpN5ftYj69rAtRh2VcGnsWExciodQvwToHpump",
     "4YZbWE7UhXMTCLJac3tVhWhXdQZRQSLjYUVGGUxCpump",
     "GZC8y7g1tXk4cNGp75ZGZExXXcCL6nphZNJ6i17fpump",
     "74qtu3i2fuiJ5cQEeZM4HvwJFAQzZG8r3YAgxcDvpump",
@@ -29408,7 +29462,10 @@
       "symbol": "FARM",
       "features": {
         "launch_time": 1781675297.166978,
-        "source": "historical_scan"
+        "source": "historical_scan",
+        "ath_multiplier": 2.9197299324831207,
+        "outcome": "PUMP",
+        "signal_age": 0.0
       },
       "launch_time": 1781675297.166978,
       "outcome": null,
@@ -29450,6 +29507,19 @@
         "source": "historical_scan"
       },
       "launch_time": 1781679023.944246,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "EAnc2dLzmUjuyvvhx7MLZPDM8tQRq4RDfqdymjNfBAGS",
+      "symbol": "SPCX",
+      "features": {
+        "launch_time": 1781682861.989977,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781682861.989977,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
