@@ -35,6 +35,7 @@ from paper_trader import get_paper_trader
 import os
 
 CHAT_ID_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".chat_id")
+CHANNEL_ID_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".channel_id")
 
 logger = setup_logging("meme_bot")
 
@@ -56,17 +57,52 @@ async def send_msg(bot: Bot, text: str) -> None:
     except Exception as e:
         logger.error(f"Send error: {e}")
 
-async def send_maestro(bot: Bot, address: str) -> None:
-    """Send token address to @maestro bot for auto-trade."""
+async def send_signal(bot: Bot, text: str, address: str = "") -> None:
+    """Send signal to channel only (for Maestro auto-trade)."""
+    channel_id = config.channel_id
+    if not channel_id and os.path.exists(CHANNEL_ID_FILE):
+        try:
+            with open(CHANNEL_ID_FILE) as f:
+                channel_id = f.read().strip()
+                config.channel_id = channel_id
+        except Exception:
+            pass
+    if not channel_id:
+        # Fallback to bot chat if no channel set
+        await send_msg(bot, text)
+        return
     try:
         await bot.send_message(
-            chat_id="@maestro",
+            chat_id=channel_id, text=text,
+            parse_mode="HTML", disable_web_page_preview=True
+        )
+        logger.info(f"📤 Channel signal sent")
+    except Exception as e:
+        logger.error(f"Channel send error: {e}")
+        # Fallback to bot chat
+        await send_msg(bot, text)
+
+async def send_maestro(bot: Bot, address: str) -> None:
+    """Send token address to channel for Maestro auto-trade."""
+    channel_id = config.channel_id
+    if not channel_id and os.path.exists(CHANNEL_ID_FILE):
+        try:
+            with open(CHANNEL_ID_FILE) as f:
+                channel_id = f.read().strip()
+                config.channel_id = channel_id
+        except Exception:
+            pass
+    if not channel_id:
+        return
+    try:
+        await bot.send_message(
+            chat_id=channel_id,
             text=address,
             disable_web_page_preview=True
         )
-        logger.info(f"📤 Maestro: {address[:8]}...")
+        logger.info(f"📤 Channel: {address[:8]}...")
     except Exception as e:
-        logger.debug(f"Maestro send error: {e}")
+        logger.debug(f"Channel send error: {e}")
 
 
 class MemeBot:
@@ -919,7 +955,7 @@ class MemeBot:
                         if mcap >= PUMP_THRESHOLD and not await self.state.is_alerted(addr):
                             await self.state.add_pump_coin(addr, CoinInfo(name=name, symbol=symbol))
                             logger.info(f"🚀 পাম্প কয়েন! {symbol} mcap={format_number(mcap)}")
-                            await send_msg(self.telegram_app.bot,
+                            await send_signal(self.telegram_app.bot,
                                 f"🚀 <b>পাম্প কয়েন!</b>\n"
                                 f"━━━━━━━━━━━━━━━━\n"
                                 f"🏷️ <b>{name}</b> (${symbol})\n"
@@ -928,9 +964,9 @@ class MemeBot:
                                 f"👥 হোল্ডার: <b>{coin_info.holders}</b>\n"
                                 f"🔒 LP লক: <b>{coin_info.lp_locked}%</b>\n"
                                 f"🧠 <i>পাম্প প্যাটার্ন শেখা হয়েছে!</i>\n"
-                                f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(addr)}'>DexScreener</a>"
+                                f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(addr)}'>DexScreener</a>",
+                                addr
                             )
-                            await send_maestro(self.telegram_app.bot, addr)
 
                             launch_data = await self.state.get_launch_tracking(addr)
                             if launch_data and not launch_data.pre_signal_sent:
@@ -992,7 +1028,7 @@ class MemeBot:
                                 age_min = int(age // 60)
                                 age_sec = int(age % 60)
 
-                                await send_msg(self.telegram_app.bot,
+                                await send_signal(self.telegram_app.bot,
                                     f"📈 <b>ক্লাইম্বিং টোকেন!</b>\n"
                                     f"━━━━━━━━━━━━━━━━\n"
                                     f"🏷️ <b>{name}</b> (${symbol})\n"
@@ -1005,9 +1041,9 @@ class MemeBot:
                                     f"🔒 LP লক: <b>{coin_info.lp_locked}%</b>\n"
                                     f"⏱️ বয়স: <b>{age_min}m {age_sec}s</b>\n"
                                     f"━━━━━━━━━━━━━━━━\n"
-                                    f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(addr)}'>DexScreener</a>"
+                                    f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(addr)}'>DexScreener</a>",
+                                    addr
                                 )
-                                await send_maestro(self.telegram_app.bot, addr)
 
                                 from bot_state import SignalInfo
                                 await self.state.add_signal(addr, SignalInfo(
@@ -1105,7 +1141,7 @@ class MemeBot:
                         confidence_bar = "🟢" * max(1, int(confidence_pct/20)) + "⚪" * (5 - max(1, int(confidence_pct/20)))
                         reason_text = ", ".join(reasons[:3])
 
-                        await send_msg(self.telegram_app.bot,
+                        await send_signal(self.telegram_app.bot,
                             f"⚡ <b>আর্লি সিগন্যাল!</b>\n"
                             f"━━━━━━━━━━━━━━━━\n"
                             f"🏷️ <b>{name}</b> (${symbol})\n"
@@ -1118,9 +1154,9 @@ class MemeBot:
                             f"🔒 LP লক: <b>{coin_info.lp_locked}%</b>\n"
                             f"⏱️ বয়স: <b>{int(age//60)}m {int(age%60)}s</b>\n"
                             f"━━━━━━━━━━━━━━━━\n"
-                            f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(addr)}'>DexScreener</a>"
+                            f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(addr)}'>DexScreener</a>",
+                            addr
                         )
-                        await send_maestro(self.telegram_app.bot, addr)
 
                         from bot_state import SignalInfo
                         await self.state.add_signal(addr, SignalInfo(
@@ -1429,7 +1465,7 @@ class MemeBot:
         except Exception:
             pass
 
-        await send_msg(self.telegram_app.bot,
+        await send_signal(self.telegram_app.bot,
             f"⚡ <b>প্রি-মাইগ্রেশন সিগন্যাল!</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"🏷️ <b>{pending.name}</b> (${pending.symbol})\n"
@@ -1443,9 +1479,9 @@ class MemeBot:
             f"{lp_text + chr(10) if lp_text else ''}"
             f"📈 বর্তমান MCap: <b>{format_number(current_mcap)}</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(address)}'>DexScreener</a>"
+            f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(address)}'>DexScreener</a>",
+            address
         )
-        await send_maestro(self.telegram_app.bot, address)
 
         await self.state.add_alerted(address)
 

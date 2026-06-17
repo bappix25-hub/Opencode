@@ -38,6 +38,7 @@ def get_env_bool(key: str, default: bool) -> bool:
 class Config:
     bot_token: str = get_env("BOT_TOKEN")
     chat_id: str = get_env("CHAT_ID")
+    channel_id: str = get_env("CHANNEL_ID", "")
     helius_api_key: str = get_env("HELIUS_API_KEY")
     
     pumpportal_ws: str = get_env("PUMPPORTAL_WS", "wss://pumpportal.fun/api/data")

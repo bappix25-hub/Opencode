@@ -884,11 +884,21 @@ def simulate_tp_scenarios(results: list) -> list:
     if not results:
         return []
 
+    # Dynamic SL based on avg ATH: higher volatility = wider SL
+    aths = [r.get("ath_multiplier", 1) for r in results if r.get("ath_multiplier", 0) > 0]
+    avg_ath = sum(aths) / len(aths) if aths else 1
+    if avg_ath >= 3:
+        sl_pct = -25  # High volatility → wider SL
+    elif avg_ath >= 2:
+        sl_pct = -20  # Medium volatility
+    elif avg_ath >= 1.5:
+        sl_pct = -15  # Low-medium volatility
+    else:
+        sl_pct = -10  # Low volatility
+
     scenarios = []
     for tp_pct in range(50, 301, 50):
         tp_mult = 1 + tp_pct / 100
-        # Use -10% as default SL for scenario display
-        sl_pct = -10
         sl_mult = 1 + sl_pct / 100
 
         total_pnl = 0

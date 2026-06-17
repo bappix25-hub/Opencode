@@ -14,8 +14,18 @@ from backtest import BacktestEngine, REPORTS_DIR
 from paper_trader import PaperTrader
 
 CHAT_ID_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".chat_id")
+CHANNEL_ID_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".channel_id")
 
 logger = logging.getLogger("telegram_bot")
+
+def _save_channel_id(channel_id: str):
+    try:
+        with open(CHANNEL_ID_FILE, "w") as f:
+            f.write(str(channel_id))
+        config.channel_id = str(channel_id)
+        logger.info(f"✅ Channel ID saved: {channel_id}")
+    except Exception:
+        pass
 
 def main_keyboard():
     keyboard = [
@@ -480,6 +490,46 @@ class TelegramHandlers:
     async def cmd_blacklist(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("❌ Blacklist removed in v4. Honeypot detection is automatic.")
 
+    async def handle_channel_post(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Auto-detect channel ID when bot receives channel post."""
+        channel = update.effective_chat
+        if channel and channel.type == "channel":
+            channel_id = str(channel.id)
+            if not config.channel_id or config.channel_id != channel_id:
+                _save_channel_id(channel_id)
+                logger.info(f"📢 Channel detected: {channel.title} ({channel_id})")
+
+    async def cmd_setchannel(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Set channel ID manually: /setchannel -100xxxxxxxxxx"""
+        if not context.args:
+            # No args = clear channel ID
+            config.channel_id = ""
+            try:
+                os.remove(CHANNEL_ID_FILE)
+            except Exception:
+                pass
+            await update.message.reply_text(
+                "📢 <b>Channel cleared!</b>\n"
+                "Channel ID মুছে ফেলা হয়েছে।",
+                parse_mode="HTML"
+            )
+            return
+        channel_id = context.args[0]
+        # Validate numeric ID
+        if not channel_id.lstrip('-').isdigit() or not channel_id.startswith('-100'):
+            await update.message.reply_text(
+                "❌ <b>ভুল Channel ID!</b>\n"
+                "Format: /setchannel -100xxxxxxxxxx\n"
+                "Channel ID অবশ্যই -100 দিয়ে শুরু হতে হবে।",
+                parse_mode="HTML"
+            )
+            return
+        _save_channel_id(channel_id)
+        await update.message.reply_text(
+            f"✅ Channel ID set: <code>{channel_id}</code>",
+            parse_mode="HTML"
+        )
+
     async def cmd_feature(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not context.args:
             await update.message.reply_text(
@@ -550,7 +600,15 @@ class TelegramHandlers:
         )
 
     async def handle_buttons(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        _save_chat_id(update.effective_chat.id)
+        chat = update.effective_chat
+        # Auto-detect channel ID
+        if chat and chat.type == "channel":
+            channel_id = str(chat.id)
+            if not config.channel_id or config.channel_id != channel_id:
+                _save_channel_id(channel_id)
+                logger.info(f"📢 Channel auto-detected: {chat.title} ({channel_id})")
+            return
+        _save_chat_id(chat.id)
         text = update.message.text
         if text == "📊 স্ট্যাটাস":
             await self.cmd_health(update, context)
@@ -589,5 +647,6 @@ def register_handlers(app, handlers: TelegramHandlers):
     app.add_handler(CommandHandler("positions", handlers.cmd_positions))
     app.add_handler(CommandHandler("trades", handlers.cmd_trades))
     app.add_handler(CommandHandler("feature", handlers.cmd_feature))
+    app.add_handler(CommandHandler("setchannel", handlers.cmd_setchannel))
     app.add_handler(CallbackQueryHandler(handlers.threshold_callback, pattern="^thr_"))
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handlers.handle_buttons))
+    app.add_handler(MessageHandler(filters.ALL & ~filters.COMMAND, handlers.handle_buttons))
