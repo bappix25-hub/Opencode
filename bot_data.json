@@ -14978,7 +14978,7 @@
     "total_pumps": 36,
     "total_dumps": 35,
     "total_skipped": 0,
-    "last_auto_learn": "2026-06-17T17:27:27.235768+00:00",
+    "last_auto_learn": "2026-06-17T18:27:28.255208+00:00",
     "auto_learn_insights": {
       "avg_win_bsr": 1.53,
       "avg_loss_bsr": 0,
@@ -14995,29 +14995,29 @@
       "avg_win_lp_providers": 0,
       "avg_loss_lp_providers": 0,
       "total_recent": 50,
-      "win_rate": 50.0,
+      "win_rate": 52.0,
       "heuristic_threshold": 0.42
     },
     "signal_criteria": {
       "min_bsr": 1.2,
       "min_holders": 3,
       "min_wallets": 3,
-      "min_liq": 18709.8,
-      "min_liq_pct": 6.79,
+      "min_liq": 18758.01,
+      "min_liq_pct": 6.74,
       "min_lp_locked": 0,
       "min_lp_providers": 0,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-17T18:24:49.619327+00:00",
-      "sample_size": 204
+      "updated_at": "2026-06-17T18:27:28.333669+00:00",
+      "sample_size": 205
     },
     "signal_criteria_stats": {
       "pump_medians": {
         "buy_sell_ratio": 0,
         "holders": 0,
         "unique_wallets": 0,
-        "initial_liq": 37419.6,
-        "liq_pct": 13.57,
+        "initial_liq": 37516.03,
+        "liq_pct": 13.47,
         "lp_locked": 0,
         "lp_providers_count": 0
       },
@@ -15030,7 +15030,7 @@
         "lp_locked": 0,
         "lp_providers_count": 0
       },
-      "pump_count": 103,
+      "pump_count": 104,
       "dump_count": 101
     },
     "divergence_insights": {
@@ -30838,6 +30838,19 @@
         "source": "historical_scan"
       },
       "launch_time": 1781713691.988771,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "9UdVwUYHbVAVD6p4oFfRqZBVD4gNAp62PErkqC3tpump",
+      "symbol": "YASMINE",
+      "features": {
+        "launch_time": 1781721082.98424,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781721082.98424,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
