@@ -66,12 +66,318 @@ def load_data() -> dict:
         return json.loads(json.dumps(DEFAULT_DATA))
 
 
+def calculate_pattern_strength(signals):
+    """Calculate pattern strength based on various features.
+    Returns a score between 0 and 1.
+    """
+    if not signals:
+        return 0.5
+    
+    scores = []
+    for signal in signals:
+        score = 0
+        features = extract_launch_features(signal)
+        
+        # Buy/sell ratio (higher is better)
+        buy_sell_ratio = features.get("buy_sell_ratio", 0)
+        if buy_sell_ratio > 2:
+            score += 0.25
+        elif buy_sell_ratio > 1.5:
+            score += 0.15
+        
+        # Holders count (higher is better)
+        holders = features.get("holders", 0)
+        if holders >= 10:
+            score += 0.25
+        elif holders >= 5:
+            score += 0.15
+        
+        # Liquidity percentage (higher is better)
+        liq_pct = features.get("liq_pct", 0)
+        if liq_pct > 20:
+            score += 0.25
+        elif liq_pct > 10:
+            score += 0.15
+        
+        # Launch time (newer is better)
+        launch_time = features.get("launch_time", 0)
+        if launch_time > 300:  # More than 5 minutes ago
+            score += 0.15
+        elif launch_time > 60:  # More than 1 minute ago
+            score += 0.08
+        
+        scores.append(score)
+    
+    return sum(scores) / len(scores) if scores else 0.5
+
+
+def calculate_win_rate(results):
+    """Calculate win rate from results."""
+    if not results:
+        return 0
+    
+    wins = sum(1 for r in results if r.get("verdict") in ("PUMP", "STRONG_PUMP"))
+    return wins / len(results)
+
+
+def calculate_average_pnl(results):
+    """Calculate average PnL from results."""
+    if not results:
+        return 0
+    
+    total_pnl = sum(r.get("pnl", 0) for r in results)
+    return total_pnl / len(results)
+
+
+def calculate_average_win(results):
+    """Calculate average win from results."""
+    wins = [r["pnl"] for r in results if r.get("verdict") in ("PUMP", "STRONG_PUMP")]
+    return sum(wins) / len(wins) if wins else 0
+
+
+def calculate_average_loss(results):
+    """Calculate average loss from results."""
+    losses = [r["pnl"] for r in results if r.get("verdict") == "DUMP"]
+    return sum(losses) / len(losses) if losses else 0
+
+
+def calculate_var(returns, confidence=0.95):
+    """Calculate Value at Risk (VaR) from returns."""
+    if not returns:
+        return 0
+    
+    sorted_returns = sorted(returns)
+    index = int(len(sorted_returns) * (1 - confidence))
+    return sorted_returns[index]
+
+
+def calculate_max_drawdown(signals):
+    """Calculate maximum drawdown from signals."""
+    if not signals:
+        return 0
+    
+    max_dd = 0
+    peak = float('-inf')
+    
+    for signal in sorted(signals, key=lambda x: x.get("timestamp", "")):
+        pnl = signal.get("pnl", 0)
+        if pnl > peak:
+            peak = pnl
+        else:
+            drawdown = (peak - pnl) / peak * 100
+            max_dd = max(max_dd, drawdown)
+    
+    return max_dd
+
+
+def calculate_sharpe_ratio(signals):
+    """Calculate Sharpe ratio from signals."""
+    if not signals:
+        return 0
+    
+    returns = [s.get("pnl", 0) for s in signals]
+    avg_return = sum(returns) / len(returns)
+    variance = sum((r - avg_return) ** 2 for r in returns) / len(returns)
+    std_dev = variance ** 0.5
+    
+    return avg_return / std_dev if std_dev > 0 else 0
+
+
+def calculate_average_ath(results):
+    """Calculate average ATH multiplier from results."""
+    aths = [r.get("ath_multiplier", 1) for r in results if r.get("ath_multiplier", 0) > 0]
+    return sum(aths) / len(aths) if aths else 1
+
+
 def save_data(data: dict):
     try:
         with open(DATA_FILE, "w") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
     except Exception as e:
         logger.error(f"save_data error: {e}")
+
+
+def calculate_signal_quality_score(recent_signals):
+    """Calculate a comprehensive signal quality score.
+    Combines win rate, average profit, pattern strength, and recent trends.
+    """
+    if not recent_signals:
+        return 0.5
+    
+    # Calculate win rate
+    wins = [s for s in recent_signals if s.get("verdict") in ("PUMP", "STRONG_PUMP")]
+    win_rate = len(wins) / len(recent_signals) if recent_signals else 0
+    
+    # Calculate average PnL
+    total_pnl = sum(s.get("pnl", 0) for s in recent_signals)
+    avg_pnl = total_pnl / len(recent_signals) if recent_signals else 0
+    
+    # Calculate pattern strength
+    pattern_strength = calculate_pattern_strength(recent_signals)
+    
+    # Calculate recent trend (weighted average of last 10 signals)
+    recent_10 = recent_signals[-10:] if len(recent_signals) >= 10 else recent_signals
+    recent_score = calculate_pattern_strength(recent_10)
+    
+    # Combine with weights
+    quality_score = (
+        win_rate * 0.3 +           # Historical accuracy (30%)
+        min(max(avg_pnl / 50, 0), 1) * 0.2 +  # Average profit (20%, capped at 50% PnL)
+        pattern_strength * 0.3 +    # Pattern strength (30%)
+        recent_score * 0.2         # Recent trend (20%)
+    )
+    
+    return min(max(quality_score, 0.35), 0.75)  # Clamp 0.35-0.75
+
+
+def calculate_advanced_tp_sl(results):
+    """Calculate TP/SL using risk management metrics like Kelly Criterion and VaR.
+    """
+    if not results:
+        return {"optimal_tp": 100, "optimal_sl": -15, "expected_pnl": 0}
+    
+    # Calculate risk metrics
+    returns = [r.get("pnl", 0) for r in results]
+    avg_return = sum(returns) / len(returns)
+    variance = sum((r - avg_return) ** 2 for r in returns) / len(returns)
+    std_dev = variance ** 0.5
+    
+    # Calculate Sharpe Ratio
+    sharpe_ratio = avg_return / std_dev if std_dev > 0 else 0
+    
+    # Calculate Kelly Criterion for position sizing
+    win_rate = sum(1 for r in results if r.get("verdict") in ("PUMP", "STRONG_PUMP")) / len(results)
+    wins = [r.get("pnl", 0) for r in results if r.get("verdict") in ("PUMP", "STRONG_PUMP")]
+    losses = [r.get("pnl", 0) for r in results if r.get("verdict") == "DUMP"]
+    
+    avg_win = sum(wins) / len(wins) if wins else 0
+    avg_loss = sum(losses) / len(losses) if losses else 0
+    
+    if avg_loss < 0:
+        kelly_fraction = (win_rate * avg_win - abs(avg_loss)) / avg_win
+    else:
+        kelly_fraction = 0
+    
+    kelly_fraction = max(0.2, min(0.8, kelly_fraction))  # Clamp 20-80%
+    
+    # Calculate Value at Risk (VaR)
+    sorted_returns = sorted(returns)
+    var_95 = sorted_returns[int(len(sorted_returns) * 0.05)]  # 5% VaR
+    var_99 = sorted_returns[int(len(sorted_returns) * 0.01)]  # 1% VaR
+    
+    # Find best TP/SL based on multiple criteria
+    best_combo = None
+    best_score = -999
+    
+    for tp_pct in range(50, 301, 25):
+        for sl_pct in range(-30, 0, 5):
+            # Calculate risk-adjusted return
+            risk_adj_return = (avg_return / abs(sl_pct)) if sl_pct < 0 else 0
+            sharpe_score = sharpe_ratio * (tp_pct / 100)
+            kelly_score = kelly_fraction * (tp_pct / 100)
+            
+            # Combine scores
+            total_score = (
+                risk_adj_return * 0.4 +    # Risk-adjusted return (40%)
+                sharpe_score * 0.3 +       # Sharpe ratio (30%)
+                kelly_score * 0.3          # Kelly fraction (30%)
+            )
+            
+            if total_score > best_score:
+                best_score = total_score
+                best_combo = {
+                    "optimal_tp": tp_pct,
+                    "optimal_sl": sl_pct,
+                    "expected_pnl": avg_return,
+                    "sharpe_ratio": sharpe_ratio,
+                    "kelly_fraction": kelly_fraction,
+                    "var_95": var_95,
+                    "var_99": var_99,
+                    "risk_adj_return": risk_adj_return
+                }
+    
+    return best_combo or {"optimal_tp": 100, "optimal_sl": -15, "expected_pnl": avg_return}
+
+
+def enhanced_auto_learn():
+    """Enhanced auto-learn that considers multiple performance metrics.
+    """
+    from datetime import datetime, timezone
+    
+    data = load_data()
+    results = data.get("model", {}).get("signal_results", [])
+    
+    if len(results) < 10:
+        return None
+    
+    # Get last 50 signals for analysis
+    recent_signals = results[-50:] if len(results) >= 50 else results
+    
+    # Calculate multiple metrics
+    metrics = {
+        "win_rate": sum(1 for s in recent_signals if s.get("verdict") in ("PUMP", "STRONG_PUMP")) / len(recent_signals),
+        "avg_pnl": sum(s.get("pnl", 0) for s in recent_signals) / len(recent_signals),
+        "pattern_strength": calculate_pattern_strength(recent_signals),
+        "recent_trend": calculate_pattern_strength(recent_signals[-10:]) if len(recent_signals) >= 10 else 0,
+        "dump_rate": sum(1 for s in recent_signals if s.get("verdict") == "DUMP") / len(recent_signals),
+        "avg_ath": sum(s.get("ath_multiplier", 1) for s in recent_signals) / len(recent_signals),
+    }
+    
+    # Calculate overall quality score
+    quality_score = calculate_signal_quality_score(recent_signals)
+    
+    # Determine new heuristic_threshold based on comprehensive analysis
+    current_threshold = data.get("model", {}).get("signal_criteria", {}).get("heuristic_threshold", 0.45)
+    current_pattern_threshold = data.get("model", {}).get("signal_criteria", {}).get("pattern_threshold", 0.55)
+    
+    # Adjust heuristic_threshold based on quality score
+    if quality_score < 0.45:
+        new_threshold = min(0.55, current_threshold + 0.08)
+    elif quality_score < 0.50:
+        new_threshold = min(0.50, current_threshold + 0.04)
+    elif quality_score > 0.65:
+        new_threshold = max(0.40, current_threshold - 0.04)
+    else:
+        if metrics["win_rate"] < 0.15:
+            new_threshold = min(0.50, current_threshold + 0.03)
+        elif metrics["win_rate"] > 0.25:
+            new_threshold = max(0.42, current_threshold - 0.03)
+        else:
+            new_threshold = current_threshold
+    
+    # Adjust pattern_threshold based on dump rate
+    if metrics["dump_rate"] > 0.35:
+        new_pattern_threshold = max(0.60, current_pattern_threshold + 0.05)
+    elif metrics["dump_rate"] < 0.20:
+        new_pattern_threshold = min(0.50, current_pattern_threshold - 0.03)
+    else:
+        new_pattern_threshold = current_pattern_threshold
+    
+    # Adjust volatility setting based on average ATH
+    if metrics["avg_ath"] > 3.5:
+        volatility_setting = "high"
+    elif metrics["avg_ath"] < 2.0:
+        volatility_setting = "low"
+    else:
+        volatility_setting = "medium"
+    
+    # Update the criteria
+    criteria_data = data.get("model", {}).get("signal_criteria", {})
+    criteria_data["heuristic_threshold"] = round(new_threshold, 2)
+    criteria_data["pattern_threshold"] = round(new_pattern_threshold, 2)
+    criteria_data["volatility_setting"] = volatility_setting
+    criteria_data["last_quality_score"] = round(quality_score, 2)
+    data["model"]["signal_criteria"] = criteria_data
+    
+    save_data(data)
+    
+    return {
+        "heuristic_threshold": round(new_threshold, 2),
+        "pattern_threshold": round(new_pattern_threshold, 2),
+        "volatility_setting": volatility_setting,
+        "quality_score": round(quality_score, 2),
+        "metrics": metrics,
+    }
 
 
 def _hash_address(address: str) -> str:

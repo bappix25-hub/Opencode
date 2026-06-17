@@ -5,7 +5,7 @@ import asyncio
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters
 from bot_state import BotState
-from learner import get_stats, get_daily_report, is_duplicate, get_performance_report
+from learner import get_stats, get_daily_report, is_duplicate, get_performance_report, enhanced_auto_learn
 from dex_client import DexScreenerClient
 from helius_client import HeliusClient
 from config import config
@@ -64,8 +64,8 @@ class TelegramHandlers:
             "/positions — ওপেন পজিশন দেখুন\n"
             "/trades — ট্রেড হিস্ট্রি\n"
             "/signalstats — সিগন্যাল পরিসংখ্যান\n"
-            "/retrain — model retrain"
-        )
+            "/retrain — model retrain\n"
+            "/autolearn — স্মার্ট অথবা"}}, {{"n
         await update.message.reply_text(
             text,
             parse_mode="HTML", reply_markup=main_keyboard()
@@ -466,20 +466,40 @@ class TelegramHandlers:
                 f"= <b>{sc['avg_pnl']:+.0f}%</b>{hold_note}\n"
             )
 
+        # Enhanced report with risk metrics
+        enhanced_metrics = []
+        if len(scenarios) > 1:
+            current_scenario = scenarios[0]
+            for sc in scenarios[:5]:
+                enhanced_metrics.append(
+                    f"<li>+{sc['tp']}% (রিস্ক {sc['sl']}%): {sc['avg_pnl']:+.1f}% per সিগন্যাল, {sc['tp_rate']:.1f}% জয়ের হার"
+                )
+
         text = (
             f"🤖 <b>স্ক্রেপার সেটআপ</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"⭐ <b>সেট করো:</b>\n"
-            f"  <b>TP +{perf['optimal_tp']}%</b> / <b>SL {perf['optimal_sl']}%</b>\n"
+            f"  <b>TP +{perf['optimal_tp']}%</b> / <b>SL {perf['optimal_sl']}%\n"
             f"  → গড় লাভ: <b>{perf['expected_pnl']:+.1f}%</b> প্রতি সিগন্যাল\n"
             f"  → জিতবে {tp_h}/{total} ({round(tp_h/total*100)}%) | হারবে {sl_h}/{total} ({round(sl_h/total*100)}%)\n"
+            f"  → পেন্ডিং: {hd} | গড় ATH: {perf['avg_ath']}x\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"📊 {total} সিগন্যাল | গড় ATH: <b>{perf['avg_ath']}x</b>\n"
+            f"📊 <b>প্রদর্শনের সারাংশ</b>\n"
+            f"  • মোট সিগন্যাল: {total}\n"
+            f"  • সফলতা: {perf['win_rate']}%\n"
+            f"  • অ্যাভারেজ মুনাফা: {perf['expected_pnl']:+.1f}%\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"📋 <b>TP অপশন (SL -10% সহ):</b>\n"
-            f"{sc_lines}"
+            f"📋 <b>বেস্ট টিপি/এসএল:</b>\n"
+            f"  • TP +{perf['optimal_tp']}% - {perf['tp_hits']} হিট ({perf.get('optimal_win_rate', 0)}%)")
+            if enhanced_metrics:
+                f"\n    সেরা বিকল্প:\n"
+                for metric in enhanced_metrics:
+                    f"{metric}\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"💡 <i>বড় TP = কম হিট, বেশি লাভ। ছোট TP = বেশি হিট, কম লাভ।</i>\n"
+            f"💡 <i>সুবিধা:</i>\n"
+            f"  • বড় TP = কম হিট, বেশি লাভ\n"
+            f"  • ছোট টিপি = বেশি হিট, কম লাভ\n"
+            f"  • ডায়নামিক এসএল অস্থিরতা অনুযায়ী সমন্বয় করা\n"
             f"🕐 <i>গত ২৪ ঘন্টা</i>"
         )
         await update.message.reply_text(text, parse_mode="HTML")
@@ -565,6 +585,30 @@ class TelegramHandlers:
             f"🎯 Accuracy: {learner_stats['accuracy']}%"
         )
 
+    async def cmd_autolearn(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Trigger enhanced auto-learn to update signal thresholds based on current performance."""
+        await update.message.reply_text("🧠 Enhanced auto-learn triggering...")
+        
+        try:
+            result = enhanced_auto_learn()
+            if result:
+                await update.message.reply_text(
+                    f"✅ Enhanced auto-learn completed!\n"
+                    f"📊 Quality Score: {result['quality_score']}%\n"
+                    f"🎯 New Threshold: {result['heuristic_threshold']}\n"
+                    f"📈 Pattern Threshold: {result['pattern_threshold']}\n"
+                    f"🎲 Volatility Setting: {result['volatility_setting']}\n"
+                    f"📈 Win Rate: {result['metrics']['win_rate']*100:.1f}%\n"
+                    f"💰 Average PnL: {result['metrics']['avg_pnl']:+.1f}%\n"
+                    f"📊 Pattern Strength: {result['metrics']['pattern_strength']:.2f}\n"
+                    f"📊 Dump Rate: {result['metrics']['dump_rate']*100:.1f}%\n"
+                    f"🎲 Average ATH: {result['metrics']['avg_ath']:.2f}x\n"
+                )
+            else:
+                await update.message.reply_text("❌ Enhanced auto-learn failed (insufficient data)")
+        except Exception as e:
+            await update.message.reply_text(f"❌ Error: {str(e)}")
+
     async def cmd_balance(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not self.paper_trader:
             await update.message.reply_text("❌ Paper Trading চালু নেই।")
@@ -643,6 +687,7 @@ def register_handlers(app, handlers: TelegramHandlers):
     app.add_handler(CommandHandler("golden", handlers.cmd_golden))
     app.add_handler(CommandHandler("blacklist", handlers.cmd_blacklist))
     app.add_handler(CommandHandler("retrain", handlers.cmd_retrain))
+    app.add_handler(CommandHandler("autolearn", handlers.cmd_autolearn))
     app.add_handler(CommandHandler("balance", handlers.cmd_balance))
     app.add_handler(CommandHandler("positions", handlers.cmd_positions))
     app.add_handler(CommandHandler("trades", handlers.cmd_trades))
