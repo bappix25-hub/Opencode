@@ -14488,6 +14488,15 @@
         "current_multiplier": 0.0,
         "signal_age": 0.0,
         "timestamp": "2026-06-16T23:36:27.335682+00:00"
+      },
+      {
+        "address": "F871NCYLqnKM3mwaYnMbHrj1MUn6sAytt83Cb7yapump",
+        "symbol": "nfodor",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.2510501606127997,
+        "current_multiplier": 0.9000494193229552,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T04:36:02.068423+00:00"
       }
     ],
     "golden_symbols": {},
@@ -14524,7 +14533,7 @@
       "min_lp_providers": 0,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-17T03:44:58.652121+00:00",
+      "updated_at": "2026-06-17T04:45:02.693427+00:00",
       "sample_size": 203
     },
     "signal_criteria_stats": {
@@ -14584,6 +14593,7 @@
     "pnYrxqat1mz9j7qCcNmouwJ63DR5siHt4jLWHwspump",
     "FJVis6jGFFiizZ1NSyNdKYHSTnqUWHmM5P3nyco5pump",
     "F2dhrChxoLyRve6u22KM7SF4DGi3xvLumRs86imepump",
+    "2XfSoA6HtnLS8p1Vva9yCFUww2ypxWd4gsY2khbfBAGS",
     "ESqwVPKeKjpqFsjWcxwmpdjBAoQdVsDKqaUP1YWtpump",
     "AB7XXeQAvN2yiqrg4MR3AbyhNdL1dAyhSon4LhLUpump",
     "2sUsARJsNq6tM3Z4nas9Todu6auLL47e4utynsdwpump",
@@ -14594,6 +14604,7 @@
     "AuUMRAHWKUTHXLRgP1A4CW8txxJbSr1GVFbYCoRSpump",
     "7NTneSxwaZ2GhGWi4twqmb53h4iaLisVtdeoCQ4Apump",
     "2ZcrrjkHkCoyoqx37t2njhTqXkq32di2QKdzHtAEpump",
+    "HU7FotjNBiLPQvCiye3W147oX7qS9qrpdU3iY617pump",
     "7io8XEMRMoQoCvD3phKR2QR5EeoMmJnYM1dsjVdYpump",
     "EzrXiBWKcr3WSGLdJWeXvfBSkWRHkaymU7gW5fXpump",
     "4k6WBtxobSHRrEEkTDQkrpjS9nZnXfpNrGkaZivmpump",
@@ -14628,6 +14639,7 @@
     "Fk5TidwF6UH5PRV5sBkyg5KLV9XBt9SfVc977JvQpump",
     "CxoR1nP9W8Tc585ziwA7VuAz5rYUJEXz9CwwNpnpump",
     "62JqJe9a5Ly6DeCQnKsTuLk4RHp9V5iaUA8ykmvnpump",
+    "8nnFZQgwvxxMparw5Dr626CYS6GMbb73Pg7f43JApump",
     "HMKtUtEdmrW7NA7bNDSoYkrQhxN5EGuGLDPVdMWqpump",
     "9PhzYm6iPv6YoHaeEBzzAwvREi5NEpGLwFFNJ6Dypump",
     "6fVn7Eiiw1mTKcSYU1kVErEUqfdJ9f11FsyyjtN1pump",
@@ -14717,6 +14729,7 @@
     "GZdaDSMKfxtmWa2vhqB2TcBewEiP2WfwPXPCN2Dfpump",
     "H4oM947yrUoa3NEAXA83vw2bghNc14ymzb8nWTgapump",
     "GSp4qePZUHBtt5f4gE6AsRC9JUUqeZEJLeN2JZxLpump",
+    "57mZ5FDEhr6zrcp4RyDL4qmb5EfQHB6Vjaahsb74pump",
     "AK1tNGjcjHYF9bueY3FQfC8im2NtCbGanc9MLzT4pump",
     "9YDvGK6xipja74T1NwXkjhtgyLQ3p9D2fxzXFCzhpump",
     "eGRMLVGFiypbJPDjPQ7eKQt1exuXpCbLwXqG2Kzpump",
@@ -14755,6 +14768,7 @@
     "Dig6UdRdW3PjzvR1brBXSWSoAoWALS9na9qWTwUUpump",
     "GzsinibKh3Tcm3SENQ2tGMKfEnrMkbrXuNV8gjTrpump",
     "nTwUo7iHRn8RuYuqsfPazceW3GQr9BHdDoGbBm8pump",
+    "FiYet7jahT3f41x9uGnHr5jTES5okG4GosVVehQhpump",
     "tungXo9vjMeyxRcXMRvejsiAWpCBBD64VNVi8KYX4Ar",
     "6TwJdiYYZUCqmmeazhJpEhFGCi9J7UvY1Nvtx8xmpump",
     "5YchXoTZzPEU9juyNwK6cV1GQ15ZZuKuq3TadMSzpump",
@@ -15000,6 +15014,7 @@
     "9EXLKP65HyJESKU7nRg5XDb2W8XoGDZaLLScdpqcrDfj",
     "4HXb7ivgvjbHC3TBesmmD9LovH8tmTv9DZsq12GMvEpU",
     "J7GdFq9sm2t4rRtWRQ1476U2LPPn96jJvrwH5Lne6pp6",
+    "ASjWM88oTgvmBksXXepXVvhggen8tgKiEWATKAA1u9Hk",
     "8pUj5LVz4bCbKhsorugLssbxdWFnW9dJvJRTEJ5nsHjj",
     "GEqCXa6GxdE76wCbh98nnoKt3K7FpHzByZdwuuva8MvM",
     "4S8etPw8tSxjzJikupCmc4K2AtDkB6Fk7uMbmyfoCBcE",
@@ -15738,6 +15753,7 @@
     "52RvuMFhNebEpHXAgNqYwsa8Mn9UPrSWwyihEp2iwCu9",
     "3EMZCY4r8XpzgRifkvT3SawbvthBeFhvCZ3MGEJAZ7Vv",
     "9D54nV7BphKmTZV5D9QGA78TFdJ5LVm1e27rt2RR8Bm8",
+    "8rPPY7T4v8zzTcwjAA8Hk831fmwTtXv6wa1142wU2Yyx",
     "EiARpY3ySYhBUxhVpDENLDobn56azHPEZeP6ExdNk4TQ",
     "3hWXW8BJoy1awjywwebcRgyLvKqNqjC7yxEMfzu6UYfd",
     "9nP3mWCtXnrG515KcWJ9UPFn8R3BfPGuPXpsg7SsrnDv",
@@ -16148,6 +16164,7 @@
     "FTbNcWWBibSNDGTN7HbXSdmWTN2bxNeqMi6BSBTMMgSj",
     "EEccdG7ZzqUu7f4SduygjqkbTWSk4Q8RGX65veWJsVNE",
     "F5Ue6NKAZwRqhHjRN3u6feLdEuuXqV2q6bhMuaB9w1Jk",
+    "BvPovkT3ZSxYy1gfwvMDphhVmBYYXPr7sJvuZB7LUXCv",
     "HhZ9ZtdB2UAuqY95G1AaBQx6n3TQ57933fdDZJ5xtHoq",
     "A4kyg1FYDiFEgCrtF1azfEuWsL68oPguWQNSKYQBgTMx",
     "3aPMfA5exxoTqVyvkeQE7s8y7x6foLGsnwH4RxdPuZnQ",
@@ -16212,6 +16229,7 @@
     "D9rqD1RkjSdSWHpY3r97YapknyN2Zr9nmmU4zAMrTHBi",
     "7UNvjgCe5vkt1QhUN3fWNZrCWra8aJSG8YZ5u63HiYyp",
     "GkLLq7pwhmdwZbJNN7ufeUG66UpXfk8x8mnXfXad7SR6",
+    "FXPCR7wSjo5wPJzuLYiaWxxjfResJvd6svkAhjzuTdQS",
     "GSqcJ7nHZxckm9VvKfZ7V8rQg9vEuL7YEqaZLThoK37D",
     "FLE1ZfJSACKRnyUx7VHACKusQH3ZUX8fR3D2bRSwGUYz",
     "FCCkAznnXUC5kCePRrj2xw7AnNSaJywRFmAv3fFpv9H4",
@@ -16289,6 +16307,7 @@
     "Eg6w9HZPDiFuvEMFcgXDEMU8UAvpcSduKPK82jMLUt5p",
     "9k3Sz79jt6x9YbD7KRdGsj1EfuYfk4of3vsUFhYoi1EM",
     "BqVkwL9ACCRLB4Jfxs8NjYBaXZLSmWkXbd2KsjXYTvEh",
+    "BbKY1ZHNjdJdXSY26g3q2MKob9DFL3GsRH9PyKZyfjDF",
     "MnVtKF4piWAWJrdAqLSGKZq13uhb3ztatjkxqQicCfR",
     "A4jrM343r4GwW3zNAKQ98WhFFNqPhpy5DknLNF6r2sKY",
     "DnahsQQ6RjcLosdEqhcAXwQfcq87couikun6K8edzq4M",
@@ -16422,6 +16441,8 @@
     "7rd9jdQ1nFgWD1KCjBANvgrBB6KShfSwdDsLFZ5KbJHK",
     "5Hj16NcUpsgUTUyuRddjFFYXM5wju4gYFu8GiLWVkv5x",
     "6p7zBrAdE5EdyhEHTmHx245Q3sJ1DjYCWeSb8tw6kuSW",
+    "4tKSqEKUwdT9okwvEJhy31CsPYoFVHhVR8theo6wWRg9",
+    "9RmZdS87jdra5YSy7ijevkcLiJ43njZHUeDnCrytbCBF",
     "5N4Z31vCy9GsJTSWM1iYPNoc4i3qjPifZWBShSPqP5H9",
     "HEoJaKaeo999bpPxe4sFqSNrnSuB5UskUVSs3QQd5iXo",
     "DsLJUwzKUS5GEo7HgG4QDxCqGpyEBvh6EkKFjZVSLtwE",
@@ -16677,6 +16698,7 @@
     "A53wP2asF6MgwLsKqbB6yTa7ezWWM3kwjE1UEBDcMeRe",
     "ERW73czTK3yLvMS9SVMSuCZLK1ajr4ir7JXiR9WEzQht",
     "FEuXR9UwEzqGQE5YTrgsqeRM3ACanvZj4x9aMbt5gpes",
+    "Yx9FcJMiU7bm6B9n5LaaH9GWsnc8d69YSZqg624ytWN",
     "DEijNR29GrakUgEgmGbbsZpKmeYABC73JNzCUPEYNnMM",
     "GNAQc9HuHCdgBz7YF4AHi6VUb9c67RC7M3bPBY8LNEzz",
     "BrFzG2kCvtVvU1aEQ2dun2PMbNfku3kF1FQDJFiJMnex",
@@ -16830,6 +16852,7 @@
     "HvEu15xLgndNraJZ5D62ByxQ9G3wTBrSKUQRgPtoDW2k",
     "69whPpG46NMeCQ1dXu3g8LE6qTFLumScqmrenm7agf5J",
     "3qapAHxoJ5HUBZZKveVspkxKjkozN1oEQHNEwbucJCkM",
+    "8SBE3UtFraCBdoDaM9EYiGCHdobYgCEmhwfaN3QjdnBn",
     "HbgCDC9niqSJNy5DLeTqymgnisAi1Kkp5k4afrMHEoY7",
     "D1B3gvmXBxENgruUSBdhzYcsNVLjLvXJUHb7Sv3Rn2gR",
     "8iV2wsGNPqaQWtecqAttsKnLyGdgF9sB7TMswTvcFv8F",
@@ -16923,6 +16946,7 @@
     "6AavAkvxiS4xrJ9TzT5j6CExJEq9BEV3TCqy31ZzBUmz",
     "DfwDxAYJgGDeeEqESH3SB93o7Sp4td2hmGRHQ3U3vNfb",
     "DixmfUhXZDqtZT3SrFHQMx4qvg5WB9qMj9JhVjG3YLuC",
+    "8DxnVnDMKXNTd2FPjb6Rv7VzBxCmgSQQq5eD3RVHUZgh",
     "6nU2L7MQVUWjtdKHVpuZA9aind73nd3rXC4YFo8KQCy4",
     "A8mXDLSE6HFMomLp7W3pDQVgDFb8aVz82fswXkwN8bpR",
     "4yWDmvn7TUVQuZvZRYcEcQuFijEWZ73FpnrtRnFb66aC",
@@ -17043,6 +17067,7 @@
     "AWTUXg89og3pauoPGYF7eyM3vW2jsMpp8FtdEq2VLbJR",
     "4H4ypuSrqzmCNrDf2zxngbheSxtDydL8SVQbAaZ8MRTK",
     "5eMgprFxCcF8pEo2Vp3yJzHTzjDbduQxJhx8ridH5Ahg",
+    "7Tf5Yo1MRb566bdDpFpKi6Yw6LjE6d3uSjSCvjCot3wW",
     "8GCB7egaUwjxzzDhgSwkChTk6Y6joxRzr1Csk5HDRUCK",
     "DLHPuf67VNqDaXpoexCpTbjRQuLBfeSAUJvWT9Er9sk3",
     "B5Z6fN9kF5GX1sATKRg4vkq95joKKM8GwEoyemPC9t4W",
@@ -17231,6 +17256,7 @@
     "HpRanhK7aqwP1pDrqfMdjWxDbMhBWA8NMTRes8MYfqUi",
     "N9SyhAXDckG4y2B911paJPpwS7cvxWSxcng53mebXGf",
     "FjNA3EdmXxXNx4ZZ2btdtVnMBMhTVsj6v2oiv2FUijzF",
+    "BpkkdAszYzKS3sSD5vj4n6RpFx1bycR1JJD8uNJZodyd",
     "8sjvtCG2nKZBtvTtdBUWNXHTtpeXuF2UUi8BheDrr5jx",
     "7SL1jkzMrxY1ZtVy48U3eHXScBLLqxLFLS1Xf8Lk7nFS",
     "HXQqQTkEGXv9XNNM3qfoYhdZCUVS8No3jA9BtZ1R8itt",
@@ -17244,6 +17270,7 @@
     "8p5LznsfztsU4Xxzqt9K2Nn87u2XuyvLxQTxdtkC3yEA",
     "D2DhjorCJ7iLqcgaYGWjqwE9xtCshxpabNanmDSuHuiZ",
     "2zvwT2vDCZ4BiqgvZgj4f89t2y19zB7PoJbVLP2rBPVq",
+    "GN9i3yjAKdM4BAT1SLv4bDQ7JTqeLAqcFa6fkxfbhfKj",
     "BNB6KGJhDQQGRBZS44Gt5ApH33Xk7B3BBt7P2CcHzphF",
     "42uEAtYUtzku9WtXr4z3GBRbW2YpLVkB1jShbT8mGzUo",
     "9Nx2PN8EVPZfUkvWHVMAQU6NoDbndJHkrTZoqQ9M7n95",
@@ -17391,6 +17418,7 @@
     "CneiQ4NRqK5aLBGNNttwp56ngKuet8q5ARWBhJUM5RJm",
     "D715Xv7DdwjM8q7899bTBT7cUcRdJaRLNCqMH2WKeiNU",
     "E6y5gcV5J2ZMf23UDoyH975LSoDfr2f5ULe4YPGNzmT5",
+    "7NP8ppaii2UdmNyhAfDw5kQPmhRGWcSnPMM2JBhbzQFR",
     "3CapEPWFBKhkV2wkG9iimJL8xU5gVjtwQob8FEdVCQvh",
     "EWQMvg4rvTPNBjwy8Y6tEmxaSJkhGBMz6kzBY7kZiuMY",
     "DMka2ZP69ykjLCEdmYZTBytbSWzgxnbsWnvbFnKSBsDw",
@@ -17470,6 +17498,7 @@
     "9FbaBtkWvyWKNCRS5H5KHxTrMvHBNXLQXvcHUdCdhnHa",
     "4TwJCifDhzmftNo9tpr2cQZtLxiL9i2GKyCcyTW2tmgN",
     "Ef1gQAXxhdQk4db6bxyDQ2nxdHRtbHndeew1Sf37tTea",
+    "YQAdrTrdf3Xo2DJ7reCKo3jNqEChVjkK5gx5YV8oKBe",
     "8oG2ZR6BPDfXB3RsErnzsoXnbwLMQGQgb4pWPxQfx3RF",
     "B3mDnGVWBdxsLRoVaqvFqd3AWyRyRNzhkuJzNEGFPctJ",
     "4Ygovr35R9kHgnxxvdacZNpGmFFE8Dsd2RZQEy6PYKEq",
@@ -17698,6 +17727,7 @@
     "8HmMZkKxzvpjNraarL9qX9VjG3JQCDUg4TfpeTxUTTBG",
     "9YtEnTVhtNGERZmnnVUFrAkTZgbvDVLDYyjQGE7VAMcf",
     "2LdpGjusAPkBh5Mtq6g6HzVT8icLuT9hhEdid1WAnPhm",
+    "Bs7bRbDuTTpeDkPJt3nh9qKfLqvyV1rNwBnVRVXvywzA",
     "4syYTWwGmv58JxheCPjz5Tn5VNHfdFxCzpuSokRJCS5c",
     "BZC7VEj5Y9Ege3cTRGBZW2zW7pjw3hpiSkcAoYKysvue",
     "ebZRtCmGBefPCrj5kJMZBUSDYrsjTweT5EVspfLMuPA",
@@ -17722,6 +17752,7 @@
     "GeUnv1jmtviRbR7Gu1JnXSGkUMUgFVBHuEVQVpTaUX1W",
     "GgQhcXeFCKUYh8XW6RGDWBDaCZsNkpY8M7dPHteVupQm",
     "EAGMLuuVrv2EEXLGLGsDUb2TVXzCH2LwueATPoeu3t5L",
+    "2mqmtPsqVG1PsqsPCfzqp4UDEFgTmPvqNFm8RvY7tziD",
     "GvqePcmLZSGD6J52iZnkmuvMWZsdDAjQGi9Qs17Uq5Fh",
     "9QE8wgMCuFZLsKRKZCTXYoMuZ3kHTbnDhLWHhHHZu3rb",
     "2Lt12W2ZUU6fcqkvbZTLBR6EHTRd16jhLBqBKqBZm5xo",
@@ -28536,12 +28567,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781649311.075224,
         "liquidity": 0.0,
-        "mcap": 2063.65
+        "mcap": 2063.65,
+        "outcome": "dump",
+        "outcome_mcap": 2063.65,
+        "symbol": "UNIJETT"
       },
       "launch_time": 1781649311.075224,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2063.65,
+      "outcome_time": "2026-06-17T04:35:45.391302+00:00",
       "signal_sent": false
     },
     {
@@ -28567,12 +28601,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781649321.176453,
         "liquidity": 0.0,
-        "mcap": 4000.0
+        "mcap": 4000.0,
+        "outcome": "dump",
+        "outcome_mcap": 4000.0,
+        "symbol": "Zeus"
       },
       "launch_time": 1781649321.176453,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 4000.0,
+      "outcome_time": "2026-06-17T04:35:46.849847+00:00",
       "signal_sent": false
     },
     {
@@ -28598,12 +28635,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781649331.035031,
         "liquidity": 0.0,
-        "mcap": 2062.53
+        "mcap": 2062.53,
+        "outcome": "dump",
+        "outcome_mcap": 2062.53,
+        "symbol": "SX"
       },
       "launch_time": 1781649331.035031,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2062.53,
+      "outcome_time": "2026-06-17T04:35:48.960568+00:00",
       "signal_sent": false
     },
     {
@@ -28629,12 +28669,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781649334.297185,
         "liquidity": 0.0,
-        "mcap": 2060.3
+        "mcap": 2060.3,
+        "outcome": "dump",
+        "outcome_mcap": 2060.3,
+        "symbol": "OGTWERK"
       },
       "launch_time": 1781649334.297185,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2060.3,
+      "outcome_time": "2026-06-17T04:35:49.692033+00:00",
       "signal_sent": false
     },
     {
@@ -28660,12 +28703,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781649380.343711,
         "liquidity": 0.0,
-        "mcap": 2122.66
+        "mcap": 2122.66,
+        "outcome": "dump",
+        "outcome_mcap": 2122.37,
+        "symbol": "KSTR"
       },
       "launch_time": 1781649380.343711,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2122.37,
+      "outcome_time": "2026-06-17T04:37:02.987218+00:00",
       "signal_sent": false
     },
     {
@@ -28691,12 +28737,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781649408.92814,
         "liquidity": 0.0,
-        "mcap": 2062.53
+        "mcap": 2062.53,
+        "outcome": "dump",
+        "outcome_mcap": 2062.53,
+        "symbol": "ABYSS"
       },
       "launch_time": 1781649408.92814,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2062.53,
+      "outcome_time": "2026-06-17T04:37:08.073765+00:00",
       "signal_sent": false
     },
     {
@@ -28722,12 +28771,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781649411.368029,
         "liquidity": 0.0,
-        "mcap": 2063.37
+        "mcap": 2063.37,
+        "outcome": "dump",
+        "outcome_mcap": 2063.37,
+        "symbol": "(S)PAIN"
       },
       "launch_time": 1781649411.368029,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2063.37,
+      "outcome_time": "2026-06-17T04:37:08.935620+00:00",
       "signal_sent": false
     },
     {
@@ -28753,12 +28805,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781649445.686869,
         "liquidity": 0.0,
-        "mcap": 2062.79
+        "mcap": 2062.79,
+        "outcome": "dump",
+        "outcome_mcap": 2062.79,
+        "symbol": "thg"
       },
       "launch_time": 1781649445.686869,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2062.79,
+      "outcome_time": "2026-06-17T04:38:17.516786+00:00",
       "signal_sent": false
     },
     {
@@ -28784,12 +28839,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781649449.414234,
         "liquidity": 0.0,
-        "mcap": 2063.93
+        "mcap": 2063.93,
+        "outcome": "dump",
+        "outcome_mcap": 2063.93,
+        "symbol": "bet"
       },
       "launch_time": 1781649449.414234,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2063.93,
+      "outcome_time": "2026-06-17T04:38:18.295498+00:00",
       "signal_sent": false
     },
     {
@@ -28815,12 +28873,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781649456.933274,
         "liquidity": 0.0,
-        "mcap": 2063.93
+        "mcap": 2063.93,
+        "outcome": "dump",
+        "outcome_mcap": 2063.93,
+        "symbol": "TALK"
       },
       "launch_time": 1781649456.933274,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2063.93,
+      "outcome_time": "2026-06-17T04:38:19.206852+00:00",
       "signal_sent": false
     },
     {
@@ -28846,12 +28907,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781649465.378372,
         "liquidity": 0.0,
-        "mcap": 2058.9
+        "mcap": 2058.9,
+        "outcome": "dump",
+        "outcome_mcap": 2058.9,
+        "symbol": "$ABOY"
       },
       "launch_time": 1781649465.378372,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2058.9,
+      "outcome_time": "2026-06-17T04:38:19.299806+00:00",
       "signal_sent": false
     },
     {
@@ -28877,12 +28941,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781649469.985122,
         "liquidity": 0.0,
-        "mcap": 2063.37
+        "mcap": 2063.37,
+        "outcome": "dump",
+        "outcome_mcap": 2063.37,
+        "symbol": "DUVAGOTCHI"
       },
       "launch_time": 1781649469.985122,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2063.37,
+      "outcome_time": "2026-06-17T04:38:19.944407+00:00",
       "signal_sent": false
     },
     {
@@ -28908,12 +28975,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781649490.39844,
         "liquidity": 0.0,
-        "mcap": 2058.9
+        "mcap": 2058.9,
+        "outcome": "dump",
+        "outcome_mcap": 2058.9,
+        "symbol": "AnSeM"
       },
       "launch_time": 1781649490.39844,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2058.9,
+      "outcome_time": "2026-06-17T04:38:20.646207+00:00",
       "signal_sent": false
     },
     {
@@ -28939,12 +29009,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781649490.043223,
         "liquidity": 0.0,
-        "mcap": 2061.43
+        "mcap": 2061.43,
+        "outcome": "dump",
+        "outcome_mcap": 2064.49,
+        "symbol": "Drooling"
       },
       "launch_time": 1781649490.043223,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2064.49,
+      "outcome_time": "2026-06-17T04:38:21.440497+00:00",
       "signal_sent": false
     },
     {
@@ -28970,12 +29043,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781649502.789001,
         "liquidity": 0.0,
-        "mcap": 2063.37
+        "mcap": 2063.37,
+        "outcome": "dump",
+        "outcome_mcap": 2063.37,
+        "symbol": "salt"
       },
       "launch_time": 1781649502.789001,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2063.37,
+      "outcome_time": "2026-06-17T04:39:31.268532+00:00",
       "signal_sent": false
     },
     {
@@ -29001,12 +29077,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781649503.16757,
         "liquidity": 0.0,
-        "mcap": 2063.37
+        "mcap": 2063.37,
+        "outcome": "dump",
+        "outcome_mcap": 2063.37,
+        "symbol": "BUG"
       },
       "launch_time": 1781649503.16757,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2063.37,
+      "outcome_time": "2026-06-17T04:39:32.223104+00:00",
       "signal_sent": false
     },
     {
@@ -29056,6 +29135,32 @@
         "source": "historical_scan"
       },
       "launch_time": 1781667818.477773,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "HU7FotjNBiLPQvCiye3W147oX7qS9qrpdU3iY617pump",
+      "symbol": "Zmart",
+      "features": {
+        "launch_time": 1781671453.084909,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781671453.084909,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "EvZ6egJEkVhqN2KJkKLuGqrYZ6rDCkb4Ry7Pvk89pump",
+      "symbol": "OGSON",
+      "features": {
+        "launch_time": 1781671459.794021,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781671459.794021,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
