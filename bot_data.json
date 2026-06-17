@@ -14809,7 +14809,7 @@
       "min_lp_providers": 0,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-17T08:35:31.049233+00:00",
+      "updated_at": "2026-06-17T08:50:08.262320+00:00",
       "sample_size": 206
     },
     "signal_criteria_stats": {
@@ -29615,6 +29615,32 @@
         "source": "historical_scan"
       },
       "launch_time": 1781682861.989977,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "H2wiDucfS8tq7kE3dnimVYGSsSy5tYjoV8MmVdWFBAGS",
+      "symbol": "BAG",
+      "features": {
+        "launch_time": 1781686538.673737,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781686538.673737,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "5HDE96XQ5STmSGfYC61ZHVXuNtDjqm5r3J3GdxaFBAGS",
+      "symbol": "FIHLLIONS",
+      "features": {
+        "launch_time": 1781686541.188048,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781686541.188048,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
