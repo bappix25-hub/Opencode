@@ -3699,6 +3699,20 @@
       "outcome": "DUMP",
       "multiplier": 0.897883149872989,
       "learned_at": "2026-06-10T09:21:14.014946+00:00"
+    },
+    {
+      "symbol": "SNDK69",
+      "features": {
+        "launch_time": 1781702292.704159,
+        "source": "historical_scan",
+        "ath_multiplier": 1.68213228035538,
+        "outcome": "DUMP",
+        "signal_age": 0.0
+      },
+      "outcome": "DUMP",
+      "ath_multiplier": 1.68213228035538,
+      "signal_age": 0.0,
+      "learned_at": "2026-06-17T16:10:38.547102+00:00"
     }
   ],
   "launch_patterns": [
@@ -14798,11 +14812,38 @@
         "current_multiplier": 0.0,
         "signal_age": 0.0,
         "timestamp": "2026-06-17T11:09:17.862003+00:00"
+      },
+      {
+        "address": "851JK2La49dwLjKzWsoDpTddsue4d7ct9SedgYLtpump",
+        "symbol": "SNDK69",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.68213228035538,
+        "current_multiplier": 0.9437314906219152,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T16:10:38.546941+00:00"
+      },
+      {
+        "address": "4eepfPXbJi16vTVCzaULPhzeT4pWnE97o1gZeW8bpump",
+        "symbol": "BOTC",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2254901960784315,
+        "current_multiplier": 0.017487212276214834,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T16:10:42.074005+00:00"
+      },
+      {
+        "address": "mHbBQMh3ExWvFz8NUp7iPHe3Gs3SvUxdcrHRtbSpump",
+        "symbol": "CCM",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.7146739130434783,
+        "current_multiplier": 0.10674818840579711,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T16:11:54.288812+00:00"
       }
     ],
     "golden_symbols": {},
     "total_pumps": 34,
-    "total_dumps": 34,
+    "total_dumps": 35,
     "total_skipped": 0,
     "last_auto_learn": "2026-06-16T14:02:23.066937+00:00",
     "auto_learn_insights": {
@@ -14828,22 +14869,22 @@
       "min_bsr": 1.2,
       "min_holders": 3,
       "min_wallets": 3,
-      "min_liq": 18661.58,
-      "min_liq_pct": 6.74,
+      "min_liq": 18709.8,
+      "min_liq_pct": 6.79,
       "min_lp_locked": 0,
       "min_lp_providers": 0,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-17T15:27:19.881687+00:00",
-      "sample_size": 201
+      "updated_at": "2026-06-17T16:11:54.364550+00:00",
+      "sample_size": 203
     },
     "signal_criteria_stats": {
       "pump_medians": {
         "buy_sell_ratio": 0,
         "holders": 0,
         "unique_wallets": 0,
-        "initial_liq": 37323.17,
-        "liq_pct": 13.47,
+        "initial_liq": 37419.6,
+        "liq_pct": 13.57,
         "lp_locked": 0,
         "lp_providers_count": 0
       },
@@ -14856,8 +14897,8 @@
         "lp_locked": 0,
         "lp_providers_count": 0
       },
-      "pump_count": 101,
-      "dump_count": 100
+      "pump_count": 102,
+      "dump_count": 101
     }
   },
   "alerted_coins": [
@@ -29844,12 +29885,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781690875.899179,
         "liquidity": 0.0,
-        "mcap": 2027.55
+        "mcap": 2027.55,
+        "outcome": "dump",
+        "outcome_mcap": 2027.76,
+        "symbol": "VESTBANK"
       },
       "launch_time": 1781690875.899179,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2027.76,
+      "outcome_time": "2026-06-17T16:10:19.809218+00:00",
       "signal_sent": false
     },
     {
@@ -29875,12 +29919,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781690876.282217,
         "liquidity": 0.0,
-        "mcap": 2024.54
+        "mcap": 2024.54,
+        "outcome": "dump",
+        "outcome_mcap": 2024.23,
+        "symbol": "speedrun"
       },
       "launch_time": 1781690876.282217,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2024.23,
+      "outcome_time": "2026-06-17T16:10:23.195558+00:00",
       "signal_sent": false
     },
     {
@@ -29906,12 +29953,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781691036.650089,
         "liquidity": 0.0,
-        "mcap": 2191.15
+        "mcap": 2191.15,
+        "outcome": "dump",
+        "outcome_mcap": 2130.25,
+        "symbol": "VOLUMEBOT"
       },
       "launch_time": 1781691036.650089,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2130.25,
+      "outcome_time": "2026-06-17T16:14:25.830305+00:00",
       "signal_sent": false
     },
     {
@@ -29937,12 +29987,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781691040.361564,
         "liquidity": 0.0,
-        "mcap": 2028.35
+        "mcap": 2028.35,
+        "outcome": "dump",
+        "outcome_mcap": 2025.35,
+        "symbol": "KОYORA"
       },
       "launch_time": 1781691040.361564,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2025.35,
+      "outcome_time": "2026-06-17T16:14:25.938769+00:00",
       "signal_sent": false
     },
     {
@@ -29968,12 +30021,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781691082.0467,
         "liquidity": 0.0,
-        "mcap": 2028.98
+        "mcap": 2028.98,
+        "outcome": "dump",
+        "outcome_mcap": 2028.43,
+        "symbol": "mew"
       },
       "launch_time": 1781691082.0467,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2028.43,
+      "outcome_time": "2026-06-17T16:14:37.544187+00:00",
       "signal_sent": false
     },
     {
@@ -29999,12 +30055,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781691085.289056,
         "liquidity": 0.0,
-        "mcap": 3382.11
+        "mcap": 3382.11,
+        "outcome": "dump",
+        "outcome_mcap": 2021.4,
+        "symbol": "Laravel"
       },
       "launch_time": 1781691085.289056,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2021.4,
+      "outcome_time": "2026-06-17T16:14:42.811195+00:00",
       "signal_sent": false
     },
     {
@@ -30030,12 +30089,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781691141.59813,
         "liquidity": 0.0,
-        "mcap": 2028.42
+        "mcap": 2028.42,
+        "outcome": "dump",
+        "outcome_mcap": 2028.42,
+        "symbol": "meepcat"
       },
       "launch_time": 1781691141.59813,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2028.42,
+      "outcome_time": "2026-06-17T16:14:49.504679+00:00",
       "signal_sent": false
     },
     {
@@ -30061,12 +30123,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781691170.959692,
         "liquidity": 0.0,
-        "mcap": 2811.14
+        "mcap": 2811.14,
+        "outcome": "dump",
+        "outcome_mcap": 533.46,
+        "symbol": "Mhm"
       },
       "launch_time": 1781691170.959692,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 533.46,
+      "outcome_time": "2026-06-17T16:14:54.746360+00:00",
       "signal_sent": false
     },
     {
@@ -30092,12 +30157,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781691197.176979,
         "liquidity": 0.0,
-        "mcap": 3806.96
+        "mcap": 3806.96,
+        "outcome": "dump",
+        "outcome_mcap": 2059.17,
+        "symbol": "ARAT"
       },
       "launch_time": 1781691197.176979,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2059.17,
+      "outcome_time": "2026-06-17T16:14:59.901913+00:00",
       "signal_sent": false
     },
     {
@@ -30123,12 +30191,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781691205.932971,
         "liquidity": 0.0,
-        "mcap": 2027.87
+        "mcap": 2027.87,
+        "outcome": "dump",
+        "outcome_mcap": 2027.87,
+        "symbol": "PSA10"
       },
       "launch_time": 1781691205.932971,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2027.87,
+      "outcome_time": "2026-06-17T16:15:00.051496+00:00",
       "signal_sent": false
     },
     {
@@ -30154,12 +30225,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781691214.311526,
         "liquidity": 0.0,
-        "mcap": 2609.41
+        "mcap": 2609.41,
+        "outcome": "dump",
+        "outcome_mcap": 2107.93,
+        "symbol": "BUBBLEMAN"
       },
       "launch_time": 1781691214.311526,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2107.93,
+      "outcome_time": "2026-06-17T16:15:06.374866+00:00",
       "signal_sent": false
     },
     {
@@ -30428,7 +30502,10 @@
       "symbol": "SNDK69",
       "features": {
         "launch_time": 1781702292.704159,
-        "source": "historical_scan"
+        "source": "historical_scan",
+        "ath_multiplier": 1.68213228035538,
+        "outcome": "DUMP",
+        "signal_age": 0.0
       },
       "launch_time": 1781702292.704159,
       "outcome": null,
