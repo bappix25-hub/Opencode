@@ -38,14 +38,14 @@ DEFAULT_DATA = {
 }
 
 DEFAULT_SIGNAL_CRITERIA = {
-    "min_bsr": 1.2,
-    "min_holders": 3,
-    "min_wallets": 3,
+    "min_bsr": 1.5,
+    "min_holders": 5,
+    "min_wallets": 10,
     "min_liq": 1500,
     "min_liq_pct": 3.0,
     "min_lp_locked": 0,
-    "heuristic_threshold": 0.70,
-    "pattern_threshold": 0.55,
+    "heuristic_threshold": 0.60,
+    "pattern_threshold": 0.60,
     "max_age_seconds": 3600,
     "updated_at": None,
     "sample_size": 0,

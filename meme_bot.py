@@ -589,7 +589,7 @@ class MemeBot:
                 h_score -= 0.10
                 h_reasons.append(f"lp_low={lp_locked}%")
 
-            h_threshold = 0.45
+            h_threshold = 0.60
             if h_score >= h_threshold:
                 match = True
                 match_score = h_score
@@ -985,11 +985,16 @@ class MemeBot:
                             await self.state.add_dump_coin(addr, CoinInfo(name=name, symbol=symbol))
                             logger.info(f"📉 ডাম্প কয়েন: {symbol} mcap={format_number(mcap)}")
                             continue
-                        elif not await self.state.is_alerted(addr) and 500 <= mcap < PUMP_THRESHOLD:
+                        elif not await self.state.is_alerted(addr) and 50 <= mcap < 100000:
                             h1_buys = int(((pair or {}).get("txns") or {}).get("h1", {}).get("buys", 0) or 0)
                             h1_sells = int(((pair or {}).get("txns") or {}).get("h1", {}).get("sells", 0) or 0)
-                            if h1_buys < 5:
-                                logger.info(f"[SKIP] {symbol}: climbing — h1 buys={h1_buys} < 5")
+                            if h1_buys < 10:
+                                logger.info(f"[SKIP] {symbol}: climbing — h1 buys={h1_buys} < 10")
+                                continue
+
+                            # Must be < 2 hours old for climbing
+                            if age > 7200:
+                                logger.info(f"[SKIP] {symbol}: climbing — age {int(age)}s > 2h")
                                 continue
 
                             pair_data = pair
@@ -1022,7 +1027,7 @@ class MemeBot:
                                 climbing_score += 0.1
                                 climb_reasons.append(f"{buys_5m} buys/5m")
 
-                            if climbing_score >= 0.5:
+                            if climbing_score >= 0.65:
                                 confidence_pct = int(climbing_score * 100)
                                 confidence_bar = "🟢" * max(1, int(confidence_pct/20)) + "⚪" * (5 - max(1, int(confidence_pct/20)))
                                 reason_text = ", ".join(climb_reasons[:3])
@@ -1129,7 +1134,7 @@ class MemeBot:
                             score += 0.1
                             reasons.append(f"Soc {int(social_score*100)}%")
 
-                        if score < 0.4:
+                        if score < 0.55:
                             logger.info(f"[EVAL] {symbol}: score={score:.2f} → SKIP")
                             continue
 
@@ -1392,13 +1397,13 @@ class MemeBot:
 
                     # STAGE 1: After 3 minutes — reject dumps, check for any momentum
                     if elapsed >= STAGE1_DELAY and not pending.price_stable:
-                        if price_ratio < 0.90:
-                            # Dropped >10% → dump
+                        if price_ratio < 0.92:
+                            # Dropped >8% → dump
                             logger.info(f"[CONFIRM REJECT] {pending.symbol}: dropped {(1-price_ratio)*100:.0f}% at T+{elapsed:.0f}s")
                             expired.append(addr)
                             continue
-                        if price_ratio >= 1.05:
-                            # Up 5%+ → strong momentum, send now
+                        if price_ratio >= 1.08:
+                            # Up 8%+ → strong momentum, send now
                             logger.info(f"[CONFIRMED-FAST] {pending.symbol}: +{(price_ratio-1)*100:.0f}% momentum at T+{elapsed:.0f}s")
                             await self._send_confirmed_signal(addr, pending, current_price)
                             expired.append(addr)
@@ -1410,12 +1415,12 @@ class MemeBot:
 
                     # STAGE 2: After 5 minutes — require positive price action
                     if elapsed >= STAGE2_DELAY:
-                        if price_ratio < 0.93:
+                        if price_ratio < 0.95:
                             logger.info(f"[CONFIRM REJECT] {pending.symbol}: weak at {(price_ratio-1)*100:+.0f}% T+{elapsed:.0f}s")
                             expired.append(addr)
                             continue
-                        if price_ratio >= 1.03:
-                            # Up 3%+ → confirmed
+                        if price_ratio >= 1.05:
+                            # Up 5%+ → confirmed
                             logger.info(f"[CONFIRMED] {pending.symbol}: +{(price_ratio-1)*100:.0f}% at T+{elapsed:.0f}s")
                             await self._send_confirmed_signal(addr, pending, current_price)
                             expired.append(addr)
