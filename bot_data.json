@@ -19603,39 +19603,6 @@
   "signal_results": [],
   "launches_tracked": [
     {
-      "address": "7t59fz5xS4cHhjwuQBxZQtqSSkJw9CERh7E4EZQ5pump",
-      "symbol": "PEMP",
-      "features": {
-        "buy_count": 38,
-        "sell_count": 38,
-        "buy_sell_ratio": 1.0,
-        "volume": 16420307.96,
-        "holders": 76,
-        "unique_wallets": 76,
-        "initial_liq": 0,
-        "initial_mcap": 1777.23,
-        "liq_pct": 0,
-        "snipers_30s": 0,
-        "insiders_30s": 0,
-        "launch_hour": 11,
-        "lp_locked": 0,
-        "deployer": "D1fUxNzmTxvP",
-        "ath_price": 0.0,
-        "launch_time": 1781089753.192092,
-        "liquidity": 0.0,
-        "mcap": 1777.23,
-        "outcome": "DUMP",
-        "outcome_mcap": 1775.4,
-        "symbol": "PEMP",
-        "ath_multiplier": 1.0
-      },
-      "launch_time": 1781089753.192092,
-      "outcome": "dump",
-      "outcome_mcap": 1775.4,
-      "outcome_time": "2026-06-10T17:11:42.916284+00:00",
-      "signal_sent": false
-    },
-    {
       "address": "HpbAzneBWNvmkBS5t5TranyZism2DnyPUFix7bmEpump",
       "symbol": "PENAI",
       "features": {
@@ -33419,6 +33386,19 @@
         "source": "historical_scan"
       },
       "launch_time": 1781792231.794109,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "8CFynoSkSNbSKZ1A7PdH2nmYZmem9twbXftpbs1Spump",
+      "symbol": "GTAPyramid",
+      "features": {
+        "launch_time": 1781813697.117049,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781813697.117049,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
