@@ -1342,6 +1342,33 @@
       "ath_multiplier": 7.17,
       "signal_age": 0.0,
       "learned_at": "2026-06-17T23:40:22.069167+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 1763352.47,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 41693.96,
+      "initial_mcap": 316741,
+      "liq_pct": 13.16,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 0,
+      "lp_locked": 0,
+      "deployer": "D8NBoDa7Ttvx",
+      "ath_price": 0.0003167,
+      "lp_providers_count": 0,
+      "deployer_has_lp": false,
+      "launch_time": 1781742575.801326,
+      "liquidity": 41693.96,
+      "mcap": 316741.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 1.1848110736999626,
+      "symbol": "KOL",
+      "address": "p4xfbiJJUk42rCTkNTV8U7hp33ny1oohMpRrKwGpump",
+      "learned_at": "2026-06-18T01:34:45.229842+00:00"
     }
   ],
   "dump_patterns": [
@@ -15154,7 +15181,7 @@
       }
     ],
     "golden_symbols": {},
-    "total_pumps": 41,
+    "total_pumps": 42,
     "total_dumps": 35,
     "total_skipped": 0,
     "last_auto_learn": "2026-06-17T20:28:15.156131+00:00",
@@ -15187,7 +15214,7 @@
       "min_lp_providers": 0,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
-      "updated_at": "2026-06-17T23:48:45.836629+00:00",
+      "updated_at": "2026-06-18T00:48:46.127370+00:00",
       "sample_size": 205
     },
     "signal_criteria_stats": {
@@ -33403,6 +33430,33 @@
       "symbol": "YASMINE",
       "address": "9UdVwUYHbVAVD6p4oFfRqZBVD4gNAp62PErkqC3tpump",
       "learned_at": "2026-06-17T18:26:23.220310+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 1763352.47,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 41693.96,
+      "initial_mcap": 316741,
+      "liq_pct": 13.16,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 0,
+      "lp_locked": 0,
+      "deployer": "D8NBoDa7Ttvx",
+      "ath_price": 0.0003167,
+      "lp_providers_count": 0,
+      "deployer_has_lp": false,
+      "launch_time": 1781742575.801326,
+      "liquidity": 41693.96,
+      "mcap": 316741.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 1.1848110736999626,
+      "symbol": "KOL",
+      "address": "p4xfbiJJUk42rCTkNTV8U7hp33ny1oohMpRrKwGpump",
+      "learned_at": "2026-06-18T01:34:45.229842+00:00"
     }
   ]
 }
