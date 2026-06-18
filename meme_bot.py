@@ -126,8 +126,9 @@ class MemeBot:
         self._telegram_started = False
         self._telegram_retries = 0
 
-    def _telegram_error_handler(self, update, error):
-        logger.error(f"Telegram error: {error}")
+    def _telegram_error_handler(self, update, context):
+        error = context if isinstance(context, Exception) else getattr(context, 'error', context)
+        logger.error(f"Telegram error: {error}", exc_info=error if isinstance(error, Exception) else None)
         if "Conflict" in str(error):
             self._telegram_retries += 1
             if self._telegram_retries > 5:
@@ -1319,7 +1320,7 @@ class MemeBot:
                             f"📊 বর্তমান: <b>{current_multiplier:.2f}x</b>\n"
                             f"💰 {'🟢 ATH 2x+' if ath_multiplier >= 2 else '🔴 Missed' if ath_multiplier < 0.8 else '➡️ Neutral'}"
                         )
-                        record_signal_result(addr, sig_info.symbol, ath_multiplier, current_multiplier, sig_info.signal_age)
+                        record_signal_result(addr, sig_info.symbol, ath_multiplier, current_multiplier, sig_info.signal_age, sig_info.signal_time)
                         await self.state.mark_signal_checked(addr)
                         logger.info(f"[OUTCOME] {sig_info.symbol}: ATH={ath_multiplier:.2f}x current={current_multiplier:.2f}x @ T+6h")
                         try:

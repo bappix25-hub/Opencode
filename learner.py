@@ -636,7 +636,7 @@ def match_pump_patterns(features: dict, min_similarity: float = None) -> tuple[b
     return False, best_score, f"Best match {best_score:.0%} < {min_similarity:.0%}"
 
 
-def record_signal_result(address: str, symbol: str, ath_multiplier: float, current_multiplier: float = 0.0, signal_age: float = 0.0) -> None:
+def record_signal_result(address: str, symbol: str, ath_multiplier: float, current_multiplier: float = 0.0, signal_age: float = 0.0, signal_time=None) -> None:
     """Record signal outcome and learn from it."""
     data = load_data()
     results = data["model"].setdefault("signal_results", [])
@@ -654,6 +654,7 @@ def record_signal_result(address: str, symbol: str, ath_multiplier: float, curre
         "ath_multiplier": ath_multiplier,
         "current_multiplier": current_multiplier,
         "signal_age": signal_age,
+        "signal_time": signal_time.isoformat() if isinstance(signal_time, datetime) else datetime.now(timezone.utc).isoformat(),
         "timestamp": datetime.now(timezone.utc).isoformat(),
     })
     data["model"]["signal_results"] = results[-500:]
@@ -1171,6 +1172,188 @@ def simulate_tp_scenarios(results: list) -> list:
     return scenarios
 
 
+def simulate_trailing_stop(results: list) -> dict:
+    """Simulate trailing stop loss strategy.
+
+    Rules:
+    - Start with initial SL at -10%
+    - When price hits +50%, move SL to breakeven (0%)
+    - When price hits +100%, move SL to +30% (guaranteed profit)
+    - When price hits +200%, move SL to +100% (lock 2x)
+    - Final exit: max(ATH-based trailing SL, current price)
+
+    Returns comparison: fixed SL vs trailing SL.
+    """
+    if not results:
+        return {"fixed_pnl": 0, "trailing_pnl": 0, "trailing_better": 0, "total": 0}
+
+    fixed_total = 0
+    trailing_total = 0
+    trailing_better = 0
+
+    for r in results:
+        ath = r.get("ath_multiplier", 1)
+        current = r.get("current_multiplier", 1)
+
+        # Fixed SL: -10%
+        fixed_sl = 0.90
+        if ath >= 4.0:
+            fixed_pnl = 300  # TP 300%
+        elif current <= fixed_sl:
+            fixed_pnl = -10  # SL hit
+        else:
+            fixed_pnl = (current - 1) * 100
+
+        # Trailing SL strategy
+        trailing_sl = 0.90  # Start at -10%
+        if ath >= 2.0:
+            trailing_sl = max(trailing_sl, 1.0)  # At +100%, SL moves to breakeven
+        if ath >= 3.0:
+            trailing_sl = max(trailing_sl, 1.3)  # At +200%, SL moves to +30%
+        if ath >= 4.0:
+            trailing_sl = max(trailing_sl, 2.0)  # At +300%, SL moves to +100%
+
+        if ath >= 4.0:
+            trailing_pnl = 300  # TP 300%
+        elif current <= trailing_sl:
+            trailing_pnl = (trailing_sl - 1) * 100  # Exit at trailing SL level
+        else:
+            trailing_pnl = (current - 1) * 100
+
+        fixed_total += fixed_pnl
+        trailing_total += trailing_pnl
+        if trailing_pnl > fixed_pnl:
+            trailing_better += 1
+
+    n = len(results)
+    return {
+        "fixed_pnl": round(fixed_total / n, 1),
+        "trailing_pnl": round(trailing_total / n, 1),
+        "trailing_better": trailing_better,
+        "total": n,
+    }
+
+
+def get_time_analysis(results: list) -> dict:
+    """Analyze signal performance by hour of day (UTC).
+
+    Returns hourly stats: which hours produce best pump rate and avg ATH.
+    """
+    if not results:
+        return {"hourly": {}, "best_hours": [], "worst_hours": []}
+
+    hourly = {}
+    for r in results:
+        ts = r.get("signal_time") or r.get("timestamp")
+        if not ts:
+            continue
+        try:
+            dt = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+            h = dt.hour
+        except (ValueError, TypeError):
+            continue
+
+        if h not in hourly:
+            hourly[h] = {"count": 0, "pumps": 0, "aths": [], "total_pnl": 0}
+
+        ath = r.get("ath_multiplier", r.get("multiplier", 1))
+        hourly[h]["count"] += 1
+        hourly[h]["aths"].append(ath)
+        hourly[h]["total_pnl"] += (ath - 1) * 100
+        if ath >= 2.0:
+            hourly[h]["pumps"] += 1
+
+    # Calculate averages and rates
+    for h in hourly:
+        d = hourly[h]
+        d["avg_ath"] = round(sum(d["aths"]) / len(d["aths"]), 2) if d["aths"] else 0
+        d["pump_rate"] = round(d["pumps"] / d["count"] * 100, 1) if d["count"] > 0 else 0
+        d["avg_pnl"] = round(d["total_pnl"] / d["count"], 1) if d["count"] > 0 else 0
+        del d["aths"]
+        del d["total_pnl"]
+
+    # Sort by pump rate
+    sorted_hours = sorted(hourly.items(), key=lambda x: x[1]["pump_rate"], reverse=True)
+    best_hours = [h for h, d in sorted_hours[:3] if d["pump_rate"] >= 40]
+    worst_hours = [h for h, d in sorted_hours[-3:] if d["pump_rate"] < 20]
+
+    return {
+        "hourly": hourly,
+        "best_hours": best_hours,
+        "worst_hours": worst_hours,
+    }
+
+
+def calculate_risk_adjusted_tp_sl(results: list) -> dict:
+    """Calculate TP/SL that balances win rate vs profit (risk-adjusted).
+
+    Instead of max PnL, finds TP/SL with best Sharpe-like ratio:
+    (avg_pnl / std_dev_pnl) or (win_rate * avg_win - loss_rate * avg_loss).
+    """
+    if not results:
+        return {"tp": 100, "sl": -10, "score": 0, "win_rate": 0, "avg_pnl": 0}
+
+    best_score = -999
+    best_tp = 100
+    best_sl = -10
+
+    for tp_pct in range(50, 251, 10):
+        for sl_pct in range(-15, -3, 1):
+            tp_mult = 1 + tp_pct / 100
+            sl_mult = 1 + sl_pct / 100
+
+            wins = 0
+            losses = 0
+            total_win_pnl = 0
+            total_loss_pnl = 0
+
+            for r in results:
+                ath = r.get("ath_multiplier", 1)
+                current = r.get("current_multiplier", 1)
+
+                if ath >= tp_mult:
+                    wins += 1
+                    total_win_pnl += tp_pct
+                elif current <= sl_mult:
+                    losses += 1
+                    total_loss_pnl += abs(sl_pct)
+                else:
+                    # Hold: use current price
+                    hold_pnl = (current - 1) * 100
+                    if hold_pnl >= 0:
+                        wins += 1
+                        total_win_pnl += hold_pnl
+                    else:
+                        losses += 1
+                        total_loss_pnl += abs(hold_pnl)
+
+            n = len(results)
+            win_rate = wins / n if n > 0 else 0
+            loss_rate = losses / n if n > 0 else 0
+            avg_win = total_win_pnl / wins if wins > 0 else 0
+            avg_loss = total_loss_pnl / losses if losses > 0 else 0
+
+            # Kelly-like score: win_rate * avg_win - loss_rate * avg_loss
+            score = win_rate * avg_win - loss_rate * avg_loss
+
+            # Penalize very low win rates
+            if win_rate < 0.3:
+                score *= 0.5
+
+            if score > best_score:
+                best_score = score
+                best_tp = tp_pct
+                best_sl = sl_pct
+
+    return {
+        "tp": best_tp,
+        "sl": best_sl,
+        "score": round(best_score, 1),
+        "win_rate": round(win_rate * 100, 1),
+        "avg_pnl": round(best_score, 1),
+    }
+
+
 def get_performance_report() -> dict:
     """Generate performance report for last 24h with optimal TP/SL."""
     data = load_data()
@@ -1219,6 +1402,9 @@ def get_performance_report() -> dict:
         })
 
     scenarios = simulate_tp_scenarios(recent)
+    trailing = simulate_trailing_stop(recent)
+    time_analysis = get_time_analysis(recent)
+    risk_adjusted = calculate_risk_adjusted_tp_sl(recent)
 
     return {
         "total": len(recent),
@@ -1238,4 +1424,7 @@ def get_performance_report() -> dict:
         "holds": optimal.get("holds", 0),
         "tp_scenarios": scenarios,
         "signals": signals,
+        "trailing": trailing,
+        "time_analysis": time_analysis,
+        "risk_adjusted": risk_adjusted,
     }

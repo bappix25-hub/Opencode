@@ -467,19 +467,43 @@ class TelegramHandlers:
                 f"= <b>{sc['avg_pnl']:+.0f}%</b>{hold_note}\n"
             )
 
-        # Enhanced report with risk metrics
-        enhanced_metrics = []
-        if len(scenarios) > 1:
-            current_scenario = scenarios[0]
-            for sc in scenarios[:5]:
-                enhanced_metrics.append(
-                    f"<li>+{sc['tp']}% (রিস্ক {sc['sl']}%): {sc['avg_pnl']:+.1f}% per সিগন্যাল, {sc['tp_rate']:.1f}% জয়ের হার"
-                )
+        # Trailing stop comparison
+        trailing = perf.get("trailing", {})
+        trailing_line = ""
+        if trailing and trailing.get("total", 0) > 0:
+            diff = trailing["trailing_pnl"] - trailing["fixed_pnl"]
+            emoji = "✅" if diff > 0 else "❌"
+            trailing_line = (
+                f"━━━━━━━━━━━━━━━━\n"
+                f"🔄 <b>ট্রেইলিং এসএল:</b>\n"
+                f"  • ফিক্সড SL: {trailing['fixed_pnl']:+.1f}%\n"
+                f"  • ট্রেইলিং SL: {trailing['trailing_pnl']:+.1f}%\n"
+                f"  • {emoji} {trailing['trailing_better']}/{trailing['total']} সিগন্যালে ভালো\n"
+            )
 
-        if enhanced_metrics:
-            extra_lines = "\n    সেরা বিকল্প:\n" + "\n".join(enhanced_metrics) + "\n"
-        else:
-            extra_lines = ""
+        # Time analysis
+        time_data = perf.get("time_analysis", {})
+        hourly = time_data.get("hourly", {})
+        best_hours = time_data.get("best_hours", [])
+        time_lines = ""
+        if best_hours:
+            best_str = ", ".join(f"{h}:00" for h in best_hours)
+            time_lines += f"  • 🏆 <b>সেরা সময়:</b> {best_str} (UTC)\n"
+        worst_hours = time_data.get("worst_hours", [])
+        if worst_hours:
+            worst_str = ", ".join(f"{h}:00" for h in worst_hours)
+            time_lines += f"  • ⚠️ <b>খারাপ সময়:</b> {worst_str} (UTC)\n"
+
+        # Risk-adjusted recommendation
+        risk = perf.get("risk_adjusted", {})
+        risk_line = ""
+        if risk and risk.get("tp"):
+            risk_line = (
+                f"━━━━━━━━━━━━━━━━\n"
+                f"⚖️ <b>রিস্ক-অ্যাডজাস্টেড:</b>\n"
+                f"  • TP +{risk['tp']}% / SL {risk['sl']}%\n"
+                f"  • স্কোর: {risk['score']:+.1f} (জিতের হার {risk['win_rate']}%)\n"
+            )
 
         text = (
             f"🤖 <b>স্ক্রেপার সেটআপ</b>\n"
@@ -489,6 +513,8 @@ class TelegramHandlers:
             f"  → গড় লাভ: <b>{perf['expected_pnl']:+.1f}%</b> প্রতি সিগন্যাল\n"
             f"  → জিতবে {tp_h}/{total} ({round(tp_h/total*100)}%) | হারবে {sl_h}/{total} ({round(sl_h/total*100)}%)\n"
             f"  → পেন্ডিং: {hd} | গড় ATH: {perf['avg_ath']}x\n"
+            f"{trailing_line}"
+            f"{risk_line}"
             f"━━━━━━━━━━━━━━━━\n"
             f"📊 <b>প্রদর্শনের সারাংশ</b>\n"
             f"  • মোট সিগন্যাল: {total}\n"
@@ -496,13 +522,16 @@ class TelegramHandlers:
             f"  • অ্যাভারেজ মুনাফা: {perf['expected_pnl']:+.1f}%\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"📋 <b>বেস্ট টিপি/এসএল:</b>\n"
-            f"  • TP +{perf['optimal_tp']}% - {perf['tp_hits']} হিট ({perf.get('optimal_win_rate', 0)}%)"
-            f"{extra_lines}"
+            f"  • TP +{perf['optimal_tp']}% - {perf['tp_hits']} হিট ({perf.get('optimal_win_rate', 0)}%)\n"
+            f"{sc_lines}"
             f"━━━━━━━━━━━━━━━━\n"
-            f"💡 <i>সুবিধা:</i>\n"
-            f"  • বড় TP = কম হিট, বেশি লাভ\n"
-            f"  • ছোট টিপি = বেশি হিট, কম লাভ\n"
-            f"  • ডায়নামিক এসএল অস্থিরতা অনুযায়ী সমন্বয় করা\n"
+            f"🕐 <b>সময় ভিত্তিক বিশ্লেষণ:</b>\n"
+            f"{time_lines}"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"💡 <b>লস কমানোর স্ট্র্যাটাজি:</b>\n"
+            f"  • ট্রেইলিং SL: +50% এ SL=0%, +100% এ SL=+30%\n"
+            f"  • TP +{perf['optimal_tp']}% কম হিট হয় — TP +100-150% বেশি নিরাপদ\n"
+            f"  • সেরা সময়ে (UTC) সিগন্যাল নিলে বেশি লাভ\n"
             f"🕐 <i>গত ২৪ ঘন্টা</i>"
         )
         await update.message.reply_text(text, parse_mode="HTML")
