@@ -19603,35 +19603,6 @@
   "signal_results": [],
   "launches_tracked": [
     {
-      "address": "97gj3wWgnjma5Z22sRj5jLNbHhGZWETuKC7sQAGGpump",
-      "symbol": "BVD",
-      "features": {
-        "buy_count": 91,
-        "sell_count": 62,
-        "buy_sell_ratio": 1.47,
-        "volume": 1785357.77,
-        "holders": 153,
-        "unique_wallets": 153,
-        "initial_liq": 0,
-        "initial_mcap": 1966.48,
-        "liq_pct": 0,
-        "snipers_30s": 0,
-        "insiders_30s": 0,
-        "launch_hour": 18,
-        "lp_locked": 0,
-        "deployer": "9zZu1w91ULX9",
-        "ath_price": 0.0,
-        "launch_time": 1781117219.331405,
-        "liquidity": 0.0,
-        "mcap": 1966.48
-      },
-      "launch_time": 1781117219.331405,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
-      "signal_sent": false
-    },
-    {
       "address": "AWJLLnFRmaWzLWQ8vNVF8NReaiJ6xAwpv3udCn5wpump",
       "symbol": "ASTR",
       "features": {
@@ -33442,6 +33413,19 @@
         "source": "historical_scan"
       },
       "launch_time": 1781825945.941577,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "SEAT94f87htprjQ6H929XfHNk8SE3HUAcuinRk4Xs28",
+      "symbol": "SEATd",
+      "features": {
+        "launch_time": 1781826007.357059,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781826007.357059,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
