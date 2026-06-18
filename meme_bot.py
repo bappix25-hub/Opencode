@@ -906,22 +906,22 @@ class MemeBot:
                         ld.ath_price = current_price
                         await self.state.add_launch_tracking(addr, ld)
 
-                    # Trailing SL: if price drops 30%+ from ATH, send sell alert
-                    if ld and ld.ath_price > 0 and current_price > 0:
-                        ath_drop_pct = ((ld.ath_price - current_price) / ld.ath_price) * 100
-                        if ath_drop_pct >= 30 and not ld.trailing_sl_triggered:
-                            ld.trailing_sl_triggered = True
-                            await self.state.add_launch_tracking(addr, ld)
-                            logger.warning(f"🔴 TRAILING SL: {symbol} ATH drop {ath_drop_pct:.0f}%")
-                            await send_msg(self.telegram_app.bot,
-                                f"🔴 <b>Trailing SL!</b>\n"
-                                f"━━━━━━━━━━━━━━━━\n"
-                                f"🏷️ ${symbol}\n"
-                                f"📈 ATH: ${ld.ath_price:.8f}\n"
-                                f"📉 Now: ${current_price:.8f} ({ath_drop_pct:.0f}% drop)\n"
-                                f"⚠️ <b>বিক্রি করো!</b>"
-                            )
-                            await send_maestro(self.telegram_app.bot, addr)
+                    # Trailing SL: DISABLED - user wants signals only
+                    # if ld and ld.ath_price > 0 and current_price > 0:
+                    #     ath_drop_pct = ((ld.ath_price - current_price) / ld.ath_price) * 100
+                    #     if ath_drop_pct >= 30 and not ld.trailing_sl_triggered:
+                    #         ld.trailing_sl_triggered = True
+                    #         await self.state.add_launch_tracking(addr, ld)
+                    #         logger.warning(f"🔴 TRAILING SL: {symbol} ATH drop {ath_drop_pct:.0f}%")
+                    #         await send_msg(self.telegram_app.bot,
+                    #             f"🔴 <b>Trailing SL!</b>\n"
+                    #             f"━━━━━━━━━━━━━━━━\n"
+                    #             f"🏷️ ${symbol}\n"
+                    #             f"📈 ATH: ${ld.ath_price:.8f}\n"
+                    #             f"📉 Now: ${current_price:.8f} ({ath_drop_pct:.0f}% drop)\n"
+                    #             f"⚠️ <b>বিক্রি করো!</b>"
+                    #         )
+                    #         await send_maestro(self.telegram_app.bot, addr)
 
                     multiplier = current_price / coin_info.initial_price
                     mcap = float(pair.get("fdv", 0) or 0)
