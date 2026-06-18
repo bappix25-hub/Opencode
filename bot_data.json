@@ -1272,20 +1272,6 @@
       "outcome": "STRONG_PUMP",
       "ath_multiplier": 387612.83,
       "learned_at": "2026-06-10T12:10:21.725899+00:00"
-    },
-    {
-      "symbol": "SPCX6900",
-      "features": {
-        "launch_time": 1781739637.78294,
-        "source": "historical_scan",
-        "ath_multiplier": 6.46,
-        "outcome": "STRONG_PUMP",
-        "signal_age": 0.0
-      },
-      "outcome": "STRONG_PUMP",
-      "ath_multiplier": 6.46,
-      "signal_age": 0.0,
-      "learned_at": "2026-06-18T11:12:11.152855+00:00"
     }
   ],
   "dump_patterns": [
@@ -15286,16 +15272,6 @@
         "timestamp": "2026-06-18T09:37:58.078800+00:00"
       },
       {
-        "address": "9qwxahBxcgKyn5X7kZvkN7qxKZg6pkVD8Lo4URtopump",
-        "symbol": "CS",
-        "verdict": "PUMP",
-        "ath_multiplier": 3.78,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-18T11:12:10.941480+00:00",
-        "timestamp": "2026-06-18T11:12:10.941554+00:00"
-      },
-      {
         "address": "6LBqdG61d2xvKdhz6tAyx5hw7Jt1tjRZfXjctgvMpump",
         "symbol": "kibble",
         "verdict": "STRONG_PUMP",
@@ -15324,16 +15300,6 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-18T11:12:11.099080+00:00",
         "timestamp": "2026-06-18T11:12:11.099112+00:00"
-      },
-      {
-        "address": "CSoNZkgfFNgXcLj6q4uYx2JauKejVE4xEwTRCn9Zpump",
-        "symbol": "SPCX6900",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 6.46,
-        "current_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-18T11:12:11.152706+00:00",
-        "timestamp": "2026-06-18T11:12:11.152737+00:00"
       },
       {
         "address": "Ro5CFgctzRhoyXGpbaiJrtZBzYnonKgR8RjdExmZomp",
@@ -15616,36 +15582,7 @@
     "FuX28NUACkk8V3XP11AsZeNZJi3roTkbLss4HzpDpump",
     "6tf2X4GbYdM59hAMNa5kgyja2C9CjwUVqr9YLvJ1pump",
     "CqzvAMqqYy3h5rz1AtoCHkp1XTePEBhNzVVCXMiTpump",
-    "7i6FFnbxdEEG3DL2xQUwEcA7ep2DFbERDtZ8P1MkBAGS",
-    "92tqixwA2i6j1mNQPsk9gvv7WqoH35AVPmGj42jwpump",
-    "Hu1GczL7tWCSDZtRycjDFcmfoU4WU2wCP4ZMRdQpump",
-    "AKA8bQe6e51NvFAA17RGib45H5DQ1ZdoPugmMzkcpump",
-    "EvZ6egJEkVhqN2KJkKLuGqrYZ6rDCkb4Ry7Pvk89pump",
-    "ByowtEvW5uFNRuYyWAz8vU89hjXrd8rkrGGVa9spddwZ",
-    "AaArwZkoDR5ajVFYGPih78Xyt2nyfiUotLpeF2c6pump",
-    "EScSsKzmJG8h3Yg1wxoPbHB2Sbdv1vdp7mGxAGnopump",
-    "2hAaUpYyNWeeNpKwh2vnppwjmj1TKqSyAXUdcW8Ppump",
-    "HU7FotjNBiLPQvCiye3W147oX7qS9qrpdU3iY617pump",
-    "7u1KL6tSGHCmvjq1Cgo4XUnHhEnUPPVRXUd4b2p9pump",
-    "C5QvDK7fjJy4CDJNqfcN6M4p1ATDmH7QkWtsBzN8pump",
-    "852vnpBYoZ1KtZDoKTVcfrMBFMGizdswAvWoeVN8pump",
-    "Gb6ZdTTZ9koLsJCWTX5Hc99oDTkUkurqDXBQHUhxpump",
-    "CSoNZkgfFNgXcLj6q4uYx2JauKejVE4xEwTRCn9Zpump",
-    "Ei8urJAZWpW9gEbSvFCBXnpii8C8HfxpHm47pdd7pump",
-    "7Sk7AcCS6gLo9xVMi5zSSTqdjtaRGehHHbpFuxNtpump",
-    "BX13dVRiCCpZHAbR7AFCkaDt28WzrkWa3huDwxnxpump",
-    "mHbBQMh3ExWvFz8NUp7iPHe3Gs3SvUxdcrHRtbSpump",
-    "HnMurnqedgVPuHhcMV9T2kbgPU9N1j4wnXGhqpMSYkVC",
-    "851JK2La49dwLjKzWsoDpTddsue4d7ct9SedgYLtpump",
-    "ERUz5wBotRtBZSwg5guZfogKb6pA9D2m4V3aSdz6pump",
-    "7oDa7STX3iHL2QViVyNR5FXzCct9TcjrbfaquGSwpump",
-    "p4xfbiJJUk42rCTkNTV8U7hp33ny1oohMpRrKwGpump",
-    "HhASMaTu6eruhyUrs6JyFb8CoMNcQipvWPkq87u4pump",
-    "FcqxYBxHkNRW6SbA3hHyAE35b9VZDNpHx2toddZdpump",
-    "HuWM9UBVTnP3sNZkswXxNw3QqKoo3vpF8UDRHLLzpump",
-    "ESqwVPKeKjpqFsjWcxwmpdjBAoQdVsDKqaUP1YWtpump",
-    "7r16rxE9zFKRs1NkC86vpphkmaLjRQhe2aycCDgmpump",
-    "F6pUWnMCxTdow46BURUjuSYhgGV28qftbY1BsSqwpump"
+    "7i6FFnbxdEEG3DL2xQUwEcA7ep2DFbERDtZ8P1MkBAGS"
   ],
   "blacklisted": [],
   "blocked_deployers": [
