@@ -5,6 +5,14 @@ from datetime import datetime, timezone
 
 logger = logging.getLogger("github_sync")
 
+# Load .env if GITHUB_PAT not already in environment
+if not os.environ.get("GITHUB_PAT"):
+    try:
+        from dotenv import load_dotenv
+        load_dotenv()
+    except ImportError:
+        pass
+
 BOT_INSTANCE = os.environ.get("BOT_INSTANCE", "main")
 GIT_BRANCH = os.environ.get("GIT_BRANCH", "main" if BOT_INSTANCE == "main" else f"{BOT_INSTANCE}-data")
 DATA_FILE = os.environ.get("DATA_FILE", "./bot_data.json")

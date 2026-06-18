@@ -8,11 +8,14 @@ bot_data_v2.json
 .pytest_cache/
 .coverage
 backtest_reports/
+!backtest_reports/
 backtest_summary.md
 test_bot_data.json
 test_*.json
 golden_patterns.json
+!golden_patterns.json
 blacklist_patterns.json
+!blacklist_patterns.json
 paper_trades.json
 .bot_daemon.pid
 *.pid
