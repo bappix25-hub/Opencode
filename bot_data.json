@@ -19603,35 +19603,6 @@
   "signal_results": [],
   "launches_tracked": [
     {
-      "address": "7saHBkpcYnAGBeUNPYPekAfi5WScciUJKn4RkjtKpump",
-      "symbol": "NIGGA",
-      "features": {
-        "buy_count": 14,
-        "sell_count": 13,
-        "buy_sell_ratio": 1.08,
-        "volume": 5338308.46,
-        "holders": 27,
-        "unique_wallets": 27,
-        "initial_liq": 0,
-        "initial_mcap": 1774.81,
-        "liq_pct": 0,
-        "snipers_30s": 0,
-        "insiders_30s": 0,
-        "launch_hour": 18,
-        "lp_locked": 0,
-        "deployer": "4rvJhA2cpq58",
-        "ath_price": 0.0,
-        "launch_time": 1781117216.474332,
-        "liquidity": 0.0,
-        "mcap": 1774.81
-      },
-      "launch_time": 1781117216.474332,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
-      "signal_sent": false
-    },
-    {
       "address": "97gj3wWgnjma5Z22sRj5jLNbHhGZWETuKC7sQAGGpump",
       "symbol": "BVD",
       "features": {
@@ -33458,6 +33429,19 @@
         "mcap": 1950.75
       },
       "launch_time": 1781813879.180353,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "Hepc74vYP9HUBJ25yFJe63XEMxx9TpWAzChzxUe4pump",
+      "symbol": "CookingTrump",
+      "features": {
+        "launch_time": 1781825945.941577,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781825945.941577,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,

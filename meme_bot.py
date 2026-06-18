@@ -19,7 +19,8 @@ from pumpportal_ws import PumpPortalWS
 from telegram_bot import TelegramHandlers, register_handlers
 from learner import (
     extract_launch_features, record_launch, check_and_record_outcome,
-    match_pump_patterns, record_signal_result, get_stats, get_daily_report,
+    match_pump_patterns, match_dump_patterns, record_signal_result,
+    get_stats, get_daily_report,
     get_launch_age, is_duplicate, purge_honeypot_patterns,
     save_honeypot_blocklist, load_honeypot_blocklist,
     load_data, save_data, PUMP_THRESHOLD, DUMP_THRESHOLD,
@@ -514,6 +515,12 @@ class MemeBot:
 
         match, match_score, match_reason = match_pump_patterns(features)
 
+        # Check if token matches known dump patterns — reject immediately
+        is_dump, dump_score, dump_reason = match_dump_patterns(features)
+        if is_dump:
+            logger.info(f"[SKIP] {symbol}: dump pattern match — {dump_reason}")
+            return
+
         if not match:
             criteria = get_signal_criteria()
             h_score = 0.0
@@ -589,7 +596,8 @@ class MemeBot:
                 h_score -= 0.10
                 h_reasons.append(f"lp_low={lp_locked}%")
 
-            h_threshold = 0.60
+            criteria = get_signal_criteria()
+            h_threshold = criteria.get("heuristic_threshold", 0.60)
             if h_score >= h_threshold:
                 match = True
                 match_score = h_score

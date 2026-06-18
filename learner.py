@@ -74,6 +74,7 @@ def calculate_pattern_strength(signals):
         return 0.5
     
     scores = []
+    now = datetime.now(timezone.utc).timestamp()
     for signal in signals:
         score = 0
         features = extract_launch_features(signal)
@@ -99,12 +100,14 @@ def calculate_pattern_strength(signals):
         elif liq_pct > 10:
             score += 0.15
         
-        # Launch time (newer is better)
+        # Token age (newer is better) - calculate age from launch_time
         launch_time = features.get("launch_time", 0)
-        if launch_time > 300:  # More than 5 minutes ago
-            score += 0.15
-        elif launch_time > 60:  # More than 1 minute ago
-            score += 0.08
+        if launch_time > 0:
+            age_seconds = now - launch_time
+            if age_seconds < 300:  # Less than 5 minutes old
+                score += 0.15
+            elif age_seconds < 600:  # Less than 10 minutes old
+                score += 0.08
         
         scores.append(score)
     
@@ -369,6 +372,19 @@ def enhanced_auto_learn():
     criteria_data["last_quality_score"] = round(quality_score, 2)
     data["model"]["signal_criteria"] = criteria_data
     
+    # Update auto_learn_insights for daily reports
+    data["model"]["auto_learn_insights"] = {
+        "win_rate": round(metrics["win_rate"] * 100, 1),
+        "avg_win_bsr": round(metrics.get("avg_win_bsr", 0), 2),
+        "avg_loss_bsr": round(metrics.get("avg_loss_bsr", 0), 2),
+        "avg_win_holders": round(metrics.get("avg_win_holders", 0), 0),
+        "avg_loss_holders": round(metrics.get("avg_loss_holders", 0), 0),
+        "quality_score": round(quality_score, 2),
+        "dump_rate": round(metrics["dump_rate"] * 100, 1),
+        "avg_ath": round(metrics["avg_ath"], 2),
+        "updated_at": datetime.now(timezone.utc).isoformat(),
+    }
+    
     save_data(data)
     
     return {
@@ -443,14 +459,20 @@ def extract_launch_features(launch_data, pair_data=None, unique_wallets=0) -> di
 
 
 def _pattern_similarity(features: dict, pattern: dict) -> float:
-    """Calculate similarity between features and a known pattern. 0.0 to 1.0."""
+    """Calculate similarity between features and a known pattern. 0.0 to 1.0.
+    Handles both flat patterns and nested patterns (features inside 'features' key)."""
     score = 0.0
     checks = 0
+
+    # Handle nested format: pattern may have features in pattern["features"]
+    pat = pattern
+    if "features" in pattern and "buy_sell_ratio" not in pattern:
+        pat = pattern["features"]
 
     def _compare(feat_key, pat_key, tolerance=0.5):
         nonlocal score, checks
         f_val = features.get(feat_key, 0)
-        p_val = pattern.get(pat_key, 0)
+        p_val = pat.get(pat_key, 0)
         if p_val == 0 and f_val == 0:
             score += 1.0
             checks += 1
@@ -468,15 +490,15 @@ def _pattern_similarity(features: dict, pattern: dict) -> float:
     _compare("snipers_30s", "snipers_30s", 0.3)
     _compare("lp_locked", "lp_locked", 0.3)
 
-    if features.get("liq_pct", 0) > 0 and pattern.get("liq_pct", 0) > 0:
-        ratio = min(features["liq_pct"], pattern["liq_pct"]) / max(features["liq_pct"], pattern["liq_pct"])
+    if features.get("liq_pct", 0) > 0 and pat.get("liq_pct", 0) > 0:
+        ratio = min(features["liq_pct"], pat["liq_pct"]) / max(features["liq_pct"], pat["liq_pct"])
         score += ratio
         checks += 1
 
-    if features.get("launch_hour", 0) == pattern.get("launch_hour", 0):
+    if features.get("launch_hour", 0) == pat.get("launch_hour", 0):
         score += 1.0
         checks += 1
-    elif abs(features.get("launch_hour", 0) - pattern.get("launch_hour", 0)) <= 2:
+    elif abs(features.get("launch_hour", 0) - pat.get("launch_hour", 0)) <= 2:
         score += 0.5
         checks += 1
 
@@ -636,6 +658,33 @@ def match_pump_patterns(features: dict, min_similarity: float = None) -> tuple[b
     return False, best_score, f"Best match {best_score:.0%} < {min_similarity:.0%}"
 
 
+def match_dump_patterns(features: dict, min_similarity: float = 0.40) -> tuple[bool, float, str]:
+    """Check if features match known dump patterns.
+    Returns (is_dump, score, reason).
+    Used to REJECT signals that look like historical dumps."""
+    data = load_data()
+    dump_patterns = data.get("dump_patterns", [])
+
+    if not dump_patterns:
+        return False, 0.0, "No dump patterns learned"
+
+    best_score = 0.0
+    best_match = None
+
+    for pattern in dump_patterns:
+        sim = _pattern_similarity(features, pattern)
+        if sim > best_score:
+            best_score = sim
+            best_match = pattern
+
+    if best_score >= min_similarity:
+        match_sym = best_match.get("symbol", "?") if best_match else "?"
+        reason = f"Matches dump pattern {match_sym} ({best_score:.0%})"
+        return True, best_score, reason
+
+    return False, best_score, f"Best dump match {best_score:.0%} < {min_similarity:.0%}"
+
+
 def record_signal_result(address: str, symbol: str, ath_multiplier: float, current_multiplier: float = 0.0, signal_age: float = 0.0, signal_time=None) -> None:
     """Record signal outcome and learn from it."""
     data = load_data()
@@ -669,28 +718,44 @@ def record_signal_result(address: str, symbol: str, ath_multiplier: float, curre
         features["signal_age"] = signal_age
         if verdict in ("PUMP", "STRONG_PUMP"):
             pump_patterns = data.setdefault("pump_patterns", [])
-            pump_patterns.append({
-                "symbol": symbol,
-                "features": features,
-                "outcome": verdict,
-                "ath_multiplier": ath_multiplier,
-                "signal_age": signal_age,
-                "learned_at": datetime.now(timezone.utc).isoformat(),
-            })
-            data["model"]["total_pumps"] = data["model"].get("total_pumps", 0) + 1
-            logger.info(f"📚 পাম্প প্যাটার্ন শেখা: {symbol} (ATH {ath_multiplier:.1f}x, age={signal_age:.0f}s)")
+            # Deduplication: check if this address already exists
+            existing = next((p for p in pump_patterns if p.get("address") == address), None)
+            if not existing:
+                pump_patterns.append({
+                    "address": address,
+                    "symbol": symbol,
+                    "features": features,
+                    "outcome": verdict,
+                    "ath_multiplier": ath_multiplier,
+                    "signal_age": signal_age,
+                    "learned_at": datetime.now(timezone.utc).isoformat(),
+                })
+                data["model"]["total_pumps"] = data["model"].get("total_pumps", 0) + 1
+                logger.info(f"📚 পাম্প প্যাটার্ন শেখা: {symbol} (ATH {ath_multiplier:.1f}x, age={signal_age:.0f}s)")
+            else:
+                # Update existing with better data
+                existing["ath_multiplier"] = max(existing.get("ath_multiplier", 0), ath_multiplier)
+                existing["learned_at"] = datetime.now(timezone.utc).isoformat()
         elif verdict == "DUMP":
             dump_patterns = data.setdefault("dump_patterns", [])
-            dump_patterns.append({
-                "symbol": symbol,
-                "features": features,
-                "outcome": "DUMP",
-                "ath_multiplier": ath_multiplier,
-                "signal_age": signal_age,
-                "learned_at": datetime.now(timezone.utc).isoformat(),
-            })
-            data["model"]["total_dumps"] = data["model"].get("total_dumps", 0) + 1
-            logger.info(f"📚 ডাম্প প্যাটার্ন শেখা: {symbol} (ATH {ath_multiplier:.1f}x, age={signal_age:.0f}s)")
+            # Deduplication: check if this address already exists
+            existing = next((d for d in dump_patterns if d.get("address") == address), None)
+            if not existing:
+                dump_patterns.append({
+                    "address": address,
+                    "symbol": symbol,
+                    "features": features,
+                    "outcome": "DUMP",
+                    "ath_multiplier": ath_multiplier,
+                    "signal_age": signal_age,
+                    "learned_at": datetime.now(timezone.utc).isoformat(),
+                })
+                data["model"]["total_dumps"] = data["model"].get("total_dumps", 0) + 1
+                logger.info(f"📚 ডাম্প প্যাটার্ন শেখা: {symbol} (ATH {ath_multiplier:.1f}x, age={signal_age:.0f}s)")
+            else:
+                # Update existing with latest data
+                existing["ath_multiplier"] = ath_multiplier
+                existing["learned_at"] = datetime.now(timezone.utc).isoformat()
 
         if len(data.get("pump_patterns", [])) > MAX_PATTERNS:
             data["pump_patterns"] = data["pump_patterns"][-MAX_PATTERNS:]
@@ -921,15 +986,16 @@ def learn_divergence_point() -> dict:
     return insights
 
 
-def compute_signal_criteria(min_patterns: int = 10) -> dict:
+def compute_signal_criteria(min_patterns: int = 5) -> dict:
     """Analyze pump vs dump patterns and compute optimal signal criteria.
     Sets thresholds that best separate winning from losing features.
-    Called after each learn cycle and 6h outcome check."""
+    Called after each learn cycle and 6h outcome check.
+    Works with dump-only data: sets thresholds above dump medians."""
     data = load_data()
     pump_patterns = data.get("pump_patterns", [])
     dump_patterns = data.get("dump_patterns", [])
 
-    if len(pump_patterns) < min_patterns or len(dump_patterns) < min_patterns:
+    if len(dump_patterns) < min_patterns:
         criteria = dict(DEFAULT_SIGNAL_CRITERIA)
         criteria["updated_at"] = datetime.now(timezone.utc).isoformat()
         criteria["sample_size"] = len(pump_patterns) + len(dump_patterns)
@@ -937,8 +1003,20 @@ def compute_signal_criteria(min_patterns: int = 10) -> dict:
         save_data(data)
         return criteria
 
+    def _extract_features(pattern):
+        """Extract flat feature dict from pattern (handles nested format)."""
+        if "features" in pattern and "buy_sell_ratio" not in pattern:
+            return pattern["features"]
+        return pattern
+
     def _median(lst, key):
-        vals = sorted([f.get(key, 0) for f in lst if f.get(key, 0) > 0])
+        vals = []
+        for f in lst:
+            feat = _extract_features(f)
+            v = feat.get(key, 0)
+            if v > 0:
+                vals.append(v)
+        vals.sort()
         if not vals:
             return 0
         n = len(vals)
@@ -947,7 +1025,12 @@ def compute_signal_criteria(min_patterns: int = 10) -> dict:
         return (vals[n // 2 - 1] + vals[n // 2]) / 2
 
     def _pct_above(lst, key, threshold):
-        vals = [f.get(key, 0) for f in lst if f.get(key, 0) > 0]
+        vals = []
+        for f in lst:
+            feat = _extract_features(f)
+            v = feat.get(key, 0)
+            if v > 0:
+                vals.append(v)
         if not vals:
             return 0
         return sum(1 for v in vals if v >= threshold) / len(vals) * 100
@@ -974,9 +1057,15 @@ def compute_signal_criteria(min_patterns: int = 10) -> dict:
         d_med = dump_medians[feat_key]
 
         if p_med > d_med:
+            # Both have data — threshold at midpoint
             threshold = (p_med + d_med) / 2
         elif p_med > 0:
+            # Only pumps have data — threshold at 80% of pump median
             threshold = p_med * 0.8
+        elif d_med > 0:
+            # Only dumps have data — set threshold ABOVE dump median
+            # This rejects dump-like tokens (must be higher than typical dump)
+            threshold = d_med * 1.5
         else:
             threshold = DEFAULT_SIGNAL_CRITERIA.get(criterion_key, 0)
 
@@ -997,8 +1086,15 @@ def compute_signal_criteria(min_patterns: int = 10) -> dict:
     if p_liq_above > 60 and d_liq_above < 30:
         criteria["min_liq"] = max(criteria["min_liq"], 2000)
 
-    criteria["pattern_threshold"] = 0.55
+    criteria["pattern_threshold"] = max(0.55, data.get("model", {}).get("signal_criteria", {}).get("pattern_threshold", 0.55))
     criteria["max_age_seconds"] = 3600
+
+    # Preserve learned heuristic_threshold (set by enhanced_auto_learn)
+    existing_criteria = data.get("model", {}).get("signal_criteria", {})
+    if "heuristic_threshold" in existing_criteria:
+        criteria["heuristic_threshold"] = existing_criteria["heuristic_threshold"]
+    else:
+        criteria["heuristic_threshold"] = DEFAULT_SIGNAL_CRITERIA.get("heuristic_threshold", 0.60)
 
     criteria["updated_at"] = datetime.now(timezone.utc).isoformat()
     criteria["sample_size"] = len(pump_patterns) + len(dump_patterns)
