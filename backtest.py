@@ -372,10 +372,12 @@ class BacktestEngine:
         start_ts = datetime.now(timezone.utc).timestamp()
 
         if self.send_msg:
-            await self.send_msg(
+            result = self.send_msg(
                 f"🧪 <b>Backtest শুরু!</b>\n"
                 f"📅 {days} দিনের ডেটা কালেক্ট হচ্ছে..."
             )
+            if asyncio.iscoroutine(result):
+                await result
 
         tokens = await self.collect_tokens(days, max_tokens)
         if not tokens:
@@ -403,7 +405,9 @@ class BacktestEngine:
 
         if self.send_msg:
             report = self._format_telegram_report(metrics, days)
-            await self.send_msg(report)
+            result = self.send_msg(report)
+            if asyncio.iscoroutine(result):
+                await result
 
         logger.info(f"Backtest complete in {metrics['elapsed_seconds']}s")
         logger.info(f"Win rate: {metrics['win_rate']}%, Precision: {metrics['precision']}%, Recall: {metrics['recall']}%")

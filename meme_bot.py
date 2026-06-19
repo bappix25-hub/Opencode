@@ -413,6 +413,13 @@ class MemeBot:
         age = datetime.now(timezone.utc).timestamp() - launch_data.launch_time
         symbol = launch_data.symbol
 
+        # Time-of-day filter: skip hours with historically 0% pump rate
+        BAD_HOURS_UTC = {2, 10, 22}
+        current_hour = datetime.now(timezone.utc).hour
+        if current_hour in BAD_HOURS_UTC:
+            logger.info(f"[SKIP] {symbol}: hour {current_hour}:00 UTC — bad time filter")
+            return
+
         if age < 30:
             return
 
@@ -1021,6 +1028,12 @@ class MemeBot:
                                 climbing_score += 0.1
                                 climb_reasons.append(f"{buys_5m} buys/5m")
 
+                            # Time-of-day filter: skip bad hours
+                            current_hour = datetime.now(timezone.utc).hour
+                            if current_hour in {2, 10, 22}:
+                                logger.info(f"[SKIP] {symbol}: climbing — hour {current_hour}:00 UTC bad time")
+                                continue
+
                             if climbing_score >= 0.65:
                                 confidence_pct = int(climbing_score * 100)
                                 confidence_bar = "🟢" * max(1, int(confidence_pct/20)) + "⚪" * (5 - max(1, int(confidence_pct/20)))
@@ -1070,6 +1083,11 @@ class MemeBot:
                         continue
 
                     if not await self.state.is_alerted(addr) and 0 < age <= 600:
+                        # Time-of-day filter
+                        current_hour = datetime.now(timezone.utc).hour
+                        if current_hour in {2, 10, 22}:
+                            continue
+
                         launch_data = await self.state.get_launch_tracking(addr)
                         if not launch_data:
                             continue
