@@ -22,7 +22,7 @@ DATA_FILE = config.data_file
 PUMP_THRESHOLD = 250000   # 250k mcap = pump
 DUMP_THRESHOLD = 150000   # below 150k = dump
 OUTCOME_WINDOW = 21600    # 6 hours
-MAX_PATTERNS = 200        # keep top 200 pump patterns
+MAX_PATTERNS = 500        # keep top 500 pump/dump patterns
 
 DEFAULT_DATA = {
     "pump_patterns": [],
@@ -612,6 +612,15 @@ def _learn_dump(launch: dict) -> None:
     patterns = patterns[-MAX_PATTERNS:]
     data["dump_patterns"] = patterns
 
+    # Remove any pump pattern for this address (it's a dump)
+    addr = launch.get("address", "")
+    pump_patterns = data.get("pump_patterns", [])
+    before = len(pump_patterns)
+    pump_patterns = [p for p in pump_patterns if p.get("address") != addr]
+    if len(pump_patterns) < before:
+        data["pump_patterns"] = pump_patterns
+        logger.info(f"🗑️ পাম্প প্যাটার্ন বাদ: {launch.get('symbol')} (DUMP ফলাফল)")
+
     data["model"]["total_dumps"] = data["model"].get("total_dumps", 0) + 1
     data["model"]["last_update"] = datetime.now(timezone.utc).isoformat()
 
@@ -735,7 +744,6 @@ def record_signal_result(address: str, symbol: str, ath_multiplier: float, curre
                 existing["learned_at"] = datetime.now(timezone.utc).isoformat()
         elif verdict == "DUMP":
             dump_patterns = data.setdefault("dump_patterns", [])
-            # Deduplication: check if this address already exists
             existing = next((d for d in dump_patterns if d.get("address") == address), None)
             if not existing:
                 dump_patterns.append({
@@ -750,9 +758,16 @@ def record_signal_result(address: str, symbol: str, ath_multiplier: float, curre
                 data["model"]["total_dumps"] = data["model"].get("total_dumps", 0) + 1
                 logger.info(f"📚 ডাম্প প্যাটার্ন শেখা: {symbol} (ATH {ath_multiplier:.1f}x, age={signal_age:.0f}s)")
             else:
-                # Update existing with latest data
                 existing["ath_multiplier"] = ath_multiplier
                 existing["learned_at"] = datetime.now(timezone.utc).isoformat()
+
+            # Remove failed pump pattern — this token was a DUMP, so remove its pump pattern
+            pump_patterns = data.get("pump_patterns", [])
+            before = len(pump_patterns)
+            pump_patterns = [p for p in pump_patterns if p.get("address") != address]
+            if len(pump_patterns) < before:
+                data["pump_patterns"] = pump_patterns
+                logger.info(f"🗑️ পাম্প প্যাটার্ন বাদ: {symbol} (DUMP ফলাফল)")
 
         if len(data.get("pump_patterns", [])) > MAX_PATTERNS:
             data["pump_patterns"] = data["pump_patterns"][-MAX_PATTERNS:]

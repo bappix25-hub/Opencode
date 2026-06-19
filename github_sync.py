@@ -161,10 +161,10 @@ def _smart_merge_data_file(local_path: str, remote_path: str, output_path: str) 
     except Exception:
         remote = {}
 
-    def _merge_list(local_list, remote_list, key="address", cap=100):
+    def _merge_list(local_list, remote_list, key="address", cap=500):
         seen = set()
         out = []
-        for item in (remote_list or []) + (local_list or []):
+        for item in (local_list or []) + (remote_list or []):
             if isinstance(item, str):
                 if item in seen:
                     continue
@@ -206,17 +206,17 @@ def _smart_merge_data_file(local_path: str, remote_path: str, output_path: str) 
     merged["pump_patterns"] = _merge_list(
         local.get("pump_patterns"),
         remote.get("pump_patterns"),
-        key="address", cap=100,
+        key="address", cap=500,
     )
     merged["dump_patterns"] = _merge_list(
         local.get("dump_patterns"),
         remote.get("dump_patterns"),
-        key="address", cap=100,
+        key="address", cap=500,
     )
     merged["launch_patterns"] = _merge_list(
         local.get("launch_patterns"),
         remote.get("launch_patterns"),
-        key="address", cap=100,
+        key="address", cap=500,
     )
     merged["trained_addresses"] = _merge_list_simple(
         local.get("trained_addresses"),
