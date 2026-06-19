@@ -59,29 +59,8 @@ async def send_msg(bot: Bot, text: str) -> None:
         logger.error(f"Send error: {e}")
 
 async def send_signal(bot: Bot, text: str, address: str = "") -> None:
-    """Send signal to channel only (for Maestro auto-trade)."""
-    channel_id = config.channel_id
-    if not channel_id and os.path.exists(CHANNEL_ID_FILE):
-        try:
-            with open(CHANNEL_ID_FILE) as f:
-                channel_id = f.read().strip()
-                config.channel_id = channel_id
-        except Exception:
-            pass
-    if not channel_id:
-        # Fallback to bot chat if no channel set
-        await send_msg(bot, text)
-        return
-    try:
-        await bot.send_message(
-            chat_id=channel_id, text=text,
-            parse_mode="HTML", disable_web_page_preview=True
-        )
-        logger.info(f"📤 Channel signal sent")
-    except Exception as e:
-        logger.error(f"Channel send error: {e}")
-        # Fallback to bot chat
-        await send_msg(bot, text)
+    """Send discovery signal to bot chat only. Channel gets signals only on actual buy."""
+    await send_msg(bot, text)
 
 async def send_maestro(bot: Bot, address: str) -> None:
     """Send token address to channel for Maestro auto-trade."""
@@ -154,7 +133,7 @@ class MemeBot:
         self.handlers = TelegramHandlers(self.state, self.dex, self.session, self.paper_trader)
         register_handlers(self.telegram_app, self.handlers)
 
-        # await restore_from_github()  # Disabled — overwrites local pump patterns
+        await restore_from_github()
 
         try:
             hp_set, dep_set, alerted_set = load_honeypot_blocklist()

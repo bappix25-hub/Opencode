@@ -30,7 +30,7 @@ def _save_channel_id(channel_id: str):
 def main_keyboard():
     keyboard = [
         [KeyboardButton("📊 স্ট্যাটাস"), KeyboardButton("📈 পারফরম্যান্স")],
-        [KeyboardButton("🎯 সিগন্যাল"), KeyboardButton("⚙️ কনফিগ")],
+        [KeyboardButton("⚙️ কনফিগ")],
         [KeyboardButton("✅ অন"), KeyboardButton("❌ অফ")],
     ]
     return ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
@@ -231,7 +231,11 @@ class TelegramHandlers:
             f"🚫 ব্ল্যাকলিস্ট: <b>{stats['blacklisted']}</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"📚 পাম্প প্যাটার্ন: <b>{learner_stats['pump_patterns']}</b>\n"
-            f"📉 ডাম্প প্যাটার্ন: <b>{learner_stats['dump_patterns']}</b>",
+            f"📉 ডাম্প প্যাটার্ন: <b>{learner_stats['dump_patterns']}</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"⚡ সিগন্যাল: <b>{learner_stats['total_signals']}</b>\n"
+            f"🏆 সফল: <b>{learner_stats['successful_signals']}</b>\n"
+            f"🎯 একুরেসি: <b>{learner_stats['accuracy']}%</b>",
             parse_mode="HTML"
         )
 
@@ -689,8 +693,6 @@ class TelegramHandlers:
             await self.cmd_health(update, context)
         elif text == "📈 পারফরম্যান্স":
             await self.cmd_perf(update, context)
-        elif text == "🎯 সিগন্যাল":
-            await self.cmd_signalstats(update, context)
         elif text == "⚙️ কনফিগ":
             await self.cmd_config(update, context)
         elif text == "✅ অন":
