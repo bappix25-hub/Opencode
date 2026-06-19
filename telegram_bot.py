@@ -30,8 +30,8 @@ def _save_channel_id(channel_id: str):
 def main_keyboard():
     keyboard = [
         [KeyboardButton("📊 স্ট্যাটাস"), KeyboardButton("📈 পারফরম্যান্স")],
-        [KeyboardButton("🎯 সিগন্যাল"), KeyboardButton("📚 লার্ন")],
-        [KeyboardButton("⚙️ কনফিগ"), KeyboardButton("🔄 রিস্টার্ট")],
+        [KeyboardButton("🎯 সিগন্যাল"), KeyboardButton("⚙️ কনফিগ")],
+        [KeyboardButton("✅ অন"), KeyboardButton("❌ অফ")],
     ]
     return ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
 
@@ -238,6 +238,60 @@ class TelegramHandlers:
             f"🎯 একুরেসি: <b>{learner_stats['accuracy']}%</b>",
             parse_mode="HTML"
         )
+
+    async def cmd_patterns(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Show exact patterns bot uses for signal decisions."""
+        data = load_data()
+        pumps = data.get("pump_patterns", [])
+        dumps = data.get("dump_patterns", [])
+        criteria = data.get("model", {}).get("signal_criteria", {})
+
+        # Top pump patterns
+        top_pumps = sorted(pumps, key=lambda x: x.get("ath_multiplier", 0), reverse=True)[:8]
+        pump_lines = ""
+        for p in top_pumps:
+            feat = p
+            if "features" in p and "buy_sell_ratio" not in p:
+                feat = p["features"]
+            sym = p.get("symbol", "?")[:10]
+            bsr = feat.get("buy_sell_ratio", 0)
+            buys = feat.get("buy_count", 0)
+            liq = feat.get("initial_liq", 0)
+            ath = p.get("ath_multiplier", 0)
+            pump_lines += f"  • {sym}: BSR={bsr:.1f} buys={buys} liq=${liq:.0f} → {ath:.1f}x\n"
+
+        # Top dump patterns
+        top_dumps = sorted(dumps, key=lambda x: x.get("features", x).get("holders", 0), reverse=True)[:5]
+        dump_lines = ""
+        for d in top_dumps:
+            feat = d.get("features", d)
+            sym = d.get("symbol", "?")[:10]
+            bsr = feat.get("buy_sell_ratio", 0)
+            holders = feat.get("holders", 0)
+            dump_lines += f"  • {sym}: BSR={bsr:.1f} holders={holders}\n"
+
+        text = (
+            f"🎯 <b>সিগন্যাল প্যাটার্ন</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"📋 <b>ফিল্টার:</b>\n"
+            f"  • BSR ≥ {criteria.get('min_bsr', 'N/A')}\n"
+            f"  • Holders ≥ {criteria.get('min_holders', 'N/A')}\n"
+            f"  • Wallets ≥ {criteria.get('min_wallets', 'N/A')}\n"
+            f"  • Pattern ≥ {criteria.get('pattern_threshold', 'N/A')}\n"
+            f"  • Heuristic ≥ {criteria.get('heuristic_threshold', 'N/A')}\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"🟢 <b>পাম্প প্যাটার্ন ({len(pumps)}টি):</b>\n"
+            f"{pump_lines}"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"🔴 <b>ডাম্প প্যাটার্ন ({len(dumps)}টি):</b>\n"
+            f"{dump_lines}"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"💡 <b>নিয়ম:</b>\n"
+            f"  • পাম্প প্যাটার্ন ম্যাচ → সিগনাল\n"
+            f"  • ডাম্প প্যাটার্ন ম্যাচ → রিজেক্ট\n"
+            f"  • হিউরিস্টিক স্কোর → ব্যাকআপ"
+        )
+        await update.message.reply_text(text, parse_mode="HTML")
 
     async def cmd_config(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         from config import config
@@ -641,14 +695,14 @@ class TelegramHandlers:
             await self.cmd_perf(update, context)
         elif text == "🎯 সিগন্যাল":
             await self.cmd_signalstats(update, context)
-        elif text == "📚 লার্ন":
-            await self.cmd_autolearn(update, context)
         elif text == "⚙️ কনফিগ":
             await self.cmd_config(update, context)
-        elif text == "🔄 রিস্টার্ট":
-            await update.message.reply_text("🔄 রিস্টার্ট হচ্ছে...")
-            import os, signal
-            os.kill(os.getpid(), signal.SIGTERM)
+        elif text == "✅ অন":
+            await self.state.set_bot_active(True)
+            await update.message.reply_text("✅ বট চালু!")
+        elif text == "❌ অফ":
+            await self.state.set_bot_active(False)
+            await update.message.reply_text("❌ বট বন্ধ!")
 
 
 def register_handlers(app, handlers: TelegramHandlers):
@@ -658,6 +712,7 @@ def register_handlers(app, handlers: TelegramHandlers):
     app.add_handler(CommandHandler("perf", handlers.cmd_perf))
     app.add_handler(CommandHandler("signalstats", handlers.cmd_signalstats))
     app.add_handler(CommandHandler("autolearn", handlers.cmd_autolearn))
+    app.add_handler(CommandHandler("patterns", handlers.cmd_patterns))
     app.add_handler(CommandHandler("config", handlers.cmd_config))
     app.add_handler(CommandHandler("setchannel", handlers.cmd_setchannel))
     app.add_handler(CallbackQueryHandler(handlers.threshold_callback, pattern="^thr_"))

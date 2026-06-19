@@ -986,6 +986,12 @@ class MemeBot:
                                 ath_mult = coin_info.ath_price / coin_info.initial_price if coin_info.initial_price > 0 else 1
                                 record_missed_pump(addr, symbol, features, ath_mult)
                                 logger.info(f"📚 Missed pump recorded: {symbol} (no pre-mig signal)")
+                                # Auto-learn after new data
+                                try:
+                                    from learner import enhanced_auto_learn
+                                    enhanced_auto_learn()
+                                except Exception:
+                                    pass
 
                             if config.enable_github_sync:
                                 await sync_to_github(f"পাম্প: {symbol} mcap={format_number(mcap)}")
@@ -1338,6 +1344,12 @@ class MemeBot:
                         logger.info(f"[OUTCOME] {sig_info.symbol}: ATH={ath_multiplier:.2f}x current={current_multiplier:.2f}x @ T+6h")
                         try:
                             compute_signal_criteria()
+                        except Exception:
+                            pass
+                        # Auto-learn after new data
+                        try:
+                            from learner import enhanced_auto_learn
+                            enhanced_auto_learn()
                         except Exception:
                             pass
                         # Send updated TP/SL recommendation after each result
