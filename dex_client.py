@@ -57,19 +57,23 @@ class DexScreenerClient:
             return [p for p in data if p.get("chainId") == "solana"]
         return []
     
-    async def fetch_pair_data(self, token_address: str) -> Optional[dict]:
-        url = f"{self.base_url}/latest/dex/tokens/{token_address}"
-        data = await self._request_with_retry("GET", url)
-        if data:
-            pairs = data.get("pairs", [])
-            if pairs:
-                pairs.sort(key=lambda x: float(x.get("liquidity", {}).get("usd", 0) or 0), reverse=True)
-                pair = pairs[0]
-                # Try to extract deployer from pair data
-                if not pair.get("deployer"):
-                    pair["deployer"] = pair.get("creatorAddress", "") or pair.get("creator", "") or ""
-                return pair
-        return None
+    async def fetch_token_data_batch(self, token_addresses: list[str]) -> list:
+        """Fetch data for multiple tokens by address in parallel."""
+        if not token_addresses:
+            return []
+        
+        # Split into chunks of 20 to avoid rate limits
+        chunks = [token_addresses[i:i+20] for i in range(0, len(token_addresses), 20)]
+        results = []
+        
+        for chunk in chunks:
+            url = f"{self.base_url}/tokens/v1/solana/{",".join(chunk)}"
+            data = await self._request_with_retry("GET", url)
+            if data:
+                results.extend(data)
+            await asyncio.sleep(0.5)  # Rate limit
+        
+        return results
 
     def get_deployer(self, pair: dict) -> str:
         """Extract deployer address from pair data."""

@@ -2653,6 +2653,33 @@
       "address": "p4xfbiJJUk42rCTkNTV8U7hp33ny1oohMpRrKwGpump",
       "source": "missed_pumps",
       "learned_at": "2026-06-19T00:13:45.380148+00:00"
+    },
+    {
+      "buy_sell_ratio": 0.0,
+      "holders": 0,
+      "unique_wallets": 0,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "lp_locked": 0,
+      "liq_pct": 196.01,
+      "launch_hour": 0,
+      "initial_liq": 2834.24,
+      "liquidity": 2834.24,
+      "mcap": 1446.0,
+      "volume": 0.0,
+      "volume_24h": 0.06,
+      "buy_count": 0,
+      "sell_count": 1,
+      "price": 1.446e-06,
+      "outcome": "pump",
+      "ath_multiplier": 0,
+      "symbol": "TrumpUFC",
+      "address": "FMQQStcBr9GfJN7Dpb3Lpiwh54gj6uhx8f8ZNtPppump",
+      "source": "signal_results",
+      "learned_at": "2026-06-19T01:05:16.292320+00:00",
+      "dexscreener_url": "https://dexscreener.com/solana/5RqBVBSHJvUhctztE5jt1EuRigHigyrNaWXk9qgr6hY6",
+      "pumpfun_url": "https://pump.fun/FMQQStcBr9GfJN7Dpb3Lpiwh54gj6uhx8f8ZNtPppump",
+      "pair_created_at": 1781396035000
     }
   ],
   "dump_patterns": [
@@ -12613,7 +12640,7 @@
       "0": 1.0,
       "11": 1.0
     },
-    "total_signals": 0,
+    "total_signals": 439,
     "correct_signals": 0,
     "accuracy": 83.3,
     "threshold": 0.25,
@@ -12647,7 +12674,3812 @@
       "0": 0.25,
       "11": 0.25
     },
-    "signal_results": [],
+    "signal_results": [
+      {
+        "address": "ECxKs7Fq4DcCJffGszqVb6efFYNYYFKytYunLvG4pump",
+        "symbol": "JOAT",
+        "verdict": "PUMP",
+        "multiplier": 4.4,
+        "timestamp": "2026-06-09T20:30:02.761571+00:00"
+      },
+      {
+        "address": "WLJWMrvdAVxuALyPtgfC8iZTyUYaXtb3AvPqQXfpump",
+        "symbol": "WerldKup",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T20:56:45.770403+00:00"
+      },
+      {
+        "address": "uaeY9NBLS8cKKB6jxoF1ctUi6dMR97y2ASEUGXZpump",
+        "symbol": "Godzilla",
+        "verdict": "DUMP",
+        "multiplier": 0.44,
+        "timestamp": "2026-06-09T20:56:50.260755+00:00"
+      },
+      {
+        "address": "6p3Y3WBXcVwMbYNoVsU4EuVb3gdMmzSKhkEfo8Vcpump",
+        "symbol": "Pnut",
+        "verdict": "PUMP",
+        "multiplier": 2.3,
+        "timestamp": "2026-06-09T20:56:51.338620+00:00"
+      },
+      {
+        "address": "DUqdfMcdzM5haF3t9hDsmVqY7nFMev9UkfKfpAE4pump",
+        "symbol": "BETCUP",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T20:56:55.672278+00:00"
+      },
+      {
+        "address": "QNTcSEN5iqJrkQJd8P7pb4hLL7NTrd8EA5ADULMpump",
+        "symbol": "CHAIRG",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T20:57:00.481917+00:00"
+      },
+      {
+        "address": "8HjpMRNqjZWWhw3S3sksr9f8K1ExKW2G6qoaiMPfpump",
+        "symbol": "STEPPA",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T20:57:10.087963+00:00"
+      },
+      {
+        "address": "DF12JV9hFJbMWFuG7ff1wqaydj6HSkvwyt6mJnNVuGiR",
+        "symbol": "OINK",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T20:57:12.545377+00:00"
+      },
+      {
+        "address": "D6RcGUfNTkWdnNheCNqdQ6JWo8dX138tr1QB2AVbpump",
+        "symbol": "PURGE",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T20:57:19.710144+00:00"
+      },
+      {
+        "address": "6VotjDtQgqEKCjzyYSNzarHUJvTwVK4tvr1iCYUhpump",
+        "symbol": "MOSAIC",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T20:57:24.707946+00:00"
+      },
+      {
+        "address": "8Uu1dSAwKPVVSVYU5HT76TnR9Q5TXWREYmBHzyUypump",
+        "symbol": "POKE",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-09T21:01:02.222934+00:00"
+      },
+      {
+        "address": "BjVDnEN4iDDYxN9SyTM8UceTGJYdD1v5953xACkvpump",
+        "symbol": "Lumi",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T07:52:43.683318+00:00"
+      },
+      {
+        "address": "8fUCxNf4LeheQLHAdi2qsufwLBDVQBtZoZVzCpEUpump",
+        "symbol": "LIZARD",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T08:07:51.514212+00:00"
+      },
+      {
+        "address": "HN7EP8PrKbxCMbCCCHRPrZYaru267QGkY45MS58qpump",
+        "symbol": "WIF",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T08:07:53.918091+00:00"
+      },
+      {
+        "address": "GQM8tG2z4hDrRw9o7QasnQtAeX1xYSoVNCcw6eCFpump",
+        "symbol": "USDLC",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T08:07:58.772028+00:00"
+      },
+      {
+        "address": "3T7L9WbowomiYGUZujHPcJQsrQnoXQT2ekVM45UCpump",
+        "symbol": "SLANTIX",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T08:08:06.895040+00:00"
+      },
+      {
+        "address": "CyjXjPZuuAA79jLTq35u6Zxk2aA4c183FxPNP1N8pump",
+        "symbol": "Abel",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T08:08:17.788268+00:00"
+      },
+      {
+        "address": "A4cXNCYugscWtkftjqw8PA3mNCu1ZDjPChuHnMkpump",
+        "symbol": "Backrooms",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T08:14:16.294717+00:00"
+      },
+      {
+        "address": "Drv7SrSQJUcAN6WcXYrFM4EZDkzP4AjhSJv1AZGxpump",
+        "symbol": "WORTHLESS",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T09:03:22.479834+00:00"
+      },
+      {
+        "address": "A4ST3hBvL8TSjBPveX6AN2HD9TdbzQJgCHz2xoXKpump",
+        "symbol": "Jimmy",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T09:11:24.373407+00:00"
+      },
+      {
+        "address": "5SRBwvFMqyw2NeFT9nCTCix77j99whSqy3UBoYPspump",
+        "symbol": "Blue Balls",
+        "verdict": "DUMP",
+        "multiplier": 0.9894327030033371,
+        "timestamp": "2026-06-10T09:18:07.375370+00:00"
+      },
+      {
+        "address": "AvwBELQTqgm6dkV6qSeqD1gx85Jq3uHJ1qfLuaUspump",
+        "symbol": "DOGECOIN",
+        "verdict": "DUMP",
+        "multiplier": 1.0434604346043461,
+        "timestamp": "2026-06-10T09:18:09.549166+00:00"
+      },
+      {
+        "address": "3VAsHKJ1whEtqMPjyvzx6yEB5A49B7vsLK12E9gXpump",
+        "symbol": "\u30a2\u30a4",
+        "verdict": "DUMP",
+        "multiplier": 1.0010922992900055,
+        "timestamp": "2026-06-10T09:21:12.066425+00:00"
+      },
+      {
+        "address": "ATPsUcKmoZDohbhb6ymvDJYZfc25tCuFh9HKEm5Mpump",
+        "symbol": "Blub",
+        "verdict": "DUMP",
+        "multiplier": 0.897883149872989,
+        "timestamp": "2026-06-10T09:21:14.014809+00:00"
+      },
+      {
+        "address": "8ouP337reteav37qj6Y6sofu36rrgJDqiXv38eaZpump",
+        "symbol": "FWOG",
+        "verdict": "DUMP",
+        "multiplier": 0.9817275747508306,
+        "timestamp": "2026-06-10T09:21:15.867023+00:00"
+      },
+      {
+        "address": "4TfhXpxx83eE6mnwx7Kw3KBY5oj9DN23y1vKNBTxpump",
+        "symbol": "USEC",
+        "verdict": "DUMP",
+        "multiplier": 1.072938689217759,
+        "timestamp": "2026-06-10T09:21:17.818978+00:00"
+      },
+      {
+        "address": "8TWhszSVZjnQDM713X93CwCaB82DbBAWTu421Kybpump",
+        "symbol": "VT",
+        "verdict": "DUMP",
+        "multiplier": 0.9964679911699781,
+        "timestamp": "2026-06-10T09:24:21.183893+00:00"
+      },
+      {
+        "address": "C3nF4q2d8icWeZmL8doDvbTAuRmu3UWhArM1KrwwPumP",
+        "symbol": "KOMT",
+        "verdict": "DUMP",
+        "multiplier": 1.0,
+        "timestamp": "2026-06-10T09:27:23.688909+00:00"
+      },
+      {
+        "address": "J6SBkJEcY3VfZkymDDsrK8B7HcEvwFAq32EqfsJnJ4wd",
+        "symbol": "SSS",
+        "verdict": "DUMP",
+        "multiplier": 0.8128146453089246,
+        "timestamp": "2026-06-10T10:01:04.231996+00:00"
+      },
+      {
+        "address": "uidS7gReVyhCWkQFUZapyuMmCjQc8zX344VwoCnpump",
+        "symbol": "\u30cd\u30cd",
+        "verdict": "STRONG_PUMP",
+        "multiplier": 5.19,
+        "timestamp": "2026-06-10T10:11:46.827391+00:00"
+      },
+      {
+        "address": "9CYaxA6hzTtZwuHv5QjXZLPLRbtFZvfDBPzW8a1dpump",
+        "symbol": "SHABANI",
+        "verdict": "PUMP",
+        "multiplier": 4.01,
+        "timestamp": "2026-06-10T10:11:46.882116+00:00"
+      },
+      {
+        "address": "EmS9iUuR2LWuHDt9N1t7sWSrkib1KoamkLoE84BhMpo",
+        "symbol": "$ARCADE",
+        "verdict": "PUMP",
+        "multiplier": 4.61,
+        "timestamp": "2026-06-10T10:11:46.903640+00:00"
+      },
+      {
+        "address": "2ia5p5S3zp6xwcpunTJt1q32KJHQgFCZCXoYctpTf555",
+        "symbol": "SPCX",
+        "verdict": "STRONG_PUMP",
+        "multiplier": 261148.3,
+        "timestamp": "2026-06-10T10:11:46.919128+00:00"
+      },
+      {
+        "address": "q2yC2PPhZqjru2c6UWZfKJqJUtG1xJGTJKx8oy2pump",
+        "symbol": "PUMPI",
+        "verdict": "PUMP",
+        "multiplier": 3.18,
+        "timestamp": "2026-06-10T10:11:46.932301+00:00"
+      },
+      {
+        "address": "7vSPDeLj8kRopQmtxP7cuFXgQej82whwC8c8DaM1BNNh",
+        "symbol": "SPCX",
+        "verdict": "STRONG_PUMP",
+        "multiplier": 1588460.66,
+        "timestamp": "2026-06-10T10:11:46.943636+00:00"
+      },
+      {
+        "address": "EaAAwVnGWn7d3QUfT8qToKyxebs1qKEPjdqfCxQZpump",
+        "symbol": "ABEL",
+        "verdict": "STRONG_PUMP",
+        "multiplier": 18.55,
+        "timestamp": "2026-06-10T10:11:46.954689+00:00"
+      },
+      {
+        "address": "8HzRWh3zdW7ewhjE16sCowoxeKZZ9hF3TjhCwqVMpump",
+        "symbol": "CAINYABEL",
+        "verdict": "STRONG_PUMP",
+        "multiplier": 8.17,
+        "timestamp": "2026-06-10T10:11:46.979883+00:00"
+      },
+      {
+        "address": "7AnojH8Ua97AMc86HbwHkm8envARFWhXES5YX78Xpump",
+        "symbol": "COLLECTOR",
+        "verdict": "STRONG_PUMP",
+        "multiplier": 9.93,
+        "timestamp": "2026-06-10T10:11:46.991300+00:00"
+      },
+      {
+        "address": "14XEn3jXunfGXL6S97VVyqDMEzvjwVQUzCqts4Repump",
+        "symbol": "STORE",
+        "verdict": "PUMP",
+        "multiplier": 3.92,
+        "timestamp": "2026-06-10T10:11:47.002959+00:00"
+      },
+      {
+        "address": "AsTtCBhYgtZwEgnSbN9MHQhs1pwCYJLxX543bDq7pump",
+        "symbol": "TRUMPCHANCE",
+        "verdict": "PUMP",
+        "multiplier": 3.28,
+        "timestamp": "2026-06-10T10:11:47.014409+00:00"
+      },
+      {
+        "address": "ChhGrQdTYBicu6CBhj9xiVZudyeNGv1r1WR6CrCCpump",
+        "symbol": "STEPHEN",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T10:11:50.330627+00:00"
+      },
+      {
+        "address": "9DrAiELhyY4X4NFguX6ud12UoRAHC49VoAUgMURYpump",
+        "symbol": "Virgin",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T10:11:55.132277+00:00"
+      },
+      {
+        "address": "5rEkWxPbgq2LVULyCcsGUUqopH7PxLy7mXmxagzepump",
+        "symbol": "CERBY",
+        "verdict": "DUMP",
+        "multiplier": 0.5,
+        "timestamp": "2026-06-10T10:12:26.461781+00:00"
+      },
+      {
+        "address": "HZZCEMtpeyYHNUCAiJRL1iSzu5w4ja1ACBKcDiFGpump",
+        "symbol": "WORTHLESS",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T11:08:50.584505+00:00"
+      },
+      {
+        "address": "7skdRzYMnZ9KGg5QCh8J5QKoUNYKCLYQ15gaSLxBpump",
+        "symbol": "PeachCoin",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T11:09:49.127052+00:00"
+      },
+      {
+        "address": "97bMMJD7ev3eZzyBgHLpacpNSDWH9Vrke6gBE6p6pump",
+        "symbol": "Wallace",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T11:09:57.475334+00:00"
+      },
+      {
+        "address": "EL8kVP3PkiAVmEsguUprDCeJBsfa4teGxFE6ujC65j66",
+        "symbol": "SPCX",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 59.18,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T12:10:21.799681+00:00"
+      },
+      {
+        "address": "An9cGvL6bHtWHDdtgpt7CQd9byMpPg7TpnFWofgLpump",
+        "symbol": "MMG",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 5.38,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T12:10:21.841504+00:00"
+      },
+      {
+        "address": "7Pk14rpgjCFDtSMbN9RKAp6wZUJ2YHQdAaniPfPhpump",
+        "symbol": "MAITIU",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.58,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T12:10:21.853948+00:00"
+      },
+      {
+        "address": "FbNc2KRUrLf8TXzYpKe5fx6uuTRVny68H5fa1e1Wpump",
+        "symbol": "Hobbes",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T12:11:34.505438+00:00"
+      },
+      {
+        "address": "rvMGMv4hKcJt3qVqvdDirCKDvvomhC3DwDkEir3Pajp",
+        "symbol": "$TFROG",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T12:11:44.962182+00:00"
+      },
+      {
+        "address": "AtJ351dUKdWz8MP1pQCK5UxyVqdkjyr61vXCgegQpump",
+        "symbol": "ANTE",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T12:11:51.411074+00:00"
+      },
+      {
+        "address": "XUuqffce1wPzFkixHN6P5zAVhaLoKCQkrqgqvEGpump",
+        "symbol": "CRYPTO",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T12:11:54.213069+00:00"
+      },
+      {
+        "address": "9ZtbETDNjnST9Y2zs82FZYy49xUMPgqXRh46YjjRpump",
+        "symbol": "Br\u00f6tchen",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T13:19:25.104427+00:00"
+      },
+      {
+        "address": "GsMGZxCUbc2wvVVmFL4SaDgLKBAbnrkbU6S49MkFpump",
+        "symbol": "Teracorn",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T13:20:00.554410+00:00"
+      },
+      {
+        "address": "EDDsnHma3X8bbzYcqMqaRR8noruX6uemzQThg1prpump",
+        "symbol": "PXR",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T13:20:12.260003+00:00"
+      },
+      {
+        "address": "BFBwDbNpf5QponVJyaAGFpKPiCXnbtuXqGWzugHzpump",
+        "symbol": "AURA",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T14:30:06.490282+00:00"
+      },
+      {
+        "address": "ET8kG3dbefg7uwqY4d4GGhkwvNmBdvBqf5UcvVERpump",
+        "symbol": "SOLFC",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T14:30:09.048155+00:00"
+      },
+      {
+        "address": "6vcMitr3itPTTGDDBMCwgEMZD167SJgTk8hkvYdqpump",
+        "symbol": "Br\u00f6tchen",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T14:30:16.284958+00:00"
+      },
+      {
+        "address": "5mVMJLBq1ebxwWuSZMzzk8CzsMSHkCD9dELeDntRpump",
+        "symbol": "$WCUP",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T14:30:21.087032+00:00"
+      },
+      {
+        "address": "D3NJzpkfr8Nh5S4WDXXkFsh9hn5qExsHnoj8ra71pump",
+        "symbol": "HOARD",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T14:30:25.908392+00:00"
+      },
+      {
+        "address": "DKSeC2hTQ6jBVYzQ5CPKncQ6BrqQfWYWARz3LHNpump",
+        "symbol": "FREDDY",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T14:31:08.862405+00:00"
+      },
+      {
+        "address": "7RHxQQUWG9fCskqocSV9zPkWPLJqcceWTcUCjnwMpump",
+        "symbol": "EMBER",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T15:32:02.578932+00:00"
+      },
+      {
+        "address": "2gB4ytQos9dphSGF9YDC6SpoTNu1PeqX6FSGzBvopump",
+        "symbol": "Bagachu",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T15:32:14.853412+00:00"
+      },
+      {
+        "address": "Hg45Qr91T5ekze7Rog4buMU3MbzTMzN7LCnjptbjnYXG",
+        "symbol": "SALT",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T15:32:44.092948+00:00"
+      },
+      {
+        "address": "hN3We4GugC1HZRwFWahKXTunRoziMCHzpo7FU5jpump",
+        "symbol": "JOB",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T15:33:15.717797+00:00"
+      },
+      {
+        "address": "95LqAprdEk9eMtyjrXoVXWLFqLWx3FY5uqYYt4dQpump",
+        "symbol": "PUP",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T15:33:27.004214+00:00"
+      },
+      {
+        "address": "YZYbAx6GokTodmzgXLXMZuWU5RkdB9tFXAzaDuqVBNK",
+        "symbol": "YZYB",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T16:34:30.949597+00:00"
+      },
+      {
+        "address": "5hUb64uVRX7to8Soh4risFbB4UT87ZRZp71QXsewpump",
+        "symbol": "$BEAR",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.3892957746478876,
+        "current_multiplier": 1.3892957746478876,
+        "timestamp": "2026-06-10T17:12:06.929771+00:00"
+      },
+      {
+        "address": "7t59fz5xS4cHhjwuQBxZQtqSSkJw9CERh7E4EZQ5pump",
+        "symbol": "PEMP",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0,
+        "current_multiplier": 0.9988745075970736,
+        "timestamp": "2026-06-10T17:12:08.721328+00:00"
+      },
+      {
+        "address": "HpbAzneBWNvmkBS5t5TranyZism2DnyPUFix7bmEpump",
+        "symbol": "PENAI",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0732899022801303,
+        "current_multiplier": 1.0732899022801303,
+        "timestamp": "2026-06-10T17:12:10.238082+00:00"
+      },
+      {
+        "address": "4jVaX13roo7jCKaGhCuCUk4hntM194F8LxzbjM1uxvAC",
+        "symbol": "WCUP",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T17:37:07.762921+00:00"
+      },
+      {
+        "address": "46N587j4xukNGuTFzWF2FE8iLcTisL1K6TNBYgAJpump",
+        "symbol": "ROBTY",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T18:38:40.965003+00:00"
+      },
+      {
+        "address": "GJmJ3ZFXg4XBYspccpsRsMUhEoNfmqxTYN18GH1rpump",
+        "symbol": "APELORD ",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T18:39:29.842747+00:00"
+      },
+      {
+        "address": "4EjSzThNDV8oQx7QDKDVCRLfMQ1bCgvHzfihzmNWbUkK",
+        "symbol": "STARGRACE",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T18:39:57.076760+00:00"
+      },
+      {
+        "address": "3tVz9uAzzhZ6JrEGCmEuLKX9TL9Hq5zgHXarboTfeQg4",
+        "symbol": "ASTEROID",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T19:00:05.557903+00:00"
+      },
+      {
+        "address": "ELhriEvcdPujdfm35eaRAXpLSNAEtVHm8Cdukqtxpump",
+        "symbol": "listeria ",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T19:58:55.380099+00:00"
+      },
+      {
+        "address": "HQgrQoR6136KZUbPSu3gNeZC8717yY9TnXXfFoEpump",
+        "symbol": "Roadster",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T19:59:58.537282+00:00"
+      },
+      {
+        "address": "GHTQjwuFb9iaxnGZkrK92NKDyVp67CKnvJdWJBu1Gory",
+        "symbol": "MGT",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T20:26:54.016364+00:00"
+      },
+      {
+        "address": "2kZZXuJRoZt3DKtWn6q8zQtbmmeJ9QKtx5QyU6jXpump",
+        "symbol": "LMAO!",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T20:37:32.299916+00:00"
+      },
+      {
+        "address": "7fCWcBAUdvUrfSigDBvVFkXUydcBqykpaVhDTmmZpump",
+        "symbol": "FIT",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-10T20:37:34.738261+00:00"
+      },
+      {
+        "address": "HgoqaaLUtkgAx4vZkFTNapDmvEG2uKVenyrjRD8jpump",
+        "symbol": "ANDY",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T06:23:03.004234+00:00"
+      },
+      {
+        "address": "GLCQ9m5kEXdTUkm2r5i4X3oXDE9GdW5toiArutjJpump",
+        "symbol": "dutch",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T06:23:13.360117+00:00"
+      },
+      {
+        "address": "BfiBstiCWSSDNoMb89vQU9tEHafLmWrUZYaa9Mzqpump",
+        "symbol": "FIFA26",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T06:23:29.748625+00:00"
+      },
+      {
+        "address": "DoxqL8jK3HYfxQkSyP52v3eQoPrLyr7ccXKMZDDRpump",
+        "symbol": "XPD",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T06:23:32.444734+00:00"
+      },
+      {
+        "address": "HG1kBNSLpUTU6SbUAzXcXHFynHMmpsvEgjPQ7yh6pump",
+        "symbol": "COWLICK",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T06:23:37.690323+00:00"
+      },
+      {
+        "address": "Bybdehcb44ULwi3rfiE8CK3VoQG1ixWyDgSTCkmyq4T9",
+        "symbol": "BASED",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T06:24:17.897322+00:00"
+      },
+      {
+        "address": "74P2Mm1ynXPzi8WUTES9HKXKkzHQfSG4t6GLkSewpump",
+        "symbol": "fork",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T06:24:20.578509+00:00"
+      },
+      {
+        "address": "E9uvZSfTvTkMn2BXmNKaQS8JHsSdK9ywjtuKZwF1pump",
+        "symbol": "fable",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T06:24:22.976617+00:00"
+      },
+      {
+        "address": "2s9dLwBxkMmgY4AR4GRKpkq6tzQt1oBYn8Gj6W7opump",
+        "symbol": "ETERNAL",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T06:24:31.468567+00:00"
+      },
+      {
+        "address": "6cbLNDeEWfSRfq3nSbkjZRmBv7tEWXBG1uAJbintpump",
+        "symbol": "trumpunc",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T06:24:36.889336+00:00"
+      },
+      {
+        "address": "Gw8FjKcSnCsot1tBnBrJkLxdJRfezD3G4B3GHXdbpump",
+        "symbol": "RISKER",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T06:24:39.540421+00:00"
+      },
+      {
+        "address": "9oCLXH4KVfxNiLRhYaV289gJ2pF9fsYWN59BhffLpump",
+        "symbol": "CLAWED",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T06:24:42.299568+00:00"
+      },
+      {
+        "address": "2Mcwccy7Ckf6C2BUfwG9Z6kcYp8Mj5tKFBHEEoYCpump",
+        "symbol": "1B",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 20.78,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T07:25:01.339056+00:00"
+      },
+      {
+        "address": "3e1v4D5nGQoCq3n8xfnvacsJ4QTrWDST21GRXSRDpump",
+        "symbol": "GOAL",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 5.71,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T07:25:01.392306+00:00"
+      },
+      {
+        "address": "EV9N47HsZ4PdGVVVYwTfBrjvQQ2RZN4VEb3uoaa6pump",
+        "symbol": "KoK",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T07:25:57.127245+00:00"
+      },
+      {
+        "address": "C1iHXVnK9NzEjaJ1ESmYVGpaTTniDqFz4KG8u5m6pump",
+        "symbol": "Nessie",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T08:28:53.116245+00:00"
+      },
+      {
+        "address": "ADFUs5gU2V3Q6Mcaxy9KkrEVxwc9DpL4yf8ZoRU4pump",
+        "symbol": "VSC",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T09:29:48.845691+00:00"
+      },
+      {
+        "address": "9qpDk7hGSHqyfMGDT7p4zFQ35aGff248Qes48CgLpump",
+        "symbol": "SPCX",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T09:30:02.070168+00:00"
+      },
+      {
+        "address": "MiLL4FP4Y6JxW9qskY1ejKpBHw4RtbUQTrikTL2QBJg",
+        "symbol": "1M",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T09:30:04.854452+00:00"
+      },
+      {
+        "address": "AReenah8rAPqFxBPEahpQtJSsYRPm7LzrHETFX4pump",
+        "symbol": "REPLA",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T09:30:30.056906+00:00"
+      },
+      {
+        "address": "MJSV3dH2bhsK7jAFuHmM3knf63zCRuhw57cjwKxpump",
+        "symbol": "NATION",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T09:30:42.642575+00:00"
+      },
+      {
+        "address": "82qostVr2VLK6CoKSiFyNAKLNUrnz6mTY8XCTLDGpump",
+        "symbol": "010110",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T09:30:45.142703+00:00"
+      },
+      {
+        "address": "CUqCTtiMuwbgknv1XA8uvw7yXsxTt4VUsVhiUxGXpump",
+        "symbol": "STONKRIDER",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T10:11:48.779579+00:00"
+      },
+      {
+        "address": "7VAwrugAtjvRRSeAou71McQrBt4bhppDcSEX4DDLpump",
+        "symbol": "speedrun",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T10:11:58.522177+00:00"
+      },
+      {
+        "address": "Gh364stpEM3U2RzYv4WTtc99Y5Z6bw1oUU6vdxpWpump",
+        "symbol": "100M",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T10:12:00.985648+00:00"
+      },
+      {
+        "address": "9zkm2GwEeqRvdXKw799ddTBspouZsCDNxQigL1ypump",
+        "symbol": "GOAT",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T10:12:33.669386+00:00"
+      },
+      {
+        "address": "GkwLAdFGA6d6NvvJ3YuxssbN6AE2HbuDJBCWR3BVpump",
+        "symbol": "Chikuwa",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "timestamp": "2026-06-11T10:12:55.111773+00:00"
+      },
+      {
+        "address": "6QxpY5yxS9qo9XY8ipCELfUBbDwFRsyG5dKfV7vrpump",
+        "symbol": "BOOST",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T10:35:19.968577+00:00"
+      },
+      {
+        "address": "2bh49NR2bFTVjDXDNrkeQTZUgxZEW5EKCqXjPMh6pump",
+        "symbol": "ELE",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T10:36:11.222856+00:00"
+      },
+      {
+        "address": "2ZcrrjkHkCoyoqx37t2njhTqXkq32di2QKdzHtAEpump",
+        "symbol": "MORT",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 23.62,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T11:36:11.071677+00:00"
+      },
+      {
+        "address": "43RuMKo4KTNekqjGSBM4NTsnL2dA8kf2MopF12eEpump",
+        "symbol": "Gaejuki",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 5.26,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T11:36:11.128491+00:00"
+      },
+      {
+        "address": "xLyhQfSW8UKjsJaisszVS5SRjVTmy9WiEVsq6Afpump",
+        "symbol": "DragonWorm",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 41.49,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T11:36:11.186884+00:00"
+      },
+      {
+        "address": "5tGjtzEE3rTHL121wpP5vcK4fYRtAS7otMtze3R8mosh",
+        "symbol": "MOSH",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T11:36:48.337075+00:00"
+      },
+      {
+        "address": "8oDeytEn1XAfLY6yK6tn1GW1sB5dSWw3reY8S4kmpump",
+        "symbol": "Sam",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T11:37:46.708251+00:00"
+      },
+      {
+        "address": "213TrmJBFCwrACFPR5FHcZiDgFmRdpHjwnA64knEpump",
+        "symbol": "TOOF",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T11:37:49.165620+00:00"
+      },
+      {
+        "address": "DzMMvk7RkGXZ6XH8RrvkwMc8NGwfdL4iXJMzpY3bpump",
+        "symbol": "SLM",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T12:39:14.916828+00:00"
+      },
+      {
+        "address": "6nNWQ3N7aCrg36YAyRP4BNJois8xp1kdr9dctY52pump",
+        "symbol": "MARU",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T13:50:18.499076+00:00"
+      },
+      {
+        "address": "E7D4GPUUi7Vfrz3BFNpoYcEaNMLu83MSbRPRqKkKpump",
+        "symbol": "GTA6",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T13:50:32.112427+00:00"
+      },
+      {
+        "address": "BuzVgHAMDvNNz4zNvxcXN4EiTXzij1e7AjCzfmzVpump",
+        "symbol": "ACAT",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T13:50:34.489423+00:00"
+      },
+      {
+        "address": "39XVpTokUrKbNDdCCxC1fFmHJZ3iJzC8NTofzp6Tpump",
+        "symbol": "SPCX",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T13:50:57.362597+00:00"
+      },
+      {
+        "address": "GQU8znxKLRjUCphgYJcy6pMymdUgEyBx11ZKm7v8pump",
+        "symbol": "SAMA",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T13:51:39.966917+00:00"
+      },
+      {
+        "address": "AYMYg2D7suzeuQJtK5Bi64tEd9Lf9rfxnrJTGpMepump",
+        "symbol": "PUMPFILES",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T13:51:42.983427+00:00"
+      },
+      {
+        "address": "4zeDXMWZBAZ6cLHBxARCRyjAfduWChaE93HPvmDypump",
+        "symbol": "Trionda",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T14:52:21.630372+00:00"
+      },
+      {
+        "address": "8FFRqqeiW11k5UAArAVe26cz3HNHBwBfDzTQnqhpump",
+        "symbol": "MARS",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T14:52:35.383268+00:00"
+      },
+      {
+        "address": "CinHRrjkMMRYyYe6zfn9cGL8kGjeJNhdT6Lg4a4Hpump",
+        "symbol": "FEFA",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T14:52:52.996047+00:00"
+      },
+      {
+        "address": "ioBd2pYPfUn4PeAYekFyo6iaNuzWCTRNuk4vyaupump",
+        "symbol": "OKAI",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0,
+        "current_multiplier": 1.0,
+        "signal_age": 160.35829401016235,
+        "timestamp": "2026-06-11T16:41:54.284501+00:00"
+      },
+      {
+        "address": "9TsPLnXxApXfLc3XmfvtvtVFhYjndYF4c8kNrRp6pump",
+        "symbol": "dih",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1474396703943497,
+        "current_multiplier": 0.27104178928781636,
+        "signal_age": 421.57364296913147,
+        "timestamp": "2026-06-11T16:48:01.839413+00:00"
+      },
+      {
+        "address": "2DkrY8hFQ47GCqMkUGCabbnm1sQMUJnMJhZjQW1Mpump",
+        "symbol": "SPC",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T16:55:55.287965+00:00"
+      },
+      {
+        "address": "D1zjT2QQcj59wPGsonM5aWnijobt2VNu22WzAS7npump",
+        "symbol": "FIFA",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T16:55:57.770032+00:00"
+      },
+      {
+        "address": "AgqYyytQ5hHkYwCkrpVLNwigQPSwBwE5gH7JUhtUpump",
+        "symbol": "POKECR",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T17:59:23.612389+00:00"
+      },
+      {
+        "address": "DrESFkkBLL7Bcx9f1vdGBSAq9Cq8jUeXeoM4uZBZpump",
+        "symbol": "Vox",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T17:59:26.039357+00:00"
+      },
+      {
+        "address": "jcrUTfAyGYTWu3hkHmEXHktDdkdHVhfrxTL2ciVpump",
+        "symbol": "Constructer",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T17:59:30.923174+00:00"
+      },
+      {
+        "address": "WUrToByF8yhPGJSPGsSAYuMxLUnHEUuTRDgwzgKpump",
+        "symbol": "CUPC",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T19:44:42.406764+00:00"
+      },
+      {
+        "address": "9rWs7hbofCtTTCNpRGBPKEQWjTtLVDyWp31VdHp6zEes",
+        "symbol": "Trenchy",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T19:44:57.397810+00:00"
+      },
+      {
+        "address": "EBc6YWysUJsQJh9UayAiyS5j9voLdJUAVQBxzBNtpump",
+        "symbol": "AIDOC",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T19:45:10.231774+00:00"
+      },
+      {
+        "address": "jAuAs3LxfxeK4vKKGX3JSrYRSrvKY3CyjWT9ApJpump",
+        "symbol": "Chillchua",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T19:45:12.757101+00:00"
+      },
+      {
+        "address": "5gqAPQjZy24KGiS5sf4xP6iqQGVVMrrbj6mivSypump",
+        "symbol": "DT",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T19:45:15.371576+00:00"
+      },
+      {
+        "address": "iVTa6XpnBN51rkyfMRd5M9st2n4QgRywaLyuRJVpump",
+        "symbol": "SOLPICKS",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T19:46:11.210465+00:00"
+      },
+      {
+        "address": "HQ7Jac4qoUoYDtUTbjEe6BZKsuNxDmFxVQW6kdv5pump",
+        "symbol": "135$",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:03:09.372414+00:00"
+      },
+      {
+        "address": "5kcMbMWWfUPNzXwbWA1T4fYBjtMGAXyRMS399DMSLn6E",
+        "symbol": "KARMELON",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:03:16.526716+00:00"
+      },
+      {
+        "address": "3oza9n1yE7mPsugsB7AjZyeP63CNxqndo8Qwycnspump",
+        "symbol": "FIFA26",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:03:28.619411+00:00"
+      },
+      {
+        "address": "Hn9C7mijuGejPu9ZCvWfhQfFEoJpHEcNHMqgxZGEpump",
+        "symbol": "AUTA",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:03:51.740626+00:00"
+      },
+      {
+        "address": "8eepcHa4XaQdKa5vhjRGcyz2XuRAjY5V7WkZ4mU4pump",
+        "symbol": "SHITHOLE",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:03:59.125736+00:00"
+      },
+      {
+        "address": "3GzCHtzUABmT6zbfbVKxgUFvFwWcZpeUkCQrGTtWpump",
+        "symbol": "$GIMNK",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:04:04.079410+00:00"
+      },
+      {
+        "address": "CG839jxgEhcqoukwptzQzGbSpTN3j774YPqJr1vApump",
+        "symbol": "Normie",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:19:08.532691+00:00"
+      },
+      {
+        "address": "EnyxcNqeFy72CV1Yd1TgysemhEgNvCQ7ZkYu587Fpump",
+        "symbol": "ANISOL",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:19:48.622257+00:00"
+      },
+      {
+        "address": "HuareADwRcW4c9JZrQPHPZWQq6TDHA3iL7s5ZcHopump",
+        "symbol": "CUPS",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:19:53.506273+00:00"
+      },
+      {
+        "address": "BQPgDTffNP5Z4WK9E9tdpcSq22o1nL8gidE23Yowpump",
+        "symbol": "Ball Kid",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-11T22:19:58.209798+00:00"
+      },
+      {
+        "address": "64LGLXH6JZq2YauCp1Sd9sMrpidX7oq3m4SNpn5viHbk",
+        "symbol": "BILLICRAB",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.31,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-12T11:21:32.284657+00:00"
+      },
+      {
+        "address": "3WjLscH2JsXLEFJZRA9z8ti8yRGxWGKbqymPd7UicRth",
+        "symbol": "WOC",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.1,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-12T11:21:32.343476+00:00"
+      },
+      {
+        "address": "C1mw32ReQxz6vVBA3ny2kVFA1sG6ZXDjnsNYbxzQpump",
+        "symbol": "CHAD",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 5.06,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-12T11:21:32.373458+00:00"
+      },
+      {
+        "address": "CQMwk88SSp84aECqjk7xfVXwcMEQouymwG7acibMpump",
+        "symbol": "WORLDKINS",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.35,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-12T13:19:08.432416+00:00"
+      },
+      {
+        "address": "Cy1mCA7qAe7AWABiPCBt7V11SfbjhHM7UBpd9TAXpump",
+        "symbol": "trelon",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 5.69,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-12T13:19:08.491064+00:00"
+      },
+      {
+        "address": "Fxg9DA6vy3pGXTwG9pVw3nTeQWSdjhYY5Zz3ja4Epump",
+        "symbol": "RITTER",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.333061972117635,
+        "current_multiplier": 0.09957260608527525,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-12T18:13:26.910276+00:00"
+      },
+      {
+        "address": "K93mdxqMgivPNTFEXnoUmN8WH5tNzrSJfaguevQpump",
+        "symbol": "401K",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0392923043525453,
+        "current_multiplier": 0.0651579290133507,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-12T18:13:29.326624+00:00"
+      },
+      {
+        "address": "8JhnxyqV29pnMiEebKgmSG91ZQTvkyJnec32gYtDpump",
+        "symbol": "CatMaxxing",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.7429324389075227,
+        "current_multiplier": 0.23083373263057017,
+        "signal_age": 144.62297677993774,
+        "timestamp": "2026-06-12T18:18:44.765805+00:00"
+      },
+      {
+        "address": "CGw7jbCr5eX1zGnubfKxQpNoz33DPsZzRkRYoEZ1pump",
+        "symbol": "Manlets",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.391456582633053,
+        "current_multiplier": 0.3277310924369748,
+        "signal_age": 54.862025022506714,
+        "timestamp": "2026-06-12T18:18:47.100409+00:00"
+      },
+      {
+        "address": "AKA8bQe6e51NvFAA17RGib45H5DQ1ZdoPugmMzkcpump",
+        "symbol": "BrazilCup",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.2513453209082557,
+        "current_multiplier": 0.2446515290720567,
+        "signal_age": 51.70644497871399,
+        "timestamp": "2026-06-12T18:20:05.194227+00:00"
+      },
+      {
+        "address": "6ZQoikLi7Cb1vsu74qbgPQMCAuWo4JCpX7R3gEq5pump",
+        "symbol": "HUNT",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.3995048390726987,
+        "current_multiplier": 0.028156650911546253,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-12T18:46:00.410071+00:00"
+      },
+      {
+        "address": "FFosggieyf6ceEdapfQjeWetyFr9CjUzm9BLoxbopump",
+        "symbol": "SOCCER",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 7.42,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T06:54:45.306095+00:00"
+      },
+      {
+        "address": "7YMkZZwdcwUbXKjYpr5gFAVoB6aF4f9iLWK6pUcppump",
+        "symbol": "GUARDIAN",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 8.78,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T06:54:45.392268+00:00"
+      },
+      {
+        "address": "6Fnnq2bRqzRkodesB4edt8EY3Vmx3rDay4PA5Caspump",
+        "symbol": "Trilly",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.25,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T06:54:45.454076+00:00"
+      },
+      {
+        "address": "69htpXHZBwsZmP9iSuntURpxvcHdP7TF7AM2CiUcpump",
+        "symbol": "ROT",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.05,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T12:20:33.042725+00:00"
+      },
+      {
+        "address": "4XuBH9bngHKkpdXqG5NkWmabDFjB3j5Mgt8vHK9upump",
+        "symbol": "Maputo",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.78,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T12:20:33.107923+00:00"
+      },
+      {
+        "address": "xwmYyr9oqbNq4AUsWBQmhuhToFoRw43ZunFdt8upump",
+        "symbol": "$TRUJAN",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 49.17,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T12:20:33.177595+00:00"
+      },
+      {
+        "address": "Ei8urJAZWpW9gEbSvFCBXnpii8C8HfxpHm47pdd7pump",
+        "symbol": "Arie",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.6,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T12:20:33.211992+00:00"
+      },
+      {
+        "address": "Dvy3P3k8zoUENhiUZGWRsJJCz97Ps9cng2LxjM77pump",
+        "symbol": "KNECKS",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.16,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T14:05:04.266810+00:00"
+      },
+      {
+        "address": "FrEjU99oRRx1GmriuJE2NsLxNkdqavWi273vBDErpump",
+        "symbol": "$KIT",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0636550308008215,
+        "current_multiplier": 0.9753593429158112,
+        "signal_age": 107.05123996734619,
+        "timestamp": "2026-06-13T19:54:19.848090+00:00"
+      },
+      {
+        "address": "3sERStHyCYmMtzxokNuTPcyPcq89E9Kmp4nZVEVJpump",
+        "symbol": "PROMPTOPIA",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 7.006437768240343,
+        "current_multiplier": 2.3047210300429186,
+        "signal_age": 64.61706709861755,
+        "timestamp": "2026-06-13T19:54:22.508132+00:00"
+      },
+      {
+        "address": "JD5sqUJ69NVWPHxzbFqHo8rbjfuif3KqdMfHZcoWQVNq",
+        "symbol": "ELON",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.081813444502345,
+        "current_multiplier": 0.3857738405419489,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T19:54:25.450291+00:00"
+      },
+      {
+        "address": "9LemTpYvs9h74W9xPh5ac3eUMt6Rv2W2NJo1yyXQpump",
+        "symbol": "Beesness",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0666340029397354,
+        "current_multiplier": 0.9343459088682018,
+        "signal_age": 947.4988579750061,
+        "timestamp": "2026-06-13T19:54:27.879179+00:00"
+      },
+      {
+        "address": "3dK3aJ9E3isPkXadA6uQw9nB8sRrS6CYb1omhRLJpump",
+        "symbol": "durio",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.439122290607439,
+        "current_multiplier": 0.32887342788332885,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T19:54:30.327597+00:00"
+      },
+      {
+        "address": "76vAADcsZectM18BtdvccUeSwmgcEutgKPyDjDZcpump",
+        "symbol": "JOTRUMP",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.7821497120921304,
+        "current_multiplier": 0.013320537428023034,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T19:54:32.857411+00:00"
+      },
+      {
+        "address": "81ezUak2WnLCWPr1eZCLQNnugakZKjJ6o3WCvLf2pump",
+        "symbol": "WOKE",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.8201350521792508,
+        "current_multiplier": 0.22105586249232656,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T19:54:35.843074+00:00"
+      },
+      {
+        "address": "9YDvGK6xipja74T1NwXkjhtgyLQ3p9D2fxzXFCzhpump",
+        "symbol": "\u3046\u3093\u3053",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.3731094438489937,
+        "current_multiplier": 0.3152316303441705,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T19:54:38.127223+00:00"
+      },
+      {
+        "address": "BoSDUmikBbc8KqMzUZCw69pzmhuAkrVDvJVHdnjupump",
+        "symbol": "MYTHARA",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.370384969123637,
+        "current_multiplier": 0.33990277230324534,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T19:54:41.259005+00:00"
+      },
+      {
+        "address": "9dam2gso4YBRem7xfBCi9xsPQmjwLCdmNKbMwHQTHfwJ",
+        "symbol": "HEIST",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0622529644268774,
+        "current_multiplier": 0.15553359683794468,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T19:54:44.352920+00:00"
+      },
+      {
+        "address": "7LmVQxr8UUTdPLP5knhhhYoimJ8fN8MpY7SR8gsvpump",
+        "symbol": "ALETHIA",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.4000000000000001,
+        "current_multiplier": 0.0187192118226601,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T19:54:47.113828+00:00"
+      },
+      {
+        "address": "J7UyaWqCAt8H7WCfDtqyTDaVaPe5QKmHCHbkCgjNpump",
+        "symbol": "TRAMP80",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.1248230297310053,
+        "current_multiplier": 0.23666823973572443,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T19:54:51.034017+00:00"
+      },
+      {
+        "address": "3SkiyPUMD5KT6SfTKqJC5pEkYfrs68THth2HCvp9pump",
+        "symbol": "COZY",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.5268901013250193,
+        "current_multiplier": 1.745908028059236,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T19:54:59.434205+00:00"
+      },
+      {
+        "address": "8MsKogAVDhMTpxV1jvAAZDRym7d8omtuKJ8q9kP6pump",
+        "symbol": "BOOFCAP",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0943349753694582,
+        "current_multiplier": 0.031034482758620693,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T20:07:25.755357+00:00"
+      },
+      {
+        "address": "6d9PCh5ocA2v4S7E6G1Hn1dfd72XxE8HJu22r4Sspump",
+        "symbol": "01",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.763955342902711,
+        "current_multiplier": 1.39585326953748,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T20:07:28.647563+00:00"
+      },
+      {
+        "address": "B7a9wpdcdSt44Y9iHqrMYo9yuntqtEV25irTS5YRpump",
+        "symbol": "xWorld",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.974389376333887,
+        "current_multiplier": 1.106473796537823,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T20:37:20.203063+00:00"
+      },
+      {
+        "address": "9tFnWbmv91XHPqnLTkWG4ET1oLCJ4NKsCPMbjdYLpump",
+        "symbol": "SOCCERWOJAK",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.7060894780447393,
+        "current_multiplier": 0.01623860811930406,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T20:41:09.970759+00:00"
+      },
+      {
+        "address": "9TdYvCWsT2Hp8QxXjUX5t4NyxGuNjRDVBKmdGNvupump",
+        "symbol": "TUSSIN",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1263129544842445,
+        "current_multiplier": 0.5869916509561002,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T21:01:07.332309+00:00"
+      },
+      {
+        "address": "AqL2SpVDLCsqBTdkLffuiwN5JnXti3aTHQjSQ68Wpump",
+        "symbol": "Kitty",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.960378091415253,
+        "current_multiplier": 0.32836980448012426,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T21:30:41.843719+00:00"
+      },
+      {
+        "address": "EfYk1mPeh2XaSGZ1CcUDQMPFy3YV2Q8XCFHtyTPZVoi",
+        "symbol": "$TSOC",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 28.297493494041912,
+        "current_multiplier": 18.983700862895496,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T21:34:26.516718+00:00"
+      },
+      {
+        "address": "2dJniDEAGCG7zWKseCkyrML3W23WLjDf1CGxpNv3pump",
+        "symbol": "TURTLE",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.4699940582293523,
+        "current_multiplier": 1.7585660526836997,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T21:57:56.956856+00:00"
+      },
+      {
+        "address": "3nTmaNvUd12oEd52rsjc8hZLqSjRm1yoEtCnZBDRpump",
+        "symbol": "VERITY",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1116584564860428,
+        "current_multiplier": 0.3364121510673235,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T22:12:37.103910+00:00"
+      },
+      {
+        "address": "F8Qoq2SZ455PbzHYBAenumJbg4x5dSSkdoU9tXTJpump",
+        "symbol": "drooling dog",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0671978751660025,
+        "current_multiplier": 0.2359628154050465,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T22:38:47.894529+00:00"
+      },
+      {
+        "address": "3bDPRdwiQZKbXBi9wuruMFY4qTBbUGKWrYajMgKspump",
+        "symbol": "BADHEADS",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.35188679245283,
+        "current_multiplier": 0.013754716981132075,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T22:38:50.091617+00:00"
+      },
+      {
+        "address": "nTwUo7iHRn8RuYuqsfPazceW3GQr9BHdDoGbBm8pump",
+        "symbol": "Culture",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.959111111111111,
+        "current_multiplier": 0.20746666666666666,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T22:48:55.080988+00:00"
+      },
+      {
+        "address": "ECDRhgb35yvsm5wBRmg1w1vtxjjEb2Vi9gaWyNnZpump",
+        "symbol": "scar",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.693103448275862,
+        "current_multiplier": 0.772183908045977,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T23:03:41.363688+00:00"
+      },
+      {
+        "address": "8HQcs5CaFQnHuh2ykACkm9YCYQRnmKGvtNargx2xpump",
+        "symbol": "niggacoin",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.8323989377397462,
+        "current_multiplier": 0.07087636470935378,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T23:14:29.498420+00:00"
+      },
+      {
+        "address": "E1S2RV6aNSU4inxH7k1wVWFczegAZGj54nyFDhDnpump",
+        "symbol": "Elonify",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.8968014484007242,
+        "current_multiplier": 0.08171394085697044,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T23:34:25.046800+00:00"
+      },
+      {
+        "address": "eGRMLVGFiypbJPDjPQ7eKQt1exuXpCbLwXqG2Kzpump",
+        "symbol": "MAMO",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.9574652777777778,
+        "current_multiplier": 0.16299189814814816,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-13T23:40:40.315543+00:00"
+      },
+      {
+        "address": "E5h55uQ4eBEJMsAGZ7KwXLiawjpVhrin62VaER8Spump",
+        "symbol": "RUNNER",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.058204467353952,
+        "current_multiplier": 0.08760738831615121,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T00:00:17.099895+00:00"
+      },
+      {
+        "address": "2ALnkoVdqAuiBexJRLv1WB6KfcT6yXFpyQWyLKBypump",
+        "symbol": "HALY",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.458927183208085,
+        "current_multiplier": 0.019655351127235036,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T00:07:45.780040+00:00"
+      },
+      {
+        "address": "8XgWdYV9bPnWBZa7BHAoDmrnRDZQRzdWeRzetxd2pump",
+        "symbol": "GME",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2688652878703186,
+        "current_multiplier": 0.05832867523756289,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T00:38:04.550107+00:00"
+      },
+      {
+        "address": "CHBPw8NYTRSzHYGNXUiQ4BYoQ5FGBdLrTvUae3ojpump",
+        "symbol": "CatMusk",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.039913793103448274,
+        "current_multiplier": 0.03741379310344828,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T00:46:42.094303+00:00"
+      },
+      {
+        "address": "FamUNkepHXkVxjWHeMSpJmD4xVhCSyNnUG9GVsdmR2xQ",
+        "symbol": "MANLET",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 6.0755944369672505,
+        "current_multiplier": 2.791610587707492,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T00:46:44.146021+00:00"
+      },
+      {
+        "address": "8LTtARPjzbvc3JGut7UciDL7mzqSW2vqVa174W9tpump",
+        "symbol": "TRUMP80",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.805613741097612,
+        "current_multiplier": 0.03313782991202346,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T00:50:21.375058+00:00"
+      },
+      {
+        "address": "6yV9ukrWJcUiZnFZDxuW8pSgX47u6u1kiBzxZ28Spump",
+        "symbol": "KINSBANK",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.1345885634588564,
+        "current_multiplier": 0.8117154811715481,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T01:55:44.029331+00:00"
+      },
+      {
+        "address": "FX4GtNGSheFrbSfUoehxX46YNbA2TdERsx3Ro4ympump",
+        "symbol": "WHALIBA",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.675082657048392,
+        "current_multiplier": 0.021370604147880973,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T01:55:46.213353+00:00"
+      },
+      {
+        "address": "BR7R4MF5w8ykQxm4VG86Y5jVkZ8TfYqTqYfuzpspump",
+        "symbol": "LIEN",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.138566166052706,
+        "current_multiplier": 0.06282232927174837,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T01:55:48.555618+00:00"
+      },
+      {
+        "address": "6buGmsTuYk7iC2DPhuM5WLpX4rVFxNd1nbqXYLCZpump",
+        "symbol": "Odyssey",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0,
+        "current_multiplier": 0.5821368243243243,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T02:00:40.832062+00:00"
+      },
+      {
+        "address": "2bk1sBqMQKft8Y4YbxBk7TxVHpgZRm7doRQ7UggPpump",
+        "symbol": "Azi",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.118482154703463,
+        "current_multiplier": 0.06671089292822077,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T02:04:19.877453+00:00"
+      },
+      {
+        "address": "3pfS29Dddk7sMG8HFqskeA98TAUXs8Z8LfkBruanpump",
+        "symbol": "PUFFA",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.9648277093376182,
+        "current_multiplier": 0.027013033386895195,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T02:04:22.153444+00:00"
+      },
+      {
+        "address": "6tf2X4GbYdM59hAMNa5kgyja2C9CjwUVqr9YLvJ1pump",
+        "symbol": "Rico Maps",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2409602845287493,
+        "current_multiplier": 0.9561351511558981,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T02:08:11.800811+00:00"
+      },
+      {
+        "address": "BrN7U4tWjL2kKeTU5MroTfM3g947u9JnuH35Ho3epump",
+        "symbol": "FABLECRAFT",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.4614239642768543,
+        "current_multiplier": 0.058695112875217066,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T02:09:24.403617+00:00"
+      },
+      {
+        "address": "pnYrxqat1mz9j7qCcNmouwJ63DR5siHt4jLWHwspump",
+        "symbol": "Fable",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.116968064640246,
+        "current_multiplier": 0.7629857637552906,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T02:22:38.458335+00:00"
+      },
+      {
+        "address": "2G7tsw2cveJ3vSLRywEo1ArtxCUJrV1Vwnouyes5pump",
+        "symbol": "FableTrump",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.230880230880231,
+        "current_multiplier": 1.0995670995670994,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T02:26:15.263180+00:00"
+      },
+      {
+        "address": "AyMDFyXfzdqmHG4S9NpYBVcwjojpwbMrkVyZnPzoTB9P",
+        "symbol": "it",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.5691312384473197,
+        "current_multiplier": 0.15933456561922366,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T02:35:50.545658+00:00"
+      },
+      {
+        "address": "Geha2uBuvCUeAQSuwjkzKdvExUtMAXenJB8qEnDnpump",
+        "symbol": "AXIOS",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0311095748358106,
+        "current_multiplier": 0.6456965088143795,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T02:44:09.885047+00:00"
+      },
+      {
+        "address": "6TwJdiYYZUCqmmeazhJpEhFGCi9J7UvY1Nvtx8xmpump",
+        "symbol": "FableTrump",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.8975241625844035,
+        "current_multiplier": 0.017833973255660003,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T02:44:12.234898+00:00"
+      },
+      {
+        "address": "13D5TrGk4VFn49P5QwfXaz28b22eSWwm79LFtwLspump",
+        "symbol": "lindy",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.079471733086191,
+        "current_multiplier": 0.12750231696014827,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T02:53:40.815790+00:00"
+      },
+      {
+        "address": "6oxBN1fAeLLLU3s57jEUagtXWmhosJbiJzuuA1Txpump",
+        "symbol": "AUREON",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 6.049034497721848,
+        "current_multiplier": 0.04105011933174224,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T03:07:49.529815+00:00"
+      },
+      {
+        "address": "7xdh2RK9bPVwT3skrHBBxjHxmDDE8gTnFR4dwxYnpump",
+        "symbol": "SPACE",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.8417818740399388,
+        "current_multiplier": 0.36789554531490015,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T03:15:53.387605+00:00"
+      },
+      {
+        "address": "2KkTRfGwYxuTHkiLT9ETYykvP8KuCt2DuL8mViu9pump",
+        "symbol": "SS",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.7679474216380181,
+        "current_multiplier": 0.5182002022244692,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T03:23:59.102488+00:00"
+      },
+      {
+        "address": "EGHexBCnfwDTAfnQD8Athwzkg4ryhd5fZELWXcf9pump",
+        "symbol": "MARIA",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.6992579659537324,
+        "current_multiplier": 1.1195984286337843,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T03:28:34.617496+00:00"
+      },
+      {
+        "address": "3eN8Zjs3dEY9k3DArtzgvb7QR9CeexxR75LPRo6tpump",
+        "symbol": "BUL",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.8860125260960336,
+        "current_multiplier": 0.23319415448851774,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T03:28:36.506432+00:00"
+      },
+      {
+        "address": "EXutpCUEKT98dQiHdccMEbJzsXpQEhGud8cHijd7pump",
+        "symbol": "PIXELS",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.4671246319921492,
+        "current_multiplier": 0.014563297350343474,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T03:42:16.779230+00:00"
+      },
+      {
+        "address": "6KDh3wLSZMg37nnU7prtKZr7Rut7WQGSf33Vp1G7pump",
+        "symbol": "ANSEM",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.3376593806921675,
+        "current_multiplier": 0.10539617486338798,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T03:59:24.867436+00:00"
+      },
+      {
+        "address": "6QBku8sX6YrAMtg35YQJM1nTGK7v5VbUoGSUgDPxpump",
+        "symbol": "BLX",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 6.633100955331785,
+        "current_multiplier": 6.444616576297444,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T04:43:02.336345+00:00"
+      },
+      {
+        "address": "AQnQEnGQZJu2JXZwC5USzQ6YUuXCUSk7KbaX5PAepump",
+        "symbol": "XPLOIT",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.4969801553062985,
+        "current_multiplier": 0.41345987920621224,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T04:52:23.389813+00:00"
+      },
+      {
+        "address": "Bp2hJ73rGDHUb92XTQEj5vsDRJqoKNMc3PKfo4QQpump",
+        "symbol": "FIGHTHOUSE",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.6661466458658347,
+        "current_multiplier": 0.515405616224649,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T04:52:25.551787+00:00"
+      },
+      {
+        "address": "AjUV8sctwit6woRQchPgDxn1HKpzVEyHajsFgSqDpump",
+        "symbol": "WOKE",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.203041964449331,
+        "current_multiplier": 0.8946307494960601,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T05:09:40.247236+00:00"
+      },
+      {
+        "address": "ByowtEvW5uFNRuYyWAz8vU89hjXrd8rkrGGVa9spddwZ",
+        "symbol": "liarliar",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1669298443491993,
+        "current_multiplier": 0.5154522896458381,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T05:10:49.930236+00:00"
+      },
+      {
+        "address": "DLFqR2jcojXVeVCTWvCXJTcYKxKgoWPdqiw2Nw43pump",
+        "symbol": "H8MACHINE",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.384335154826958,
+        "current_multiplier": 0.033160291438979965,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T05:10:52.382671+00:00"
+      },
+      {
+        "address": "HrnZ9jae2YFAzj6q8J3HVcLEpvD8gkYBGzpZLoMopump",
+        "symbol": "Blobs",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0129270544783011,
+        "current_multiplier": 0.11560480147737766,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T05:15:23.473944+00:00"
+      },
+      {
+        "address": "CR6dWM1Qgo3TWn1GsuuUDQeTKLymG8QXb4Lo4fgQpump",
+        "symbol": "ARB",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0358832807570977,
+        "current_multiplier": 0.10118296529968454,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T05:38:10.315059+00:00"
+      },
+      {
+        "address": "9QYxvrwTZHKneY1tiqnq6dEAcLCp5SUUi9JkeP4fpump",
+        "symbol": "SWALL",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.4121065375302662,
+        "current_multiplier": 0.18619854721549634,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T05:38:13.237748+00:00"
+      },
+      {
+        "address": "DkeHd9xPtpxFKwwQmxK9bYKdtghjfcuFKqGZKekVeRUN",
+        "symbol": "RUNNER",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.08010225820196,
+        "current_multiplier": 0.5896889646357051,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T05:51:55.126037+00:00"
+      },
+      {
+        "address": "BFiTqTmVXnLmjmJUo5EwiEZoUhwG66XAp1cjeXykpump",
+        "symbol": "MINERA",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.281609195402299,
+        "current_multiplier": 0.30972906403940886,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T06:14:39.652778+00:00"
+      },
+      {
+        "address": "6Ct7aq3E9U8Y3na69sYH8XxwyzV9L8Umk64DCge1pump",
+        "symbol": "Wolf",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.9913619349265764,
+        "current_multiplier": 0.2729628563201843,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T06:37:55.277252+00:00"
+      },
+      {
+        "address": "FMQQStcBr9GfJN7Dpb3Lpiwh54gj6uhx8f8ZNtPppump",
+        "symbol": "TrumpUFC",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.208183776022972,
+        "current_multiplier": 0.020588657573582195,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T06:51:43.271455+00:00"
+      },
+      {
+        "address": "CNrwik4yBEmmMhLqTfEcbLTzTuED7xBKcJbU4EYopump",
+        "symbol": "HOGEY",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.592476489028213,
+        "current_multiplier": 0.3296014330497089,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T07:05:46.875216+00:00"
+      },
+      {
+        "address": "B3SUGXHxn4aEfHzT6nLpzrRKTUmCjA4AsDeHUgCEpump",
+        "symbol": "GRINDFUN",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.305419865084904,
+        "current_multiplier": 1.6401488718306583,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T07:05:49.309556+00:00"
+      },
+      {
+        "address": "FBKbAPporDMvvmV463PF89xhH55Gs6uVc9FPJGcbpump",
+        "symbol": "ElonMusk ",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.557768924302789,
+        "current_multiplier": 0.09159362549800797,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T07:10:27.548000+00:00"
+      },
+      {
+        "address": "13LXG1FKcagCx3yztYAz9bamGqHYTBQx42eZXfS3pump",
+        "symbol": "conviction ",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.6358094377963421,
+        "current_multiplier": 0.46489049446827724,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T07:20:51.697026+00:00"
+      },
+      {
+        "address": "8QZJYXVU2SUi3qesyGrHyTj21JSrs5xpLReTC1CLpump",
+        "symbol": "Worldcraft",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.9072727272727275,
+        "current_multiplier": 0.6651948051948052,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T07:59:26.287570+00:00"
+      },
+      {
+        "address": "9t8vUpEgCYsWMAAXzK258Tg58xVtrzA85Hv1Lts4pump",
+        "symbol": "AnglerFish",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.121891942419144,
+        "current_multiplier": 0.0263600673022995,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T08:13:59.416715+00:00"
+      },
+      {
+        "address": "AuUMRAHWKUTHXLRgP1A4CW8txxJbSr1GVFbYCoRSpump",
+        "symbol": "TOMTOM",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1519805982215037,
+        "current_multiplier": 0.42360549717057394,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T08:29:10.630975+00:00"
+      },
+      {
+        "address": "GEZsukvaY7r91RaeQkvpXe6WBzfcPJJ2bqYAhZSppump",
+        "symbol": "Beg",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2248838914690785,
+        "current_multiplier": 0.08570031777071621,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T09:25:18.053781+00:00"
+      },
+      {
+        "address": "7NTneSxwaZ2GhGWi4twqmb53h4iaLisVtdeoCQ4Apump",
+        "symbol": "Gotham",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.0079462102689485,
+        "current_multiplier": 0.29110635696821513,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T09:50:38.252266+00:00"
+      },
+      {
+        "address": "9p7msBtHCWoWCnQM2hJtPpCMjurTaAMorZ6k26F9pump",
+        "symbol": "Pixelands",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.6472795497185742,
+        "current_multiplier": 0.013714821763602251,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T10:05:28.864664+00:00"
+      },
+      {
+        "address": "CkJZvvWbwmiDepzrk71pq6gMXBfRVfUkhXR61iz3pump",
+        "symbol": "RELIGION",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.5,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T21:07:37.098644+00:00"
+      },
+      {
+        "address": "SPCXwBHVrKpRqMRawL3NNvt1sXP2Yf3edwRbta53N69",
+        "symbol": "SPCX69",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.17,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T21:07:37.170329+00:00"
+      },
+      {
+        "address": "FSA7iqBeeENna2LUmZyqCYce7op2jBc9ztXLKdM6bonk",
+        "symbol": "FIGHTHOUSE",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.6,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-14T21:07:37.211000+00:00"
+      },
+      {
+        "address": "EKtE8jvyseVXUnexZMiKmNv32B4ivy6jaHd7JUbBpump",
+        "symbol": "MENA",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.053343350864012,
+        "current_multiplier": 0.4760831455046331,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-15T05:07:02.178324+00:00"
+      },
+      {
+        "address": "5iDAk3xqPCAupe7F9N38sF2S8iduFLv399LFH4Jzpump",
+        "symbol": "DSCRIBE",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.9908256880733943,
+        "current_multiplier": 1.2766055045871558,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-15T05:07:04.420946+00:00"
+      },
+      {
+        "address": "CmFLTZfo9u7eCrD1Z7rcpPrShDq7XeAhA7EPmBgVpump",
+        "symbol": "NUMB",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.5708381171067738,
+        "current_multiplier": 0.16167623421354765,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-15T05:07:06.767321+00:00"
+      },
+      {
+        "address": "84VsYPTMcnzw3i31H9MjaZrqLDw2D2vRn6rydtWwpump",
+        "symbol": "PW",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1727395411605936,
+        "current_multiplier": 1.1727395411605936,
+        "signal_age": 115.63062405586243,
+        "timestamp": "2026-06-15T05:07:08.607631+00:00"
+      },
+      {
+        "address": "JCYoNNXGvVXev7T9KhGGHfyQxUw7X9A2g8fQswhxpump",
+        "symbol": "WOOD",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.8730523208135148,
+        "current_multiplier": 0.35000820075446937,
+        "signal_age": 55.340890884399414,
+        "timestamp": "2026-06-15T05:07:10.750263+00:00"
+      },
+      {
+        "address": "ERUz5wBotRtBZSwg5guZfogKb6pA9D2m4V3aSdz6pump",
+        "symbol": "fablize",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.3238798856053384,
+        "current_multiplier": 0.49797426120114396,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-15T05:07:12.855563+00:00"
+      },
+      {
+        "address": "4pRVhiHnsKh4ZM8EZbRTGaeWb94p6UDQJtPz6ftrpump",
+        "symbol": "Eliza",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0747490755414686,
+        "current_multiplier": 0.0716851558372953,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-15T05:07:15.054469+00:00"
+      },
+      {
+        "address": "2sUsARJsNq6tM3Z4nas9Todu6auLL47e4utynsdwpump",
+        "symbol": "TRAINROT",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0,
+        "current_multiplier": 0.183544921875,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-15T05:07:17.235593+00:00"
+      },
+      {
+        "address": "5YchXoTZzPEU9juyNwK6cV1GQ15ZZuKuq3TadMSzpump",
+        "symbol": "NietzHouse",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0,
+        "current_multiplier": 0.6541974771639844,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-15T05:07:19.362054+00:00"
+      },
+      {
+        "address": "A4be2v4g4oLwH6e5fwY6wEGiWXcKRkDSJHHQmuHzpump",
+        "symbol": "RIOT",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.7473279179136382,
+        "current_multiplier": 0.027597263787943565,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-15T05:07:21.538607+00:00"
+      },
+      {
+        "address": "2TapgqShGWXTMj2x8uDhf4TuwHkt3jMJAExtKCL1pump",
+        "symbol": "CLASH",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0191866527632951,
+        "current_multiplier": 0.04200208550573514,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-15T05:07:23.623232+00:00"
+      },
+      {
+        "address": "D27puSXKGePqage4UggJQpFvGC42uiGpgVyqQFhnpump",
+        "symbol": "GG",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.416194790486976,
+        "current_multiplier": 0.1377123442808607,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-15T05:07:25.730358+00:00"
+      },
+      {
+        "address": "79hQpzANmk9wn5rZsZsEQTDe1JfYJtcs68BiNqQtpump",
+        "symbol": "COLONY",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.9478079331941545,
+        "current_multiplier": 0.19906054279749477,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-15T05:07:27.851947+00:00"
+      },
+      {
+        "address": "4i35vSVyniKBkAsJxn4RCx7y48tEo7yPKZMi8MhDpump",
+        "symbol": "ESCHATAIL",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.3492103284031085,
+        "current_multiplier": 1.3950864878415643,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-15T05:07:29.951650+00:00"
+      },
+      {
+        "address": "92tqixwA2i6j1mNQPsk9gvv7WqoH35AVPmGj42jwpump",
+        "symbol": "ANSEM",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.9470068694798822,
+        "current_multiplier": 0.15328753680078508,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-15T05:07:32.083623+00:00"
+      },
+      {
+        "address": "HT6qhTEcPoDMR3hzyomaFuFB83Hcoo7DPaU2Qn9bpump",
+        "symbol": "PMPKNG",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.333333333333333,
+        "current_multiplier": 0.07064439140811454,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-15T05:07:34.160375+00:00"
+      },
+      {
+        "address": "8kZnqCgWtvE1Ce5x3frudJJJyFebimLWxZhqLjmRpump",
+        "symbol": "Peace",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1406323737612083,
+        "current_multiplier": 0.04981123171307221,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-15T05:07:36.293440+00:00"
+      },
+      {
+        "address": "FyAYcYyKBQiMdxzX6hBCvgGMYapH1NwFRUKSL1BPpump",
+        "symbol": "HM",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.9813486370157819,
+        "current_multiplier": 0.6633189861310377,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-15T05:08:39.972642+00:00"
+      },
+      {
+        "address": "HBf4EarsNN16wVYRRbxHz8Y8RrZfBJXmsrasaT9Tpump",
+        "symbol": "SPACEBALLS",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.3738270352523458,
+        "current_multiplier": 0.07124017245751965,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T05:07:46.345015+00:00"
+      },
+      {
+        "address": "2hAaUpYyNWeeNpKwh2vnppwjmj1TKqSyAXUdcW8Ppump",
+        "symbol": "ANT",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1038118410381186,
+        "current_multiplier": 0.03545823195458232,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T05:07:48.572722+00:00"
+      },
+      {
+        "address": "4CZ8Rbo5FPi2BCLFZHMbkKjP55vbnUiWNg6dbEi3pump",
+        "symbol": "DARKSOLS",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2127496159754223,
+        "current_multiplier": 0.3491551459293395,
+        "signal_age": 50.26908302307129,
+        "timestamp": "2026-06-16T05:07:50.684680+00:00"
+      },
+      {
+        "address": "fQVQ61rjMimWMhUcKb61Tu1fqcbtcXTiZMbia1ipump",
+        "symbol": "anton",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0331045619701251,
+        "current_multiplier": 0.8328623334679046,
+        "signal_age": 99.27753114700317,
+        "timestamp": "2026-06-16T05:07:52.796901+00:00"
+      },
+      {
+        "address": "E7hFN5SJNLutNSuDnf4raV1yiM7qrrrHjUCevR8qpump",
+        "symbol": "TOMEAI",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.5271751807790994,
+        "current_multiplier": 0.14609283881502216,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T05:07:54.894679+00:00"
+      },
+      {
+        "address": "45sFYrN4ZoquYDXeCk2TkSRvnfnfoewXkRDsWatbpump",
+        "symbol": "precum",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.3376902067889194,
+        "current_multiplier": 0.3755364806866953,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T05:07:57.013239+00:00"
+      },
+      {
+        "address": "HAWEcdhLwho9ELePmwquW7eecntYWsEL8iAojXRHpump",
+        "symbol": "LAND",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0950846091861401,
+        "current_multiplier": 0.5023368251410153,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T05:07:59.103921+00:00"
+      },
+      {
+        "address": "sjVhuY6WQ3q3AWFFA9KkKEUVPYzi4A4XdX52p17pump",
+        "symbol": "$TREE",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 10.724523339907956,
+        "current_multiplier": 0.765154503616042,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T05:08:01.200576+00:00"
+      },
+      {
+        "address": "4447GxcPnFM9r4BX7jDaSgEu4MtuvL9hqJyGUi1Gpump",
+        "symbol": "SIN",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.243480215827338,
+        "current_multiplier": 2.243480215827338,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T05:08:03.378390+00:00"
+      },
+      {
+        "address": "GwYFqqCqFiKwy1YoyC4fUVo7z7xVE2Wr8L7xYhENpump",
+        "symbol": "BOBO",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.3836225137537028,
+        "current_multiplier": 0.0353152771900127,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T05:08:05.564102+00:00"
+      },
+      {
+        "address": "8pi93sWLg5vxf1Ychwtr7uzoHat5KGGD2BTPzGtCpump",
+        "symbol": "CARE",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2852496651999237,
+        "current_multiplier": 0.1757413430265927,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T05:10:13.894809+00:00"
+      },
+      {
+        "address": "FQ8ZkLVqSWT2Paw7HR5v2YsfiPSefz7mryfoyrLePR8C",
+        "symbol": "DJBOOM",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1668843039958212,
+        "current_multiplier": 0.058892661269260904,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T11:09:44.760791+00:00"
+      },
+      {
+        "address": "BaYJ9uTr7h7qfWhHSNffW41ZQnSbmidFwny9ETYfpump",
+        "symbol": "DJBOOM",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.6799396112474052,
+        "current_multiplier": 0.20569918852613703,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T11:09:47.100490+00:00"
+      },
+      {
+        "address": "FFRQbb9KaXomHrBKrtJ7UxrqSTxDGk8WLjacqnLLpump",
+        "symbol": "OILMAXXING",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.5580885576501533,
+        "current_multiplier": 2.2073651907058305,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T11:09:49.363774+00:00"
+      },
+      {
+        "address": "DXpEvktt2Wc7AaKcb3ReLEE3SrTkT2bJPgBqbWjBAGS",
+        "symbol": "CUBEN",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0,
+        "current_multiplier": 0.5091872791519434,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T11:09:51.629435+00:00"
+      },
+      {
+        "address": "6CNiTUpAirttSHubxTiUcXYCb79ujqFsoViUoN9Epump",
+        "symbol": "MerlinTrump",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2031463748290012,
+        "current_multiplier": 0.010355677154582764,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T12:12:58.675342+00:00"
+      },
+      {
+        "address": "GPuuh3UVrW4myxytDkNnCgV1EGgmitiuHEE3AYWpBAGS",
+        "symbol": "1M",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1571254567600489,
+        "current_multiplier": 0.1719041818920016,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T12:16:38.534064+00:00"
+      },
+      {
+        "address": "DoHwV1N689GVN5J1zuSLWwRwe288vee27XSdqsUeiNFW",
+        "symbol": "MERK",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1378977820636451,
+        "current_multiplier": 0.3624879459980713,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T12:20:10.183954+00:00"
+      },
+      {
+        "address": "HnMurnqedgVPuHhcMV9T2kbgPU9N1j4wnXGhqpMSYkVC",
+        "symbol": "SHHPE",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.9874235214140041,
+        "current_multiplier": 0.570700203942896,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T12:26:07.797621+00:00"
+      },
+      {
+        "address": "E7ZvgURQy4JeURja9jecsWp1z5RvnibmWHkBBXjKpump",
+        "symbol": "dudegeorgeson",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.4490895101308028,
+        "current_multiplier": 0.8377789176711977,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T12:32:16.257969+00:00"
+      },
+      {
+        "address": "H4oM947yrUoa3NEAXA83vw2bghNc14ymzb8nWTgapump",
+        "symbol": "Accelerate",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.8964368110740837,
+        "current_multiplier": 0.0781081773904127,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T12:32:18.542272+00:00"
+      },
+      {
+        "address": "8pejFwukVn34rZzYarHD7qDV7pcXWviQzbwmnn1Ypump",
+        "symbol": "GROW",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.0492040520984083,
+        "current_multiplier": 0.8295224312590449,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T12:43:54.618130+00:00"
+      },
+      {
+        "address": "GuxssBKijjLwx8CzRuE3uvEGBdbzFbYhy3yFDWZQpump",
+        "symbol": "CAPOS",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.9865319865319867,
+        "current_multiplier": 0.67003367003367,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T12:43:57.292629+00:00"
+      },
+      {
+        "address": "EosZb7rjFyRGRRu73hUuJufGvhbmbAZuy9K4F35Jpump",
+        "symbol": "Delic",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.3790849673202614,
+        "current_multiplier": 0.04065904139433551,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T12:51:01.846083+00:00"
+      },
+      {
+        "address": "5iTps5Rwsrc6ER7wNh46KRpqUhXZGs2u1T7WkyX7pump",
+        "symbol": "Iris",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.00796812749004,
+        "current_multiplier": 1.2346975733429917,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T12:54:35.541449+00:00"
+      },
+      {
+        "address": "3xqDG39sMvtMYzLuqn6Wp32zbhQhScsYb92aZqaMpump",
+        "symbol": "Miaowtocracy",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0643039049235992,
+        "current_multiplier": 0.04660441426146009,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T13:01:51.609902+00:00"
+      },
+      {
+        "address": "Dig6UdRdW3PjzvR1brBXSWSoAoWALS9na9qWTwUUpump",
+        "symbol": "pickles",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.5120817843866172,
+        "current_multiplier": 0.857806691449814,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T13:23:46.467231+00:00"
+      },
+      {
+        "address": "Jma3ZrrNHJjNc6apqkeWswtjoQdUyP2UubuimQWpump",
+        "symbol": "XMAN",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.4727503168567808,
+        "current_multiplier": 0.6655803005612891,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T13:27:21.139780+00:00"
+      },
+      {
+        "address": "9kR2WN2VQ1sjRurwVhcfLH9LouCA3QyeWjtio8bbpump",
+        "symbol": "MOON",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.35714285714285715,
+        "current_multiplier": 0.35714285714285715,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T13:59:05.426285+00:00"
+      },
+      {
+        "address": "D8tEtNsbygEd2c6KYzYaPGwECX1UY4mXnaJtZRDtpump",
+        "symbol": "LOSTBOY",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.8433054393305437,
+        "current_multiplier": 0.03460251046025104,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T13:59:08.229941+00:00"
+      },
+      {
+        "address": "6mFWuVy3MBjaUJfyesD1DiyfGe2syreBgx2LuAG8pump",
+        "symbol": "ROUTER",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1501014198782962,
+        "current_multiplier": 1.0052738336713996,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T14:04:53.139147+00:00"
+      },
+      {
+        "address": "6fVn7Eiiw1mTKcSYU1kVErEUqfdJ9f11FsyyjtN1pump",
+        "symbol": "parsec",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.471264367816092,
+        "current_multiplier": 0.07001044932079416,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T14:16:39.412268+00:00"
+      },
+      {
+        "address": "D8bmt1ZNv1sZyi9Y6rXcX1Wo5WcpqzEVVxGUv3okpump",
+        "symbol": "Loria",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.199252801992528,
+        "current_multiplier": 0.042316313823163136,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T14:47:04.361871+00:00"
+      },
+      {
+        "address": "55uo2vyy1vwi5B2213WCW2h3bEb7vntscyJQwT2Wpump",
+        "symbol": "BULLANA",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2620126926563917,
+        "current_multiplier": 0.01684496826835902,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T15:04:51.225418+00:00"
+      },
+      {
+        "address": "7oDa7STX3iHL2QViVyNR5FXzCct9TcjrbfaquGSwpump",
+        "symbol": "WANDER",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.046875,
+        "current_multiplier": 0.8159722222222222,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T15:19:06.351422+00:00"
+      },
+      {
+        "address": "7zEx1WSB93S4yghYVPwZwy9LoVoLMgYXRFopykNBpump",
+        "symbol": "LOOP",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.295142071494042,
+        "current_multiplier": 0.31888175985334555,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T16:33:44.347915+00:00"
+      },
+      {
+        "address": "H2cxSwXWvfHSNubCz3nTe8np2Jx9rRETYn6Cqicrpump",
+        "symbol": "bully",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 6.286687631027253,
+        "current_multiplier": 1.490566037735849,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T16:33:46.853723+00:00"
+      },
+      {
+        "address": "Gpwny7K4hQbgbCf5sA2ty9tq3c2tWJ22reJbqHsgpump",
+        "symbol": "Nong Sompoi",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.0592852716380916,
+        "current_multiplier": 1.3212146250774635,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T16:51:01.493207+00:00"
+      },
+      {
+        "address": "9UgQrXsbXVqEjFDFH8ScAiEDmD1The37VgTFCcuNpump",
+        "symbol": "Kohen",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.4468475073313782,
+        "current_multiplier": 0.4017595307917889,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T16:54:43.675154+00:00"
+      },
+      {
+        "address": "6qwhb4YmXrJ9wy1yS5y5JEAFxVH1Jj1ycKbQtk42pump",
+        "symbol": "Coco",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.6614366266241726,
+        "current_multiplier": 0.04204461877911253,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T17:27:26.753738+00:00"
+      },
+      {
+        "address": "BkeZy8ANskuhC79XeBhRv7rNUq7ChRNjbTzif3X8pump",
+        "symbol": "USAGIRL",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.8987951807228914,
+        "current_multiplier": 0.6327022375215146,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T17:27:45.985312+00:00"
+      },
+      {
+        "address": "DKBp1xf4KATtZhvFtBg9ye3LS5meASAQb7VVghi7pump",
+        "symbol": "DOPAMINE",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2704225352112675,
+        "current_multiplier": 0.08136150234741785,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T17:30:06.523363+00:00"
+      },
+      {
+        "address": "ELXd7ocR9BpbvPUH2AzW7wsdSqgQvZsCiBpjabFbpump",
+        "symbol": "IKNOW",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.9290279920652413,
+        "current_multiplier": 0.029468811990301963,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T17:30:10.784753+00:00"
+      },
+      {
+        "address": "EzrXiBWKcr3WSGLdJWeXvfBSkWRHkaymU7gW5fXpump",
+        "symbol": "Kittens",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.5420673076923077,
+        "current_multiplier": 0.11905048076923078,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T18:05:45.533958+00:00"
+      },
+      {
+        "address": "6TwjfJsLjKPM1Aj7jeTM8hq9RxBi977UAiDvjerhpump",
+        "symbol": "Cursor",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.472679509632224,
+        "current_multiplier": 0.4178633975481611,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T18:17:49.359509+00:00"
+      },
+      {
+        "address": "5buZ8UuBX9eBzjUkYqKZaiFkEhXSsnSjmGvnLJYpump",
+        "symbol": "CRYPTO",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0589805177475313,
+        "current_multiplier": 0.04825193488123833,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T18:17:51.860541+00:00"
+      },
+      {
+        "address": "HMKtUtEdmrW7NA7bNDSoYkrQhxN5EGuGLDPVdMWqpump",
+        "symbol": "WC100",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.9495581737849779,
+        "current_multiplier": 1.8332106038291607,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T18:29:58.155161+00:00"
+      },
+      {
+        "address": "E2cgUqcEZjYQS1Xckz394JjyWuibLmRnB9R6xyQHpump",
+        "symbol": "MESSENGER",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.8265895953757227,
+        "current_multiplier": 0.49912038200552905,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T18:40:11.250775+00:00"
+      },
+      {
+        "address": "6PrgZw55ujg89gpyfSiefNxtGErq49dcTX6DJvGHpump",
+        "symbol": "AICAST",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.145069274653627,
+        "current_multiplier": 0.25183374083129584,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T18:54:57.181901+00:00"
+      },
+      {
+        "address": "5uepqtoasCu2buXfKZtFGoPJF5moXXKNDcpinsHKpump",
+        "symbol": "pnutbutter",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.8008432041758684,
+        "current_multiplier": 0.48685003011443484,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T19:23:15.127164+00:00"
+      },
+      {
+        "address": "E7paLJoPNB2pCFS4Pv4eYarrcWfUcGuvhfK4nnBApump",
+        "symbol": "ROYALE",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.5924270931326434,
+        "current_multiplier": 0.743414863593603,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T19:32:27.200554+00:00"
+      },
+      {
+        "address": "kjsfA74i68Cdtzu6jq6qRySc8koV1uqSA8B9sPepump",
+        "symbol": "Harvy",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.069767441860465,
+        "current_multiplier": 0.8,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T19:36:27.142590+00:00"
+      },
+      {
+        "address": "6ArjXjiirDeYcQoJ84QJGLuFUUZWzgS3zwqwUZnFpump",
+        "symbol": "IKNOW",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.4869096509240247,
+        "current_multiplier": 0.03421457905544148,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T19:36:29.599514+00:00"
+      },
+      {
+        "address": "AK1tNGjcjHYF9bueY3FQfC8im2NtCbGanc9MLzT4pump",
+        "symbol": "ALLIN",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.623373434814633,
+        "current_multiplier": 0.05136263196660938,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T20:03:02.227267+00:00"
+      },
+      {
+        "address": "cqTw6XwGHdaVUbGZgDGqjpwRovpjV4w41cVpgbppump",
+        "symbol": "MEGA",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.6768686237768062,
+        "current_multiplier": 0.34624193212575477,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T20:12:24.675728+00:00"
+      },
+      {
+        "address": "GfCLXuW6UUqXJQq7rJybLohTcnmhu5zjtZ34rZKgpump",
+        "symbol": "Chester",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.165297611525338,
+        "current_multiplier": 0.7161632756223936,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T20:30:46.260235+00:00"
+      },
+      {
+        "address": "93JmrX8VGCoP7SdFtCb9h3gwTDBQyqcih6AFEyWDpump",
+        "symbol": "Fruitify",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.118872957652551,
+        "current_multiplier": 0.4931643881293765,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T20:34:57.369472+00:00"
+      },
+      {
+        "address": "4vd1ovrYEUiTKik4mAz7qkp6BF3gPZXN6VfcyKs7pump",
+        "symbol": "RETAIL",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.9467550274223034,
+        "current_multiplier": 0.03169561243144424,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T20:40:18.219591+00:00"
+      },
+      {
+        "address": "Ck3mf4hEVXHeFafEfuGJPv7r4ho5Sydb4PD9J8ex2YWK",
+        "symbol": "GUBBY",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.080539193475306,
+        "current_multiplier": 0.604100589034889,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T20:53:34.634071+00:00"
+      },
+      {
+        "address": "CdLvFZSZowjsRcMum7Br6gZ3VDvnyvBcu7K8L9Pspump",
+        "symbol": "CUP",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1087155963302753,
+        "current_multiplier": 0.5802752293577981,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T20:57:30.375441+00:00"
+      },
+      {
+        "address": "64n2a3nYBp5PN4GDksCpRyU91CtebkhiZD65Qk5EvUoM",
+        "symbol": "ASS",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.5667391529460497,
+        "current_multiplier": 0.4429947188567879,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T21:02:51.820257+00:00"
+      },
+      {
+        "address": "8czN6qyHD74hf9H1ECTxJByNy2oZGDTuP8QSznCSSmUk",
+        "symbol": "WIF",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.5165666579702584,
+        "current_multiplier": 0.0984085572658492,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T21:02:54.423229+00:00"
+      },
+      {
+        "address": "8RYkbThqzSxmb43HxgcaK6m9AoueX2A4mmdUz9Dopump",
+        "symbol": "COQ",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.5393034825870646,
+        "current_multiplier": 0.014129353233830844,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T21:02:56.773311+00:00"
+      },
+      {
+        "address": "33xAEh6P6ymSJ93jTEwjLZmt4gEsBYtfqpwAE8WYpump",
+        "symbol": "KIWI",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.8760593220338984,
+        "current_multiplier": 0.055614406779661014,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T21:07:02.294131+00:00"
+      },
+      {
+        "address": "GqW2Am8uEXV9FBqujmxtEUTd7PjS4Tcjyy2p3D9vpump",
+        "symbol": "morty",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.020988490182803,
+        "current_multiplier": 0.2849695328368314,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T21:17:29.903440+00:00"
+      },
+      {
+        "address": "J5SkiXLrrixAg6AjXpxUbVwpuQ2qxsUwKssoyyMBpump",
+        "symbol": "EMC",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.84604385128694,
+        "current_multiplier": 0.2592469018112488,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T21:17:31.914289+00:00"
+      },
+      {
+        "address": "76fYLJi1AhPLyx9H2ULBRFxgBFCyGQtjTYhLs9Zppump",
+        "symbol": "ASCEND",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.758710921360694,
+        "current_multiplier": 1.0538493320479274,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T21:37:04.195835+00:00"
+      },
+      {
+        "address": "4npRHa1hdCjudxPzcfzGmimq2mSpHFEcpFMUUrRRLQfQ",
+        "symbol": "BONKCHA",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.5830013280212483,
+        "current_multiplier": 0.04398406374501992,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T21:50:39.367700+00:00"
+      },
+      {
+        "address": "7AgebYmUBg8NJxrPxrkz3wyE5GUHyikRgjAHEsx3pump",
+        "symbol": "MARS",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.9211550940947437,
+        "current_multiplier": 0.4440839281851612,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T21:55:49.720091+00:00"
+      },
+      {
+        "address": "H86Mm1QWCW5XrA4TQaQcCLfwG8u1xjQ2RupigorYpump",
+        "symbol": "Elon",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0370370370370372,
+        "current_multiplier": 0.08644846396784382,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T21:55:52.032774+00:00"
+      },
+      {
+        "address": "DQrHfTbnAkrB1hqY2n9Qs7DWvzeFcL9UC6gs4nbwpump",
+        "symbol": "ANSEM",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.0385427666314677,
+        "current_multiplier": 0.38595564941921856,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T22:00:58.248041+00:00"
+      },
+      {
+        "address": "AoASMJu7kt5ofkun2jqi4c9hUQVDydYn8TAYdntuUVt3",
+        "symbol": "AOAS",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 65.82,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T23:36:27.215558+00:00"
+      },
+      {
+        "address": "Az1sNBBe6H97oNVi4zXDosgFHN8hWnCf1QsDDJDjpump",
+        "symbol": "JOE",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 9.24,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T23:36:27.281870+00:00"
+      },
+      {
+        "address": "6TotVaoKJYtAFnJikVofZkg1PxLNTvoq8XvTSKcZpump",
+        "symbol": "petin",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 6.81,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-16T23:36:27.335682+00:00"
+      },
+      {
+        "address": "F871NCYLqnKM3mwaYnMbHrj1MUn6sAytt83Cb7yapump",
+        "symbol": "nfodor",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.2510501606127997,
+        "current_multiplier": 0.9000494193229552,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T04:36:02.068423+00:00"
+      },
+      {
+        "address": "G97qFFyL4rNVaxpmmZghtJtcgKtoyyene3wJiMi4pump",
+        "symbol": "NULL.EXE",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.7151949085123308,
+        "current_multiplier": 0.04579687085653672,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T04:56:02.500569+00:00"
+      },
+      {
+        "address": "pu4obkGGCvfpKwDFcrt22qFpggdkCExkYREDS45pump",
+        "symbol": "GAYLON",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.1396534148827726,
+        "current_multiplier": 2.0112130479102954,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T05:05:29.437174+00:00"
+      },
+      {
+        "address": "8jg4V1378f5vCdhj7z2DMSheWk5E6S4PakmxC1dYpump",
+        "symbol": "Nala",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.9563424202796496,
+        "current_multiplier": 1.4747007343325622,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T05:17:30.219091+00:00"
+      },
+      {
+        "address": "EbpXudrV5P3ThwkqzmUBXkdt7AL47noptiZXLMpdpump",
+        "symbol": "p",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 6.2121866897147795,
+        "current_multiplier": 4.31503889369058,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T05:24:25.050407+00:00"
+      },
+      {
+        "address": "4rHgkXnfYMZa8eEoFbqmzxMZwyQy5VaKWsPpbM6Upump",
+        "symbol": "ARTIFACTS",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.9936412941836543,
+        "current_multiplier": 0.03233588928371049,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T05:24:27.802471+00:00"
+      },
+      {
+        "address": "FbroMwessM4peLrkLcEYU8WJbFPk7FRAdrvnNRaJpump",
+        "symbol": "DIALOG",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2699481865284974,
+        "current_multiplier": 0.7419689119170984,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T05:36:31.539737+00:00"
+      },
+      {
+        "address": "5iPoWhLAzoXRRk849LxkEJErPjWb1hK9MFGZdFPppump",
+        "symbol": "OGTRUMP",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.9933908964929112,
+        "current_multiplier": 1.215222257755037,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T05:36:33.957412+00:00"
+      },
+      {
+        "address": "3QwSbYMieVftAJr4SHJBwQUcXP4KgErpdHYKgR59pump",
+        "symbol": "PIP",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.502135922330097,
+        "current_multiplier": 0.21720388349514563,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T05:38:57.988216+00:00"
+      },
+      {
+        "address": "CcidHkY7BTwNoWNEr3sjA6tfYoNXumrkSajcpaUKpump",
+        "symbol": "ROAD",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.758384146341464,
+        "current_multiplier": 0.03038109756097561,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T05:39:00.508629+00:00"
+      },
+      {
+        "address": "6qpxKfBBrMttxmfFBRnNitazxoGDWQa3NTqNDBbiqgXK",
+        "symbol": "ODDS",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1569674319273893,
+        "current_multiplier": 0.076388147357181,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T05:48:29.523881+00:00"
+      },
+      {
+        "address": "FJVis6jGFFiizZ1NSyNdKYHSTnqUWHmM5P3nyco5pump",
+        "symbol": "Meepcat",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 24.008185538881307,
+        "current_multiplier": 15.899045020463847,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T06:07:20.399171+00:00"
+      },
+      {
+        "address": "4pYRbSvdpwPV3D3mK2pPyT5xSjTiisZfMZyuNdSKpump",
+        "symbol": "USWC",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.087139845397049,
+        "current_multiplier": 0.012396345748418833,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T06:07:22.840114+00:00"
+      },
+      {
+        "address": "CqzvAMqqYy3h5rz1AtoCHkp1XTePEBhNzVVCXMiTpump",
+        "symbol": "Shadow",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.213169642857143,
+        "current_multiplier": 1.8498883928571428,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T06:20:16.277751+00:00"
+      },
+      {
+        "address": "6S9EksWRbNy13nB9mw4TRXhbMiMWrvzQUdNBzfHApump",
+        "symbol": "SPOONY",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.6335135135135137,
+        "current_multiplier": 0.03135135135135136,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T06:20:18.821517+00:00"
+      },
+      {
+        "address": "Fk5TidwF6UH5PRV5sBkyg5KLV9XBt9SfVc977JvQpump",
+        "symbol": "OG",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2033390410958904,
+        "current_multiplier": 0.17110445205479452,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T07:03:18.795145+00:00"
+      },
+      {
+        "address": "tungXo9vjMeyxRcXMRvejsiAWpCBBD64VNVi8KYX4Ar",
+        "symbol": "TUNGTARDIO",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2953882078225336,
+        "current_multiplier": 0.09929947460595447,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T07:12:39.407952+00:00"
+      },
+      {
+        "address": "5WCwSjeQ84xXLfHYdbvUYbX2spzSFrTaG3omnnvKpump",
+        "symbol": "ELBAF",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.8018648018648014,
+        "current_multiplier": 0.4054390054390054,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T07:12:41.907703+00:00"
+      },
+      {
+        "address": "3q6AA6e5QvxSXZ3sA4kSmZk9phq8M3vxrB9zf5d1pump",
+        "symbol": "STAX",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.6380566801619434,
+        "current_multiplier": 0.057031039136302294,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T07:20:29.092271+00:00"
+      },
+      {
+        "address": "BfChhbvFEvjHUXZGC58coM3WnV9JtG1nBCHQ2oY3pump",
+        "symbol": "Yore Coproces",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.047196261682243,
+        "current_multiplier": 0.7705607476635514,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T07:43:33.786939+00:00"
+      },
+      {
+        "address": "yMJPZbnhoHib3ib8n8PfiVcp9yauk1vnaGKLx7epump",
+        "symbol": "FARM",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.9197299324831207,
+        "current_multiplier": 2.360840210052513,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T07:47:04.414468+00:00"
+      },
+      {
+        "address": "F6Y5szPJfJhgWw7hf8mV7GCStkr5Ujwy2XnBrMo6pump",
+        "symbol": "GOZORK",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.9948655995167623,
+        "current_multiplier": 0.06662639685895501,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T08:04:23.333168+00:00"
+      },
+      {
+        "address": "G2W1bXAwRFm7yc2Whf1h5yrhc7bSxk35L94S6Aefpump",
+        "symbol": "GOO",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2296693476318141,
+        "current_multiplier": 0.42725647899910635,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T08:06:43.003176+00:00"
+      },
+      {
+        "address": "EvZ6egJEkVhqN2KJkKLuGqrYZ6rDCkb4Ry7Pvk89pump",
+        "symbol": "OGSON",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 6.06140350877193,
+        "current_multiplier": 0.03498245614035087,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T08:11:25.698573+00:00"
+      },
+      {
+        "address": "5om52eVYYAXXTei9JkgnvK7CbX1B3QFQ1mEg3zaFpump",
+        "symbol": "farticle",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.3674162070428513,
+        "current_multiplier": 0.13809927874416633,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T08:13:47.122113+00:00"
+      },
+      {
+        "address": "ESqwVPKeKjpqFsjWcxwmpdjBAoQdVsDKqaUP1YWtpump",
+        "symbol": "GOYCHAD",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.6500124285359183,
+        "current_multiplier": 1.013174248073577,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T08:25:11.927426+00:00"
+      },
+      {
+        "address": "4wNsn7WNtct8kAhRyPX1qTovYPjFBiJFfoktDWt4pump",
+        "symbol": "ALBERT",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1749785038693035,
+        "current_multiplier": 0.3893379191745485,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T08:35:30.996954+00:00"
+      },
+      {
+        "address": "CPh3doM9cPhgzKSEhuRGjUf1kYdby19C9JHSANwrpump",
+        "symbol": "SOLG",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.9864712514092446,
+        "current_multiplier": 1.8511837655016912,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T09:19:11.115467+00:00"
+      },
+      {
+        "address": "A81BtTKJ9bnnugRdkFyn8czmk7Li5wrd7MNMN8k5pump",
+        "symbol": "Trump",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.8830775880700237,
+        "current_multiplier": 0.07451912686405877,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T09:26:02.669157+00:00"
+      },
+      {
+        "address": "EjhmGVm9AB15evBjuNTNrVgeynaPrUuKNYHCavuopump",
+        "symbol": "UAIT",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2613727055067836,
+        "current_multiplier": 1.0889864325618517,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T09:37:45.839974+00:00"
+      },
+      {
+        "address": "61SeAN5JJ3xX6sTqyF6pWhPKsEtb1EMhguQifE12pump",
+        "symbol": "TREBLE",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.4924948240165632,
+        "current_multiplier": 1.2127329192546583,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T09:37:48.302034+00:00"
+      },
+      {
+        "address": "57mZ5FDEhr6zrcp4RyDL4qmb5EfQHB6Vjaahsb74pump",
+        "symbol": "UNREALCRAFT",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.4039685511044553,
+        "current_multiplier": 1.3328341445151628,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T09:56:40.538049+00:00"
+      },
+      {
+        "address": "J4vs69qy5sBe2sea3ycdbmEPEJ25WZCt3qLWPRwJpump",
+        "symbol": "NET",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 5.92,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T11:09:17.742986+00:00"
+      },
+      {
+        "address": "9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump",
+        "symbol": "ANSEM",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 7.67,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T11:09:17.806791+00:00"
+      },
+      {
+        "address": "851JK2La49dwLjKzWsoDpTddsue4d7ct9SedgYLtpump",
+        "symbol": "SNDK69",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 5.87,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T11:09:17.862003+00:00"
+      },
+      {
+        "address": "4eepfPXbJi16vTVCzaULPhzeT4pWnE97o1gZeW8bpump",
+        "symbol": "BOTC",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2254901960784315,
+        "current_multiplier": 0.017487212276214834,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T16:10:42.074005+00:00"
+      },
+      {
+        "address": "mHbBQMh3ExWvFz8NUp7iPHe3Gs3SvUxdcrHRtbSpump",
+        "symbol": "CCM",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.7146739130434783,
+        "current_multiplier": 0.10674818840579711,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T16:11:54.288812+00:00"
+      },
+      {
+        "address": "6SWwxybPwMr2ukKUFUz9Gi8aGJ4b4qnupWJLMpcQpump",
+        "symbol": "ARAT",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.314240672622175,
+        "current_multiplier": 0.5409879138202838,
+        "signal_age": 214.43159294128418,
+        "timestamp": "2026-06-17T16:21:10.658301+00:00"
+      },
+      {
+        "address": "9JmruaWd8Dscxs1GBVbnckGWWsoVdJwg9DDFGFW9pump",
+        "symbol": "GC",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.3549499827526734,
+        "current_multiplier": 0.923076923076923,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T16:27:01.205403+00:00"
+      },
+      {
+        "address": "FKxbCh3egLotiMNFAEMLw8MDQjAVmmEA1LLq7mFvpump",
+        "symbol": "Monaka",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.0528689814329173,
+        "current_multiplier": 0.5345641455994965,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T16:35:06.639071+00:00"
+      },
+      {
+        "address": "B8UWtPpCuCH69XtrpJf3XPUE2PBRKm9TbRt5mPayBAGS",
+        "symbol": "ROCKET",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.8690209046887918,
+        "current_multiplier": 0.3787646155663163,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T17:46:06.517431+00:00"
+      },
+      {
+        "address": "AD8G4h4wrPXN5BaXn8kskYqv57MZQTmDHDSzuTKFpump",
+        "symbol": "LAY6",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0,
+        "current_multiplier": 0.029352270281902303,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T17:50:55.372928+00:00"
+      },
+      {
+        "address": "3oX9emrqYRGzFEDPP3jA6tYnUBML4QSr3DfgD2r5pump",
+        "symbol": "\u6ed1\u308b\u732b",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 7.106854838709678,
+        "current_multiplier": 4.550403225806451,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T18:24:44.613629+00:00"
+      },
+      {
+        "address": "FXcKm6Sifct3mFtccvaETBtjkGCrpsRQLFtmbV2hpump",
+        "symbol": "Ponyo",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0,
+        "current_multiplier": 0.1880861410211879,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T18:24:47.166899+00:00"
+      },
+      {
+        "address": "81rETHpG5t745g15UMTMpQNf5pDC5VVsKLtTJHDjpump",
+        "symbol": "MEEPINU",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.428951367781155,
+        "current_multiplier": 0.03318768996960486,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T18:24:49.566519+00:00"
+      },
+      {
+        "address": "CVAgHvjDe6MWnBmPiMubVT2Edfd2ojiQymeYzRazpump",
+        "symbol": "Habo",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.320223970137315,
+        "current_multiplier": 0.022410345287295026,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T18:48:37.062042+00:00"
+      },
+      {
+        "address": "2vBvPiCpsbFwz41VH8j866rjhMqKmNcnZanziw1Kpump",
+        "symbol": "SPOTM",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1106194690265487,
+        "current_multiplier": 0.016570796460176992,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T19:07:29.574213+00:00"
+      },
+      {
+        "address": "6QYddd82wVasozCk9gV61yyEvJyM9JwvGEK9nfcRpump",
+        "symbol": "Jane",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.9437956204379563,
+        "current_multiplier": 1.7543795620437956,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T19:23:06.707615+00:00"
+      },
+      {
+        "address": "HAtpoqBKEL2Kv1iQMKbAyoRafUp6MjaRQ189PzCLpump",
+        "symbol": "Tha\u00efs",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.8072091753140362,
+        "current_multiplier": 0.7222829055161114,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T19:48:02.452908+00:00"
+      },
+      {
+        "address": "4c6ZF1uxisXoupJ9e9MoupcC3wVXfth1LA1U6RxnhbAG",
+        "symbol": "evolve",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.156315422191207,
+        "current_multiplier": 0.4089323098394975,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T19:58:07.042648+00:00"
+      },
+      {
+        "address": "Eube6U1yXqgoSppGaaLCUg5eakXvMWR6th3CXs4epump",
+        "symbol": "MCG",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.5952023988006,
+        "current_multiplier": 0.04445277361319341,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T19:58:09.794680+00:00"
+      },
+      {
+        "address": "6snUbikeEfoenoF3eTp91ENg3ZnkDp4wUhy1fiwBpump",
+        "symbol": "CASHEW",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.8605466012613875,
+        "current_multiplier": 0.5470217238962859,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T20:09:41.743492+00:00"
+      },
+      {
+        "address": "EVVtxoxCaWBVhDdFgo18P1trkG6h8AEvDxnau6YLpump",
+        "symbol": "GOAT",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.41629440544565,
+        "current_multiplier": 0.21506062539885132,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T20:09:50.541889+00:00"
+      },
+      {
+        "address": "F6yUmmjU3y716dQsy2xV6YzSaPLrfTfgBzoF7Cnmpump",
+        "symbol": "SOLT",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 19.27,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T22:37:18.643801+00:00"
+      },
+      {
+        "address": "7u1KL6tSGHCmvjq1Cgo4XUnHhEnUPPVRXUd4b2p9pump",
+        "symbol": "EYEZ",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 6.57,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T22:37:18.745036+00:00"
+      },
+      {
+        "address": "CTaiSoE7eHALemoj68dGpk8s4MfQn27Apmb7pdTUpump",
+        "symbol": "ABYSS",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.77,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T22:37:18.830726+00:00"
+      },
+      {
+        "address": "HREUDWzLtmJrMjav48RY9iPRJr9r8KoTBLjWNjdPpump",
+        "symbol": "RIV",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 6.45,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T22:37:18.909563+00:00"
+      },
+      {
+        "address": "8DzvCVewDXkbPCLgtkrYjSifUgXrQaabezMwPe6hpump",
+        "symbol": "BPURK",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.94,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T22:37:18.986871+00:00"
+      },
+      {
+        "address": "6kdHr9g2Pg2ZXCY4Dm1v7NpNqpTBTEiaRgATLR3Ppump",
+        "symbol": "COD",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 10.4,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T22:37:19.064627+00:00"
+      },
+      {
+        "address": "BoEo2Jh85ZduGxMx36ZzxiSnNjwLJSqqnPWE1WKEpump",
+        "symbol": "CS",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.27,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T22:37:19.146455+00:00"
+      },
+      {
+        "address": "AvxFBjWydMYWD7C8pHzSkGxNYAFWr7aNBbAKm84bpump",
+        "symbol": "Merlin",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 2138.59,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T22:37:19.219741+00:00"
+      },
+      {
+        "address": "GaBj5PfD2CGsohZN3q991rpHMiHsby1EZdZNUqNEpump",
+        "symbol": "TRUMPBOSS",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 5.02,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T22:37:19.308680+00:00"
+      },
+      {
+        "address": "6nEaYv96UEKjww4HNFTQ3pUhCXD2i6moKEZUFhoopump",
+        "symbol": "PACT",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.44,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T22:37:19.401564+00:00"
+      },
+      {
+        "address": "AeFSni25bQLtEJrXtRLSvFnWz4N7F4XtUdWWv3mppump",
+        "symbol": "TRUMPGOAT",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 7.46,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T22:37:19.481610+00:00"
+      },
+      {
+        "address": "3DXc8pWHTcbrJnykR4tiKJKsJbWtn6ELGJwwZekppump",
+        "symbol": "DISAPPOINT",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 9.21,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T22:37:19.554901+00:00"
+      },
+      {
+        "address": "CSoNZkgfFNgXcLj6q4uYx2JauKejVE4xEwTRCn9Zpump",
+        "symbol": "SPCX6900",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 7.07,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-17T23:40:21.783759+00:00"
+      },
+      {
+        "address": "BSj8BynArVXrY1dJECgPAwTcAKTuQRYAXH8S61H3pump",
+        "symbol": "PLOTZ",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.016651798988998,
+        "current_multiplier": 0.3936961046684508,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T04:40:30.820987+00:00"
+      },
+      {
+        "address": "9qwxahBxcgKyn5X7kZvkN7qxKZg6pkVD8Lo4URtopump",
+        "symbol": "CS",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.188708036622583,
+        "current_multiplier": 3.3443540183112916,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T04:40:33.025446+00:00"
+      },
+      {
+        "address": "HgMw8wKRwLBLr86RvU3pryVhwey4dbnk7HU5Lj8Bpump",
+        "symbol": "FLAUNCH",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.5288802470547864,
+        "current_multiplier": 0.23435891570399175,
+        "signal_age": 30.07556390762329,
+        "timestamp": "2026-06-18T04:46:22.186625+00:00"
+      },
+      {
+        "address": "aiyUs86cC94rkqd3di7pcaYskhbbKAUfKyintkxpump",
+        "symbol": "CVRT",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.6313220940550135,
+        "current_multiplier": 0.8992901508429458,
+        "signal_age": 199.56239104270935,
+        "timestamp": "2026-06-18T04:48:39.245352+00:00"
+      },
+      {
+        "address": "4m9pDBsHKi3cAfeyZreCNqTYN2KxQHhe5CwkVxczpump",
+        "symbol": "VIMS",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.140278729723555,
+        "current_multiplier": 0.971898560657985,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T04:50:58.578427+00:00"
+      },
+      {
+        "address": "ArdrGGKEvR7bcMfeqJSXSnJAW4VNumcYqQfUDh7vpump",
+        "symbol": "Elon-kun",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.044333910034602,
+        "current_multiplier": 0.02926038062283737,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T04:54:38.767401+00:00"
+      },
+      {
+        "address": "a3PUpweSGZv4848NyzbSQg73NbJBbUq8RnH8Erspump",
+        "symbol": "CLAW",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.8224169741697418,
+        "current_multiplier": 0.043980627306273064,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T05:07:15.454473+00:00"
+      },
+      {
+        "address": "H3pwvZeEmUWLCWBxGNG1tb5bw1fQ3Lz19jS5CP3wpump",
+        "symbol": "Firefighter",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.0469885165221467,
+        "current_multiplier": 0.03060698382938833,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T05:24:05.015896+00:00"
+      },
+      {
+        "address": "2FLy8ya4Knk8n66LuqNtVuWZGDYdwUQDKXpw6zDMpump",
+        "symbol": "ASDF",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1321016166281754,
+        "current_multiplier": 0.0745958429561201,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T05:25:15.039997+00:00"
+      },
+      {
+        "address": "Rzd3U1qcQpDMG7C3CkdhFgocNPxijC2P3rjR5f3pump",
+        "symbol": "FIFA",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0924628747548333,
+        "current_multiplier": 0.5119080975063043,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T05:45:37.511616+00:00"
+      },
+      {
+        "address": "5EhA27vzmz95U375QhKfmQday63csjjyHjXYYp18pump",
+        "symbol": "wif",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.0831228473019516,
+        "current_multiplier": 0.06261768082663605,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T05:45:42.397115+00:00"
+      },
+      {
+        "address": "6NEydsVoQp45wpWHSSf4WPBJHwUwcC3HFXhHgFpBpump",
+        "symbol": "AGC",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1310251188051597,
+        "current_multiplier": 0.9127630685675493,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T06:08:11.366418+00:00"
+      },
+      {
+        "address": "HhASMaTu6eruhyUrs6JyFb8CoMNcQipvWPkq87u4pump",
+        "symbol": "ERRORA",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 13.568025410269984,
+        "current_multiplier": 3.500970531145227,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T06:15:01.962524+00:00"
+      },
+      {
+        "address": "GYCDh8koGqQdQfCsbkxG9oCuvShWUyDQFMCdyAwZpump",
+        "symbol": "Mussi",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.143718856543404,
+        "current_multiplier": 0.06152635719905586,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T06:18:31.987477+00:00"
+      },
+      {
+        "address": "9sunKMkrMquqw5om5sAzXj2BJcUMvvbGuGNXCbBmDC9S",
+        "symbol": "Yeat",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.8894892576868648,
+        "current_multiplier": 0.2490672841888589,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T06:25:17.319422+00:00"
+      },
+      {
+        "address": "97k2pRofhBrEhHo7k8mnYVGRLb3CW3ToDF3X9Zxkpump",
+        "symbol": "Perori",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.7371663244353184,
+        "current_multiplier": 0.08074948665297742,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T06:29:47.564868+00:00"
+      },
+      {
+        "address": "BKFem5ZNhCNVbrHXzrkub1czF7QSYuWn2QMA4KAppump",
+        "symbol": "TRUMPBULL",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.883002207505519,
+        "current_multiplier": 1.282560706401766,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T06:48:11.484862+00:00"
+      },
+      {
+        "address": "3XhQa9baZzP9CVHBSnryqUSwJsiS2RiYozNT1kEYpump",
+        "symbol": "Cheetah",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.9660164890408205,
+        "current_multiplier": 0.7192841343253569,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T06:58:21.137029+00:00"
+      },
+      {
+        "address": "9NKbxNRp9ZqVnh9ck2tiygi7RRRz2morZ9DmbXcKpump",
+        "symbol": "Frost",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1588210347752332,
+        "current_multiplier": 0.062468193384223915,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T07:09:34.596288+00:00"
+      },
+      {
+        "address": "6j8UcCGMrVXxXFPGZTtu11H89QsW1psfLQpzfXVFpump",
+        "symbol": "SINZ",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.317208672086721,
+        "current_multiplier": 0.8394308943089431,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T07:20:56.638176+00:00"
+      },
+      {
+        "address": "3svG4ReLDbYdznvybRHnmoDzmfHfBLXHHc6ey8ynpump",
+        "symbol": "Chameleon",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.1200733272227315,
+        "current_multiplier": 0.198166819431714,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T07:24:19.791667+00:00"
+      },
+      {
+        "address": "CRtJcETFwVeh3ufQyXd42YGdwwJ1xQoJBBeTmYCrpump",
+        "symbol": "youngin",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.7511563367252547,
+        "current_multiplier": 1.282377428307123,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T07:39:34.008271+00:00"
+      },
+      {
+        "address": "BX13dVRiCCpZHAbR7AFCkaDt28WzrkWa3huDwxnxpump",
+        "symbol": "10000x",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.9845738526802931,
+        "current_multiplier": 0.2622059390667181,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T08:28:45.992687+00:00"
+      },
+      {
+        "address": "6fZaoZym4Kyy6wQRFo4zQS3vg5e5nJGFCgzrHou2pump",
+        "symbol": "ROGER",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.3614365766683645,
+        "current_multiplier": 1.0946255731023942,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T08:32:05.753913+00:00"
+      },
+      {
+        "address": "C5tcc5ppr9FMBoRCgAPn4w4qQ2vQzRYepdzsfPfxpump",
+        "symbol": "cooking",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.5256869772998802,
+        "current_multiplier": 0.1854241338112306,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T08:32:08.200209+00:00"
+      },
+      {
+        "address": "44d8uZdzcke7w1uBs2Xst3tEpzv6NpR9ehNcgMBqpump",
+        "symbol": "WHILOM",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.9129187583239422,
+        "current_multiplier": 0.2014137895707407,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T09:03:24.979824+00:00"
+      },
+      {
+        "address": "Hepc74vYP9HUBJ25yFJe63XEMxx9TpWAzChzxUe4pump",
+        "symbol": "CookingTrump",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2598799917235672,
+        "current_multiplier": 1.0521415270018624,
+        "signal_age": 0.0,
+        "timestamp": "2026-06-18T09:37:58.078800+00:00"
+      },
+      {
+        "address": "6LBqdG61d2xvKdhz6tAyx5hw7Jt1tjRZfXjctgvMpump",
+        "symbol": "kibble",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 5.05,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-18T11:12:10.994495+00:00",
+        "timestamp": "2026-06-18T11:12:10.994523+00:00"
+      },
+      {
+        "address": "HFqdTNwZu2F5VWJvVME7i93mATyd4AxQ6J52vNdPUgL",
+        "symbol": "SPCX420",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 8.23,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-18T11:12:11.046653+00:00",
+        "timestamp": "2026-06-18T11:12:11.046681+00:00"
+      },
+      {
+        "address": "9ZY7aKNXaNqxvKNPKCnFcEb5j68aEoaEw9pN5RmJEg7f",
+        "symbol": "AYE SOLANA",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.91,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-18T11:12:11.099080+00:00",
+        "timestamp": "2026-06-18T11:12:11.099112+00:00"
+      },
+      {
+        "address": "Ro5CFgctzRhoyXGpbaiJrtZBzYnonKgR8RjdExmZomp",
+        "symbol": "$LATAMCG",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 30.94,
+        "current_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-18T11:12:11.206374+00:00",
+        "timestamp": "2026-06-18T11:12:11.206402+00:00"
+      }
+    ],
     "golden_symbols": {},
     "total_pumps": 43,
     "total_dumps": 35,
@@ -22498,6 +26330,750 @@
         "mcap": 1948.63
       },
       "launch_time": 1781827689.475262,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "HvS6nXe3VaA78yQcAAWCE59BfjRhPVyZnopMc8eUpump",
+      "symbol": "CircleBack",
+      "features": {
+        "buy_count": 4,
+        "sell_count": 3,
+        "buy_sell_ratio": 1.33,
+        "volume": 3169866.99,
+        "holders": 7,
+        "unique_wallets": 7,
+        "initial_liq": 0,
+        "initial_mcap": 1958.34,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "2HT3mjQnbdR9",
+        "ath_price": 1.96e-06,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828123.917477,
+        "liquidity": 0.0,
+        "mcap": 1958.34
+      },
+      "launch_time": 1781828123.917477,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "FnNqrCfUW8WHhqKABxQnajmBAVMh8amh4xXScvE6pump",
+      "symbol": "BRAL",
+      "features": {
+        "buy_count": 20,
+        "sell_count": 15,
+        "buy_sell_ratio": 1.33,
+        "volume": 7458788.52,
+        "holders": 35,
+        "unique_wallets": 35,
+        "initial_liq": 0,
+        "initial_mcap": 1839.14,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "7Pn9SEQfa9vm",
+        "ath_price": 0.0,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828137.490716,
+        "liquidity": 0.0,
+        "mcap": 1839.14
+      },
+      "launch_time": 1781828137.490716,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "7izjrhfJZvSPm6mYVokGzyeXbCQaKYfptbhiNZMBpump",
+      "symbol": "CORVUS",
+      "features": {
+        "buy_count": 6,
+        "sell_count": 4,
+        "buy_sell_ratio": 1.5,
+        "volume": 10840149.86,
+        "holders": 9,
+        "unique_wallets": 10,
+        "initial_liq": 0,
+        "initial_mcap": 2013.29,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "8A3qmrwhEmkQ",
+        "ath_price": 2.01e-06,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828196.779941,
+        "liquidity": 0.0,
+        "mcap": 2013.29
+      },
+      "launch_time": 1781828196.779941,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "DMMPyJgxbPZPNyKDbzGnvT2RmRFNgP9Bznco2BM9pump",
+      "symbol": "$weedbro",
+      "features": {
+        "buy_count": 9,
+        "sell_count": 6,
+        "buy_sell_ratio": 1.5,
+        "volume": 2141716.6,
+        "holders": 15,
+        "unique_wallets": 15,
+        "initial_liq": 0,
+        "initial_mcap": 2367.63,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "Hzc6DqRmupyV",
+        "ath_price": 0.0,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828198.363443,
+        "liquidity": 0.0,
+        "mcap": 2367.63
+      },
+      "launch_time": 1781828198.363443,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "Ac1Yv42EXqngBvXxgWCbHZd6xUtebkdifEXGskUApump",
+      "symbol": "hope",
+      "features": {
+        "buy_count": 2,
+        "sell_count": 4,
+        "buy_sell_ratio": 0.5,
+        "volume": 34199203.15,
+        "holders": 5,
+        "unique_wallets": 6,
+        "initial_liq": 0,
+        "initial_mcap": 1946.23,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "4FA3u5ET5vWq",
+        "ath_price": 1.95e-06,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828198.841294,
+        "liquidity": 0.0,
+        "mcap": 1946.23
+      },
+      "launch_time": 1781828198.841294,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "pbydxZ2sc1r6881RNRT6g4RokFbGi5LSP4bSpmVpump",
+      "symbol": "HYPE",
+      "features": {
+        "buy_count": 10,
+        "sell_count": 8,
+        "buy_sell_ratio": 1.25,
+        "volume": 96449438.14,
+        "holders": 18,
+        "unique_wallets": 18,
+        "initial_liq": 0,
+        "initial_mcap": 2540.43,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "9SoYS6fdFhUV",
+        "ath_price": 0.0,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828206.575716,
+        "liquidity": 0.0,
+        "mcap": 2540.43
+      },
+      "launch_time": 1781828206.575716,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "D4BruECexLqSpsTYeTkzbzsboLDGX5wKKi7cUBwepump",
+      "symbol": "Kort",
+      "features": {
+        "buy_count": 26,
+        "sell_count": 28,
+        "buy_sell_ratio": 0.93,
+        "volume": 10000000.0,
+        "holders": 53,
+        "unique_wallets": 54,
+        "initial_liq": 0,
+        "initial_mcap": 1955.77,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "8yUtM9BriueR",
+        "ath_price": 1.95e-06,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828213.277411,
+        "liquidity": 0.0,
+        "mcap": 1955.77
+      },
+      "launch_time": 1781828213.277411,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "Bqdmw2HUrwWbpjeijPGdAPrVwbm6tZDKCF8L42GLpump",
+      "symbol": "DUMP",
+      "features": {
+        "buy_count": 5,
+        "sell_count": 2,
+        "buy_sell_ratio": 2.5,
+        "volume": 17376518.17,
+        "holders": 7,
+        "unique_wallets": 7,
+        "initial_liq": 0,
+        "initial_mcap": 2607.79,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "APMiiLQfeeHn",
+        "ath_price": 0.0,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828226.237289,
+        "liquidity": 0.0,
+        "mcap": 2607.79
+      },
+      "launch_time": 1781828226.237289,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "687JmG5NMp9VARZhDquq8Wam5dDfiYuLKB1J5ug4pump",
+      "symbol": "Turtle",
+      "features": {
+        "buy_count": 11,
+        "sell_count": 5,
+        "buy_sell_ratio": 2.2,
+        "volume": 25855421.63,
+        "holders": 7,
+        "unique_wallets": 16,
+        "initial_liq": 0,
+        "initial_mcap": 2192.17,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "GbhfKfVJrTGi",
+        "ath_price": 2.18e-06,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828227.272359,
+        "liquidity": 0.0,
+        "mcap": 2192.17
+      },
+      "launch_time": 1781828227.272359,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "AHfyGTg9qQGzhLdiPxAYEHUJB1DBZcMuUMQJCfoZpump",
+      "symbol": "Specsy",
+      "features": {
+        "buy_count": 68,
+        "sell_count": 53,
+        "buy_sell_ratio": 1.28,
+        "volume": 96449438.14,
+        "holders": 121,
+        "unique_wallets": 121,
+        "initial_liq": 0,
+        "initial_mcap": 3790.01,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "GZtVpW7omKAa",
+        "ath_price": 0.0,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828234.872372,
+        "liquidity": 0.0,
+        "mcap": 3790.01
+      },
+      "launch_time": 1781828234.872372,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "2aKTUD6u1MW3vbAQdHvNnw9wjjZoacQVMbYTG28cpump",
+      "symbol": "BARRON",
+      "features": {
+        "buy_count": 2497,
+        "sell_count": 2764,
+        "buy_sell_ratio": 0.9,
+        "volume": 106333333.33,
+        "holders": 721,
+        "unique_wallets": 5261,
+        "initial_liq": 24739.73,
+        "initial_mcap": 118080,
+        "liq_pct": 20.95,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "BF1a2Q9UHWnR",
+        "ath_price": 2.878e-05,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828238.255344,
+        "liquidity": 24739.73,
+        "mcap": 118080.0
+      },
+      "launch_time": 1781828238.255344,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "5DwEJgn25C2inLv2REdwxMzswUmqmZFfPUKhtyUYpump",
+      "symbol": "VINE",
+      "features": {
+        "buy_count": 2,
+        "sell_count": 1,
+        "buy_sell_ratio": 2.0,
+        "volume": 31252427.22,
+        "holders": 3,
+        "unique_wallets": 3,
+        "initial_liq": 0,
+        "initial_mcap": 2065.34,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "sAhs4ASzJNXb",
+        "ath_price": 2.07e-06,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828239.71353,
+        "liquidity": 0.0,
+        "mcap": 2065.34
+      },
+      "launch_time": 1781828239.71353,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "HfCmwascEWYporRTzS3BzwjM8WgsiQUS7MT7FzCfpump",
+      "symbol": "BIGLY",
+      "features": {
+        "buy_count": 12,
+        "sell_count": 7,
+        "buy_sell_ratio": 1.71,
+        "volume": 8867768.63,
+        "holders": 19,
+        "unique_wallets": 19,
+        "initial_liq": 0,
+        "initial_mcap": 2675.73,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "RsZWqMVqNRoT",
+        "ath_price": 0.0,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828248.561172,
+        "liquidity": 0.0,
+        "mcap": 2675.73
+      },
+      "launch_time": 1781828248.561172,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "6NFNrrzk4gXTuRuEewNncRFMEsVm4mWpop8YsaZqpump",
+      "symbol": "SOYPRANO",
+      "features": {
+        "buy_count": 9,
+        "sell_count": 7,
+        "buy_sell_ratio": 1.29,
+        "volume": 29208967.11,
+        "holders": 11,
+        "unique_wallets": 16,
+        "initial_liq": 0,
+        "initial_mcap": 1970.18,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 100,
+        "deployer": "9QwXKQ9Lv5Nc",
+        "ath_price": 1.97e-06,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828256.381241,
+        "liquidity": 0.0,
+        "mcap": 1970.18
+      },
+      "launch_time": 1781828256.381241,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "2yBuZaa9xYBMMMLk1AWXMBsL6EYxkDT6xrTCBE17pump",
+      "symbol": "NEX",
+      "features": {
+        "buy_count": 35,
+        "sell_count": 36,
+        "buy_sell_ratio": 0.97,
+        "volume": 27534883.66,
+        "holders": 36,
+        "unique_wallets": 71,
+        "initial_liq": 0,
+        "initial_mcap": 1949.58,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "BUgBWLp6uqdq",
+        "ath_price": 1.95e-06,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828272.073169,
+        "liquidity": 0.0,
+        "mcap": 1949.58
+      },
+      "launch_time": 1781828272.073169,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "EfVFVHGo3KbdgWz1c75JqHE9swLaKNj9KhqHap2upump",
+      "symbol": "BARRON",
+      "features": {
+        "buy_count": 2,
+        "sell_count": 2,
+        "buy_sell_ratio": 1.0,
+        "volume": 97545454.55,
+        "holders": 4,
+        "unique_wallets": 4,
+        "initial_liq": 0,
+        "initial_mcap": 1947.34,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "8sZCezS3SpzL",
+        "ath_price": 1.95e-06,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828303.78961,
+        "liquidity": 0.0,
+        "mcap": 1947.34
+      },
+      "launch_time": 1781828303.78961,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "5dN5BvKPiMhSRJJbVcgSoLGVwkX27p2kVFcAWxrBpump",
+      "symbol": "11",
+      "features": {
+        "buy_count": 6,
+        "sell_count": 4,
+        "buy_sell_ratio": 1.5,
+        "volume": 3564784.09,
+        "holders": 10,
+        "unique_wallets": 10,
+        "initial_liq": 0,
+        "initial_mcap": 1955.36,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "4pxamyMtb4Bw",
+        "ath_price": 0.0,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828839.390305,
+        "liquidity": 0.0,
+        "mcap": 1955.36
+      },
+      "launch_time": 1781828839.390305,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "8N5LriCWjoBfzZRpvqdtuCr661ubvTLjcMBtn4kNpump",
+      "symbol": "idk",
+      "features": {
+        "buy_count": 2,
+        "sell_count": 2,
+        "buy_sell_ratio": 1.0,
+        "volume": 24845151.92,
+        "holders": 4,
+        "unique_wallets": 4,
+        "initial_liq": 0,
+        "initial_mcap": 1950.14,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "J9HjysiJuZn4",
+        "ath_price": 0.0,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828852.867443,
+        "liquidity": 0.0,
+        "mcap": 1950.14
+      },
+      "launch_time": 1781828852.867443,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "AxwMWbU1PyX2Fsk6agnUvrHdCFdAow9fAkTR1oVybonk",
+      "symbol": "ECHAN",
+      "features": {
+        "buy_count": 38,
+        "sell_count": 15,
+        "buy_sell_ratio": 2.53,
+        "volume": 49871708.69,
+        "holders": 52,
+        "unique_wallets": 53,
+        "initial_liq": 0,
+        "initial_mcap": 1950.71,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "RBdjjJALnBDx",
+        "ath_price": 1.95e-06,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828857.917836,
+        "liquidity": 0.0,
+        "mcap": 1950.71
+      },
+      "launch_time": 1781828857.917836,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "8j3oqSvMtLfA9y5tSfGhmHoKu2Pksmb7dXJueet1bDNw",
+      "symbol": "Qwant",
+      "features": {
+        "buy_count": 18,
+        "sell_count": 18,
+        "buy_sell_ratio": 1.0,
+        "volume": 124858181.76,
+        "holders": 30,
+        "unique_wallets": 36,
+        "initial_liq": 0,
+        "initial_mcap": 1964.66,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "6cvoihid7PZn",
+        "ath_price": 1.96e-06,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828876.980444,
+        "liquidity": 0.0,
+        "mcap": 1964.66
+      },
+      "launch_time": 1781828876.980444,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "FwTHEKPjCoxP5f9N8eg96Wo5dkDxFb58qC2BCFSepump",
+      "symbol": "Nova",
+      "features": {
+        "buy_count": 6,
+        "sell_count": 1,
+        "buy_sell_ratio": 6.0,
+        "volume": 8867768.63,
+        "holders": 7,
+        "unique_wallets": 7,
+        "initial_liq": 0,
+        "initial_mcap": 1996.85,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "CW3HCL8zp85R",
+        "ath_price": 0.0,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828901.123,
+        "liquidity": 0.0,
+        "mcap": 1996.85
+      },
+      "launch_time": 1781828901.123,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "F1zshLf7oSvURFrHEzziAXKck4y5W7XGq7eBzTtUpump",
+      "symbol": "ZELT",
+      "features": {
+        "buy_count": 9,
+        "sell_count": 9,
+        "buy_sell_ratio": 1.0,
+        "volume": 122091903.67,
+        "holders": 18,
+        "unique_wallets": 18,
+        "initial_liq": 0,
+        "initial_mcap": 1950.42,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "9SvNVttcoA9R",
+        "ath_price": 1.95e-06,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828913.593939,
+        "liquidity": 0.0,
+        "mcap": 1950.42
+      },
+      "launch_time": 1781828913.593939,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "AetDVMjvsxurjpv2tMyZtCwqYEGJUUFJr2GURiHCpump",
+      "symbol": "BASED",
+      "features": {
+        "buy_count": 90,
+        "sell_count": 51,
+        "buy_sell_ratio": 1.76,
+        "volume": 27534883.66,
+        "holders": 95,
+        "unique_wallets": 141,
+        "initial_liq": 0,
+        "initial_mcap": 3991.96,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 100,
+        "deployer": "HhddkXb3iqXv",
+        "ath_price": 4.69e-06,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828944.957253,
+        "liquidity": 0.0,
+        "mcap": 3991.96
+      },
+      "launch_time": 1781828944.957253,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "46KLY3WrfchZBnT6W7KAZFPGqBcazyvm9NBAxc6Apump",
+      "symbol": "LINE",
+      "features": {
+        "buy_count": 6,
+        "sell_count": 5,
+        "buy_sell_ratio": 1.2,
+        "volume": 300000000.0,
+        "holders": 6,
+        "unique_wallets": 11,
+        "initial_liq": 0,
+        "initial_mcap": 2383.88,
+        "liq_pct": 0,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 0,
+        "lp_locked": 0,
+        "deployer": "6HhkCQpXkpX4",
+        "ath_price": 2.38e-06,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "launch_time": 1781828949.856363,
+        "liquidity": 0.0,
+        "mcap": 2383.88
+      },
+      "launch_time": 1781828949.856363,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,

@@ -188,7 +188,8 @@ class MemeBot:
 
         if config.enable_github_sync:
             self._tasks.append(asyncio.create_task(self.github_sync_loop(), name="github_sync"))
-        self._tasks.append(asyncio.create_task(self.backtest_loop(), name="backtest"))
+            self._tasks.append(asyncio.create_task(self.backtest_loop(), name="backtest"))
+        self._tasks.append(asyncio.create_task(self.continuous_learn_loop(), name="continuous_learn"))
         self._tasks.append(asyncio.create_task(self.daily_summary_loop(), name="daily_summary"))
         self._tasks.append(asyncio.create_task(self.auto_learn_loop(), name="auto_learn"))
 
@@ -1825,6 +1826,173 @@ class MemeBot:
             except Exception as e:
                 logger.error(f"auto_learn_loop error: {e}")
             await asyncio.sleep(3600)
+
+    async def _enrich_pump_patterns(self):
+        """Fetch DexScreener data for pump tokens and enrich patterns with real data."""
+        try:
+            data = load_data()
+            sr = data.get("model", {}).get("signal_results", [])
+            pumps = [r for r in sr if r.get("verdict") in ("PUMP", "STRONG_PUMP")]
+            
+            if not pumps:
+                return
+            
+            # Build address list
+            address_list = []
+            seen = set()
+            for r in pumps:
+                addr = r.get("address", "")
+                if addr and addr not in seen:
+                    seen.add(addr)
+                    address_list.append(addr)
+            
+            if not address_list:
+                return
+            
+            # Fetch in batches
+            dex_results = []
+            batch_size = 20
+            for i in range(0, len(address_list), batch_size):
+                chunk = address_list[i:i+batch_size]
+                try:
+                    result = await self.dex.fetch_token_data_batch(chunk)
+                    if result:
+                        dex_results.extend(result)
+                    await asyncio.sleep(0.5)  # Rate limit
+                except Exception as e:
+                    logger.debug(f"Failed to fetch batch: {e}")
+            
+            if not dex_results:
+                return
+            
+            # Index by address
+            dex_by_addr = {}
+            for d in dex_results:
+                addr = d.get("baseToken", {}).get("address", "")
+                if addr not in dex_by_addr:
+                    dex_by_addr[addr] = d
+            
+            # Build enriched patterns
+            new_patterns = []
+            seen_symbols = set()
+            
+            for r in pumps:
+                addr = r.get("address", "")
+                sym = r.get("symbol", "?")
+                if sym in seen_symbols:
+                    continue
+                seen_symbols.add(sym)
+                
+                dex = dex_by_addr.get(addr, {})
+                if not dex:
+                    continue
+                
+                # Extract all data
+                txns_h1 = dex.get("txns", {}).get("h1", {}) or {}
+                buys = int(txns_h1.get("buys", 0) or 0)
+                sells = int(txns_h1.get("sells", 0) or 0)
+                bsr = buys / max(sells, 1)
+                
+                liq_raw = dex.get("liquidity", {})
+                liq_usd = float(liq_raw.get("usd", 0) or 0) if isinstance(liq_raw, dict) else float(liq_raw or 0)
+                
+                mcap = float(dex.get("fdv", 0) or 0)
+                price = float(dex.get("priceUsd", 0) or 0)
+                
+                pair_created = dex.get("pairCreatedAt", 0)
+                launch_hour = 0
+                if pair_created:
+                    launch_hour = datetime.fromtimestamp(pair_created / 1000, tz=timezone.utc).hour
+                
+                liq_pct = round((liq_usd / max(mcap, 1)) * 100, 2)
+                
+                pair_address = dex.get("pairAddress", "")
+                dexscreener_url = f"https://dexscreener.com/solana/{pair_address}" if pair_address else ""
+                
+                features = {
+                    "buy_sell_ratio": round(bsr, 2),
+                    "holders": 0,
+                    "unique_wallets": buys,
+                    "snipers_30s": 0,
+                    "insiders_30s": 0,
+                    "lp_locked": 0,
+                    "liq_pct": liq_pct,
+                    "launch_hour": launch_hour,
+                    "initial_liq": liq_usd,
+                    "liquidity": liq_usd,
+                    "mcap": mcap,
+                    "volume": float(dex.get("volume", {}).get("h1", 0) or 0),
+                    "buy_count": buys,
+                    "sell_count": sells,
+                    "price": price,
+                    "outcome": "pump",
+                    "ath_multiplier": r.get("multiplier", 0),
+                    "symbol": sym,
+                    "address": addr,
+                    "source": "signal_results",
+                    "learned_at": datetime.now(timezone.utc).isoformat(),
+                    "dexscreener_url": dexscreener_url,
+                    "pair_created_at": pair_created,
+                }
+                new_patterns.append(features)
+            
+            if new_patterns:
+                # Merge with existing
+                existing = data.get("pump_patterns", [])
+                existing_symbols = set(p.get("symbol", "?") for p in existing)
+                
+                for p in new_patterns:
+                    if p["symbol"] not in existing_symbols:
+                        existing.append(p)
+                        existing_symbols.add(p["symbol"])
+                
+                data["pump_patterns"] = existing
+                save_data(data)
+                logger.info(f"🧠 Enriched {len(new_patterns)} pump patterns with DexScreener data")
+                
+        except Exception as e:
+            logger.debug(f"_enrich_pump_patterns error: {e}")
+
+    async def continuous_learn_loop(self):
+        """Continuous background learning: enrich patterns, backtest recent data, update criteria every 6 hours."""
+        await asyncio.sleep(600)  # Wait 10 min after start
+        while True:
+            try:
+                logger.info("🔄 Continuous learn cycle started...")
+                
+                # 1. Enrich pump patterns from recent signal_results with DexScreener data
+                await self._enrich_pump_patterns()
+                
+                # 2. Recompute signal criteria from updated patterns
+                criteria = compute_signal_criteria()
+                logger.info(f"🎯 Criteria updated: bsr≥{criteria['min_bsr']} holders≥{criteria['min_holders']} "
+                            f"wallets≥{criteria['min_wallets']} liq≥${int(criteria['min_liq'])} "
+                            f"liq%≥{criteria['min_liq_pct']} lp≥{criteria['min_lp_locked']}%")
+                
+                # 3. Run quick backtest on recent signals (last 3 days)
+                engine = BacktestEngine(
+                    self.session, self.dex, self.helius,
+                    lambda t: None  # Silent backtest
+                )
+                result = await engine.run(days=3, max_tokens=50)
+                if result:
+                    logger.info(f"📊 Backtest: {result.get('total_signals', 0)} signals, "
+                                f"win_rate={result.get('win_rate', 0):.1f}%, "
+                                f"avg_pnl={result.get('avg_pnl', 0):.1f}%")
+                
+                # 4. Sync enriched data to GitHub
+                await sync_to_github("Continuous learn: enriched patterns, updated criteria")
+                
+                data = load_data()
+                pump_count = len(data.get("pump_patterns", []))
+                dump_count = len(data.get("dump_patterns", []))
+                logger.info(f"🧠 Patterns: {pump_count} pump + {dump_count} dump")
+                
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"continuous_learn_loop error: {e}")
+            await asyncio.sleep(21600)  # Every 6 hours
 
     async def paper_trading_loop(self):
         """Monitor paper trading positions and timeout old ones."""
