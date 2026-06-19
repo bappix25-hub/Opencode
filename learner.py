@@ -348,13 +348,13 @@ def enhanced_auto_learn():
         else:
             new_threshold = current_threshold
     
-    # Adjust pattern_threshold based on dump rate
+    # Adjust pattern_threshold based on dump rate (clamped 0.55-0.65)
     if metrics["dump_rate"] > 0.35:
-        new_pattern_threshold = max(0.60, current_pattern_threshold + 0.05)
+        new_pattern_threshold = max(0.55, min(0.65, current_pattern_threshold + 0.03))
     elif metrics["dump_rate"] < 0.20:
-        new_pattern_threshold = min(0.50, current_pattern_threshold - 0.03)
+        new_pattern_threshold = max(0.55, current_pattern_threshold - 0.03)
     else:
-        new_pattern_threshold = current_pattern_threshold
+        new_pattern_threshold = max(0.55, min(0.65, current_pattern_threshold))
     
     # Adjust volatility setting based on average ATH
     if metrics["avg_ath"] > 3.5:
@@ -474,11 +474,8 @@ def _pattern_similarity(features: dict, pattern: dict) -> float:
         f_val = features.get(feat_key, 0)
         p_val = pat.get(pat_key, 0)
         if p_val == 0 and f_val == 0:
-            score += 1.0
-            checks += 1
             return
         if p_val == 0:
-            checks += 1
             return
         ratio = min(f_val, p_val) / max(f_val, p_val) if max(f_val, p_val) > 0 else 0
         score += ratio
@@ -502,7 +499,7 @@ def _pattern_similarity(features: dict, pattern: dict) -> float:
         score += 0.5
         checks += 1
 
-    return score / checks if checks > 0 else 0.0
+    return score / checks if checks >= 3 else 0.0
 
 
 def record_launch(address: str, symbol: str, features: dict) -> None:
@@ -1098,6 +1095,11 @@ def compute_signal_criteria(min_patterns: int = 5) -> dict:
 
     criteria["updated_at"] = datetime.now(timezone.utc).isoformat()
     criteria["sample_size"] = len(pump_patterns) + len(dump_patterns)
+
+    # Clamp unrealistic values
+    criteria["min_liq_pct"] = min(criteria.get("min_liq_pct", 10), 15)
+    criteria["min_lp_locked"] = min(criteria.get("min_lp_locked", 50), 100)
+    criteria["min_liq"] = max(criteria.get("min_liq", 1000), 500)
 
     data["model"]["signal_criteria"] = criteria
     data["model"]["signal_criteria_stats"] = {
