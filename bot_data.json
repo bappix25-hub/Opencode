@@ -12845,8 +12845,8 @@
       "pattern_threshold": 0.6,
       "max_age_seconds": 3600,
       "heuristic_threshold": 0.55,
-      "updated_at": "2026-06-19T02:19:30.426479+00:00",
-      "sample_size": 200
+      "updated_at": "2026-06-19T03:19:30.548886+00:00",
+      "sample_size": 202
     },
     "signal_criteria_stats": {
       "pump_medians": {
@@ -12867,7 +12867,7 @@
         "lp_locked": 100,
         "lp_providers_count": 0
       },
-      "pump_count": 100,
+      "pump_count": 102,
       "dump_count": 100
     },
     "divergence_insights": {
