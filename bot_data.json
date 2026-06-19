@@ -25127,6 +25127,19 @@
       "outcome_mcap": 0,
       "outcome_time": null,
       "signal_sent": false
+    },
+    {
+      "address": "Be6dfYaEumAU6zFcmUVzao1DViBtJm9sv6ihtLofpump",
+      "symbol": "CHOPSTICK",
+      "features": {
+        "launch_time": 1781842413.930327,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781842413.930327,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
     }
   ],
   "missed_pumps": [
