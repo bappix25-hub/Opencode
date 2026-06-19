@@ -57,21 +57,27 @@ class DexScreenerClient:
             return [p for p in data if p.get("chainId") == "solana"]
         return []
     
+    async def fetch_pair_data(self, token_address: str) -> Optional[dict]:
+        url = f"{self.base_url}/tokens/v1/solana/{token_address}"
+        data = await self._request_with_retry("GET", url)
+        if data and isinstance(data, list) and len(data) > 0:
+            return data[0]
+        return None
+    
     async def fetch_token_data_batch(self, token_addresses: list[str]) -> list:
-        """Fetch data for multiple tokens by address in parallel."""
         if not token_addresses:
             return []
         
-        # Split into chunks of 20 to avoid rate limits
         chunks = [token_addresses[i:i+20] for i in range(0, len(token_addresses), 20)]
         results = []
         
         for chunk in chunks:
-            url = f"{self.base_url}/tokens/v1/solana/{",".join(chunk)}"
+            joined = ",".join(chunk)
+            url = f"{self.base_url}/tokens/v1/solana/{joined}"
             data = await self._request_with_retry("GET", url)
             if data:
                 results.extend(data)
-            await asyncio.sleep(0.5)  # Rate limit
+            await asyncio.sleep(0.5)
         
         return results
 

@@ -311,7 +311,7 @@ def enhanced_auto_learn():
     results = data.get("model", {}).get("signal_results", [])
     
     if len(results) < 10:
-        return None
+        return {"status": "insufficient_data", "count": len(results)}
     
     # Get last 50 signals for analysis
     recent_signals = results[-50:] if len(results) >= 50 else results
