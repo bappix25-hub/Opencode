@@ -23132,6 +23132,26 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-19T13:19:07.933180+00:00",
         "timestamp": "2026-06-19T13:19:07.933205+00:00"
+      },
+      {
+        "address": "FhhDi7qyJqn2Gjt6k3574NrVi4awHqH2gKt1WJe9pump",
+        "symbol": "WAR",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.3502876869965477,
+        "current_multiplier": 0.049367088607594936,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-19T18:18:35.188035+00:00",
+        "timestamp": "2026-06-19T18:18:35.188062+00:00"
+      },
+      {
+        "address": "5Dv3voRfE5PDEbTKzzy4V42gyxj65wTmEPqvWeLUpump",
+        "symbol": "WCA",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.9940305107229715,
+        "current_multiplier": 0.3449038248949812,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-19T18:18:38.760594+00:00",
+        "timestamp": "2026-06-19T18:18:38.760637+00:00"
       }
     ],
     "golden_symbols": {},
@@ -23140,29 +23160,29 @@
     "total_skipped": 0,
     "last_auto_learn": "2026-06-17T20:28:15.156131+00:00",
     "auto_learn_insights": {
-      "win_rate": 91.3,
+      "win_rate": 84.0,
       "avg_win_bsr": 0,
       "avg_loss_bsr": 0,
       "avg_win_holders": 0,
       "avg_loss_holders": 0,
       "quality_score": 0.35,
-      "dump_rate": 8.7,
-      "avg_ath": 5.43,
-      "updated_at": "2026-06-19T17:41:20.911542+00:00"
+      "dump_rate": 16.0,
+      "avg_ath": 5.09,
+      "updated_at": "2026-06-19T18:18:38.896497+00:00"
     },
     "signal_criteria": {
       "min_bsr": 0.99,
       "min_holders": 35.0,
       "min_wallets": 14.4,
-      "min_liq": 2544.28,
+      "min_liq": 2586.55,
       "min_liq_pct": 15,
       "min_lp_locked": 100,
       "min_lp_providers": 0,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
       "heuristic_threshold": 0.55,
-      "updated_at": "2026-06-19T17:27:40.809368+00:00",
-      "sample_size": 612,
+      "updated_at": "2026-06-19T18:18:38.837998+00:00",
+      "sample_size": 613,
       "volatility_setting": "high",
       "last_quality_score": 0.35
     },
@@ -23171,8 +23191,8 @@
         "buy_sell_ratio": 1.24,
         "holders": 47,
         "unique_wallets": 18,
-        "initial_liq": 5088.56,
-        "liq_pct": 119.72,
+        "initial_liq": 5173.11,
+        "liq_pct": 117.74,
         "lp_locked": 0,
         "lp_providers_count": 0
       },
@@ -23185,7 +23205,7 @@
         "lp_locked": 100,
         "lp_providers_count": 0
       },
-      "pump_count": 112,
+      "pump_count": 113,
       "dump_count": 500
     },
     "divergence_insights": {
@@ -36884,12 +36904,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781871515.945647,
         "liquidity": 0.0,
-        "mcap": 1910.1
+        "mcap": 1910.1,
+        "outcome": "dump",
+        "outcome_mcap": 1910.1,
+        "symbol": "AGGY"
       },
       "launch_time": 1781871515.945647,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1910.1,
+      "outcome_time": "2026-06-19T18:18:47.592789+00:00",
       "signal_sent": false
     },
     {
@@ -36915,12 +36938,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781871517.796708,
         "liquidity": 0.0,
-        "mcap": 1908.48
+        "mcap": 1908.48,
+        "outcome": "dump",
+        "outcome_mcap": 1908.48,
+        "symbol": "Xspañol"
       },
       "launch_time": 1781871517.796708,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1908.48,
+      "outcome_time": "2026-06-19T18:18:49.881794+00:00",
       "signal_sent": false
     },
     {
@@ -36946,12 +36972,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781871530.370535,
         "liquidity": 0.0,
-        "mcap": 1977.69
+        "mcap": 1977.69,
+        "outcome": "dump",
+        "outcome_mcap": 1973.67,
+        "symbol": "$AFTER"
       },
       "launch_time": 1781871530.370535,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1973.67,
+      "outcome_time": "2026-06-19T18:20:21.244587+00:00",
       "signal_sent": false
     },
     {
@@ -36977,12 +37006,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781871530.706793,
         "liquidity": 0.0,
-        "mcap": 1909.88
+        "mcap": 1909.88,
+        "outcome": "dump",
+        "outcome_mcap": 1909.88,
+        "symbol": "QWANT"
       },
       "launch_time": 1781871530.706793,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1909.88,
+      "outcome_time": "2026-06-19T18:20:22.442101+00:00",
       "signal_sent": false
     },
     {
@@ -37008,12 +37040,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781871544.380607,
         "liquidity": 0.0,
-        "mcap": 1909.6
+        "mcap": 1909.6,
+        "outcome": "dump",
+        "outcome_mcap": 1909.6,
+        "symbol": "POV"
       },
       "launch_time": 1781871544.380607,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1909.6,
+      "outcome_time": "2026-06-19T18:20:25.982821+00:00",
       "signal_sent": false
     },
     {
@@ -37039,12 +37074,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781871562.165602,
         "liquidity": 0.0,
-        "mcap": 1908.2
+        "mcap": 1908.2,
+        "outcome": "dump",
+        "outcome_mcap": 1908.2,
+        "symbol": "MESSAGE"
       },
       "launch_time": 1781871562.165602,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1908.2,
+      "outcome_time": "2026-06-19T18:20:30.105726+00:00",
       "signal_sent": false
     },
     {
@@ -37070,12 +37108,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781871580.538472,
         "liquidity": 0.0,
-        "mcap": 1691.34
+        "mcap": 1691.34,
+        "outcome": "dump",
+        "outcome_mcap": 3238.85,
+        "symbol": "ONLYFANS"
       },
       "launch_time": 1781871580.538472,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 3238.85,
+      "outcome_time": "2026-06-19T18:20:32.159614+00:00",
       "signal_sent": false
     },
     {
@@ -37101,12 +37142,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781871592.533289,
         "liquidity": 0.0,
-        "mcap": 1910.74
+        "mcap": 1910.74,
+        "outcome": "dump",
+        "outcome_mcap": 1910.74,
+        "symbol": "COS"
       },
       "launch_time": 1781871592.533289,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1910.74,
+      "outcome_time": "2026-06-19T18:20:36.881972+00:00",
       "signal_sent": false
     },
     {
@@ -37132,12 +37176,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781871612.493426,
         "liquidity": 0.0,
-        "mcap": 1908.48
+        "mcap": 1908.48,
+        "outcome": "dump",
+        "outcome_mcap": 1908.48,
+        "symbol": "black"
       },
       "launch_time": 1781871612.493426,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1908.48,
+      "outcome_time": "2026-06-19T18:20:45.332153+00:00",
       "signal_sent": false
     },
     {
@@ -37163,12 +37210,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781871632.672458,
         "liquidity": 0.0,
-        "mcap": 2052.12
+        "mcap": 2052.12,
+        "outcome": "dump",
+        "outcome_mcap": 1922.74,
+        "symbol": "WavyCup"
       },
       "launch_time": 1781871632.672458,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1922.74,
+      "outcome_time": "2026-06-19T18:22:11.150262+00:00",
       "signal_sent": false
     },
     {
@@ -37194,12 +37244,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781871644.880745,
         "liquidity": 0.0,
-        "mcap": 1921.07
+        "mcap": 1921.07,
+        "outcome": "dump",
+        "outcome_mcap": 1949.58,
+        "symbol": "REVEREND"
       },
       "launch_time": 1781871644.880745,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1949.58,
+      "outcome_time": "2026-06-19T18:22:14.224457+00:00",
       "signal_sent": false
     },
     {
@@ -37225,12 +37278,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781871657.430205,
         "liquidity": 0.0,
-        "mcap": 1947.51
+        "mcap": 1947.51,
+        "outcome": "dump",
+        "outcome_mcap": 1942.87,
+        "symbol": "LAMINA"
       },
       "launch_time": 1781871657.430205,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1942.87,
+      "outcome_time": "2026-06-19T18:22:17.183147+00:00",
       "signal_sent": false
     },
     {
@@ -37256,12 +37312,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781871667.092704,
         "liquidity": 0.0,
-        "mcap": 1909.83
+        "mcap": 1909.83,
+        "outcome": "dump",
+        "outcome_mcap": 1906.52,
+        "symbol": "WavyCup"
       },
       "launch_time": 1781871667.092704,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1906.52,
+      "outcome_time": "2026-06-19T18:22:18.274878+00:00",
       "signal_sent": false
     },
     {
@@ -37287,12 +37346,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781871668.364421,
         "liquidity": 0.0,
-        "mcap": 1919.53
+        "mcap": 1919.53,
+        "outcome": "dump",
+        "outcome_mcap": 1909.4,
+        "symbol": "100x"
       },
       "launch_time": 1781871668.364421,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1909.4,
+      "outcome_time": "2026-06-19T18:22:20.244208+00:00",
       "signal_sent": false
     },
     {
@@ -37318,12 +37380,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781871673.00607,
         "liquidity": 0.0,
-        "mcap": 1907.92
+        "mcap": 1907.92,
+        "outcome": "dump",
+        "outcome_mcap": 1907.92,
+        "symbol": "H2O2"
       },
       "launch_time": 1781871673.00607,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1907.92,
+      "outcome_time": "2026-06-19T18:22:21.900695+00:00",
       "signal_sent": false
     },
     {
@@ -37349,12 +37414,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781871683.406606,
         "liquidity": 0.0,
-        "mcap": 1911.22
+        "mcap": 1911.22,
+        "outcome": "dump",
+        "outcome_mcap": 1908.76,
+        "symbol": "WavyCup"
       },
       "launch_time": 1781871683.406606,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1908.76,
+      "outcome_time": "2026-06-19T18:22:22.933720+00:00",
       "signal_sent": false
     },
     {
@@ -37380,12 +37448,15 @@
         "deployer_has_lp": false,
         "launch_time": 1781871688.2673,
         "liquidity": 0.0,
-        "mcap": 1910.16
+        "mcap": 1910.16,
+        "outcome": "dump",
+        "outcome_mcap": 1910.16,
+        "symbol": "Farmlon"
       },
       "launch_time": 1781871688.2673,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1910.16,
+      "outcome_time": "2026-06-19T18:22:23.508357+00:00",
       "signal_sent": false
     },
     {
