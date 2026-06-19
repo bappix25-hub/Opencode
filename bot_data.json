@@ -2558,6 +2558,33 @@
       "learned_at": "2026-06-19T18:34:26.808536+00:00",
       "dexscreener_url": "https://dexscreener.com/solana/APbtQKWfz61MEPp77SDxZPaqPk7W1Hxx8tC7KF85LW1y",
       "pair_created_at": 1781355986000
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 100000000.0,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 42340.34,
+      "initial_mcap": 351970,
+      "liq_pct": 12.03,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 18,
+      "lp_locked": 0,
+      "deployer": "G89RgYfu19iA",
+      "ath_price": 0.0003519,
+      "lp_providers_count": 0,
+      "deployer_has_lp": false,
+      "launch_time": 1781893355.48103,
+      "liquidity": 42340.34,
+      "mcap": 351970.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 20.884272997032642,
+      "symbol": "BWICK",
+      "address": "8eJrnMwC3cjGNNMWYBxfpf91AwzTVzgKUL7kQwwEpump",
+      "learned_at": "2026-06-19T18:42:35.107130+00:00"
     }
   ],
   "dump_patterns": [
@@ -23342,23 +23369,33 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-19T18:35:47.190122+00:00",
         "timestamp": "2026-06-19T18:35:47.190158+00:00"
+      },
+      {
+        "address": "BohiYrLdvMgsqtzHz9azWPT3xa8fK8FmRtF3Tt5Fpump",
+        "symbol": "PLEDRA",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.946242859235389,
+        "current_multiplier": 0.32356818514720964,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-19T18:41:42.256169+00:00",
+        "timestamp": "2026-06-19T18:41:42.256207+00:00"
       }
     ],
     "golden_symbols": {},
-    "total_pumps": 5,
+    "total_pumps": 6,
     "total_dumps": 0,
     "total_skipped": 0,
     "last_auto_learn": "2026-06-17T20:28:15.156131+00:00",
     "auto_learn_insights": {
-      "win_rate": 84.0,
+      "win_rate": 83.3,
       "avg_win_bsr": 0,
       "avg_loss_bsr": 0,
       "avg_win_holders": 0,
       "avg_loss_holders": 0,
       "quality_score": 0.35,
-      "dump_rate": 16.0,
-      "avg_ath": 5.09,
-      "updated_at": "2026-06-19T18:32:49.790817+00:00"
+      "dump_rate": 16.7,
+      "avg_ath": 4.99,
+      "updated_at": "2026-06-19T18:42:35.177275+00:00"
     },
     "signal_criteria": {
       "min_bsr": 0.99,
@@ -23371,8 +23408,10 @@
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
       "heuristic_threshold": 0.55,
-      "updated_at": "2026-06-19T18:34:26.900696+00:00",
-      "sample_size": 619
+      "updated_at": "2026-06-19T18:41:42.343622+00:00",
+      "sample_size": 619,
+      "volatility_setting": "high",
+      "last_quality_score": 0.35
     },
     "signal_criteria_stats": {
       "pump_medians": {
@@ -38195,6 +38234,33 @@
       "symbol": "WASABICRAFT",
       "address": "2pL9J9mTD9RAGS9jnNeB2kKR62ar8pnQAV2sMgyrpump",
       "learned_at": "2026-06-19T17:41:20.830889+00:00"
+    },
+    {
+      "buy_count": 0,
+      "sell_count": 0,
+      "buy_sell_ratio": 0.0,
+      "volume": 100000000.0,
+      "holders": 0,
+      "unique_wallets": 0,
+      "initial_liq": 42340.34,
+      "initial_mcap": 351970,
+      "liq_pct": 12.03,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "launch_hour": 18,
+      "lp_locked": 0,
+      "deployer": "G89RgYfu19iA",
+      "ath_price": 0.0003519,
+      "lp_providers_count": 0,
+      "deployer_has_lp": false,
+      "launch_time": 1781893355.48103,
+      "liquidity": 42340.34,
+      "mcap": 351970.0,
+      "outcome": "missed_pump",
+      "ath_multiplier": 20.884272997032642,
+      "symbol": "BWICK",
+      "address": "8eJrnMwC3cjGNNMWYBxfpf91AwzTVzgKUL7kQwwEpump",
+      "learned_at": "2026-06-19T18:42:35.107130+00:00"
     }
   ]
 }
