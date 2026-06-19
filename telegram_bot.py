@@ -30,8 +30,8 @@ def _save_channel_id(channel_id: str):
 def main_keyboard():
     keyboard = [
         [KeyboardButton("📊 স্ট্যাটাস"), KeyboardButton("📈 পারফরম্যান্স")],
-        [KeyboardButton("💰 ব্যালেন্স"), KeyboardButton("📦 পজিশন")],
-        [KeyboardButton("✅ অন"), KeyboardButton("❌ অফ")]
+        [KeyboardButton("🎯 সিগন্যাল"), KeyboardButton("📚 লার্ন")],
+        [KeyboardButton("⚙️ কনফিগ"), KeyboardButton("🔄 রিস্টার্ট")],
     ]
     return ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
 
@@ -442,7 +442,7 @@ class TelegramHandlers:
 
         if perf["total"] == 0:
             await update.message.reply_text(
-                "📊 <b>স্ক্রেপার সেটআপ</b>\n"
+                "📊 <b>পারফরম্যান্স</b>\n"
                 "━━━━━━━━━━━━━━━━\n"
                 "গত ২৪ ঘন্টায় কোনো সিগন্যাল নেই।",
                 parse_mode="HTML"
@@ -452,86 +452,34 @@ class TelegramHandlers:
         total = perf["total"]
         tp_h = perf.get("tp_hits", 0)
         sl_h = perf.get("sl_hits", 0)
-        hd = perf.get("holds", 0)
 
         scenarios = perf.get("tp_scenarios", [])
+        # Show only scenarios with hits, plus the optimal
+        hit_scenarios = [s for s in scenarios if s['tp_hits'] > 0]
+        opt_scenario = [s for s in scenarios if s['tp'] == perf['optimal_tp']]
+        show_scenarios = hit_scenarios[:6]
+        if opt_scenario and opt_scenario[0] not in show_scenarios:
+            show_scenarios.append(opt_scenario[0])
+
         sc_lines = ""
-        for sc in scenarios:
-            hold_note = ""
-            if sc.get("hold_better", 0) > 0:
-                hold_note = f" ⚠️{sc['hold_better']}"
+        for sc in show_scenarios:
+            star = "⭐" if sc['tp'] == perf['optimal_tp'] else "  "
             sc_lines += (
-                f"  {'⭐' if sc['tp'] == perf['optimal_tp'] else '  '} "
-                f"+{sc['tp']:>3}%: "
+                f"  {star} +{sc['tp']:>3}%: "
                 f"{sc['tp_hits']}/{total} ({sc['tp_rate']:.0f}%) "
-                f"= <b>{sc['avg_pnl']:+.0f}%</b>{hold_note}\n"
-            )
-
-        # Trailing stop comparison
-        trailing = perf.get("trailing", {})
-        trailing_line = ""
-        if trailing and trailing.get("total", 0) > 0:
-            diff = trailing["trailing_pnl"] - trailing["fixed_pnl"]
-            emoji = "✅" if diff > 0 else "❌"
-            trailing_line = (
-                f"━━━━━━━━━━━━━━━━\n"
-                f"🔄 <b>ট্রেইলিং এসএল:</b>\n"
-                f"  • ফিক্সড SL: {trailing['fixed_pnl']:+.1f}%\n"
-                f"  • ট্রেইলিং SL: {trailing['trailing_pnl']:+.1f}%\n"
-                f"  • {emoji} {trailing['trailing_better']}/{trailing['total']} সিগন্যালে ভালো\n"
-            )
-
-        # Time analysis
-        time_data = perf.get("time_analysis", {})
-        hourly = time_data.get("hourly", {})
-        best_hours = time_data.get("best_hours", [])
-        time_lines = ""
-        if best_hours:
-            best_str = ", ".join(f"{h}:00" for h in best_hours)
-            time_lines += f"  • 🏆 <b>সেরা সময়:</b> {best_str} (UTC)\n"
-        worst_hours = time_data.get("worst_hours", [])
-        if worst_hours:
-            worst_str = ", ".join(f"{h}:00" for h in worst_hours)
-            time_lines += f"  • ⚠️ <b>খারাপ সময়:</b> {worst_str} (UTC)\n"
-
-        # Risk-adjusted recommendation
-        risk = perf.get("risk_adjusted", {})
-        risk_line = ""
-        if risk and risk.get("tp"):
-            risk_line = (
-                f"━━━━━━━━━━━━━━━━\n"
-                f"⚖️ <b>রিস্ক-অ্যাডজাস্টেড:</b>\n"
-                f"  • TP +{risk['tp']}% / SL {risk['sl']}%\n"
-                f"  • স্কোর: {risk['score']:+.1f} (জিতের হার {risk['win_rate']}%)\n"
+                f"= <b>{sc['avg_pnl']:+.0f}%</b>\n"
             )
 
         text = (
-            f"🤖 <b>স্ক্রেপার সেটআপ</b>\n"
+            f"📊 <b>পারফরম্যান্স</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"⭐ <b>সেট করো:</b>\n"
-            f"  <b>TP +{perf['optimal_tp']}%</b> / <b>SL {perf['optimal_sl']}%</b>\n"
-            f"  → গড় লাভ: <b>{perf['expected_pnl']:+.1f}%</b> প্রতি সিগন্যাল\n"
-            f"  → জিতবে {tp_h}/{total} ({round(tp_h/total*100)}%) | হারবে {sl_h}/{total} ({round(sl_h/total*100)}%)\n"
-            f"  → পেন্ডিং: {hd} | গড় ATH: {perf['avg_ath']}x\n"
-            f"{trailing_line}"
-            f"{risk_line}"
+            f"⭐ <b>সেট করো:</b> TP +{perf['optimal_tp']}% / SL {perf['optimal_sl']}%\n"
+            f"  → গড় লাভ: <b>{perf['expected_pnl']:+.1f}%</b>\n"
+            f"  → জিতবে {tp_h}/{total} | হারবে {sl_h}/{total}\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"📊 <b>প্রদর্শনের সারাংশ</b>\n"
-            f"  • মোট সিগন্যাল: {total}\n"
-            f"  • সফলতা: {perf['win_rate']}%\n"
-            f"  • অ্যাভারেজ মুনাফা: {perf['expected_pnl']:+.1f}%\n"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"📋 <b>বেস্ট টিপি/এসএল:</b>\n"
-            f"  • TP +{perf['optimal_tp']}% - {perf['tp_hits']} হিট ({perf.get('optimal_win_rate', 0)}%)\n"
+            f"📋 <b>টিপি/এসএল:</b>\n"
             f"{sc_lines}"
             f"━━━━━━━━━━━━━━━━\n"
-            f"🕐 <b>সময় ভিত্তিক বিশ্লেষণ:</b>\n"
-            f"{time_lines}"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"💡 <b>লস কমানোর স্ট্র্যাটাজি:</b>\n"
-            f"  • ট্রেইলিং SL: +50% এ SL=0%, +100% এ SL=+30%\n"
-            f"  • TP +{perf['optimal_tp']}% কম হিট হয় — TP +100-150% বেশি নিরাপদ\n"
-            f"  • সেরা সময়ে (UTC) সিগন্যাল নিলে বেশি লাভ\n"
             f"🕐 <i>গত ২৪ ঘন্টা</i>"
         )
         await update.message.reply_text(text, parse_mode="HTML")
@@ -690,42 +638,27 @@ class TelegramHandlers:
         if text == "📊 স্ট্যাটাস":
             await self.cmd_health(update, context)
         elif text == "📈 পারফরম্যান্স":
-            logger.info("Calling cmd_perf")
             await self.cmd_perf(update, context)
-        elif text == "💰 ব্যালেন্স":
-            await self.cmd_balance(update, context)
-        elif text == "📦 পজিশন":
-            await self.cmd_positions(update, context)
-        elif text == "✅ অন":
-            await self.state.set_bot_active(True)
-            await update.message.reply_text("✅ বট চালু!")
-        elif text == "❌ অফ":
-            await self.state.set_bot_active(False)
-            await update.message.reply_text("❌ বট বন্ধ!")
+        elif text == "🎯 সিগন্যাল":
+            await self.cmd_signalstats(update, context)
+        elif text == "📚 লার্ন":
+            await self.cmd_autolearn(update, context)
+        elif text == "⚙️ কনফিগ":
+            await self.cmd_config(update, context)
+        elif text == "🔄 রিস্টার্ট":
+            await update.message.reply_text("🔄 রিস্টার্ট হচ্ছে...")
+            import os, signal
+            os.kill(os.getpid(), signal.SIGTERM)
 
 
 def register_handlers(app, handlers: TelegramHandlers):
     from telegram.ext import CallbackQueryHandler
     app.add_handler(CommandHandler("start", handlers.cmd_start))
-    app.add_handler(CommandHandler("pump", handlers.cmd_pump))
-    app.add_handler(CommandHandler("dump", handlers.cmd_dump))
-    app.add_handler(CommandHandler("forcepump", handlers.cmd_forcepump))
-    app.add_handler(CommandHandler("threshold", handlers.cmd_threshold))
     app.add_handler(CommandHandler("health", handlers.cmd_health))
-    app.add_handler(CommandHandler("config", handlers.cmd_config))
-    app.add_handler(CommandHandler("backtest", handlers.cmd_backtest))
-    app.add_handler(CommandHandler("lastbacktest", handlers.cmd_lastbacktest))
-    app.add_handler(CommandHandler("backtesttrend", handlers.cmd_backtest_trend))
-    app.add_handler(CommandHandler("signalstats", handlers.cmd_signalstats))
     app.add_handler(CommandHandler("perf", handlers.cmd_perf))
-    app.add_handler(CommandHandler("golden", handlers.cmd_golden))
-    app.add_handler(CommandHandler("blacklist", handlers.cmd_blacklist))
-    app.add_handler(CommandHandler("retrain", handlers.cmd_retrain))
+    app.add_handler(CommandHandler("signalstats", handlers.cmd_signalstats))
     app.add_handler(CommandHandler("autolearn", handlers.cmd_autolearn))
-    app.add_handler(CommandHandler("balance", handlers.cmd_balance))
-    app.add_handler(CommandHandler("positions", handlers.cmd_positions))
-    app.add_handler(CommandHandler("trades", handlers.cmd_trades))
-    app.add_handler(CommandHandler("feature", handlers.cmd_feature))
+    app.add_handler(CommandHandler("config", handlers.cmd_config))
     app.add_handler(CommandHandler("setchannel", handlers.cmd_setchannel))
     app.add_handler(CallbackQueryHandler(handlers.threshold_callback, pattern="^thr_"))
     app.add_handler(MessageHandler(filters.ALL & ~filters.COMMAND, handlers.handle_buttons))

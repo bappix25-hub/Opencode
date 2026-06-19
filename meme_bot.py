@@ -154,7 +154,7 @@ class MemeBot:
         self.handlers = TelegramHandlers(self.state, self.dex, self.session, self.paper_trader)
         register_handlers(self.telegram_app, self.handlers)
 
-        await restore_from_github()
+        # await restore_from_github()  # Disabled — overwrites local pump patterns
 
         try:
             hp_set, dep_set, alerted_set = load_honeypot_blocklist()

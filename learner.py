@@ -1147,11 +1147,13 @@ def _exit_pnl(ath: float, current: float, tp_mult: float, sl_mult: float) -> tup
 
 
 def calculate_optimal_tp_sl(results: list) -> dict:
-    """Find the TP/SL combo that maximizes avg PnL across all signals."""
+    """Find the TP/SL combo that maximizes avg PnL across all signals.
+    Prefers TP levels that actually HIT over ones that just hold."""
     if not results:
         return {"optimal_tp": 100, "optimal_sl": -30, "expected_pnl": 0,
                 "win_rate": 0, "tp_hits": 0, "sl_hits": 0, "holds": 0}
 
+    best_score = -999
     best_pnl = -999
     best_tp = 100
     best_sl = -30
@@ -1176,8 +1178,16 @@ def calculate_optimal_tp_sl(results: list) -> dict:
                 else:
                     holds += 1
 
-            avg_pnl = total_pnl / len(results)
-            if avg_pnl > best_pnl:
+            n = len(results)
+            avg_pnl = total_pnl / n
+            hit_rate = tp_hits / n
+
+            # Score: reward hit rate, penalize holds (unrealized)
+            # A TP that hits is worth more than a hold with similar PnL
+            score = avg_pnl + (hit_rate * 20) - (holds / n * 5)
+
+            if score > best_score or (score == best_score and avg_pnl > best_pnl):
+                best_score = score
                 best_pnl = avg_pnl
                 best_tp = tp_pct
                 best_sl = sl_pct
@@ -1226,7 +1236,7 @@ def simulate_tp_scenarios(results: list) -> list:
         sl_pct = -10  # Low volatility
 
     scenarios = []
-    for tp_pct in range(50, 301, 50):
+    for tp_pct in range(20, 301, 10):
         tp_mult = 1 + tp_pct / 100
         sl_mult = 1 + sl_pct / 100
 
