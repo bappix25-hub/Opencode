@@ -767,9 +767,10 @@ def get_stats() -> dict:
     data = load_data()
     model = data.get("model", {})
     results = model.get("signal_results", [])
-    total = len(results)
-    pumps = sum(1 for r in results if r.get("verdict") in ("PUMP", "STRONG_PUMP"))
-    strong = sum(1 for r in results if r.get("verdict") == "STRONG_PUMP")
+    post_fix = [r for r in results if not r.get("pre_fix")]
+    total = len(post_fix)
+    pumps = sum(1 for r in post_fix if r.get("verdict") in ("PUMP", "STRONG_PUMP"))
+    strong = sum(1 for r in post_fix if r.get("verdict") == "STRONG_PUMP")
 
     return {
         "total_pumps": model.get("total_pumps", 0),
@@ -1471,6 +1472,9 @@ def get_performance_report() -> dict:
     yesterday = now - 86400
 
     recent = [r for r in results if r.get("timestamp", "") >= datetime.fromtimestamp(yesterday, tz=timezone.utc).isoformat()]
+
+    if not recent and results:
+        recent = results[-30:]
 
     if not recent:
         return {
