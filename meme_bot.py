@@ -59,8 +59,27 @@ async def send_msg(bot: Bot, text: str) -> None:
         logger.error(f"Send error: {e}")
 
 async def send_signal(bot: Bot, text: str, address: str = "") -> None:
-    """Send discovery signal to bot chat only. Channel gets signals only on actual buy."""
-    await send_msg(bot, text)
+    """Send signal to channel for auto-trade by scraper/Maestro."""
+    channel_id = config.channel_id
+    if not channel_id and os.path.exists(CHANNEL_ID_FILE):
+        try:
+            with open(CHANNEL_ID_FILE) as f:
+                channel_id = f.read().strip()
+                config.channel_id = channel_id
+        except Exception:
+            pass
+    if not channel_id:
+        await send_msg(bot, text)
+        return
+    try:
+        await bot.send_message(
+            chat_id=channel_id, text=text,
+            parse_mode="HTML", disable_web_page_preview=True
+        )
+        logger.info(f"📤 Channel signal sent")
+    except Exception as e:
+        logger.error(f"Channel send error: {e}")
+        await send_msg(bot, text)
 
 async def send_maestro(bot: Bot, address: str) -> None:
     """Send token address to channel for Maestro auto-trade."""
