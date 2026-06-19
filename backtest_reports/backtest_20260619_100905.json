@@ -1,0 +1,67 @@
+{
+  "timestamp": "2026-06-19T10:09:05.041438+00:00",
+  "period_days": 3,
+  "metrics": {
+    "total_tokens": 2,
+    "actual_pumps": 0,
+    "actual_5x": 0,
+    "dumps": 2,
+    "signals_sent": 2,
+    "tp": 0,
+    "fp": 2,
+    "tn": 0,
+    "fn": 0,
+    "tp_5x": 0,
+    "precision": 0.0,
+    "recall": 0,
+    "f1_score": 0,
+    "accuracy": 0.0,
+    "win_rate": 0.0,
+    "avg_multiplier": 0,
+    "five_x_precision": 0.0,
+    "five_x_recall": 0,
+    "hour_success_rate": {
+      "9": 0.0,
+      "4": 0.0
+    },
+    "elapsed_seconds": 26.7,
+    "period_days": 3
+  },
+  "results": [
+    {
+      "address": "AUcHUfXcz9hWLcaRahA6MWWGNPJ1dXw9rAqJHTr5pump",
+      "name": "Le Qwant",
+      "symbol": "QWANT",
+      "actual_pump": false,
+      "actual_5x": false,
+      "actual_multiplier": 1.04,
+      "ai_score": 0.44999999999999996,
+      "ai_threshold": 0.4,
+      "predicted_pump": true,
+      "verdict": "FP",
+      "age_seconds": 3068.0357580566406,
+      "reason": "Liq $12148, Vol/Liq 16.3, 105 buys/5m",
+      "mcap": 29207.0,
+      "liquidity": 12148.62,
+      "volume_h1": 197948.85
+    },
+    {
+      "address": "5QgYwFEhukBNxjpCdjyjGxLbC3K6JUtaUEmhMNvppump",
+      "name": "King Thong",
+      "symbol": "THONG",
+      "actual_pump": false,
+      "actual_5x": false,
+      "actual_multiplier": 0.87,
+      "ai_score": 0.5,
+      "ai_threshold": 0.4,
+      "predicted_pump": true,
+      "verdict": "FP",
+      "age_seconds": 19990.035864990234,
+      "reason": "Liq $6324, Vol/Liq 14.9, 5m B/S 2.5",
+      "mcap": 8278.0,
+      "liquidity": 6324.38,
+      "volume_h1": 4016.81
+    }
+  ],
+  "total_results": 2
+}

@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-06-19T10:02:18.201532+00:00",
+  "period_days": 3,
+  "metrics": {
+    "total_tokens": 2,
+    "actual_pumps": 0,
+    "actual_5x": 0,
+    "dumps": 2,
+    "signals_sent": 1,
+    "tp": 0,
+    "fp": 1,
+    "tn": 1,
+    "fn": 0,
+    "tp_5x": 0,
+    "precision": 0.0,
+    "recall": 0,
+    "f1_score": 0,
+    "accuracy": 50.0,
+    "win_rate": 0.0,
+    "avg_multiplier": 0,
+    "five_x_precision": 0.0,
+    "five_x_recall": 0,
+    "hour_success_rate": {
+      "10": 0.0
+    },
+    "elapsed_seconds": 22.2,
+    "period_days": 3
+  },
+  "results": [
+    {
+      "address": "Fe1SuCL2rh6nk2GtQJaKbYrJB5f4acQe9bQLA71gpump",
+      "name": "RICH TROLL",
+      "symbol": "RICHTROLL",
+      "actual_pump": false,
+      "actual_5x": false,
+      "actual_multiplier": 0.98,
+      "ai_score": 0.2,
+      "ai_threshold": 0.4,
+      "predicted_pump": false,
+      "verdict": "TN",
+      "age_seconds": 7777.192541992187,
+      "reason": "Vol/Liq 3.2",
+      "mcap": 1616.0,
+      "liquidity": 2787.96,
+      "volume_h1": 33.91
+    },
+    {
+      "address": "3oX9emrqYRGzFEDPP3jA6tYnUBML4QSr3DfgD2r5pump",
+      "name": "Sliding Cat",
+      "symbol": "\u6ed1\u308b\u732b",
+      "actual_pump": false,
+      "actual_5x": false,
+      "actual_multiplier": 1.27,
+      "ai_score": 0.55,
+      "ai_threshold": 0.4,
+      "predicted_pump": true,
+      "verdict": "FP",
+      "age_seconds": 172901.19259594727,
+      "reason": "MCap $125.6K, Liq $28419, Vol/Liq 19.6",
+      "mcap": 125639.0,
+      "liquidity": 28419.07,
+      "volume_h1": 15325.61
+    }
+  ],
+  "total_results": 2
+}
