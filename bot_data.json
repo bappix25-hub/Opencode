@@ -12845,7 +12845,7 @@
       "pattern_threshold": 0.6,
       "max_age_seconds": 3600,
       "heuristic_threshold": 0.55,
-      "updated_at": "2026-06-19T06:19:31.841591+00:00",
+      "updated_at": "2026-06-19T07:19:32.007170+00:00",
       "sample_size": 202
     },
     "signal_criteria_stats": {
