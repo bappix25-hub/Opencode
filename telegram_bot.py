@@ -231,11 +231,7 @@ class TelegramHandlers:
             f"🚫 ব্ল্যাকলিস্ট: <b>{stats['blacklisted']}</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"📚 পাম্প প্যাটার্ন: <b>{learner_stats['pump_patterns']}</b>\n"
-            f"📉 ডাম্প প্যাটার্ন: <b>{learner_stats['dump_patterns']}</b>\n"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"⚡ সিগন্যাল পাঠানো: <b>{learner_stats['total_signals']}</b>\n"
-            f"🏆 সফল (2x+): <b>{learner_stats['successful_signals']}</b>\n"
-            f"🎯 একুরেসি: <b>{learner_stats['accuracy']}%</b>",
+            f"📉 ডাম্প প্যাটার্ন: <b>{learner_stats['dump_patterns']}</b>",
             parse_mode="HTML"
         )
 
