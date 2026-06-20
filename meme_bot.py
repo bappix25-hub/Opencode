@@ -432,6 +432,16 @@ class MemeBot:
         age = datetime.now(timezone.utc).timestamp() - launch_data.launch_time
         symbol = launch_data.symbol
 
+        # Only signal during 80%+ pump hours
+        try:
+            good_hours = get_good_hours(min_signals=3, min_pump_rate=0.80)
+        except Exception:
+            good_hours = set()
+        current_hour = datetime.now(timezone.utc).hour
+        if good_hours and current_hour not in good_hours:
+            logger.info(f"[SKIP] {symbol}: hour {current_hour}:00 UTC — not in pump hours")
+            return
+
         if age < 30:
             return
 
@@ -1030,6 +1040,16 @@ class MemeBot:
                             if buys_5m >= 10:
                                 climbing_score += 0.1
                                 climb_reasons.append(f"{buys_5m} buys/5m")
+
+                            # Only signal during 80%+ pump hours
+                            try:
+                                good_hours = get_good_hours(min_signals=3, min_pump_rate=0.80)
+                            except Exception:
+                                good_hours = set()
+                            current_hour = datetime.now(timezone.utc).hour
+                            if good_hours and current_hour not in good_hours:
+                                logger.info(f"[SKIP] {symbol}: climbing — hour {current_hour}:00 UTC not in pump hours")
+                                continue
 
                             if climbing_score >= 0.80:
                                 confidence_pct = int(climbing_score * 100)

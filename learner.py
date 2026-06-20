@@ -334,28 +334,23 @@ def enhanced_auto_learn():
     current_threshold = data.get("model", {}).get("signal_criteria", {}).get("heuristic_threshold", 0.45)
     current_pattern_threshold = data.get("model", {}).get("signal_criteria", {}).get("pattern_threshold", 0.55)
     
-    # Adjust heuristic_threshold based on quality score
+    # Only TIGHTEN thresholds on failure, NEVER relax on success
     if quality_score < 0.45:
-        new_threshold = min(0.55, current_threshold + 0.08)
+        new_threshold = min(0.60, current_threshold + 0.08)
     elif quality_score < 0.50:
-        new_threshold = min(0.50, current_threshold + 0.04)
-    elif quality_score > 0.65:
-        new_threshold = max(0.40, current_threshold - 0.04)
+        new_threshold = min(0.55, current_threshold + 0.04)
+    elif metrics["win_rate"] < 0.15:
+        new_threshold = min(0.55, current_threshold + 0.03)
     else:
-        if metrics["win_rate"] < 0.15:
-            new_threshold = min(0.50, current_threshold + 0.03)
-        elif metrics["win_rate"] > 0.25:
-            new_threshold = max(0.42, current_threshold - 0.03)
-        else:
-            new_threshold = current_threshold
+        new_threshold = current_threshold  # Never lower
     
-    # Adjust pattern_threshold based on dump rate (clamped 0.55-0.65)
+    # Adjust pattern_threshold based on dump rate (only tighten, never relax)
     if metrics["dump_rate"] > 0.35:
-        new_pattern_threshold = max(0.55, min(0.65, current_pattern_threshold + 0.03))
-    elif metrics["dump_rate"] < 0.20:
-        new_pattern_threshold = max(0.55, current_pattern_threshold - 0.03)
+        new_pattern_threshold = min(0.85, current_pattern_threshold + 0.03)
+    elif metrics["dump_rate"] > 0.25:
+        new_pattern_threshold = min(0.82, current_pattern_threshold + 0.02)
     else:
-        new_pattern_threshold = max(0.55, min(0.65, current_pattern_threshold))
+        new_pattern_threshold = current_pattern_threshold  # Never lower
     
     # Adjust volatility setting based on average ATH
     if metrics["avg_ath"] > 3.5:
