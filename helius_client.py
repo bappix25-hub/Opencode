@@ -1,11 +1,88 @@
 import aiohttp
+import asyncio
 import base64
 import logging
 import struct
+import time
 from typing import Optional
+from functools import wraps
 from config import config
 
 logger = logging.getLogger("helius_client")
+
+PUMP_FUN_PROGRAM = "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"
+RAYDIUM_AMM_V4 = "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8"
+PUMP_FUN_FRONTEND = "https://frontend-api.pump.fun"
+PUMP_FUN_MIGRATION_SOL = 85.0
+
+# Rate limiter state
+_rate_limit_state = {
+    "tokens": 10.0,  # 10 tokens = 10 req/sec burst
+    "last_refill": time.time(),
+    "max_tokens": 10.0,
+    "refill_rate": 10.0,  # 10 tokens per second
+}
+
+# Request cache (TTL 5 minutes)
+_request_cache = {}
+_CACHE_TTL = 300  # 5 minutes
+
+
+def _rate_limited(method):
+    """Decorator to apply token bucket rate limiting."""
+    @wraps(method)
+    async def wrapper(self, *args, **kwargs):
+        now = time.time()
+        # Refill tokens
+        elapsed = now - _rate_limit_state["last_refill"]
+        _rate_limit_state["tokens"] = min(
+            _rate_limit_state["max_tokens"],
+            _rate_limit_state["tokens"] + elapsed * _rate_limit_state["refill_rate"]
+        )
+        _rate_limit_state["last_refill"] = now
+
+        if _rate_limit_state["tokens"] < 1:
+            wait_time = (1 - _rate_limit_state["tokens"]) / _rate_limit_state["refill_rate"]
+            logger.debug(f"Rate limit: waiting {wait_time:.2f}s")
+            await asyncio.sleep(wait_time)
+            _rate_limit_state["tokens"] = 0
+
+        _rate_limit_state["tokens"] -= 1
+
+        # Try with exponential backoff on 429
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                return await method(self, *args, **kwargs)
+            except aiohttp.ClientResponseError as e:
+                if e.status == 429:
+                    wait = 2 ** attempt  # 1s, 2s, 4s
+                    logger.warning(f"Helius 429 rate limited, waiting {wait}s (attempt {attempt+1}/{max_retries})")
+                    await asyncio.sleep(wait)
+                    continue
+                raise
+        return None
+    return wrapper
+
+
+def _cached(cache_key_func, ttl=_CACHE_TTL):
+    """Decorator for request caching."""
+    def decorator(method):
+        @wraps(method)
+        async def wrapper(self, *args, **kwargs):
+            cache_key = cache_key_func(self, *args, **kwargs)
+            now = time.time()
+            if cache_key in _request_cache:
+                cached_data, cached_time = _request_cache[cache_key]
+                if now - cached_time < ttl:
+                    logger.debug(f"Cache hit: {cache_key}")
+                    return cached_data
+            result = await method(self, *args, **kwargs)
+            if result is not None:
+                _request_cache[cache_key] = (result, now)
+            return result
+        return wrapper
+    return decorator
 
 PUMP_FUN_PROGRAM = "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"
 RAYDIUM_AMM_V4 = "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8"
@@ -46,6 +123,8 @@ class HeliusClient:
         self.base_url = "https://mainnet.helius-rpc.com"
         self.rpc_url = f"https://mainnet.helius-rpc.com/?api-key={self.api_key}"
 
+    @_rate_limited
+    @_cached(lambda self, address: f"txs_{address}")
     async def get_launch_transactions(self, address: str) -> list:
         try:
             url = f"https://api.helius.xyz/v0/addresses/{address}/transactions?api-key={self.api_key}&limit=20&type=SWAP"
@@ -56,6 +135,8 @@ class HeliusClient:
             logger.error(f"Helius tx error for {address}: {e}")
         return []
 
+    @_rate_limited
+    @_cached(lambda self, address: f"holders_{address}")
     async def get_holder_count(self, address: str) -> Optional[int]:
         try:
             payload = {
@@ -119,6 +200,8 @@ class HeliusClient:
             logger.debug(f"Helius getTokenLargestAccounts error for {address}: {e}")
         return None
 
+    @_rate_limited
+    @_cached(lambda self, address: f"bc_{address}")
     async def get_bonding_curve_state(self, mint_address: str) -> Optional[dict]:
         try:
             async with self.session.get(

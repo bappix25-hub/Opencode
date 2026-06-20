@@ -60,7 +60,7 @@ async def send_msg(bot: Bot, text: str) -> None:
         logger.error(f"Send error: {e}")
 
 async def send_signal(bot: Bot, text: str, address: str = "") -> None:
-    """Send signal to channel for auto-trade by scraper/Maestro."""
+    """Send signal to channel for auto-trade by scraper/Maestro (plain text)."""
     channel_id = config.channel_id
     if not channel_id and os.path.exists(CHANNEL_ID_FILE):
         try:
@@ -75,10 +75,13 @@ async def send_signal(bot: Bot, text: str, address: str = "") -> None:
     try:
         await bot.send_message(
             chat_id=channel_id, text=text,
-            parse_mode="HTML", disable_web_page_preview=True
+            disable_web_page_preview=True
         )
         logger.info(f"📤 Channel signal sent")
     except Exception as e:
+        logger.error(f"Channel send error: {e}")
+        await send_msg(bot, text)
+        return
         logger.error(f"Channel send error: {e}")
         await send_msg(bot, text)
 
@@ -1061,17 +1064,17 @@ class MemeBot:
                                 age_sec = int(age % 60)
 
                                 await send_signal(self.telegram_app.bot,
-                                    f"📈 <b>ক্লাইম্বিং টোকেন!</b>\n"
+                                    f"📈 ক্লাইম্বিং টোকেন!\n"
                                     f"━━━━━━━━━━━━━━━━\n"
-                                    f"🏷️ <b>{name}</b> (${symbol})\n"
-                                    f"🎯 কনফিডেন্স: {confidence_bar} <b>{confidence_pct}%</b>\n"
-                                    f"🧠 <i>{reason_text}</i>\n"
-                                    f"💵 দাম: <b>{current_price:.8f}</b>\n"
-                                    f"💰 MCap: <b>{format_number(mcap)}</b>\n"
-                                    f"💧 লিকুইডিটি: <b>{format_number(liquidity)}</b>\n"
-                                    f"📊 ১h বাই: <b>{h1_buys}</b> | সেল: <b>{h1_sells}</b>\n"
-                                    f"🔒 LP লক: <b>{coin_info.lp_locked}%</b>\n"
-                                    f"⏱️ বয়স: <b>{age_min}m {age_sec}s</b>\n"
+                                    f"🏷️ {name} (${symbol})\n"
+                                    f"🎯 কনফিডেন্স: {confidence_bar} {confidence_pct}%\n"
+                                    f"🧠 {reason_text}\n"
+                                    f"💵 দাম: {current_price:.8f}\n"
+                                    f"💰 MCap: {format_number(mcap)}\n"
+                                    f"💧 লিকুইডিটি: {format_number(liquidity)}\n"
+                                    f"📊 ১h বাই: {h1_buys} | সেল: {h1_sells}\n"
+                                    f"🔒 LP লক: {coin_info.lp_locked}%\n"
+                                    f"⏱️ বয়স: {age_min}m {age_sec}s\n"
                                     f"━━━━━━━━━━━━━━━━\n"
                                     f"🔗 GMGN: {link}\n"
                                     f"🔗 DexScreener: {dexscreener_link(addr)}",
@@ -1181,17 +1184,17 @@ class MemeBot:
                         reason_text = ", ".join(reasons[:3])
 
                         await send_signal(self.telegram_app.bot,
-                            f"⚡ <b>আর্লি সিগন্যাল!</b>\n"
+                            f"⚡ আর্লি সিগন্যাল!\n"
                             f"━━━━━━━━━━━━━━━━\n"
-                            f"🏷️ <b>{name}</b> (${symbol})\n"
-                            f"🎯 কনফিডেন্স: {confidence_bar} <b>{confidence_pct}%</b>\n"
-                            f"🧠 <i>{reason_text}</i>\n"
-                            f"💵 দাম: <b>{current_price:.8f}</b>\n"
-                            f"💰 MCap: <b>{format_number(mcap)}</b>\n"
-                            f"💧 লিকুইডিটি: <b>{format_number(liquidity)}</b>\n"
-                            f"👥 হোল্ডার: <b>{coin_info.holders}</b>\n"
-                            f"🔒 LP লক: <b>{coin_info.lp_locked}%</b>\n"
-                            f"⏱️ বয়স: <b>{int(age//60)}m {int(age%60)}s</b>\n"
+                            f"🏷️ {name} (${symbol})\n"
+                            f"🎯 কনফিডেন্স: {confidence_bar} {confidence_pct}%\n"
+                            f"🧠 {reason_text}\n"
+                            f"💵 দাম: {current_price:.8f}\n"
+                            f"💰 MCap: {format_number(mcap)}\n"
+                            f"💧 লিকুইডিটি: {format_number(liquidity)}\n"
+                            f"👥 হোল্ডার: {coin_info.holders}\n"
+                            f"🔒 LP লক: {coin_info.lp_locked}%\n"
+                            f"⏱️ বয়স: {int(age//60)}m {int(age%60)}s\n"
                             f"━━━━━━━━━━━━━━━━\n"
                             f"🔗 GMGN: {link}\n"
                             f"🔗 DexScreener: {dexscreener_link(addr)}",
@@ -1545,7 +1548,7 @@ class MemeBot:
                 dep_lp = lp_analysis.get("deployer_has_lp", False)
                 lp_risk = lp_analysis.get("risk_level", "unknown")
                 lp_emoji = "🟢" if lp_risk == "safe" else ("🟡" if lp_risk == "warning" else "🔴")
-                lp_text = f"{lp_emoji} LP Providers: <b>{lp_count}</b>"
+                lp_text = f"{lp_emoji} LP Providers: {lp_count}"
                 if dep_lp:
                     lp_text += " | ⚠️ Deployer has LP"
         except Exception:
@@ -1561,20 +1564,20 @@ class MemeBot:
             session = "🌎 US"
 
         await send_signal(self.telegram_app.bot,
-            f"⚡ <b>প্রি-মাইগ্রেশন সিগন্যাল!</b>\n"
+            f"⚡ প্রি-মাইগ্রেশন সিগন্যাল!\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"🏷️ <b>{pending.name}</b> (${pending.symbol})\n"
-            f"🎯 কনফিডেন্স: {confidence_bar} <b>{confidence_pct}%</b>\n"
-            f"📊 Level: <b>{confidence_level}</b>\n"
-            f"🧠 <i>{pending.match_reason}</i>\n"
-            f"💰 MCap: <b>{format_number(pending.mcap)}</b>\n"
-            f"💧 লিকুইডিটি: <b>${int(pending.liquidity)}</b>\n"
-            f"📊 Buy: <b>{pending.buy_count}</b> | Sell: <b>{pending.sell_count}</b>\n"
-            f"👥 Wallets: <b>{pending.unique_wallets}</b> | Holders: <b>{pending.holders}</b>\n"
-            f"⏱️ বয়স: <b>{int(pending.age_seconds//60)}m {int(pending.age_seconds%60)}s</b>\n"
-            f"🕐 Session: <b>{session}</b>\n"
+            f"🏷️ {pending.name} (${pending.symbol})\n"
+            f"🎯 কনফিডেন্স: {confidence_bar} {confidence_pct}%\n"
+            f"📊 Level: {confidence_level}\n"
+            f"🧠 {pending.match_reason}\n"
+            f"💰 MCap: {format_number(pending.mcap)}\n"
+            f"💧 লিকুইডিটি: ${int(pending.liquidity)}\n"
+            f"📊 Buy: {pending.buy_count} | Sell: {pending.sell_count}\n"
+            f"👥 Wallets: {pending.unique_wallets} | Holders: {pending.holders}\n"
+            f"⏱️ বয়স: {int(pending.age_seconds//60)}m {int(pending.age_seconds%60)}s\n"
+            f"🕐 Session: {session}\n"
             f"{lp_text + chr(10) if lp_text else ''}"
-            f"📈 বর্তমান MCap: <b>{format_number(current_mcap)}</b>\n"
+            f"📈 বর্তমান MCap: {format_number(current_mcap)}\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"🔗 GMGN: {link}\n"
             f"🔗 DexScreener: {dexscreener_link(address)}",
