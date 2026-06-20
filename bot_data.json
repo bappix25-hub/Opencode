@@ -59497,6 +59497,32 @@
       "outcome_mcap": 0,
       "outcome_time": null,
       "signal_sent": false
+    },
+    {
+      "address": "3LTt7o8DnWYeqfZ3jwTD3SVdTtW3RPSAWKP8wYizpump",
+      "symbol": "solana",
+      "features": {
+        "launch_time": 1781990135.8806,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781990135.8806,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "8GCR5SQyVyTZfttzAg1yA27gXqJxPwWwsfdHG578pump",
+      "symbol": "GensynAI",
+      "features": {
+        "launch_time": 1781990155.882193,
+        "source": "historical_scan"
+      },
+      "launch_time": 1781990155.882193,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
     }
   ],
   "missed_pumps": [
