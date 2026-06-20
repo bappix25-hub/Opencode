@@ -437,16 +437,6 @@ class MemeBot:
         age = datetime.now(timezone.utc).timestamp() - launch_data.launch_time
         symbol = launch_data.symbol
 
-        # Dynamic time-of-day filter: only signal during good hours (≥80% pump rate)
-        try:
-            good_hours = get_good_hours(min_signals=3, min_pump_rate=0.80)
-        except Exception:
-            good_hours = set()
-        current_hour = datetime.now(timezone.utc).hour
-        if good_hours and current_hour not in good_hours:
-            logger.info(f"[SKIP] {symbol}: hour {current_hour}:00 UTC — not in good hours (dynamic)")
-            return
-
         if age < 30:
             return
 
@@ -1046,17 +1036,7 @@ class MemeBot:
                                 climbing_score += 0.1
                                 climb_reasons.append(f"{buys_5m} buys/5m")
 
-                            # Dynamic time-of-day filter: only signal during good hours (≥80% pump rate)
-                            try:
-                                good_hours = get_good_hours(min_signals=3, min_pump_rate=0.80)
-                            except Exception:
-                                good_hours = set()
-                            current_hour = datetime.now(timezone.utc).hour
-                            if good_hours and current_hour not in good_hours:
-                                logger.info(f"[SKIP] {symbol}: climbing — hour {current_hour}:00 UTC not in good hours (dynamic)")
-                                continue
-
-                            if climbing_score >= 0.65:
+                            if climbing_score >= 0.80:
                                 confidence_pct = int(climbing_score * 100)
                                 confidence_bar = "🟢" * max(1, int(confidence_pct/20)) + "⚪" * (5 - max(1, int(confidence_pct/20)))
                                 reason_text = ", ".join(climb_reasons[:3])
@@ -1067,6 +1047,7 @@ class MemeBot:
                                     f"📈 ক্লাইম্বিং টোকেন!\n"
                                     f"━━━━━━━━━━━━━━━━\n"
                                     f"🏷️ {name} (${symbol})\n"
+                                    f"📍 {addr}\n"
                                     f"🎯 কনফিডেন্স: {confidence_bar} {confidence_pct}%\n"
                                     f"🧠 {reason_text}\n"
                                     f"💵 দাম: {current_price:.8f}\n"
@@ -1187,6 +1168,7 @@ class MemeBot:
                             f"⚡ আর্লি সিগন্যাল!\n"
                             f"━━━━━━━━━━━━━━━━\n"
                             f"🏷️ {name} (${symbol})\n"
+                            f"📍 {addr}\n"
                             f"🎯 কনফিডেন্স: {confidence_bar} {confidence_pct}%\n"
                             f"🧠 {reason_text}\n"
                             f"💵 দাম: {current_price:.8f}\n"
@@ -1567,6 +1549,7 @@ class MemeBot:
             f"⚡ প্রি-মাইগ্রেশন সিগন্যাল!\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"🏷️ {pending.name} (${pending.symbol})\n"
+            f"📍 {address}\n"
             f"🎯 কনফিডেন্স: {confidence_bar} {confidence_pct}%\n"
             f"📊 Level: {confidence_level}\n"
             f"🧠 {pending.match_reason}\n"

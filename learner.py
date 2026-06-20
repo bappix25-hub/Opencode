@@ -908,7 +908,7 @@ def match_pump_patterns(features: dict, min_similarity: float = None) -> tuple[b
     Returns (match, score, reason)."""
     if min_similarity is None:
         criteria = get_signal_criteria()
-        min_similarity = criteria.get("pattern_threshold", 0.55)
+        min_similarity = criteria.get("pattern_threshold", 0.80)
 
     data = load_data()
     pump_patterns = data.get("pump_patterns", [])
