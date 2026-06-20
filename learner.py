@@ -22,7 +22,8 @@ DATA_FILE = config.data_file
 PUMP_THRESHOLD = 250000   # 250k mcap = pump
 DUMP_THRESHOLD = 150000   # below 150k = dump
 OUTCOME_WINDOW = 21600    # 6 hours
-MAX_PATTERNS = 500        # keep top 500 pump/dump patterns
+MAX_PUMP_PATTERNS = 500   # keep top 500 pump patterns
+MAX_DUMP_PATTERNS = 1000  # keep top 1000 dump patterns (more diverse)
 
 DEFAULT_DATA = {
     "pump_patterns": [],
@@ -435,9 +436,68 @@ def extract_launch_features(launch_data, pair_data=None, unique_wallets=0) -> di
         first_30s = [t for t in launch_data.get("buy_timestamps", []) if t - launch_ts <= 30]
         snipers_30s = len(first_30s)
 
-    launch_hour = datetime.fromtimestamp(launch_time, tz=timezone.utc).hour if launch_time else 0
+    # Insider detection: wallets that buy very early (first 10s) with large amounts
+    insider_wallets = set()
+    if hasattr(launch_data, 'buy_timestamps') and launch_data.buy_timestamps:
+        launch_ts = launch_time
+        first_10s = [(t, w) for t, w in zip(launch_data.buy_timestamps, launch_data.buy_wallets) if t - launch_ts <= 10] if hasattr(launch_data, 'buy_wallets') else []
+        for _, wallet in first_10s:
+            insider_wallets.add(wallet)
+        insiders_30s = len(insider_wallets)
+
+    # Time features
+    launch_dt = datetime.fromtimestamp(launch_time, tz=timezone.utc) if launch_time else datetime.now(timezone.utc)
+    launch_hour = launch_dt.hour
+    launch_weekday = launch_dt.weekday()  # 0=Mon, 6=Sun
+    launch_month = launch_dt.month
+    is_weekend = launch_weekday >= 5  # Sat=5, Sun=6
+
+    # Session: asian (0-8), european (8-16), us (16-24)
+    if 0 <= launch_hour < 8:
+        launch_session = "asian"
+    elif 8 <= launch_hour < 16:
+        launch_session = "european"
+    else:
+        launch_session = "us"
+
+    # Derived features
+    age_seconds = datetime.now(timezone.utc).timestamp() - launch_time if launch_time else 1
+    volume_velocity = volume / max(age_seconds, 1)
+    buy_sell_momentum = (buy_count - sell_count) / max(buy_count + sell_count, 1)
+    liquidity_depth = initial_liq / max(initial_mcap, 1) if initial_mcap > 0 else 0
+
+    # Liquidity health indicators
+    liq_concentration = 0.0  # Top LP holder % (needs external data)
+    insider_holdings_pct = 0.0  # % held by early insiders
+
+    # Volume spike detection: compare recent vs average
+    volume_spike_ratio = 0.0
+    if hasattr(launch_data, 'volume_history') and launch_data.volume_history:
+        recent_vol = sum(launch_data.volume_history[-3:]) / max(len(launch_data.volume_history[-3:]), 1)
+        avg_vol = sum(launch_data.volume_history) / max(len(launch_data.volume_history), 1)
+        volume_spike_ratio = recent_vol / max(avg_vol, 1)
+    elif isinstance(launch_data, dict) and "volume_history" in launch_data:
+        vh = launch_data.get("volume_history", [])
+        if vh:
+            recent_vol = sum(vh[-3:]) / max(len(vh[-3:]), 1)
+            avg_vol = sum(vh) / max(len(vh), 1)
+            volume_spike_ratio = recent_vol / max(avg_vol, 1)
+
+    # Buy spike: recent buys vs average
+    buy_spike_ratio = 0.0
+    if hasattr(launch_data, 'buy_history') and launch_data.buy_history:
+        recent_buys = sum(launch_data.buy_history[-3:]) / max(len(launch_data.buy_history[-3:]), 1)
+        avg_buys = sum(launch_data.buy_history) / max(len(launch_data.buy_history), 1)
+        buy_spike_ratio = recent_buys / max(avg_buys, 1)
+    elif isinstance(launch_data, dict) and "buy_history" in launch_data:
+        bh = launch_data.get("buy_history", [])
+        if bh:
+            recent_buys = sum(bh[-3:]) / max(len(bh[-3:]), 1)
+            avg_buys = sum(bh) / max(len(bh), 1)
+            buy_spike_ratio = recent_buys / max(avg_buys, 1)
 
     return {
+        # Core trading features
         "buy_count": buy_count,
         "sell_count": sell_count,
         "buy_sell_ratio": round(buy_sell_ratio, 2),
@@ -455,22 +515,41 @@ def extract_launch_features(launch_data, pair_data=None, unique_wallets=0) -> di
         "ath_price": round(ath_price, 8),
         "lp_providers_count": getattr(launch_data, 'lp_providers_count', 0) if hasattr(launch_data, 'lp_providers_count') else launch_data.get("lp_providers_count", 0) if isinstance(launch_data, dict) else 0,
         "deployer_has_lp": getattr(launch_data, 'deployer_has_lp', False) if hasattr(launch_data, 'deployer_has_lp') else launch_data.get("deployer_has_lp", False) if isinstance(launch_data, dict) else False,
+        # Derived features
+        "volume_velocity": round(volume_velocity, 4),
+        "buy_sell_momentum": round(buy_sell_momentum, 4),
+        "liquidity_depth": round(liquidity_depth, 4),
+        # Volume spike detection (NEW)
+        "volume_spike_ratio": round(volume_spike_ratio, 4),
+        "buy_spike_ratio": round(buy_spike_ratio, 4),
+        # Social signal
+        "social_score": getattr(launch_data, 'social_score', 0) if hasattr(launch_data, 'social_score') else launch_data.get("social_score", 0) if isinstance(launch_data, dict) else 0,
+        # Time features
+        "launch_weekday": launch_weekday,
+        "launch_month": launch_month,
+        "is_weekend": is_weekend,
+        "launch_session": launch_session,
+        # Insider features
+        "insider_count": len(insider_wallets),
     }
 
 
 def _pattern_similarity(features: dict, pattern: dict) -> float:
-    """Calculate similarity between features and a known pattern. 0.0 to 1.0.
-    Handles both flat patterns and nested patterns (features inside 'features' key)."""
-    score = 0.0
-    checks = 0
+    """Calculate weighted similarity between features and a known pattern. 0.0 to 1.0.
+    Uses FEATURE_WEIGHTS for importance weighting.
+    Handles both flat patterns and nested patterns (features inside 'features' key).
+    Applies recency decay: newer patterns get bonus, old patterns get penalty."""
+    weighted_score = 0.0
+    total_weight = 0.0
 
     # Handle nested format: pattern may have features in pattern["features"]
     pat = pattern
     if "features" in pattern and "buy_sell_ratio" not in pattern:
         pat = pattern["features"]
 
-    def _compare(feat_key, pat_key, tolerance=0.5):
-        nonlocal score, checks
+    def _compare(feat_key, pat_key):
+        nonlocal weighted_score, total_weight
+        weight = FEATURE_WEIGHTS.get(feat_key, 1.0)
         f_val = features.get(feat_key, 0)
         p_val = pat.get(pat_key, 0)
         if p_val == 0 and f_val == 0:
@@ -478,28 +557,227 @@ def _pattern_similarity(features: dict, pattern: dict) -> float:
         if p_val == 0:
             return
         ratio = min(f_val, p_val) / max(f_val, p_val) if max(f_val, p_val) > 0 else 0
-        score += ratio
-        checks += 1
+        weighted_score += ratio * weight
+        total_weight += weight
 
-    _compare("buy_sell_ratio", "buy_sell_ratio", 0.3)
-    _compare("holders", "holders", 0.5)
-    _compare("unique_wallets", "unique_wallets", 0.3)
-    _compare("snipers_30s", "snipers_30s", 0.3)
-    _compare("lp_locked", "lp_locked", 0.3)
+    _compare("buy_sell_ratio", "buy_sell_ratio")
+    _compare("holders", "holders")
+    _compare("unique_wallets", "unique_wallets")
+    _compare("snipers_30s", "snipers_30s")
+    _compare("lp_locked", "lp_locked")
+    _compare("volume_velocity", "volume_velocity")
+    _compare("buy_sell_momentum", "buy_sell_momentum")
+    _compare("liquidity_depth", "liquidity_depth")
+    _compare("social_score", "social_score")
+    _compare("insider_count", "insider_count")
+    _compare("lp_providers_count", "lp_providers_count")
+    _compare("volume_spike_ratio", "volume_spike_ratio")
+    _compare("buy_spike_ratio", "buy_spike_ratio")
+
+    # Launch session: categorical (asian/european/us)
+    f_session = features.get("launch_session", "")
+    p_session = pat.get("launch_session", "")
+    if f_session and p_session:
+        weight = FEATURE_WEIGHTS.get("launch_session", 1.0)
+        if f_session == p_session:
+            weighted_score += 1.0 * weight
+        else:
+            weighted_score += 0.3 * weight  # partial match
+        total_weight += weight
+
+    # Launch weekday: 0-6, closer = better
+    f_weekday = features.get("launch_weekday", -1)
+    p_weekday = pat.get("launch_weekday", -1)
+    if f_weekday >= 0 and p_weekday >= 0:
+        weight = FEATURE_WEIGHTS.get("launch_weekday", 0.8)
+        if f_weekday == p_weekday:
+            weighted_score += 1.0 * weight
+        elif abs(f_weekday - p_weekday) <= 1:
+            weighted_score += 0.6 * weight
+        elif abs(f_weekday - p_weekday) <= 2:
+            weighted_score += 0.3 * weight
+        total_weight += weight
 
     if features.get("liq_pct", 0) > 0 and pat.get("liq_pct", 0) > 0:
         ratio = min(features["liq_pct"], pat["liq_pct"]) / max(features["liq_pct"], pat["liq_pct"])
-        score += ratio
-        checks += 1
+        weight = FEATURE_WEIGHTS.get("liq_pct", 1.0)
+        weighted_score += ratio * weight
+        total_weight += weight
 
     if features.get("launch_hour", 0) == pat.get("launch_hour", 0):
-        score += 1.0
-        checks += 1
+        weight = FEATURE_WEIGHTS.get("launch_hour", 0.5)
+        weighted_score += 1.0 * weight
+        total_weight += weight
     elif abs(features.get("launch_hour", 0) - pat.get("launch_hour", 0)) <= 2:
-        score += 0.5
-        checks += 1
+        weight = FEATURE_WEIGHTS.get("launch_hour", 0.5)
+        weighted_score += 0.5 * weight
+        total_weight += weight
 
-    return score / checks if checks >= 3 else 0.0
+    base_score = weighted_score / total_weight if total_weight > 0 else 0.0
+
+    # Recency decay: newer patterns get bonus, old patterns get penalty
+    # learned_at or timestamp in pattern
+    learned_str = pattern.get("learned_at") or pattern.get("timestamp") or ""
+    if learned_str:
+        try:
+            learned_dt = datetime.fromisoformat(learned_str.replace("Z", "+00:00"))
+            days_old = (datetime.now(timezone.utc) - learned_dt).days
+            # Bonus: <3 days = +10%, <7 days = +5%, >14 days = -10%, >30 days = -20%
+            if days_old <= 3:
+                recency_bonus = 0.10
+            elif days_old <= 7:
+                recency_bonus = 0.05
+            elif days_old <= 14:
+                recency_bonus = 0.0
+            elif days_old <= 30:
+                recency_bonus = -0.10
+            else:
+                recency_bonus = -0.20
+            base_score = max(0.0, min(1.0, base_score + recency_bonus))
+        except Exception:
+            pass
+
+    return base_score
+
+
+FEATURE_WEIGHTS = {
+    "unique_wallets": 3.0,      # BEST separator (58%)
+    "liquidity": 2.5,           # Good separator
+    "volume_velocity": 2.0,     # Volume per second
+    "buy_sell_momentum": 2.0,   # Net momentum
+    "volume_spike_ratio": 2.5,  # Volume spike detection (NEW)
+    "buy_spike_ratio": 2.0,     # Buy spike detection (NEW)
+    "buy_sell_ratio": 1.0,      # POOR separator (22%)
+    "holders": 1.0,             # POOR separator
+    "lp_locked": 1.5,           # Moderate
+    "snipers_30s": 1.5,         # Moderate
+    "liq_pct": 1.5,             # Moderate
+    "launch_hour": 0.5,         # Weak
+    "social_score": 1.0,        # Social signal strength
+    # Time-based features
+    "launch_weekday": 0.8,      # Day-of-week matters
+    "launch_session": 1.0,      # Asian/European/US session
+    # Insider features
+    "insider_count": 1.5,       # High insider count = risky
+    # Liquidity features
+    "lp_providers_count": 1.0,  # More providers = safer
+}
+
+
+def analyze_dump_quality() -> dict:
+    """Analyze if dump patterns actually represent dump characteristics.
+    Returns analysis with issues found."""
+    data = load_data()
+    dumps = data.get("dump_patterns", [])
+
+    issues = []
+    looks_like_pump = 0
+    looks_like_dump = 0
+
+    for d in dumps:
+        feat = d.get("features", d) if isinstance(d, dict) else {}
+        bsr = feat.get("buy_sell_ratio", 0)
+        holders = feat.get("holders", 0)
+        wallets = feat.get("unique_wallets", 0)
+        liq = feat.get("initial_liq", 0) or feat.get("liquidity", 0)
+        sym = d.get("symbol", "?")
+
+        # Dump tokens should NOT have high BSR AND high holders
+        # That indicates pre-pump hype, not dump characteristics
+        if bsr > 2.0 and holders > 30 and wallets > 50:
+            looks_like_pump += 1
+            issues.append(f"{sym}: BSR={bsr:.1f} holders={holders} wallets={wallets} (looks like pump)")
+        else:
+            looks_like_dump += 1
+
+    return {
+        "total_dumps": len(dumps),
+        "looks_like_pump": looks_like_pump,
+        "looks_like_dump": looks_like_dump,
+        "issues": issues[:50],  # Top 50 issues
+        "quality_pct": round(looks_like_dump / max(len(dumps), 1) * 100, 1),
+    }
+
+
+def reclassify_patterns() -> int:
+    """Move dump patterns that look like pumps back to pump patterns.
+    Returns number of reclassified patterns."""
+    data = load_data()
+    dumps = data.get("dump_patterns", [])
+    pumps = data.get("pump_patterns", [])
+
+    reclassified = 0
+    for d in list(dumps):
+        feat = d.get("features", d) if isinstance(d, dict) else {}
+        bsr = feat.get("buy_sell_ratio", 0)
+        holders = feat.get("holders", 0)
+        wallets = feat.get("unique_wallets", 0)
+
+        # If dump has pump characteristics, move to pump patterns
+        if bsr > 2.0 and holders > 30 and wallets > 50:
+            d["outcome"] = "RECLASSIFIED_PUMP"
+            d["reclassified_at"] = datetime.now(timezone.utc).isoformat()
+            pumps.append(d)
+            dumps.remove(d)
+            reclassified += 1
+
+    data["pump_patterns"] = pumps[-MAX_PUMP_PATTERNS:]
+    data["dump_patterns"] = dumps
+    save_data(data)
+
+    logger.info(f"🔄 Reclassified {reclassified} dump patterns → pump patterns")
+    return reclassified
+
+
+def analyze_feature_importance() -> dict:
+    """Calculate which features best separate pump from dump patterns.
+    Returns feature importance scores (0.0-1.0)."""
+    data = load_data()
+    pumps = data.get("pump_patterns", [])
+    dumps = data.get("dump_patterns", [])
+
+    importance = {}
+
+    for feature_key in ["buy_sell_ratio", "holders", "unique_wallets",
+                         "initial_liq", "liq_pct", "lp_locked", "snipers_30s"]:
+        p_vals = []
+        d_vals = []
+
+        for p in pumps:
+            feat = p.get("features", p) if isinstance(p, dict) else {}
+            v = feat.get(feature_key, 0)
+            if v > 0:
+                p_vals.append(v)
+
+        for d in dumps:
+            feat = d.get("features", d) if isinstance(d, dict) else {}
+            v = feat.get(feature_key, 0)
+            if v > 0:
+                d_vals.append(v)
+
+        if p_vals and d_vals:
+            p_avg = sum(p_vals) / len(p_vals)
+            d_avg = sum(d_vals) / len(d_vals)
+            p_median = sorted(p_vals)[len(p_vals) // 2]
+            d_median = sorted(d_vals)[len(d_vals) // 2]
+
+            # Separation: how different are pump vs dump averages
+            separation = abs(p_avg - d_avg) / max(p_avg, d_avg)
+
+            # Direction: which is higher for pumps (positive = pumps higher)
+            direction = "higher" if p_avg > d_avg else "lower"
+
+            importance[feature_key] = {
+                "pump_avg": round(p_avg, 2),
+                "dump_avg": round(d_avg, 2),
+                "pump_median": round(p_median, 2),
+                "dump_median": round(d_median, 2),
+                "separation": round(separation * 100, 1),
+                "direction": direction,
+                "useful": separation > 0.20,  # >20% separation = useful
+            }
+
+    return importance
 
 
 def record_launch(address: str, symbol: str, features: dict) -> None:
@@ -589,7 +867,7 @@ def _learn_pump(launch: dict) -> None:
 
     patterns = data.setdefault("pump_patterns", [])
     patterns.append(features)
-    patterns = patterns[-MAX_PATTERNS:]
+    patterns = patterns[-MAX_PUMP_PATTERNS:]
     data["pump_patterns"] = patterns
 
     data["model"]["total_pumps"] = data["model"].get("total_pumps", 0) + 1
@@ -609,7 +887,7 @@ def _learn_dump(launch: dict) -> None:
 
     patterns = data.setdefault("dump_patterns", [])
     patterns.append(features)
-    patterns = patterns[-MAX_PATTERNS:]
+    patterns = patterns[-MAX_DUMP_PATTERNS:]
     data["dump_patterns"] = patterns
 
     # Remove any pump pattern for this address (it's a dump)
@@ -769,12 +1047,571 @@ def record_signal_result(address: str, symbol: str, ath_multiplier: float, curre
                 data["pump_patterns"] = pump_patterns
                 logger.info(f"🗑️ পাম্প প্যাটার্ন বাদ: {symbol} (DUMP ফলাফল)")
 
-        if len(data.get("pump_patterns", [])) > MAX_PATTERNS:
-            data["pump_patterns"] = data["pump_patterns"][-MAX_PATTERNS:]
-        if len(data.get("dump_patterns", [])) > MAX_PATTERNS:
-            data["dump_patterns"] = data["dump_patterns"][-MAX_PATTERNS:]
+        if len(data.get("pump_patterns", [])) > MAX_PUMP_PATTERNS:
+            data["pump_patterns"] = data["pump_patterns"][-MAX_PUMP_PATTERNS:]
+        if len(data.get("dump_patterns", [])) > MAX_DUMP_PATTERNS:
+            data["dump_patterns"] = data["dump_patterns"][-MAX_DUMP_PATTERNS:]
 
     save_data(data)
+
+    # Root cause analysis for DUMP signals
+    if verdict == "DUMP" and launch and launch.get("features"):
+        _analyze_and_fix_failure(address, symbol, launch["features"], data)
+
+    # Success amplification for PUMP/STRONG_PUMP signals
+    if verdict in ("PUMP", "STRONG_PUMP") and launch and launch.get("features"):
+        _analyze_and_amplify_success(address, symbol, launch["features"], data, ath_multiplier)
+
+    # Update hourly win rate stats
+    _update_hourly_stats(signal_time, verdict)
+
+    save_data(data)
+
+
+def _analyze_and_fix_failure(address: str, symbol: str, features: dict, data: dict) -> None:
+    """Analyze WHY a signal failed and auto-fix criteria."""
+    criteria = data.get("model", {}).get("signal_criteria", {})
+    failure_reasons = []
+
+    bsr = features.get("buy_sell_ratio", 0)
+    holders = features.get("holders", 0)
+    wallets = features.get("unique_wallets", 0)
+    liq = features.get("initial_liq", 0) or features.get("liquidity", 0)
+    lp_locked = features.get("lp_locked", 0)
+    snipers = features.get("snipers_30s", 0)
+    deployer_has_lp = features.get("deployer_has_lp", False)
+    liq_pct = features.get("liq_pct", 0)
+
+    # Check each criterion — if signal was borderline, it's a likely cause
+    min_bsr = criteria.get("min_bsr", 1.5)
+    if bsr < min_bsr * 1.2:
+        failure_reasons.append(f"low_bsr={bsr:.1f}")
+
+    min_holders = criteria.get("min_holders", 5)
+    if holders < min_holders * 1.3:
+        failure_reasons.append(f"low_holders={holders}")
+
+    min_wallets = criteria.get("min_wallets", 10)
+    if wallets < min_wallets * 1.3:
+        failure_reasons.append(f"low_wallets={wallets}")
+
+    min_liq = criteria.get("min_liq", 1500)
+    if liq < min_liq * 1.5:
+        failure_reasons.append(f"low_liq=${int(liq)}")
+
+    if deployer_has_lp:
+        failure_reasons.append("deployer_has_lp")
+
+    if snipers >= 5:
+        failure_reasons.append(f"high_snipers={snipers}")
+
+    if lp_locked < 50 and lp_locked > 0:
+        failure_reasons.append(f"low_lp_locked={lp_locked}%")
+
+    if not failure_reasons:
+        failure_reasons.append("unknown")
+
+    logger.warning(f"🔍 Failure analysis {symbol}: {', '.join(failure_reasons)}")
+
+    # Auto-fix: raise thresholds for repeatedly failing criteria
+    auto_fix = data.get("model", {}).setdefault("auto_fix_history", [])
+    auto_fix.append({
+        "address": address,
+        "symbol": symbol,
+        "reasons": failure_reasons,
+        "features": {k: v for k, v in features.items() if isinstance(v, (int, float, str, bool))},
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+    data["model"]["auto_fix_history"] = auto_fix[-200:]
+
+    # Count failure reasons across recent failures
+    recent_fixes = auto_fix[-50:]
+    reason_counts = {}
+    for fix in recent_fixes:
+        for r in fix.get("reasons", []):
+            base = r.split("=")[0]
+            reason_counts[base] = reason_counts.get(base, 0) + 1
+
+    # If a reason appears in >30% of failures, tighten that criterion
+    total_recent = len(recent_fixes)
+    if total_recent >= 3:
+        for reason, count in reason_counts.items():
+            pct = count / total_recent
+            if pct > 0.30:
+                if reason == "low_bsr" and criteria.get("min_bsr", 1.5) < 2.0:
+                    criteria["min_bsr"] = round(criteria["min_bsr"] + 0.1, 2)
+                    logger.info(f"🔧 Auto-fix: min_bsr → {criteria['min_bsr']} ({pct:.0%} failures)")
+                elif reason == "low_holders" and criteria.get("min_holders", 5) < 15:
+                    criteria["min_holders"] = round(criteria["min_holders"] + 1, 1)
+                    logger.info(f"🔧 Auto-fix: min_holders → {criteria['min_holders']} ({pct:.0%} failures)")
+                elif reason == "low_wallets" and criteria.get("min_wallets", 10) < 30:
+                    criteria["min_wallets"] = round(criteria["min_wallets"] + 2, 1)
+                    logger.info(f"🔧 Auto-fix: min_wallets → {criteria['min_wallets']} ({pct:.0%} failures)")
+                elif reason == "low_liq" and criteria.get("min_liq", 1500) < 5000:
+                    criteria["min_liq"] = round(criteria["min_liq"] + 200, 0)
+                    logger.info(f"🔧 Auto-fix: min_liq → ${int(criteria['min_liq'])} ({pct:.0%} failures)")
+                elif reason == "deployer_has_lp":
+                    logger.info(f"🔧 Auto-fix: deployer_has_lp detected — already blocked in signal flow")
+                elif reason == "high_snipers":
+                    logger.info(f"🔧 Auto-fix: high snipers — consider adding sniper filter")
+
+    data["model"]["signal_criteria"] = criteria
+
+
+def _analyze_and_amplify_success(address: str, symbol: str, features: dict, data: dict, ath_multiplier: float) -> None:
+    """Analyze WHY a signal succeeded and amplify those patterns."""
+    success_reasons = []
+
+    bsr = features.get("buy_sell_ratio", 0)
+    holders = features.get("holders", 0)
+    wallets = features.get("unique_wallets", 0)
+    liq = features.get("initial_liq", 0) or features.get("liquidity", 0)
+    lp_locked = features.get("lp_locked", 0)
+    snipers = features.get("snipers_30s", 0)
+    liq_pct = features.get("liq_pct", 0)
+    buy_count = features.get("buy_count", 0)
+    volume_velocity = features.get("volume_velocity", 0)
+
+    criteria = data.get("model", {}).get("signal_criteria", {})
+
+    # Check which features were strong in this success
+    if bsr >= criteria.get("min_bsr", 1.3) * 1.5:
+        success_reasons.append(f"high_bsr={bsr:.1f}")
+    if holders >= criteria.get("min_holders", 5) * 2:
+        success_reasons.append(f"high_holders={holders}")
+    if wallets >= criteria.get("min_wallets", 10) * 2:
+        success_reasons.append(f"high_wallets={wallets}")
+    if liq >= criteria.get("min_liq", 1500) * 2:
+        success_reasons.append(f"high_liq=${int(liq)}")
+    if lp_locked >= 90:
+        success_reasons.append(f"high_lp_locked={lp_locked}%")
+    if buy_count >= 30:
+        success_reasons.append(f"high_buys={buy_count}")
+    if volume_velocity >= 5:
+        success_reasons.append(f"high_velocity={volume_velocity:.1f}")
+    if snipers >= 3:
+        success_reasons.append(f"high_snipers={snipers}")
+
+    if not success_reasons:
+        success_reasons.append("balanced")
+
+    logger.info(f"🎯 Success analysis {symbol} (ATH {ath_multiplier:.1f}x): {', '.join(success_reasons)}")
+
+    # Track success patterns for future reference
+    success_history = data.get("model", {}).setdefault("success_history", [])
+    success_history.append({
+        "address": address,
+        "symbol": symbol,
+        "reasons": success_reasons,
+        "ath_multiplier": ath_multiplier,
+        "features": {k: v for k, v in features.items() if isinstance(v, (int, float, str, bool))},
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+    data["model"]["success_history"] = success_history[-200:]
+
+    # If ATH > 5x, this is a very strong success — relax thresholds slightly
+    if ath_multiplier >= 5.0:
+        if criteria.get("min_holders", 5) > 3:
+            criteria["min_holders"] = round(criteria["min_holders"] - 0.5, 1)
+            logger.info(f"🔧 Success relax: min_holders -> {criteria['min_holders']} (5x+ success)")
+        if criteria.get("min_wallets", 10) > 5:
+            criteria["min_wallets"] = round(criteria["min_wallets"] - 1, 1)
+            logger.info(f"🔧 Success relax: min_wallets -> {criteria['min_wallets']} (5x+ success)")
+
+    data["model"]["signal_criteria"] = criteria
+
+
+def _update_hourly_stats(signal_time, verdict: str, pnl: float = 0.0) -> None:
+    """Track win rate AND pnl per UTC hour for dynamic time filter."""
+    if isinstance(signal_time, datetime):
+        hour = signal_time.hour
+    elif isinstance(signal_time, str):
+        try:
+            hour = datetime.fromisoformat(signal_time.replace("Z", "+00:00")).hour
+        except Exception:
+            hour = datetime.now(timezone.utc).hour
+    else:
+        hour = datetime.now(timezone.utc).hour
+
+    hour_str = str(hour)  # JSON keys are strings
+
+    data = load_data()
+    hourly = data.get("model", {}).setdefault("hourly_stats", {})
+
+    if hour_str not in hourly:
+        hourly[hour_str] = {"wins": 0, "total": 0, "total_pnl": 0.0}
+
+    hourly[hour_str]["total"] = hourly[hour_str].get("total", 0) + 1
+    hourly[hour_str]["total_pnl"] = hourly[hour_str].get("total_pnl", 0.0) + pnl
+    if verdict in ("PUMP", "STRONG_PUMP"):
+        hourly[hour_str]["wins"] = hourly[hour_str].get("wins", 0) + 1
+
+    data["model"]["hourly_stats"] = hourly
+    save_data(data)
+
+
+def get_bad_hours(min_signals: int = 5, max_win_rate: float = 0.15) -> set:
+    """Return set of UTC hours with historically low win rate.
+    Requires at least min_signals samples per hour to be considered."""
+    data = load_data()
+    hourly = data.get("model", {}).get("hourly_stats", {})
+    bad_hours = set()
+
+    for hour_str, stats in hourly.items():
+        hour = int(hour_str)
+        total = stats.get("total", 0)
+        wins = stats.get("wins", 0)
+        if total >= min_signals:
+            win_rate = wins / total
+            if win_rate < max_win_rate:
+                bad_hours.add(hour)
+                logger.info(f"⏰ Bad hour detected: {hour}:00 UTC — {wins}/{total} = {win_rate:.0%} win rate")
+
+    return bad_hours
+
+
+def get_good_hours(min_signals: int = 5, min_pump_rate: float = 0.80) -> set:
+    """Return set of UTC hours with historically HIGH pump rate (≥80%).
+    Only includes hours with at least min_signals samples.
+    If no good hours found, returns empty set (caller should allow all hours)."""
+    data = load_data()
+    hourly = data.get("model", {}).get("hourly_stats", {})
+    good_hours = set()
+
+    for hour_str, stats in hourly.items():
+        hour = int(hour_str)
+        total = stats.get("total", 0)
+        wins = stats.get("wins", 0)
+        if total >= min_signals:
+            pump_rate = wins / total
+            if pump_rate >= min_pump_rate:
+                good_hours.add(hour)
+                logger.info(f"⏰ Good hour: {hour}:00 UTC — {wins}/{total} = {pump_rate:.0%} pump rate")
+
+    return good_hours
+
+
+def remove_low_quality_patterns(min_pump_rate: float = 0.80, min_signals: int = 5) -> int:
+    """Remove pump patterns from hours with <80% pump rate.
+    Only removes when we have enough data (min_signals per hour).
+    Returns number of patterns removed."""
+    data = load_data()
+    pumps = data.get("pump_patterns", [])
+    hourly = data.get("model", {}).get("hourly_stats", {})
+
+    if not hourly or len(pumps) == 0:
+        return 0
+
+    # Group pump patterns by launch_hour
+    hour_groups = {}
+    for p in pumps:
+        feat = p.get("features", p) if isinstance(p, dict) else {}
+        hour = feat.get("launch_hour", 0)
+        if hour not in hour_groups:
+            hour_groups[hour] = []
+        hour_groups[hour].append(p)
+
+    # Check pump rate per hour group and remove low-quality
+    removed = 0
+    for hour, patterns in hour_groups.items():
+        stats = hourly.get(str(hour), {})
+        total = stats.get("total", 0)
+        wins = stats.get("wins", 0)
+
+        if total >= min_signals:
+            pump_rate = wins / total
+            if pump_rate < min_pump_rate:
+                for p in patterns:
+                    if p in pumps:
+                        pumps.remove(p)
+                        removed += 1
+                logger.info(f"🗑️ Removed {len(patterns)} patterns from hour {hour}:00 "
+                           f"(pump_rate={pump_rate:.0%} < {min_pump_rate:.0%})")
+
+    if removed > 0:
+        data["pump_patterns"] = pumps
+        save_data(data)
+        logger.info(f"🗑️ Total removed: {removed} low-quality patterns")
+
+    return removed
+
+
+def get_hourly_stats_report() -> str:
+    """Generate hourly stats report for debugging."""
+    data = load_data()
+    hourly = data.get("model", {}).get("hourly_stats", {})
+    if not hourly:
+        return "No hourly data yet"
+
+    lines = ["📊 Hourly Win Rate:"]
+    for hour in sorted(hourly.keys(), key=lambda x: int(x)):
+        stats = hourly[hour]
+        total = stats.get("total", 0)
+        wins = stats.get("wins", 0)
+        wr = (wins / total * 100) if total > 0 else 0
+        bar = "🟢" if wr > 25 else ("🟡" if wr > 15 else "🔴")
+        lines.append(f"  {bar} {int(hour):02d}:00 — {wins}/{total} = {wr:.0f}%")
+    return "\n".join(lines)
+
+
+def get_time_pattern_analytics() -> dict:
+    """Comprehensive time-based pattern analysis from pump/dump patterns."""
+    data = load_data()
+    pumps = data.get("pump_patterns", [])
+    dumps = data.get("dump_patterns", [])
+
+    # Day-of-week analysis (0=Monday, 6=Sunday)
+    day_names = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    weekly_stats = {i: {"pumps": 0, "dumps": 0, "total_ath": 0.0} for i in range(7)}
+
+    for p in pumps:
+        feat = p.get("features", p) if isinstance(p, dict) else {}
+        day = feat.get("launch_weekday", -1)
+        if 0 <= day <= 6:
+            weekly_stats[day]["pumps"] += 1
+            weekly_stats[day]["total_ath"] += p.get("ath_multiplier", 0) or 0
+
+    for d in dumps:
+        feat = d.get("features", d) if isinstance(d, dict) else {}
+        day = feat.get("launch_weekday", -1)
+        if 0 <= day <= 6:
+            weekly_stats[day]["dumps"] += 1
+
+    # Monthly analysis
+    monthly_stats = {m: {"pumps": 0, "dumps": 0, "total_ath": 0.0} for m in range(1, 13)}
+    for p in pumps:
+        feat = p.get("features", p) if isinstance(p, dict) else {}
+        month = feat.get("launch_month", 0)
+        if 1 <= month <= 12:
+            monthly_stats[month]["pumps"] += 1
+            monthly_stats[month]["total_ath"] += p.get("ath_multiplier", 0) or 0
+    for d in dumps:
+        feat = d.get("features", d) if isinstance(d, dict) else {}
+        month = feat.get("launch_month", 0)
+        if 1 <= month <= 12:
+            monthly_stats[month]["dumps"] += 1
+
+    # Session analysis (asian/european/us)
+    session_stats = {
+        "asian": {"pumps": 0, "dumps": 0, "total_ath": 0.0},
+        "european": {"pumps": 0, "dumps": 0, "total_ath": 0.0},
+        "us": {"pumps": 0, "dumps": 0, "total_ath": 0.0},
+    }
+    for p in pumps:
+        feat = p.get("features", p) if isinstance(p, dict) else {}
+        session = feat.get("launch_session", "")
+        if session in session_stats:
+            session_stats[session]["pumps"] += 1
+            session_stats[session]["total_ath"] += p.get("ath_multiplier", 0) or 0
+    for d in dumps:
+        feat = d.get("features", d) if isinstance(d, dict) else {}
+        session = feat.get("launch_session", "")
+        if session in session_stats:
+            session_stats[session]["dumps"] += 1
+
+    # Weekend vs weekday
+    weekend_pumps = sum(1 for p in pumps if (p.get("features", p) if isinstance(p, dict) else {}).get("is_weekend", False))
+    weekend_dumps = sum(1 for d in dumps if (d.get("features", d) if isinstance(d, dict) else {}).get("is_weekend", False))
+    weekday_pumps = len(pumps) - weekend_pumps
+    weekday_dumps = len(dumps) - weekend_dumps
+
+    # Insider analysis
+    insider_pumps = sum(1 for p in pumps if (p.get("features", p) if isinstance(p, dict) else {}).get("insider_count", 0) > 0)
+    insider_dumps = sum(1 for d in dumps if (d.get("features", d) if isinstance(d, dict) else {}).get("insider_count", 0) > 0)
+
+    return {
+        "weekly": {day_names[k]: {
+            "pumps": v["pumps"],
+            "dumps": v["dumps"],
+            "pump_rate": round(v["pumps"] / max(v["pumps"] + v["dumps"], 1) * 100, 1),
+            "avg_ath": round(v["total_ath"] / max(v["pumps"], 1), 2)
+        } for k, v in weekly_stats.items()},
+        "monthly": {m: {
+            "pumps": v["pumps"],
+            "dumps": v["dumps"],
+            "pump_rate": round(v["pumps"] / max(v["pumps"] + v["dumps"], 1) * 100, 1),
+            "avg_ath": round(v["total_ath"] / max(v["pumps"], 1), 2)
+        } for m, v in monthly_stats.items()},
+        "sessions": {s: {
+            "pumps": v["pumps"],
+            "dumps": v["dumps"],
+            "pump_rate": round(v["pumps"] / max(v["pumps"] + v["dumps"], 1) * 100, 1),
+            "avg_ath": round(v["total_ath"] / max(v["pumps"], 1), 2)
+        } for s, v in session_stats.items()},
+        "weekend": {
+            "pumps": weekend_pumps, "dumps": weekend_dumps,
+            "pump_rate": round(weekend_pumps / max(weekend_pumps + weekend_dumps, 1) * 100, 1)
+        },
+        "weekday": {
+            "pumps": weekday_pumps, "dumps": weekday_dumps,
+            "pump_rate": round(weekday_pumps / max(weekday_pumps + weekday_dumps, 1) * 100, 1)
+        },
+        "insiders": {
+            "insider_pumps": insider_pumps,
+            "insider_dumps": insider_dumps,
+            "insider_pump_rate": round(insider_pumps / max(insider_pumps + insider_dumps, 1) * 100, 1)
+        }
+    }
+
+
+def get_launch_pattern_analytics() -> dict:
+    """Analyze what launch patterns lead to pumps vs dumps."""
+    data = load_data()
+    pumps = data.get("pump_patterns", [])
+    dumps = data.get("dump_patterns", [])
+
+    def _get_features(patterns):
+        features = []
+        for p in patterns:
+            feat = p.get("features", p) if isinstance(p, dict) else {}
+            features.append(feat)
+        return features
+
+    pump_feats = _get_features(pumps)
+    dump_feats = _get_features(dumps)
+
+    def _avg(lst, key):
+        vals = [f.get(key, 0) for f in lst if f.get(key, 0) > 0]
+        return round(sum(vals) / max(len(vals), 1), 2)
+
+    def _median(lst, key):
+        vals = sorted([f.get(key, 0) for f in lst if f.get(key, 0) > 0])
+        if not vals:
+            return 0
+        mid = len(vals) // 2
+        return round(vals[mid], 2)
+
+    def _pct_above(lst, key, threshold):
+        above = sum(1 for f in lst if f.get(key, 0) >= threshold)
+        return round(above / max(len(lst), 1) * 100, 1)
+
+    return {
+        "pump_count": len(pumps),
+        "dump_count": len(dumps),
+        "pump_patterns": {
+            "avg_buy_count": _avg(pump_feats, "buy_count"),
+            "avg_wallets": _avg(pump_feats, "unique_wallets"),
+            "avg_holders": _avg(pump_feats, "holders"),
+            "avg_liq": _avg(pump_feats, "initial_liq"),
+            "avg_mcap": _avg(pump_feats, "initial_mcap"),
+            "avg_bsr": _avg(pump_feats, "buy_sell_ratio"),
+            "avg_buys_30s": _avg(pump_feats, "snipers_30s"),
+            "avg_liq_pct": _avg(pump_feats, "liq_pct"),
+            "avg_lp_locked": _avg(pump_feats, "lp_locked"),
+            "avg_volume_velocity": _avg(pump_feats, "volume_velocity"),
+            "avg_social_score": _avg(pump_feats, "social_score"),
+            "pct_with_lp_lock": _pct_above(pump_feats, "lp_locked", 80),
+            "pct_high_buys": _pct_above(pump_feats, "buy_count", 15),
+            "pct_high_wallets": _pct_above(pump_feats, "unique_wallets", 20),
+        },
+        "dump_patterns": {
+            "avg_buy_count": _avg(dump_feats, "buy_count"),
+            "avg_wallets": _avg(dump_feats, "unique_wallets"),
+            "avg_holders": _avg(dump_feats, "holders"),
+            "avg_liq": _avg(dump_feats, "initial_liq"),
+            "avg_mcap": _avg(dump_feats, "initial_mcap"),
+            "avg_bsr": _avg(dump_feats, "buy_sell_ratio"),
+            "avg_buys_30s": _avg(dump_feats, "snipers_30s"),
+            "avg_liq_pct": _avg(dump_feats, "liq_pct"),
+            "avg_lp_locked": _avg(dump_feats, "lp_locked"),
+            "pct_with_lp_lock": _pct_above(dump_feats, "lp_locked", 80),
+        },
+        "success_factors": {
+            "wallets_20plus": _pct_above(pump_feats, "unique_wallets", 20),
+            "liq_3k_plus": _pct_above(pump_feats, "initial_liq", 3000),
+            "lp_locked_80plus": _pct_above(pump_feats, "lp_locked", 80),
+            "holders_10plus": _pct_above(pump_feats, "holders", 10),
+            "bsr_1_5plus": _pct_above(pump_feats, "buy_sell_ratio", 1.5),
+            "social_0_5plus": _pct_above(pump_feats, "social_score", 0.5),
+        }
+    }
+
+
+def get_comprehensive_analytics() -> str:
+    """Generate comprehensive analytics report for /analytics command."""
+    data = load_data()
+    model = data.get("model", {})
+    results = model.get("signal_results", [])
+
+    # Basic stats
+    total = len(results)
+    pumps = sum(1 for r in results if r.get("verdict") in ("PUMP", "STRONG_PUMP"))
+    strong = sum(1 for r in results if r.get("verdict") == "STRONG_PUMP")
+    wins = pumps
+    win_rate = round(wins / max(total, 1) * 100, 1)
+
+    # Time patterns
+    time_data = get_time_pattern_analytics()
+    launch_data = get_launch_pattern_analytics()
+
+    # Find best/worst day
+    best_day = max(time_data["weekly"].items(), key=lambda x: x[1]["pump_rate"])
+    worst_day = min(time_data["weekly"].items(), key=lambda x: x[1]["pump_rate"])
+
+    # Find best session
+    best_session = max(time_data["sessions"].items(), key=lambda x: x[1]["pump_rate"])
+
+    # Build report
+    lines = []
+    lines.append("📊 COMPREHENSIVE ANALYTICS")
+    lines.append("━━━━━━━━━━━━━━━━━━━━━━━")
+
+    # Performance
+    lines.append(f"\n📈 PERFORMANCE:")
+    lines.append(f"  Total Signals: {total}")
+    lines.append(f"  Win Rate: {win_rate}% ({wins}/{total})")
+    lines.append(f"  Strong Pumps: {strong}")
+
+    # Time patterns
+    lines.append(f"\n⏰ TIME PATTERNS:")
+    lines.append(f"  Best Day: {best_day[0]} ({best_day[1]['pump_rate']}% pump, avg ATH {best_day[1]['avg_ath']}x)")
+    lines.append(f"  Worst Day: {worst_day[0]} ({worst_day[1]['pump_rate']}% pump)")
+    lines.append(f"  Best Session: {best_session[0]} ({best_session[1]['pump_rate']}% pump)")
+
+    # Weekend vs weekday
+    wd = time_data["weekend"]
+    we = time_data["weekday"]
+    lines.append(f"  Weekday: {we['pump_rate']}% pump ({we['pumps']}/{we['pumps'] + we['dumps']})")
+    lines.append(f"  Weekend: {wd['pump_rate']}% pump ({wd['pumps']}/{wd['pumps'] + wd['dumps']})")
+
+    # Insider analysis
+    ins = time_data["insiders"]
+    lines.append(f"\n🔍 INSIDER ANALYSIS:")
+    lines.append(f"  With Insiders: {ins['insider_pump_rate']}% pump ({ins['insider_pumps']}/{ins['insider_pumps'] + ins['insider_dumps']})")
+
+    # Launch patterns
+    pp = launch_data["pump_patterns"]
+    dp = launch_data["dump_patterns"]
+    lines.append(f"\n🎯 LAUNCH PATTERNS:")
+    lines.append(f"  Pump avg wallets: {pp['avg_wallets']}")
+    lines.append(f"  Dump avg wallets: {dp['avg_wallets']}")
+    lines.append(f"  Pump avg liq: ${pp['avg_liq']:.0f}")
+    lines.append(f"  Dump avg liq: ${dp['avg_liq']:.0f}")
+    lines.append(f"  Pump avg holders: {pp['avg_holders']}")
+    lines.append(f"  Dump avg holders: {dp['avg_holders']}")
+
+    # Success factors
+    sf = launch_data["success_factors"]
+    lines.append(f"\n✅ SUCCESS FACTORS:")
+    lines.append(f"  Wallets 20+: {sf['wallets_20plus']}% of pumps")
+    lines.append(f"  Liq $3k+: {sf['liq_3k_plus']}% of pumps")
+    lines.append(f"  LP Locked 80%+: {sf['lp_locked_80plus']}% of pumps")
+    lines.append(f"  Holders 10+: {sf['holders_10plus']}% of pumps")
+    lines.append(f"  BSR 1.5+: {sf['bsr_1_5plus']}% of pumps")
+
+    # Criteria
+    criteria = model.get("signal_criteria", {})
+    lines.append(f"\n⚙️ CURRENT CRITERIA:")
+    lines.append(f"  min_wallets: {criteria.get('min_wallets', 10)}")
+    lines.append(f"  min_holders: {criteria.get('min_holders', 5)}")
+    lines.append(f"  min_liq: ${criteria.get('min_liq', 1500):.0f}")
+    lines.append(f"  min_lp_locked: {criteria.get('min_lp_locked', 80)}%")
+    lines.append(f"  min_bsr: {criteria.get('min_bsr', 1.3)}")
+
+    lines.append(f"\n━━━━━━━━━━━━━━━━━━━━━━━")
+    lines.append(f"📊 {len(data.get('pump_patterns', []))} pump / {len(data.get('dump_patterns', []))} dump patterns")
+
+    return "\n".join(lines)
 
 
 def get_stats() -> dict:
@@ -915,7 +1752,7 @@ def record_missed_pump(address: str, symbol: str, features: dict, ath_multiplier
 
     pump_patterns = data.setdefault("pump_patterns", [])
     pump_patterns.append(features)
-    data["pump_patterns"] = pump_patterns[-MAX_PATTERNS:]
+    data["pump_patterns"] = pump_patterns[-MAX_PUMP_PATTERNS:]
 
     data["model"]["total_pumps"] = data["model"].get("total_pumps", 0) + 1
     save_data(data)
@@ -924,9 +1761,18 @@ def record_missed_pump(address: str, symbol: str, features: dict, ath_multiplier
 
 def auto_learn_update() -> dict:
     """Periodic auto-learn: analyze recent outcomes and adjust heuristic weights.
+    Also removes low-quality patterns from hours with <80% pump rate.
     Returns summary of what was learned."""
+    # Remove low-quality patterns first
+    removed = remove_low_quality_patterns(min_pump_rate=0.80, min_signals=5)
+
     # Use enhanced auto-learn for better analysis
-    return enhanced_auto_learn()
+    result = enhanced_auto_learn()
+
+    if removed > 0:
+        result["patterns_removed"] = removed
+
+    return result
 
 
 def learn_divergence_point() -> dict:
@@ -1003,7 +1849,8 @@ def compute_signal_criteria(min_patterns: int = 5) -> dict:
     """Analyze pump vs dump patterns and compute optimal signal criteria.
     Sets thresholds that best separate winning from losing features.
     Called after each learn cycle and 6h outcome check.
-    Works with dump-only data: sets thresholds above dump medians."""
+    Works with dump-only data: sets thresholds above dump medians.
+    Balances pump/dump by capping dump patterns to pump count for median calc."""
     data = load_data()
     pump_patterns = data.get("pump_patterns", [])
     dump_patterns = data.get("dump_patterns", [])
@@ -1015,6 +1862,17 @@ def compute_signal_criteria(min_patterns: int = 5) -> dict:
         data["model"]["signal_criteria"] = criteria
         save_data(data)
         return criteria
+
+    # Balance: cap dump patterns to pump count for criteria calculation
+    # This prevents 500 dumps from drowning 121 pumps
+    pump_count = len(pump_patterns)
+    dump_count = len(dump_patterns)
+    if pump_count > 0 and dump_count > pump_count * 2:
+        # Use only most recent dump patterns (equal to 2x pump count)
+        dump_for_calc = dump_patterns[-(pump_count * 2):]
+        logger.info(f"⚖️ Balancing patterns: {pump_count} pumps vs {dump_count} dumps → using {len(dump_for_calc)} dumps for criteria")
+    else:
+        dump_for_calc = dump_patterns
 
     def _extract_features(pattern):
         """Extract flat feature dict from pattern (handles nested format)."""
@@ -1062,7 +1920,7 @@ def compute_signal_criteria(min_patterns: int = 5) -> dict:
     dump_medians = {}
     for feat_key, _, _ in features_to_analyze:
         pump_medians[feat_key] = _median(pump_patterns, feat_key)
-        dump_medians[feat_key] = _median(dump_patterns, feat_key)
+        dump_medians[feat_key] = _median(dump_for_calc, feat_key)
 
     criteria = {}
     for feat_key, criterion_key, method in features_to_analyze:
@@ -1085,17 +1943,17 @@ def compute_signal_criteria(min_patterns: int = 5) -> dict:
         criteria[criterion_key] = round(threshold, 2)
 
     p_bsr_above = _pct_above(pump_patterns, "buy_sell_ratio", 1.5)
-    d_bsr_above = _pct_above(dump_patterns, "buy_sell_ratio", 1.5)
+    d_bsr_above = _pct_above(dump_for_calc, "buy_sell_ratio", 1.5)
     if p_bsr_above > 60 and d_bsr_above < 40:
         criteria["min_bsr"] = max(criteria["min_bsr"], 1.3)
 
     p_holders_above = _pct_above(pump_patterns, "holders", 5)
-    d_holders_above = _pct_above(dump_patterns, "holders", 5)
+    d_holders_above = _pct_above(dump_for_calc, "holders", 5)
     if p_holders_above > 50 and d_holders_above < 30:
         criteria["min_holders"] = max(criteria["min_holders"], 4)
 
     p_liq_above = _pct_above(pump_patterns, "initial_liq", 3000)
-    d_liq_above = _pct_above(dump_patterns, "initial_liq", 3000)
+    d_liq_above = _pct_above(dump_for_calc, "initial_liq", 3000)
     if p_liq_above > 60 and d_liq_above < 30:
         criteria["min_liq"] = max(criteria["min_liq"], 2000)
 

@@ -30,7 +30,7 @@ def _save_channel_id(channel_id: str):
 def main_keyboard():
     keyboard = [
         [KeyboardButton("📊 স্ট্যাটাস"), KeyboardButton("📈 পারফরম্যান্স")],
-        [KeyboardButton("⚙️ কনফিগ")],
+        [KeyboardButton("🔍 অ্যানালিটিক্স"), KeyboardButton("⚙️ কনফিগ")],
         [KeyboardButton("✅ অন"), KeyboardButton("❌ অফ")],
     ]
     return ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
@@ -222,7 +222,37 @@ class TelegramHandlers:
         stats = await self.state.get_stats()
         learner_stats = get_stats()
         active = "🟢 চালু" if stats["bot_active"] else "🔴 বন্ধ"
-        await update.message.reply_text(
+
+        # Get auto-fix and hourly stats
+        try:
+            from learner import get_bad_hours, load_data as _ld
+            _d = _ld()
+            auto_fix = _d.get("model", {}).get("auto_fix_history", [])
+            hourly = _d.get("model", {}).get("hourly_stats", {})
+            bad_hours = get_bad_hours(min_signals=3, max_win_rate=0.15)
+            recent_fixes = auto_fix[-5:]
+            fix_count = len(auto_fix)
+        except Exception:
+            bad_hours = set()
+            recent_fixes = []
+            fix_count = 0
+            hourly = {}
+
+        # Build hourly line
+        if hourly:
+            hour_parts = []
+            for h in sorted(hourly.keys(), key=lambda x: int(x)):
+                s = hourly[h]
+                t = s.get("total", 0)
+                w = s.get("wins", 0)
+                wr = (w / t * 100) if t > 0 else 0
+                emoji = "🟢" if wr > 25 else ("🟡" if wr > 15 else "🔴")
+                hour_parts.append(f"{emoji}{int(h):02d}")
+            hour_line = " ".join(hour_parts)
+        else:
+            hour_line = "No data yet"
+
+        text = (
             f"📊 <b>বট স্ট্যাটাস</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"অবস্থা: {active}\n"
@@ -235,9 +265,14 @@ class TelegramHandlers:
             f"━━━━━━━━━━━━━━━━\n"
             f"⚡ সিগন্যাল: <b>{learner_stats['total_signals']}</b>\n"
             f"🏆 সফল: <b>{learner_stats['successful_signals']}</b>\n"
-            f"🎯 একুরেসি: <b>{learner_stats['accuracy']}%</b>",
-            parse_mode="HTML"
+            f"🎯 একুরেসি: <b>{learner_stats['accuracy']}%</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"⏰ <b>ঘণ্টা ভিত্তিক:</b> {hour_line}\n"
         )
+        if bad_hours:
+            text += f"🚫 <b>ব্যাড আওয়ার:</b> {', '.join(f'{h}:00' for h in sorted(bad_hours))}\n"
+        text += f"🔧 <b>অটো-ফিক্স:</b> {fix_count} fixes applied"
+        await update.message.reply_text(text, parse_mode="HTML")
 
     async def cmd_patterns(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Show exact patterns bot uses for signal decisions."""
@@ -534,12 +569,32 @@ class TelegramHandlers:
             f"📋 <b>টিপি/এসএল:</b>\n"
             f"{sc_lines}"
             f"━━━━━━━━━━━━━━━━\n"
-            f"🕐 <i>গত ২৪ ঘন্টা</i>"
         )
+
+        # Add hourly stats
+        try:
+            from learner import get_hourly_stats_report, get_bad_hours
+            hourly_report = get_hourly_stats_report()
+            bad_hours = get_bad_hours(min_signals=3, max_win_rate=0.15)
+            text += f"{hourly_report}\n"
+            if bad_hours:
+                text += f"🚫 <b>ব্যাড আওয়ার:</b> {', '.join(f'{h}:00' for h in sorted(bad_hours))}\n"
+            else:
+                text += "✅ <b>সব আওয়ার OK</b>\n"
+        except Exception:
+            pass
+
+        text += f"🕐 <i>গত ২৪ ঘন্টা</i>"
         await update.message.reply_text(text, parse_mode="HTML")
 
     async def cmd_golden(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("❌ Golden patterns removed in v4. Use /signalstats instead.")
+
+    async def cmd_analytics(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Comprehensive analytics with time patterns, launch patterns, success factors."""
+        from learner import get_comprehensive_analytics
+        report = get_comprehensive_analytics()
+        await update.message.reply_text(report, parse_mode="HTML")
 
     async def cmd_blacklist(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("❌ Blacklist removed in v4. Honeypot detection is automatic.")
@@ -693,6 +748,8 @@ class TelegramHandlers:
             await self.cmd_health(update, context)
         elif text == "📈 পারফরম্যান্স":
             await self.cmd_perf(update, context)
+        elif text == "🔍 অ্যানালিটিক্স":
+            await self.cmd_analytics(update, context)
         elif text == "⚙️ কনফিগ":
             await self.cmd_config(update, context)
         elif text == "✅ অন":
@@ -708,6 +765,7 @@ def register_handlers(app, handlers: TelegramHandlers):
     app.add_handler(CommandHandler("start", handlers.cmd_start))
     app.add_handler(CommandHandler("health", handlers.cmd_health))
     app.add_handler(CommandHandler("perf", handlers.cmd_perf))
+    app.add_handler(CommandHandler("analytics", handlers.cmd_analytics))
     app.add_handler(CommandHandler("signalstats", handlers.cmd_signalstats))
     app.add_handler(CommandHandler("autolearn", handlers.cmd_autolearn))
     app.add_handler(CommandHandler("patterns", handlers.cmd_patterns))

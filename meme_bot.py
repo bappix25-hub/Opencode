@@ -25,7 +25,8 @@ from learner import (
     save_honeypot_blocklist, load_honeypot_blocklist,
     load_data, save_data, PUMP_THRESHOLD, DUMP_THRESHOLD,
     record_missed_pump, auto_learn_update, get_signal_criteria,
-    compute_signal_criteria, learn_divergence_point
+    compute_signal_criteria, learn_divergence_point,
+    get_bad_hours, get_good_hours, get_hourly_stats_report
 )
 from github_sync import sync_to_github, restore_from_github
 from utils import format_number, gmgn_link, dexscreener_link, setup_logging
@@ -316,7 +317,8 @@ class MemeBot:
                 f"━━━━━━━━━━━━━━━━\n"
                 f"🏷️ <b>{name}</b> (${symbol})\n"
                 f"💰 Sell: <b>{amount:.2f} SOL</b>\n"
-                f"🔗 <a href='{dexscreener_link(address)}'>DexScreener</a>\n"
+                f"🔗 GMGN: {gmgn_link(address)}\n"
+                f"🔗 DexScreener: {dexscreener_link(address)}\n"
                 f"━━━━━━━━━━━━━━━━\n"
                 f"⚠️ <b>দ্রুত বিক্রি করো!</b>"
             )
@@ -432,11 +434,14 @@ class MemeBot:
         age = datetime.now(timezone.utc).timestamp() - launch_data.launch_time
         symbol = launch_data.symbol
 
-        # Time-of-day filter: skip hours with historically 0% pump rate
-        BAD_HOURS_UTC = {2, 10, 22}
+        # Dynamic time-of-day filter: only signal during good hours (≥80% pump rate)
+        try:
+            good_hours = get_good_hours(min_signals=3, min_pump_rate=0.80)
+        except Exception:
+            good_hours = set()
         current_hour = datetime.now(timezone.utc).hour
-        if current_hour in BAD_HOURS_UTC:
-            logger.info(f"[SKIP] {symbol}: hour {current_hour}:00 UTC — bad time filter")
+        if good_hours and current_hour not in good_hours:
+            logger.info(f"[SKIP] {symbol}: hour {current_hour}:00 UTC — not in good hours (dynamic)")
             return
 
         if age < 30:
@@ -970,18 +975,9 @@ class MemeBot:
                         if mcap >= PUMP_THRESHOLD and not await self.state.is_alerted(addr):
                             await self.state.add_pump_coin(addr, CoinInfo(name=name, symbol=symbol))
                             logger.info(f"🚀 পাম্প কয়েন! {symbol} mcap={format_number(mcap)}")
-                            await send_signal(self.telegram_app.bot,
-                                f"🚀 <b>পাম্প কয়েন!</b>\n"
-                                f"━━━━━━━━━━━━━━━━\n"
-                                f"🏷️ <b>{name}</b> (${symbol})\n"
-                                f"💰 MCap: <b>{format_number(mcap)}</b>\n"
-                                f"💧 লিকুইডিটি: <b>{format_number(liquidity)}</b>\n"
-                                f"👥 হোল্ডার: <b>{coin_info.holders}</b>\n"
-                                f"🔒 LP লক: <b>{coin_info.lp_locked}%</b>\n"
-                                f"🧠 <i>পাম্প প্যাটার্ন শেখা হয়েছে!</i>\n"
-                                f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(addr)}'>DexScreener</a>",
-                                addr
-                            )
+                            # NO send_signal() here — scraper should NOT buy pump coins
+                            # Only learn pattern + track for pre-migration signals
+                            await self.state.add_alerted(addr)
 
                             launch_data = await self.state.get_launch_tracking(addr)
                             if launch_data and not launch_data.pre_signal_sent:
@@ -1047,10 +1043,14 @@ class MemeBot:
                                 climbing_score += 0.1
                                 climb_reasons.append(f"{buys_5m} buys/5m")
 
-                            # Time-of-day filter: skip bad hours
+                            # Dynamic time-of-day filter: only signal during good hours (≥80% pump rate)
+                            try:
+                                good_hours = get_good_hours(min_signals=3, min_pump_rate=0.80)
+                            except Exception:
+                                good_hours = set()
                             current_hour = datetime.now(timezone.utc).hour
-                            if current_hour in {2, 10, 22}:
-                                logger.info(f"[SKIP] {symbol}: climbing — hour {current_hour}:00 UTC bad time")
+                            if good_hours and current_hour not in good_hours:
+                                logger.info(f"[SKIP] {symbol}: climbing — hour {current_hour}:00 UTC not in good hours (dynamic)")
                                 continue
 
                             if climbing_score >= 0.65:
@@ -1073,7 +1073,8 @@ class MemeBot:
                                     f"🔒 LP লক: <b>{coin_info.lp_locked}%</b>\n"
                                     f"⏱️ বয়স: <b>{age_min}m {age_sec}s</b>\n"
                                     f"━━━━━━━━━━━━━━━━\n"
-                                    f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(addr)}'>DexScreener</a>",
+                                    f"🔗 GMGN: {link}\n"
+                                    f"🔗 DexScreener: {dexscreener_link(addr)}",
                                     addr
                                 )
 
@@ -1085,6 +1086,7 @@ class MemeBot:
                                     launch_time=coin_info.launch_time or now_ts,
                                     is_pre_migration=False,
                                     is_pre_migration_known=True,
+                                    signal_age=age,
                                 ))
                                 await self.state.add_alerted(addr)
                                 logger.info(f"📈 ক্লাইম্বিং সিগন্যাল: {symbol} mcap={format_number(mcap)} score={climbing_score:.2f}")
@@ -1191,7 +1193,8 @@ class MemeBot:
                             f"🔒 LP লক: <b>{coin_info.lp_locked}%</b>\n"
                             f"⏱️ বয়স: <b>{int(age//60)}m {int(age%60)}s</b>\n"
                             f"━━━━━━━━━━━━━━━━\n"
-                            f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(addr)}'>DexScreener</a>",
+                            f"🔗 GMGN: {link}\n"
+                            f"🔗 DexScreener: {dexscreener_link(addr)}",
                             addr
                         )
 
@@ -1203,6 +1206,7 @@ class MemeBot:
                             launch_time=coin_info.launch_time or now_ts,
                             is_pre_migration=False,
                             is_pre_migration_known=True,
+                            signal_age=age,
                         ))
                         await self.state.add_alerted(addr)
 
@@ -1400,10 +1404,11 @@ class MemeBot:
                 logger.error(f"সিগন্যাল চেক এরর: {e}")
 
     async def signal_confirmation_loop(self):
-        """Multi-stage confirmation: require price INCREASE + momentum, not just stability."""
+        """Multi-stage confirmation with volume + momentum + price."""
         CHECK_INTERVAL = 30
-        STAGE1_DELAY = 180   # 3 min: first check
-        STAGE2_DELAY = 300   # 5 min: final check
+        STAGE1_DELAY = 60    # 1 min: initial check
+        STAGE2_DELAY = 180   # 3 min: momentum check
+        STAGE3_DELAY = 300   # 5 min: final confirmation
         MAX_WAIT = 480       # 8 min: expire
 
         while True:
@@ -1415,7 +1420,7 @@ class MemeBot:
                 for addr, pending in list(self.state.pending_signals.items()):
                     elapsed = now - pending.pending_since
 
-                    # Fetch current price
+                    # Fetch current data
                     pair = await self.dex.fetch_pair_data(addr)
                     if not pair:
                         if elapsed > MAX_WAIT:
@@ -1432,32 +1437,54 @@ class MemeBot:
                     pending.check_count += 1
                     pending.last_check_price = current_price
 
-                    # STAGE 1: After 3 minutes — reject dumps, check for any momentum
+                    # Get volume data for volume confirmation
+                    volume_24h = float(pair.get("volume", {}).get("h24", 0) or 0) if isinstance(pair.get("volume"), dict) else 0
+                    buys_5m = int((pair.get("txns", {}).get("m5", {}) or {}).get("buys", 0) or 0) if isinstance(pair.get("txns"), dict) else 0
+                    sells_5m = int((pair.get("txns", {}).get("m5", {}) or {}).get("sells", 0) or 0) if isinstance(pair.get("txns"), dict) else 0
+                    buy_pressure_5m = buys_5m / max(buys_5m + sells_5m, 1)
+
+                    # STAGE 1: After 1 min — quick reject dumps, check initial momentum
                     if elapsed >= STAGE1_DELAY and not pending.price_stable:
-                        if price_ratio < 0.92:
-                            # Dropped >8% → dump
+                        if price_ratio < 0.90:
+                            # Dropped >10% → dump
                             logger.info(f"[CONFIRM REJECT] {pending.symbol}: dropped {(1-price_ratio)*100:.0f}% at T+{elapsed:.0f}s")
                             expired.append(addr)
                             continue
-                        if price_ratio >= 1.08:
-                            # Up 8%+ → strong momentum, send now
-                            logger.info(f"[CONFIRMED-FAST] {pending.symbol}: +{(price_ratio-1)*100:.0f}% momentum at T+{elapsed:.0f}s")
-                            await self._send_confirmed_signal(addr, pending, current_price)
-                            expired.append(addr)
-                            continue
-                        # Stable but no momentum → mark as stage1 checked, wait for stage2
+                        if price_ratio >= 1.10:
+                            # Up 10%+ → strong momentum, check volume
+                            if buy_pressure_5m >= 0.6:  # 60%+ buy pressure
+                                logger.info(f"[CONFIRMED-FAST] {pending.symbol}: +{(price_ratio-1)*100:.0f}% vol={buy_pressure_5m:.0%} at T+{elapsed:.0f}s")
+                                await self._send_confirmed_signal(addr, pending, current_price)
+                                expired.append(addr)
+                                continue
                         pending.price_stable = True
-                        logger.info(f"[STAGE1] {pending.symbol}: stable at {price_ratio:.2f}x, waiting for momentum")
+                        logger.info(f"[STAGE1] {pending.symbol}: stable at {price_ratio:.2f}x, waiting for volume+momentum")
                         continue
 
-                    # STAGE 2: After 5 minutes — require positive price action
-                    if elapsed >= STAGE2_DELAY:
-                        if price_ratio < 0.95:
+                    # STAGE 2: After 3 min — require positive price action + volume
+                    if elapsed >= STAGE2_DELAY and not getattr(pending, 'stage2_done', False):
+                        if price_ratio < 0.93:
                             logger.info(f"[CONFIRM REJECT] {pending.symbol}: weak at {(price_ratio-1)*100:+.0f}% T+{elapsed:.0f}s")
                             expired.append(addr)
                             continue
-                        if price_ratio >= 1.05:
-                            # Up 5%+ → confirmed
+                        if price_ratio >= 1.05 and buy_pressure_5m >= 0.55:
+                            # Up 5%+ with buy pressure → confirmed
+                            logger.info(f"[CONFIRMED-STAGE2] {pending.symbol}: +{(price_ratio-1)*100:.0f}% vol={buy_pressure_5m:.0%} at T+{elapsed:.0f}s")
+                            await self._send_confirmed_signal(addr, pending, current_price)
+                            expired.append(addr)
+                            continue
+                        pending.stage2_done = True
+                        logger.info(f"[STAGE2] {pending.symbol}: {price_ratio:.2f}x vol={buy_pressure_5m:.0%}, waiting for final")
+                        continue
+
+                    # STAGE 3: After 5 min — final confirmation
+                    if elapsed >= STAGE3_DELAY:
+                        if price_ratio < 0.95:
+                            logger.info(f"[CONFIRM REJECT] {pending.symbol}: flat {(price_ratio-1)*100:+.0f}% T+{elapsed:.0f}s")
+                            expired.append(addr)
+                            continue
+                        if price_ratio >= 1.03:
+                            # Up 3%+ → confirmed (relaxed after 5 min)
                             logger.info(f"[CONFIRMED] {pending.symbol}: +{(price_ratio-1)*100:.0f}% at T+{elapsed:.0f}s")
                             await self._send_confirmed_signal(addr, pending, current_price)
                             expired.append(addr)
@@ -1480,10 +1507,26 @@ class MemeBot:
                 logger.error(f"signal_confirmation_loop error: {e}")
 
     async def _send_confirmed_signal(self, address: str, pending, current_price: float):
-        """Send a confirmed signal to Telegram."""
+        """Send a confirmed signal to Telegram with confidence level."""
         link = gmgn_link(address)
         confidence_pct = int(pending.match_score * 100)
-        confidence_bar = "🟢" * max(1, int(confidence_pct / 20)) + "⚪" * (5 - max(1, int(confidence_pct / 20)))
+
+        # Pattern confidence scoring
+        if pending.match_score >= 0.80:
+            confidence_level = "🟢 STRONG"
+            confidence_bar = "🟢🟢🟢🟢🟢"
+        elif pending.match_score >= 0.70:
+            confidence_level = "🟢 HIGH"
+            confidence_bar = "🟢🟢🟢🟢⚪"
+        elif pending.match_score >= 0.60:
+            confidence_level = "🟡 MEDIUM"
+            confidence_bar = "🟢🟢🟢⚪⚪"
+        elif pending.match_score >= 0.50:
+            confidence_level = "🟡 LOW"
+            confidence_bar = "🟢🟢⚪⚪⚪"
+        else:
+            confidence_level = "🔴 WEAK"
+            confidence_bar = "🟢⚪⚪⚪⚪"
 
         # Fetch current market cap and LP analysis
         current_mcap = 0
@@ -1508,21 +1551,33 @@ class MemeBot:
         except Exception:
             pass
 
+        # Time context
+        now_hour = datetime.now(timezone.utc).hour
+        if 0 <= now_hour < 8:
+            session = "🌏 Asian"
+        elif 8 <= now_hour < 16:
+            session = "🌍 European"
+        else:
+            session = "🌎 US"
+
         await send_signal(self.telegram_app.bot,
             f"⚡ <b>প্রি-মাইগ্রেশন সিগন্যাল!</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"🏷️ <b>{pending.name}</b> (${pending.symbol})\n"
             f"🎯 কনফিডেন্স: {confidence_bar} <b>{confidence_pct}%</b>\n"
+            f"📊 Level: <b>{confidence_level}</b>\n"
             f"🧠 <i>{pending.match_reason}</i>\n"
             f"💰 MCap: <b>{format_number(pending.mcap)}</b>\n"
             f"💧 লিকুইডিটি: <b>${int(pending.liquidity)}</b>\n"
             f"📊 Buy: <b>{pending.buy_count}</b> | Sell: <b>{pending.sell_count}</b>\n"
             f"👥 Wallets: <b>{pending.unique_wallets}</b> | Holders: <b>{pending.holders}</b>\n"
             f"⏱️ বয়স: <b>{int(pending.age_seconds//60)}m {int(pending.age_seconds%60)}s</b>\n"
+            f"🕐 Session: <b>{session}</b>\n"
             f"{lp_text + chr(10) if lp_text else ''}"
             f"📈 বর্তমান MCap: <b>{format_number(current_mcap)}</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"🔗 <a href='{link}'>GMGN</a> | <a href='{dexscreener_link(address)}'>DexScreener</a>",
+            f"🔗 GMGN: {link}\n"
+            f"🔗 DexScreener: {dexscreener_link(address)}",
             address
         )
 

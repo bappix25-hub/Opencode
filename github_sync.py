@@ -211,7 +211,7 @@ def _smart_merge_data_file(local_path: str, remote_path: str, output_path: str) 
     merged["dump_patterns"] = _merge_list(
         local.get("dump_patterns"),
         remote.get("dump_patterns"),
-        key="address", cap=500,
+        key="address", cap=1000,
     )
     merged["launch_patterns"] = _merge_list(
         local.get("launch_patterns"),

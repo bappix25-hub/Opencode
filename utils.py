@@ -55,7 +55,7 @@ def format_number(n) -> str:
         return "$0"
 
 def gmgn_link(address: str) -> str:
-    return f"https://gmgn.ai/sol/token/{address}"
+    return f"https://gmgn.ai/sol/token/{address}?ref=tradingbot"
 
 def dexscreener_link(address: str) -> str:
     return f"https://dexscreener.com/solana/{address}"
