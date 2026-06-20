@@ -2002,17 +2002,21 @@ def get_signal_criteria() -> dict:
 def _exit_pnl(ath: float, current: float, tp_mult: float, sl_mult: float) -> tuple:
     """Determine exit PnL for one signal given TP/SL multipliers.
 
-    Price path logic (realistic):
-      1. If ATH >= TP: price reached TP level at some point → TP exit → +TP%
-      2. Else if current <= SL: price is below SL now → SL hit → +SL%
-      3. Else: price is between entry and TP, above SL → hold → (current-1)*100
+    Conservative price path logic:
+      1. If current <= SL: SL hit (price dropped to SL level) → SL exit
+      2. If ATH >= TP: price reached TP level at some point → TP exit
+      3. Else: price is between entry and TP, above SL → hold
+
+    Key: SL is checked FIRST because in real trading, price often drops
+    before pumping. If current is below SL, the position would have been
+    stopped out regardless of ATH.
 
     Returns (pnl_pct, exit_type) where exit_type is 'tp', 'sl', or 'hold'.
     """
-    if ath >= tp_mult:
-        return ((tp_mult - 1) * 100, "tp")
-    elif current <= sl_mult:
+    if current <= sl_mult:
         return ((sl_mult - 1) * 100, "sl")
+    elif ath >= tp_mult:
+        return ((tp_mult - 1) * 100, "tp")
     else:
         return ((current - 1) * 100, "hold")
 
@@ -2094,20 +2098,33 @@ def simulate_tp_scenarios(results: list) -> list:
     if not results:
         return []
 
-    # Dynamic SL based on avg ATH: higher volatility = wider SL
-    aths = [r.get("ath_multiplier", 1) for r in results if r.get("ath_multiplier", 0) > 0]
-    avg_ath = sum(aths) / len(aths) if aths else 1
-    if avg_ath >= 3:
-        sl_pct = -25  # High volatility → wider SL
-    elif avg_ath >= 2:
-        sl_pct = -20  # Medium volatility
-    elif avg_ath >= 1.5:
-        sl_pct = -15  # Low-medium volatility
-    else:
-        sl_pct = -10  # Low volatility
+    # Find optimal SL by testing different levels
+    best_sl_score = -999
+    best_sl = -25
+    for sl_candidate in range(-50, -5, 5):
+        sl_mult = 1 + sl_candidate / 100
+        # Test with a reasonable TP (50%)
+        tp_mult = 1.5
+        wins = 0
+        losses = 0
+        for r in results:
+            _, exit_type = _exit_pnl(r.get("ath_multiplier", 1),
+                                     r.get("current_multiplier", 1),
+                                     tp_mult, sl_mult)
+            if exit_type == "tp":
+                wins += 1
+            elif exit_type == "sl":
+                losses += 1
+        n = len(results)
+        score = (wins / n) * 100 - (losses / n) * 50
+        if score > best_sl_score:
+            best_sl_score = score
+            best_sl = sl_candidate
+
+    sl_pct = best_sl
 
     scenarios = []
-    for tp_pct in range(20, 301, 10):
+    for tp_pct in range(5, 201, 5):
         tp_mult = 1 + tp_pct / 100
         sl_mult = 1 + sl_pct / 100
 
@@ -2127,7 +2144,6 @@ def simulate_tp_scenarios(results: list) -> list:
                 tp_hits += 1
             elif exit_type == "sl":
                 sl_hits += 1
-                # Check: would holding have been better than SL?
                 hold_pnl = (current - 1) * 100
                 if hold_pnl > sl_pct:
                     hold_better_than_sl += 1
