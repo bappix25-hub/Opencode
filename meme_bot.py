@@ -60,7 +60,7 @@ async def send_msg(bot: Bot, text: str) -> None:
         logger.error(f"Send error: {e}")
 
 async def send_signal(bot: Bot, text: str, address: str = "") -> None:
-    """Send signal to channel for auto-trade by scraper/Maestro."""
+    """Send signal to channel for auto-trade by scraper/Maestro (plain text)."""
     channel_id = config.channel_id
     if not channel_id and os.path.exists(CHANNEL_ID_FILE):
         try:
@@ -75,7 +75,7 @@ async def send_signal(bot: Bot, text: str, address: str = "") -> None:
     try:
         await bot.send_message(
             chat_id=channel_id, text=text,
-            parse_mode="HTML", disable_web_page_preview=True
+            disable_web_page_preview=True
         )
         logger.info(f"📤 Channel signal sent")
     except Exception as e:
