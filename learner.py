@@ -2121,7 +2121,8 @@ def simulate_tp_scenarios(results: list) -> list:
         for r in results:
             ath = r.get("ath_multiplier", 1)
             current = r.get("current_multiplier", 1)
-            pnl, exit_type = _exit_pnl(ath, current, tp_mult, sl_mult)
+            min_price = r.get("min_price_multiplier", 0)
+            pnl, exit_type = _exit_pnl(ath, current, tp_mult, sl_mult, min_price)
             total_pnl += pnl
 
             if exit_type == "tp":
