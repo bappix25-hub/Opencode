@@ -203,6 +203,14 @@ class MemeBot:
         self._tasks.append(asyncio.create_task(self.feature_request_loop(), name="feature_request"))
         self._tasks.append(asyncio.create_task(self.lp_monitoring_loop(), name="lp_monitoring"))
 
+        # Pump collector: background 24/7 data collection from DexScreener
+        try:
+            from pump_collector import pump_collector_loop
+            self._tasks.append(asyncio.create_task(pump_collector_loop(self), name="pump_collector"))
+            logger.info("🔄 Pump collector loop started")
+        except Exception as e:
+            logger.debug(f"Pump collector start error: {e}")
+
         await send_msg(self.telegram_app.bot, "🤖 <b>বট v3 চালু!</b>\n✅ 5x filter + Auto-verify + Social signals + Paper Trading সক্রিয়")
 
         try:
@@ -2039,6 +2047,24 @@ class MemeBot:
         while True:
             try:
                 logger.info("🔄 Continuous learn cycle started...")
+                
+                # 0. Merge collected pump patterns from pump_collector
+                try:
+                    from pump_collector import extract_collected_pump_patterns, COLLECTOR_DATA_FILE
+                    data = load_data()
+                    existing_addrs = {p.get("address", "") for p in data.get("pump_patterns", [])}
+                    collected = extract_collected_pump_patterns(COLLECTOR_DATA_FILE)
+                    new_count = 0
+                    for p in collected:
+                        if p["address"] and p["address"] not in existing_addrs:
+                            data.setdefault("pump_patterns", []).append(p)
+                            existing_addrs.add(p["address"])
+                            new_count += 1
+                    if new_count > 0:
+                        save_data(data)
+                        logger.info(f"📥 Merged {new_count} new pump patterns from collector")
+                except Exception as e:
+                    logger.debug(f"Collector merge error: {e}")
                 
                 # 1. Enrich pump patterns from recent signal_results with DexScreener data
                 await self._enrich_pump_patterns()
