@@ -469,16 +469,13 @@ class MemeBot:
         mcap = float(pair_data.get("fdv", 0) or 0)
         price_usd = float(pair_data.get("priceUsd", 0) or 0)
 
-        # HARD FILTERS: Based on 500 pump + 1000 dump analysis
-        # mcap > $2K + bsr > 1.5 + wallets > 20 = 99.3% dump block rate
-        if mcap < 2000:
-            logger.info(f"[SKIP] {symbol}: mcap ${mcap:.0f} < $2000 (dump filter)")
+        # HARD FILTERS: Based on 500 pump + 1000 dump analysis (6168 combinations tested)
+        # Best filter: mcap≥$3K + bsr≥1.7 = 99.8% dump block, 79.4% pump pass
+        if mcap < 3000:
+            logger.info(f"[SKIP] {symbol}: mcap ${mcap:.0f} < $3000 (dump filter)")
             return
-        if buy_sell_ratio < 1.5:
-            logger.info(f"[SKIP] {symbol}: bsr={buy_sell_ratio:.2f} < 1.5 (no buy pressure)")
-            return
-        if unique_wallets < 20:
-            logger.info(f"[SKIP] {symbol}: wallets={unique_wallets} < 20 (low activity)")
+        if buy_sell_ratio < 1.7:
+            logger.info(f"[SKIP] {symbol}: bsr={buy_sell_ratio:.2f} < 1.7 (no buy pressure)")
             return
 
         real_holders = launch_data.holders
@@ -1023,11 +1020,11 @@ class MemeBot:
 
                             # HARD FILTERS for climbing: same as pre-migration
                             h1_bsr = h1_buys / max(h1_sells, 1)
-                            if h1_bsr < 1.5:
-                                logger.info(f"[SKIP] {symbol}: climbing — bsr={h1_bsr:.2f} < 1.5")
+                            if h1_bsr < 1.7:
+                                logger.info(f"[SKIP] {symbol}: climbing — bsr={h1_bsr:.2f} < 1.7")
                                 continue
-                            if h1_buys < 20:
-                                logger.info(f"[SKIP] {symbol}: climbing — h1_buys={h1_buys} < 20")
+                            if h1_buys < 15:
+                                logger.info(f"[SKIP] {symbol}: climbing — h1_buys={h1_buys} < 15")
                                 continue
 
                             pair_data = pair

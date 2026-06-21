@@ -52901,17 +52901,6 @@
         "timestamp": "2026-06-21T16:15:30.137739+00:00"
       },
       {
-        "address": "EwswnwrzzhFq5wpWMUu7rHhDm8WxpytC3Goim1Jbpump",
-        "symbol": "TRENCHES",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 5.57,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-21T17:05:49.361463+00:00",
-        "timestamp": "2026-06-21T17:05:49.361491+00:00"
-      },
-      {
         "address": "3dgtgkxo5XNg9c6SDhRC4mHNn3JNcCP8t6jtvycZpump",
         "symbol": "DogTrain",
         "verdict": "PUMP",
@@ -52921,28 +52910,6 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-21T17:05:49.636236+00:00",
         "timestamp": "2026-06-21T17:05:49.636265+00:00"
-      },
-      {
-        "address": "AXUgLcCfpC93LeFPwCzB2eBUDRrAqtYmnUe2zDihpump",
-        "symbol": "TensorForge",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 5.13,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-21T17:05:49.903330+00:00",
-        "timestamp": "2026-06-21T17:05:49.903357+00:00"
-      },
-      {
-        "address": "4opYauvz3bb4ezkMugFsJqvQ9Y11YwSwpFcpmDxhpump",
-        "symbol": "Pearchua",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 8.09,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-21T17:05:50.177274+00:00",
-        "timestamp": "2026-06-21T17:05:50.177301+00:00"
       }
     ],
     "success_history": [
