@@ -964,7 +964,7 @@ def match_dump_patterns(features: dict, min_similarity: float = 0.40) -> tuple[b
     return False, best_score, f"Best dump match {best_score:.0%} < {min_similarity:.0%}"
 
 
-def record_signal_result(address: str, symbol: str, ath_multiplier: float, current_multiplier: float = 0.0, signal_age: float = 0.0, signal_time=None) -> None:
+def record_signal_result(address: str, symbol: str, ath_multiplier: float, current_multiplier: float = 0.0, signal_age: float = 0.0, signal_time=None, min_price: float = 0.0) -> None:
     """Record signal outcome and learn from it."""
     data = load_data()
     results = data["model"].setdefault("signal_results", [])
@@ -981,6 +981,7 @@ def record_signal_result(address: str, symbol: str, ath_multiplier: float, curre
         "verdict": verdict,
         "ath_multiplier": ath_multiplier,
         "current_multiplier": current_multiplier,
+        "min_price_multiplier": min_price,
         "signal_age": signal_age,
         "signal_time": signal_time.isoformat() if isinstance(signal_time, datetime) else datetime.now(timezone.utc).isoformat(),
         "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -1999,21 +2000,24 @@ def get_signal_criteria() -> dict:
     return criteria
 
 
-def _exit_pnl(ath: float, current: float, tp_mult: float, sl_mult: float) -> tuple:
+def _exit_pnl(ath: float, current: float, tp_mult: float, sl_mult: float, min_price: float = 0.0) -> tuple:
     """Determine exit PnL for one signal given TP/SL multipliers.
 
-    Conservative price path logic:
-      1. If current <= SL: SL hit (price dropped to SL level) → SL exit
-      2. If ATH >= TP: price reached TP level at some point → TP exit
-      3. Else: price is between entry and TP, above SL → hold
+    Accurate price path logic using min_price:
+      If we have min_price data, we know the actual maximum drawdown.
+      This tells us definitively if SL was hit.
 
-    Key: SL is checked FIRST because in real trading, price often drops
-    before pumping. If current is below SL, the position would have been
-    stopped out regardless of ATH.
+      1. If min_price <= SL and min_price > 0: SL was definitely hit
+         (price dropped below SL at some point, regardless of ATH)
+      2. If ATH >= TP: TP was available to hit
+         (price reached TP level at some point)
+      3. Otherwise: hold
+
+    Without min_price, fall back to ATH-first logic.
 
     Returns (pnl_pct, exit_type) where exit_type is 'tp', 'sl', or 'hold'.
     """
-    if current <= sl_mult:
+    if min_price > 0 and min_price <= sl_mult:
         return ((sl_mult - 1) * 100, "sl")
     elif ath >= tp_mult:
         return ((tp_mult - 1) * 100, "tp")
@@ -2025,15 +2029,15 @@ def calculate_optimal_tp_sl(results: list) -> dict:
     """Find the TP/SL combo that maximizes avg PnL across all signals.
     Prefers TP levels that actually HIT over ones that just hold."""
     if not results:
-        return {"optimal_tp": 100, "optimal_sl": -30, "expected_pnl": 0,
+        return {"optimal_tp": 50, "optimal_sl": -25, "expected_pnl": 0,
                 "win_rate": 0, "tp_hits": 0, "sl_hits": 0, "holds": 0}
 
     best_score = -999
     best_pnl = -999
-    best_tp = 100
-    best_sl = -30
+    best_tp = 50
+    best_sl = -25
 
-    for tp_pct in range(30, 301, 10):
+    for tp_pct in range(5, 201, 5):
         for sl_pct in range(-50, -5, 5):
             tp_mult = 1 + tp_pct / 100
             sl_mult = 1 + sl_pct / 100
@@ -2044,7 +2048,8 @@ def calculate_optimal_tp_sl(results: list) -> dict:
             for r in results:
                 ath = r.get("ath_multiplier", 1)
                 current = r.get("current_multiplier", 1)
-                pnl, exit_type = _exit_pnl(ath, current, tp_mult, sl_mult)
+                min_price = r.get("min_price_multiplier", 0)
+                pnl, exit_type = _exit_pnl(ath, current, tp_mult, sl_mult, min_price)
                 total_pnl += pnl
                 if exit_type == "tp":
                     tp_hits += 1
@@ -2055,11 +2060,10 @@ def calculate_optimal_tp_sl(results: list) -> dict:
 
             n = len(results)
             avg_pnl = total_pnl / n
-            hit_rate = tp_hits / n
+            win_rate = tp_hits / n
 
-            # Score: reward hit rate, penalize holds (unrealized)
-            # A TP that hits is worth more than a hold with similar PnL
-            score = avg_pnl + (hit_rate * 20) - (holds / n * 5)
+            # Score: maximize avg PnL, bonus for high win rate, penalty for too many holds
+            score = avg_pnl + (win_rate * 15) - (holds / n * 10)
 
             if score > best_score or (score == best_score and avg_pnl > best_pnl):
                 best_score = score
@@ -2074,7 +2078,8 @@ def calculate_optimal_tp_sl(results: list) -> dict:
     for r in results:
         _, exit_type = _exit_pnl(r.get("ath_multiplier", 1),
                                   r.get("current_multiplier", 1),
-                                  best_tp_mult, best_sl_mult)
+                                  best_tp_mult, best_sl_mult,
+                                  r.get("min_price_multiplier", 0))
         if exit_type == "tp":
             final_tp += 1
         elif exit_type == "sl":
@@ -2098,30 +2103,9 @@ def simulate_tp_scenarios(results: list) -> list:
     if not results:
         return []
 
-    # Find optimal SL by testing different levels
-    best_sl_score = -999
-    best_sl = -25
-    for sl_candidate in range(-50, -5, 5):
-        sl_mult = 1 + sl_candidate / 100
-        # Test with a reasonable TP (50%)
-        tp_mult = 1.5
-        wins = 0
-        losses = 0
-        for r in results:
-            _, exit_type = _exit_pnl(r.get("ath_multiplier", 1),
-                                     r.get("current_multiplier", 1),
-                                     tp_mult, sl_mult)
-            if exit_type == "tp":
-                wins += 1
-            elif exit_type == "sl":
-                losses += 1
-        n = len(results)
-        score = (wins / n) * 100 - (losses / n) * 50
-        if score > best_sl_score:
-            best_sl_score = score
-            best_sl = sl_candidate
-
-    sl_pct = best_sl
+    # Use optimal SL from calculate_optimal_tp_sl
+    optimal = calculate_optimal_tp_sl(results)
+    sl_pct = optimal["optimal_sl"]
 
     scenarios = []
     for tp_pct in range(5, 201, 5):

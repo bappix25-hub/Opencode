@@ -1086,6 +1086,7 @@ class MemeBot:
                                     is_pre_migration=False,
                                     is_pre_migration_known=True,
                                     signal_age=age,
+                                    min_price=current_price,
                                 ))
                                 await self.state.add_alerted(addr)
                                 logger.info(f"📈 ক্লাইম্বিং সিগন্যাল: {symbol} mcap={format_number(mcap)} score={climbing_score:.2f}")
@@ -1207,6 +1208,7 @@ class MemeBot:
                             is_pre_migration=False,
                             is_pre_migration_known=True,
                             signal_age=age,
+                            min_price=current_price,
                         ))
                         await self.state.add_alerted(addr)
 
@@ -1350,6 +1352,7 @@ class MemeBot:
 
                     ath_multiplier = sig_info.ath_price / sig_info.price_at_signal if sig_info.price_at_signal > 0 else 0
                     current_multiplier = current_price / sig_info.price_at_signal if sig_info.price_at_signal > 0 else 0
+                    min_price_multiplier = sig_info.min_price / sig_info.price_at_signal if sig_info.price_at_signal > 0 and sig_info.min_price > 0 else current_multiplier
 
                     if next_check == 21600:
                         emoji = "✅" if ath_multiplier >= 2.0 else ("😐" if ath_multiplier >= 0.8 else "❌")
@@ -1360,7 +1363,7 @@ class MemeBot:
                             f"📊 বর্তমান: <b>{current_multiplier:.2f}x</b>\n"
                             f"💰 {'🟢 ATH 2x+' if ath_multiplier >= 2 else '🔴 Missed' if ath_multiplier < 0.8 else '➡️ Neutral'}"
                         )
-                        record_signal_result(addr, sig_info.symbol, ath_multiplier, current_multiplier, sig_info.signal_age, sig_info.signal_time)
+                        record_signal_result(addr, sig_info.symbol, ath_multiplier, current_multiplier, sig_info.signal_age, sig_info.signal_time, min_price_multiplier)
                         await self.state.mark_signal_checked(addr)
                         logger.info(f"[OUTCOME] {sig_info.symbol}: ATH={ath_multiplier:.2f}x current={current_multiplier:.2f}x @ T+6h")
                         try:
@@ -1432,6 +1435,10 @@ class MemeBot:
                         if elapsed > MAX_WAIT:
                             expired.append(addr)
                         continue
+
+                    # Track minimum price after signal
+                    if pending.min_price <= 0 or current_price < pending.min_price:
+                        pending.min_price = current_price
 
                     price_ratio = current_price / pending.price_at_match if pending.price_at_match > 0 else 0
                     pending.check_count += 1
@@ -1592,6 +1599,7 @@ class MemeBot:
             launch_time=0,
             is_pre_migration=True,
             signal_age=pending.age_seconds,
+            min_price=pending.min_price if pending.min_price > 0 else pending.price_at_match,
         ))
 
         logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {pending.symbol} match={pending.match_score:.0%} "

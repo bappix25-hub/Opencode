@@ -54,6 +54,7 @@ class SignalInfo:
     is_pre_migration_known: bool = False
     eval_done: dict = field(default_factory=dict)
     ath_price: float = 0.0
+    min_price: float = 0.0
     signal_age: float = 0.0  # age in seconds at signal time
 
 @dataclass
@@ -78,6 +79,8 @@ class PendingSignal:
     last_check_price: float = 0.0
     check_count: int = 0
     price_stable: bool = False
+    min_price: float = 0.0
+    stage2_done: bool = False
 
 @dataclass
 class CoinInfo:
