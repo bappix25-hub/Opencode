@@ -195,6 +195,14 @@ class MemeBot:
         except Exception as e:
             logger.debug(f"Pump collector start error: {e}")
 
+        # Telegram collector: real-time token data from GMGN channels
+        try:
+            import telegram_collector as tc
+            self._tasks.append(asyncio.create_task(tc.run_loop(self.dex, 15), name="telegram_collector"))
+            logger.info("📡 Telegram collector loop started")
+        except Exception as e:
+            logger.debug(f"Telegram collector start error: {e}")
+
         await send_msg(self.telegram_app.bot, "🤖 <b>বট v3 চালু!</b>\n✅ 5x filter + Auto-verify + Social signals + Paper Trading সক্রিয়")
 
         try:

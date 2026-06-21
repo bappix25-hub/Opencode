@@ -56870,15 +56870,16 @@
       "min_bsr": 1.62,
       "min_holders": 20,
       "min_wallets": 30,
-      "min_liq": 2000,
-      "min_liq_pct": 15,
+      "min_liq": 9447.0,
+      "min_liq_pct": 27.0,
       "min_lp_locked": 80,
       "min_lp_providers": 2,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
       "heuristic_threshold": 0.6,
-      "updated_at": "2026-06-21T20:47:23.499376+00:00",
-      "sample_size": 1500
+      "updated_at": "2026-06-21T20:56:09.666897+00:00",
+      "sample_size": 83,
+      "max_age_hours": 42.2
     }
   },
   "honeypot_addresses": [
