@@ -39,17 +39,18 @@ DEFAULT_DATA = {
 }
 
 DEFAULT_SIGNAL_CRITERIA = {
-    "min_bsr": 1.5,
+    "min_bsr": 1.3,
     "min_holders": 5,
     "min_wallets": 10,
     "min_liq": 1500,
-    "min_liq_pct": 3.0,
-    "min_lp_locked": 0,
-    "heuristic_threshold": 0.60,
-    "pattern_threshold": 0.60,
+    "min_liq_pct": 15,
+    "min_lp_locked": 80,
+    "heuristic_threshold": 0.50,
+    "pattern_threshold": 0.80,
     "max_age_seconds": 3600,
     "updated_at": None,
     "sample_size": 0,
+    "min_lp_providers": 2,
 }
 
 
@@ -937,7 +938,7 @@ def match_pump_patterns(features: dict, min_similarity: float = None) -> tuple[b
     return False, best_score, f"Best match {best_score:.0%} < {min_similarity:.0%}"
 
 
-def match_dump_patterns(features: dict, min_similarity: float = 0.40) -> tuple[bool, float, str]:
+def match_dump_patterns(features: dict, min_similarity: float = 0.75) -> tuple[bool, float, str]:
     """Check if features match known dump patterns.
     Returns (is_dump, score, reason).
     Used to REJECT signals that look like historical dumps."""
@@ -1966,10 +1967,14 @@ def compute_signal_criteria(min_patterns: int = 5) -> dict:
     criteria["updated_at"] = datetime.now(timezone.utc).isoformat()
     criteria["sample_size"] = len(pump_patterns) + len(dump_patterns)
 
-    # Clamp unrealistic values
-    criteria["min_liq_pct"] = min(criteria.get("min_liq_pct", 10), 15)
-    criteria["min_lp_locked"] = min(criteria.get("min_lp_locked", 50), 100)
-    criteria["min_liq"] = max(criteria.get("min_liq", 1000), 500)
+    # Clamp to safe ranges - minimum AND maximum
+    criteria["min_liq_pct"] = max(min(criteria.get("min_liq_pct", 15), 15), 5)
+    criteria["min_lp_locked"] = max(min(criteria.get("min_lp_locked", 80), 100), 80)
+    criteria["min_liq"] = max(min(criteria.get("min_liq", 5000), 5000), 1500)
+    criteria["min_bsr"] = max(min(criteria.get("min_bsr", 2.0), 2.0), 1.3)
+    criteria["min_holders"] = max(min(criteria.get("min_holders", 20), 20), 5)
+    criteria["min_wallets"] = max(min(criteria.get("min_wallets", 30), 30), 10)
+    criteria["min_lp_providers"] = max(min(criteria.get("min_lp_providers", 3), 3), 2)
 
     data["model"]["signal_criteria"] = criteria
     data["model"]["signal_criteria_stats"] = {

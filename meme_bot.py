@@ -524,8 +524,8 @@ class MemeBot:
 
         match, match_score, match_reason = match_pump_patterns(features)
 
-        # Check if token matches known dump patterns — reject immediately
-        is_dump, dump_score, dump_reason = match_dump_patterns(features)
+        # Check if token matches known dump patterns — reject only if very confident
+        is_dump, dump_score, dump_reason = match_dump_patterns(features, min_similarity=0.75)
         if is_dump:
             logger.info(f"[SKIP] {symbol}: dump pattern match — {dump_reason}")
             return
