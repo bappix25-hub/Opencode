@@ -321,6 +321,89 @@ class MemeBot:
 
         await self.check_pre_migration_signal(address)
 
+    async def check_pre_migration_signal(self, address: str):
+        if await self.state.is_alerted(address):
+            return
+        if await self.state.is_blacklisted(address):
+            return
+        launch_data = await self.state.get_launch_tracking(address)
+        if not launch_data:
+            return
+        pair = await self.dex.fetch_pair_data(address)
+        if not pair:
+            return
+
+        mcap = float(pair.get("fdv", 0) or 0)
+        if mcap <= 0:
+            return
+        liquidity = float((pair.get("liquidity") or {}).get("usd", 0) or 0)
+        buys_1h = int(((pair.get("txns") or {}).get("h1") or {}).get("buys", 0) or 0)
+        sells_1h = int(((pair.get("txns") or {}).get("h1") or {}).get("sells", 0) or 0)
+        buys_5m = int(((pair.get("txns") or {}).get("m5") or {}).get("buys", 0) or 0)
+        sells_5m = int(((pair.get("txns") or {}).get("m5") or {}).get("sells", 0) or 0)
+        bsr = buys_1h / max(sells_1h, 1)
+        avg_5m = max(buys_1h / 12, 1)
+        vol_spike = buys_5m / avg_5m if avg_5m > 0 else 0
+        mcap_thresh = 2000 if vol_spike >= 3.0 else 3000
+        bsr_thresh = 1.2 if vol_spike >= 3.0 else 1.7
+        if mcap < mcap_thresh:
+            return
+        if bsr < bsr_thresh:
+            return
+
+        await self.evaluate_and_signal(address, launch_data, pair)
+
+    async def evaluate_and_signal(self, address: str, launch_data, pair: dict):
+        mcap = float(pair.get("fdv", 0) or 0)
+        price_usd = float(pair.get("priceUsd", 0) or 0)
+        buys_5m = int(((pair.get("txns") or {}).get("m5") or {}).get("buys", 0) or 0)
+        sells_5m = int(((pair.get("txns") or {}).get("m5") or {}).get("sells", 0) or 0)
+        bsr_5m = buys_5m / max(sells_5m, 1)
+        price_change_1h = float(pair.get("priceChange", {}).get("h1", 0) or 0)
+        price_change_5m = float(pair.get("priceChange", {}).get("m5", 0) or 0)
+        vol_24h = float((pair.get("volume") or {}).get("h24", 0) or 0)
+        liquidity = float((pair.get("liquidity") or {}).get("usd", 0) or 0)
+        vol_liq = vol_24h / max(liquidity, 1) if liquidity > 0 else 0
+        score = 0.0
+        reasons = []
+        if mcap >= 5000 and mcap <= 500000:
+            score += 0.2; reasons.append(f"MCap ${int(mcap)}")
+        if liquidity >= 1000:
+            score += 0.15; reasons.append(f"Liq ${int(liquidity)}")
+        if vol_liq >= 0.3:
+            score += 0.15; reasons.append(f"Vol/Liq {vol_liq:.1f}")
+        if bsr_5m >= 2.0:
+            score += 0.15; reasons.append(f"5m B/S {bsr_5m:.1f}")
+        if buys_5m >= 10:
+            score += 0.1; reasons.append(f"{buys_5m}b/5m")
+        if price_change_1h > 50:
+            score += 0.2; reasons.append(f"1h +{price_change_1h:.0f}%")
+        elif price_change_1h > 20:
+            score += 0.1; reasons.append(f"1h +{price_change_1h:.0f}%")
+        if price_change_5m > 10:
+            score += 0.1; reasons.append(f"5m +{price_change_5m:.0f}%")
+        if score < 0.55:
+            return
+        now_ts = datetime.now(timezone.utc).timestamp()
+        age = now_ts - launch_data.launch_time if launch_data.launch_time > 0 else 0
+        symbol = launch_data.symbol
+        from bot_state import PendingSignal
+        pending = PendingSignal(
+            address=address, symbol=symbol, name=launch_data.name,
+            price_at_match=price_usd, match_score=score,
+            match_reason=", ".join(reasons[:3]),
+            mcap=mcap, liquidity=liquidity,
+            buy_count=buys_5m, sell_count=sells_5m,
+            buy_sell_ratio=bsr_5m,
+            unique_wallets=len(launch_data.unique_wallets),
+            holders=launch_data.holders,
+            lp_locked=launch_data.lp_locked or 0,
+            age_seconds=age,
+            pending_since=now_ts,
+        )
+        self.state.pending_signals[address] = pending
+        logger.info(f"[MATCH] {symbol}: score={score:.2f} → pending signal ({', '.join(reasons[:3])})")
+
     async def process_new_token(self, data: dict):
         address = data.get("mint")
         if not address:

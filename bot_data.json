@@ -1,68 +1,6 @@
 {
   "pump_patterns": [
     {
-      "address": "6kdHr9g2Pg2ZXCY4Dm1v7NpNqpTBTEiaRgATLR3Ppump",
-      "symbol": "COD",
-      "features": {
-        "buy_sell_ratio": 1.44,
-        "unique_wallets": 13,
-        "holders": 0,
-        "liquidity": 10113.48,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 13,
-        "sell_count": 9,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 81.53,
-        "social_score": 0,
-        "launch_hour": 21,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 0,
-        "mcap": 12404.0
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-18T23:55:38.154182+00:00"
-    },
-    {
-      "address": "BoEo2Jh85ZduGxMx36ZzxiSnNjwLJSqqnPWE1WKEpump",
-      "symbol": "CS",
-      "features": {
-        "buy_sell_ratio": 0.8,
-        "unique_wallets": 8,
-        "holders": 0,
-        "liquidity": 4563.73,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 8,
-        "sell_count": 10,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 124.86,
-        "social_score": 0,
-        "launch_hour": 21,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 0,
-        "mcap": 3655.0
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-18T23:55:38.154197+00:00"
-    },
-    {
       "address": "AvxFBjWydMYWD7C8pHzSkGxNYAFWr7aNBbAKm84bpump",
       "symbol": "Merlin",
       "features": {
@@ -14070,7 +14008,7 @@
       "outcome": "PUMP",
       "ath_multiplier": 5.27,
       "signal_age": 0.0,
-      "learned_at": "2026-06-21T19:59:52.830668+00:00"
+      "learned_at": "2026-06-21T20:22:33.646405+00:00"
     },
     {
       "address": "EuNTgimTby95VwudrR3DH8oGbhvkVbM3FjxH3sd2pump",
@@ -14817,6 +14755,50 @@
       "outcome": "PUMP",
       "ath_multiplier": 0,
       "learned_at": "2026-06-21T19:46:51.786487+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "4u1PPMtchn2BtMJRKejdk5UXF23wn7BDG34PudTVHXm7",
+      "symbol": "Unlocky",
+      "features": {
+        "buy_sell_ratio": 1.33,
+        "unique_wallets": 5694,
+        "holders": 0,
+        "liquidity": 16921.53,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 32.28,
+        "mcap": 52418,
+        "volume": 246110.92,
+        "buy_sell_momentum": 0.14,
+        "age_hours": 0.3,
+        "price": 5.241e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T19:57:10.136047+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "62a9wV2DYrF1mw9fGnJ4aiRU3xMPRcjNEURaGGe7pump",
+      "symbol": "PIXELJOTCHUA",
+      "features": {
+        "buy_sell_ratio": 4.0,
+        "unique_wallets": 7829,
+        "holders": 0,
+        "liquidity": 18419.08,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 29.76,
+        "mcap": 61893,
+        "volume": 253820.31,
+        "buy_sell_momentum": 0.6,
+        "age_hours": 0.9,
+        "price": 6.189e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T19:58:10.851793+00:00",
       "source": "pump_collector"
     }
   ],
@@ -52376,7 +52358,7 @@
       "features": {
         "launch_time": 1782061549.198542,
         "source": "historical_scan",
-        "ath_multiplier": 4.09,
+        "ath_multiplier": 4.05,
         "outcome": "PUMP",
         "signal_age": 0.0
       },
@@ -52658,61 +52640,6 @@
         "timestamp": "2026-06-21T19:41:30.925567+00:00"
       },
       {
-        "address": "8bhAH1FMaSkVuqo3eJz3VuJmQLjstxb4rL8J5WfqFTpg",
-        "symbol": "DUCKY",
-        "verdict": "PUMP",
-        "ath_multiplier": 3.21,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-21T19:59:49.791428+00:00",
-        "timestamp": "2026-06-21T19:59:49.791465+00:00"
-      },
-      {
-        "address": "EwswnwrzzhFq5wpWMUu7rHhDm8WxpytC3Goim1Jbpump",
-        "symbol": "TRENCHES",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 6.49,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-21T19:59:50.647541+00:00",
-        "timestamp": "2026-06-21T19:59:50.647580+00:00"
-      },
-      {
-        "address": "4opYauvz3bb4ezkMugFsJqvQ9Y11YwSwpFcpmDxhpump",
-        "symbol": "Pearchua",
-        "verdict": "PUMP",
-        "ath_multiplier": 3.84,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-21T19:59:51.507204+00:00",
-        "timestamp": "2026-06-21T19:59:51.507246+00:00"
-      },
-      {
-        "address": "3dgtgkxo5XNg9c6SDhRC4mHNn3JNcCP8t6jtvycZpump",
-        "symbol": "DogTrain",
-        "verdict": "PUMP",
-        "ath_multiplier": 4.09,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-21T19:59:52.829804+00:00",
-        "timestamp": "2026-06-21T19:59:52.829891+00:00"
-      },
-      {
-        "address": "5Z3KmdRuGnnXyMymzGagJLodKNkbPHEmCizBFq6fiEoh",
-        "symbol": "KWM",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 7.14,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-21T19:59:54.272513+00:00",
-        "timestamp": "2026-06-21T19:59:54.272617+00:00"
-      },
-      {
         "address": "4narUe9SFJegphpEpQJunCLnHQaozPrjeACzugE6pump",
         "symbol": "ANSHUA",
         "verdict": "PUMP",
@@ -52722,6 +52649,28 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-21T19:59:55.045684+00:00",
         "timestamp": "2026-06-21T19:59:55.045724+00:00"
+      },
+      {
+        "address": "3dgtgkxo5XNg9c6SDhRC4mHNn3JNcCP8t6jtvycZpump",
+        "symbol": "DogTrain",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.05,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-21T20:22:33.646146+00:00",
+        "timestamp": "2026-06-21T20:22:33.646183+00:00"
+      },
+      {
+        "address": "4narUe9SFJegphpEpQJunCLnHQaozPrjeACzugE6pump",
+        "symbol": "ANSHUA",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.72,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-21T20:22:35.014576+00:00",
+        "timestamp": "2026-06-21T20:22:35.014627+00:00"
       }
     ],
     "success_history": [
@@ -56877,6 +56826,22 @@
           "signal_age": 0.0
         },
         "timestamp": "2026-06-21T19:59:53.186556+00:00"
+      },
+      {
+        "address": "3dgtgkxo5XNg9c6SDhRC4mHNn3JNcCP8t6jtvycZpump",
+        "symbol": "DogTrain",
+        "reasons": [
+          "balanced"
+        ],
+        "ath_multiplier": 4.05,
+        "features": {
+          "launch_time": 1782061549.198542,
+          "source": "historical_scan",
+          "ath_multiplier": 4.05,
+          "outcome": "PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-21T20:22:34.185868+00:00"
       }
     ],
     "auto_learn_insights": {
@@ -56909,23 +56874,22 @@
         "lp_locked": 20.5,
         "lp_providers_count": 1
       },
-      "pump_count": 504,
+      "pump_count": 502,
       "dump_count": 1000
     },
     "signal_criteria": {
       "min_bsr": 1.62,
       "min_holders": 20,
       "min_wallets": 30,
-      "min_liq": 9738.0,
-      "min_liq_pct": 25.9,
+      "min_liq": 2000,
+      "min_liq_pct": 15,
       "min_lp_locked": 80,
       "min_lp_providers": 2,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
       "heuristic_threshold": 0.6,
-      "updated_at": "2026-06-21T20:07:19.028280+00:00",
-      "sample_size": 75,
-      "max_age_hours": 43.3
+      "updated_at": "2026-06-21T20:20:53.516220+00:00",
+      "sample_size": 1502
     }
   },
   "honeypot_addresses": [
