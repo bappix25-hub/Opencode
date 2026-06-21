@@ -432,14 +432,14 @@ class MemeBot:
         age = datetime.now(timezone.utc).timestamp() - launch_data.launch_time
         symbol = launch_data.symbol
 
-        # Only signal during 80%+ pump hours
+        # Only skip during very bad hours (< 50% pump rate)
         try:
-            good_hours = get_good_hours(min_signals=3, min_pump_rate=0.80)
+            bad_hours = get_bad_hours(min_signals=3, max_win_rate=0.50)
         except Exception:
-            good_hours = set()
+            bad_hours = set()
         current_hour = datetime.now(timezone.utc).hour
-        if good_hours and current_hour not in good_hours:
-            logger.info(f"[SKIP] {symbol}: hour {current_hour}:00 UTC — not in pump hours")
+        if bad_hours and current_hour in bad_hours:
+            logger.info(f"[SKIP] {symbol}: hour {current_hour}:00 UTC — bad hour")
             return
 
         if age < 30:
@@ -522,10 +522,10 @@ class MemeBot:
 
         record_launch(address, symbol, features)
 
-        match, match_score, match_reason = match_pump_patterns(features)
+        match, match_score, match_reason = match_pump_patterns(features, min_similarity=0.60)
 
         # Check if token matches known dump patterns — reject only if very confident
-        is_dump, dump_score, dump_reason = match_dump_patterns(features, min_similarity=0.75)
+        is_dump, dump_score, dump_reason = match_dump_patterns(features, min_similarity=0.85)
         if is_dump:
             logger.info(f"[SKIP] {symbol}: dump pattern match — {dump_reason}")
             return
@@ -606,7 +606,7 @@ class MemeBot:
                 h_reasons.append(f"lp_low={lp_locked}%")
 
             criteria = get_signal_criteria()
-            h_threshold = criteria.get("heuristic_threshold", 0.60)
+            h_threshold = min(criteria.get("heuristic_threshold", 0.60), 0.50)
             if h_score >= h_threshold:
                 match = True
                 match_score = h_score
@@ -1002,12 +1002,12 @@ class MemeBot:
                         elif not await self.state.is_alerted(addr) and 50 <= mcap < 100000:
                             h1_buys = int(((pair or {}).get("txns") or {}).get("h1", {}).get("buys", 0) or 0)
                             h1_sells = int(((pair or {}).get("txns") or {}).get("h1", {}).get("sells", 0) or 0)
-                            if h1_buys < 10:
-                                logger.info(f"[SKIP] {symbol}: climbing — h1 buys={h1_buys} < 10")
+                            if h1_buys < 5:
+                                logger.info(f"[SKIP] {symbol}: climbing — h1 buys={h1_buys} < 5")
                                 continue
 
-                            # Must be < 2 hours old for climbing
-                            if age > 7200:
+                            # Must be < 6 hours old for climbing
+                            if age > 21600:
                                 logger.info(f"[SKIP] {symbol}: climbing — age {int(age)}s > 2h")
                                 continue
 
@@ -1041,17 +1041,17 @@ class MemeBot:
                                 climbing_score += 0.1
                                 climb_reasons.append(f"{buys_5m} buys/5m")
 
-                            # Only signal during 80%+ pump hours
+                            # Skip only during very bad hours
                             try:
-                                good_hours = get_good_hours(min_signals=3, min_pump_rate=0.80)
+                                bad_hours = get_bad_hours(min_signals=3, max_win_rate=0.50)
                             except Exception:
-                                good_hours = set()
+                                bad_hours = set()
                             current_hour = datetime.now(timezone.utc).hour
-                            if good_hours and current_hour not in good_hours:
-                                logger.info(f"[SKIP] {symbol}: climbing — hour {current_hour}:00 UTC not in pump hours")
+                            if bad_hours and current_hour in bad_hours:
+                                logger.info(f"[SKIP] {symbol}: climbing — hour {current_hour}:00 UTC bad hour")
                                 continue
 
-                            if climbing_score >= 0.80:
+                            if climbing_score >= 0.40:
                                 confidence_pct = int(climbing_score * 100)
                                 confidence_bar = "🟢" * max(1, int(confidence_pct/20)) + "⚪" * (5 - max(1, int(confidence_pct/20)))
                                 reason_text = ", ".join(climb_reasons[:3])

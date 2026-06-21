@@ -39,15 +39,15 @@ DEFAULT_DATA = {
 }
 
 DEFAULT_SIGNAL_CRITERIA = {
-    "min_bsr": 1.3,
+    "min_bsr": 1.5,
     "min_holders": 5,
     "min_wallets": 10,
     "min_liq": 1500,
     "min_liq_pct": 15,
     "min_lp_locked": 80,
-    "heuristic_threshold": 0.50,
-    "pattern_threshold": 0.80,
-    "max_age_seconds": 3600,
+    "heuristic_threshold": 0.45,
+    "pattern_threshold": 0.60,
+    "max_age_seconds": 21600,
     "updated_at": None,
     "sample_size": 0,
     "min_lp_providers": 2,
@@ -899,12 +899,12 @@ def _learn_dump(launch: dict) -> None:
     data["model"]["last_update"] = datetime.now(timezone.utc).isoformat()
 
 
-def match_pump_patterns(features: dict, min_similarity: float = None) -> tuple[bool, float, str]:
+def match_pump_patterns(features: dict, min_similarity: float = 0.50) -> tuple[bool, float, str]:
     """Check if features match known pump patterns.
     Returns (match, score, reason)."""
     if min_similarity is None:
         criteria = get_signal_criteria()
-        min_similarity = criteria.get("pattern_threshold", 0.80)
+        min_similarity = criteria.get("pattern_threshold", 0.60)
 
     data = load_data()
     pump_patterns = data.get("pump_patterns", [])
@@ -938,7 +938,7 @@ def match_pump_patterns(features: dict, min_similarity: float = None) -> tuple[b
     return False, best_score, f"Best match {best_score:.0%} < {min_similarity:.0%}"
 
 
-def match_dump_patterns(features: dict, min_similarity: float = 0.75) -> tuple[bool, float, str]:
+def match_dump_patterns(features: dict, min_similarity: float = 0.85) -> tuple[bool, float, str]:
     """Check if features match known dump patterns.
     Returns (is_dump, score, reason).
     Used to REJECT signals that look like historical dumps."""
