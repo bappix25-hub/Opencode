@@ -52837,6 +52837,19 @@
       "outcome_mcap": 0,
       "outcome_time": null,
       "signal_sent": false
+    },
+    {
+      "address": "AXUgLcCfpC93LeFPwCzB2eBUDRrAqtYmnUe2zDihpump",
+      "symbol": "TensorForge",
+      "features": {
+        "launch_time": 1782057912.898779,
+        "source": "historical_scan"
+      },
+      "launch_time": 1782057912.898779,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
     }
   ],
   "model": {
