@@ -39,14 +39,16 @@ DEFAULT_DATA = {
 }
 
 DEFAULT_SIGNAL_CRITERIA = {
-    "min_bsr": 1.5,
-    "min_holders": 5,
+    "min_bsr": 1.3,
+    "min_holders": 3,
     "min_wallets": 10,
-    "min_liq": 1500,
-    "min_liq_pct": 15,
+    "min_liq": 500,
+    "min_liq_pct": 10,
     "min_lp_locked": 80,
+    "min_mcap": 2000,
     "heuristic_threshold": 0.45,
     "pattern_threshold": 0.60,
+    "dump_pattern_threshold": 0.70,
     "max_age_seconds": 21600,
     "updated_at": None,
     "sample_size": 0,
@@ -938,7 +940,7 @@ def match_pump_patterns(features: dict, min_similarity: float = 0.50) -> tuple[b
     return False, best_score, f"Best match {best_score:.0%} < {min_similarity:.0%}"
 
 
-def match_dump_patterns(features: dict, min_similarity: float = 0.85) -> tuple[bool, float, str]:
+def match_dump_patterns(features: dict, min_similarity: float = 0.70) -> tuple[bool, float, str]:
     """Check if features match known dump patterns.
     Returns (is_dump, score, reason).
     Used to REJECT signals that look like historical dumps."""

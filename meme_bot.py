@@ -475,8 +475,16 @@ class MemeBot:
         mcap = float(pair_data.get("fdv", 0) or 0)
         price_usd = float(pair_data.get("priceUsd", 0) or 0)
 
-        if mcap < 1000 and liquidity < 100:
-            logger.info(f"[SKIP] {symbol}: mcap ${mcap:.0f} + liq ${liquidity:.0f} too low")
+        # HARD FILTERS: Based on 326 pump + 895 dump pattern analysis
+        # mcap ≥ $2K blocks 93% dumps, bsr ≥ 1.3 blocks 61% more, wallets ≥ 10 blocks more
+        if mcap < 2000:
+            logger.info(f"[SKIP] {symbol}: mcap ${mcap:.0f} < $2000 (dump filter)")
+            return
+        if buy_sell_ratio < 1.3:
+            logger.info(f"[SKIP] {symbol}: bsr={buy_sell_ratio:.2f} < 1.3 (no buy pressure)")
+            return
+        if unique_wallets < 10:
+            logger.info(f"[SKIP] {symbol}: wallets={unique_wallets} < 10 (low activity)")
             return
 
         real_holders = launch_data.holders
@@ -532,10 +540,10 @@ class MemeBot:
 
         match, match_score, match_reason = match_pump_patterns(features, min_similarity=0.60)
 
-        # Check if token matches known dump patterns — reject only if very confident
-        is_dump, dump_score, dump_reason = match_dump_patterns(features, min_similarity=0.85)
+        # Check if token matches known dump patterns — reject if moderate+ confidence
+        is_dump, dump_score, dump_reason = match_dump_patterns(features, min_similarity=0.70)
         if is_dump:
-            logger.info(f"[SKIP] {symbol}: dump pattern match — {dump_reason}")
+            logger.info(f"[SKIP] {symbol}: dump pattern match ({dump_score:.0%}) — {dump_reason}")
             return
 
         if not match:
@@ -1017,6 +1025,16 @@ class MemeBot:
                             # Must be < 6 hours old for climbing
                             if age > 21600:
                                 logger.info(f"[SKIP] {symbol}: climbing — age {int(age)}s > 2h")
+                                continue
+
+                            # HARD FILTERS for climbing: same as pre-migration
+                            h1_bsr = h1_buys / max(h1_sells, 1)
+                            if h1_bsr < 1.3:
+                                logger.info(f"[SKIP] {symbol}: climbing — bsr={h1_bsr:.2f} < 1.3")
+                                continue
+                            h1_wallets = len(set())  # will use h1_buys as proxy
+                            if h1_buys < 10:
+                                logger.info(f"[SKIP] {symbol}: climbing — h1_buys={h1_buys} < 10")
                                 continue
 
                             pair_data = pair
