@@ -23007,3 +23007,426 @@ AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
 2026-06-21 17:19:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: nzzx (Aeb1Q74L...)
 2026-06-21 17:19:35 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: チョロ松 (7Y25mdWg...)
 2026-06-21 17:19:39 - meme_bot - INFO - 🚫 Serial deployer blocked: Nudaeng deployer Drf7Wi9K... has 2 tokens
+2026-06-21 17:19:41 - meme_bot - INFO - 🚫 Serial deployer blocked: Nudaeng deployer Drf7Wi9K... has 2 tokens
+2026-06-21 17:19:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ANITMATTER (A4TfsJVD...)
+2026-06-21 17:19:47 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ANCELOTTI (AYykRw1Q...)
+2026-06-21 17:19:51 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FIGHTER (AHzSmzcY...)
+2026-06-21 17:19:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 6/20 (bwuhTvVc...)
+2026-06-21 17:20:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 6/21 (GScxxh9j...)
+2026-06-21 17:20:23 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: COIN (C5mvrGYR...)
+2026-06-21 17:20:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Antieco (A4TfsJVD...)
+2026-06-21 17:20:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DBTC (7GhWwhaM...)
+2026-06-21 17:20:31 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 6/21 (9AiXyDfy...)
+2026-06-21 17:20:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: チョロ松 (JC7BYVeB...)
+2026-06-21 17:20:37 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: dBTC (Bsiimcvb...)
+2026-06-21 17:20:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: チョロ松 (JC7BYVeB...)
+2026-06-21 17:20:40 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: チョロ松 (JC7BYVeB...)
+2026-06-21 17:20:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DBTC (Eo33epCY...)
+2026-06-21 17:20:43 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: misantrophy (bwamJzzt...)
+2026-06-21 17:20:45 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CUPTOR (FNUsi7oZ...)
+2026-06-21 17:20:48 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HEREWEGO (BuBMjNCr...)
+2026-06-21 17:20:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GOATSEM (EWtMvoru...)
+2026-06-21 17:20:51 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Solmerica (9jR81cod...)
+2026-06-21 17:20:53 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GOATSEM (EWtMvoru...)
+2026-06-21 17:20:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GOATSEM (EWtMvoru...)
+2026-06-21 17:21:00 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GOATSEM (EWtMvoru...)
+2026-06-21 17:21:07 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ANTINU (7moqFjvm...)
+2026-06-21 17:21:10 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: チョロ松 (JC7BYVeB...)
+2026-06-21 17:21:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: チョロ松 (JC7BYVeB...)
+2026-06-21 17:21:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ANTINU (bwamJzzt...)
+2026-06-21 17:21:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: チョロ松 (JC7BYVeB...)
+2026-06-21 17:21:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: drooling (29yFzeBZ...)
+2026-06-21 17:21:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: $ChicWick (8vCXRfaF...)
+2026-06-21 17:21:35 - meme_bot - INFO - 🔍 pre-mig scan: 479 launches in queue
+2026-06-21 17:21:36 - meme_bot - ERROR - রিয়েলটাইম এরর: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:21:37 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:21:37 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 123 (HqFSouJj...)
+2026-06-21 17:21:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FATHER (3Y7abhGi...)
+2026-06-21 17:21:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GOATSEM (EWtMvoru...)
+2026-06-21 17:21:47 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:21:48 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GOATSEM (EWtMvoru...)
+2026-06-21 17:21:50 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: チョロ松 (JC7BYVeB...)
+2026-06-21 17:21:51 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:21:53 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: チョロ松 (JC7BYVeB...)
+2026-06-21 17:22:11 - meme_bot - INFO - 🚫 Serial deployer blocked: FDT deployer 932HxwkS... has 2 tokens
+2026-06-21 17:22:22 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: AI (CxxcsDAo...)
+2026-06-21 17:22:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ANCELOTTI (AYykRw1Q...)
+2026-06-21 17:22:35 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: jabs (34SUjWYw...)
+2026-06-21 17:22:37 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GEOFFERY (A4TfsJVD...)
+2026-06-21 17:22:55 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VANCE (bwamJzzt...)
+2026-06-21 17:23:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GOATSEM (EWtMvoru...)
+2026-06-21 17:23:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Applechua (84inYTqd...)
+2026-06-21 17:23:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DEX (C5mvrGYR...)
+2026-06-21 17:23:37 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:23:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: jabs (34SUjWYw...)
+2026-06-21 17:23:45 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LFG (BuBMjNCr...)
+2026-06-21 17:23:52 - meme_bot - INFO - 🔍 pre-mig scan: 487 launches in queue
+2026-06-21 17:23:53 - meme_bot - ERROR - রিয়েলটাইম এরর: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:24:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Gaejook (FrVLm4pc...)
+2026-06-21 17:24:09 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Gaejook (FrVLm4pc...)
+2026-06-21 17:24:09 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Gaejook (FrVLm4pc...)
+2026-06-21 17:24:09 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Gaejook (FrVLm4pc...)
+2026-06-21 17:24:09 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Gaejook (FrVLm4pc...)
+2026-06-21 17:24:09 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Gaejook (FrVLm4pc...)
+2026-06-21 17:24:11 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DEX (C5mvrGYR...)
+2026-06-21 17:24:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: jabs (34SUjWYw...)
+2026-06-21 17:24:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DANNIEL (3Y7abhGi...)
+2026-06-21 17:24:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GOATSEM (EWtMvoru...)
+2026-06-21 17:24:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GOATSEM (EWtMvoru...)
+2026-06-21 17:24:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GOATSEM (EWtMvoru...)
+2026-06-21 17:24:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GOATSEM (EWtMvoru...)
+2026-06-21 17:24:35 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: nzzx (Aeb1Q74L...)
+2026-06-21 17:24:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HODL (7eStM4Bg...)
+2026-06-21 17:24:40 - meme_bot - INFO - 🚫 Serial deployer blocked: Unlocky deployer CeLGQUHf... has 3 tokens
+2026-06-21 17:24:50 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DEX (C5mvrGYR...)
+2026-06-21 17:24:53 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HOLD (7kGAXsa7...)
+2026-06-21 17:24:59 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: bibi (AV7PjXHL...)
+2026-06-21 17:25:02 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HODL (bwamJzzt...)
+2026-06-21 17:25:11 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ANCELOTTI (AYykRw1Q...)
+2026-06-21 17:25:14 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:25:19 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LOOP (A4TfsJVD...)
+2026-06-21 17:25:23 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Drillhorse (DVhwSE98...)
+2026-06-21 17:25:24 - meme_bot - INFO - 🚫 Serial deployer blocked: $SURVIVED deployer 7WauXqH9... has 2 tokens
+2026-06-21 17:25:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: hold (3Y7abhGi...)
+2026-06-21 17:25:35 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HODL (7ZV54Hcw...)
+2026-06-21 17:25:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DEX (C5mvrGYR...)
+2026-06-21 17:25:45 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HODL (8i5U2uNB...)
+2026-06-21 17:25:56 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HODL (3DXEtVjT...)
+2026-06-21 17:26:01 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HOLD (DEhvT8e3...)
+2026-06-21 17:26:03 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FUN2026 (BuBMjNCr...)
+2026-06-21 17:26:09 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:26:09 - meme_bot - INFO - 🔍 pre-mig scan: 501 launches in queue
+2026-06-21 17:26:10 - meme_bot - ERROR - রিয়েলটাইম এরর: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:26:17 - meme_bot - INFO - 🚀 Migration: ???
+2026-06-21 17:26:20 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:26:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HOLD (3DXEtVjT...)
+2026-06-21 17:26:28 - meme_bot - INFO - ✅ মাইগ্রেশন ট্র্যাক: ??? | price: $0.00002421
+2026-06-21 17:26:31 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GIPHY (FaAdkkME...)
+2026-06-21 17:26:32 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BEAK (GkCGuUdU...)
+2026-06-21 17:26:37 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HODL (23QuARJv...)
+2026-06-21 17:26:54 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: antimatter (Aqje5DsN...)
+2026-06-21 17:27:01 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: fred (4sAUSQFd...)
+2026-06-21 17:27:11 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WTFA (FNUsi7oZ...)
+2026-06-21 17:27:12 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:27:35 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TYRONE (4vyBa5ia...)
+2026-06-21 17:27:35 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GOATSEM (EWtMvoru...)
+2026-06-21 17:27:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GOATSEM (EWtMvoru...)
+2026-06-21 17:27:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: NIGGERDOG (4sAUSQFd...)
+2026-06-21 17:27:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GOATSEM (EWtMvoru...)
+2026-06-21 17:27:43 - meme_bot - INFO - 🚫 Serial deployer blocked: Unlocky deployer 5Bzc8t2w... has 2 tokens
+2026-06-21 17:27:44 - meme_bot - INFO - 🚫 Serial deployer blocked: Unlocky deployer 5Bzc8t2w... has 2 tokens
+2026-06-21 17:27:44 - meme_bot - INFO - 🚫 Serial deployer blocked: Unlocky deployer 5Bzc8t2w... has 2 tokens
+2026-06-21 17:27:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MOON (6rGJZSdV...)
+2026-06-21 17:27:46 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Green (9jR81cod...)
+2026-06-21 17:27:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TRUMPDADDY (BuBMjNCr...)
+2026-06-21 17:27:53 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ANCELOTTI (AYykRw1Q...)
+2026-06-21 17:27:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HAMPTER (DVhwSE98...)
+2026-06-21 17:28:03 - meme_bot - INFO - 🚫 Serial deployer blocked: HOLD deployer 2HYMEUEf... has 2 tokens
+2026-06-21 17:28:04 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:28:19 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GONGO (C5mvrGYR...)
+2026-06-21 17:28:28 - meme_bot - INFO - 🔍 pre-mig scan: 517 launches in queue
+2026-06-21 17:28:29 - meme_bot - ERROR - রিয়েলটাইম এরর: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:28:32 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Staredad (3Y7abhGi...)
+2026-06-21 17:28:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SON (AV7PjXHL...)
+2026-06-21 17:28:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ICL (2Wqq9jrD...)
+2026-06-21 17:28:54 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GIPHY (FaAdkkME...)
+2026-06-21 17:28:56 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Gaejook (FrVLm4pc...)
+2026-06-21 17:28:56 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Gaejook (FrVLm4pc...)
+2026-06-21 17:28:56 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Gaejook (FrVLm4pc...)
+2026-06-21 17:28:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GONGO (C5mvrGYR...)
+2026-06-21 17:28:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TEST (skiFC6YB...)
+2026-06-21 17:28:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SHAUN BURTON (7GhWwhaM...)
+2026-06-21 17:29:09 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: .2 (BuBMjNCr...)
+2026-06-21 17:29:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: KITTENS (easy7tXg...)
+2026-06-21 17:29:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: KITTENS (F3aJ28Rr...)
+2026-06-21 17:29:16 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: KITTENS (9AiXyDfy...)
+2026-06-21 17:29:17 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: KWM (WB6dqX3n...)
+2026-06-21 17:29:17 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: mittens (7GhWwhaM...)
+2026-06-21 17:29:17 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Kittens (BT9PhhxA...)
+2026-06-21 17:29:17 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MITTENS (DmH2DZW7...)
+2026-06-21 17:29:17 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: grokittens (bwamJzzt...)
+2026-06-21 17:29:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: KWM (7BVsMqCR...)
+2026-06-21 17:29:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: KWM (HgbeH7xS...)
+2026-06-21 17:29:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Mittten (Gg28je7a...)
+2026-06-21 17:29:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CATWIFGLOVE (chudc2Gn...)
+2026-06-21 17:29:21 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: KWM (BCuAu2fi...)
+2026-06-21 17:29:21 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CATBAL (EndJzwh6...)
+2026-06-21 17:29:21 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: KWM (7ZV54Hcw...)
+2026-06-21 17:29:22 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:29:22 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: KWM (CgJUFSVJ...)
+2026-06-21 17:29:22 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: kittens (FciWQ5qf...)
+2026-06-21 17:29:22 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 3 (7GhWwhaM...)
+2026-06-21 17:29:23 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MITTENS (EBx24uAP...)
+2026-06-21 17:29:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: KWM (CJYNMqDZ...)
+2026-06-21 17:29:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (bwamJzzt...)
+2026-06-21 17:29:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (9AiXyDfy...)
+2026-06-21 17:29:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: KWM (7ZV54Hcw...)
+2026-06-21 17:29:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (Bsiimcvb...)
+2026-06-21 17:29:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: wif (Gg28je7a...)
+2026-06-21 17:29:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (FTuqW6J1...)
+2026-06-21 17:29:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: KWM (7BVsMqCR...)
+2026-06-21 17:29:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: KWM (CJYNMqDZ...)
+2026-06-21 17:29:31 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: KWM (23QuARJv...)
+2026-06-21 17:29:31 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MITTENS (EBx24uAP...)
+2026-06-21 17:29:32 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (BT9PhhxA...)
+2026-06-21 17:29:32 - meme_bot - INFO - 🚫 Serial deployer blocked: KITTENS deployer 6MAFkYND... has 2 tokens
+2026-06-21 17:29:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: wif (FciWQ5qf...)
+2026-06-21 17:29:34 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: KIF (9Gg6Mf8t...)
+2026-06-21 17:29:35 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (whamNNP9...)
+2026-06-21 17:29:35 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: mittens (7eTU6LbY...)
+2026-06-21 17:29:35 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (9AiXyDfy...)
+2026-06-21 17:29:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (AV7PjXHL...)
+2026-06-21 17:29:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (CJYNMqDZ...)
+2026-06-21 17:29:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: KWM (7ZV54Hcw...)
+2026-06-21 17:29:39 - meme_bot - INFO - 🚀 Migration: ???
+2026-06-21 17:29:40 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (23QuARJv...)
+2026-06-21 17:29:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (9AiXyDfy...)
+2026-06-21 17:29:45 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (whamNNP9...)
+2026-06-21 17:29:50 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WITH (DEhvT8e3...)
+2026-06-21 17:29:51 - meme_bot - INFO - ✅ মাইগ্রেশন ট্র্যাক: ??? | price: $0.00002202
+2026-06-21 17:29:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (3DXEtVjT...)
+2026-06-21 17:30:04 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (23QuARJv...)
+2026-06-21 17:30:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (CJYNMqDZ...)
+2026-06-21 17:30:11 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GONGO (C5mvrGYR...)
+2026-06-21 17:30:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BLU (GRWzS5zD...)
+2026-06-21 17:30:17 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: mittens (bwuhTvVc...)
+2026-06-21 17:30:17 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (FTuqW6J1...)
+2026-06-21 17:30:19 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (CRLqmMBF...)
+2026-06-21 17:30:22 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GIPHY (FaAdkkME...)
+2026-06-21 17:30:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ANSEMHOUSE (4RDNo5BB...)
+2026-06-21 17:30:26 - meme_bot - INFO - TRADE NO TRACK: ASbsyHv9... txType=create
+2026-06-21 17:30:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: mittens (CJYNMqDZ...)
+2026-06-21 17:30:28 - meme_bot - INFO - 🚫 Serial deployer blocked: KWM deployer 7huj6SsB... has 2 tokens
+2026-06-21 17:30:28 - meme_bot - INFO - 🚫 Serial deployer blocked: KWM deployer 7huj6SsB... has 2 tokens
+2026-06-21 17:30:28 - meme_bot - INFO - 🚫 Serial deployer blocked: KWM deployer 7huj6SsB... has 2 tokens
+2026-06-21 17:30:29 - meme_bot - INFO - 🚫 Serial deployer blocked: KWM deployer 7huj6SsB... has 2 tokens
+2026-06-21 17:30:29 - meme_bot - INFO - 🚫 Serial deployer blocked: KWM deployer 7huj6SsB... has 2 tokens
+2026-06-21 17:30:29 - meme_bot - INFO - 🚫 Serial deployer blocked: KWM deployer 7huj6SsB... has 2 tokens
+2026-06-21 17:30:29 - meme_bot - INFO - 🚫 Serial deployer blocked: KWM deployer 7huj6SsB... has 2 tokens
+2026-06-21 17:30:29 - meme_bot - INFO - 🚫 Serial deployer blocked: KWM deployer 7huj6SsB... has 2 tokens
+2026-06-21 17:30:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (Dcs894qF...)
+2026-06-21 17:30:31 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (Dcs894qF...)
+2026-06-21 17:30:34 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (Dcs894qF...)
+2026-06-21 17:30:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (3DXEtVjT...)
+2026-06-21 17:30:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GONGO (C5mvrGYR...)
+2026-06-21 17:30:45 - meme_bot - INFO - 🔍 pre-mig scan: 535 launches in queue
+2026-06-21 17:30:46 - meme_bot - ERROR - রিয়েলটাইম এরর: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:30:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WITH (EvdJRftB...)
+2026-06-21 17:31:02 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: POKEFIGHT (6FC9XFBy...)
+2026-06-21 17:31:06 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: POKEFIGHT (6FC9XFBy...)
+2026-06-21 17:31:07 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:31:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (Dkyrfp1D...)
+2026-06-21 17:31:15 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:31:16 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: POKEFIGHT (6FC9XFBy...)
+2026-06-21 17:31:32 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (3zxXEq7k...)
+2026-06-21 17:31:34 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (Dcs894qF...)
+2026-06-21 17:31:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (Dcs894qF...)
+2026-06-21 17:31:40 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BJCK (HidxcaSU...)
+2026-06-21 17:31:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ASS (FTuqW6J1...)
+2026-06-21 17:31:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (29yFzeBZ...)
+2026-06-21 17:31:50 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (Dkyrfp1D...)
+2026-06-21 17:31:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (29yFzeBZ...)
+2026-06-21 17:31:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: nzzx (Aeb1Q74L...)
+2026-06-21 17:31:58 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (7eTU6LbY...)
+2026-06-21 17:31:59 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (9pkJqJLt...)
+2026-06-21 17:32:07 - meme_bot - INFO - 🚫 Serial deployer blocked: $??😂 deployer 3UGvzFUU... has 2 tokens
+2026-06-21 17:32:07 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (EvdJRftB...)
+2026-06-21 17:32:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (7ZV54Hcw...)
+2026-06-21 17:32:11 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GONGO (C5mvrGYR...)
+2026-06-21 17:32:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (3DXEtVjT...)
+2026-06-21 17:32:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (Dcs894qF...)
+2026-06-21 17:32:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: wif (9V2mRWVN...)
+2026-06-21 17:32:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (Dcs894qF...)
+2026-06-21 17:32:21 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: NMFCAR (Gs5CMSXC...)
+2026-06-21 17:32:26 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:32:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ASS (8inTY66c...)
+2026-06-21 17:32:34 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (7eTU6LbY...)
+2026-06-21 17:32:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TSP (CJtEhvYV...)
+2026-06-21 17:32:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Kitten (3Y7abhGi...)
+2026-06-21 17:32:56 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (Dcs894qF...)
+2026-06-21 17:33:00 - meme_bot - INFO - 🚫 Serial deployer blocked: ANSHUA deployer CnX1ti8d... has 2 tokens
+2026-06-21 17:33:01 - meme_bot - INFO - 🔍 pre-mig scan: 559 launches in queue
+2026-06-21 17:33:01 - meme_bot - ERROR - রিয়েলটাইম এরর: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:33:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (7eTU6LbY...)
+2026-06-21 17:33:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TEST (skiFC6YB...)
+2026-06-21 17:33:46 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (CJYNMqDZ...)
+2026-06-21 17:33:59 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LOL (C5mvrGYR...)
+2026-06-21 17:34:10 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:34:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: AGENTAIKWM (8oG2ZR6B...)
+2026-06-21 17:34:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: AGENTAIKWM (8oG2ZR6B...)
+2026-06-21 17:34:17 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: $TRFS (7h8vH1XK...)
+2026-06-21 17:34:18 - meme_bot - INFO - 🚫 Serial deployer blocked: AGENTAIKWM deployer 2jijCrFm... has 2 tokens
+2026-06-21 17:34:18 - meme_bot - INFO - 🚫 Serial deployer blocked: AGENTAIKWM deployer 2jijCrFm... has 2 tokens
+2026-06-21 17:34:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Blackbird (2McpFbHb...)
+2026-06-21 17:34:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: AGENTAIKWM (8oG2ZR6B...)
+2026-06-21 17:34:20 - meme_bot - INFO - 🚫 Serial deployer blocked: AGENTAIKWM deployer 2xTW2S2S... has 3 tokens
+2026-06-21 17:34:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: AGENTAIKWM (8oG2ZR6B...)
+2026-06-21 17:34:24 - meme_bot - INFO - 🚫 Serial deployer blocked: AGENTAIKWM deployer 325w2ae8... has 2 tokens
+2026-06-21 17:34:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MINTX (DmH2DZW7...)
+2026-06-21 17:34:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Mittens (CzbN6T1g...)
+2026-06-21 17:34:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: X (bwamJzzt...)
+2026-06-21 17:34:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: X (AV7PjXHL...)
+2026-06-21 17:34:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MITTENS (7GhWwhaM...)
+2026-06-21 17:34:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: X (7GhWwhaM...)
+2026-06-21 17:34:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: X (7GhWwhaM...)
+2026-06-21 17:34:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JUNETEENTH (chudc2Gn...)
+2026-06-21 17:34:40 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LOL (C5mvrGYR...)
+2026-06-21 17:34:47 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:34:48 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VRYLN (95X5Yd8k...)
+2026-06-21 17:34:56 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JUNETEENTH (EvdJRftB...)
+2026-06-21 17:35:04 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:35:04 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: QTLB (95X5Yd8k...)
+2026-06-21 17:35:05 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BLU (GRWzS5zD...)
+2026-06-21 17:35:17 - meme_bot - INFO - 🔍 pre-mig scan: 587 launches in queue
+2026-06-21 17:35:18 - meme_bot - ERROR - রিয়েলটাইম এরর: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:35:19 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:35:21 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JUNETEENTH (EvdJRftB...)
+2026-06-21 17:35:23 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:35:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 🅵 🅲 (AHzSmzcY...)
+2026-06-21 17:35:31 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (3gsaqLZR...)
+2026-06-21 17:35:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HOUSESEM (4RDNo5BB...)
+2026-06-21 17:35:54 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:36:04 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:36:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TWON (QfWfmyV6...)
+2026-06-21 17:36:10 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TEST (skiFC6YB...)
+2026-06-21 17:36:10 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BOTNO (FNUsi7oZ...)
+2026-06-21 17:36:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FISHEE (C5mvrGYR...)
+2026-06-21 17:36:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (3gsaqLZR...)
+2026-06-21 17:36:19 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ANSHUA (CnX1ti8d...)
+2026-06-21 17:36:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BLU (GRWzS5zD...)
+2026-06-21 17:36:29 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+Traceback (most recent call last):
+  File "/root/Opencode/meme_bot.py", line 333, in _on_trade
+    await self.check_pre_migration_signal(address)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MemeBot' object has no attribute 'check_pre_migration_signal'
+2026-06-21 17:36:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 561PC (CZ1arE9s...)
+2026-06-21 17:36:59 - meme_bot - WARNING - 📴 Signal 15 received — ignoring (platform keepalive)
+2026-06-21 17:36:59 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক:   (skiFC6YB...)
+2026-06-21 17:37:06 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: KITTEN (3Y7abhGi...)
+2026-06-21 17:37:09 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ELMO (EvdJRftB...)
+2026-06-21 17:37:14 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 4942 deployer
+2026-06-21 17:37:14 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-21 17:37:14 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-21 17:37:14 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-21 17:37:14 - meme_bot - INFO - 📊 Midnight summary in 6h 22m
+2026-06-21 17:37:14 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-21 17:37:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MI (JC7BYVeB...)
+2026-06-21 17:37:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TEST (skiFC6YB...)
+2026-06-21 17:37:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: elmo (7kGAXsa7...)
+2026-06-21 17:37:40 - meme_bot - INFO - 🔍 pre-mig scan: 2 launches in queue
+2026-06-21 17:37:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: elmo (EvdJRftB...)
+2026-06-21 17:37:42 - meme_bot - INFO - [SKIP] SPURDO: climbing — bsr=1.68 < 1.7
+2026-06-21 17:37:43 - meme_bot - INFO - TRADE NO TRACK: EPjFWdd5... txType=create
+2026-06-21 17:37:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: $Cancer (Hh3zeEWt...)
+2026-06-21 17:37:44 - meme_bot.pump_collector - INFO - 🔄 Pump collector cycle started...
+2026-06-21 17:37:45 - meme_bot - INFO - 📤 Channel signal sent: 5gAQ9s6Jzfb5XvrgLN8S...
+2026-06-21 17:37:45 - meme_bot - INFO - 📈 ক্লাইম্বিং সিগন্যাল: LOT mcap=$82.7K score=0.60
+2026-06-21 17:37:48 - meme_bot - INFO - 🚀 পাম্প কয়েন! DogTrain mcap=$338.4K
+2026-06-21 17:37:54 - meme_bot - INFO - ট্র্যাক: 4 | লঞ্চ: 5 | পাম্প: 1
+2026-06-21 17:38:05 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIF (7eTU6LbY...)
+2026-06-21 17:38:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: meme (CfDBT5zC...)
+2026-06-21 17:38:23 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: $M (7h8vH1XK...)
+2026-06-21 17:38:36 - meme_bot - INFO - 🚫 Serial deployer blocked: WIF deployer EHZ83cos... has 2 tokens
+2026-06-21 17:38:53 - meme_bot.pump_collector - INFO - Fetched 289 unique Solana tokens from DexScreener (boosted=28, metas=55, search=139)
+2026-06-21 17:38:53 - meme_bot.pump_collector - INFO - Collecting data for 20 new coins...
