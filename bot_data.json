@@ -52649,6 +52649,17 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-21T19:59:55.045684+00:00",
         "timestamp": "2026-06-21T19:59:55.045724+00:00"
+      },
+      {
+        "address": "4narUe9SFJegphpEpQJunCLnHQaozPrjeACzugE6pump",
+        "symbol": "ANSHUA",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.16,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-21T20:49:02.394512+00:00",
+        "timestamp": "2026-06-21T20:49:02.394560+00:00"
       }
     ],
     "success_history": [
@@ -56866,7 +56877,7 @@
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
       "heuristic_threshold": 0.6,
-      "updated_at": "2026-06-21T20:35:34.933718+00:00",
+      "updated_at": "2026-06-21T20:47:23.499376+00:00",
       "sample_size": 1500
     }
   },
