@@ -15,12 +15,16 @@ RAYDIUM_AMM_V4 = "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8"
 PUMP_FUN_FRONTEND = "https://frontend-api.pump.fun"
 PUMP_FUN_MIGRATION_SOL = 85.0
 
-# Rate limiter state
+# Rate limiter state - VERY conservative to prevent quota exhaustion
+# Pre-migration: bot exhausted quota with 10 req/sec
+# Now: max 2 req/min to ensure key survives
 _rate_limit_state = {
-    "tokens": 10.0,  # 10 tokens = 10 req/sec burst
+    "tokens": 2.0,  # Only 2 tokens = 2 requests
     "last_refill": time.time(),
-    "max_tokens": 10.0,
-    "refill_rate": 10.0,  # 10 tokens per second
+    "max_tokens": 2.0,
+    "refill_rate": 0.033,  # 1 token per 30 seconds = 2 per minute
+    "total_requests": 0,
+    "daily_limit": 500,  # Safety cap for the day
 }
 
 # Request cache (TTL 5 minutes)
@@ -32,6 +36,12 @@ def _rate_limited(method):
     """Decorator to apply token bucket rate limiting."""
     @wraps(method)
     async def wrapper(self, *args, **kwargs):
+        # Check daily limit
+        _rate_limit_state["total_requests"] += 1
+        if _rate_limit_state["total_requests"] > _rate_limit_state["daily_limit"]:
+            logger.warning(f"Daily limit reached ({_rate_limit_state['daily_limit']}), skipping Helius request")
+            return None
+        
         now = time.time()
         # Refill tokens
         elapsed = now - _rate_limit_state["last_refill"]

@@ -469,13 +469,23 @@ class MemeBot:
         mcap = float(pair_data.get("fdv", 0) or 0)
         price_usd = float(pair_data.get("priceUsd", 0) or 0)
 
-        # HARD FILTERS: Based on 500 pump + 1000 dump analysis (6168 combinations tested)
-        # Best filter: mcap≥$3K + bsr≥1.7 = 99.8% dump block, 79.4% pump pass
-        if mcap < 3000:
-            logger.info(f"[SKIP] {symbol}: mcap ${mcap:.0f} < $3000 (dump filter)")
+        # Volume spike detection from DexScreener data
+        h1_buys = int(((pair_data.get("txns") or {}).get("h1") or {}).get("buys", 0) or 0)
+        h1_sells = int(((pair_data.get("txns") or {}).get("h1") or {}).get("sells", 0) or 0)
+        buys_5m = int(((pair_data.get("txns") or {}).get("m5") or {}).get("buys", 0) or 0)
+        sells_5m = int(((pair_data.get("txns") or {}).get("m5") or {}).get("sells", 0) or 0)
+        avg_5m_buys = max(h1_buys / 12, 1)
+        volume_spike = buys_5m / avg_5m_buys if avg_5m_buys > 0 else 0
+
+        # Relaxed thresholds when volume spike detected
+        mcap_threshold = 2000 if volume_spike >= 3.0 else 3000
+        bsr_threshold = 1.2 if volume_spike >= 3.0 else 1.7
+
+        if mcap < mcap_threshold:
+            logger.info(f"[SKIP] {symbol}: mcap ${mcap:.0f} < ${mcap_threshold} (spike={volume_spike:.1f}x)")
             return
-        if buy_sell_ratio < 1.7:
-            logger.info(f"[SKIP] {symbol}: bsr={buy_sell_ratio:.2f} < 1.7 (no buy pressure)")
+        if buy_sell_ratio < bsr_threshold:
+            logger.info(f"[SKIP] {symbol}: bsr={buy_sell_ratio:.2f} < {bsr_threshold} (spike={volume_spike:.1f}x)")
             return
 
         real_holders = launch_data.holders
@@ -1009,22 +1019,32 @@ class MemeBot:
                         elif not await self.state.is_alerted(addr) and 50 <= mcap < 100000:
                             h1_buys = int(((pair or {}).get("txns") or {}).get("h1", {}).get("buys", 0) or 0)
                             h1_sells = int(((pair or {}).get("txns") or {}).get("h1", {}).get("sells", 0) or 0)
-                            if h1_buys < 5:
-                                logger.info(f"[SKIP] {symbol}: climbing — h1 buys={h1_buys} < 5")
+
+                            # Volume spike: current 5m rate vs 1h average
+                            buys_5m = int(((pair or {}).get("txns") or {}).get("m5", {}).get("buys", 0) or 0)
+                            sells_5m = int(((pair or {}).get("txns") or {}).get("m5", {}).get("sells", 0) or 0)
+                            avg_5m_buys = max(h1_buys / 12, 1)
+                            volume_spike = buys_5m / avg_5m_buys if avg_5m_buys > 0 else 0
+                            buy_sell_5m = buys_5m / max(sells_5m, 1)
+
+                            if h1_buys < 5 and volume_spike < 3.0:
+                                logger.info(f"[SKIP] {symbol}: climbing — h1 buys={h1_buys} < 5, spike={volume_spike:.1f}x")
                                 continue
 
                             # Must be < 6 hours old for climbing
                             if age > 21600:
-                                logger.info(f"[SKIP] {symbol}: climbing — age {int(age)}s > 2h")
+                                logger.info(f"[SKIP] {symbol}: climbing — age {int(age)}s > 6h")
                                 continue
 
-                            # HARD FILTERS for climbing: same as pre-migration
+                            # HARD FILTERS: relaxed when volume spike detected
                             h1_bsr = h1_buys / max(h1_sells, 1)
-                            if h1_bsr < 1.7:
-                                logger.info(f"[SKIP] {symbol}: climbing — bsr={h1_bsr:.2f} < 1.7")
+                            bsr_threshold = 1.2 if volume_spike >= 3.0 else 1.7
+                            if h1_bsr < bsr_threshold:
+                                logger.info(f"[SKIP] {symbol}: climbing — bsr={h1_bsr:.2f} < {bsr_threshold} (spike={volume_spike:.1f}x)")
                                 continue
-                            if h1_buys < 15:
-                                logger.info(f"[SKIP] {symbol}: climbing — h1_buys={h1_buys} < 15")
+                            buys_threshold = 8 if volume_spike >= 3.0 else 15
+                            if h1_buys < buys_threshold:
+                                logger.info(f"[SKIP] {symbol}: climbing — h1_buys={h1_buys} < {buys_threshold} (spike={volume_spike:.1f}x)")
                                 continue
 
                             pair_data = pair
@@ -1053,6 +1073,12 @@ class MemeBot:
                             if buy_sell_5m >= 2.0:
                                 climbing_score += 0.15
                                 climb_reasons.append(f"B/S {buy_sell_5m:.1f}")
+                            if volume_spike >= 3.0:
+                                climbing_score += 0.25
+                                climb_reasons.append(f"Vol Spike {volume_spike:.1f}x")
+                            elif volume_spike >= 2.0:
+                                climbing_score += 0.1
+                                climb_reasons.append(f"Vol Spike {volume_spike:.1f}x")
                             if buys_5m >= 10:
                                 climbing_score += 0.1
                                 climb_reasons.append(f"{buys_5m} buys/5m")
