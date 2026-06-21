@@ -14800,6 +14800,182 @@
       "ath_multiplier": 0,
       "learned_at": "2026-06-21T19:58:10.851793+00:00",
       "source": "pump_collector"
+    },
+    {
+      "address": "EUy3DCs1GjYmLx1QfVUHZzQH9q9USSHRgYkBKcoapump",
+      "symbol": "ROOM",
+      "features": {
+        "buy_sell_ratio": 1.35,
+        "unique_wallets": 1618,
+        "holders": 0,
+        "liquidity": 20831.74,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 25.77,
+        "mcap": 80843,
+        "volume": 166415.26,
+        "buy_sell_momentum": 0.15,
+        "age_hours": 1.0,
+        "price": 8.084e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T20:38:59.699824+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "EwNquPevoe13moJGinzQxag9HDhdZmhcVvBJ9LNJpump",
+      "symbol": "OTWN",
+      "features": {
+        "buy_sell_ratio": 0.67,
+        "unique_wallets": 5,
+        "holders": 0,
+        "liquidity": 14700.72,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 37.34,
+        "mcap": 39371,
+        "volume": 23168.02,
+        "buy_sell_momentum": -0.2,
+        "age_hours": 218.6,
+        "price": 3.937e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T20:40:53.008048+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "257nhfbcvhDi8E1VwLbdgN9nGeC2BzcChrSe89qapump",
+      "symbol": "POOL",
+      "features": {
+        "buy_sell_ratio": 1.28,
+        "unique_wallets": 6964,
+        "holders": 0,
+        "liquidity": 12581.31,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 43.92,
+        "mcap": 28646,
+        "volume": 281144.29,
+        "buy_sell_momentum": 0.12,
+        "age_hours": 0.7,
+        "price": 2.864e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T20:41:52.381791+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "5xEpjBbnRaq1GsuVG7dmtuefkXEdq4vNREvmvd41pump",
+      "symbol": "Gaejook",
+      "features": {
+        "buy_sell_ratio": 1.24,
+        "unique_wallets": 321,
+        "holders": 0,
+        "liquidity": 11621.52,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 45.25,
+        "mcap": 25681,
+        "volume": 116457.04,
+        "buy_sell_momentum": 0.11,
+        "age_hours": 4.1,
+        "price": 2.569e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T20:47:16.652845+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "H3zBBrwNVHLiFYgUReiyydYm8tfr1FzYs2UBs22Fpump",
+      "symbol": "HowL",
+      "features": {
+        "buy_sell_ratio": 1.91,
+        "unique_wallets": 134,
+        "holders": 0,
+        "liquidity": 9447.2,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 55.9,
+        "mcap": 16900,
+        "volume": 17078.03,
+        "buy_sell_momentum": 0.31,
+        "age_hours": 42.2,
+        "price": 1.69e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T20:48:15.102567+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "DvdjJeV74BLPJstpEiMnCnD9efwmvm62ZBCxBxaMpump",
+      "symbol": "MEMEPOND",
+      "features": {
+        "buy_sell_ratio": 1.19,
+        "unique_wallets": 1102,
+        "holders": 0,
+        "liquidity": 5880.92,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 88.04,
+        "mcap": 6680,
+        "volume": 41894.05,
+        "buy_sell_momentum": 0.09,
+        "age_hours": 0.5,
+        "price": 6.679e-06
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T20:50:41.315557+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "71ssNaZ4Q95vEaw7wkaWXUyqqti1LjjDcB6yZxhPpump",
+      "symbol": "RTM",
+      "features": {
+        "buy_sell_ratio": 1.19,
+        "unique_wallets": 1197,
+        "holders": 0,
+        "liquidity": 6536.6,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 79.44,
+        "mcap": 8228,
+        "volume": 42267.78,
+        "buy_sell_momentum": 0.09,
+        "age_hours": 0.9,
+        "price": 8.227e-06
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T20:52:32.725658+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "FMQWohGufrKoQtVYfWi9haCAjLqHNau3vWWMeqhYpump",
+      "symbol": "AGI",
+      "features": {
+        "buy_sell_ratio": 1.42,
+        "unique_wallets": 2370,
+        "holders": 0,
+        "liquidity": 17454.03,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 31.87,
+        "mcap": 54759,
+        "volume": 93381.63,
+        "buy_sell_momentum": 0.17,
+        "age_hours": 0.4,
+        "price": 5.762e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T20:55:15.276945+00:00",
+      "source": "pump_collector"
     }
   ],
   "dump_patterns": [
@@ -52651,15 +52827,26 @@
         "timestamp": "2026-06-21T19:59:55.045724+00:00"
       },
       {
-        "address": "4narUe9SFJegphpEpQJunCLnHQaozPrjeACzugE6pump",
-        "symbol": "ANSHUA",
+        "address": "4opYauvz3bb4ezkMugFsJqvQ9Y11YwSwpFcpmDxhpump",
+        "symbol": "Pearchua",
         "verdict": "PUMP",
-        "ath_multiplier": 3.16,
+        "ath_multiplier": 3.62,
         "current_multiplier": 0.0,
         "min_price_multiplier": 0.0,
         "signal_age": 0.0,
-        "signal_time": "2026-06-21T20:49:02.394512+00:00",
-        "timestamp": "2026-06-21T20:49:02.394560+00:00"
+        "signal_time": "2026-06-21T21:21:06.521831+00:00",
+        "timestamp": "2026-06-21T21:21:06.521877+00:00"
+      },
+      {
+        "address": "8bhAH1FMaSkVuqo3eJz3VuJmQLjstxb4rL8J5WfqFTpg",
+        "symbol": "DUCKY",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 5.11,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-21T21:21:06.807077+00:00",
+        "timestamp": "2026-06-21T21:21:06.807106+00:00"
       }
     ],
     "success_history": [
@@ -56850,7 +57037,7 @@
         "holders": 103,
         "unique_wallets": 151,
         "initial_liq": 3246.23,
-        "liq_pct": 37.84,
+        "liq_pct": 38.48,
         "lp_locked": 0,
         "lp_providers_count": 1
       },
@@ -56863,23 +57050,22 @@
         "lp_locked": 20.5,
         "lp_providers_count": 1
       },
-      "pump_count": 500,
+      "pump_count": 508,
       "dump_count": 1000
     },
     "signal_criteria": {
       "min_bsr": 1.62,
       "min_holders": 20,
       "min_wallets": 30,
-      "min_liq": 9447.0,
-      "min_liq_pct": 27.0,
+      "min_liq": 2000,
+      "min_liq_pct": 15,
       "min_lp_locked": 80,
       "min_lp_providers": 2,
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
       "heuristic_threshold": 0.6,
-      "updated_at": "2026-06-21T20:56:09.666897+00:00",
-      "sample_size": 83,
-      "max_age_hours": 42.2
+      "updated_at": "2026-06-21T21:19:39.842720+00:00",
+      "sample_size": 1508
     }
   },
   "honeypot_addresses": [
