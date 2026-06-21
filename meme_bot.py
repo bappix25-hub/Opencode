@@ -427,14 +427,8 @@ class MemeBot:
         )
         await self.state.add_launch_tracking(address, launch_data)
 
-        if holders is not None and holders < 3:
-            logger.info(f"📊 ট্র্যাক (low holders): {symbol} ({holders}h)")
-        else:
-            logger.info(f"🆕 লঞ্চ ট্র্যাক: {symbol} (deployer: {deployer[:8] if deployer else 'unknown'}...)")
-
-    async def check_pre_migration_signal(self, address: str):
-        launch_data = await self.state.get_launch_tracking(address)
-        if not launch_data:
+        if holders is not None and holders < 20:
+            logger.info(f"[SKIP] {symbol}: holders={holders} < 20 (dump filter)")
             return
 
         age = datetime.now(timezone.utc).timestamp() - launch_data.launch_time
@@ -475,16 +469,16 @@ class MemeBot:
         mcap = float(pair_data.get("fdv", 0) or 0)
         price_usd = float(pair_data.get("priceUsd", 0) or 0)
 
-        # HARD FILTERS: Based on 326 pump + 895 dump pattern analysis
-        # mcap ≥ $2K blocks 93% dumps, bsr ≥ 1.3 blocks 61% more, wallets ≥ 10 blocks more
+        # HARD FILTERS: Based on 500 pump + 1000 dump analysis
+        # mcap > $2K + bsr > 1.5 + wallets > 20 = 99.3% dump block rate
         if mcap < 2000:
             logger.info(f"[SKIP] {symbol}: mcap ${mcap:.0f} < $2000 (dump filter)")
             return
-        if buy_sell_ratio < 1.3:
-            logger.info(f"[SKIP] {symbol}: bsr={buy_sell_ratio:.2f} < 1.3 (no buy pressure)")
+        if buy_sell_ratio < 1.5:
+            logger.info(f"[SKIP] {symbol}: bsr={buy_sell_ratio:.2f} < 1.5 (no buy pressure)")
             return
-        if unique_wallets < 10:
-            logger.info(f"[SKIP] {symbol}: wallets={unique_wallets} < 10 (low activity)")
+        if unique_wallets < 20:
+            logger.info(f"[SKIP] {symbol}: wallets={unique_wallets} < 20 (low activity)")
             return
 
         real_holders = launch_data.holders
@@ -515,8 +509,8 @@ class MemeBot:
             except Exception:
                 pass
 
-        if real_holders < 3:
-            logger.info(f"[SKIP] {symbol}: holders={real_holders} < 3")
+        if real_holders < 20:
+            logger.info(f"[SKIP] {symbol}: holders={real_holders} < 20")
             return
 
         if deployer := launch_data.deployer_wallet:
@@ -649,8 +643,8 @@ class MemeBot:
         if mcap < min_mcap:
             logger.info(f"[SKIP] {symbol}: signal rejected — mcap={format_number(mcap)} < ${min_mcap}")
             return
-        if real_holders < 3:
-            logger.info(f"[SKIP] {symbol}: signal rejected — holders={real_holders} < 3")
+        if real_holders < 20:
+            logger.info(f"[SKIP] {symbol}: signal rejected — holders={real_holders} < 20")
             return
 
         try:
@@ -1029,12 +1023,11 @@ class MemeBot:
 
                             # HARD FILTERS for climbing: same as pre-migration
                             h1_bsr = h1_buys / max(h1_sells, 1)
-                            if h1_bsr < 1.3:
-                                logger.info(f"[SKIP] {symbol}: climbing — bsr={h1_bsr:.2f} < 1.3")
+                            if h1_bsr < 1.5:
+                                logger.info(f"[SKIP] {symbol}: climbing — bsr={h1_bsr:.2f} < 1.5")
                                 continue
-                            h1_wallets = len(set())  # will use h1_buys as proxy
-                            if h1_buys < 10:
-                                logger.info(f"[SKIP] {symbol}: climbing — h1_buys={h1_buys} < 10")
+                            if h1_buys < 20:
+                                logger.info(f"[SKIP] {symbol}: climbing — h1_buys={h1_buys} < 20")
                                 continue
 
                             pair_data = pair

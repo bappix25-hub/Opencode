@@ -39,9 +39,9 @@ DEFAULT_DATA = {
 }
 
 DEFAULT_SIGNAL_CRITERIA = {
-    "min_bsr": 1.3,
-    "min_holders": 3,
-    "min_wallets": 10,
+    "min_bsr": 1.5,
+    "min_holders": 20,
+    "min_wallets": 20,
     "min_liq": 500,
     "min_liq_pct": 10,
     "min_lp_locked": 80,

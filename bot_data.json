@@ -53033,50 +53033,6 @@
         "timestamp": "2026-06-21T12:45:04.446947+00:00"
       },
       {
-        "address": "64BEEGYhNtXPMTmzeWKNTFwFpG8qQkXf7t2JqfcwMrp",
-        "symbol": "$NTROLL",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 48.03,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-21T12:58:38.692557+00:00",
-        "timestamp": "2026-06-21T12:58:38.692595+00:00"
-      },
-      {
-        "address": "6UkQu9c5t9Rj5VvSq3RCi3XYukL4RjFS951bjBK7pump",
-        "symbol": "Kirby",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 6.61,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-21T12:58:38.975394+00:00",
-        "timestamp": "2026-06-21T12:58:38.975423+00:00"
-      },
-      {
-        "address": "AkWT7AEAHdX49GMPyWj88npESkV4o4AG5Lg3NK8spump",
-        "symbol": "Solvengers",
-        "verdict": "PUMP",
-        "ath_multiplier": 3.84,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-21T12:58:39.243454+00:00",
-        "timestamp": "2026-06-21T12:58:39.243481+00:00"
-      },
-      {
-        "address": "6UkQu9c5t9Rj5VvSq3RCi3XYukL4RjFS951bjBK7pump",
-        "symbol": "Kirby",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 6.61,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-21T13:48:46.768855+00:00",
-        "timestamp": "2026-06-21T13:48:46.768893+00:00"
-      },
-      {
         "address": "Ad3wM19jfM6DGbGaoswz3orJ5WHXWEjBGKpRZ2ggpump",
         "symbol": "Taz",
         "verdict": "PUMP",
@@ -62360,15 +62316,7 @@
     "pw5DuxM2Yd3WTRqZKfgHGHbNfGm4ojzc6VjAxpopump",
     "FAouag7oYfn1Rg5wtqDJxJeQnGvjGxErLWgpTcJnpump",
     "D2Q44fbrfMp9mgDGBNkDqf87RGZhYSZhgiL1y5ZJfbUP",
-    "3eN8Zjs3dEY9k3DArtzgvb7QR9CeexxR75LPRo6tpump",
-    "BvmRJMTv4rt74nmDQeVTQbBMY1fb2Cd8w7ctqxjDpump",
-    "JCYoNNXGvVXev7T9KhGGHfyQxUw7X9A2g8fQswhxpump",
-    "6adEzqnj9e4hrTyb9n7fgU4uQr9yWhETgHVCjZcpump",
-    "GYCDh8koGqQdQfCsbkxG9oCuvShWUyDQFMCdyAwZpump",
-    "5UUxAbqmyGNtMSjc8vg2V2vTH8QLa57zSSstoD7XWh1Y",
-    "fWYn3bDqUQ7yrTfDtLiLeZXZw5n7dpqRj9FjpgdT3nt",
-    "8DzvCVewDXkbPCLgtkrYjSifUgXrQaabezMwPe6hpump",
-    "4c6ZF1uxisXoupJ9e9MoupcC3wVXfth1LA1U6RxnhbAG"
+    "3eN8Zjs3dEY9k3DArtzgvb7QR9CeexxR75LPRo6tpump"
   ],
   "launch_patterns": [],
   "trained_addresses": [],
