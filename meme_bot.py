@@ -60,24 +60,7 @@ async def send_msg(bot: Bot, text: str) -> None:
         logger.error(f"Send error: {e}")
 
 async def send_signal(bot: Bot, text: str, address: str = "") -> None:
-    """Send ONLY address to channel for scraper, full details to user."""
-    channel_id = config.channel_id
-    if not channel_id and os.path.exists(CHANNEL_ID_FILE):
-        try:
-            with open(CHANNEL_ID_FILE) as f:
-                channel_id = f.read().strip()
-                config.channel_id = channel_id
-        except Exception:
-            pass
-    if channel_id:
-        try:
-            await bot.send_message(
-                chat_id=channel_id, text=address,
-                disable_web_page_preview=True
-            )
-            logger.info(f"📤 Channel signal sent: {address[:20]}...")
-        except Exception as e:
-            logger.error(f"Channel send error: {e}")
+    """Send only to user DM. No channel send."""
     await send_msg(bot, text)
 
 async def send_maestro(bot: Bot, address: str) -> None:
@@ -1115,7 +1098,8 @@ class MemeBot:
                                     f"⏱️ বয়স: {age_min}m {age_sec}s\n"
                                     f"━━━━━━━━━━━━━━━━\n"
                                     f"🔗 GMGN: {link}\n"
-                                    f"🔗 DexScreener: {dexscreener_link(addr)}",
+                                    f"🔗 DexScreener: {dexscreener_link(addr)}\n"
+                                    f"🤖 Maestro: /buy {addr[:12]}...{addr[-6:]} 0.01SOL",
                                     addr
                                 )
 
@@ -1237,7 +1221,8 @@ class MemeBot:
                             f"⏱️ বয়স: {int(age//60)}m {int(age%60)}s\n"
                             f"━━━━━━━━━━━━━━━━\n"
                             f"🔗 GMGN: {link}\n"
-                            f"🔗 DexScreener: {dexscreener_link(addr)}",
+                            f"🔗 DexScreener: {dexscreener_link(addr)}\n"
+                            f"🤖 Maestro: /buy {addr[:12]}...{addr[-6:]} 0.01SOL",
                             addr
                         )
 
@@ -1627,7 +1612,10 @@ class MemeBot:
             f"📈 বর্তমান MCap: {format_number(current_mcap)}\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"🔗 GMGN: {link}\n"
-            f"🔗 DexScreener: {dexscreener_link(address)}",
+            f"🔗 DexScreener: {dexscreener_link(address)}\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"🤖 Maestro: /buy {address[:12]}...{address[-6:]}\n"
+            f"💰 সোল পরিমাণ: @MaestroBot → /buy {address[:8]}...{address[-6:]} 0.01SOL",
             address
         )
 
