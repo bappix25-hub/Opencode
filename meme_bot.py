@@ -1,4 +1,5 @@
 import asyncio
+import maestro_client as mc
 import logging
 import signal
 import sys
@@ -255,6 +256,11 @@ class MemeBot:
                 await self.telegram_app.shutdown()
             except Exception as e:
                 logger.error(f"Telegram shutdown error: {e}")
+
+        try:
+            await mc.close()
+        except Exception:
+            pass
 
         logger.info("✅ Shutdown complete")
 
@@ -1102,6 +1108,7 @@ class MemeBot:
                                     f"🤖 Maestro: /buy {addr[:12]}...{addr[-6:]} 0.01SOL",
                                     addr
                                 )
+                                asyncio.create_task(mc.buy(addr))
 
                                 from bot_state import SignalInfo
                                 await self.state.add_signal(addr, SignalInfo(
@@ -1225,6 +1232,7 @@ class MemeBot:
                             f"🤖 Maestro: /buy {addr[:12]}...{addr[-6:]} 0.01SOL",
                             addr
                         )
+                        asyncio.create_task(mc.buy(addr))
 
                         from bot_state import SignalInfo
                         await self.state.add_signal(addr, SignalInfo(
@@ -1618,6 +1626,9 @@ class MemeBot:
             f"💰 সোল পরিমাণ: @MaestroBot → /buy {address[:8]}...{address[-6:]} 0.01SOL",
             address
         )
+
+        # Auto-buy via Maestro
+        asyncio.create_task(mc.buy(address))
 
         await self.state.add_alerted(address)
 
