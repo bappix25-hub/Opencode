@@ -1,0 +1,613 @@
+{
+  "current_regime": "bull_market",
+  "regime_history": [
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781940455.8069582,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781941057.634689,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781941661.4784832,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781942263.6882172,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781942866.3495557,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781943470.908884,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781944074.2427833,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781944677.3532393,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781945280.5871532,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781945883.461066,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781946485.0042558,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781947085.7466242,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781947687.4782748,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781948287.5103195,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781948887.5487256,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781949487.5965388,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781950087.6220787,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781950687.6542475,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781951287.6937742,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781951887.7511098,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781952487.8152459,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781953087.8375885,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781953687.8616211,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781954287.8885813,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781954887.9189665,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781955488.0375078,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781956088.0775037,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781956688.1157458,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781957288.2109597,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781957888.2429097,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781958488.3454452,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781959088.3895986,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781960012.362711,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781960612.387187,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781961212.4436772,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781961815.4099245,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781962416.3827908,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781963017.7767923,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781963618.3610322,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781964221.1048124,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781964823.493928,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781965428.6190517,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781966030.7795198,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781966633.319296,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781967372.8789394,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781967974.2929807,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781968576.499437,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781969178.72743,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781969779.1556928,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781970387.0299938,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781970992.344123,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781971599.9491622,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781972207.8468337,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781972815.9938653,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781973419.9312105,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781974027.8578076,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781974633.7009249,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781975236.67339,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781975840.3709095,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781976442.5969536,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781977047.2876935,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781977648.3202484,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781978249.3334157,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781978849.4391088,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781979450.845212,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781980052.8346853,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781980679.011955,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781981659.8316221,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781982259.881662,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781982900.2427049,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781983500.2823303,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781984100.323742,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781984675.9109373,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781985276.019067,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781985876.0754068,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781986476.1452467,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781987076.2093563,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781987676.2403958,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781988276.2874987,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781988876.316328,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781989476.3754609,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781990076.4639285,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781990676.4976628,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781991276.531906,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781991876.5573406,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781992476.5815694,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781993076.6212792,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781993676.6579144,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781994276.7184846,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781994876.782517,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781995476.8426583,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781996076.9023633,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781996676.9603775,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781997277.0133922,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781997877.1191714,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781998477.1519532,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781999077.1856182,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1781999677.2392967,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1782000277.3074055,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1782000877.36365,
+      "indicators": {}
+    },
+    {
+      "regime": "bull_market",
+      "confidence": 0.0,
+      "timestamp": 1782001477.4146597,
+      "indicators": {}
+    }
+  ],
+  "transitions": [],
+  "saved_at": 1782001477.4553823
+}

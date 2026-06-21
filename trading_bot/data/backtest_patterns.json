@@ -1,0 +1,162 @@
+{
+  "patterns": [
+    {
+      "name": "pattern_0",
+      "condition": {
+        "liquidity_range": "low",
+        "liquidity_min": 1000,
+        "liquidity_max": 10000
+      },
+      "success_rate": 0.13942427615292546,
+      "occurrences": 477069,
+      "successes": 66515,
+      "avg_pnl": -8.539784464204994,
+      "best_tp": 50.0,
+      "best_sl": -25.0,
+      "confidence": 1.0,
+      "last_updated": 1782000576.4728467
+    },
+    {
+      "name": "pattern_1",
+      "condition": {
+        "fdv_range": "mid",
+        "fdv_min": 50000,
+        "fdv_max": 500000
+      },
+      "success_rate": 0.17572105861425208,
+      "occurrences": 386203,
+      "successes": 67864,
+      "avg_pnl": -45.30217756665692,
+      "best_tp": 50.0,
+      "best_sl": -25.0,
+      "confidence": 1.0,
+      "last_updated": 1782000576.4787197
+    },
+    {
+      "name": "pattern_2",
+      "condition": {
+        "liquidity_range": "micro",
+        "liquidity_max": 1000
+      },
+      "success_rate": 0.10794360598720576,
+      "occurrences": 241515,
+      "successes": 26070,
+      "avg_pnl": -46.66988555013965,
+      "best_tp": 50.0,
+      "best_sl": -25.0,
+      "confidence": 1.0,
+      "last_updated": 1782000576.4833982
+    },
+    {
+      "name": "pattern_4",
+      "condition": {
+        "fdv_range": "low",
+        "fdv_min": 5000,
+        "fdv_max": 50000
+      },
+      "success_rate": 0.22689168521631156,
+      "occurrences": 660390,
+      "successes": 149837,
+      "avg_pnl": -19.28015033841874,
+      "best_tp": 79.2156862745098,
+      "best_sl": -11.715686274509803,
+      "confidence": 1.0,
+      "last_updated": 1782000576.4896636
+    },
+    {
+      "name": "pattern_5",
+      "condition": {
+        "pnl_range": "big_win",
+        "pnl_min": 50
+      },
+      "success_rate": 1.0,
+      "occurrences": 169418,
+      "successes": 169418,
+      "avg_pnl": 99.95813764051734,
+      "best_tp": 84.6236559139785,
+      "best_sl": -11.236559139784946,
+      "confidence": 1.0,
+      "last_updated": 1782000576.4940357
+    },
+    {
+      "name": "pattern_6",
+      "condition": {
+        "pnl_range": "win",
+        "pnl_min": 10,
+        "pnl_max": 50
+      },
+      "success_rate": 1.0,
+      "occurrences": 42303,
+      "successes": 42303,
+      "avg_pnl": 28.558954856992624,
+      "best_tp": 22.5,
+      "best_sl": -18.125,
+      "confidence": 1.0,
+      "last_updated": 1782000576.4982882
+    },
+    {
+      "name": "pattern_7",
+      "condition": {
+        "pnl_range": "loss",
+        "pnl_max": -10
+      },
+      "success_rate": 0.0,
+      "occurrences": 454614,
+      "successes": 0,
+      "avg_pnl": -58.643936685313165,
+      "best_tp": 50.0,
+      "best_sl": -25.0,
+      "confidence": 1.0,
+      "last_updated": 1782000576.503891
+    },
+    {
+      "name": "pattern_9",
+      "condition": {
+        "liquidity_range": "mid",
+        "liquidity_min": 10000,
+        "liquidity_max": 100000
+      },
+      "success_rate": 0.29232996585543974,
+      "occurrences": 468303,
+      "successes": 136899,
+      "avg_pnl": -26.543537826865816,
+      "best_tp": 50.0,
+      "best_sl": -25.0,
+      "confidence": 1.0,
+      "last_updated": 1782000576.509095
+    },
+    {
+      "name": "pattern_10",
+      "condition": {
+        "fdv_range": "micro",
+        "fdv_max": 5000
+      },
+      "success_rate": 0.1067698875402211,
+      "occurrences": 156945,
+      "successes": 16757,
+      "avg_pnl": -4.144551091586833,
+      "best_tp": 20.634920634920636,
+      "best_sl": -5.634920634920635,
+      "confidence": 1.0,
+      "last_updated": 1782000576.5134823
+    },
+    {
+      "name": "pattern_12",
+      "condition": {
+        "liquidity_range": "high",
+        "liquidity_min": 100000
+      },
+      "success_rate": 0.2287879302728601,
+      "occurrences": 29429,
+      "successes": 6733,
+      "avg_pnl": 15.279655324453197,
+      "best_tp": 11.481481481481481,
+      "best_sl": -5.0,
+      "confidence": 1.0,
+      "last_updated": 1781905420.055387
+    }
+  ],
+  "market_regimes": {},
+  "signal_correlations": {},
+  "saved_at": 1782000576.5314429
+}

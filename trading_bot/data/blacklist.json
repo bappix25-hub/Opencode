@@ -1,0 +1,259 @@
+{
+  "addresses": {
+    "2m6jayfeocmmst5mqatx1xcwe4vppsnj6qwjy9wfpump": {
+      "symbol": "ASTROGUY",
+      "reason": "dumped -91% in prior trade",
+      "pnl_pct": -91.36940724606431,
+      "added_at": "2026-06-18T23:54:05.288262"
+    },
+    "nyeix6ca13jdy2evymkzeagsb8yicjyxcdxv36wbipo": {
+      "symbol": "IPO",
+      "reason": "dumped -95% in prior trade",
+      "pnl_pct": -94.76447505099402,
+      "added_at": "2026-06-18T23:54:05.291536"
+    },
+    "3xwsnhpe24zc3nqxgsr3hgngqxa23zqnfk7gfq9vpump": {
+      "symbol": "FARM",
+      "reason": "dumped -98% in prior trade",
+      "pnl_pct": -97.9204027633753,
+      "added_at": "2026-06-18T23:54:05.294053"
+    },
+    "bbcotjapv3m6asxtzanyoojvzjhxumpbndcajwuzpump": {
+      "symbol": "at",
+      "reason": "dumped -100% in prior trade",
+      "pnl_pct": -99.70338746522268,
+      "added_at": "2026-06-18T23:54:05.296471"
+    },
+    "bbq7oec38urxka9mrfjlavylvklhmjnncu2utkl3pump": {
+      "symbol": "HOPE",
+      "reason": "dumped -95% in prior trade",
+      "pnl_pct": -94.51884533513106,
+      "added_at": "2026-06-18T23:54:05.299757"
+    },
+    "fhsfeq4t2yjar9xv9horok5yvrf8ucfjxttnzxapump": {
+      "symbol": "CONTAINMENT",
+      "reason": "dumped -80% in prior trade",
+      "pnl_pct": -79.75028101117236,
+      "added_at": "2026-06-18T23:54:05.304042"
+    },
+    "dx7dwzhgi7nxv4wztqxuoh2mesthbcjwxqyqr11opump": {
+      "symbol": "HBN",
+      "reason": "dumped -96% in prior trade",
+      "pnl_pct": -95.94210203556088,
+      "added_at": "2026-06-18T23:54:05.308601"
+    },
+    "8flnkch3tvnxur644n1n4wfk9ap87t2qud2y1y2ethcw": {
+      "symbol": "Tesla AI",
+      "reason": "dumped -100% in prior trade",
+      "pnl_pct": -99.99936687504074,
+      "added_at": "2026-06-18T23:54:05.315390"
+    },
+    "6aveouu3s4r97wbvv5i8rk8rmwmtfcor45yaydan7jyd": {
+      "symbol": "1B",
+      "reason": "dumped -94% in prior trade",
+      "pnl_pct": -94.17847092899183,
+      "added_at": "2026-06-18T23:54:05.322263"
+    },
+    "azytzry5addvscdwmh5ozns11qdhm4mbcsvnqmgd4xnx": {
+      "symbol": "Maputo",
+      "reason": "dumped -74% in prior trade",
+      "pnl_pct": -74.00145060255646,
+      "added_at": "2026-06-18T23:54:05.330200"
+    },
+    "fn4a85zpz1l5gqbynpx2xjn7d2v9brdvf89rmktzbkwx": {
+      "symbol": "WCOR",
+      "reason": "dumped -100% in prior trade",
+      "pnl_pct": -99.7764099857124,
+      "added_at": "2026-06-18T23:54:05.334546"
+    },
+    "fjamhofaju3yaxbmvpgfqxdyjcto74rv26bmtwgzpnci": {
+      "symbol": "FIFA",
+      "reason": "dumped -100% (learner data)",
+      "pnl_pct": -99.80122752620515,
+      "added_at": "2026-06-20T05:34:59.569999"
+    },
+    "bdjb75iwqcv8myp4ubudjsceppmwg3owxioljgznpump": {
+      "symbol": "ANTH69",
+      "reason": "dumped -98% (learner data)",
+      "pnl_pct": -98.06516013997437,
+      "added_at": "2026-06-20T05:34:59.571655"
+    },
+    "dqq6vpwrkkweg2wrxwpmvhixnwgrvn5anftuc7vupump": {
+      "symbol": "WAIFU",
+      "reason": "dumped -81% (learner data)",
+      "pnl_pct": -81.09777767737697,
+      "added_at": "2026-06-20T05:34:59.573161"
+    },
+    "fpbynrhzbv487ss9packof6xbkfchmpvizcbznyjpump": {
+      "symbol": "MOG",
+      "reason": "dumped -93% (learner data)",
+      "pnl_pct": -93.30852295247698,
+      "added_at": "2026-06-20T05:34:59.574560"
+    },
+    "auchufxcz9hwlcaraha6mwwgnpj1dxw9raqjhtr5pump": {
+      "symbol": "QWANT",
+      "reason": "dumped -83% (learner data)",
+      "pnl_pct": -83.1935764795891,
+      "added_at": "2026-06-20T05:34:59.576032"
+    },
+    "3sucycrtrz3zdfwefnjxcreqqqtt2yvu5q3ctqabdaxn": {
+      "symbol": "Jasper",
+      "reason": "dumped -100% (learner data)",
+      "pnl_pct": -99.99768176803748,
+      "added_at": "2026-06-20T05:34:59.577462"
+    },
+    "32svv8b8txtjquxbmon2m9aawvkrbathgfqgxc5mpump": {
+      "symbol": "DMN",
+      "reason": "dumped -83% (learner data)",
+      "pnl_pct": -83.30829141293621,
+      "added_at": "2026-06-20T05:34:59.578932"
+    },
+    "amqbpbrghcegcxea9lcph4uz1bkw3pqoyscn2rdkydkj": {
+      "symbol": "WW3",
+      "reason": "dumped -75% (learner data)",
+      "pnl_pct": -74.69512420910526,
+      "added_at": "2026-06-20T05:34:59.580490"
+    },
+    "beihtlwssjlenqllehpmbxjdkjjjhbjvazpzjebt9ph3": {
+      "symbol": "AAIF",
+      "reason": "dumped -91% (learner data)",
+      "pnl_pct": -90.90209998015543,
+      "added_at": "2026-06-20T19:44:34.337531"
+    },
+    "e4hrekw41sbdyhezfav4upquvmxe6x5enkgeyngtjaf1": {
+      "symbol": "misanopi4",
+      "reason": "dumped -58% (learner data)",
+      "pnl_pct": -57.587563550681296,
+      "added_at": "2026-06-20T19:44:34.340366"
+    },
+    "dectweyb5yrgcmzkovljwzolkmaxsyb6txwymxeusex8": {
+      "symbol": "FLKR",
+      "reason": "dumped -82% (learner data)",
+      "pnl_pct": -81.5453496548435,
+      "added_at": "2026-06-20T19:44:34.343499"
+    },
+    "ff6bwculhys67knnjf67ktteq1k5yc26wxtyjbdhpump": {
+      "symbol": "Epstein",
+      "reason": "dumped -92% (learner data)",
+      "pnl_pct": -91.58872599767238,
+      "added_at": "2026-06-20T19:44:34.346241"
+    }
+  },
+  "symbol_patterns": {
+    "astroguy": {
+      "reason": "dumped -91% in prior trade",
+      "added_at": "2026-06-18T23:54:05.288295",
+      "pnl_pct": -91.36940724606431
+    },
+    "ipo": {
+      "reason": "dumped -95% in prior trade",
+      "added_at": "2026-06-18T23:54:05.291600",
+      "pnl_pct": -94.76447505099402
+    },
+    "farm": {
+      "reason": "dumped -98% in prior trade",
+      "added_at": "2026-06-18T23:54:05.294078",
+      "pnl_pct": -97.9204027633753
+    },
+    "at": {
+      "reason": "dumped -100% in prior trade",
+      "added_at": "2026-06-18T23:54:05.296527",
+      "pnl_pct": -99.70338746522268
+    },
+    "hope": {
+      "reason": "dumped -95% in prior trade",
+      "added_at": "2026-06-18T23:54:05.299816",
+      "pnl_pct": -94.51884533513106
+    },
+    "containment": {
+      "reason": "dumped -80% in prior trade",
+      "added_at": "2026-06-18T23:54:05.304072",
+      "pnl_pct": -79.75028101117236
+    },
+    "hbn": {
+      "reason": "dumped -96% in prior trade",
+      "added_at": "2026-06-18T23:54:05.308667",
+      "pnl_pct": -95.94210203556088
+    },
+    "tesla ai": {
+      "reason": "dumped -100% in prior trade",
+      "added_at": "2026-06-18T23:54:05.315460",
+      "pnl_pct": -99.99936687504074
+    },
+    "1b": {
+      "reason": "dumped -94% in prior trade",
+      "added_at": "2026-06-18T23:54:05.322328",
+      "pnl_pct": -94.17847092899183
+    },
+    "maputo": {
+      "reason": "dumped -74% in prior trade",
+      "added_at": "2026-06-18T23:54:05.330228",
+      "pnl_pct": -74.00145060255646
+    },
+    "wcor": {
+      "reason": "dumped -100% in prior trade",
+      "added_at": "2026-06-18T23:54:05.334579",
+      "pnl_pct": -99.7764099857124
+    },
+    "fifa": {
+      "reason": "dumped -100% (learner data)",
+      "added_at": "2026-06-20T05:34:59.570029",
+      "pnl_pct": -99.80122752620515
+    },
+    "anth69": {
+      "reason": "dumped -98% (learner data)",
+      "added_at": "2026-06-20T05:34:59.571673",
+      "pnl_pct": -98.06516013997437
+    },
+    "waifu": {
+      "reason": "dumped -81% (learner data)",
+      "added_at": "2026-06-20T05:34:59.573177",
+      "pnl_pct": -81.09777767737697
+    },
+    "mog": {
+      "reason": "dumped -93% (learner data)",
+      "added_at": "2026-06-20T05:34:59.574573",
+      "pnl_pct": -93.30852295247698
+    },
+    "qwant": {
+      "reason": "dumped -83% (learner data)",
+      "added_at": "2026-06-20T05:34:59.576046",
+      "pnl_pct": -83.1935764795891
+    },
+    "jasper": {
+      "reason": "dumped -100% (learner data)",
+      "added_at": "2026-06-20T05:34:59.577476",
+      "pnl_pct": -99.99768176803748
+    },
+    "dmn": {
+      "reason": "dumped -83% (learner data)",
+      "added_at": "2026-06-20T05:34:59.578946",
+      "pnl_pct": -83.30829141293621
+    },
+    "ww3": {
+      "reason": "dumped -75% (learner data)",
+      "added_at": "2026-06-20T05:34:59.580503",
+      "pnl_pct": -74.69512420910526
+    },
+    "aaif": {
+      "reason": "dumped -91% (learner data)",
+      "added_at": "2026-06-20T19:44:34.337563",
+      "pnl_pct": -90.90209998015543
+    },
+    "misanopi4": {
+      "reason": "dumped -58% (learner data)",
+      "added_at": "2026-06-20T19:44:34.340384",
+      "pnl_pct": -57.587563550681296
+    },
+    "flkr": {
+      "reason": "dumped -82% (learner data)",
+      "added_at": "2026-06-20T19:44:34.343535",
+      "pnl_pct": -81.5453496548435
+    },
+    "epstein": {
+      "reason": "dumped -92% (learner data)",
+      "added_at": "2026-06-20T19:44:34.346257",
+      "pnl_pct": -91.58872599767238
+    }
+  }
+}
