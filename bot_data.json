@@ -57465,7 +57465,7 @@
   "channel_stats": {
     "-1002122751413": {
       "name": "New Pool Alert",
-      "total_signals": 6,
+      "total_signals": 7,
       "winners": 0,
       "mega_winners": 0,
       "losers": 0,
@@ -57474,7 +57474,7 @@
       "best_ath": 0.0,
       "best_symbol": "",
       "signal_types": {
-        "FEATURED_NEW": 6
+        "FEATURED_NEW": 7
       },
       "recent_signals": [
         {
@@ -57560,6 +57560,20 @@
             "renounced": true
           },
           "timestamp": "2026-06-22T20:14:54.398167+00:00"
+        },
+        {
+          "symbol": "MESSI",
+          "address": "2KkWrCPA1KdhfMHDLUHvmUpxPGjgXBX6cNqn54WNXHoF",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 63764.04,
+            "holders": 16,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 0.24812,
+            "renounced": true
+          },
+          "timestamp": "2026-06-22T20:20:50.589537+00:00"
         }
       ]
     }
