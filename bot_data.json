@@ -2,99 +2,6 @@
   "pump_patterns": [
     {
       "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
       "symbol": "DOGECOIN",
       "features": {
         "buy_sell_ratio": 2.22,
@@ -12597,8 +12504,8 @@
         "price": 0.0001523
       },
       "outcome": "PUMP",
-      "ath_multiplier": 4.93,
-      "learned_at": "2026-06-22T08:19:22.594067+00:00",
+      "ath_multiplier": 4.98,
+      "learned_at": "2026-06-22T09:08:53.252909+00:00",
       "source": "pump_collector"
     },
     {
@@ -13470,7 +13377,7 @@
       },
       "outcome": "PUMP",
       "ath_multiplier": 13.17,
-      "learned_at": "2026-06-22T08:19:21.031475+00:00",
+      "learned_at": "2026-06-22T09:08:53.543275+00:00",
       "source": "pump_collector"
     },
     {
@@ -13514,7 +13421,7 @@
       },
       "outcome": "PUMP",
       "ath_multiplier": 7.2,
-      "learned_at": "2026-06-22T08:19:21.926557+00:00",
+      "learned_at": "2026-06-22T09:08:52.056231+00:00",
       "source": "pump_collector"
     },
     {
@@ -13638,9 +13545,9 @@
         "signal_age": 0.0
       },
       "outcome": "STRONG_PUMP",
-      "ath_multiplier": 14.42,
+      "ath_multiplier": 18.64,
       "signal_age": 0.0,
-      "learned_at": "2026-06-22T08:19:21.276906+00:00"
+      "learned_at": "2026-06-22T09:08:52.658639+00:00"
     },
     {
       "address": "49x3fgcezXi58YDjZUoKR241UNRFmrKeZTikEThkpump",
@@ -13858,8 +13765,8 @@
         "price": 0.000182
       },
       "outcome": "PUMP",
-      "ath_multiplier": 8.35,
-      "learned_at": "2026-06-22T08:19:22.144352+00:00",
+      "ath_multiplier": 26.58,
+      "learned_at": "2026-06-22T09:08:52.950803+00:00",
       "source": "pump_collector"
     },
     {
@@ -13941,7 +13848,7 @@
       "outcome": "STRONG_PUMP",
       "ath_multiplier": 16.58,
       "signal_age": 0.0,
-      "learned_at": "2026-06-22T08:19:21.493360+00:00"
+      "learned_at": "2026-06-22T09:08:52.366245+00:00"
     },
     {
       "address": "2cRSwoNKpEzgcQt1CaU6q2ePKE1c6vz52A9AsKR7pump",
@@ -14007,6 +13914,72 @@
       "outcome": "PUMP",
       "ath_multiplier": 0,
       "learned_at": "2026-06-22T07:38:32.831985+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "2dEtby5aVULMZbnxcLpKLdJ89F7aM2DU61Atf5jjpump",
+      "symbol": "SpaceX-World",
+      "features": {
+        "buy_sell_ratio": 1.31,
+        "unique_wallets": 8631,
+        "holders": 20,
+        "liquidity": 28029.09,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 20.12,
+        "mcap": 139323,
+        "volume": 387591.29,
+        "buy_sell_momentum": 0.13,
+        "age_hours": 0.6,
+        "price": 0.0001393
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-22T08:12:33.085610+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "CtCs72fGVcTH5Qs7JVdXcT7qwoBgqCP4qEwU4F43pump",
+      "symbol": "FISH",
+      "features": {
+        "buy_sell_ratio": 1.26,
+        "unique_wallets": 919,
+        "holders": 20,
+        "liquidity": 4515.8,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 115.7,
+        "mcap": 3903,
+        "volume": 25474.28,
+        "buy_sell_momentum": 0.11,
+        "age_hours": 0.4,
+        "price": 3.903e-06
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-22T08:13:23.304875+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "4BsYbLWnr5pHL3w3R7Z774YPwGvgC88ZtWWk76Lypump",
+      "symbol": "NICE",
+      "features": {
+        "buy_sell_ratio": 0.5,
+        "unique_wallets": 6,
+        "holders": 20,
+        "liquidity": 5371.89,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 111.38,
+        "mcap": 4823,
+        "volume": 18915.7,
+        "buy_sell_momentum": -0.33,
+        "age_hours": 39.8,
+        "price": 4.823e-06
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-22T08:24:44.393773+00:00",
       "source": "pump_collector"
     }
   ],
@@ -45606,7 +45579,7 @@
         "launch_month": 6,
         "is_weekend": 1,
         "launch_session": 0,
-        "ath_multiplier": 4.14,
+        "ath_multiplier": 3.52,
         "outcome": "PUMP",
         "signal_age": 0.0
       },
@@ -51585,7 +51558,7 @@
       "features": {
         "launch_time": 1782102464.658191,
         "source": "historical_scan",
-        "ath_multiplier": 4.7,
+        "ath_multiplier": 4.98,
         "outcome": "PUMP",
         "signal_age": 0.0
       },
@@ -51601,7 +51574,7 @@
       "features": {
         "launch_time": 1782107912.37531,
         "source": "historical_scan",
-        "ath_multiplier": 8.13,
+        "ath_multiplier": 7.91,
         "outcome": "STRONG_PUMP",
         "signal_age": 0.0
       },
@@ -51617,7 +51590,7 @@
       "features": {
         "launch_time": 1782112122.759286,
         "source": "historical_scan",
-        "ath_multiplier": 14.42,
+        "ath_multiplier": 18.64,
         "outcome": "STRONG_PUMP",
         "signal_age": 0.0
       },
@@ -51633,7 +51606,7 @@
       "features": {
         "launch_time": 1782113047.986022,
         "source": "historical_scan",
-        "ath_multiplier": 16.58,
+        "ath_multiplier": 13.21,
         "outcome": "STRONG_PUMP",
         "signal_age": 0.0
       },
@@ -51649,7 +51622,7 @@
       "features": {
         "launch_time": 1782115524.368366,
         "source": "historical_scan",
-        "ath_multiplier": 8.35,
+        "ath_multiplier": 26.58,
         "outcome": "STRONG_PUMP",
         "signal_age": 0.0
       },
@@ -56714,72 +56687,6 @@
         "detected_at": "2026-06-22T08:17:22.924751+00:00"
       },
       {
-        "address": "3HHTWR8mSdWGmNfH1gSpsFWvysWJ2DUwpmTsnTz1pump",
-        "symbol": "MYLOO",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 8.13,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T08:19:21.031200+00:00",
-        "timestamp": "2026-06-22T08:19:21.031256+00:00"
-      },
-      {
-        "address": "FtgKs1pyNhgGZmhywZUmgwtKR9SQnQgD9L1cnqKFpump",
-        "symbol": "MrAsteroid",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 14.42,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T08:19:21.276821+00:00",
-        "timestamp": "2026-06-22T08:19:21.276845+00:00"
-      },
-      {
-        "address": "4FnEvpYyVBbnNjeZvqaYUFZVHsLZpVZRGtbh13aRpump",
-        "symbol": " $WCT",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 16.58,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T08:19:21.493281+00:00",
-        "timestamp": "2026-06-22T08:19:21.493304+00:00"
-      },
-      {
-        "address": "BQnsQ7LrcKVUqB33cqkVmbN1GNvqCCVYqGLLG5fLpump",
-        "symbol": "CONDOR",
-        "verdict": "PUMP",
-        "ath_multiplier": 4.56,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T08:19:21.709234+00:00",
-        "timestamp": "2026-06-22T08:19:21.709267+00:00"
-      },
-      {
-        "address": "HeckB9QF2rYW8y6xMfHDyHdBVjfzFkjB95rfstFKgh4c",
-        "symbol": "Solvengers",
-        "verdict": "PUMP",
-        "ath_multiplier": 4.14,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T08:19:21.926479+00:00",
-        "timestamp": "2026-06-22T08:19:21.926505+00:00"
-      },
-      {
-        "address": "DtgneYfuPv3Jt8PzfMXYq9opRNU2UVtgrLYFdC4Vpump",
-        "symbol": "RDR2",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 8.35,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T08:19:22.144266+00:00",
-        "timestamp": "2026-06-22T08:19:22.144290+00:00"
-      },
-      {
         "address": "2dEtby5aVULMZbnxcLpKLdJ89F7aM2DU61Atf5jjpump",
         "symbol": "SpaceX-World",
         "verdict": "PUMP",
@@ -56791,15 +56698,588 @@
         "timestamp": "2026-06-22T08:19:22.367083+00:00"
       },
       {
-        "address": "6jbx2PGZfXNaXxXSLzsUse5xQet3E5qnJqpMRso6pump",
-        "symbol": "Jetchua",
+        "address": "F55zfHojextdnbutz7ezJtiLg7FxDajwzW6ZZZx7vfQM",
+        "symbol": "FIDGET",
+        "name": "Fidget Trading",
+        "ath_multiplier": 6905.0,
+        "launch_mcap": 0,
+        "peak_mcap": 6905.0,
+        "launch_liq": 12626.17,
+        "holders": 9,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:21:47.635414+00:00"
+      },
+      {
+        "address": "3qnRpnWo7Jzt6gxH6XXjNCgsVYbE35fC3aRsAvaQFCMB",
+        "symbol": "奇三妹",
+        "name": "The Baby Panda",
+        "ath_multiplier": 6485.0,
+        "launch_mcap": 0,
+        "peak_mcap": 6485.0,
+        "launch_liq": 12626.17,
+        "holders": 7,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:21:49.117512+00:00"
+      },
+      {
+        "address": "5U1G9WkeUjWCVm9E4yQqyjy6xxR6mNVU4EWvjWcT3WSw",
+        "symbol": "SpaceX-Wor",
+        "name": "spaceX链游税捐给开发",
+        "ath_multiplier": 73.94,
+        "launch_mcap": 0,
+        "peak_mcap": 73.94,
+        "launch_liq": 12617.62,
+        "holders": 10,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:21:49.714558+00:00"
+      },
+      {
+        "address": "5ienWCJowJJKDEpfkeBdeQrKU7Lg2GGWPBP8NGQt2jmM",
+        "symbol": "Solax",
+        "name": "Solaxie",
+        "ath_multiplier": 6537.0,
+        "launch_mcap": 0,
+        "peak_mcap": 6537.0,
+        "launch_liq": 12617.67,
+        "holders": 1,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:21:50.236852+00:00"
+      },
+      {
+        "address": "AjsTfexyFsAQGTdg5XUnbKavaCsDQycjgfZBAXp3pump",
+        "symbol": "MCDS",
+        "name": "Mexico Cartel Drone",
+        "ath_multiplier": 48869.0,
+        "launch_mcap": 0,
+        "peak_mcap": 48869.0,
+        "launch_liq": 35447.91,
+        "holders": 13,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:22:29.986636+00:00"
+      },
+      {
+        "address": "9xUMne6MKqHaMmPyMVAYWS6zwMLuCWDyAykcerTYzihw",
+        "symbol": "Solax",
+        "name": "Solaxie",
+        "ath_multiplier": 7663.0,
+        "launch_mcap": 0,
+        "peak_mcap": 7663.0,
+        "launch_liq": 12597.27,
+        "holders": 1,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:27:30.448664+00:00"
+      },
+      {
+        "address": "2mc3priRyDX6muy1cJZ2VYiCL9iztdPBNfLDJ8UMK6WR",
+        "symbol": "PADRE",
+        "name": "The PumpFun Father",
+        "ath_multiplier": 7933.0,
+        "launch_mcap": 0,
+        "peak_mcap": 7933.0,
+        "launch_liq": 12609.17,
+        "holders": 5,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:27:30.595153+00:00"
+      },
+      {
+        "address": "Bs65nwF3gD4xEUSS7C23CidDFHLMK5cfRFaqsQvUzGx1",
+        "symbol": "TRADOOR",
+        "name": "The Tradoor",
+        "ath_multiplier": 16467.0,
+        "launch_mcap": 0,
+        "peak_mcap": 16467.0,
+        "launch_liq": 14689.62,
+        "holders": 8,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:27:31.258087+00:00"
+      },
+      {
+        "address": "NbyYHm7uNpe8AtzUtS6pVTMyxJ8vSkPdaF5282x2D9h",
+        "symbol": "CDOF",
+        "name": "Chinese  Digital Oil",
+        "ath_multiplier": 62666.0,
+        "launch_mcap": 0,
+        "peak_mcap": 62666.0,
+        "launch_liq": 44520.0,
+        "holders": 10,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:27:32.632722+00:00"
+      },
+      {
+        "address": "YyWpsu3Zxp6CevGQjGTz6v5sx391q4pnxzJMbDBpBgu",
+        "symbol": "BOO",
+        "name": "The Boo Dog",
+        "ath_multiplier": 17957.0,
+        "launch_mcap": 0,
+        "peak_mcap": 17957.0,
+        "launch_liq": 15734.64,
+        "holders": 13,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:27:53.557418+00:00"
+      },
+      {
+        "address": "4RXmh4j47fLMfk99bGGXXkoDqcYPGibQZwAFqZ6C5mqx",
+        "symbol": "SpaceXWo",
+        "name": "spaceX链游税捐给开发",
+        "ath_multiplier": 60257.0,
+        "launch_mcap": 0,
+        "peak_mcap": 60257.0,
+        "launch_liq": 95610.53,
+        "holders": 26,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:29:33.952873+00:00"
+      },
+      {
+        "address": "BfMTMG2FgdvnJHLrZsuwMhDtMRVHveEJrnqB4srV2iqs",
+        "symbol": "TRADOOR",
+        "name": "The Tradoor",
+        "ath_multiplier": 73.87,
+        "launch_mcap": 0,
+        "peak_mcap": 73.87,
+        "launch_liq": 12299.39,
+        "holders": 13,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:32:23.321163+00:00"
+      },
+      {
+        "address": "EZtsN1rAkXhnTcCr6NaD2UYWW5j7mW4TdRrBMzkAT47e",
+        "symbol": "Sanzon",
+        "name": "The Patriotic Bull",
+        "ath_multiplier": 13599.0,
+        "launch_mcap": 0,
+        "peak_mcap": 13599.0,
+        "launch_liq": 14800.0,
+        "holders": 18,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:35:16.629017+00:00"
+      },
+      {
+        "address": "3T9syNktymePxCyGrWUdAMchTQ8hCwzNaFycn4HKn5mT",
+        "symbol": "BIGBOY",
+        "name": "BIG BOY",
+        "ath_multiplier": 16997.0,
+        "launch_mcap": 0,
+        "peak_mcap": 16997.0,
+        "launch_liq": 14227.2,
+        "holders": 9,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:35:17.126238+00:00"
+      },
+      {
+        "address": "3NkGS3zPDapCweQssrHyVm8vbqVSyAjdC5mx8G99DVMy",
+        "symbol": "BOO",
+        "name": "The Boo Dog",
+        "ath_multiplier": 11120.0,
+        "launch_mcap": 0,
+        "peak_mcap": 11120.0,
+        "launch_liq": 9473.28,
+        "holders": 13,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:35:17.643227+00:00"
+      },
+      {
+        "address": "aBpWbXHaLtQvifu5zSVf79h15c543PPsfkceWvdpump",
+        "symbol": "RVLS",
+        "name": "Rome Scroll",
+        "ath_multiplier": 45457.0,
+        "launch_mcap": 0,
+        "peak_mcap": 45457.0,
+        "launch_liq": 34480.7,
+        "holders": 4,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:54:48.967480+00:00"
+      },
+      {
+        "address": "q9MNoDFmtSjXhLEZ7q8jHBFtDVDkD9hFYiXniuoV4h1",
+        "symbol": "Gao",
+        "name": "ガオ",
+        "ath_multiplier": 12885.0,
+        "launch_mcap": 0,
+        "peak_mcap": 12885.0,
+        "launch_liq": 14800.0,
+        "holders": 21,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:54:49.671161+00:00"
+      },
+      {
+        "address": "HbFeBajey9KJrqBiCrWnmfLNNkGwTD4JPru3U4yd5pTc",
+        "symbol": "CAct",
+        "name": "Clarity Act",
+        "ath_multiplier": 15884.0,
+        "launch_mcap": 0,
+        "peak_mcap": 15884.0,
+        "launch_liq": 14650.02,
+        "holders": 14,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:00:04.667708+00:00"
+      },
+      {
+        "address": "AieaUiQaLyw6nDZ1dbCmV3S2tXQUhKjd7Sv5MhHFpump",
+        "symbol": "Bshf",
+        "name": "BRUSSELS FALCON",
+        "ath_multiplier": 51026.0,
+        "launch_mcap": 0,
+        "peak_mcap": 51026.0,
+        "launch_liq": 35658.14,
+        "holders": 10,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:00:05.305742+00:00"
+      },
+      {
+        "address": "5BFdR1DJFXbzwuipA4aKP8wtHZ17Fszv12bVowQXSBrS",
+        "symbol": "Fishcoin",
+        "name": "Fishcoin",
+        "ath_multiplier": 73.55,
+        "launch_mcap": 0,
+        "peak_mcap": 73.55,
+        "launch_liq": 12246.35,
+        "holders": 12,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:00:06.145667+00:00"
+      },
+      {
+        "address": "E3yqLCardgwUKH1fLKRRysvPe3tbq5Q2B1y2n4FvBdPY",
+        "symbol": "json",
+        "name": "who is json",
+        "ath_multiplier": 126435.0,
+        "launch_mcap": 0,
+        "peak_mcap": 126435.0,
+        "launch_liq": 12546.28,
+        "holders": 1,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:00:06.819039+00:00"
+      },
+      {
+        "address": "AXQjRRMwnb6JV7e8QFWRzqkfx9ei78339pXzTNCPHsD7",
+        "symbol": "dempol",
+        "name": "dempol",
+        "ath_multiplier": 102552719.0,
+        "launch_mcap": 0,
+        "peak_mcap": 102552719.0,
+        "launch_liq": 12564.97,
+        "holders": 1,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:05:54.986785+00:00"
+      },
+      {
+        "address": "H6MyQGAATzP3yA7DnWyZgYC5AhyC9mvQd9D6nYY9LBqT",
+        "symbol": "GOLD",
+        "name": "Stairway to gold",
+        "ath_multiplier": 144115.0,
+        "launch_mcap": 0,
+        "peak_mcap": 144115.0,
+        "launch_liq": 12570.07,
+        "holders": 8,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:05:55.604886+00:00"
+      },
+      {
+        "address": "CXFiaQNVKfsTvQjbD8aUDL3wkBSymGNsWR1zgCBmrdDc",
+        "symbol": "PIXELJOTCHUA",
+        "name": "Pixel Jotchua",
+        "ath_multiplier": 102594340.0,
+        "launch_mcap": 0,
+        "peak_mcap": 102594340.0,
+        "launch_liq": 12570.07,
+        "holders": 1,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:05:56.250516+00:00"
+      },
+      {
+        "address": "FjZbQFkr6z8fN15B8P4tY9uCHD47GNok2e3kJiCwdriz",
+        "symbol": "Fishcoin",
+        "name": "Fishcoin",
+        "ath_multiplier": 73.63,
+        "launch_mcap": 0,
+        "peak_mcap": 73.63,
+        "launch_liq": 12257.95,
+        "holders": 12,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:05:56.930003+00:00"
+      },
+      {
+        "address": "3dxiScjuxRsSVRPsgmAiCWApGv31jYKXX6ETfQNojW6M",
+        "symbol": "CALVIN",
+        "name": "Calvin",
+        "ath_multiplier": 155194.0,
+        "launch_mcap": 0,
+        "peak_mcap": 155194.0,
+        "launch_liq": 12566.67,
+        "holders": 1,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:05:57.543650+00:00"
+      },
+      {
+        "address": "7q6VvQKHQZxKCKsgxGkBEg8gDkm8EcJz87wDvCHzC1Rg",
+        "symbol": "ACCELERATE",
+        "name": "ACCELERATE",
+        "ath_multiplier": 204655.0,
+        "launch_mcap": 0,
+        "peak_mcap": 204655.0,
+        "launch_liq": 12556.48,
+        "holders": 4,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:05:58.167164+00:00"
+      },
+      {
+        "address": "Bwb3U8riENXHxVExdCSRLH5iXbPvkwXgaqq9coezKF56",
+        "symbol": "CONDOR",
+        "name": "Condor",
+        "ath_multiplier": 6328.0,
+        "launch_mcap": 0,
+        "peak_mcap": 6328.0,
+        "launch_liq": 12571.77,
+        "holders": 10,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:05:58.879855+00:00"
+      },
+      {
+        "address": "GmWVVwLeSgjiW21XNFs7PKKnirfWNrYy1cyGoXwjaCxc",
+        "symbol": "PEMPUS",
+        "name": "PEMPUS",
+        "ath_multiplier": 19010.0,
+        "launch_mcap": 0,
+        "peak_mcap": 19010.0,
+        "launch_liq": 14630.22,
+        "holders": 16,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:06:01.658949+00:00"
+      },
+      {
+        "address": "CjWDqBmcuKDVELRyaYt5iyijdDsgkgMvmzSP4CSMHZfU",
+        "symbol": "Scissors",
+        "name": "Scissors",
+        "ath_multiplier": 142961.0,
+        "launch_mcap": 0,
+        "peak_mcap": 142961.0,
+        "launch_liq": 12570.07,
+        "holders": 9,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:06:02.236692+00:00"
+      },
+      {
+        "address": "F63v1NCQeqXVyn2TPaoJ8KWNtMBB3EcotgNKnpt4aoiX",
+        "symbol": "MINI",
+        "name": "Miniverse",
+        "ath_multiplier": 6650.0,
+        "launch_mcap": 0,
+        "peak_mcap": 6650.0,
+        "launch_liq": 12564.97,
+        "holders": 7,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:06:02.975854+00:00"
+      },
+      {
+        "address": "71HYEQ2pxBUFCqjWnKZ2xAdPRWdBskcrzaRuTFevyFDh",
+        "symbol": "Worthless",
+        "name": "Worthless Coin",
+        "ath_multiplier": 6683.0,
+        "launch_mcap": 0,
+        "peak_mcap": 6683.0,
+        "launch_liq": 12563.27,
+        "holders": 1,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:06:03.588774+00:00"
+      },
+      {
+        "address": "GZb5rfFrnW98FoNGLq7uWYQWKKHXLkq34ZgebAJimoon",
+        "symbol": "Most",
+        "name": "Moscow Tanker⚡",
+        "ath_multiplier": 11219098.0,
+        "launch_mcap": 0,
+        "peak_mcap": 11219098.0,
+        "launch_liq": 42874.03,
+        "holders": 4,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:06:19.429239+00:00"
+      },
+      {
+        "address": "H6V4QeqkRFyaGW8jkecJ3WQNqaTz5CeZL345MebXBBmr",
+        "symbol": "CONDOR",
+        "name": "Condor",
+        "ath_multiplier": 110757.0,
+        "launch_mcap": 0,
+        "peak_mcap": 110757.0,
+        "launch_liq": 21862.56,
+        "holders": 16,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:06:20.087269+00:00"
+      },
+      {
+        "address": "G5QAKXWAcfZSWaaWxnZnt26juCKJEceDSXWiFi1gtRw5",
+        "symbol": "Fishcoin",
+        "name": "Fishcoin",
+        "ath_multiplier": 73.61,
+        "launch_mcap": 0,
+        "peak_mcap": 73.61,
+        "launch_liq": 12558.12,
+        "holders": 10,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:06:20.734518+00:00"
+      },
+      {
+        "address": "7mxXBPDvvo23Fk5A2BBN1kXoHXQijMxRJ4UzBs4xBHrh",
+        "symbol": "PUH",
+        "name": "BIG BOY",
+        "ath_multiplier": 11532.0,
+        "launch_mcap": 0,
+        "peak_mcap": 11532.0,
+        "launch_liq": 9459.2,
+        "holders": 14,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:06:21.309531+00:00"
+      },
+      {
+        "address": "Gth6wtWYrEDLHotxhsb6QW2baM6Rrjsezd2Yw7HWnEdb",
+        "symbol": "PIXELJOTCHUA",
+        "name": "Pixel Jotchua",
+        "ath_multiplier": 7659.0,
+        "launch_mcap": 0,
+        "peak_mcap": 7659.0,
+        "launch_liq": 12563.27,
+        "holders": 6,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:06:21.457867+00:00"
+      },
+      {
+        "address": "HeckB9QF2rYW8y6xMfHDyHdBVjfzFkjB95rfstFKgh4c",
+        "symbol": "Solvengers",
         "verdict": "PUMP",
-        "ath_multiplier": 4.7,
+        "ath_multiplier": 3.52,
         "current_multiplier": 0.0,
         "min_price_multiplier": 0.0,
         "signal_age": 0.0,
-        "signal_time": "2026-06-22T08:19:22.593989+00:00",
-        "timestamp": "2026-06-22T08:19:22.594012+00:00"
+        "signal_time": "2026-06-22T09:08:52.055895+00:00",
+        "timestamp": "2026-06-22T09:08:52.055954+00:00"
+      },
+      {
+        "address": "4FnEvpYyVBbnNjeZvqaYUFZVHsLZpVZRGtbh13aRpump",
+        "symbol": " $WCT",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 13.21,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T09:08:52.366123+00:00",
+        "timestamp": "2026-06-22T09:08:52.366152+00:00"
+      },
+      {
+        "address": "FtgKs1pyNhgGZmhywZUmgwtKR9SQnQgD9L1cnqKFpump",
+        "symbol": "MrAsteroid",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 18.64,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T09:08:52.658472+00:00",
+        "timestamp": "2026-06-22T09:08:52.658499+00:00"
+      },
+      {
+        "address": "DtgneYfuPv3Jt8PzfMXYq9opRNU2UVtgrLYFdC4Vpump",
+        "symbol": "RDR2",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 26.58,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T09:08:52.950683+00:00",
+        "timestamp": "2026-06-22T09:08:52.950707+00:00"
+      },
+      {
+        "address": "6jbx2PGZfXNaXxXSLzsUse5xQet3E5qnJqpMRso6pump",
+        "symbol": "Jetchua",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.98,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T09:08:53.252785+00:00",
+        "timestamp": "2026-06-22T09:08:53.252814+00:00"
+      },
+      {
+        "address": "3HHTWR8mSdWGmNfH1gSpsFWvysWJ2DUwpmTsnTz1pump",
+        "symbol": "MYLOO",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 7.91,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T09:08:53.543157+00:00",
+        "timestamp": "2026-06-22T09:08:53.543183+00:00"
       }
     ],
     "success_history": [
@@ -61433,6 +61913,127 @@
           "signal_age": 0.0
         },
         "timestamp": "2026-06-22T08:19:22.653379+00:00"
+      },
+      {
+        "address": "HeckB9QF2rYW8y6xMfHDyHdBVjfzFkjB95rfstFKgh4c",
+        "symbol": "Solvengers",
+        "reasons": [
+          "high_bsr=4.7",
+          "high_holders=180",
+          "high_buys=184",
+          "high_velocity=18073.8",
+          "high_snipers=4"
+        ],
+        "ath_multiplier": 3.52,
+        "features": {
+          "unique_wallets": 33,
+          "buy_count": 184,
+          "sell_count": 37,
+          "buy_sell_ratio": 4.67,
+          "holders": 180,
+          "snipers_30s": 4,
+          "liq_pct": 17.8,
+          "lp_locked": 89,
+          "lp_providers_count": 4,
+          "social_score": 0.72,
+          "volume_velocity": 18073.8,
+          "buy_sell_momentum": 2.51,
+          "volume_spike_ratio": 2.6,
+          "buy_spike_ratio": 2.72,
+          "insider_count": 5,
+          "liquidity": 3889.94,
+          "mcap": 2923.0,
+          "launch_time": 1782010677.0,
+          "launch_weekday": 6,
+          "launch_hour": 2,
+          "launch_month": 6,
+          "is_weekend": 1,
+          "launch_session": 0,
+          "ath_multiplier": 3.52,
+          "outcome": "PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-22T09:08:52.151785+00:00"
+      },
+      {
+        "address": "4FnEvpYyVBbnNjeZvqaYUFZVHsLZpVZRGtbh13aRpump",
+        "symbol": " $WCT",
+        "reasons": [
+          "balanced"
+        ],
+        "ath_multiplier": 13.21,
+        "features": {
+          "launch_time": 1782113047.986022,
+          "source": "historical_scan",
+          "ath_multiplier": 13.21,
+          "outcome": "STRONG_PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-22T09:08:52.449914+00:00"
+      },
+      {
+        "address": "FtgKs1pyNhgGZmhywZUmgwtKR9SQnQgD9L1cnqKFpump",
+        "symbol": "MrAsteroid",
+        "reasons": [
+          "balanced"
+        ],
+        "ath_multiplier": 18.64,
+        "features": {
+          "launch_time": 1782112122.759286,
+          "source": "historical_scan",
+          "ath_multiplier": 18.64,
+          "outcome": "STRONG_PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-22T09:08:52.743139+00:00"
+      },
+      {
+        "address": "DtgneYfuPv3Jt8PzfMXYq9opRNU2UVtgrLYFdC4Vpump",
+        "symbol": "RDR2",
+        "reasons": [
+          "balanced"
+        ],
+        "ath_multiplier": 26.58,
+        "features": {
+          "launch_time": 1782115524.368366,
+          "source": "historical_scan",
+          "ath_multiplier": 26.58,
+          "outcome": "STRONG_PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-22T09:08:53.035012+00:00"
+      },
+      {
+        "address": "6jbx2PGZfXNaXxXSLzsUse5xQet3E5qnJqpMRso6pump",
+        "symbol": "Jetchua",
+        "reasons": [
+          "balanced"
+        ],
+        "ath_multiplier": 4.98,
+        "features": {
+          "launch_time": 1782102464.658191,
+          "source": "historical_scan",
+          "ath_multiplier": 4.98,
+          "outcome": "PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-22T09:08:53.336673+00:00"
+      },
+      {
+        "address": "3HHTWR8mSdWGmNfH1gSpsFWvysWJ2DUwpmTsnTz1pump",
+        "symbol": "MYLOO",
+        "reasons": [
+          "balanced"
+        ],
+        "ath_multiplier": 7.91,
+        "features": {
+          "launch_time": 1782107912.37531,
+          "source": "historical_scan",
+          "ath_multiplier": 7.91,
+          "outcome": "STRONG_PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-22T09:08:53.628096+00:00"
       }
     ],
     "auto_learn_insights": {
@@ -61452,9 +62053,9 @@
         "holders": 103.0,
         "unique_wallets": 151,
         "initial_liq": 3246.23,
-        "liq_pct": 43.26,
+        "liq_pct": 43.59,
         "lp_locked": 98,
-        "lp_providers_count": 1.0
+        "lp_providers_count": 1
       },
       "dump_medians": {
         "buy_sell_ratio": 1.17,
@@ -61479,7 +62080,7 @@
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
       "heuristic_threshold": 0.6,
-      "updated_at": "2026-06-22T08:17:40.984992+00:00",
+      "updated_at": "2026-06-22T09:07:08.752911+00:00",
       "sample_size": 1503
     }
   },

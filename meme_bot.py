@@ -345,6 +345,9 @@ class MemeBot:
         if mcap <= 0:
             return
         liquidity = float((pair.get("liquidity") or {}).get("usd", 0) or 0)
+        if liquidity < 500:
+            logger.info(f"[SKIP] {launch_data.symbol}: pre-mig liq=${liquidity:.0f} < $500")
+            return
         buys_1h = int(((pair.get("txns") or {}).get("h1") or {}).get("buys", 0) or 0)
         sells_1h = int(((pair.get("txns") or {}).get("h1") or {}).get("sells", 0) or 0)
         buys_5m = int(((pair.get("txns") or {}).get("m5") or {}).get("buys", 0) or 0)
@@ -352,8 +355,8 @@ class MemeBot:
         bsr = buys_1h / max(sells_1h, 1)
         avg_5m = max(buys_1h / 12, 1)
         vol_spike = buys_5m / avg_5m if avg_5m > 0 else 0
-        mcap_thresh = 1000 if vol_spike >= 3.0 else 1500
-        bsr_thresh = 1.0 if vol_spike >= 3.0 else 1.3
+        mcap_thresh = 2000 if vol_spike >= 3.0 else 3000
+        bsr_thresh = 1.2 if vol_spike >= 3.0 else 1.5
         if mcap < mcap_thresh:
             return
         if bsr < bsr_thresh:
@@ -390,7 +393,9 @@ class MemeBot:
             score += 0.1; reasons.append(f"1h +{price_change_1h:.0f}%")
         if price_change_5m > 10:
             score += 0.1; reasons.append(f"5m +{price_change_5m:.0f}%")
-        if score < 0.40:
+        if liquidity < 500:
+            score -= 0.2; reasons.append("low_liq")
+        if score < 0.50:
             return
         now_ts = datetime.now(timezone.utc).timestamp()
         age = now_ts - launch_data.launch_time if launch_data.launch_time > 0 else 0
@@ -1006,7 +1011,7 @@ class MemeBot:
                         buys_5m = int(((pair.get("txns") or {}).get("m5") or {}).get("buys", 0) or 0)
                         sells_5m = int(((pair.get("txns") or {}).get("m5") or {}).get("sells", 0) or 0)
                         liquidity = float((pair.get("liquidity") or {}).get("usd", 0) or 0)
-                        if liquidity < 300:
+                        if liquidity < 500:
                             await self.state.add_blacklisted(ca)
                             continue
                         total_activity = buys_5m + sells_5m
@@ -1165,10 +1170,9 @@ class MemeBot:
                                 logger.info(f"[SKIP] {symbol}: climbing — age {int(age)}s > 6h")
                                 continue
 
-                            # HARD FILTERS: relaxed when volume spike detected
+                            # HARD FILTERS: BSR 1.4 minimum
                             h1_bsr = h1_buys / max(h1_sells, 1)
-                            bsr_threshold = 1.0 if volume_spike >= 3.0 else 1.3
-                            if h1_bsr < bsr_threshold:
+                            if h1_bsr < 1.4:
                                 continue
                             buys_threshold = 5 if volume_spike >= 3.0 else 8
                             if h1_buys < buys_threshold:
