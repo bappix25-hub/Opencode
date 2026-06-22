@@ -50805,6 +50805,19 @@
       "outcome_mcap": 0,
       "outcome_time": null,
       "signal_sent": false
+    },
+    {
+      "address": "GsBaMkqpR2u6Pmpbk5MecS2x9HuZQot8hGC86Psypump",
+      "symbol": " Ro Khanna",
+      "features": {
+        "launch_time": 1782155428.536013,
+        "source": "historical_scan"
+      },
+      "launch_time": 1782155428.536013,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
     }
   ],
   "model": {
