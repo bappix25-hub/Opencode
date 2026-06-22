@@ -973,6 +973,66 @@ class MemeBot:
                                 await self.check_pre_migration_signal(addr)
                         await asyncio.sleep(0.3)
 
+                # GMGN-tracked tokens scan
+                try:
+                    import gmgn_scorer
+                    from telegram_collector import get_tracked_tokens as _get_gmgn_tokens
+                    gmgn_tokens = _get_gmgn_tokens()
+                    gmgn_scanned = 0
+                    for ca, gt in list(gmgn_tokens.items()):
+                        if gt.get("status") != "tracking":
+                            continue
+                        if await self.state.is_blacklisted(ca):
+                            continue
+                        if await self.state.is_alerted(ca):
+                            continue
+                        if await self.state.get_tracked_coin(ca):
+                            continue
+                        if self.state.pending_signals.get(ca):
+                            continue
+                        result = gmgn_scorer.score_gmgn_token(gt)
+                        if result["verdict"] in ("SKIP",):
+                            continue
+                        gmgn_scanned += 1
+                        pair = await self.dex.fetch_pair_data(ca)
+                        if not pair:
+                            await asyncio.sleep(0.2)
+                            continue
+                        mcap = float(pair.get("fdv", 0) or 0)
+                        if mcap <= 0:
+                            continue
+                        buys_5m = int(((pair.get("txns") or {}).get("m5") or {}).get("buys", 0) or 0)
+                        sells_5m = int(((pair.get("txns") or {}).get("m5") or {}).get("sells", 0) or 0)
+                        liquidity = float((pair.get("liquidity") or {}).get("usd", 0) or 0)
+                        if liquidity < 300:
+                            await self.state.add_blacklisted(ca)
+                            continue
+                        total_activity = buys_5m + sells_5m
+                        pattern_score = result["score"]
+                        signal_score = min(pattern_score + 0.15, 1.0)
+                        if total_activity >= 3 and pattern_score >= 0.5:
+                            from bot_state import PendingSignal
+                            price_usd = float(pair.get("priceUsd", 0) or 0)
+                            now_ts = datetime.now(timezone.utc).timestamp()
+                            pending = PendingSignal(
+                                address=ca, symbol=gt["symbol"], name=gt.get("name", gt["symbol"]),
+                                price_at_match=price_usd, match_score=round(signal_score, 2),
+                                match_reason=", ".join(result["matched"][:3]),
+                                mcap=mcap, liquidity=liquidity,
+                                buy_count=buys_5m, sell_count=sells_5m,
+                                buy_sell_ratio=buys_5m / max(sells_5m, 1),
+                                unique_wallets=total_activity,
+                                holders=gt.get("holders", 0),
+                                lp_locked=0, age_seconds=0,
+                                pending_since=now_ts,
+                            )
+                            self.state.pending_signals[ca] = pending
+                            logger.info(f"[GMGN MATCH] {gt['symbol']}: pattern={pattern_score:.2f}+dex={signal_score:.2f} → pending signal")
+                    if gmgn_scanned > 0:
+                        logger.info(f"🔍 GMGN scan: {gmgn_scanned} high-score tokens checked")
+                except Exception as e:
+                    logger.debug(f"GMGN scan error: {e}")
+
                 # Tracked coins scan
                 for addr, coin_info in list((await self._get_tracked_dict()).items()):
                     if await self.state.is_blacklisted(addr):
