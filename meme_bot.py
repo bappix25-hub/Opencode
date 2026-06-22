@@ -352,8 +352,8 @@ class MemeBot:
         bsr = buys_1h / max(sells_1h, 1)
         avg_5m = max(buys_1h / 12, 1)
         vol_spike = buys_5m / avg_5m if avg_5m > 0 else 0
-        mcap_thresh = 2000 if vol_spike >= 3.0 else 3000
-        bsr_thresh = 1.2 if vol_spike >= 3.0 else 1.7
+        mcap_thresh = 1000 if vol_spike >= 3.0 else 1500
+        bsr_thresh = 1.0 if vol_spike >= 3.0 else 1.3
         if mcap < mcap_thresh:
             return
         if bsr < bsr_thresh:
@@ -390,7 +390,7 @@ class MemeBot:
             score += 0.1; reasons.append(f"1h +{price_change_1h:.0f}%")
         if price_change_5m > 10:
             score += 0.1; reasons.append(f"5m +{price_change_5m:.0f}%")
-        if score < 0.55:
+        if score < 0.40:
             return
         now_ts = datetime.now(timezone.utc).timestamp()
         age = now_ts - launch_data.launch_time if launch_data.launch_time > 0 else 0
@@ -507,22 +507,12 @@ class MemeBot:
         )
         await self.state.add_launch_tracking(address, launch_data)
 
-        if holders is not None and holders < 20:
-            logger.info(f"[SKIP] {symbol}: holders={holders} < 20 (dump filter)")
+        if holders is not None and holders < 5:
+            logger.info(f"[SKIP] {symbol}: holders={holders} < 5 (dump filter)")
             return
 
         age = datetime.now(timezone.utc).timestamp() - launch_data.launch_time
         symbol = launch_data.symbol
-
-        # Only skip during very bad hours (< 50% pump rate)
-        try:
-            bad_hours = get_bad_hours(min_signals=3, max_win_rate=0.50)
-        except Exception:
-            bad_hours = set()
-        current_hour = datetime.now(timezone.utc).hour
-        if bad_hours and current_hour in bad_hours:
-            logger.info(f"[SKIP] {symbol}: hour {current_hour}:00 UTC — bad hour")
-            return
 
         if age < 30:
             return
@@ -596,8 +586,8 @@ class MemeBot:
             except Exception:
                 pass
 
-        if real_holders < 20:
-            logger.info(f"[SKIP] {symbol}: holders={real_holders} < 20")
+        if real_holders < 5:
+            logger.info(f"[SKIP] {symbol}: holders={real_holders} < 5")
             return
 
         if deployer := launch_data.deployer_wallet:
@@ -703,7 +693,7 @@ class MemeBot:
                 h_reasons.append(f"lp_low={lp_locked}%")
 
             criteria = get_signal_criteria()
-            h_threshold = min(criteria.get("heuristic_threshold", 0.60), 0.50)
+            h_threshold = min(criteria.get("heuristic_threshold", 0.60), 0.35)
             if h_score >= h_threshold:
                 match = True
                 match_score = h_score
@@ -726,12 +716,12 @@ class MemeBot:
         if not is_pre_migration and liquidity < 500:
             logger.info(f"[SKIP] {symbol}: signal rejected — liq=${int(liquidity)} < $500")
             return
-        min_mcap = 500 if is_pre_migration else 5000
+        min_mcap = 300 if is_pre_migration else 3000
         if mcap < min_mcap:
             logger.info(f"[SKIP] {symbol}: signal rejected — mcap={format_number(mcap)} < ${min_mcap}")
             return
-        if real_holders < 20:
-            logger.info(f"[SKIP] {symbol}: signal rejected — holders={real_holders} < 20")
+        if real_holders < 5:
+            logger.info(f"[SKIP] {symbol}: signal rejected — holders={real_holders} < 5")
             return
 
         try:
@@ -1163,17 +1153,7 @@ class MemeBot:
                                 climbing_score += 0.1
                                 climb_reasons.append(f"{buys_5m} buys/5m")
 
-                            # Skip only during very bad hours
-                            try:
-                                bad_hours = get_bad_hours(min_signals=3, max_win_rate=0.50)
-                            except Exception:
-                                bad_hours = set()
-                            current_hour = datetime.now(timezone.utc).hour
-                            if bad_hours and current_hour in bad_hours:
-                                logger.info(f"[SKIP] {symbol}: climbing — hour {current_hour}:00 UTC bad hour")
-                                continue
-
-                            if climbing_score >= 0.40:
+                            if climbing_score >= 0.35:
                                 confidence_pct = int(climbing_score * 100)
                                 confidence_bar = "🟢" * max(1, int(confidence_pct/20)) + "⚪" * (5 - max(1, int(confidence_pct/20)))
                                 reason_text = ", ".join(climb_reasons[:3])
@@ -1291,8 +1271,7 @@ class MemeBot:
                             score += 0.1
                             reasons.append(f"Soc {int(social_score*100)}%")
 
-                        if score < 0.55:
-                            logger.info(f"[EVAL] {symbol}: score={score:.2f} → SKIP")
+                        if score < 0.40:
                             continue
 
                         momentum_ok, momentum_reason = await self._check_momentum(addr, launch_data)
@@ -1534,11 +1513,11 @@ class MemeBot:
 
     async def signal_confirmation_loop(self):
         """Multi-stage confirmation with volume + momentum + price."""
-        CHECK_INTERVAL = 30
-        STAGE1_DELAY = 60    # 1 min: initial check
-        STAGE2_DELAY = 180   # 3 min: momentum check
-        STAGE3_DELAY = 300   # 5 min: final confirmation
-        MAX_WAIT = 480       # 8 min: expire
+        CHECK_INTERVAL = 15
+        STAGE1_DELAY = 30    # 30s: initial check
+        STAGE2_DELAY = 90    # 90s: momentum check
+        STAGE3_DELAY = 180   # 3 min: final confirmation
+        MAX_WAIT = 300       # 5 min: expire
 
         while True:
             try:
