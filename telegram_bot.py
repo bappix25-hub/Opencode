@@ -898,6 +898,16 @@ class TelegramHandlers:
         text += f"💡 TP/SL based on actual price paths"
         await update.message.reply_text(text, parse_mode="HTML")
 
+    async def cmd_convergence(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Show convergence report — multi-source signal scoring."""
+        try:
+            from convergence_scorer import ConvergenceScorer
+            scorer = ConvergenceScorer()
+            report = scorer.get_report()
+            await update.message.reply_text(report, parse_mode="HTML")
+        except Exception as e:
+            await update.message.reply_text(f"❌ Error: {e}", parse_mode="HTML")
+
     async def cmd_balance(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not self.paper_trader:
             await update.message.reply_text("❌ Paper Trading চালু নেই।")
@@ -973,6 +983,7 @@ def register_handlers(app, handlers: TelegramHandlers):
     app.add_handler(CommandHandler("similar", handlers.cmd_similar))
     app.add_handler(CommandHandler("channelstats", handlers.cmd_channelstats))
     app.add_handler(CommandHandler("freshstats", handlers.cmd_freshstats))
+    app.add_handler(CommandHandler("convergence", handlers.cmd_convergence))
     app.add_handler(CommandHandler("config", handlers.cmd_config))
     app.add_handler(CommandHandler("setchannel", handlers.cmd_setchannel))
     app.add_handler(CallbackQueryHandler(handlers.threshold_callback, pattern="^thr_"))

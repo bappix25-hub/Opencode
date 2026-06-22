@@ -50800,6 +50800,19 @@
       "outcome_mcap": 0,
       "outcome_time": null,
       "signal_sent": false
+    },
+    {
+      "address": "6RSCFPsd7ZgiyCcxmZaHr3soUXREKk8EZmH2rH4Gpump",
+      "symbol": "Moonlake",
+      "features": {
+        "launch_time": 1782159342.994218,
+        "source": "historical_scan"
+      },
+      "launch_time": 1782159342.994218,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
     }
   ],
   "model": {
@@ -51018,39 +51031,6 @@
         "timestamp": "2026-06-22T19:27:52.567651+00:00"
       },
       {
-        "address": "SwuKQSbzNVcc2Gh7PTLskGu5U9v9w8Lgv2NnA292uok",
-        "symbol": "$DUDU",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 6.1,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T19:41:13.964585+00:00",
-        "timestamp": "2026-06-22T19:41:13.964650+00:00"
-      },
-      {
-        "address": "26mnPK3ZvbVXnusLxJEQVVJf3WeahkQe8c3rHRSUpump",
-        "symbol": "REPL",
-        "verdict": "PUMP",
-        "ath_multiplier": 3.35,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T19:41:14.231714+00:00",
-        "timestamp": "2026-06-22T19:41:14.231744+00:00"
-      },
-      {
-        "address": "GFziLKWd2JX7XpzGMCL5fpWZfZ2DnbCraPkTkF5upump",
-        "symbol": "UFOBEAT",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 6.2,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T19:41:14.476299+00:00",
-        "timestamp": "2026-06-22T19:41:14.476327+00:00"
-      },
-      {
         "address": "6YqsppC6qjJ3Efgwt6wMef6YGDofAPzEP5egvdzvpump",
         "symbol": "TrumpLoner",
         "verdict": "PUMP",
@@ -51060,17 +51040,6 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-22T19:41:14.724261+00:00",
         "timestamp": "2026-06-22T19:41:14.724288+00:00"
-      },
-      {
-        "address": "HeckB9QF2rYW8y6xMfHDyHdBVjfzFkjB95rfstFKgh4c",
-        "symbol": "Solvengers",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 7.02,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T19:41:14.970353+00:00",
-        "timestamp": "2026-06-22T19:41:14.970381+00:00"
       }
     ],
     "success_history": [
@@ -57492,5 +57461,107 @@
       "learned_at": "2026-06-22T18:26:09.625229+00:00"
     }
   ],
-  "fresh_start": "2026-06-22T13:38:36.943300+00:00"
+  "fresh_start": "2026-06-22T13:38:36.943300+00:00",
+  "channel_stats": {
+    "-1002122751413": {
+      "name": "New Pool Alert",
+      "total_signals": 6,
+      "winners": 0,
+      "mega_winners": 0,
+      "losers": 0,
+      "pending": 0,
+      "ath_sum": 0.0,
+      "best_ath": 0.0,
+      "best_symbol": "",
+      "signal_types": {
+        "FEATURED_NEW": 6
+      },
+      "recent_signals": [
+        {
+          "symbol": "MESSI",
+          "address": "4fhsyNqQN16EK3oHMobohSKM7VeSHwys9StwdU24nUmx",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 93818.96,
+            "holders": 5,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 82.20454,
+            "renounced": true
+          },
+          "timestamp": "2026-06-22T20:14:53.817368+00:00"
+        },
+        {
+          "symbol": "Cwsm",
+          "address": "8gHToNoZK2YVhzRSCRPLSxJDV281KCXWcwZk7NhpBAGS",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 37424.86,
+            "holders": 15,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 0.69434,
+            "renounced": true
+          },
+          "timestamp": "2026-06-22T20:14:53.939183+00:00"
+        },
+        {
+          "symbol": "VCSOL",
+          "address": "FgaGs8H2iwHHuzJVdR1XNmzoMqPag8sCw9GgzHSL9gXs",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 12376.3,
+            "holders": 1,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 0.37991,
+            "renounced": true
+          },
+          "timestamp": "2026-06-22T20:14:54.053925+00:00"
+        },
+        {
+          "symbol": "(",
+          "address": "ANb7bZm5LYEXaLq8QFHhDSQAEffffaabEBau6YdBaWy8",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 12378.0,
+            "holders": 1,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 0.38078,
+            "renounced": true
+          },
+          "timestamp": "2026-06-22T20:14:54.167101+00:00"
+        },
+        {
+          "symbol": "LASSE",
+          "address": "6EibHqtdGag1i2KNmLNvp34k4D4tj8yXXS6s1AV7DB9J",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 12381.4,
+            "holders": 7,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 0.37989,
+            "renounced": true
+          },
+          "timestamp": "2026-06-22T20:14:54.285504+00:00"
+        },
+        {
+          "symbol": "MBAPPE",
+          "address": "poXLdpUNXuhtGP42Rz3zPutmJfQesRSrx8oxHF9566j",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 8881.1744,
+            "holders": 15,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 48.63128,
+            "renounced": true
+          },
+          "timestamp": "2026-06-22T20:14:54.398167+00:00"
+        }
+      ]
+    }
+  }
 }

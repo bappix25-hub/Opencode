@@ -901,9 +901,10 @@ def _learn_dump(launch: dict) -> None:
     data["model"]["last_update"] = datetime.now(timezone.utc).isoformat()
 
 
-def match_pump_patterns(features: dict, min_similarity: float = 0.50) -> tuple[bool, float, str]:
+def match_pump_patterns(features: dict, min_similarity: float = 0.50, channel_id: int = None) -> tuple[bool, float, str]:
     """Check if features match known pump patterns.
-    Returns (match, score, reason)."""
+    Returns (match, score, reason).
+    If channel_id is provided, applies channel reliability weight to score."""
     if min_similarity is None:
         criteria = get_signal_criteria()
         min_similarity = criteria.get("pattern_threshold", 0.60)
@@ -923,7 +924,15 @@ def match_pump_patterns(features: dict, min_similarity: float = 0.50) -> tuple[b
             best_score = sim
             best_match = pattern
 
-    if best_score >= min_similarity:
+    # Apply channel weight if available
+    effective_score = best_score
+    channel_weight = 1.0
+    if channel_id is not None:
+        weights = get_channel_weights()
+        channel_weight = weights.get(str(channel_id), 1.0)
+        effective_score = best_score * channel_weight
+
+    if effective_score >= min_similarity:
         reasons = []
         if features.get("buy_sell_ratio", 0) >= 1.5:
             reasons.append(f"buy_sell={features['buy_sell_ratio']:.1f}")
@@ -934,10 +943,11 @@ def match_pump_patterns(features: dict, min_similarity: float = 0.50) -> tuple[b
         if features.get("liq_pct", 0) >= 5:
             reasons.append(f"liq%={features['liq_pct']:.1f}%")
 
-        reason = f"Matched {best_match.get('symbol', '?')} ({best_score:.0%}) " + " ".join(reasons)
-        return True, best_score, reason
+        ch_tag = f" ch_weight={channel_weight:.1f}x" if channel_id else ""
+        reason = f"Matched {best_match.get('symbol', '?')} ({best_score:.0%}→{effective_score:.0%}) " + " ".join(reasons) + ch_tag
+        return True, effective_score, reason
 
-    return False, best_score, f"Best match {best_score:.0%} < {min_similarity:.0%}"
+    return False, effective_score, f"Best match {best_score:.0%} (eff {effective_score:.0%}) < {min_similarity:.0%}"
 
 
 def match_dump_patterns(features: dict, min_similarity: float = 0.70) -> tuple[bool, float, str]:
@@ -2343,3 +2353,198 @@ def get_daily_report() -> str:
         lines.append(f"  {sym}: {ath}x ({v})")
 
     return "\n".join(lines)
+
+
+# ══════════════════════════════════════════════════════════════
+# CHANNEL INTELLIGENCE — কোন চ্যানেল থেকে সবচেয়ে ভালো সিগন্যাল আসে
+# ══════════════════════════════════════════════════════════════
+
+def record_channel_signal(channel_id: int, channel_name: str, symbol: str,
+                          address: str, features: dict, signal_type: str = "") -> None:
+    """Record a signal from a specific channel for channel-level analysis."""
+    data = load_data()
+    ch_key = str(channel_id)
+    ch_stats = data.setdefault("channel_stats", {}).setdefault(ch_key, {
+        "name": channel_name,
+        "total_signals": 0,
+        "winners": 0,
+        "mega_winners": 0,
+        "losers": 0,
+        "pending": 0,
+        "ath_sum": 0.0,
+        "best_ath": 0.0,
+        "best_symbol": "",
+        "signal_types": {},
+        "recent_signals": [],
+    })
+
+    ch_stats["total_signals"] += 1
+    ch_stats["name"] = channel_name
+
+    # Track signal types (KOTH, FDV_SURGE, KOL_FOMO, etc.)
+    if signal_type:
+        st = ch_stats.setdefault("signal_types", {})
+        st[signal_type] = st.get(signal_type, 0) + 1
+
+    # Store recent signal (keep last 100)
+    recent = ch_stats.setdefault("recent_signals", [])
+    recent.append({
+        "symbol": symbol,
+        "address": address,
+        "signal_type": signal_type,
+        "features": {k: v for k, v in features.items() if isinstance(v, (int, float, str, bool))},
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+    ch_stats["recent_signals"] = recent[-100:]
+
+    save_data(data)
+
+
+def update_channel_outcome(channel_id: int, address: str, ath_multiplier: float,
+                           current_multiplier: float, verdict: str) -> None:
+    """Update channel stats when a signal outcome is known."""
+    data = load_data()
+    ch_key = str(channel_id)
+    ch_stats = data.get("channel_stats", {}).get(ch_key)
+    if not ch_stats:
+        return
+
+    if verdict in ("PUMP", "STRONG_PUMP", "MEGA_PUMP"):
+        ch_stats["winners"] += 1
+        if ath_multiplier >= 50:
+            ch_stats["mega_winners"] += 1
+    elif verdict in ("DUMP", "DEAD"):
+        ch_stats["losers"] += 1
+    else:
+        ch_stats["pending"] += 1
+
+    ch_stats["ath_sum"] += ath_multiplier
+    if ath_multiplier > ch_stats.get("best_ath", 0):
+        ch_stats["best_ath"] = ath_multiplier
+        ch_stats["best_symbol"] = address[:8]
+
+    save_data(data)
+
+
+def get_channel_weights() -> dict:
+    """Calculate channel reliability weights based on historical performance.
+    Returns {channel_id: weight} where weight ranges from 0.5 to 2.0.
+    High-performing channels get bonus weight, low-performing get penalty."""
+    data = load_data()
+    ch_stats = data.get("channel_stats", {})
+    weights = {}
+
+    for ch_key, stats in ch_stats.items():
+        total = stats.get("total_signals", 0)
+        winners = stats.get("winners", 0)
+        mega = stats.get("mega_winners", 0)
+        losers = stats.get("losers", 0)
+
+        if total < 5:
+            weights[ch_key] = 1.0  # Not enough data, neutral
+            continue
+
+        win_rate = winners / total
+        mega_rate = mega / total
+        loss_rate = losers / total
+
+        # Score: win_rate boosts, loss_rate penalizes, mega gets extra bonus
+        score = 1.0 + (win_rate * 0.5) + (mega_rate * 1.0) - (loss_rate * 0.3)
+        weights[ch_key] = round(max(0.5, min(2.0, score)), 2)
+
+    return weights
+
+
+def get_channel_stats_report() -> str:
+    """Generate a detailed channel performance report."""
+    data = load_data()
+    ch_stats = data.get("channel_stats", {})
+    weights = get_channel_weights()
+
+    if not ch_stats:
+        return "📊 No channel data yet. Signals will be tracked after fresh start."
+
+    lines = ["📊 Channel Performance Report", "=" * 40]
+
+    # Sort by win rate
+    ranked = []
+    for ch_key, stats in ch_stats.items():
+        total = stats.get("total_signals", 0)
+        winners = stats.get("winners", 0)
+        mega = stats.get("mega_winners", 0)
+        losers = stats.get("losers", 0)
+        ath_sum = stats.get("ath_sum", 0)
+        best_ath = stats.get("best_ath", 0)
+        name = stats.get("name", f"Channel {ch_key}")
+        weight = weights.get(ch_key, 1.0)
+        win_rate = round(winners / total * 100, 1) if total else 0
+        avg_ath = round(ath_sum / total, 1) if total else 0
+        ranked.append({
+            "name": name, "total": total, "winners": winners,
+            "mega": mega, "losers": losers, "win_rate": win_rate,
+            "avg_ath": avg_ath, "best_ath": best_ath, "weight": weight,
+            "signal_types": stats.get("signal_types", {}),
+        })
+
+    ranked.sort(key=lambda x: (-x["win_rate"], -x["best_ath"]))
+
+    for i, ch in enumerate(ranked, 1):
+        medal = "🥇" if i == 1 else "🥈" if i == 2 else "🥉" if i == 3 else "  "
+        lines.append(f"\n{medal} {ch['name']}")
+        lines.append(f"   Signals: {ch['total']} | Winners: {ch['winners']} ({ch['win_rate']}%) | Mega: {ch['mega']}")
+        lines.append(f"   Losers: {ch['losers']} | Avg ATH: {ch['avg_ath']}x | Best: {ch['best_ath']:.1f}x")
+        lines.append(f"   Weight: {ch['weight']}x {'⚡ boosted' if ch['weight'] > 1.2 else '⚠️ penalized' if ch['weight'] < 0.8 else 'neutral'}")
+
+        # Signal types breakdown
+        if ch["signal_types"]:
+            st_parts = [f"{k}={v}" for k, v in sorted(ch["signal_types"].items(), key=lambda x: -x[1])]
+            lines.append(f"   Types: {', '.join(st_parts[:5])}")
+
+    # Overall summary
+    total_all = sum(ch["total"] for ch in ranked)
+    winners_all = sum(ch["winners"] for ch in ranked)
+    overall_wr = round(winners_all / total_all * 100, 1) if total_all else 0
+    best_channel = ranked[0] if ranked else None
+
+    lines.append(f"\n{'=' * 40}")
+    lines.append(f"Total: {total_all} signals | {winners_all} winners ({overall_wr}%)")
+    if best_channel:
+        lines.append(f"Best channel: {best_channel['name']} ({best_channel['win_rate']}% win rate)")
+
+    return "\n".join(lines)
+
+
+def analyze_channel_combos() -> dict:
+    """Analyze which signal types from which channels perform best.
+    Returns insights for optimizing signal collection."""
+    data = load_data()
+    ch_stats = data.get("channel_stats", {})
+
+    combo_scores = {}  # (channel, signal_type) -> performance
+
+    for ch_key, stats in ch_stats.items():
+        name = stats.get("name", f"Channel {ch_key}")
+        total = stats.get("total_signals", 0)
+        winners = stats.get("winners", 0)
+        if total < 3:
+            continue
+
+        # Overall channel score
+        wr = winners / total
+        combo_scores[f"{name} (all)"] = {
+            "total": total,
+            "win_rate": round(wr * 100, 1),
+            "score": round(wr * 2 + (stats.get("mega_winners", 0) / total), 2),
+        }
+
+        # Per signal type
+        for stype, count in stats.get("signal_types", {}).items():
+            if count < 2:
+                continue
+            combo_scores[f"{name} ({stype})"] = {
+                "total": count,
+                "win_rate": "N/A",
+                "score": 0,
+            }
+
+    return combo_scores
