@@ -51006,39 +51006,6 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-22T20:26:20.242728+00:00",
         "timestamp": "2026-06-22T20:26:20.242757+00:00"
-      },
-      {
-        "address": "HeckB9QF2rYW8y6xMfHDyHdBVjfzFkjB95rfstFKgh4c",
-        "symbol": "Solvengers",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 5.48,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T20:26:20.551890+00:00",
-        "timestamp": "2026-06-22T20:26:20.551918+00:00"
-      },
-      {
-        "address": "SwuKQSbzNVcc2Gh7PTLskGu5U9v9w8Lgv2NnA292uok",
-        "symbol": "$DUDU",
-        "verdict": "PUMP",
-        "ath_multiplier": 4.2,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T20:26:20.849693+00:00",
-        "timestamp": "2026-06-22T20:26:20.849721+00:00"
-      },
-      {
-        "address": "GFziLKWd2JX7XpzGMCL5fpWZfZ2DnbCraPkTkF5upump",
-        "symbol": "UFOBEAT",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 5.72,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T20:26:21.107035+00:00",
-        "timestamp": "2026-06-22T20:26:21.107065+00:00"
       }
     ],
     "success_history": [
@@ -57521,16 +57488,16 @@
   "channel_stats": {
     "-1002122751413": {
       "name": "New Pool Alert",
-      "total_signals": 7,
+      "total_signals": 12,
       "winners": 0,
       "mega_winners": 0,
-      "losers": 0,
+      "losers": 1,
       "pending": 0,
-      "ath_sum": 0.0,
-      "best_ath": 0.0,
-      "best_symbol": "",
+      "ath_sum": 1.2919586735062496,
+      "best_ath": 1.2919586735062496,
+      "best_symbol": "SwuKQSbz",
       "signal_types": {
-        "FEATURED_NEW": 7
+        "FEATURED_NEW": 12
       },
       "recent_signals": [
         {
@@ -57630,6 +57597,76 @@
             "renounced": true
           },
           "timestamp": "2026-06-22T20:20:50.589537+00:00"
+        },
+        {
+          "symbol": "ZERO",
+          "address": "53SCh61xxtrFe24Z58Rvcv5KfCmkizwJFcmxSyFhEk9u",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 11656.0,
+            "holders": 1,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 67.23914,
+            "renounced": true
+          },
+          "timestamp": "2026-06-22T20:47:55.329266+00:00"
+        },
+        {
+          "symbol": "MARTHA",
+          "address": "4h6BDRJBt8QdUS88iXvV5h6BpBpZU1utHEz8uz96MMof",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 12376.3,
+            "holders": 7,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 0.37994,
+            "renounced": true
+          },
+          "timestamp": "2026-06-22T20:47:55.809063+00:00"
+        },
+        {
+          "symbol": "PATCHY",
+          "address": "6UfSQJPYWZn5jSwv6FaV6MXbo2m5FSAMbuDwwJGkmy9z",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 72820.0,
+            "holders": 6,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 59.00649,
+            "renounced": true
+          },
+          "timestamp": "2026-06-22T20:54:17.966822+00:00"
+        },
+        {
+          "symbol": "MARTHA",
+          "address": "H25KDgETT9H615sJ2w3hbkS6Gt7yHnGMWgJ4FUV8jNwY",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 12379.7,
+            "holders": 1,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 0.37994,
+            "renounced": true
+          },
+          "timestamp": "2026-06-22T20:54:18.092269+00:00"
+        },
+        {
+          "symbol": "LASSE",
+          "address": "4QnmECSNrgkqPWPweg8ZkaQZtUGNvwCAj7xMFy46xPMB",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 12376.3,
+            "holders": 7,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 0.37989,
+            "renounced": true
+          },
+          "timestamp": "2026-06-22T20:54:18.210588+00:00"
         }
       ]
     }
