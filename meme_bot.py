@@ -1240,10 +1240,10 @@ class MemeBot:
                                     f"⏱️ Age: {age_min}m {age_sec}s\n"
                                     f"━━━━━━━━━━━━━━━━\n"
                                     f"🔗 GMGN: {link}\n"
-                                    f"🔗 DexScreener: {dexscreener_link(address)}\n"
-                                    f"🤖 Maestro: /buy {address[:12]}...{address[-6:]}\n"
-                                    f"💰 SOL Amount: @MaestroBot → /buy {address[:8]}...{address[-6:]} 0.01SOL",
-                                    address
+                                    f"🔗 DexScreener: {dexscreener_link(addr)}\n"
+                                    f"🤖 Maestro: /buy {addr[:12]}...{addr[-6:]}\n"
+                                    f"💰 SOL Amount: @MaestroBot → /buy {addr[:8]}...{addr[-6:]} 0.01SOL",
+                                    addr
                                 )
                                 asyncio.create_task(mc.buy(addr))
 
