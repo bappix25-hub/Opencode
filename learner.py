@@ -1618,10 +1618,31 @@ def get_stats() -> dict:
     data = load_data()
     model = data.get("model", {})
     results = model.get("signal_results", [])
-    post_fix = [r for r in results if not r.get("pre_fix")]
-    total = len(post_fix)
-    pumps = sum(1 for r in post_fix if r.get("verdict") in ("PUMP", "STRONG_PUMP"))
-    strong = sum(1 for r in post_fix if r.get("verdict") == "STRONG_PUMP")
+
+    now = datetime.now(timezone.utc).timestamp()
+    yesterday = now - 86400
+    recent = []
+    for r in results:
+        if r.get("source") == "collector_sync":
+            continue
+        ts = r.get("timestamp") or r.get("detected_at", "")
+        if not ts or ts == "N/A":
+            continue
+        try:
+            if ts >= datetime.fromtimestamp(yesterday, tz=timezone.utc).isoformat():
+                recent.append(r)
+        except Exception:
+            continue
+
+    if not recent:
+        recent = [r for r in results if r.get("source") != "collector_sync" and r.get("current_multiplier", 0) > 0][-50:]
+
+    total = len(recent)
+    pumps = sum(1 for r in recent if r.get("verdict") in ("PUMP", "STRONG_PUMP", "MEGA_PUMP"))
+    strong = sum(1 for r in recent if r.get("verdict") in ("STRONG_PUMP", "MEGA_PUMP"))
+
+    all_total = len([r for r in results if r.get("source") != "collector_sync"])
+    all_pumps = sum(1 for r in results if r.get("source") != "collector_sync" and r.get("verdict") in ("PUMP", "STRONG_PUMP", "MEGA_PUMP"))
 
     return {
         "total_pumps": model.get("total_pumps", 0),
@@ -1629,7 +1650,8 @@ def get_stats() -> dict:
         "total_skipped": model.get("total_skipped", 0),
         "pump_patterns": len(data.get("pump_patterns", [])),
         "dump_patterns": len(data.get("dump_patterns", [])),
-        "total_signals": total,
+        "total_signals": all_total,
+        "total_signals_recent": total,
         "successful": pumps,
         "successful_signals": pumps,
         "strong_pumps": strong,
@@ -2024,6 +2046,10 @@ def _exit_pnl(ath: float, current: float, tp_mult: float, sl_mult: float, min_pr
 
     Returns (pnl_pct, exit_type) where exit_type is 'tp', 'sl', or 'hold'.
     """
+    if current <= 0:
+        current = ath if ath > 0 else 1.0
+    if min_price <= 0:
+        min_price = current if current < ath else ath
     if min_price > 0 and min_price <= sl_mult:
         return ((sl_mult - 1) * 100, "sl")
     elif ath >= tp_mult:
@@ -2347,20 +2373,35 @@ def get_performance_report() -> dict:
     now = datetime.now(timezone.utc).timestamp()
     yesterday = now - 86400
 
-    recent = [r for r in results if r.get("timestamp", "") >= datetime.fromtimestamp(yesterday, tz=timezone.utc).isoformat()]
+    recent = []
+    for r in results:
+        if r.get("source") == "collector_sync":
+            continue
+        ts = r.get("timestamp") or r.get("detected_at", "")
+        if not ts or ts == "N/A":
+            continue
+        try:
+            if ts >= datetime.fromtimestamp(yesterday, tz=timezone.utc).isoformat():
+                recent.append(r)
+        except Exception:
+            continue
 
     if not recent and results:
-        recent = results[-30:]
+        recent = [r for r in results if r.get("source") != "collector_sync" and r.get("current_multiplier", 0) > 0][-50:]
 
-    if not recent:
+    # For TP/SL calculation, use ALL data (including collector_sync) for better accuracy
+    all_valid = [r for r in results if r.get("current_multiplier", 0) > 0 and r.get("ath_multiplier", 0) > 0]
+
+    if not recent and not all_valid:
         return {
             "total": 0, "wins": 0, "losses": 0, "pending": 0,
             "win_rate": 0, "avg_ath": 0, "best": None, "worst": None,
-            "optimal_tp": 100, "optimal_sl": -30, "expected_pnl": 0,
+            "optimal_tp": 50, "optimal_sl": -25, "expected_pnl": 0,
             "signals": [],
         }
 
-    wins = [r for r in recent if r.get("verdict") in ("PUMP", "STRONG_PUMP")]
+    # Stats from recent real-time signals only
+    wins = [r for r in recent if r.get("verdict") in ("PUMP", "STRONG_PUMP", "MEGA_PUMP")]
     losses = [r for r in recent if r.get("verdict") == "DUMP"]
 
     aths = [r.get("ath_multiplier", 1) for r in recent if r.get("ath_multiplier", 0) > 0]
@@ -2369,7 +2410,8 @@ def get_performance_report() -> dict:
     best = max(recent, key=lambda r: r.get("ath_multiplier", 0)) if recent else None
     worst = min(recent, key=lambda r: r.get("ath_multiplier", 0)) if recent else None
 
-    optimal = calculate_optimal_tp_sl(recent)
+    # TP/SL from ALL valid data (more accurate)
+    optimal = calculate_optimal_tp_sl(all_valid if all_valid else recent)
 
     signals = []
     for r in sorted(recent, key=lambda x: x.get("timestamp", ""), reverse=True):
@@ -2389,10 +2431,10 @@ def get_performance_report() -> dict:
             "verdict": r.get("verdict", "?"),
         })
 
-    scenarios = simulate_tp_scenarios(recent)
-    trailing = simulate_trailing_stop(recent)
-    time_analysis = get_time_analysis(recent)
-    risk_adjusted = calculate_risk_adjusted_tp_sl(recent)
+    scenarios = simulate_tp_scenarios(all_valid if all_valid else recent)
+    trailing = simulate_trailing_stop(all_valid if all_valid else recent)
+    time_analysis = get_time_analysis(all_valid if all_valid else recent)
+    risk_adjusted = calculate_risk_adjusted_tp_sl(all_valid if all_valid else recent)
 
     return {
         "total": len(recent),
@@ -2415,4 +2457,5 @@ def get_performance_report() -> dict:
         "trailing": trailing,
         "time_analysis": time_analysis,
         "risk_adjusted": risk_adjusted,
+        "total_all_data": len(all_valid),
     }

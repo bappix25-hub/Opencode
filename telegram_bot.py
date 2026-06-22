@@ -529,7 +529,12 @@ class TelegramHandlers:
         """Scraper-ready TP/SL report — 1 message."""
         perf = get_performance_report()
 
-        if perf["total"] == 0:
+        total = perf["total"]
+        total_all = perf.get("total_all_data", 0)
+        tp_h = perf.get("tp_hits", 0)
+        sl_h = perf.get("sl_hits", 0)
+
+        if total == 0 and total_all == 0:
             await update.message.reply_text(
                 "📊 <b>পারফরম্যান্স</b>\n"
                 "━━━━━━━━━━━━━━━━\n"
@@ -538,12 +543,7 @@ class TelegramHandlers:
             )
             return
 
-        total = perf["total"]
-        tp_h = perf.get("tp_hits", 0)
-        sl_h = perf.get("sl_hits", 0)
-
         scenarios = perf.get("tp_scenarios", [])
-        # Show only scenarios with hits, plus the optimal
         hit_scenarios = [s for s in scenarios if s['tp_hits'] > 0]
         opt_scenario = [s for s in scenarios if s['tp'] == perf['optimal_tp']]
         show_scenarios = hit_scenarios[:6]
@@ -564,7 +564,7 @@ class TelegramHandlers:
             f"━━━━━━━━━━━━━━━━\n"
             f"⭐ <b>সেট করো:</b> TP +{perf['optimal_tp']}% / SL {perf['optimal_sl']}%\n"
             f"  → গড় লাভ: <b>{perf['expected_pnl']:+.1f}%</b>\n"
-            f"  → জিতবে {tp_h}/{total} | হারবে {sl_h}/{total}\n"
+            f"  → জিতবে {tp_h}/{tp_h + sl_h} | হারবে {sl_h}/{tp_h + sl_h}\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"📋 <b>টিপি/এসএল:</b>\n"
             f"{sc_lines}"
@@ -584,6 +584,8 @@ class TelegramHandlers:
         except Exception:
             pass
 
+        if total == 0 and total_all > 0:
+            text += f"📊 <i>{total_all} টি ঐতিহাসিক সিগন্যাল থেকে গণনা</i>\n"
         text += f"🕐 <i>গত ২৪ ঘন্টা</i>"
         await update.message.reply_text(text, parse_mode="HTML")
 
