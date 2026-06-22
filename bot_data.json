@@ -51013,17 +51013,6 @@
         "timestamp": "2026-06-22T19:11:32.602002+00:00"
       },
       {
-        "address": "DXEkQNEDw7LWrkVSUZJrLeNzDgtxcdJg5KNqFYjDUnRJ",
-        "symbol": "MESSI",
-        "verdict": "PUMP",
-        "ath_multiplier": 3.12,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T19:27:52.354713+00:00",
-        "timestamp": "2026-06-22T19:27:52.354759+00:00"
-      },
-      {
         "address": "26mnPK3ZvbVXnusLxJEQVVJf3WeahkQe8c3rHRSUpump",
         "symbol": "REPL",
         "verdict": "PUMP",
@@ -51033,39 +51022,6 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-22T19:27:52.567628+00:00",
         "timestamp": "2026-06-22T19:27:52.567651+00:00"
-      },
-      {
-        "address": "GFziLKWd2JX7XpzGMCL5fpWZfZ2DnbCraPkTkF5upump",
-        "symbol": "UFOBEAT",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 6.15,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T19:27:52.760593+00:00",
-        "timestamp": "2026-06-22T19:27:52.760621+00:00"
-      },
-      {
-        "address": "HeckB9QF2rYW8y6xMfHDyHdBVjfzFkjB95rfstFKgh4c",
-        "symbol": "Solvengers",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 6.82,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T19:27:52.945869+00:00",
-        "timestamp": "2026-06-22T19:27:52.945894+00:00"
-      },
-      {
-        "address": "SwuKQSbzNVcc2Gh7PTLskGu5U9v9w8Lgv2NnA292uok",
-        "symbol": "$DUDU",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 5.86,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T19:27:53.136439+00:00",
-        "timestamp": "2026-06-22T19:27:53.136463+00:00"
       }
     ],
     "success_history": [
