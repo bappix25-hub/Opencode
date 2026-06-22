@@ -507,8 +507,7 @@ class MemeBot:
         )
         await self.state.add_launch_tracking(address, launch_data)
 
-        if holders is not None and holders < 5:
-            logger.info(f"[SKIP] {symbol}: holders={holders} < 5 (dump filter)")
+        if holders is not None and holders < 0:
             return
 
         age = datetime.now(timezone.utc).timestamp() - launch_data.launch_time
@@ -548,8 +547,8 @@ class MemeBot:
         volume_spike = buys_5m / avg_5m_buys if avg_5m_buys > 0 else 0
 
         # Relaxed thresholds when volume spike detected
-        mcap_threshold = 2000 if volume_spike >= 3.0 else 3000
-        bsr_threshold = 1.2 if volume_spike >= 3.0 else 1.7
+        mcap_threshold = 1000 if volume_spike >= 3.0 else 1500
+        bsr_threshold = 1.0 if volume_spike >= 3.0 else 1.3
 
         if mcap < mcap_threshold:
             logger.info(f"[SKIP] {symbol}: mcap ${mcap:.0f} < ${mcap_threshold} (spike={volume_spike:.1f}x)")
@@ -586,8 +585,7 @@ class MemeBot:
             except Exception:
                 pass
 
-        if real_holders < 5:
-            logger.info(f"[SKIP] {symbol}: holders={real_holders} < 5")
+        if real_holders is not None and real_holders < 0:
             return
 
         if deployer := launch_data.deployer_wallet:
@@ -720,8 +718,7 @@ class MemeBot:
         if mcap < min_mcap:
             logger.info(f"[SKIP] {symbol}: signal rejected — mcap={format_number(mcap)} < ${min_mcap}")
             return
-        if real_holders < 5:
-            logger.info(f"[SKIP] {symbol}: signal rejected — holders={real_holders} < 5")
+        if real_holders is not None and real_holders < 0:
             return
 
         try:
@@ -1097,8 +1094,7 @@ class MemeBot:
                             volume_spike = buys_5m / avg_5m_buys if avg_5m_buys > 0 else 0
                             buy_sell_5m = buys_5m / max(sells_5m, 1)
 
-                            if h1_buys < 5 and volume_spike < 3.0:
-                                logger.info(f"[SKIP] {symbol}: climbing — h1 buys={h1_buys} < 5, spike={volume_spike:.1f}x")
+                            if h1_buys < 3 and volume_spike < 3.0:
                                 continue
 
                             # Must be < 6 hours old for climbing
@@ -1108,13 +1104,11 @@ class MemeBot:
 
                             # HARD FILTERS: relaxed when volume spike detected
                             h1_bsr = h1_buys / max(h1_sells, 1)
-                            bsr_threshold = 1.2 if volume_spike >= 3.0 else 1.7
+                            bsr_threshold = 1.0 if volume_spike >= 3.0 else 1.3
                             if h1_bsr < bsr_threshold:
-                                logger.info(f"[SKIP] {symbol}: climbing — bsr={h1_bsr:.2f} < {bsr_threshold} (spike={volume_spike:.1f}x)")
                                 continue
-                            buys_threshold = 8 if volume_spike >= 3.0 else 15
+                            buys_threshold = 5 if volume_spike >= 3.0 else 8
                             if h1_buys < buys_threshold:
-                                logger.info(f"[SKIP] {symbol}: climbing — h1_buys={h1_buys} < {buys_threshold} (spike={volume_spike:.1f}x)")
                                 continue
 
                             pair_data = pair
