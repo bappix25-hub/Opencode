@@ -345,9 +345,6 @@ class MemeBot:
         if mcap <= 0:
             return
         liquidity = float((pair.get("liquidity") or {}).get("usd", 0) or 0)
-        if liquidity < 500:
-            logger.info(f"[SKIP] {launch_data.symbol}: pre-mig liq=${liquidity:.0f} < $500")
-            return
         buys_1h = int(((pair.get("txns") or {}).get("h1") or {}).get("buys", 0) or 0)
         sells_1h = int(((pair.get("txns") or {}).get("h1") or {}).get("sells", 0) or 0)
         buys_5m = int(((pair.get("txns") or {}).get("m5") or {}).get("buys", 0) or 0)
@@ -393,7 +390,7 @@ class MemeBot:
             score += 0.1; reasons.append(f"1h +{price_change_1h:.0f}%")
         if price_change_5m > 10:
             score += 0.1; reasons.append(f"5m +{price_change_5m:.0f}%")
-        if liquidity < 500:
+        if liquidity < 500 and liquidity > 0:
             score -= 0.2; reasons.append("low_liq")
         if score < 0.50:
             return

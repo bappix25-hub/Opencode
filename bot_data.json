@@ -4961,130 +4961,6 @@
       "learned_at": "2026-06-10T09:21:14.014946+00:00"
     },
     {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
       "address": "72kck9ahcU6ouMRar496sRHZwfVFXaFRLuBcKc2mpump",
       "symbol": "TPUMP",
       "features": {
@@ -13376,8 +13252,8 @@
         "price": 0.0001243
       },
       "outcome": "PUMP",
-      "ath_multiplier": 13.17,
-      "learned_at": "2026-06-22T09:08:53.543275+00:00",
+      "ath_multiplier": 31.11,
+      "learned_at": "2026-06-22T09:54:04.696755+00:00",
       "source": "pump_collector"
     },
     {
@@ -13421,7 +13297,7 @@
       },
       "outcome": "PUMP",
       "ath_multiplier": 7.2,
-      "learned_at": "2026-06-22T09:08:52.056231+00:00",
+      "learned_at": "2026-06-22T09:54:04.401688+00:00",
       "source": "pump_collector"
     },
     {
@@ -13545,9 +13421,9 @@
         "signal_age": 0.0
       },
       "outcome": "STRONG_PUMP",
-      "ath_multiplier": 18.64,
+      "ath_multiplier": 22.67,
       "signal_age": 0.0,
-      "learned_at": "2026-06-22T09:08:52.658639+00:00"
+      "learned_at": "2026-06-22T09:54:03.821611+00:00"
     },
     {
       "address": "49x3fgcezXi58YDjZUoKR241UNRFmrKeZTikEThkpump",
@@ -13766,7 +13642,7 @@
       },
       "outcome": "PUMP",
       "ath_multiplier": 26.58,
-      "learned_at": "2026-06-22T09:08:52.950803+00:00",
+      "learned_at": "2026-06-22T09:54:03.218412+00:00",
       "source": "pump_collector"
     },
     {
@@ -13848,7 +13724,7 @@
       "outcome": "STRONG_PUMP",
       "ath_multiplier": 16.58,
       "signal_age": 0.0,
-      "learned_at": "2026-06-22T09:08:52.366245+00:00"
+      "learned_at": "2026-06-22T09:54:03.527744+00:00"
     },
     {
       "address": "2cRSwoNKpEzgcQt1CaU6q2ePKE1c6vz52A9AsKR7pump",
@@ -13980,6 +13856,94 @@
       "outcome": "PUMP",
       "ath_multiplier": 0,
       "learned_at": "2026-06-22T08:24:44.393773+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "H6qoigb4sdnYvpMUbDyWZah8APB2firuyQNfNjgKpump",
+      "symbol": "TRADOOR",
+      "features": {
+        "buy_sell_ratio": 1.24,
+        "unique_wallets": 2218,
+        "holders": 20,
+        "liquidity": 4380.14,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 118.96,
+        "mcap": 3682,
+        "volume": 55438.84,
+        "buy_sell_momentum": 0.11,
+        "age_hours": 0.5,
+        "price": 3.681e-06
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-22T08:58:45.086778+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "Eihd3XUJntK4chnxtBQ9HKz8Trrj4MVtw9xSBgPkLFgY",
+      "symbol": "BIGBOY",
+      "features": {
+        "buy_sell_ratio": 1.36,
+        "unique_wallets": 895,
+        "holders": 20,
+        "liquidity": 12164.48,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 43.05,
+        "mcap": 28254,
+        "volume": 40253.84,
+        "buy_sell_momentum": 0.15,
+        "age_hours": 0.1,
+        "price": 2.825e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-22T09:03:01.078065+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "8BoLAJRc2gULeZhQGzRtQ12QJNVFbk2vcGVPquncpump",
+      "symbol": "Sanzon",
+      "features": {
+        "buy_sell_ratio": 1.73,
+        "unique_wallets": 205,
+        "holders": 20,
+        "liquidity": 12571.05,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 41.43,
+        "mcap": 30344,
+        "volume": 8784.24,
+        "buy_sell_momentum": 0.27,
+        "age_hours": 0.0,
+        "price": 3.034e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-22T09:09:35.055058+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "9id8m4u1SCAyExia8EDmDrYN4nMfPv9AqKi9iyXnpump",
+      "symbol": "Fishcoin",
+      "features": {
+        "buy_sell_ratio": 1.33,
+        "unique_wallets": 2782,
+        "holders": 20,
+        "liquidity": 12430.26,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 45.39,
+        "mcap": 27384,
+        "volume": 107560.18,
+        "buy_sell_momentum": 0.14,
+        "age_hours": 0.6,
+        "price": 2.914e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-22T09:13:45.068232+00:00",
       "source": "pump_collector"
     }
   ],
@@ -45579,7 +45543,7 @@
         "launch_month": 6,
         "is_weekend": 1,
         "launch_session": 0,
-        "ath_multiplier": 3.52,
+        "ath_multiplier": 3.42,
         "outcome": "PUMP",
         "signal_age": 0.0
       },
@@ -51574,7 +51538,7 @@
       "features": {
         "launch_time": 1782107912.37531,
         "source": "historical_scan",
-        "ath_multiplier": 7.91,
+        "ath_multiplier": 31.11,
         "outcome": "STRONG_PUMP",
         "signal_age": 0.0
       },
@@ -51590,7 +51554,7 @@
       "features": {
         "launch_time": 1782112122.759286,
         "source": "historical_scan",
-        "ath_multiplier": 18.64,
+        "ath_multiplier": 22.67,
         "outcome": "STRONG_PUMP",
         "signal_age": 0.0
       },
@@ -51606,7 +51570,7 @@
       "features": {
         "launch_time": 1782113047.986022,
         "source": "historical_scan",
-        "ath_multiplier": 13.21,
+        "ath_multiplier": 8.88,
         "outcome": "STRONG_PUMP",
         "signal_age": 0.0
       },
@@ -51622,7 +51586,7 @@
       "features": {
         "launch_time": 1782115524.368366,
         "source": "historical_scan",
-        "ath_multiplier": 26.58,
+        "ath_multiplier": 19.99,
         "outcome": "STRONG_PUMP",
         "signal_age": 0.0
       },
@@ -57216,70 +57180,406 @@
         "detected_at": "2026-06-22T09:06:21.457867+00:00"
       },
       {
-        "address": "HeckB9QF2rYW8y6xMfHDyHdBVjfzFkjB95rfstFKgh4c",
-        "symbol": "Solvengers",
-        "verdict": "PUMP",
-        "ath_multiplier": 3.52,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T09:08:52.055895+00:00",
-        "timestamp": "2026-06-22T09:08:52.055954+00:00"
+        "address": "HheUsyPypnyB2MbpAPqonnxzbaxYeyNMkjjREothmoon",
+        "symbol": "JFBC",
+        "name": "JAKARTA FLOOD CROCOD",
+        "ath_multiplier": 294101.0,
+        "launch_mcap": 0,
+        "peak_mcap": 294101.0,
+        "launch_liq": 29594.5,
+        "holders": 8,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:11:28.714385+00:00"
       },
       {
-        "address": "4FnEvpYyVBbnNjeZvqaYUFZVHsLZpVZRGtbh13aRpump",
-        "symbol": " $WCT",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 13.21,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T09:08:52.366123+00:00",
-        "timestamp": "2026-06-22T09:08:52.366152+00:00"
+        "address": "2sA7t6YvbJyThFAxJV22NGvxTiRQZtJBNjJcSbiZ3Ubg",
+        "symbol": "Groyper",
+        "name": "Groyper",
+        "ath_multiplier": 13431.0,
+        "launch_mcap": 0,
+        "peak_mcap": 13431.0,
+        "launch_liq": 14776.0,
+        "holders": 17,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:11:29.558854+00:00"
       },
       {
-        "address": "FtgKs1pyNhgGZmhywZUmgwtKR9SQnQgD9L1cnqKFpump",
-        "symbol": "MrAsteroid",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 18.64,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T09:08:52.658472+00:00",
-        "timestamp": "2026-06-22T09:08:52.658499+00:00"
+        "address": "DG1Xbybf1sUyBjNfnyGAKpN1PbZUZNZvoRVBYqPwnJdQ",
+        "symbol": "BIGBOY",
+        "name": "BIG BOY",
+        "ath_multiplier": 73.7,
+        "launch_mcap": 0,
+        "peak_mcap": 73.7,
+        "launch_liq": 12575.12,
+        "holders": 10,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:11:52.847198+00:00"
+      },
+      {
+        "address": "89krNPRnHLqdcdg57ekQTYWzHUUuGCirWDUthZXWbonk",
+        "symbol": "SNEV",
+        "name": "Stockholm Viking⚡",
+        "ath_multiplier": 14373299.0,
+        "launch_mcap": 0,
+        "peak_mcap": 14373299.0,
+        "launch_liq": 34856.34,
+        "holders": 69,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:22:52.809768+00:00"
+      },
+      {
+        "address": "JDWDBf7pDns5YVGcQB7uiF2iGbATjvh2bfxijsT2ad2B",
+        "symbol": "json",
+        "name": "who is json",
+        "ath_multiplier": 136039.0,
+        "launch_mcap": 0,
+        "peak_mcap": 136039.0,
+        "launch_liq": 13885.68,
+        "holders": 23,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:28:23.806671+00:00"
+      },
+      {
+        "address": "SjSatxADPbtN2TRMEmVhD9zuaj5TDB5JmrjjCNB3nGm",
+        "symbol": "PXM",
+        "name": "PXM COIN",
+        "ath_multiplier": 93325.0,
+        "launch_mcap": 0,
+        "peak_mcap": 93325.0,
+        "launch_liq": 44328.0,
+        "holders": 12,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:28:25.213067+00:00"
+      },
+      {
+        "address": "63LGdVwKkKvMwKUNarQAusNZE1UD3rNWrNoRqq8VQj5q",
+        "symbol": "LARRY",
+        "name": "Larry the Cat",
+        "ath_multiplier": 19122.0,
+        "launch_mcap": 0,
+        "peak_mcap": 19122.0,
+        "launch_liq": 14634.18,
+        "holders": 12,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:28:25.758424+00:00"
+      },
+      {
+        "address": "BScugmyzNCctQw8Bx66Zx5WnNoJQiPm2jDHuX12oFnsf",
+        "symbol": "LARRY",
+        "name": "Larry the Cat",
+        "ath_multiplier": 73.49,
+        "launch_mcap": 0,
+        "peak_mcap": 73.49,
+        "launch_liq": 12238.06,
+        "holders": 11,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:37:15.603093+00:00"
+      },
+      {
+        "address": "9zMqD42a9srRnRzow5q7gxTzeWvSH7LE2t1goNwmdtVB",
+        "symbol": "json",
+        "name": "who is json",
+        "ath_multiplier": 35253.0,
+        "launch_mcap": 0,
+        "peak_mcap": 35253.0,
+        "launch_liq": 59033.7,
+        "holders": 1,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:39:45.128310+00:00"
+      },
+      {
+        "address": "DkZfPUZrBtvpcaoJRoCrNpRXCQpGNhWCkFd4855qY7xx",
+        "symbol": "PUMPRUN",
+        "name": "PUMPRUN",
+        "ath_multiplier": 11534.0,
+        "launch_mcap": 0,
+        "peak_mcap": 11534.0,
+        "launch_liq": 9445.12,
+        "holders": 15,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:39:45.664517+00:00"
+      },
+      {
+        "address": "GCRrxitFVQncQtjbkBLKBZvxbWXrPK1qwyZowhyvtuNV",
+        "symbol": "json",
+        "name": "who is json",
+        "ath_multiplier": 162100.0,
+        "launch_mcap": 0,
+        "peak_mcap": 162100.0,
+        "launch_liq": 13872.52,
+        "holders": 19,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:39:46.253285+00:00"
+      },
+      {
+        "address": "HbzMVaoiaBTGGseujKPEYU3y6Db4FPKzJewREogunZVy",
+        "symbol": "LARRY",
+        "name": "Larry the Cat",
+        "ath_multiplier": 73.55,
+        "launch_mcap": 0,
+        "peak_mcap": 73.55,
+        "launch_liq": 4426.2,
+        "holders": 12,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:39:46.785701+00:00"
+      },
+      {
+        "address": "AaxwM6LWPfhBKMbx3aqL9aZtRHcmW716AN8dhKYQQPdA",
+        "symbol": "PEEL",
+        "name": "Face Peel",
+        "ath_multiplier": 7965.0,
+        "launch_mcap": 0,
+        "peak_mcap": 7965.0,
+        "launch_liq": 12541.18,
+        "holders": 6,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:39:46.909260+00:00"
+      },
+      {
+        "address": "Q8kCyiLjMbCMJ558Z1cMekLAPs8jDtP47kjQ41SEF6g",
+        "symbol": "PXM",
+        "name": "PXM COIN",
+        "ath_multiplier": 35696.0,
+        "launch_mcap": 0,
+        "peak_mcap": 35696.0,
+        "launch_liq": 44202.0,
+        "holders": 11,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:52:38.294606+00:00"
+      },
+      {
+        "address": "EqhTakuhpS7DoYa5oP242VP6m7CzJGo8xCJvnMN5FUZ",
+        "symbol": "PXM",
+        "name": "PXM COIN",
+        "ath_multiplier": 26484.0,
+        "launch_mcap": 0,
+        "peak_mcap": 26484.0,
+        "launch_liq": 44184.0,
+        "holders": 13,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:52:38.713664+00:00"
+      },
+      {
+        "address": "G1pQQKtGigj6gvAZk4smgWdqegcT6DfNAEJNy9Af5GKC",
+        "symbol": "POKEYIELD",
+        "name": "Pokeyield",
+        "ath_multiplier": 17326.0,
+        "launch_mcap": 0,
+        "peak_mcap": 17326.0,
+        "launch_liq": 14602.5,
+        "holders": 18,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:52:39.413157+00:00"
+      },
+      {
+        "address": "FNDepvUdsxtrLirpRQEAgXcBFu3CyAeFtLXBPBJKnPCB",
+        "symbol": "Miu",
+        "name": "Miu",
+        "ath_multiplier": 21155.0,
+        "launch_mcap": 0,
+        "peak_mcap": 21155.0,
+        "launch_liq": 15632.88,
+        "holders": 1,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:52:39.533652+00:00"
+      },
+      {
+        "address": "95v6GSz4pszBkyD8iLZDCcTdn9t2CVj7CCsJYtNTAv1s",
+        "symbol": "LARRY",
+        "name": "Larry the Cat",
+        "ath_multiplier": 68680.0,
+        "launch_mcap": 0,
+        "peak_mcap": 68680.0,
+        "launch_liq": 94991.85,
+        "holders": 1,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:52:39.951324+00:00"
+      },
+      {
+        "address": "Gxy5bkFe1yu6U5GbdC56U5Qr9SDiEUMvAPRtMyjrMWyp",
+        "symbol": "Fugu",
+        "name": "Sakana Fugu",
+        "ath_multiplier": 173724.0,
+        "launch_mcap": 0,
+        "peak_mcap": 173724.0,
+        "launch_liq": 12379.92,
+        "holders": 16,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:52:40.356294+00:00"
+      },
+      {
+        "address": "71n3fFbP49EAs345BwXnVoWwa6RGtcsoPacwaccsMzwj",
+        "symbol": "XIAOWEI",
+        "name": "Hu Xiaowei",
+        "ath_multiplier": 8917.0,
+        "launch_mcap": 0,
+        "peak_mcap": 8917.0,
+        "launch_liq": 14606.46,
+        "holders": 14,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:53:30.326126+00:00"
+      },
+      {
+        "address": "tRbANeuqMatFwfnYUt7VfcFkKV5icy2BPhWEi4yy2Zm",
+        "symbol": "シチ",
+        "name": "Shichi",
+        "ath_multiplier": 19699.0,
+        "launch_mcap": 0,
+        "peak_mcap": 19699.0,
+        "launch_liq": 15632.88,
+        "holders": 14,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:53:30.721396+00:00"
+      },
+      {
+        "address": "A8LTcXbVqGENzTdBC5s8579PENJWdaFP1WS8ahNB7AKa",
+        "symbol": "BANKS",
+        "name": "The White Bear",
+        "ath_multiplier": 7163.0,
+        "launch_mcap": 0,
+        "peak_mcap": 7163.0,
+        "launch_liq": 12534.38,
+        "holders": 4,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:53:31.211708+00:00"
+      },
+      {
+        "address": "HYkvFaLspHLiwyiTKRGd36yRRaGMF2wVLMmwsjt8V5hD",
+        "symbol": "FUKUMARU",
+        "name": "Ascend Dog",
+        "ath_multiplier": 6722.0,
+        "launch_mcap": 0,
+        "peak_mcap": 6722.0,
+        "launch_liq": 12527.58,
+        "holders": 5,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:53:31.633828+00:00"
+      },
+      {
+        "address": "G4HEXXgbD6BzgmkCikPDLXuubEAUjyFXMwjdt8v48E9W",
+        "symbol": "XIAOWEI",
+        "name": "Hu Xiaowei",
+        "ath_multiplier": 17245.0,
+        "launch_mcap": 0,
+        "peak_mcap": 17245.0,
+        "launch_liq": 14600.52,
+        "holders": 7,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T09:53:32.047996+00:00"
       },
       {
         "address": "DtgneYfuPv3Jt8PzfMXYq9opRNU2UVtgrLYFdC4Vpump",
         "symbol": "RDR2",
         "verdict": "STRONG_PUMP",
-        "ath_multiplier": 26.58,
+        "ath_multiplier": 19.99,
         "current_multiplier": 0.0,
         "min_price_multiplier": 0.0,
         "signal_age": 0.0,
-        "signal_time": "2026-06-22T09:08:52.950683+00:00",
-        "timestamp": "2026-06-22T09:08:52.950707+00:00"
+        "signal_time": "2026-06-22T09:54:03.218199+00:00",
+        "timestamp": "2026-06-22T09:54:03.218238+00:00"
       },
       {
-        "address": "6jbx2PGZfXNaXxXSLzsUse5xQet3E5qnJqpMRso6pump",
-        "symbol": "Jetchua",
-        "verdict": "PUMP",
-        "ath_multiplier": 4.98,
+        "address": "4FnEvpYyVBbnNjeZvqaYUFZVHsLZpVZRGtbh13aRpump",
+        "symbol": " $WCT",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 8.88,
         "current_multiplier": 0.0,
         "min_price_multiplier": 0.0,
         "signal_age": 0.0,
-        "signal_time": "2026-06-22T09:08:53.252785+00:00",
-        "timestamp": "2026-06-22T09:08:53.252814+00:00"
+        "signal_time": "2026-06-22T09:54:03.527610+00:00",
+        "timestamp": "2026-06-22T09:54:03.527641+00:00"
+      },
+      {
+        "address": "FtgKs1pyNhgGZmhywZUmgwtKR9SQnQgD9L1cnqKFpump",
+        "symbol": "MrAsteroid",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 22.67,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T09:54:03.821478+00:00",
+        "timestamp": "2026-06-22T09:54:03.821508+00:00"
+      },
+      {
+        "address": "H35e26jbohkY6Yiwem19SjhFkMXzXLsvKskv89fMCHUD",
+        "symbol": "CHUD",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.48,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T09:54:04.115886+00:00",
+        "timestamp": "2026-06-22T09:54:04.115914+00:00"
+      },
+      {
+        "address": "HeckB9QF2rYW8y6xMfHDyHdBVjfzFkjB95rfstFKgh4c",
+        "symbol": "Solvengers",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.42,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T09:54:04.401581+00:00",
+        "timestamp": "2026-06-22T09:54:04.401609+00:00"
       },
       {
         "address": "3HHTWR8mSdWGmNfH1gSpsFWvysWJ2DUwpmTsnTz1pump",
         "symbol": "MYLOO",
         "verdict": "STRONG_PUMP",
-        "ath_multiplier": 7.91,
+        "ath_multiplier": 31.11,
         "current_multiplier": 0.0,
         "min_price_multiplier": 0.0,
         "signal_age": 0.0,
-        "signal_time": "2026-06-22T09:08:53.543157+00:00",
-        "timestamp": "2026-06-22T09:08:53.543183+00:00"
+        "signal_time": "2026-06-22T09:54:04.696610+00:00",
+        "timestamp": "2026-06-22T09:54:04.696644+00:00"
       }
     ],
     "success_history": [
@@ -62034,6 +62334,111 @@
           "signal_age": 0.0
         },
         "timestamp": "2026-06-22T09:08:53.628096+00:00"
+      },
+      {
+        "address": "DtgneYfuPv3Jt8PzfMXYq9opRNU2UVtgrLYFdC4Vpump",
+        "symbol": "RDR2",
+        "reasons": [
+          "balanced"
+        ],
+        "ath_multiplier": 19.99,
+        "features": {
+          "launch_time": 1782115524.368366,
+          "source": "historical_scan",
+          "ath_multiplier": 19.99,
+          "outcome": "STRONG_PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-22T09:54:03.313572+00:00"
+      },
+      {
+        "address": "4FnEvpYyVBbnNjeZvqaYUFZVHsLZpVZRGtbh13aRpump",
+        "symbol": " $WCT",
+        "reasons": [
+          "balanced"
+        ],
+        "ath_multiplier": 8.88,
+        "features": {
+          "launch_time": 1782113047.986022,
+          "source": "historical_scan",
+          "ath_multiplier": 8.88,
+          "outcome": "STRONG_PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-22T09:54:03.609156+00:00"
+      },
+      {
+        "address": "FtgKs1pyNhgGZmhywZUmgwtKR9SQnQgD9L1cnqKFpump",
+        "symbol": "MrAsteroid",
+        "reasons": [
+          "balanced"
+        ],
+        "ath_multiplier": 22.67,
+        "features": {
+          "launch_time": 1782112122.759286,
+          "source": "historical_scan",
+          "ath_multiplier": 22.67,
+          "outcome": "STRONG_PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-22T09:54:03.902478+00:00"
+      },
+      {
+        "address": "HeckB9QF2rYW8y6xMfHDyHdBVjfzFkjB95rfstFKgh4c",
+        "symbol": "Solvengers",
+        "reasons": [
+          "high_bsr=4.7",
+          "high_holders=180",
+          "high_buys=184",
+          "high_velocity=18073.8",
+          "high_snipers=4"
+        ],
+        "ath_multiplier": 3.42,
+        "features": {
+          "unique_wallets": 33,
+          "buy_count": 184,
+          "sell_count": 37,
+          "buy_sell_ratio": 4.67,
+          "holders": 180,
+          "snipers_30s": 4,
+          "liq_pct": 17.8,
+          "lp_locked": 89,
+          "lp_providers_count": 4,
+          "social_score": 0.72,
+          "volume_velocity": 18073.8,
+          "buy_sell_momentum": 2.51,
+          "volume_spike_ratio": 2.6,
+          "buy_spike_ratio": 2.72,
+          "insider_count": 5,
+          "liquidity": 3889.94,
+          "mcap": 2923.0,
+          "launch_time": 1782010677.0,
+          "launch_weekday": 6,
+          "launch_hour": 2,
+          "launch_month": 6,
+          "is_weekend": 1,
+          "launch_session": 0,
+          "ath_multiplier": 3.42,
+          "outcome": "PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-22T09:54:04.484275+00:00"
+      },
+      {
+        "address": "3HHTWR8mSdWGmNfH1gSpsFWvysWJ2DUwpmTsnTz1pump",
+        "symbol": "MYLOO",
+        "reasons": [
+          "balanced"
+        ],
+        "ath_multiplier": 31.11,
+        "features": {
+          "launch_time": 1782107912.37531,
+          "source": "historical_scan",
+          "ath_multiplier": 31.11,
+          "outcome": "STRONG_PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-22T09:54:04.777314+00:00"
       }
     ],
     "auto_learn_insights": {
@@ -62050,12 +62455,12 @@
     "signal_criteria_stats": {
       "pump_medians": {
         "buy_sell_ratio": 2.08,
-        "holders": 103.0,
-        "unique_wallets": 151,
+        "holders": 103,
+        "unique_wallets": 151.0,
         "initial_liq": 3246.23,
         "liq_pct": 43.59,
         "lp_locked": 98,
-        "lp_providers_count": 1
+        "lp_providers_count": 1.0
       },
       "dump_medians": {
         "buy_sell_ratio": 1.17,
@@ -62066,7 +62471,7 @@
         "lp_locked": 20.5,
         "lp_providers_count": 1
       },
-      "pump_count": 503,
+      "pump_count": 504,
       "dump_count": 1000
     },
     "signal_criteria": {
@@ -62080,8 +62485,8 @@
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
       "heuristic_threshold": 0.6,
-      "updated_at": "2026-06-22T09:07:08.752911+00:00",
-      "sample_size": 1503
+      "updated_at": "2026-06-22T09:52:37.030195+00:00",
+      "sample_size": 1504
     }
   },
   "honeypot_addresses": [
