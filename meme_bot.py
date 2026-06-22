@@ -203,6 +203,10 @@ class MemeBot:
         except Exception as e:
             logger.debug(f"Telegram collector start error: {e}")
 
+        # Signal review loop: check every 6h, report TP/SL for each signal
+        self._tasks.append(asyncio.create_task(self.signal_review_loop(), name="signal_review"))
+        logger.info("📊 Signal review loop started (every 6h)")
+
         await send_msg(self.telegram_app.bot, "🤖 <b>বট v3 চালু!</b>\n✅ 5x filter + Auto-verify + Social signals + Paper Trading সক্রিয়")
 
         try:
@@ -2270,6 +2274,83 @@ class MemeBot:
                 break
             except Exception as e:
                 logger.error(f"continuous_learn_loop error: {e}")
+            await asyncio.sleep(21600)  # Every 6 hours
+
+    async def signal_review_loop(self):
+        """Every 6 hours: review all signals since fresh start, send detailed TP/SL report."""
+        from learner import calculate_signal_review, load_data
+
+        # Wait 6h after first signal to have meaningful data
+        await asyncio.sleep(21600)  # 6 hours after bot start
+
+        while True:
+            try:
+                data = load_data()
+                fresh_start = data.get("fresh_start", "")
+                if not fresh_start:
+                    await asyncio.sleep(21600)
+                    continue
+
+                review = calculate_signal_review()
+                signals = review.get("signals", [])
+
+                if not signals:
+                    await asyncio.sleep(21600)
+                    continue
+
+                # Build report
+                total = review["total"]
+                wins = review["wins"]
+                losses = review["losses"]
+                win_rate = review["win_rate"]
+                avg_ath = review["avg_ath"]
+                best = review.get("best")
+                worst = review.get("worst")
+
+                lines = []
+                lines.append(f"📊 <b>6-HOUR SIGNAL REVIEW</b>")
+                lines.append(f"━━━━━━━━━━━━━━━━━━━━━━━━━━")
+                lines.append(f"🕐 Since: {fresh_start[:16]}")
+                lines.append(f"📈 Total: {total} signals | Win: {wins} | Loss: {losses}")
+                lines.append(f"🎯 Win Rate: <b>{win_rate}%</b> | Avg ATH: <b>{avg_ath}x</b>")
+                lines.append("")
+
+                if best:
+                    lines.append(f"🏆 <b>Best:</b> {best['symbol']} +{best['actual_pump_pct']}% (ATH {best['ath_multiplier']}x)")
+                if worst:
+                    lines.append(f"💀 <b>Worst:</b> {worst['symbol']} {worst['actual_pump_pct']}% (ATH {worst['ath_multiplier']}x)")
+                lines.append("")
+
+                # Per-signal details
+                lines.append(f"<b>📋 Per-Signal Detail:</b>")
+                for s in signals[:20]:  # Top 20
+                    sym = s["symbol"]
+                    ath = s["ath_multiplier"]
+                    curr = s.get("current_multiplier")
+                    pump = s["actual_pump_pct"]
+                    sl = s["optimal_sl_pct"]
+                    emoji = s["status_emoji"]
+
+                    curr_str = f"now {s['current_pump_pct']}%" if curr else "ended"
+                    lines.append(
+                        f"  {emoji} <b>{sym}</b>: +{pump}% | "
+                        f"SL: {sl}% | {curr_str}"
+                    )
+
+                lines.append("")
+                lines.append(f"━━━━━━━━━━━━━━━━━━━━━━━━━━")
+                lines.append(f"💡 TP/SL recalculated based on actual price paths")
+
+                report = "\n".join(lines)
+                await send_msg(self.telegram_app.bot, report)
+
+                logger.info(f"📊 Signal review sent: {total} signals, {win_rate}% win rate, avg {avg_ath}x")
+
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"signal_review_loop error: {e}")
+
             await asyncio.sleep(21600)  # Every 6 hours
 
     async def paper_trading_loop(self):

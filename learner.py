@@ -2459,3 +2459,93 @@ def get_performance_report() -> dict:
         "risk_adjusted": risk_adjusted,
         "total_all_data": len(all_valid),
     }
+
+
+def calculate_signal_review() -> dict:
+    """Review all signals since fresh start: actual pump, optimal SL, win/loss status.
+    Called every 6 hours by the signal_review_loop."""
+    data = load_data()
+    results = data.get("model", {}).get("signal_results", [])
+    fresh_start = data.get("fresh_start", "")
+
+    if not fresh_start:
+        return {"signals": [], "summary": "No fresh start marker found"}
+
+    # Only signals after fresh start
+    signals_after_fresh = []
+    for r in results:
+        ts = r.get("timestamp") or r.get("detected_at", "")
+        if not ts:
+            continue
+        try:
+            if ts >= fresh_start:
+                signals_after_fresh.append(r)
+        except Exception:
+            continue
+
+    if not signals_after_fresh:
+        return {"signals": [], "summary": "No signals since fresh start"}
+
+    reviewed = []
+    for r in signals_after_fresh:
+        ath = r.get("ath_multiplier", 1)
+        current = r.get("current_multiplier", 0)
+        min_price = r.get("min_price_multiplier", 0)
+        entry_mcap = r.get("entry_mcap", 0)
+        symbol = r.get("symbol", "?")
+        address = r.get("address", "")
+        verdict = r.get("verdict", "DUMP")
+        ts = r.get("timestamp", "")
+
+        # Calculate actual performance
+        actual_pump_pct = round((ath - 1) * 100, 1) if ath > 1 else round((ath - 1) * 100, 1)
+        current_pump_pct = round((current - 1) * 100, 1) if current > 0 else 0
+
+        # Calculate optimal SL: what % drop would NOT have hit SL
+        # If min_price > 0, the optimal SL is just below min_price
+        if min_price > 0 and min_price < 1:
+            optimal_sl_pct = round((min_price - 1) * 100, 1)
+        else:
+            optimal_sl_pct = -50  # conservative default
+
+        # Determine if signal was profitable
+        is_win = verdict in ("PUMP", "STRONG_PUMP", "MEGA_PUMP")
+        status_emoji = "🔥" if ath >= 5 else ("✅" if ath >= 2 else ("😐" if ath >= 1 else "❌"))
+
+        reviewed.append({
+            "symbol": symbol,
+            "address": address[:8] + "...",
+            "ath_multiplier": round(ath, 2),
+            "current_multiplier": round(current, 2) if current > 0 else None,
+            "actual_pump_pct": actual_pump_pct,
+            "current_pump_pct": current_pump_pct,
+            "optimal_sl_pct": optimal_sl_pct,
+            "verdict": verdict,
+            "is_win": is_win,
+            "status_emoji": status_emoji,
+            "entry_mcap": entry_mcap,
+            "timestamp": ts,
+        })
+
+    # Sort by timestamp (newest first)
+    reviewed.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
+
+    # Summary
+    total = len(reviewed)
+    wins = sum(1 for r in reviewed if r["is_win"])
+    losses = total - wins
+    avg_ath = sum(r["ath_multiplier"] for r in reviewed) / max(total, 1)
+    best = max(reviewed, key=lambda x: x["ath_multiplier"]) if reviewed else None
+    worst = min(reviewed, key=lambda x: x["ath_multiplier"]) if reviewed else None
+
+    return {
+        "signals": reviewed,
+        "total": total,
+        "wins": wins,
+        "losses": losses,
+        "win_rate": round(wins / max(total, 1) * 100, 1),
+        "avg_ath": round(avg_ath, 2),
+        "best": best,
+        "worst": worst,
+        "fresh_start": fresh_start,
+    }

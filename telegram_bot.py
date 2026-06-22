@@ -64,6 +64,7 @@ class TelegramHandlers:
             "/positions — ওপেন পজিশন দেখুন\n"
             "/trades — ট্রেড হিস্ট্রি\n"
             "/signalstats — সিগন্যাল পরিসংখ্যান\n"
+            "/freshstats — ফ্রেশ পারফরম্যান্স\n"
             "/retrain — model retrain\n"
             "/autolearn — স্মার্ট অটো-লার্নিং"
         )
@@ -842,6 +843,61 @@ class TelegramHandlers:
         text += f"\n📊 <i>মোট {best.get('total_analyzed', 0)} টি কয়েন বিশ্লেষিত</i>"
         await update.message.reply_text(text, parse_mode="HTML")
 
+    async def cmd_freshstats(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Show fresh performance stats from the current starting point."""
+        from learner import calculate_signal_review, load_data
+        data = load_data()
+        fresh_start = data.get("fresh_start", "")
+
+        if not fresh_start:
+            await update.message.reply_text("❌ Fresh start marker not found.", parse_mode="HTML")
+            return
+
+        review = calculate_signal_review()
+        signals = review.get("signals", [])
+        total = review.get("total", 0)
+        wins = review.get("wins", 0)
+        losses = review.get("losses", 0)
+        win_rate = review.get("win_rate", 0)
+        avg_ath = review.get("avg_ath", 0)
+        best = review.get("best")
+        worst = review.get("worst")
+
+        if not signals:
+            await update.message.reply_text(
+                f"📊 <b>Fresh Performance</b>\n"
+                f"━━━━━━━━━━━━━━━━\n"
+                f"🕐 Since: {fresh_start[:16]}\n"
+                f"📈 No signals yet since fresh start.",
+                parse_mode="HTML"
+            )
+            return
+
+        text = f"📊 <b>FRESH PERFORMANCE</b>\n"
+        text += f"━━━━━━━━━━━━━━━━\n"
+        text += f"🕐 Since: {fresh_start[:16]}\n"
+        text += f"📈 Total: {total} | Win: {wins} | Loss: {losses}\n"
+        text += f"🎯 Win Rate: <b>{win_rate}%</b>\n"
+        text += f"📈 Avg ATH: <b>{avg_ath}x</b>\n\n"
+
+        if best:
+            text += f"🏆 <b>Best:</b> {best['symbol']} +{best['actual_pump_pct']}% (ATH {best['ath_multiplier']}x)\n"
+        if worst:
+            text += f"💀 <b>Worst:</b> {worst['symbol']} {worst['actual_pump_pct']}% (ATH {worst['ath_multiplier']}x)\n"
+        text += f"\n<b>📋 Signal Details:</b>\n"
+        for s in signals[:15]:
+            sym = s["symbol"]
+            ath = s["ath_multiplier"]
+            pump = s["actual_pump_pct"]
+            sl = s["optimal_sl_pct"]
+            emoji = s["status_emoji"]
+            curr_str = f"now {s['current_pump_pct']}%" if s.get("current_multiplier") else "ended"
+            text += f"  {emoji} <b>{sym}</b>: +{pump}% | SL: {sl}% | {curr_str}\n"
+
+        text += f"\n━━━━━━━━━━━━━━━━\n"
+        text += f"💡 TP/SL based on actual price paths"
+        await update.message.reply_text(text, parse_mode="HTML")
+
     async def cmd_balance(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not self.paper_trader:
             await update.message.reply_text("❌ Paper Trading চালু নেই।")
@@ -916,6 +972,7 @@ def register_handlers(app, handlers: TelegramHandlers):
     app.add_handler(CommandHandler("dailybest", handlers.cmd_dailybest))
     app.add_handler(CommandHandler("similar", handlers.cmd_similar))
     app.add_handler(CommandHandler("channelstats", handlers.cmd_channelstats))
+    app.add_handler(CommandHandler("freshstats", handlers.cmd_freshstats))
     app.add_handler(CommandHandler("config", handlers.cmd_config))
     app.add_handler(CommandHandler("setchannel", handlers.cmd_setchannel))
     app.add_handler(CallbackQueryHandler(handlers.threshold_callback, pattern="^thr_"))
