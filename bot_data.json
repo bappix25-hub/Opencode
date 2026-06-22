@@ -13130,6 +13130,31 @@
       "learned_at": "2026-06-22T19:26:11.376794+00:00",
       "dexscreener_url": "https://dexscreener.com/solana/8Y5PnxRfxqqsvxW5MpKXbAKaEJRPtnQkVJQeRvQdWxuk",
       "pair_created_at": 1782152284000
+    },
+    {
+      "buy_sell_ratio": 1.07,
+      "holders": 0,
+      "unique_wallets": 3607,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "lp_locked": 0,
+      "liq_pct": 23.01,
+      "launch_hour": 19,
+      "initial_liq": 23695.76,
+      "liquidity": 23695.76,
+      "mcap": 102962.0,
+      "volume": 306333.97,
+      "buy_count": 3607,
+      "sell_count": 3370,
+      "price": 0.0001029,
+      "outcome": "pump",
+      "ath_multiplier": 0,
+      "symbol": "REPL",
+      "address": "26mnPK3ZvbVXnusLxJEQVVJf3WeahkQe8c3rHRSUpump",
+      "source": "signal_results",
+      "learned_at": "2026-06-22T19:39:42.314864+00:00",
+      "dexscreener_url": "https://dexscreener.com/solana/GEZGB8vKDSMHgZHg8RmfTZfbVKusBqo2Go7YLoYhKQ3C",
+      "pair_created_at": 1782155537000
     }
   ],
   "dump_patterns": [
@@ -51175,8 +51200,8 @@
     },
     "signal_criteria": {
       "min_bsr": 2.08,
-      "min_holders": 102.5,
-      "min_wallets": 150,
+      "min_holders": 103,
+      "min_wallets": 151,
       "min_liq": 500,
       "min_liq_pct": 10,
       "min_lp_locked": 80,
@@ -51185,8 +51210,8 @@
       "pattern_threshold": 0.6,
       "dump_pattern_threshold": 0.7,
       "max_age_seconds": 21600,
-      "updated_at": "2026-06-22T19:26:11.535494+00:00",
-      "sample_size": 502,
+      "updated_at": "2026-06-22T19:39:42.495140+00:00",
+      "sample_size": 501,
       "min_lp_providers": 2
     },
     "channel_insights": {
