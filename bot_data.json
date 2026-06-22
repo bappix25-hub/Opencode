@@ -2,99 +2,6 @@
   "pump_patterns": [
     {
       "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
       "symbol": "Blub",
       "features": {
         "buy_sell_ratio": 2.08,
@@ -12691,7 +12598,7 @@
       },
       "outcome": "PUMP",
       "ath_multiplier": 4.93,
-      "learned_at": "2026-06-22T07:41:14.551285+00:00",
+      "learned_at": "2026-06-22T08:19:22.594067+00:00",
       "source": "pump_collector"
     },
     {
@@ -13563,7 +13470,7 @@
       },
       "outcome": "PUMP",
       "ath_multiplier": 13.17,
-      "learned_at": "2026-06-22T07:41:14.839133+00:00",
+      "learned_at": "2026-06-22T08:19:21.031475+00:00",
       "source": "pump_collector"
     },
     {
@@ -13607,7 +13514,7 @@
       },
       "outcome": "PUMP",
       "ath_multiplier": 7.2,
-      "learned_at": "2026-06-22T07:41:15.118595+00:00",
+      "learned_at": "2026-06-22T08:19:21.926557+00:00",
       "source": "pump_collector"
     },
     {
@@ -13731,9 +13638,9 @@
         "signal_age": 0.0
       },
       "outcome": "STRONG_PUMP",
-      "ath_multiplier": 10.86,
+      "ath_multiplier": 14.42,
       "signal_age": 0.0,
-      "learned_at": "2026-06-22T07:41:15.404242+00:00"
+      "learned_at": "2026-06-22T08:19:21.276906+00:00"
     },
     {
       "address": "49x3fgcezXi58YDjZUoKR241UNRFmrKeZTikEThkpump",
@@ -13951,8 +13858,8 @@
         "price": 0.000182
       },
       "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "learned_at": "2026-06-22T06:56:44.854632+00:00",
+      "ath_multiplier": 8.35,
+      "learned_at": "2026-06-22T08:19:22.144352+00:00",
       "source": "pump_collector"
     },
     {
@@ -14032,9 +13939,75 @@
         "signal_age": 0.0
       },
       "outcome": "STRONG_PUMP",
-      "ath_multiplier": 14.4,
+      "ath_multiplier": 16.58,
       "signal_age": 0.0,
-      "learned_at": "2026-06-22T07:41:14.254549+00:00"
+      "learned_at": "2026-06-22T08:19:21.493360+00:00"
+    },
+    {
+      "address": "2cRSwoNKpEzgcQt1CaU6q2ePKE1c6vz52A9AsKR7pump",
+      "symbol": "MIRARI",
+      "features": {
+        "buy_sell_ratio": 1.71,
+        "unique_wallets": 38,
+        "holders": 20,
+        "liquidity": 16277.7,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 32.66,
+        "mcap": 49845,
+        "volume": 45740.79,
+        "buy_sell_momentum": 0.26,
+        "age_hours": 249.6,
+        "price": 4.991e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-22T07:31:03.787649+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "5pYB12kEhfhSFXJjZ7JtyqDpt6uUqhsF6iu6Ee9spump",
+      "symbol": "CATWIF",
+      "features": {
+        "buy_sell_ratio": 1.27,
+        "unique_wallets": 860,
+        "holders": 20,
+        "liquidity": 32435.95,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 31.24,
+        "mcap": 103830,
+        "volume": 53942.83,
+        "buy_sell_momentum": 0.12,
+        "age_hours": 0.6,
+        "price": 0.0001038
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-22T07:37:45.200281+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "DZ9sxbn5k9Nc5zBVehZ7FqxJVobJBa42zB9n6BUontNk",
+      "symbol": "Krillion",
+      "features": {
+        "buy_sell_ratio": 1.6,
+        "unique_wallets": 4607,
+        "holders": 20,
+        "liquidity": 13045.32,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 40.92,
+        "mcap": 31879,
+        "volume": 129984.64,
+        "buy_sell_momentum": 0.23,
+        "age_hours": 0.5,
+        "price": 3.187e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-22T07:38:32.831985+00:00",
+      "source": "pump_collector"
     }
   ],
   "dump_patterns": [
@@ -45633,7 +45606,7 @@
         "launch_month": 6,
         "is_weekend": 1,
         "launch_session": 0,
-        "ath_multiplier": 4.53,
+        "ath_multiplier": 4.14,
         "outcome": "PUMP",
         "signal_age": 0.0
       },
@@ -51612,7 +51585,7 @@
       "features": {
         "launch_time": 1782102464.658191,
         "source": "historical_scan",
-        "ath_multiplier": 4.57,
+        "ath_multiplier": 4.7,
         "outcome": "PUMP",
         "signal_age": 0.0
       },
@@ -51628,7 +51601,7 @@
       "features": {
         "launch_time": 1782107912.37531,
         "source": "historical_scan",
-        "ath_multiplier": 13.17,
+        "ath_multiplier": 8.13,
         "outcome": "STRONG_PUMP",
         "signal_age": 0.0
       },
@@ -51644,7 +51617,7 @@
       "features": {
         "launch_time": 1782112122.759286,
         "source": "historical_scan",
-        "ath_multiplier": 10.62,
+        "ath_multiplier": 14.42,
         "outcome": "STRONG_PUMP",
         "signal_age": 0.0
       },
@@ -51660,7 +51633,7 @@
       "features": {
         "launch_time": 1782113047.986022,
         "source": "historical_scan",
-        "ath_multiplier": 14.4,
+        "ath_multiplier": 16.58,
         "outcome": "STRONG_PUMP",
         "signal_age": 0.0
       },
@@ -51675,7 +51648,10 @@
       "symbol": "RDR2",
       "features": {
         "launch_time": 1782115524.368366,
-        "source": "historical_scan"
+        "source": "historical_scan",
+        "ath_multiplier": 8.35,
+        "outcome": "STRONG_PUMP",
+        "signal_age": 0.0
       },
       "launch_time": 1782115524.368366,
       "outcome": null,
@@ -56540,6 +56516,290 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-22T07:41:14.254346+00:00",
         "timestamp": "2026-06-22T07:41:14.254386+00:00"
+      },
+      {
+        "address": "EE5uwR719C172cXjZssMnwCtHdixs9XC7uYVJjKBd99W",
+        "symbol": "FUGUCOIN",
+        "name": "FuguCoin",
+        "ath_multiplier": 6323.0,
+        "launch_mcap": 0,
+        "peak_mcap": 6323.0,
+        "launch_liq": 12587.07,
+        "holders": 9,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:16:18.995056+00:00"
+      },
+      {
+        "address": "DRE8MzJ8TBFhBUfLNEEovjpNo4xxBT7YT1jEwQveCgaj",
+        "symbol": "FIERROLAIS",
+        "name": "The dih dog",
+        "ath_multiplier": 6503.0,
+        "launch_mcap": 0,
+        "peak_mcap": 6503.0,
+        "launch_liq": 12592.17,
+        "holders": 8,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:16:19.812816+00:00"
+      },
+      {
+        "address": "8nwZhmfkWDqKaktSariHhKpAbfp1ghdUci7xn5PzbH4M",
+        "symbol": "ROOM",
+        "name": "Room Royale",
+        "ath_multiplier": 6480.0,
+        "launch_mcap": 0,
+        "peak_mcap": 6480.0,
+        "launch_liq": 12587.07,
+        "holders": 4,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:16:20.724891+00:00"
+      },
+      {
+        "address": "FVjZ3GjXJimu1kja427fB9YJryuk9YSMBca1hmSGpump",
+        "symbol": "Bchj",
+        "name": "BRASILIA COURT JAGUA",
+        "ath_multiplier": 45178.0,
+        "launch_mcap": 0,
+        "peak_mcap": 45178.0,
+        "launch_liq": 36951.7,
+        "holders": 13,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:16:21.640698+00:00"
+      },
+      {
+        "address": "DECk91EmiwSegmWPvpT4uryUCCNKth5NVUgjpPziCQBL",
+        "symbol": "MEMECRAFT",
+        "name": "Memecraft",
+        "ath_multiplier": 20028.0,
+        "launch_mcap": 0,
+        "peak_mcap": 20028.0,
+        "launch_liq": 15709.2,
+        "holders": 11,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:16:22.618549+00:00"
+      },
+      {
+        "address": "Xef53anwKmZVZzPKJod5aR6qyF4W91uUg5GHMmvhQbT",
+        "symbol": "GZILLA",
+        "name": "GZILLA",
+        "ath_multiplier": 22362.0,
+        "launch_mcap": 0,
+        "peak_mcap": 22362.0,
+        "launch_liq": 14671.8,
+        "holders": 6,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:16:23.477990+00:00"
+      },
+      {
+        "address": "HL4SkKNHcEmRAaz7yRnjNvTcmSfygCwYzc3YmRDirmYD",
+        "symbol": "PONIES",
+        "name": "The Dartmoor Ponies",
+        "ath_multiplier": 11448.0,
+        "launch_mcap": 0,
+        "peak_mcap": 11448.0,
+        "launch_liq": 9478.4,
+        "holders": 17,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:16:24.463600+00:00"
+      },
+      {
+        "address": "2DuUEtrVvMPd1wVbVdjqzmCAMqeGGt7kb3ZHX8BFYzKp",
+        "symbol": "FARTATM",
+        "name": "FART ATM COIN",
+        "ath_multiplier": 15335.0,
+        "launch_mcap": 0,
+        "peak_mcap": 15335.0,
+        "launch_liq": 15707.08,
+        "holders": 12,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:16:25.396961+00:00"
+      },
+      {
+        "address": "FbNqvR1Lg7tdq9jQUrJyvCWiDh2JEt8GsVsXdKSL75Cy",
+        "symbol": "PONIES",
+        "name": "The Dartmoor Ponies",
+        "ath_multiplier": 8381.0,
+        "launch_mcap": 0,
+        "peak_mcap": 8381.0,
+        "launch_liq": 12595.52,
+        "holders": 6,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:16:26.040989+00:00"
+      },
+      {
+        "address": "BZ4SEmQh6cjJ9ozbrgHvzG8EX686CRYZQrcm4RxtuKZY",
+        "symbol": "PTSD",
+        "name": "Post Traumatic Stres",
+        "ath_multiplier": 8453.0,
+        "launch_mcap": 0,
+        "peak_mcap": 8453.0,
+        "launch_liq": 12592.17,
+        "holders": 7,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:16:27.532982+00:00"
+      },
+      {
+        "address": "EzpaAXJMx2ppV8PGDqW2Snnj528DtBHLRSFkn6i1GWep",
+        "symbol": "Scissors",
+        "name": "Scissors",
+        "ath_multiplier": 6588.0,
+        "launch_mcap": 0,
+        "peak_mcap": 6588.0,
+        "launch_liq": 12610.87,
+        "holders": 6,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:17:20.938370+00:00"
+      },
+      {
+        "address": "8SrSn11AhM88uhxk9XBPnU4yDvuKj3RnL9bAJh8eVJ5j",
+        "symbol": "Space",
+        "name": "spaceX链游税捐给开发",
+        "ath_multiplier": 73.83,
+        "launch_mcap": 0,
+        "peak_mcap": 73.83,
+        "launch_liq": 14226.67,
+        "holders": 12,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:17:21.950364+00:00"
+      },
+      {
+        "address": "FoPK8CBTMvuNDEtQfddkXfoeybj2vvnhzgaAAZccbeMW",
+        "symbol": "JensenGPT",
+        "name": "JensenGPT",
+        "ath_multiplier": 17762.0,
+        "launch_mcap": 0,
+        "peak_mcap": 17762.0,
+        "launch_liq": 14231.04,
+        "holders": 11,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:17:22.764016+00:00"
+      },
+      {
+        "address": "HebvEkohvcHv3qkTp7MLPwqNsACTJjjXehC1bZjLMcMG",
+        "symbol": "FISH",
+        "name": "Nietzschean Fish",
+        "ath_multiplier": 12812.0,
+        "launch_mcap": 0,
+        "peak_mcap": 12812.0,
+        "launch_liq": 14824.0,
+        "holders": 8,
+        "is_pump": true,
+        "score": 0.9,
+        "verdict": "MEGA_PUMP",
+        "detected_at": "2026-06-22T08:17:22.924751+00:00"
+      },
+      {
+        "address": "3HHTWR8mSdWGmNfH1gSpsFWvysWJ2DUwpmTsnTz1pump",
+        "symbol": "MYLOO",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 8.13,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T08:19:21.031200+00:00",
+        "timestamp": "2026-06-22T08:19:21.031256+00:00"
+      },
+      {
+        "address": "FtgKs1pyNhgGZmhywZUmgwtKR9SQnQgD9L1cnqKFpump",
+        "symbol": "MrAsteroid",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 14.42,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T08:19:21.276821+00:00",
+        "timestamp": "2026-06-22T08:19:21.276845+00:00"
+      },
+      {
+        "address": "4FnEvpYyVBbnNjeZvqaYUFZVHsLZpVZRGtbh13aRpump",
+        "symbol": " $WCT",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 16.58,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T08:19:21.493281+00:00",
+        "timestamp": "2026-06-22T08:19:21.493304+00:00"
+      },
+      {
+        "address": "BQnsQ7LrcKVUqB33cqkVmbN1GNvqCCVYqGLLG5fLpump",
+        "symbol": "CONDOR",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.56,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T08:19:21.709234+00:00",
+        "timestamp": "2026-06-22T08:19:21.709267+00:00"
+      },
+      {
+        "address": "HeckB9QF2rYW8y6xMfHDyHdBVjfzFkjB95rfstFKgh4c",
+        "symbol": "Solvengers",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.14,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T08:19:21.926479+00:00",
+        "timestamp": "2026-06-22T08:19:21.926505+00:00"
+      },
+      {
+        "address": "DtgneYfuPv3Jt8PzfMXYq9opRNU2UVtgrLYFdC4Vpump",
+        "symbol": "RDR2",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 8.35,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T08:19:22.144266+00:00",
+        "timestamp": "2026-06-22T08:19:22.144290+00:00"
+      },
+      {
+        "address": "2dEtby5aVULMZbnxcLpKLdJ89F7aM2DU61Atf5jjpump",
+        "symbol": "SpaceX-World",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.61,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T08:19:22.367038+00:00",
+        "timestamp": "2026-06-22T08:19:22.367083+00:00"
+      },
+      {
+        "address": "6jbx2PGZfXNaXxXSLzsUse5xQet3E5qnJqpMRso6pump",
+        "symbol": "Jetchua",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.7,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T08:19:22.593989+00:00",
+        "timestamp": "2026-06-22T08:19:22.594012+00:00"
       }
     ],
     "success_history": [
@@ -61052,6 +61312,127 @@
           "signal_age": 0.0
         },
         "timestamp": "2026-06-22T07:41:15.485055+00:00"
+      },
+      {
+        "address": "3HHTWR8mSdWGmNfH1gSpsFWvysWJ2DUwpmTsnTz1pump",
+        "symbol": "MYLOO",
+        "reasons": [
+          "balanced"
+        ],
+        "ath_multiplier": 8.13,
+        "features": {
+          "launch_time": 1782107912.37531,
+          "source": "historical_scan",
+          "ath_multiplier": 8.13,
+          "outcome": "STRONG_PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-22T08:19:21.121835+00:00"
+      },
+      {
+        "address": "FtgKs1pyNhgGZmhywZUmgwtKR9SQnQgD9L1cnqKFpump",
+        "symbol": "MrAsteroid",
+        "reasons": [
+          "balanced"
+        ],
+        "ath_multiplier": 14.42,
+        "features": {
+          "launch_time": 1782112122.759286,
+          "source": "historical_scan",
+          "ath_multiplier": 14.42,
+          "outcome": "STRONG_PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-22T08:19:21.336105+00:00"
+      },
+      {
+        "address": "4FnEvpYyVBbnNjeZvqaYUFZVHsLZpVZRGtbh13aRpump",
+        "symbol": " $WCT",
+        "reasons": [
+          "balanced"
+        ],
+        "ath_multiplier": 16.58,
+        "features": {
+          "launch_time": 1782113047.986022,
+          "source": "historical_scan",
+          "ath_multiplier": 16.58,
+          "outcome": "STRONG_PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-22T08:19:21.552276+00:00"
+      },
+      {
+        "address": "HeckB9QF2rYW8y6xMfHDyHdBVjfzFkjB95rfstFKgh4c",
+        "symbol": "Solvengers",
+        "reasons": [
+          "high_bsr=4.7",
+          "high_holders=180",
+          "high_buys=184",
+          "high_velocity=18073.8",
+          "high_snipers=4"
+        ],
+        "ath_multiplier": 4.14,
+        "features": {
+          "unique_wallets": 33,
+          "buy_count": 184,
+          "sell_count": 37,
+          "buy_sell_ratio": 4.67,
+          "holders": 180,
+          "snipers_30s": 4,
+          "liq_pct": 17.8,
+          "lp_locked": 89,
+          "lp_providers_count": 4,
+          "social_score": 0.72,
+          "volume_velocity": 18073.8,
+          "buy_sell_momentum": 2.51,
+          "volume_spike_ratio": 2.6,
+          "buy_spike_ratio": 2.72,
+          "insider_count": 5,
+          "liquidity": 3889.94,
+          "mcap": 2923.0,
+          "launch_time": 1782010677.0,
+          "launch_weekday": 6,
+          "launch_hour": 2,
+          "launch_month": 6,
+          "is_weekend": 1,
+          "launch_session": 0,
+          "ath_multiplier": 4.14,
+          "outcome": "PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-22T08:19:21.986187+00:00"
+      },
+      {
+        "address": "DtgneYfuPv3Jt8PzfMXYq9opRNU2UVtgrLYFdC4Vpump",
+        "symbol": "RDR2",
+        "reasons": [
+          "balanced"
+        ],
+        "ath_multiplier": 8.35,
+        "features": {
+          "launch_time": 1782115524.368366,
+          "source": "historical_scan",
+          "ath_multiplier": 8.35,
+          "outcome": "STRONG_PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-22T08:19:22.204424+00:00"
+      },
+      {
+        "address": "6jbx2PGZfXNaXxXSLzsUse5xQet3E5qnJqpMRso6pump",
+        "symbol": "Jetchua",
+        "reasons": [
+          "balanced"
+        ],
+        "ath_multiplier": 4.7,
+        "features": {
+          "launch_time": 1782102464.658191,
+          "source": "historical_scan",
+          "ath_multiplier": 4.7,
+          "outcome": "PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-22T08:19:22.653379+00:00"
       }
     ],
     "auto_learn_insights": {
@@ -61068,10 +61449,10 @@
     "signal_criteria_stats": {
       "pump_medians": {
         "buy_sell_ratio": 2.08,
-        "holders": 103,
-        "unique_wallets": 151.0,
+        "holders": 103.0,
+        "unique_wallets": 151,
         "initial_liq": 3246.23,
-        "liq_pct": 44.5,
+        "liq_pct": 43.26,
         "lp_locked": 98,
         "lp_providers_count": 1.0
       },
@@ -61084,13 +61465,13 @@
         "lp_locked": 20.5,
         "lp_providers_count": 1
       },
-      "pump_count": 513,
+      "pump_count": 503,
       "dump_count": 1000
     },
     "signal_criteria": {
       "min_bsr": 1.62,
-      "min_holders": 18.5,
-      "min_wallets": 27,
+      "min_holders": 18.0,
+      "min_wallets": 26,
       "min_liq": 2000,
       "min_liq_pct": 15,
       "min_lp_locked": 80,
@@ -61098,8 +61479,8 @@
       "pattern_threshold": 0.55,
       "max_age_seconds": 3600,
       "heuristic_threshold": 0.6,
-      "updated_at": "2026-06-22T07:39:22.800056+00:00",
-      "sample_size": 1513
+      "updated_at": "2026-06-22T08:17:40.984992+00:00",
+      "sample_size": 1503
     }
   },
   "honeypot_addresses": [
