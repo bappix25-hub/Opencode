@@ -409,8 +409,9 @@ class MemeBot:
             age_seconds=age,
             pending_since=now_ts,
         )
+        pending.source = "pre-migration"
         self.state.pending_signals[address] = pending
-        logger.info(f"[MATCH] {symbol}: score={score:.2f} → pending signal ({', '.join(reasons[:3])})")
+        logger.info(f"[MATCH] {symbol}: score={score:.2f} → pending signal ({', '.join(reasons[:3])}) source={pending.source}")
 
     async def process_new_token(self, data: dict):
         address = data.get("mint")
@@ -773,9 +774,10 @@ class MemeBot:
             pending_since=datetime.now(timezone.utc).timestamp(),
             last_check_price=price_usd,
         )
+        pending.source = "dexscreener_scan"
         self.state.pending_signals[address] = pending
         logger.info(f"[PENDING] {symbol}: match={match_score:.0%} — waiting for confirmation "
-                     f"(price={price_usd:.8f})")
+                     f"(price={price_usd:.8f}) source={pending.source}")
 
     async def _check_momentum(self, address: str, launch_data=None):
         """Check price/buy momentum. Returns (ok, reason)."""
@@ -1026,8 +1028,9 @@ class MemeBot:
                                 lp_locked=0, age_seconds=0,
                                 pending_since=now_ts,
                             )
+                            pending.source = "gmgn_scan"
                             self.state.pending_signals[ca] = pending
-                            logger.info(f"[GMGN MATCH] {gt['symbol']}: pattern={pattern_score:.2f}+dex={signal_score:.2f} → pending signal")
+                            logger.info(f"[GMGN MATCH] {gt['symbol']}: pattern={pattern_score:.2f}+dex={signal_score:.2f} → pending signal source={pending.source}")
                     if gmgn_scanned > 0:
                         logger.info(f"🔍 GMGN scan: {gmgn_scanned} high-score tokens checked")
                 except Exception as e:
@@ -1215,23 +1218,23 @@ class MemeBot:
                                 age_sec = int(age % 60)
 
                                 await send_signal(self.telegram_app.bot,
-                                    f"📈 ক্লাইম্বিং টোকেন!\n"
+                                    f"\U0001F4C2 CLIMBING TOKEN {name} (${symbol})\n"
                                     f"━━━━━━━━━━━━━━━━\n"
-                                    f"🏷️ {name} (${symbol})\n"
                                     f"📍 {addr}\n"
-                                    f"🎯 কনফিডেন্স: {confidence_bar} {confidence_pct}%\n"
+                                    f"🎯 Confidence: {confidence_bar} {confidence_pct}%\n"
                                     f"🧠 {reason_text}\n"
-                                    f"💵 দাম: {current_price:.8f}\n"
+                                    f"💵 Price: {current_price:.8f}\n"
                                     f"💰 MCap: {format_number(mcap)}\n"
-                                    f"💧 লিকুইডিটি: {format_number(liquidity)}\n"
-                                    f"📊 ১h বাই: {h1_buys} | সেল: {h1_sells}\n"
-                                    f"🔒 LP লক: {coin_info.lp_locked}%\n"
-                                    f"⏱️ বয়স: {age_min}m {age_sec}s\n"
+                                    f"💧 Liquidity: {format_number(liquidity)}\n"
+                                    f"📊 1h Buy: {h1_buys} | Sell: {h1_sells}\n"
+                                    f"🔒 LP Lock: {coin_info.lp_locked}%\n"
+                                    f"⏱️ Age: {age_min}m {age_sec}s\n"
                                     f"━━━━━━━━━━━━━━━━\n"
                                     f"🔗 GMGN: {link}\n"
-                                    f"🔗 DexScreener: {dexscreener_link(addr)}\n"
-                                    f"🤖 Maestro: /buy {addr[:12]}...{addr[-6:]} 0.01SOL",
-                                    addr
+                                    f"🔗 DexScreener: {dexscreener_link(address)}\n"
+                                    f"🤖 Maestro: /buy {address[:12]}...{address[-6:]}\n"
+                                    f"💰 SOL Amount: @MaestroBot → /buy {address[:8]}...{address[-6:]} 0.01SOL",
+                                    address
                                 )
                                 asyncio.create_task(mc.buy(addr))
 
@@ -1245,9 +1248,10 @@ class MemeBot:
                                     is_pre_migration_known=True,
                                     signal_age=age,
                                     min_price=current_price,
+                                    source="climbing",
                                 ))
                                 await self.state.add_alerted(addr)
-                                logger.info(f"📈 ক্লাইম্বিং সিগন্যাল: {symbol} mcap={format_number(mcap)} score={climbing_score:.2f}")
+                                logger.info(f"\U0001F4C2 CLIMBING SIGNAL: {symbol} mcap={format_number(mcap)} score={climbing_score:.2f}")
 
                                 if config.paper_trading:
                                     try:
@@ -1368,6 +1372,7 @@ class MemeBot:
                             is_pre_migration_known=True,
                             signal_age=age,
                             min_price=current_price,
+                            source="tracked_coin_scan",
                         ))
                         await self.state.add_alerted(addr)
 
@@ -1765,6 +1770,7 @@ class MemeBot:
             is_pre_migration=True,
             signal_age=pending.age_seconds,
             min_price=pending.min_price if pending.min_price > 0 else pending.price_at_match,
+            source=pending.source,
         ))
 
         logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {pending.symbol} match={pending.match_score:.0%} "

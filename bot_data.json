@@ -51669,6 +51669,19 @@
       "outcome_mcap": 0,
       "outcome_time": null,
       "signal_sent": false
+    },
+    {
+      "address": "DtgneYfuPv3Jt8PzfMXYq9opRNU2UVtgrLYFdC4Vpump",
+      "symbol": "RDR2",
+      "features": {
+        "launch_time": 1782115524.368366,
+        "source": "historical_scan"
+      },
+      "launch_time": 1782115524.368366,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
     }
   ],
   "model": {
@@ -56527,72 +56540,6 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-22T07:41:14.254346+00:00",
         "timestamp": "2026-06-22T07:41:14.254386+00:00"
-      },
-      {
-        "address": "6jbx2PGZfXNaXxXSLzsUse5xQet3E5qnJqpMRso6pump",
-        "symbol": "Jetchua",
-        "verdict": "PUMP",
-        "ath_multiplier": 4.57,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T07:41:14.551169+00:00",
-        "timestamp": "2026-06-22T07:41:14.551199+00:00"
-      },
-      {
-        "address": "3HHTWR8mSdWGmNfH1gSpsFWvysWJ2DUwpmTsnTz1pump",
-        "symbol": "MYLOO",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 13.17,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T07:41:14.838992+00:00",
-        "timestamp": "2026-06-22T07:41:14.839026+00:00"
-      },
-      {
-        "address": "HeckB9QF2rYW8y6xMfHDyHdBVjfzFkjB95rfstFKgh4c",
-        "symbol": "Solvengers",
-        "verdict": "PUMP",
-        "ath_multiplier": 4.53,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T07:41:15.118487+00:00",
-        "timestamp": "2026-06-22T07:41:15.118511+00:00"
-      },
-      {
-        "address": "FtgKs1pyNhgGZmhywZUmgwtKR9SQnQgD9L1cnqKFpump",
-        "symbol": "MrAsteroid",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 10.62,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T07:41:15.404122+00:00",
-        "timestamp": "2026-06-22T07:41:15.404150+00:00"
-      },
-      {
-        "address": "BQnsQ7LrcKVUqB33cqkVmbN1GNvqCCVYqGLLG5fLpump",
-        "symbol": "CONDOR",
-        "verdict": "PUMP",
-        "ath_multiplier": 3.61,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T07:41:15.691946+00:00",
-        "timestamp": "2026-06-22T07:41:15.691976+00:00"
-      },
-      {
-        "address": "DtgneYfuPv3Jt8PzfMXYq9opRNU2UVtgrLYFdC4Vpump",
-        "symbol": "RDR2",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 5.69,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-22T07:41:16.027694+00:00",
-        "timestamp": "2026-06-22T07:41:16.027720+00:00"
       }
     ],
     "success_history": [

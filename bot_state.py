@@ -56,6 +56,7 @@ class SignalInfo:
     ath_price: float = 0.0
     min_price: float = 0.0
     signal_age: float = 0.0  # age in seconds at signal time
+    source: str = ""
 
 @dataclass
 class PendingSignal:
@@ -81,6 +82,7 @@ class PendingSignal:
     price_stable: bool = False
     min_price: float = 0.0
     stage2_done: bool = False
+    source: str = ""
 
 @dataclass
 class CoinInfo:
