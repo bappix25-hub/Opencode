@@ -51352,6 +51352,19 @@
       "outcome_mcap": 0,
       "outcome_time": null,
       "signal_sent": false
+    },
+    {
+      "address": "DRuiWiackJbKAgHt771ytXDeFrjC8Tab7FwH4Q8upump",
+      "symbol": "RIDDANCE",
+      "features": {
+        "launch_time": 1782140048.301902,
+        "source": "historical_scan"
+      },
+      "launch_time": 1782140048.301902,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
     }
   ],
   "model": {
