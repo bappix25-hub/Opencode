@@ -700,6 +700,148 @@ class TelegramHandlers:
         except Exception as e:
             await update.message.reply_text(f"❌ Error: {str(e)}")
 
+    async def cmd_dailybest(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Show today's best coins from all 5 channels."""
+        from telegram_collector import find_daily_best
+        best = find_daily_best()
+        if not best or best["total_analyzed"] == 0:
+            await update.message.reply_text("📊 এখনো পর্যাপ্ত ডেটা নেই।", parse_mode="HTML")
+            return
+
+        top10 = best["top10"][:5]
+        lines = f"📊 <b>আজকের সেরা কয়েন (৫ চ্যানেল)</b>\n━━━━━━━━━━━━━━━━\n"
+        for i, t in enumerate(top10, 1):
+            ath = t.get("ath_multiplier", 0)
+            emoji = "🔥" if ath >= 50 else "✅" if ath >= 5 else "📈"
+            ch = t.get("source_channel_name", "?")
+            sig = t.get("signal_type", "?")
+            lines += f"{emoji} #{i} <b>${t.get('symbol', '?')}</b> x{ath:.1f} — {ch} [{sig}]\n"
+
+        combos = best.get("best_combos", [])[:3]
+        if combos:
+            lines += f"\n🎯 <b>সেরা প্যাটার্ন:</b>\n"
+            for c in combos:
+                lines += f"  • {c['pattern']}: <b>{c['win_rate']}%</b> win ({c['winners']}/{c['total']})\n"
+
+        lines += f"\n📊 <i>{best['total_analyzed']} টি কয়েন বিশ্লেষিত</i>"
+        await update.message.reply_text(lines, parse_mode="HTML")
+
+    async def cmd_patterns(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Show full pattern analysis from all channels."""
+        from telegram_collector import learn_channel_patterns
+        insights = learn_channel_patterns()
+
+        text = "🎯 <b>কয়েন প্যাটার্ন বিশ্লেষণ</b>\n━━━━━━━━━━━━━━━━\n"
+
+        text += "\n👥 <b>হোল্ডার:</b>\n"
+        for rng, data in insights.get("holder_ranges", {}).items():
+            wr = data.get("win_rate", 0)
+            n = data.get("total", 0)
+            emoji = "🟢" if wr > 40 else "🟡" if wr > 25 else "🔴"
+            if n > 0:
+                text += f"  {emoji} {rng}: {n}টি | 🏆 {wr:.0f}% জয়\n"
+
+        text += "\n💰 <b>ডেভ ব্যালেন্স (SOL):</b>\n"
+        for rng, data in insights.get("dev_ranges", {}).items():
+            wr = data.get("win_rate", 0)
+            n = data.get("total", 0)
+            emoji = "🟢" if wr > 40 else "🟡" if wr > 25 else "🔴"
+            if n > 0:
+                text += f"  {emoji} {rng}: {n}টি | 🏆 {wr:.0f}% জয়\n"
+
+        text += "\n💧 <b>লিকুইডিটি:</b>\n"
+        for rng, data in insights.get("liq_ranges", {}).items():
+            wr = data.get("win_rate", 0)
+            n = data.get("total", 0)
+            emoji = "🟢" if wr > 40 else "🟡" if wr > 25 else "🔴"
+            if n > 0:
+                text += f"  {emoji} ${rng}: {n}টি | 🏆 {wr:.0f}% জয়\n"
+
+        text += "\n📡 <b>সিগনাল টাইপ:</b>\n"
+        for sig, data in insights.get("signal_types", {}).items():
+            wr = data.get("win_rate", 0)
+            n = data.get("total", 0)
+            emoji = "🟢" if wr > 40 else "🟡" if wr > 25 else "🔴"
+            if n > 0:
+                text += f"  {emoji} {sig}: {n}টি | 🏆 {wr:.0f}% জয়\n"
+
+        text += "\n📺 <b>চ্যানেল তুলনা:</b>\n"
+        for ch, data in insights.get("channels", {}).items():
+            wr = data.get("win_rate", 0)
+            n = data.get("total", 0)
+            emoji = "🟢" if wr > 40 else "🟡" if wr > 25 else "🔴"
+            if n > 0:
+                text += f"  {emoji} {ch}: {n}টি | 🏆 {wr:.0f}% জয়\n"
+
+        await update.message.reply_text(text, parse_mode="HTML")
+
+    async def cmd_similar(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Check if a token matches known winning patterns."""
+        if not context.args:
+            await update.message.reply_text("❌ /similar TOKEN_SYMBOL বা /similar CONTRACT_ADDRESS")
+            return
+
+        query = context.args[0].strip()
+        from telegram_collector import get_tracked_tokens
+        from gmgn_scorer import check_similarity_to_patterns
+        tokens = get_tracked_tokens()
+
+        matched_token = None
+        for ca, t in tokens.items():
+            if t.get("symbol", "").upper() == query.upper() or ca == query:
+                matched_token = t
+                break
+
+        if not matched_token:
+            await update.message.reply_text(f"❌ '{query}' ট্র্যাকে নেই।")
+            return
+
+        result = check_similarity_to_patterns(matched_token)
+        t = matched_token
+
+        text = (
+            f"🔍 <b>সিমিলারিটি চেক: ${t.get('symbol', '?')}</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"📡 সিগনাল: <b>{t.get('signal_type', '?')}</b>\n"
+            f"👥 হোল্ডার: <b>{t.get('holders', 0)}</b>\n"
+            f"💰 ডেভ: <b>{t.get('dev_balance_sol', 0):.2f} SOL</b>\n"
+            f"💧 লিক: <b>${t.get('liq_usd', 0):,.0f}</b>\n"
+            f"📈 ATH: <b>x{t.get('ath_multiplier', 1):.1f}</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"🎯 ম্যাচ স্কোর: <b>{result['similarity']:.0%}</b>\n"
+            f"🏅 কনফিডেন্স: <b>{result['confidence']}</b>\n"
+        )
+        if result["matched_patterns"]:
+            text += f"\n✅ <b>ম্যাচড প্যাটার্ন:</b>\n"
+            for p in result["matched_patterns"]:
+                text += f"  • {p}\n"
+
+        await update.message.reply_text(text, parse_mode="HTML")
+
+    async def cmd_channelstats(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Show per-channel performance comparison."""
+        from telegram_collector import find_daily_best
+        best = find_daily_best()
+        patterns = best.get("patterns", {})
+        ch_data = patterns.get("channel", {})
+
+        if not ch_data:
+            await update.message.reply_text("📊 এখনো পর্যাপ্ত ডেটা নেই।", parse_mode="HTML")
+            return
+
+        text = "📺 <b>চ্যানেল পারফরম্যান্স</b>\n━━━━━━━━━━━━━━━━\n"
+        sorted_ch = sorted(ch_data.items(), key=lambda x: x[1].get("win_rate", 0), reverse=True)
+        for ch, data in sorted_ch:
+            wr = data.get("win_rate", 0)
+            n = data.get("total", 0)
+            w = data.get("winners", 0)
+            emoji = "🥇" if wr == max(d.get("win_rate", 0) for _, d in sorted_ch) else "🥈" if wr > 30 else "🥉"
+            text += f"{emoji} <b>{ch}</b>\n"
+            text += f"  📊 {n}টি কয়েন | 🏆 {w}টি জয় | <b>{wr:.1f}%</b>\n"
+
+        text += f"\n📊 <i>মোট {best.get('total_analyzed', 0)} টি কয়েন বিশ্লেষিত</i>"
+        await update.message.reply_text(text, parse_mode="HTML")
+
     async def cmd_balance(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not self.paper_trader:
             await update.message.reply_text("❌ Paper Trading চালু নেই।")
@@ -771,6 +913,9 @@ def register_handlers(app, handlers: TelegramHandlers):
     app.add_handler(CommandHandler("signalstats", handlers.cmd_signalstats))
     app.add_handler(CommandHandler("autolearn", handlers.cmd_autolearn))
     app.add_handler(CommandHandler("patterns", handlers.cmd_patterns))
+    app.add_handler(CommandHandler("dailybest", handlers.cmd_dailybest))
+    app.add_handler(CommandHandler("similar", handlers.cmd_similar))
+    app.add_handler(CommandHandler("channelstats", handlers.cmd_channelstats))
     app.add_handler(CommandHandler("config", handlers.cmd_config))
     app.add_handler(CommandHandler("setchannel", handlers.cmd_setchannel))
     app.add_handler(CallbackQueryHandler(handlers.threshold_callback, pattern="^thr_"))
