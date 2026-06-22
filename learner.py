@@ -2119,3 +2119,227 @@ def get_performance_report():
             "tp_scenarios": scenarios, "signals": signals,
             "trailing": trailing, "time_analysis": time_analysis,
             "risk_adjusted": risk_adjusted, "total_all_data": len(all_valid)}
+
+
+# ── Compatibility: re-export get_launch_age from utils ──
+
+def get_launch_age(pair: dict) -> Optional[float]:
+    try:
+        from utils import get_launch_age as _gla
+        return _gla(pair)
+    except Exception:
+        return None
+
+
+# ── Duplicate check ──
+
+def is_duplicate(address: str) -> bool:
+    data = load_data()
+    addr_lower = address.lower()
+    if addr_lower in {a.lower() for a in data.get("trained_addresses", [])}:
+        return True
+    for p in data.get("pump_patterns", []):
+        if p.get("address", "").lower() == addr_lower:
+            return True
+    for p in data.get("dump_patterns", []):
+        if p.get("address", "").lower() == addr_lower:
+            return True
+    return False
+
+
+# ── Honeypot blocklist ──
+
+def save_honeypot_blocklist(honeypot_addresses: set, deployers: set, alerted: set) -> None:
+    data = load_data()
+    data["honeypot_addresses"] = list(honeypot_addresses)
+    data["blocked_deployers"] = list(deployers)
+    data["alerted_coins"] = list(alerted)
+    save_data(data)
+
+
+def load_honeypot_blocklist() -> tuple:
+    data = load_data()
+    return (
+        set(data.get("honeypot_addresses", [])),
+        set(data.get("blocked_deployers", [])),
+        set(data.get("alerted_coins", [])),
+    )
+
+
+def purge_honeypot_patterns(honeypot_addresses: set) -> dict:
+    if not honeypot_addresses:
+        return {"moved": 0}
+    data = load_data()
+    hp_lower = {a.lower() for a in honeypot_addresses}
+    moved = 0
+    new_pump = []
+    for p in data.get("pump_patterns", []):
+        if p.get("address", "").lower() in hp_lower:
+            data.setdefault("dump_patterns", []).append(p)
+            moved += 1
+        else:
+            new_pump.append(p)
+    data["pump_patterns"] = new_pump[-MAX_PUMP_PATTERNS:]
+    data["dump_patterns"] = data.get("dump_patterns", [])[-MAX_DUMP_PATTERNS:]
+    save_data(data)
+    return {"moved": moved}
+
+
+# ── Missed pump recording ──
+
+def record_missed_pump(address: str, symbol: str, features: dict, ath_multiplier: float) -> None:
+    data = load_data()
+    data.setdefault("missed_pumps", []).append({
+        "address": address,
+        "symbol": symbol,
+        "features": features,
+        "ath_multiplier": ath_multiplier,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+    data["missed_pumps"] = data["missed_pumps"][-200:]
+    save_data(data)
+
+
+# ── Signal criteria ──
+
+def get_signal_criteria() -> dict:
+    data = load_data()
+    criteria = data.get("model", {}).get("signal_criteria", {})
+    merged = dict(DEFAULT_SIGNAL_CRITERIA)
+    merged.update(criteria)
+    return merged
+
+
+def compute_signal_criteria() -> dict:
+    data = load_data()
+    pumps = data.get("pump_patterns", [])
+    dumps = data.get("dump_patterns", [])
+    criteria = dict(DEFAULT_SIGNAL_CRITERIA)
+
+    if len(pumps) >= 5:
+        bsr_vals = [p.get("features", {}).get("buy_sell_ratio", 0) for p in pumps if p.get("features", {}).get("buy_sell_ratio", 0) > 0]
+        if bsr_vals:
+            criteria["min_bsr"] = round(sorted(bsr_vals)[len(bsr_vals) // 2], 2)
+
+        holders_vals = [p.get("features", {}).get("holders", 0) for p in pumps if p.get("features", {}).get("holders", 0) > 0]
+        if holders_vals:
+            criteria["min_holders"] = int(sorted(holders_vals)[len(holders_vals) // 2])
+
+        wallets_vals = [p.get("features", {}).get("unique_wallets", 0) for p in pumps if p.get("features", {}).get("unique_wallets", 0) > 0]
+        if wallets_vals:
+            criteria["min_wallets"] = int(sorted(wallets_vals)[len(wallets_vals) // 2])
+
+        liq_vals = [p.get("features", {}).get("initial_liq_usd", 0) for p in pumps if p.get("features", {}).get("initial_liq_usd", 0) > 0]
+        if liq_vals:
+            criteria["min_liq"] = round(sorted(liq_vals)[len(liq_vals) // 2], 0)
+
+    criteria["updated_at"] = datetime.now(timezone.utc).isoformat()
+    criteria["sample_size"] = len(pumps)
+
+    data.setdefault("model", {})["signal_criteria"] = criteria
+    save_data(data)
+    return criteria
+
+
+# ── Auto-learn update ──
+
+def auto_learn_update() -> dict:
+    data = load_data()
+    results = data.get("signal_results", [])
+    if len(results) < 20:
+        return {"total_recent": len(results)}
+
+    recent = results[-50:]
+    wins = [r for r in recent if r.get("verdict") in ("PUMP", "STRONG_PUMP", "MEGA_PUMP")]
+    losses = [r for r in recent if r.get("verdict") in ("DUMP", "DEAD")]
+    total = len(recent)
+    win_rate = round(len(wins) / total * 100, 1) if total > 0 else 0
+
+    def avg(key, lst):
+        vals = [r.get(key, 0) for r in lst if r.get(key, 0) is not None and r.get(key, 0) > 0]
+        return round(sum(vals) / len(vals), 2) if vals else 0
+
+    insights = {
+        "total_recent": total,
+        "wins": len(wins),
+        "losses": len(losses),
+        "win_rate": win_rate,
+        "avg_win_bsr": avg("buy_sell_ratio", wins),
+        "avg_loss_bsr": avg("buy_sell_ratio", losses),
+        "avg_win_holders": avg("holders", wins),
+        "avg_loss_holders": avg("holders", losses),
+        "avg_win_liq": avg("initial_liq_usd", wins),
+        "avg_loss_liq": avg("initial_liq_usd", losses),
+        "avg_win_lp_locked": avg("lp_locked_pct", wins),
+        "avg_loss_lp_locked": avg("lp_locked_pct", losses),
+    }
+
+    data.setdefault("model", {})["auto_learn_insights"] = insights
+    save_data(data)
+    return insights
+
+
+# ── Learn divergence point ──
+
+def learn_divergence_point() -> dict:
+    data = load_data()
+    results = data.get("signal_results", [])
+    if len(results) < 10:
+        return {}
+
+    pumps = [r for r in results if r.get("verdict") in ("PUMP", "STRONG_PUMP", "MEGA_PUMP") and r.get("signal_age", 0) > 0]
+    dumps = [r for r in results if r.get("verdict") in ("DUMP", "DEAD") and r.get("signal_age", 0) > 0]
+
+    if not pumps or not dumps:
+        return {}
+
+    pump_ages = [r["signal_age"] for r in pumps]
+    dump_ages = [r["signal_age"] for r in dumps]
+
+    pump_avg = sum(pump_ages) / len(pump_ages)
+    dump_avg = sum(dump_ages) / len(dump_ages)
+
+    pump_set = set(int(a // 60) for a in pump_ages)
+    dump_set = set(int(a // 60) for a in dump_ages)
+    overlap = pump_set & dump_set
+    total = pump_set | dump_set
+    separation = 1.0 - (len(overlap) / len(total)) if total else 0
+
+    optimal_delay = (pump_avg + dump_avg) / 2
+
+    return {
+        "optimal_confirm_delay": optimal_delay,
+        "pump_avg_age": round(pump_avg, 1),
+        "dump_avg_age": round(dump_avg, 1),
+        "separation_score": round(separation, 3),
+        "pump_count": len(pumps),
+        "dump_count": len(dumps),
+    }
+
+
+# ── Daily report ──
+
+def get_daily_report() -> str:
+    data = load_data()
+    results = data.get("signal_results", [])
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    today_signals = [r for r in results if (r.get("timestamp") or "")[:10] == today]
+
+    total = len(today_signals)
+    pumps = sum(1 for r in today_signals if r.get("verdict") in ("PUMP", "STRONG_PUMP", "MEGA_PUMP"))
+    aths = [r.get("ath_multiplier", 0) for r in today_signals if r.get("ath_multiplier", 0) > 0]
+    avg_ath = round(sum(aths) / len(aths), 1) if aths else 0
+    best = max(aths) if aths else 0
+
+    lines = [
+        f"📊 Daily Report — {today}",
+        f"Signals: {total} | Pumps: {pumps} | Win Rate: {round(pumps/total*100,1) if total else 0}%",
+        f"Avg ATH: {avg_ath}x | Best: {best}x",
+    ]
+    for r in today_signals[-5:]:
+        sym = r.get("symbol", "?")
+        ath = r.get("ath_multiplier", 0)
+        v = r.get("verdict", "?")
+        lines.append(f"  {sym}: {ath}x ({v})")
+
+    return "\n".join(lines)
