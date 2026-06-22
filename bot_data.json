@@ -2,37 +2,6 @@
   "pump_patterns": [
     {
       "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
       "symbol": "Blub",
       "features": {
         "buy_sell_ratio": 2.08,
@@ -10383,7 +10352,7 @@
       },
       "outcome": "PUMP",
       "ath_multiplier": 7.84,
-      "learned_at": "2026-06-22T19:27:52.945949+00:00",
+      "learned_at": "2026-06-22T19:41:14.970448+00:00",
       "source": "pump_collector"
     },
     {
@@ -44753,7 +44722,7 @@
         "launch_month": 6,
         "is_weekend": 1,
         "launch_session": 0,
-        "ath_multiplier": 6.82,
+        "ath_multiplier": 7.02,
         "outcome": "STRONG_PUMP",
         "signal_age": 0.0
       },
@@ -51047,6 +51016,61 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-22T19:27:52.567628+00:00",
         "timestamp": "2026-06-22T19:27:52.567651+00:00"
+      },
+      {
+        "address": "SwuKQSbzNVcc2Gh7PTLskGu5U9v9w8Lgv2NnA292uok",
+        "symbol": "$DUDU",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 6.1,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T19:41:13.964585+00:00",
+        "timestamp": "2026-06-22T19:41:13.964650+00:00"
+      },
+      {
+        "address": "26mnPK3ZvbVXnusLxJEQVVJf3WeahkQe8c3rHRSUpump",
+        "symbol": "REPL",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.35,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T19:41:14.231714+00:00",
+        "timestamp": "2026-06-22T19:41:14.231744+00:00"
+      },
+      {
+        "address": "GFziLKWd2JX7XpzGMCL5fpWZfZ2DnbCraPkTkF5upump",
+        "symbol": "UFOBEAT",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 6.2,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T19:41:14.476299+00:00",
+        "timestamp": "2026-06-22T19:41:14.476327+00:00"
+      },
+      {
+        "address": "6YqsppC6qjJ3Efgwt6wMef6YGDofAPzEP5egvdzvpump",
+        "symbol": "TrumpLoner",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.06,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T19:41:14.724261+00:00",
+        "timestamp": "2026-06-22T19:41:14.724288+00:00"
+      },
+      {
+        "address": "HeckB9QF2rYW8y6xMfHDyHdBVjfzFkjB95rfstFKgh4c",
+        "symbol": "Solvengers",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 7.02,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-22T19:41:14.970353+00:00",
+        "timestamp": "2026-06-22T19:41:14.970381+00:00"
       }
     ],
     "success_history": [
@@ -51163,6 +51187,47 @@
           "signal_age": 0.0
         },
         "timestamp": "2026-06-22T19:27:52.999918+00:00"
+      },
+      {
+        "address": "HeckB9QF2rYW8y6xMfHDyHdBVjfzFkjB95rfstFKgh4c",
+        "symbol": "Solvengers",
+        "reasons": [
+          "high_bsr=4.7",
+          "high_liq=$3889",
+          "high_buys=184",
+          "high_velocity=18073.8",
+          "high_snipers=4"
+        ],
+        "ath_multiplier": 7.02,
+        "features": {
+          "unique_wallets": 33,
+          "buy_count": 184,
+          "sell_count": 37,
+          "buy_sell_ratio": 4.67,
+          "holders": 180,
+          "snipers_30s": 4,
+          "liq_pct": 17.8,
+          "lp_locked": 89,
+          "lp_providers_count": 4,
+          "social_score": 0.72,
+          "volume_velocity": 18073.8,
+          "buy_sell_momentum": 2.51,
+          "volume_spike_ratio": 2.6,
+          "buy_spike_ratio": 2.72,
+          "insider_count": 5,
+          "liquidity": 3889.94,
+          "mcap": 2923.0,
+          "launch_time": 1782010677.0,
+          "launch_weekday": 6,
+          "launch_hour": 2,
+          "launch_month": 6,
+          "is_weekend": 1,
+          "launch_session": 0,
+          "ath_multiplier": 7.02,
+          "outcome": "STRONG_PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-22T19:41:15.041037+00:00"
       }
     ],
     "auto_learn_insights": {
@@ -51200,8 +51265,8 @@
     },
     "signal_criteria": {
       "min_bsr": 2.08,
-      "min_holders": 103,
-      "min_wallets": 151,
+      "min_holders": 102.5,
+      "min_wallets": 150,
       "min_liq": 500,
       "min_liq_pct": 10,
       "min_lp_locked": 80,
