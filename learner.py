@@ -1807,3 +1807,315 @@ def calculate_signal_review() -> dict:
         "worst": worst,
         "fresh_start": fresh_start,
     }
+
+
+def _exit_pnl(ath, current, tp_mult, sl_mult, min_price=0.0):
+    if current <= 0:
+        current = ath if ath > 0 else 1.0
+    if min_price <= 0:
+        min_price = current if current < ath else ath
+    if min_price > 0 and min_price <= sl_mult:
+        return ((sl_mult - 1) * 100, "sl")
+    elif ath >= tp_mult:
+        return ((tp_mult - 1) * 100, "tp")
+    else:
+        return ((current - 1) * 100, "hold")
+
+
+def calculate_optimal_tp_sl(results):
+    if not results:
+        return {"optimal_tp": 50, "optimal_sl": -25, "expected_pnl": 0,
+                "win_rate": 0, "tp_hits": 0, "sl_hits": 0, "holds": 0}
+    best_score = -999
+    best_pnl = -999
+    best_tp = 50
+    best_sl = -25
+    for tp_pct in range(5, 201, 5):
+        for sl_pct in range(-50, -5, 5):
+            tp_mult = 1 + tp_pct / 100
+            sl_mult = 1 + sl_pct / 100
+            total_pnl = 0
+            tp_hits = 0
+            sl_hits = 0
+            holds = 0
+            for r in results:
+                ath = r.get("ath_multiplier", 1)
+                current = r.get("current_multiplier", 1)
+                min_price = r.get("min_price_multiplier", 0)
+                pnl, exit_type = _exit_pnl(ath, current, tp_mult, sl_mult, min_price)
+                total_pnl += pnl
+                if exit_type == "tp":
+                    tp_hits += 1
+                elif exit_type == "sl":
+                    sl_hits += 1
+                else:
+                    holds += 1
+            n = len(results)
+            avg_pnl = total_pnl / n
+            win_rate = tp_hits / n
+            score = avg_pnl + (win_rate * 15) - (holds / n * 10)
+            if score > best_score or (score == best_score and avg_pnl > best_pnl):
+                best_score = score
+                best_pnl = avg_pnl
+                best_tp = tp_pct
+                best_sl = sl_pct
+    n = len(results)
+    best_tp_mult = 1 + best_tp / 100
+    best_sl_mult = 1 + best_sl / 100
+    final_tp = final_sl = final_hold = 0
+    for r in results:
+        _, exit_type = _exit_pnl(r.get("ath_multiplier", 1),
+                                  r.get("current_multiplier", 1),
+                                  best_tp_mult, best_sl_mult,
+                                  r.get("min_price_multiplier", 0))
+        if exit_type == "tp":
+            final_tp += 1
+        elif exit_type == "sl":
+            final_sl += 1
+        else:
+            final_hold += 1
+    return {
+        "optimal_tp": best_tp,
+        "optimal_sl": best_sl,
+        "expected_pnl": round(best_pnl, 1),
+        "win_rate": round(final_tp / n * 100, 1),
+        "tp_hits": final_tp,
+        "sl_hits": final_sl,
+        "holds": final_hold,
+    }
+
+
+def simulate_tp_scenarios(results):
+    if not results:
+        return []
+    optimal = calculate_optimal_tp_sl(results)
+    sl_pct = optimal["optimal_sl"]
+    scenarios = []
+    for tp_pct in range(5, 201, 5):
+        tp_mult = 1 + tp_pct / 100
+        sl_mult = 1 + sl_pct / 100
+        total_pnl = 0
+        tp_hits = 0
+        sl_hits = 0
+        holds = 0
+        hold_better_than_sl = 0
+        for r in results:
+            ath = r.get("ath_multiplier", 1)
+            current = r.get("current_multiplier", 1)
+            min_price = r.get("min_price_multiplier", 0)
+            pnl, exit_type = _exit_pnl(ath, current, tp_mult, sl_mult, min_price)
+            total_pnl += pnl
+            if exit_type == "tp":
+                tp_hits += 1
+            elif exit_type == "sl":
+                sl_hits += 1
+                hold_pnl = (current - 1) * 100
+                if hold_pnl > sl_pct:
+                    hold_better_than_sl += 1
+            else:
+                holds += 1
+        n = len(results)
+        avg_pnl = total_pnl / n
+        scenarios.append({
+            "tp": tp_pct, "sl": sl_pct,
+            "tp_hits": tp_hits, "sl_hits": sl_hits, "holds": holds,
+            "tp_rate": round(tp_hits / n * 100, 1),
+            "avg_pnl": round(avg_pnl, 1),
+            "hold_better": hold_better_than_sl,
+        })
+    return scenarios
+
+
+def simulate_trailing_stop(results):
+    if not results:
+        return {"fixed_pnl": 0, "trailing_pnl": 0, "trailing_better": 0, "total": 0}
+    fixed_total = 0
+    trailing_total = 0
+    trailing_better = 0
+    for r in results:
+        ath = r.get("ath_multiplier", 1)
+        current = r.get("current_multiplier", 1)
+        fixed_sl = 0.90
+        if ath >= 4.0:
+            fixed_pnl = 300
+        elif current <= fixed_sl:
+            fixed_pnl = -10
+        else:
+            fixed_pnl = (current - 1) * 100
+        trailing_sl = 0.90
+        if ath >= 2.0:
+            trailing_sl = max(trailing_sl, 1.0)
+        if ath >= 3.0:
+            trailing_sl = max(trailing_sl, 1.3)
+        if ath >= 4.0:
+            trailing_sl = max(trailing_sl, 2.0)
+        if ath >= 4.0:
+            trailing_pnl = 300
+        elif current <= trailing_sl:
+            trailing_pnl = (trailing_sl - 1) * 100
+        else:
+            trailing_pnl = (current - 1) * 100
+        fixed_total += fixed_pnl
+        trailing_total += trailing_pnl
+        if trailing_pnl > fixed_pnl:
+            trailing_better += 1
+    n = len(results)
+    return {
+        "fixed_pnl": round(fixed_total / n, 1),
+        "trailing_pnl": round(trailing_total / n, 1),
+        "trailing_better": trailing_better,
+        "total": n,
+    }
+
+
+def get_time_analysis(results):
+    if not results:
+        return {"hourly": {}, "best_hours": [], "worst_hours": []}
+    hourly = {}
+    for r in results:
+        ts = r.get("signal_time") or r.get("timestamp")
+        if not ts:
+            continue
+        try:
+            dt = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+            h = dt.hour
+        except (ValueError, TypeError):
+            continue
+        if h not in hourly:
+            hourly[h] = {"count": 0, "pumps": 0, "aths": [], "total_pnl": 0}
+        ath = r.get("ath_multiplier", r.get("multiplier", 1))
+        hourly[h]["count"] += 1
+        hourly[h]["aths"].append(ath)
+        hourly[h]["total_pnl"] += (ath - 1) * 100
+        if ath >= 2.0:
+            hourly[h]["pumps"] += 1
+    for h in hourly:
+        d = hourly[h]
+        d["avg_ath"] = round(sum(d["aths"]) / len(d["aths"]), 2) if d["aths"] else 0
+        d["pump_rate"] = round(d["pumps"] / d["count"] * 100, 1) if d["count"] > 0 else 0
+        d["avg_pnl"] = round(d["total_pnl"] / d["count"], 1) if d["count"] > 0 else 0
+        del d["aths"]
+        del d["total_pnl"]
+    sorted_hours = sorted(hourly.items(), key=lambda x: x[1]["pump_rate"], reverse=True)
+    best_hours = [h for h, d in sorted_hours[:3] if d["pump_rate"] >= 40]
+    worst_hours = [h for h, d in sorted_hours[-3:] if d["pump_rate"] < 20]
+    return {"hourly": hourly, "best_hours": best_hours, "worst_hours": worst_hours}
+
+
+def calculate_risk_adjusted_tp_sl(results):
+    if not results:
+        return {"tp": 100, "sl": -10, "score": 0, "win_rate": 0, "avg_pnl": 0}
+    best_score = -999
+    best_tp = 100
+    best_sl = -10
+    for tp_pct in range(50, 251, 10):
+        for sl_pct in range(-15, -3, 1):
+            tp_mult = 1 + tp_pct / 100
+            sl_mult = 1 + sl_pct / 100
+            wins = 0
+            losses = 0
+            total_win_pnl = 0
+            total_loss_pnl = 0
+            for r in results:
+                ath = r.get("ath_multiplier", 1)
+                current = r.get("current_multiplier", 1)
+                if ath >= tp_mult:
+                    wins += 1
+                    total_win_pnl += tp_pct
+                elif current <= sl_mult:
+                    losses += 1
+                    total_loss_pnl += abs(sl_pct)
+                else:
+                    hold_pnl = (current - 1) * 100
+                    if hold_pnl >= 0:
+                        wins += 1
+                        total_win_pnl += hold_pnl
+                    else:
+                        losses += 1
+                        total_loss_pnl += abs(hold_pnl)
+            n = len(results)
+            win_rate = wins / n if n > 0 else 0
+            loss_rate = losses / n if n > 0 else 0
+            avg_win = total_win_pnl / wins if wins > 0 else 0
+            avg_loss = total_loss_pnl / losses if losses > 0 else 0
+            score = win_rate * avg_win - loss_rate * avg_loss
+            if win_rate < 0.3:
+                score *= 0.5
+            if score > best_score:
+                best_score = score
+                best_tp = tp_pct
+                best_sl = sl_pct
+    return {"tp": best_tp, "sl": best_sl, "score": round(best_score, 1),
+            "win_rate": round(win_rate * 100, 1), "avg_pnl": round(best_score, 1)}
+
+
+def get_performance_report():
+    data = load_data()
+    results = data.get("model", {}).get("signal_results", [])
+    fresh_start = data.get("fresh_start", "")
+    now = datetime.now(timezone.utc).timestamp()
+    yesterday = now - 86400
+
+    recent = []
+    for r in results:
+        if r.get("source") == "collector_sync":
+            continue
+        ts = r.get("timestamp") or r.get("detected_at", "")
+        if not ts or ts == "N/A":
+            continue
+        try:
+            if fresh_start and ts < fresh_start:
+                continue
+            if ts >= datetime.fromtimestamp(yesterday, tz=timezone.utc).isoformat():
+                recent.append(r)
+        except Exception:
+            continue
+
+    if not recent:
+        recent = [r for r in results if r.get("source") != "collector_sync" and r.get("current_multiplier", 0) > 0]
+        if fresh_start:
+            recent = [r for r in recent if (r.get("timestamp") or "") >= fresh_start]
+        # Exclude old re-synced tokens: signal_age=0 = collector_sync, not real signal
+        recent = [r for r in recent if r.get("signal_age", 0) > 0][-50:]
+
+    # For TP/SL: only use signals with signal_age > 0 (real signals, not old re-synced)
+    all_valid = [r for r in results if r.get("current_multiplier", 0) > 0 and r.get("ath_multiplier", 0) > 0 and r.get("signal_age", 0) > 0]
+    if fresh_start:
+        all_valid = [r for r in all_valid if (r.get("timestamp") or "") >= fresh_start]
+
+    if not recent and not all_valid:
+        return {"total": 0, "wins": 0, "losses": 0, "pending": 0,
+                "win_rate": 0, "avg_ath": 0, "best": None, "worst": None,
+                "optimal_tp": 50, "optimal_sl": -25, "expected_pnl": 0, "signals": []}
+
+    wins = [r for r in recent if r.get("verdict") in ("PUMP", "STRONG_PUMP", "MEGA_PUMP")]
+    losses = [r for r in recent if r.get("verdict") == "DUMP"]
+    aths = [r.get("ath_multiplier", 1) for r in recent if r.get("ath_multiplier", 0) > 0]
+    avg_ath = sum(aths) / len(aths) if aths else 0
+    best = max(recent, key=lambda r: r.get("ath_multiplier", 0)) if recent else None
+    worst = min(recent, key=lambda r: r.get("ath_multiplier", 0)) if recent else None
+    optimal = calculate_optimal_tp_sl(all_valid if all_valid else recent)
+
+    signals = []
+    for r in sorted(recent, key=lambda x: x.get("timestamp", ""), reverse=True):
+        ath = r.get("ath_multiplier", 1)
+        emoji = "🔥" if ath >= 5 else ("✅" if ath >= 2 else ("😐" if ath >= 1 else "❌"))
+        signals.append({"symbol": r.get("symbol", "?"), "ath": ath, "emoji": emoji, "verdict": r.get("verdict", "?")})
+
+    scenarios = simulate_tp_scenarios(all_valid if all_valid else recent)
+    trailing = simulate_trailing_stop(all_valid if all_valid else recent)
+    time_analysis = get_time_analysis(all_valid if all_valid else recent)
+    risk_adjusted = calculate_risk_adjusted_tp_sl(all_valid if all_valid else recent)
+
+    return {"total": len(recent), "wins": len(wins), "losses": len(losses),
+            "pending": len(recent) - len(wins) - len(losses),
+            "win_rate": round(len(wins) / max(len(recent), 1) * 100, 1),
+            "avg_ath": round(avg_ath, 2), "best": best, "worst": worst,
+            "optimal_tp": optimal["optimal_tp"], "optimal_sl": optimal["optimal_sl"],
+            "expected_pnl": optimal["expected_pnl"],
+            "optimal_win_rate": optimal.get("win_rate", 0),
+            "tp_hits": optimal.get("tp_hits", 0), "sl_hits": optimal.get("sl_hits", 0),
+            "holds": optimal.get("holds", 0),
+            "tp_scenarios": scenarios, "signals": signals,
+            "trailing": trailing, "time_analysis": time_analysis,
+            "risk_adjusted": risk_adjusted, "total_all_data": len(all_valid)}
