@@ -2579,6 +2579,21 @@ class MemeBot:
                                     f"🔍 TRENDING SIGNAL: {token_info['symbol']} score={score:.0f} "
                                     f"{score_result['verdict']} MC=${launch_mcp:,.0f}"
                                 )
+                                # Record lifecycle event for trending tokens
+                                try:
+                                    from token_lifecycle import record_signal
+                                    record_signal(ca, {
+                                        "symbol": token_info['symbol'],
+                                        "signal_type": "TRENDING",
+                                        "source_channel": "gmgn_trending",
+                                        "mcp": launch_mcp,
+                                        "liq_usd": token_info.get('liq_usd', 0),
+                                        "holders": 0,
+                                        "volume_5m": token_info.get('volume_5m', 0),
+                                        "price_change_5m": token_info.get('price_change_5m', 0),
+                                    })
+                                except Exception:
+                                    pass
                         except Exception:
                             pass
 
