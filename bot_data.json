@@ -52850,7 +52850,7 @@
       "quality_score": 0.35,
       "dump_rate": 12.0,
       "avg_ath": 43812.52,
-      "updated_at": "2026-06-23T14:12:13.633406+00:00"
+      "updated_at": "2026-06-23T14:22:55.693879+00:00"
     },
     "signal_criteria_stats": {
       "pump_medians": {
@@ -52882,7 +52882,7 @@
       "min_liq_pct": 27.0,
       "min_lp_locked": 80,
       "min_mcap": 3000,
-      "heuristic_threshold": 0.53,
+      "heuristic_threshold": 0.6,
       "pattern_threshold": 0.6,
       "dump_pattern_threshold": 0.7,
       "max_age_seconds": 21600,
@@ -59432,6 +59432,45 @@
       },
       "ath_multiplier": 1.2539556962025316,
       "timestamp": "2026-06-23T14:12:13.510108+00:00"
+    },
+    {
+      "address": "RDR4o2Z3zjXasAtCVoKjZDkPhi54cinwDiRUMJUpump",
+      "symbol": "HAAALAND",
+      "features": {
+        "buy_count": 0,
+        "sell_count": 0,
+        "buy_sell_ratio": 0.0,
+        "volume": 1763352.47,
+        "holders": 20,
+        "unique_wallets": 0,
+        "initial_liq": 37334.07,
+        "initial_mcap": 268808,
+        "liq_pct": 13.89,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 11,
+        "lp_locked": 0,
+        "deployer": "AMjdv7x3etN2",
+        "ath_price": 0.0002688,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "volume_velocity": 201.5776,
+        "buy_sell_momentum": 0.0,
+        "liquidity_depth": 0.1389,
+        "volume_spike_ratio": 0.0,
+        "buy_spike_ratio": 0.0,
+        "social_score": 0,
+        "launch_weekday": 1,
+        "launch_month": 6,
+        "is_weekend": false,
+        "launch_session": "european",
+        "insider_count": 0,
+        "launch_time": 1782215827.701155,
+        "liquidity": 37334.07,
+        "mcap": 268808.0
+      },
+      "ath_multiplier": 1.0455075845974326,
+      "timestamp": "2026-06-23T14:22:55.577564+00:00"
     }
   ],
   "fresh_start": "2026-06-22T13:38:36.943300+00:00",
