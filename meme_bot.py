@@ -215,6 +215,10 @@ class MemeBot:
         self._tasks.append(asyncio.create_task(self.gmgn_trending_loop(), name="gmgn_trending"))
         logger.info("🔍 GMGN Trending scanner started (every 5min)")
 
+        # TokenScan monitoring: periodically scan tracked tokens for holder changes
+        self._tasks.append(asyncio.create_task(self.tokenscan_monitor_loop(), name="tokenscan_monitor"))
+        logger.info("🔬 TokenScan monitor started (every 10min)")
+
         # Alert sender loop: picks up pending alerts from collector
         self._tasks.append(asyncio.create_task(self.alert_sender_loop(), name="alert_sender"))
         logger.info("🚨 Alert sender loop started (every 10s)")
@@ -2584,6 +2588,68 @@ class MemeBot:
                 logger.debug(f"gmgn_trending_loop error: {e}")
 
             await asyncio.sleep(300)  # Every 5 min
+
+    async def tokenscan_monitor_loop(self):
+        """Every 10min: scan tracked tokens with TokenScan for holder changes."""
+        await asyncio.sleep(120)
+
+        while True:
+            try:
+                from tokenscan_client import scan_token
+                from maestro_client import get_client as _get_tg_client
+
+                tg_client = await _get_tg_client()
+                if not tg_client:
+                    await asyncio.sleep(300)
+                    continue
+
+                # Get tracked tokens that need monitoring
+                tracked = await self._get_tracked_dict()
+                now = datetime.now(timezone.utc).timestamp()
+                scanned = 0
+
+                for addr, coin_info in list(tracked.items()):
+                    if scanned >= 10:  # Max 10 per cycle to avoid rate limits
+                        break
+
+                    # Skip recently scanned (within 10 min)
+                    last_scan = getattr(coin_info, 'last_tokenscan_scan', 0) or 0
+                    if now - last_scan < 600:
+                        continue
+
+                    ts_data = await scan_token(tg_client, addr)
+                    if ts_data.get("parsed"):
+                        # Update holder data
+                        old_holders = getattr(coin_info, 'holders', 0) or 0
+                        new_holders = ts_data.get("holders", 0)
+                        if new_holders > 0 and new_holders != old_holders:
+                            coin_info.holders = new_holders
+                            logger.info(f"[TOKENSCAN] {coin_info.symbol}: holders {old_holders} → {new_holders}")
+
+                        # Detect rug signals
+                        top10 = ts_data.get("top10_pct", 0)
+                        bundled = ts_data.get("bundled_pct", 0)
+                        audit = ts_data.get("audit_score", 0)
+
+                        if top10 > 60:
+                            logger.warning(f"[TOKENSCAN RUG] {coin_info.symbol}: top10 {top10:.0f}% — HIGH CONCENTRATION")
+                        if bundled > 40:
+                            logger.warning(f"[TOKENSCAN RUG] {coin_info.symbol}: bundled {bundled:.0f}% — BOT MANIPULATION")
+                        if audit > 0 and audit < 3:
+                            logger.warning(f"[TOKENSCAN RUG] {coin_info.symbol}: audit {audit}/10 — SUSPICIOUS")
+
+                    scanned += 1
+                    await asyncio.sleep(2)  # Rate limit between scans
+
+                if scanned > 0:
+                    logger.info(f"[TOKENSCAN] Scanned {scanned} tokens this cycle")
+
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.debug(f"TokenScan monitor error: {e}")
+
+            await asyncio.sleep(600)  # Every 10 min
 
     async def alert_sender_loop(self):
         """Check for pending signal alerts from collector and send to Telegram."""
