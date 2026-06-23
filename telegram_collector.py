@@ -176,31 +176,30 @@ def parse_gmgn_lv2_msg(text: str):
     symbol = ""
     name = ""
 
-    kol_match = re.search(r'Buy\s+([A-Za-z0-9_]+)', text)
+    kol_match = re.search(r'Buy\s+([A-Za-z0-9_-]+)', text)
     if kol_match and "KOL" in text:
         symbol = kol_match.group(1).strip()
 
     if not symbol:
-        heavy_match = re.search(r'Heavy Bought.*?\$([A-Za-z0-9_]+)', text)
+        heavy_match = re.search(r'Heavy Bought.*?\$([A-Za-z0-9_-]+)', text)
         if heavy_match:
             symbol = heavy_match.group(1).strip()
 
     if not symbol:
-        sym_match = re.search(r'\*\*\$([A-Za-z0-9_]+)\*\*\(([^)]+)\)', text)
+        sym_match = re.search(r'\*\*\$([\w\u0300-\u036f-]+)', text, re.UNICODE)
         if sym_match:
-            symbol = sym_match.group(1).strip()
-            name = sym_match.group(2).strip()
-        else:
-            sym_match2 = re.search(r'\$([A-Za-z0-9_]+)', text)
-            if sym_match2:
-                candidate = sym_match2.group(1).strip()
-                if not candidate.isdigit() and len(candidate) < 15:
-                    symbol = candidate
+            candidate = sym_match.group(1).strip()
+            if not candidate.isdigit() and len(candidate) < 20:
+                symbol = candidate
+                rest = text[sym_match.end():sym_match.end()+50]
+                name_m = re.search(r'\*{0,2}\s*\*{0,2}\s*\(([^)]+)\)', rest)
+                if name_m:
+                    name = name_m.group(1).strip()
+                else:
                     name = symbol
 
-    # Handle PUMP Completed format: **SYMBOL (Name)** without $ prefix
     if not symbol:
-        sym_match3 = re.search(r'\*\*([A-Za-z0-9_]+)\s*\(([^)]+)\)\*\*', text)
+        sym_match3 = re.search(r'\*\*([^\s*]+)\s+\(([^)]+)\)\*\*', text)
         if sym_match3:
             candidate = sym_match3.group(1).strip()
             if not candidate.isdigit() and len(candidate) < 15 and candidate not in ('DEV', 'TOP', 'PUMP'):
