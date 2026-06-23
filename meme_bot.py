@@ -2547,6 +2547,32 @@ class MemeBot:
                             except Exception:
                                 pass
 
+                            # Fetch social data from DexScreener
+                            try:
+                                import aiohttp
+                                async with aiohttp.ClientSession() as sess:
+                                    social_url = f"https://api.dexscreener.com/tokens/v1/solana/{ca}"
+                                    async with sess.get(social_url, timeout=aiohttp.ClientTimeout(total=8)) as resp:
+                                        if resp.status == 200:
+                                            pairs = await resp.json()
+                                            if pairs and isinstance(pairs, list) and pairs[0]:
+                                                info = pairs[0].get("info", {})
+                                                socials = info.get("socials", [])
+                                                websites = info.get("websites", [])
+                                                unified_token["socials_list"] = socials
+                                                unified_token["websites_list"] = websites
+                                                unified_token["has_website"] = len(websites) > 0
+                                                unified_token["has_twitter"] = any(
+                                                    "twitter" in s.get("url", "") or "x.com" in s.get("url", "")
+                                                    or s.get("type") == "twitter" for s in socials
+                                                )
+                                                unified_token["has_telegram"] = any(
+                                                    "t.me" in s.get("url", "") or s.get("type") == "telegram"
+                                                    for s in socials
+                                                )
+                            except Exception:
+                                pass
+
                             score_result = score_token(unified_token, dex_health)
                             score = score_result["score"]
                             action = score_result["action"]
@@ -2554,6 +2580,13 @@ class MemeBot:
                             if action in ("BUY_NOW", "ALERT"):
                                 launch_mcp = token_info.get("mc", 0)
                                 dex_status = "✅" if dex_health and dex_health.get("healthy") else "❌"
+                                social_info = ""
+                                if unified_token.get("has_website"):
+                                    social_info += "🌐 "
+                                if unified_token.get("has_twitter"):
+                                    social_info += "🐦 "
+                                if unified_token.get("has_telegram"):
+                                    social_info += "📱 "
                                 alert_msg = (
                                     f"🔍 <b>EARLY GEM FOUND</b>\n"
                                     f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
@@ -2563,7 +2596,7 @@ class MemeBot:
                                     f"💰 MCP: ${launch_mcp:,.0f} | Liq: ${token_info.get('liq_usd', 0):,.0f}\n"
                                     f"📊 Vol24h: ${token_info.get('volume_24h', 0):,.0f} | Age: {token_info.get('age_hours', 0):.1f}h\n"
                                     f"📈 Buy: {token_info.get('buy_ratio', 0):.0%} | PC24h: {token_info.get('price_change_24h', 0):+.0f}%\n"
-                                    f"🔬 DexScreener: {dex_status}\n"
+                                    f"🔬 DexScreener: {dex_status} | Social: {social_info or '❌ none'}\n"
                                     f"📝 {score_result.get('reason', '')}\n"
                                     f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
                                     f"🔗 <a href=\"https://gmgn.ai/sol/token/{ca}\">GMGN</a> | "

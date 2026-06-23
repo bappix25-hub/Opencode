@@ -2016,1184 +2016,6 @@
       "learned_at": "2026-06-10T09:18:09.549364+00:00"
     },
     {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "Blub",
-      "features": {
-        "buy_sell_ratio": 2.08,
-        "unique_wallets": 151,
-        "holders": 151,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 102,
-        "sell_count": 49,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082796.023961,
-        "mcap": 5905.28
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:21:14.014946+00:00"
-    },
-    {
-      "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
       "address": "9qwxahBxcgKyn5X7kZvkN7qxKZg6pkVD8Lo4URtopump",
       "symbol": "CS",
       "features": {
@@ -12000,6 +10822,841 @@
       "ath_multiplier": 4.58,
       "signal_age": 0.0,
       "learned_at": "2026-06-23T17:56:32.557686+00:00"
+    },
+    {
+      "address": "72kck9ahcU6ouMRar496sRHZwfVFXaFRLuBcKc2mpump",
+      "symbol": "TPUMP",
+      "features": {
+        "buy_sell_ratio": 1.62,
+        "unique_wallets": 21,
+        "holders": 0,
+        "liquidity": 13506.56,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 38.68,
+        "mcap": 34921,
+        "volume": 44967.63,
+        "buy_sell_momentum": 0.24,
+        "age_hours": 15.7,
+        "price": 3.492e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T11:45:25.675814+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "B6f27ETGcjgGNB1fqULJbXVmw9FnL8HgBp7R83hmpump",
+      "symbol": "drooling",
+      "features": {
+        "buy_sell_ratio": 0.93,
+        "unique_wallets": 56,
+        "holders": 0,
+        "liquidity": 75787.82,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 14.18,
+        "mcap": 534379,
+        "volume": 221492.91,
+        "buy_sell_momentum": -0.04,
+        "age_hours": 555.9,
+        "price": 0.0005345
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T11:45:39.963943+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "AWTobrmfzmCYRz2kXpz7smeikC2i1Jb5nF4dPjwGpump",
+      "symbol": "DADCOIN",
+      "features": {
+        "buy_sell_ratio": 1.37,
+        "unique_wallets": 64,
+        "holders": 0,
+        "liquidity": 5478.38,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 103.07,
+        "mcap": 5315,
+        "volume": 18522.16,
+        "buy_sell_momentum": 0.16,
+        "age_hours": 8937.4,
+        "price": 5.329e-06
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T11:45:46.983472+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "8dgXXcuXFsbJrve3euwbThR7PssgeTFzBw9Zg1dGpump",
+      "symbol": "OG",
+      "features": {
+        "buy_sell_ratio": 1.04,
+        "unique_wallets": 2827,
+        "holders": 0,
+        "liquidity": 13411.74,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 9.28,
+        "mcap": 144599,
+        "volume": 228561.94,
+        "buy_sell_momentum": 0.02,
+        "age_hours": 544.3,
+        "price": 0.0001029
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T11:46:06.804620+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "9ZtbETDNjnST9Y2zs82FZYy49xUMPgqXRh46YjjRpump",
+      "symbol": "Brötchen",
+      "features": {
+        "buy_sell_ratio": 1.16,
+        "unique_wallets": 54,
+        "holders": 0,
+        "liquidity": 38873.15,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 35.76,
+        "mcap": 108697,
+        "volume": 62592.7,
+        "buy_sell_momentum": 0.07,
+        "age_hours": 265.4,
+        "price": 0.0001087
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T11:46:13.155054+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "6ehEcTMCc85aNF4x9CWx8HuvWGhxQtvKdhKVf2HDpump",
+      "symbol": "TOESCOIN",
+      "features": {
+        "buy_sell_ratio": 1.68,
+        "unique_wallets": 2836,
+        "holders": 0,
+        "liquidity": 392591.45,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 2.49,
+        "mcap": 15758411,
+        "volume": 1339678.24,
+        "buy_sell_momentum": 0.25,
+        "age_hours": 794.4,
+        "price": 0.01575
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T11:46:20.346653+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "CmGiejTfCyHRDK9tCFGQ4RUsxzw6jnRqnDyDTuLEpump",
+      "symbol": "dadcoin",
+      "features": {
+        "buy_sell_ratio": 0.65,
+        "unique_wallets": 56,
+        "holders": 0,
+        "liquidity": 4362.2,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 123.26,
+        "mcap": 3539,
+        "volume": 154920.81,
+        "buy_sell_momentum": -0.21,
+        "age_hours": 3.2,
+        "price": 3.581e-06
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T11:46:51.624197+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "Cis7tnJBPLdowma3ya3BGGc2PxV9J69UgKMkeNdMpump",
+      "symbol": "Jeff",
+      "features": {
+        "buy_sell_ratio": 1.38,
+        "unique_wallets": 207,
+        "holders": 0,
+        "liquidity": 13419.07,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 75.76,
+        "mcap": 17713,
+        "volume": 65800.39,
+        "buy_sell_momentum": 0.16,
+        "age_hours": 296.9,
+        "price": 1.772e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T11:47:04.851035+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "4WJj4CYnoAtZXwTmcrF6s8YMnv8a3U4yc7EvNmwBkDMQ",
+      "symbol": "ok",
+      "features": {
+        "buy_sell_ratio": 1.32,
+        "unique_wallets": 109,
+        "holders": 0,
+        "liquidity": 4344.95,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 121.67,
+        "mcap": 3571,
+        "volume": 146712.47,
+        "buy_sell_momentum": 0.14,
+        "age_hours": 3.5,
+        "price": 3.571e-06
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T11:47:12.264498+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "3aSWU5BQ8CwTSkQPrp6seeukjcJ8EYXGTUZJhdxmpump",
+      "symbol": "grimace",
+      "features": {
+        "buy_sell_ratio": 0.0,
+        "unique_wallets": 0,
+        "holders": 0,
+        "liquidity": 6987.38,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 83.43,
+        "mcap": 8375,
+        "volume": 712.12,
+        "buy_sell_momentum": 0.0,
+        "age_hours": 456.2,
+        "price": 8.374e-06
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T11:47:24.652435+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "7iuTToHkV5cdFMXYu4ftMT9obcMgbiRttxF5cXDypump",
+      "symbol": "WOC",
+      "features": {
+        "buy_sell_ratio": 0.64,
+        "unique_wallets": 69,
+        "holders": 0,
+        "liquidity": 17335.06,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 34.28,
+        "mcap": 50576,
+        "volume": 128052.28,
+        "buy_sell_momentum": -0.22,
+        "age_hours": 43.3,
+        "price": 5.06e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-21T11:47:31.959115+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "32CdQdBUxbCsLy5AUHWmyidfwhgGUr9N573NBUrDpump",
+      "symbol": "maxxing",
+      "features": {
+        "buy_sell_ratio": 1.16,
+        "unique_wallets": 160,
+        "holders": 0,
+        "liquidity": 172753.77,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 13.11,
+        "mcap": 1317620,
+        "volume": 97121.47,
+        "buy_sell_momentum": 0.07,
+        "age_hours": 4891.5,
+        "price": 0.001318
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T18:05:37.215992+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "6P8ixuqGZpfyHAxyxbU4a31vsMiFiCQjBzVV58gPpump",
+      "symbol": "USAID",
+      "features": {
+        "buy_sell_ratio": 1.25,
+        "unique_wallets": 578,
+        "holders": 0,
+        "liquidity": 19857.22,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 80.06,
+        "mcap": 24804,
+        "volume": 92339.14,
+        "buy_sell_momentum": 0.11,
+        "age_hours": 12144.7,
+        "price": 2.481e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T18:05:45.241898+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "3JZLiZXirGdJj7HMokBKXWz8zSLWfC5gNDaNFVNRpump",
+      "symbol": "REESE",
+      "features": {
+        "buy_sell_ratio": 1.28,
+        "unique_wallets": 1592,
+        "holders": 0,
+        "liquidity": 4362.62,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 111.32,
+        "mcap": 3919,
+        "volume": 42678.98,
+        "buy_sell_momentum": 0.12,
+        "age_hours": 0.9,
+        "price": 3.918e-06
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T18:05:51.577227+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "B9rZz8cLVZETAW4K7Sn9bwqz1dD5uCCCZRWFsy5Epump",
+      "symbol": "QU",
+      "features": {
+        "buy_sell_ratio": 38.13,
+        "unique_wallets": 7904,
+        "holders": 0,
+        "liquidity": 5145.36,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 119.97,
+        "mcap": 4289,
+        "volume": 13984.96,
+        "buy_sell_momentum": 0.95,
+        "age_hours": 1.1,
+        "price": 5.465e-06
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T18:05:59.039966+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "Bm3dgkZrjH7eaz1GBH1R2ZHkp7nZUoPNJhjekoxepump",
+      "symbol": "MYRO",
+      "features": {
+        "buy_sell_ratio": 0.17,
+        "unique_wallets": 7,
+        "holders": 0,
+        "liquidity": 110924.3,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 4.38,
+        "mcap": 2535241,
+        "volume": 22947.76,
+        "buy_sell_momentum": -0.71,
+        "age_hours": 24.8,
+        "price": 0.002535
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T18:06:26.836660+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "B5LMsA5Yxfr3BZ1emXCu3oVm6anTdaaWnEag4XFEpump",
+      "symbol": "PEPTO",
+      "features": {
+        "buy_sell_ratio": 1.19,
+        "unique_wallets": 1343,
+        "holders": 0,
+        "liquidity": 14181.21,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 34.73,
+        "mcap": 40833,
+        "volume": 66618.7,
+        "buy_sell_momentum": 0.09,
+        "age_hours": 0.6,
+        "price": 4.083e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T18:06:40.648244+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "E8L6K5GmNNBRyMYv3AkncipDWDtRiXKqYfRATFRpxUyK",
+      "symbol": "Claude",
+      "features": {
+        "buy_sell_ratio": 1.06,
+        "unique_wallets": 3390,
+        "holders": 0,
+        "liquidity": 16255.49,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 30.64,
+        "mcap": 53047,
+        "volume": 129246.93,
+        "buy_sell_momentum": 0.03,
+        "age_hours": 0.2,
+        "price": 5.304e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T18:06:46.939089+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "59ut8N7AXbebwwS6x3RMFZwMH5a5REdfCtX3DX3Spump",
+      "symbol": "TRUMPUNC",
+      "features": {
+        "buy_sell_ratio": 3.87,
+        "unique_wallets": 4157,
+        "holders": 0,
+        "liquidity": 26052.47,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 19.44,
+        "mcap": 134044,
+        "volume": 267970.53,
+        "buy_sell_momentum": 0.59,
+        "age_hours": 1.2,
+        "price": 0.000134
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T18:06:53.079841+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "9cjcMhk8WbCPCQN6eRTWjEofNueAqDncr7oNQxK9pump",
+      "symbol": "CITTA",
+      "features": {
+        "buy_sell_ratio": 1.16,
+        "unique_wallets": 1682,
+        "holders": 0,
+        "liquidity": 8837.83,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 55.14,
+        "mcap": 16027,
+        "volume": 55369.96,
+        "buy_sell_momentum": 0.07,
+        "age_hours": 0.9,
+        "price": 1.602e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T18:07:28.805933+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "2fpTRY4pmeBTVVNDiXS5ZErpuouQttVujEFFcd2xpump",
+      "symbol": "FOOT",
+      "features": {
+        "buy_sell_ratio": 1.39,
+        "unique_wallets": 806,
+        "holders": 0,
+        "liquidity": 16138.62,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 30.27,
+        "mcap": 53324,
+        "volume": 29259.36,
+        "buy_sell_momentum": 0.16,
+        "age_hours": 0.6,
+        "price": 5.332e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T18:39:10.800552+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "3qK96MH73bMpsAZeTBXtdwTch4vA98bwGnU2SpYtpump",
+      "symbol": "trill",
+      "features": {
+        "buy_sell_ratio": 4.47,
+        "unique_wallets": 2955,
+        "holders": 0,
+        "liquidity": 667.96,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 45.22,
+        "mcap": 1477,
+        "volume": 13875.38,
+        "buy_sell_momentum": 0.63,
+        "age_hours": 90.8,
+        "price": 7.387e-07
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T18:39:16.878399+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "5dGterCwAVozUXWNxsB5b9z37EgC6gT3P7ivSWcjpump",
+      "symbol": "CALOR",
+      "features": {
+        "buy_sell_ratio": 1.14,
+        "unique_wallets": 1405,
+        "holders": 0,
+        "liquidity": 8152.57,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 59.73,
+        "mcap": 13648,
+        "volume": 48988.15,
+        "buy_sell_momentum": 0.07,
+        "age_hours": 0.2,
+        "price": 1.364e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T18:39:51.674185+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "GubL3XedzinzYKXCqskezKpGqSDkHnrHUr2tTm38XpWN",
+      "symbol": "PUMPBULL",
+      "features": {
+        "buy_sell_ratio": 1.09,
+        "unique_wallets": 4292,
+        "holders": 0,
+        "liquidity": 8595.67,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 56.83,
+        "mcap": 15124,
+        "volume": 166523.51,
+        "buy_sell_momentum": 0.04,
+        "age_hours": 0.5,
+        "price": 1.512e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T18:40:09.739707+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "93cYWhGrYuxoB9Ve7TknBWuwmSAXoU5JKTNDJq6vCAXR",
+      "symbol": "pumpbull",
+      "features": {
+        "buy_sell_ratio": 1.09,
+        "unique_wallets": 8334,
+        "holders": 0,
+        "liquidity": 6047.95,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 87.55,
+        "mcap": 6908,
+        "volume": 374337.96,
+        "buy_sell_momentum": 0.04,
+        "age_hours": 0.5,
+        "price": 6.907e-06
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T18:40:15.681490+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "FKwkXLduatvXkwfi4BnTGvLqAMZtnBMRxFTh2bFopump",
+      "symbol": "pluid",
+      "features": {
+        "buy_sell_ratio": 1.25,
+        "unique_wallets": 1173,
+        "holders": 0,
+        "liquidity": 3060.61,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 159.08,
+        "mcap": 1924,
+        "volume": 37648.96,
+        "buy_sell_momentum": 0.11,
+        "age_hours": 0.5,
+        "price": 1.923e-06
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T18:40:27.400536+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "F8vAHzTg7DpjvibhrFniMXGGkiSxfhr69CjjegXJpump",
+      "symbol": "Plush",
+      "features": {
+        "buy_sell_ratio": 1.18,
+        "unique_wallets": 1192,
+        "holders": 0,
+        "liquidity": 9441.87,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 51.48,
+        "mcap": 18341,
+        "volume": 41070.82,
+        "buy_sell_momentum": 0.08,
+        "age_hours": 0.2,
+        "price": 1.834e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T19:12:57.208731+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "F9ZyyVJxHdzzGaNk2WtU3FXFebBWp6uDevGbtQGFpump",
+      "symbol": "LAZARUS",
+      "features": {
+        "buy_sell_ratio": 1.16,
+        "unique_wallets": 5548,
+        "holders": 0,
+        "liquidity": 20912.98,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 25.02,
+        "mcap": 83578,
+        "volume": 333351.41,
+        "buy_sell_momentum": 0.07,
+        "age_hours": 0.7,
+        "price": 8.415e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T19:13:44.007498+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "8uq6VWP6n8KiQ1GHqKgNpjTH8R3GX3Cxms9iATx9pump",
+      "symbol": "VIREO",
+      "features": {
+        "buy_sell_ratio": 1.23,
+        "unique_wallets": 643,
+        "holders": 0,
+        "liquidity": 17849.07,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 27.78,
+        "mcap": 64263,
+        "volume": 94243.23,
+        "buy_sell_momentum": 0.1,
+        "age_hours": 0.1,
+        "price": 6.426e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T19:13:49.868226+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "6zaoZHbZXyAuB15wsq7VNUa73vWjTiZnrNu4FqGopump",
+      "symbol": "rato",
+      "features": {
+        "buy_sell_ratio": 1.84,
+        "unique_wallets": 125,
+        "holders": 0,
+        "liquidity": 11785.47,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 41.14,
+        "mcap": 28645,
+        "volume": 5410.85,
+        "buy_sell_momentum": 0.3,
+        "age_hours": 0.0,
+        "price": 2.864e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T19:14:01.826750+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "FMqh9mqR6drPZqqW6wPqLHxX4rqNDWGhYLaMfoaJpump",
+      "symbol": "world",
+      "features": {
+        "buy_sell_ratio": 1.48,
+        "unique_wallets": 991,
+        "holders": 0,
+        "liquidity": 17088.66,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 29.48,
+        "mcap": 57973,
+        "volume": 191110.62,
+        "buy_sell_momentum": 0.19,
+        "age_hours": 4.4,
+        "price": 5.797e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T19:14:19.235312+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "22hQGvFG9BWxohtnQuTj7XQjJayBJqeaiWsyFfZmpump",
+      "symbol": "$ELON1M",
+      "features": {
+        "buy_sell_ratio": 1.79,
+        "unique_wallets": 120,
+        "holders": 20,
+        "liquidity": 8953.44,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 54.22,
+        "mcap": 16512,
+        "volume": 32461.47,
+        "buy_sell_momentum": 0.28,
+        "age_hours": 3.6,
+        "price": 1.651e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T19:51:34.211212+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "DFuqqEm3nggiNzGQqEK4ihjYpcQyAHx6ANuGNfsxpump",
+      "symbol": "BOM",
+      "features": {
+        "buy_sell_ratio": 1.23,
+        "unique_wallets": 8868,
+        "holders": 20,
+        "liquidity": 28373.95,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 18.23,
+        "mcap": 155640,
+        "volume": 368153.52,
+        "buy_sell_momentum": 0.1,
+        "age_hours": 1.7,
+        "price": 0.0001556
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T19:52:21.535332+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "AYmqrX9Af3Jr8KWL1JSs4Xky9s4pmdZj8tQ5VLRBw2cM",
+      "symbol": "🙏",
+      "features": {
+        "buy_sell_ratio": 1.51,
+        "unique_wallets": 1064,
+        "holders": 20,
+        "liquidity": 7589.86,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 64.22,
+        "mcap": 11818,
+        "volume": 42735.98,
+        "buy_sell_momentum": 0.2,
+        "age_hours": 0.4,
+        "price": 1.181e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T20:03:56.128708+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "address": "29Mcsn4JUQjnxX6gNiVC31WjffJC57MpLnFGGGPGpump",
+      "symbol": "LAZARUS",
+      "features": {
+        "buy_sell_ratio": 1.3,
+        "unique_wallets": 3576,
+        "holders": 20,
+        "liquidity": 16034.21,
+        "lp_locked": 0,
+        "lp_providers_count": 0,
+        "liq_pct": 31.51,
+        "mcap": 50885,
+        "volume": 183507.88,
+        "buy_sell_momentum": 0.13,
+        "age_hours": 0.5,
+        "price": 5.088e-05
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 0,
+      "learned_at": "2026-06-23T20:08:43.988989+00:00",
+      "source": "pump_collector"
+    },
+    {
+      "buy_sell_ratio": 0.0,
+      "holders": 0,
+      "unique_wallets": 0,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "lp_locked": 0,
+      "liq_pct": 0.0,
+      "launch_hour": 11,
+      "initial_liq": 0.0,
+      "liquidity": 0.0,
+      "mcap": 241414.0,
+      "volume": 0.0,
+      "buy_count": 0,
+      "sell_count": 0,
+      "price": 0.0002414,
+      "outcome": "pump",
+      "ath_multiplier": 0,
+      "symbol": "Miu",
+      "address": "HPKCY5HorMd3DJpNRbeJQNzKFhLTmGzkeFNAtbdXCfzu",
+      "source": "signal_results",
+      "learned_at": "2026-06-23T21:27:56.645622+00:00",
+      "dexscreener_url": "https://dexscreener.com/solana/8bAF2ynur2acNDxvjfNUsBaWVCW7k9C21vrHp82ULSkU",
+      "pair_created_at": 1782214836000
+    },
+    {
+      "buy_sell_ratio": 0.0,
+      "holders": 0,
+      "unique_wallets": 0,
+      "snipers_30s": 0,
+      "insiders_30s": 0,
+      "lp_locked": 0,
+      "liq_pct": 0.0,
+      "launch_hour": 12,
+      "initial_liq": 0.0,
+      "liquidity": 0.0,
+      "mcap": 49599.0,
+      "volume": 0.0,
+      "buy_count": 0,
+      "sell_count": 0,
+      "price": 4.959e-05,
+      "outcome": "pump",
+      "ath_multiplier": 0,
+      "symbol": "0.0{4}16696",
+      "address": "2QFxEPqsLLQps1GtZ68YSNkhjK4z3Xiq2U87NNPEwrVM",
+      "source": "signal_results",
+      "learned_at": "2026-06-23T21:27:56.645650+00:00",
+      "dexscreener_url": "https://dexscreener.com/solana/hZrW4sVwqXwq8NCsu3gcciuK2wHMWA9tpfbzmK55N9Y",
+      "pair_created_at": 1782218869000
+    },
+    {
+      "address": "9af7PmWRca2QYmknQehoLH19jG5ss9ajYFpgL8dMpump",
+      "symbol": "FITNESS",
+      "features": {
+        "launch_time": 1782249569.011157,
+        "source": "historical_scan",
+        "ath_multiplier": 9.48,
+        "outcome": "STRONG_PUMP",
+        "signal_age": 0.0
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 9.48,
+      "signal_age": 0.0,
+      "learned_at": "2026-06-23T21:29:31.191033+00:00"
     }
   ],
   "dump_patterns": [
@@ -49769,7 +49426,10 @@
       "symbol": "FITNESS",
       "features": {
         "launch_time": 1782249569.011157,
-        "source": "historical_scan"
+        "source": "historical_scan",
+        "ath_multiplier": 9.48,
+        "outcome": "STRONG_PUMP",
+        "signal_age": 0.0
       },
       "launch_time": 1782249569.011157,
       "outcome": null,
@@ -49779,7 +49439,7 @@
     }
   ],
   "model": {
-    "total_pumps": 3,
+    "total_pumps": 4,
     "total_dumps": 0,
     "total_skipped": 0,
     "last_update": null,
@@ -50922,6 +50582,28 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-23T20:01:13.547858+00:00",
         "timestamp": "2026-06-23T20:01:13.547883+00:00"
+      },
+      {
+        "address": "9af7PmWRca2QYmknQehoLH19jG5ss9ajYFpgL8dMpump",
+        "symbol": "FITNESS",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 9.48,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-23T21:29:31.190762+00:00",
+        "timestamp": "2026-06-23T21:29:31.190803+00:00"
+      },
+      {
+        "address": "8krsxHiFmnY5BNMDTFA7EuhsXk8fq94ntzaB7Hhqpump",
+        "symbol": "RO",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.12,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-23T21:29:31.644356+00:00",
+        "timestamp": "2026-06-23T21:29:31.644396+00:00"
       }
     ],
     "success_history": [
@@ -51225,6 +50907,22 @@
           "signal_age": 0.0
         },
         "timestamp": "2026-06-23T17:56:32.633552+00:00"
+      },
+      {
+        "address": "9af7PmWRca2QYmknQehoLH19jG5ss9ajYFpgL8dMpump",
+        "symbol": "FITNESS",
+        "reasons": [
+          "balanced"
+        ],
+        "ath_multiplier": 9.48,
+        "features": {
+          "launch_time": 1782249569.011157,
+          "source": "historical_scan",
+          "ath_multiplier": 9.48,
+          "outcome": "STRONG_PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-23T21:29:31.318473+00:00"
       }
     ],
     "auto_learn_insights": {
@@ -51262,8 +50960,8 @@
     },
     "signal_criteria": {
       "min_bsr": 1.37,
-      "min_holders": 103,
-      "min_wallets": 476,
+      "min_holders": 102.5,
+      "min_wallets": 475,
       "min_liq": 500,
       "min_liq_pct": 10,
       "min_lp_locked": 80,
@@ -51272,7 +50970,7 @@
       "pattern_threshold": 0.6,
       "dump_pattern_threshold": 0.7,
       "max_age_seconds": 21600,
-      "updated_at": "2026-06-23T21:11:51.488875+00:00",
+      "updated_at": "2026-06-23T21:27:56.756813+00:00",
       "sample_size": 537,
       "min_lp_providers": 2
     },
@@ -58341,7 +58039,7 @@
   "channel_stats": {
     "-1002122751413": {
       "name": "New Pool Alert",
-      "total_signals": 260,
+      "total_signals": 267,
       "winners": 0,
       "mega_winners": 0,
       "losers": 1,
@@ -58350,109 +58048,11 @@
       "best_ath": 1.2919586735062496,
       "best_symbol": "SwuKQSbz",
       "signal_types": {
-        "FEATURED_NEW": 235,
-        "FDV_SURGE": 14,
+        "FEATURED_NEW": 241,
+        "FDV_SURGE": 15,
         "CTO": 11
       },
       "recent_signals": [
-        {
-          "symbol": "NationalMall",
-          "address": "2EQ94MaY6sK8JFpPFxgqmmgLJ2a2eeMQYVEapYvTyLZJ",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 11745.67,
-            "holders": 6,
-            "initial_lp_pct": 100.0,
-            "dev_balance_sol": 0.37986,
-            "renounced": true
-          },
-          "timestamp": "2026-06-23T12:39:40.251417+00:00"
-        },
-        {
-          "symbol": "0.0{4}1671",
-          "address": "EPaHUm7gL9JRjPDYjWev7Y6BCxrXmu4eSQxe62nb4i7b",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 16710.51,
-            "liq_usd": 0,
-            "holders": 5,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T12:40:30.513868+00:00"
-        },
-        {
-          "symbol": "0.0{5}88756",
-          "address": "5sP5rDbzBaGnd2AgsVDZsU6a3Ae6cUbgtiA1NWkB6qwd",
-          "signal_type": "CTO",
-          "features": {
-            "mcp": 8875.6554,
-            "liq_usd": 0,
-            "holders": 0,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T12:40:53.735515+00:00"
-        },
-        {
-          "symbol": "BCAT",
-          "address": "67gaXwgx2CnRKWjzVPmXE91ZEP831Z5LDBzijvVcaQnv",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 11342.24,
-            "holders": 9,
-            "initial_lp_pct": 100.0,
-            "dev_balance_sol": 0.96708,
-            "renounced": true
-          },
-          "timestamp": "2026-06-23T12:42:26.981935+00:00"
-        },
-        {
-          "symbol": "DEGEN",
-          "address": "5pxoPussqYHT2VDDWg8vsXFsdK3XVPj82SHxJXv4T3Xu",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 12314.04,
-            "holders": 7,
-            "initial_lp_pct": 100.0,
-            "dev_balance_sol": 60.78553,
-            "renounced": true
-          },
-          "timestamp": "2026-06-23T12:43:12.686740+00:00"
-        },
-        {
-          "symbol": "0.0001",
-          "address": "25XKy69iToF9rHusHeqGxctqiZFwAXiqGhj8qoqVdRs5",
-          "signal_type": "FDV_SURGE",
-          "features": {
-            "mcp": 103300.0,
-            "liq_usd": 0,
-            "holders": 10,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T12:44:00.730084+00:00"
-        },
-        {
-          "symbol": "0.0{4}16713",
-          "address": "8HQ1MT6eHdX1YkFZTmbXGiNgeBRH9wYeo658PiWp1Agc",
-          "signal_type": "FDV_SURGE",
-          "features": {
-            "mcp": 16713.24,
-            "liq_usd": 0,
-            "holders": 9,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T12:44:25.240395+00:00"
-        },
         {
           "symbol": "FU",
           "address": "2AqEqnTcvvohD5Qy2XHsBYjCbV4msUxjVXktp3zZ8ZfZ",
@@ -59754,12 +59354,110 @@
             "renounced": false
           },
           "timestamp": "2026-06-23T21:19:00.409500+00:00"
+        },
+        {
+          "symbol": "0.0{5}88718",
+          "address": "ASCKASKc24XJdQHpqVJpCpGr8rwGXT7diQ6ACGFqHnFx",
+          "signal_type": "FDV_SURGE",
+          "features": {
+            "mcp": 8871.8202,
+            "liq_usd": 0,
+            "holders": 8,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:20:24.332502+00:00"
+        },
+        {
+          "symbol": "0.0{4}24373",
+          "address": "2TeVXa5u7EvqJathA7x6LGc6JjYAEh7u93ya7rrGAfyo",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 24373.85,
+            "liq_usd": 0,
+            "holders": 0,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:20:48.337771+00:00"
+        },
+        {
+          "symbol": "world",
+          "address": "8fo7uCd6Mr5zXPbqsYsN5Y7H7YbhNoo4eP595pehg3YS",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 10091.6,
+            "holders": 11,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 4.91457,
+            "renounced": true
+          },
+          "timestamp": "2026-06-23T21:22:27.553927+00:00"
+        },
+        {
+          "symbol": "Jimoto",
+          "address": "EXTQRZey12393gBUPRAioPWTZr2j4xyKLycYYC1C6u8p",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 11750.77,
+            "holders": 5,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 0.3799,
+            "renounced": true
+          },
+          "timestamp": "2026-06-23T21:22:54.200032+00:00"
+        },
+        {
+          "symbol": "0.0{4}16786",
+          "address": "8g5xu4N59Xer8ySVV4kDSuJSLJBwfsco6vewSwPX4VQN",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 16786.44,
+            "liq_usd": 0,
+            "holders": 9,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:25:17.787453+00:00"
+        },
+        {
+          "symbol": "Joy",
+          "address": "55MvmTqtxSL1GpKpQHT4pq2ZHduDuPaT2F1aZEvGAMWe",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 11755.87,
+            "holders": 1,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 0.37992,
+            "renounced": true
+          },
+          "timestamp": "2026-06-23T21:25:41.307543+00:00"
+        },
+        {
+          "symbol": "VINTEDGATE",
+          "address": "HPZeWw8MtxHUPJqWvxNg5xfRZ9hE8hh1JRfzmqdsWazg",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 13695.66,
+            "holders": 11,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 99.98167,
+            "renounced": true
+          },
+          "timestamp": "2026-06-23T21:27:50.603542+00:00"
         }
       ]
     },
     "-1002202241417": {
       "name": "GMGN Signals",
-      "total_signals": 832,
+      "total_signals": 899,
       "winners": 0,
       "mega_winners": 0,
       "losers": 0,
@@ -59768,955 +59466,17 @@
       "best_ath": 0.0,
       "best_symbol": "",
       "signal_types": {
-        "FDV_SURGE": 79,
-        "DEV_SOLD": 471,
-        "CTO": 78,
-        "DEV_BOUGHT": 145,
-        "KOTH": 37,
+        "FDV_SURGE": 88,
+        "DEV_SOLD": 508,
+        "CTO": 86,
+        "DEV_BOUGHT": 153,
+        "KOTH": 42,
         "KOL_FOMO": 10,
         "PUMP_COMPLETED": 4,
         "DEXSOCIAL": 4,
         "FEATURED_NEW": 4
       },
       "recent_signals": [
-        {
-          "symbol": "BALL",
-          "address": "5PTsZPi9wkDLr2uZzr9RYd5nP8CbusgdzQ3CmoC5pump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 4900.0,
-            "liq_usd": 7200.0,
-            "holders": 27,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:04:15.099439+00:00"
-        },
-        {
-          "symbol": "Monk",
-          "address": "DHA2MAL2zHR6pwjBi2JPt2sL7XYxWimt9R6xwJjCpump",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 2000.0,
-            "liq_usd": 0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:04:15.556508+00:00"
-        },
-        {
-          "symbol": "Monk",
-          "address": "D3zR8dQ5LQGzKYRznpdjDRavTRv2xFrJkbdpeYQypump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2200.0,
-            "liq_usd": 4700.0,
-            "holders": 1,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:04:15.916578+00:00"
-        },
-        {
-          "symbol": "MrSleaze",
-          "address": "GJf6XPhWoFJcb8CZxMKTsYDvJB9j1mp1spHZ5FWX2emi",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 2600.0,
-            "liq_usd": 4800.0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:04:36.911545+00:00"
-        },
-        {
-          "symbol": "LOOM",
-          "address": "yJMYWHBMTTdk5RxVErGGdxAa7MBFSFGVKq1YDhULoom",
-          "signal_type": "CTO",
-          "features": {
-            "mcp": 16700.0,
-            "liq_usd": 10900.0,
-            "holders": 101,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:04:37.112795+00:00"
-        },
-        {
-          "symbol": "world",
-          "address": "7oVNxepcTkTBHKChQZHNv28fbArRqXAWAq5pcaDkpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2000.0,
-            "liq_usd": 4200.0,
-            "holders": 4,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:05:03.386503+00:00"
-        },
-        {
-          "symbol": "SIGNAL",
-          "address": "Es2cuqfBbiRpHw9HSVrPV66WmYVrQyrffwmQ5fm8pump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2000.0,
-            "liq_usd": 4400.0,
-            "holders": 9,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:05:03.641878+00:00"
-        },
-        {
-          "symbol": "world",
-          "address": "F5PMyuZfqAKueznYhZpoMMBhcbhdxMxPQkoND2QCyNpa",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 3000.0,
-            "liq_usd": 0,
-            "holders": 5,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:05:04.059582+00:00"
-        },
-        {
-          "symbol": "WORLD",
-          "address": "6FNrSji4xDoAD4tDtcyzEN7ba3EhjDmPts6sN2QMpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 3900.0,
-            "liq_usd": 6000.0,
-            "holders": 20,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:05:04.641219+00:00"
-        },
-        {
-          "symbol": "MYTH",
-          "address": "E33oQmUyWEFkGTMkhbwxCEusFUCZ6HsV3FJ2KCWBpump",
-          "signal_type": "FDV_SURGE",
-          "features": {
-            "mcp": 4700.0,
-            "liq_usd": 6500.0,
-            "holders": 51,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:05:25.948963+00:00"
-        },
-        {
-          "symbol": "Monk",
-          "address": "FfzuZ4zwUTphCfvJBwqk31JuwYPP61kHdbmBSvPKpump",
-          "signal_type": "CTO",
-          "features": {
-            "mcp": 3700.0,
-            "liq_usd": 5600.0,
-            "holders": 17,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:05:26.143815+00:00"
-        },
-        {
-          "symbol": "PUMPCADE",
-          "address": "8zPBAC48Z9xquu4bpAtbT3MuWJ6Czxfzu5rDLptVpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 3700.0,
-            "liq_usd": 4300.0,
-            "holders": 4,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:05:26.713669+00:00"
-        },
-        {
-          "symbol": "Questions",
-          "address": "C7BktMrndDCQjVATkQKuNQjTJTjZzs4stRAekUibpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2300.0,
-            "liq_usd": 0,
-            "holders": 4,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:05:26.906674+00:00"
-        },
-        {
-          "symbol": "GREEN",
-          "address": "228ZwKHEqyogW4TPQs4eoCRiGwnBVs7ESqkX6FoNpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2000.0,
-            "liq_usd": 4400.0,
-            "holders": 1,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:05:27.352474+00:00"
-        },
-        {
-          "symbol": "MonkCoin",
-          "address": "DMJYhWvAPXnM5fiGh7TuK7RdVHmQ3EbEokZ9DES5pump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2400.0,
-            "liq_usd": 4600.0,
-            "holders": 6,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:05:53.303095+00:00"
-        },
-        {
-          "symbol": "SEEKER",
-          "address": "DtqhJJbm4j2dRyaWWbXQnEkSNnaXxv9U5avVdMZppump",
-          "signal_type": "FDV_SURGE",
-          "features": {
-            "mcp": 14100.0,
-            "liq_usd": 11200.0,
-            "holders": 65,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:05:53.653058+00:00"
-        },
-        {
-          "symbol": "GREEN",
-          "address": "228a4v5opPBZCUw663bnJVqqd4ie8KvTGKCnZeP8pump",
-          "signal_type": "CTO",
-          "features": {
-            "mcp": 2000.0,
-            "liq_usd": 0,
-            "holders": 1,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:05:53.865702+00:00"
-        },
-        {
-          "symbol": "YARIRAFY",
-          "address": "3pNXVHUwULLA7Cc9Bg41CQxRFyEZVh2wDheQYFeepump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 5100.0,
-            "liq_usd": 0,
-            "holders": 24,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:05:54.204219+00:00"
-        },
-        {
-          "symbol": "Monk",
-          "address": "3VTQcGX4srH9TWMGMdbgoVyvH1hKwk2TJNYSPJcfpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2200.0,
-            "liq_usd": 0,
-            "holders": 2,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:06:14.757891+00:00"
-        },
-        {
-          "symbol": "8.6K",
-          "address": "2sNYNf6QnXXEirBsjgBLcDPUeZPhHvcs3FNT1XK4pump",
-          "signal_type": "FDV_SURGE",
-          "features": {
-            "mcp": 12300.0,
-            "liq_usd": 10700.0,
-            "holders": 59,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:06:14.957660+00:00"
-        },
-        {
-          "symbol": "Monk",
-          "address": "J4q4VUwDEq7M2mWbz61TXyxZRgVYMSS2nxAac6Fvpump",
-          "signal_type": "CTO",
-          "features": {
-            "mcp": 2600.0,
-            "liq_usd": 4700.0,
-            "holders": 5,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:06:40.678318+00:00"
-        },
-        {
-          "symbol": "MOUNTAIN",
-          "address": "9wwX5Tc5H7XvJ8xDH9RRMGYDXxetPV8HYMwa6pBapump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 3800.0,
-            "liq_usd": 5700.0,
-            "holders": 8,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:06:40.880192+00:00"
-        },
-        {
-          "symbol": "Kittens",
-          "address": "FJhoAEHPGsT5Dk2cDzuJvky3vDDqLb7bi3AtM15wpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2500.0,
-            "liq_usd": 4600.0,
-            "holders": 5,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:06:41.501697+00:00"
-        },
-        {
-          "symbol": "D",
-          "address": "kMuNzVxBcCnzeU8QvsqxjTL3xCbnSJRARq3BMzQpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2100.0,
-            "liq_usd": 4200.0,
-            "holders": 8,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:06:41.707578+00:00"
-        },
-        {
-          "symbol": "YARIRAFY",
-          "address": "HsxXsPuRCbSubJ7xFZNeNMvXMmt7yMepnQtfJ4bypump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 4300.0,
-            "liq_usd": 0,
-            "holders": 21,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:06:41.911276+00:00"
-        },
-        {
-          "symbol": "GREEN",
-          "address": "228aDBrt8zASJaWTu6NruJ72fzDZWzeQkefHodEBpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2000.0,
-            "liq_usd": 4300.0,
-            "holders": 2,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:06:42.112736+00:00"
-        },
-        {
-          "symbol": "SOUL",
-          "address": "9vTiZwGPMesYm4cRBYQeLBLpawDCjiSAeGBi1nonpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2600.0,
-            "liq_usd": 0,
-            "holders": 1,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:06:42.720433+00:00"
-        },
-        {
-          "symbol": "WORLD",
-          "address": "3iN5JVw55RNdQVokQJ9AomgEQRHLAx779EX6tHtFpump",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 4100.0,
-            "liq_usd": 0,
-            "holders": 5,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:07:02.153212+00:00"
-        },
-        {
-          "symbol": "world",
-          "address": "9kRU9H5b8pDEc3f9DsPaXMWVJp1pPQYfmtG5m8NVpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2100.0,
-            "liq_usd": 4100.0,
-            "holders": 1,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:07:26.756519+00:00"
-        },
-        {
-          "symbol": "PUTIN",
-          "address": "7Nx6SRKxLnAXXyhmb257GAPPycddUy5rTHzjFohVpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 3500.0,
-            "liq_usd": 0,
-            "holders": 8,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:07:27.084477+00:00"
-        },
-        {
-          "symbol": "LIFE",
-          "address": "8PPUXGxfMGnfB5k6zqwFv3EMM7uihdrN4gSEhsoCpump",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 2100.0,
-            "liq_usd": 0,
-            "holders": 0,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:07:49.822845+00:00"
-        },
-        {
-          "symbol": "BO",
-          "address": "FsKnEaijW8fWEnAEaYQ2ba7asCAH4zyZRXif8d51pump",
-          "signal_type": "CTO",
-          "features": {
-            "mcp": 2600.0,
-            "liq_usd": 5000.0,
-            "holders": 5,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:07:50.236515+00:00"
-        },
-        {
-          "symbol": "MKULTRA",
-          "address": "ytyvRhMSgpLieFXKGSryKCjfbD354MYwVm3Tvowpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2500.0,
-            "liq_usd": 5300.0,
-            "holders": 4,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:07:50.729853+00:00"
-        },
-        {
-          "symbol": "Fatou",
-          "address": "8X5BUThux3gWW3x31mt2EJuYRXE2qUa6o4GrKgfnpump",
-          "signal_type": "CTO",
-          "features": {
-            "mcp": 2900.0,
-            "liq_usd": 5100.0,
-            "holders": 32,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:08:19.204643+00:00"
-        },
-        {
-          "symbol": "Fatou",
-          "address": "D3f9HMjzWYfHfiZsfdHZYMyM6gVnyaymbXYErJg9pump",
-          "signal_type": "KOTH",
-          "features": {
-            "mcp": 14100.0,
-            "liq_usd": 10400.0,
-            "holders": 81,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:08:19.444060+00:00"
-        },
-        {
-          "symbol": "Fatou",
-          "address": "5MTfdsGzPFrorMu3rHp52DsDXsQrVvzYiZ4WfZLupump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2200.0,
-            "liq_usd": 0,
-            "holders": 4,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:08:19.681814+00:00"
-        },
-        {
-          "symbol": "UwU",
-          "address": "UwUpepkDrRVKxGEXoKk3JJsFp4Wq59hdzwHh97Rw5UH",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 5200.0,
-            "liq_usd": 6800.0,
-            "holders": 32,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:08:20.075361+00:00"
-        },
-        {
-          "symbol": "Fatou",
-          "address": "FXVvp6qFajujmUZy7Wt8sbh9USsAqiRniWnceCegRDFk",
-          "signal_type": "CTO",
-          "features": {
-            "mcp": 2600.0,
-            "liq_usd": 0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:08:20.467569+00:00"
-        },
-        {
-          "symbol": "RWA",
-          "address": "9RzVRy6Uy3VcvmPAhqbK5VyKiBS2Qc6PcTTehrFopump",
-          "signal_type": "CTO",
-          "features": {
-            "mcp": 10900.0,
-            "liq_usd": 9800.0,
-            "holders": 104,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:08:42.767265+00:00"
-        },
-        {
-          "symbol": "Fatou",
-          "address": "6BcDAzXKeD54t3W3F7WegJgQuACSqwR2Ubnq6hyppump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2700.0,
-            "liq_usd": 4900.0,
-            "holders": 7,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:08:43.426078+00:00"
-        },
-        {
-          "symbol": "world",
-          "address": "A92Zekda8ZhaV3J2Zg34nrzqPeRZN4GAMzQSLEupump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 6300.0,
-            "liq_usd": 8100.0,
-            "holders": 14,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:09:30.444869+00:00"
-        },
-        {
-          "symbol": "RWA",
-          "address": "CLqkcLnZcugohBwD5bwpDuk8vAKcwDXJt242XYwPpump",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 3800.0,
-            "liq_usd": 0,
-            "holders": 0,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:09:30.892064+00:00"
-        },
-        {
-          "symbol": "world",
-          "address": "2VTLtKmRVPGteJKHfXAY7yuTY51j8CGpBCpEAYijpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 3000.0,
-            "liq_usd": 4900.0,
-            "holders": 4,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:09:31.589387+00:00"
-        },
-        {
-          "symbol": "TURN",
-          "address": "BKiLdXmBCAp4Y9bsPK5NxHut1kWF2jNaZxLuFAhLpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2000.0,
-            "liq_usd": 4300.0,
-            "holders": 5,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:09:33.665474+00:00"
-        },
-        {
-          "symbol": "Glorath",
-          "address": "7ut8xPsBawAMfsfoFPPnNWbxKBmsz4wmFnaYwNpnpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2100.0,
-            "liq_usd": 4200.0,
-            "holders": 5,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:09:34.134217+00:00"
-        },
-        {
-          "symbol": "world",
-          "address": "5zJU4G2wDs32roohTTCoTB9yhajr63xBskrqEv1Ypump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 3900.0,
-            "liq_usd": 4900.0,
-            "holders": 10,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:10:02.346340+00:00"
-        },
-        {
-          "symbol": "wifouthat",
-          "address": "93QS8uKsYTTLgSXmG7kyJxBn7615wfuQuc98aD8jpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 3600.0,
-            "liq_usd": 4900.0,
-            "holders": 12,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:10:03.606590+00:00"
-        },
-        {
-          "symbol": "JESTER",
-          "address": "iMzJWayu991CBFLmqcHff47nZ6SgAzp4N6dKAfWpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 4100.0,
-            "liq_usd": 0,
-            "holders": 4,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:10:04.386520+00:00"
-        },
-        {
-          "symbol": "EVERYTHING",
-          "address": "8h3CC2u8erzXPvEGKDeug1V4v7Y4165NFqFPMmcGpump",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 2100.0,
-            "liq_usd": 0,
-            "holders": 2,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:10:33.634193+00:00"
-        },
-        {
-          "symbol": "Petix",
-          "address": "9N6W3dnj5ipWHKab39VosBRvNvxT8tn6FhRSWQcupump",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 4700.0,
-            "liq_usd": 0,
-            "holders": 0,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:10:34.136687+00:00"
-        },
-        {
-          "symbol": "ISLANDER",
-          "address": "3nMa3ZMmExxYGiH9Kt3Xc8LazMaGpm9Xbw196CL6pump",
-          "signal_type": "KOTH",
-          "features": {
-            "mcp": 14800.0,
-            "liq_usd": 11500.0,
-            "holders": 50,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:10:34.745881+00:00"
-        },
-        {
-          "symbol": "RICH",
-          "address": "ByqRmbC8diJEqiFGR3uezeNBpXFnV8DFPP5VhhoKpump",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 2100.0,
-            "liq_usd": 0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:10:35.301643+00:00"
-        },
-        {
-          "symbol": "RSK",
-          "address": "6GYEJDdgLJGuDe7JLyyBLUyxqtNoNj3kYz2F7mzDpump",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 2200.0,
-            "liq_usd": 4500.0,
-            "holders": 2,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:10:35.783503+00:00"
-        },
-        {
-          "symbol": "RWA",
-          "address": "9RdgWBicDx6t4D5qrKACUpo6XGgMrnGmtS9qhPLmpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2000.0,
-            "liq_usd": 0,
-            "holders": 2,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:10:36.330569+00:00"
-        },
-        {
-          "symbol": "ROTH",
-          "address": "9AcLKfjg1McicGwd3xFakpmiUmVYgH1Hjykt1HeXzn9H",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2400.0,
-            "liq_usd": 0,
-            "holders": 1,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:10:37.380453+00:00"
-        },
-        {
-          "symbol": "VINTEDGATE",
-          "address": "2bthhaJDNzRwXWEs7wZXdiZRiBcdYz6oMPt9uf8xpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2000.0,
-            "liq_usd": 4200.0,
-            "holders": 2,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:10:37.983837+00:00"
-        },
-        {
-          "symbol": "RAINBET",
-          "address": "3KoQxHrKTQPz8xR2BK15yMA8FV89pRZiJ63dXiDyBqeF",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 2600.0,
-            "liq_usd": 0,
-            "holders": 0,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:10:38.716966+00:00"
-        },
-        {
-          "symbol": "PCM",
-          "address": "BebFWpxJ1eCceTaAjGfx7q5cKqqj9FnT3AW6Vus5pump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2100.0,
-            "liq_usd": 0,
-            "holders": 2,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:11:07.056746+00:00"
-        },
-        {
-          "symbol": "TRENCHES",
-          "address": "CHnSD9WLjV8zNNrgmLjkMGLfEikydtBtyRCy8UEpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 3600.0,
-            "liq_usd": 0,
-            "holders": 19,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:11:07.415244+00:00"
-        },
-        {
-          "symbol": "ALLINU",
-          "address": "8qB95WiGY8kqjckjqA9jpWdkjPe8YvCyBhEp31Urpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2700.0,
-            "liq_usd": 0,
-            "holders": 8,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:11:07.771911+00:00"
-        },
-        {
-          "symbol": "solchan",
-          "address": "6a7utnZ7JPospexZ2rdoK3sVbW8DcQ3Wb9La9zXipump",
-          "signal_type": "KOTH",
-          "features": {
-            "mcp": 19100.0,
-            "liq_usd": 4300.0,
-            "holders": 5,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:11:08.846726+00:00"
-        },
-        {
-          "symbol": "Nothing",
-          "address": "zLD3tDaE119KV5B6KPRx6oBXdFf1m3RXC94rMg8pump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 5600.0,
-            "liq_usd": 0,
-            "holders": 37,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:11:09.234597+00:00"
-        },
-        {
-          "symbol": "pcates",
-          "address": "BzodYfrDe4s63W36CG7FaVZ85pAmcjC6hg7fbCRGpump",
-          "signal_type": "KOTH",
-          "features": {
-            "mcp": 14700.0,
-            "liq_usd": 4500.0,
-            "holders": 5,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:11:10.306759+00:00"
-        },
-        {
-          "symbol": "Lorian",
-          "address": "8TEetwSDUoHyBawhfPwWLicVwTijeWea9EkmLzzBpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2100.0,
-            "liq_usd": 0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:11:38.994697+00:00"
-        },
-        {
-          "symbol": "pup",
-          "address": "prxxaPBdSvpybJFgaFJuFc4r8wMfB8vsrhY7ih3upUP",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2300.0,
-            "liq_usd": 4900.0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:11:39.796108+00:00"
-        },
-        {
-          "symbol": "DOGJET",
-          "address": "8cJ5d6VBTDHk6Bi8uiVexiEJCno37pFS5mAxVnD3pump",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 0,
-            "holders": 0,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:11:41.038613+00:00"
-        },
-        {
-          "symbol": "RWA",
-          "address": "CGhjUdzCawFKte6upSmk1dNBEkaaHPQSTA1cGxXQpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 4100.0,
-            "liq_usd": 5700.0,
-            "holders": 16,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-23T21:11:41.839008+00:00"
-        },
         {
           "symbol": "world",
           "address": "6ggdf17Ce3Z5oCFVEGP3LeWQiZZz419oCHd2RqU3pump",
@@ -61178,6 +59938,944 @@
             "renounced": false
           },
           "timestamp": "2026-06-23T21:19:40.169086+00:00"
+        },
+        {
+          "symbol": "Coded",
+          "address": "3oVpYxj5wRW7RjPgFwN4b1XcjCgosb9oTsxH2nkupump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2300.0,
+            "liq_usd": 6400.0,
+            "holders": 8,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:20:00.867337+00:00"
+        },
+        {
+          "symbol": "effect",
+          "address": "AfnxDeQeRB6UkqdVG1wdeMWxipdfiEo6hmpuDD4Kpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 1900.0,
+            "liq_usd": 0,
+            "holders": 2,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:20:01.658636+00:00"
+        },
+        {
+          "symbol": "Incel",
+          "address": "A1QofSbEyFB5MHABizSPz8WztZWxESoq6E1WpfYApump",
+          "signal_type": "FDV_SURGE",
+          "features": {
+            "mcp": 5600.0,
+            "liq_usd": 0,
+            "holders": 12,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:20:27.603527+00:00"
+        },
+        {
+          "symbol": "LIFE",
+          "address": "HuuZi7ifkcCXdRGE2iJywdY2M6fNE5wJRy1JbqMWpump",
+          "signal_type": "FDV_SURGE",
+          "features": {
+            "mcp": 2500.0,
+            "liq_usd": 0,
+            "holders": 4,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:20:28.337584+00:00"
+        },
+        {
+          "symbol": "Timothy",
+          "address": "8cfh5nfERTm7sZb1TfqqqKYQF2smVrTSggevzkNDpump",
+          "signal_type": "DEV_BOUGHT",
+          "features": {
+            "mcp": 2000.0,
+            "liq_usd": 0,
+            "holders": 0,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:20:29.077690+00:00"
+        },
+        {
+          "symbol": "L",
+          "address": "91F7JtQjeuNkSBPv1nCvfw4bn1fd57hS5WZTMuzpump",
+          "signal_type": "CTO",
+          "features": {
+            "mcp": 1900.0,
+            "liq_usd": 4200.0,
+            "holders": 5,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:20:29.792539+00:00"
+        },
+        {
+          "symbol": "nvudia",
+          "address": "DtKuQSD2gSY1hbRdJgiTmSpMHdFsiw292uFL3nbxEtux",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2300.0,
+            "liq_usd": 0,
+            "holders": 1,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:20:51.089519+00:00"
+        },
+        {
+          "symbol": "Jonah",
+          "address": "HPVhguQ5QuZuMLyuWb7qGcRyFQ7pus6BjkJd5CnyZgQu",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2300.0,
+            "liq_usd": 0,
+            "holders": 1,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:20:53.025026+00:00"
+        },
+        {
+          "symbol": "TIT",
+          "address": "DjHNWwyy3DnLeAkJYLiZBeejN4VkdyXVPLjCpYBxX3Y8",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2100.0,
+            "liq_usd": 0,
+            "holders": 2,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:20:54.063408+00:00"
+        },
+        {
+          "symbol": "TRUST",
+          "address": "Ct1NaEMjkHCwgigKEaBCp2NuquVZVQ8Np6Fpewhzpump",
+          "signal_type": "DEV_BOUGHT",
+          "features": {
+            "mcp": 2100.0,
+            "liq_usd": 0,
+            "holders": 2,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:20:55.085588+00:00"
+        },
+        {
+          "symbol": "L",
+          "address": "91McXKQyXkgbXZ2eP66Hmy6sT9aDqbn7Pyv4onrpump",
+          "signal_type": "DEV_BOUGHT",
+          "features": {
+            "mcp": 4000.0,
+            "liq_usd": 0,
+            "holders": 0,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:21:23.569628+00:00"
+        },
+        {
+          "symbol": "goodtek",
+          "address": "2WCpGRYqCGAPUHWiHweMBQqoWdyf1d2oi4a9dSvspump",
+          "signal_type": "CTO",
+          "features": {
+            "mcp": 2000.0,
+            "liq_usd": 4300.0,
+            "holders": 6,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:21:23.899964+00:00"
+        },
+        {
+          "symbol": "FLYLINK",
+          "address": "Cf93AQLq7Gkc54GgyZkbzCNiZSusBCfHGBcSxsxNpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 3200.0,
+            "liq_usd": 4400.0,
+            "holders": 5,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:21:24.232857+00:00"
+        },
+        {
+          "symbol": "LIFEMAXXING",
+          "address": "2TcMRRjvSuiefWppJaMJg6uxqhVHnYbuDjv28mN3pump",
+          "signal_type": "DEV_BOUGHT",
+          "features": {
+            "mcp": 4000.0,
+            "liq_usd": 0,
+            "holders": 6,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:21:24.552073+00:00"
+        },
+        {
+          "symbol": "GTL",
+          "address": "3U8yDguPB79F69exjCUBDDiKdv3my8wJ8HYsEqv8pump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2000.0,
+            "liq_usd": 4200.0,
+            "holders": 2,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:21:24.871778+00:00"
+        },
+        {
+          "symbol": "Jonah",
+          "address": "8xt6zzGFYfjqnXHaJAjMmRV98CcXJih75CPxtUVUpump",
+          "signal_type": "DEV_BOUGHT",
+          "features": {
+            "mcp": 2900.0,
+            "liq_usd": 4500.0,
+            "holders": 9,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:21:25.406178+00:00"
+        },
+        {
+          "symbol": "COPE",
+          "address": "FhHxL8pA4inkiCdUf1xFe9qPcVap19PhntV4eHzjy6qr",
+          "signal_type": "FDV_SURGE",
+          "features": {
+            "mcp": 2300.0,
+            "liq_usd": 0,
+            "holders": 2,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:22:10.852019+00:00"
+        },
+        {
+          "symbol": "RUNGELES",
+          "address": "C5Ux7VQee9feRARZbuH6yZn9kWjo35suFkKCgHeCpump",
+          "signal_type": "KOTH",
+          "features": {
+            "mcp": 41300.0,
+            "liq_usd": 0,
+            "holders": 24,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:22:11.079877+00:00"
+        },
+        {
+          "symbol": "LIFE",
+          "address": "5kFHX7Qdi6gJDzJr2grWAf7iP1sPHb52yu4jboiZpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2700.0,
+            "liq_usd": 0,
+            "holders": 4,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:22:11.312769+00:00"
+        },
+        {
+          "symbol": "Coded",
+          "address": "56Sj1TZaW1XAcvvXfoNGDUAWAb2tSqgAEP6QvnPspump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2600.0,
+            "liq_usd": 4700.0,
+            "holders": 20,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:22:30.052590+00:00"
+        },
+        {
+          "symbol": "POPUS",
+          "address": "5aaGhYaWWpTggqPZwKx8xh9Fpr5a4FAnnGd3fcEHpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 1100.0,
+            "liq_usd": 0,
+            "holders": 4,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:22:30.269869+00:00"
+        },
+        {
+          "symbol": "BULLPOST",
+          "address": "GiHWAEr77JoevyuR2sd8vU6ocX1JNM3FepXNXWtPVAgm",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2000.0,
+            "liq_usd": 4200.0,
+            "holders": 2,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:22:56.601854+00:00"
+        },
+        {
+          "symbol": "SOL",
+          "address": "2FTcHpNHHduTDWFHStbfNR8Wtzf67vBW7kXSaYVppump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2300.0,
+            "liq_usd": 4200.0,
+            "holders": 1,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:22:56.813708+00:00"
+        },
+        {
+          "symbol": "MINING",
+          "address": "7W3AekUPA46KF5nuH96ZnaYYfVLqsqUck6Z1i84xpump",
+          "signal_type": "FDV_SURGE",
+          "features": {
+            "mcp": 2100.0,
+            "liq_usd": 0,
+            "holders": 3,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:22:57.446369+00:00"
+        },
+        {
+          "symbol": "LIFE",
+          "address": "E6ZFvs22Yoo3CBEyamJpY8KzQVn4AJkpxKWHP54npump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2100.0,
+            "liq_usd": 4300.0,
+            "holders": 5,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:22:57.659610+00:00"
+        },
+        {
+          "symbol": "FLYLINK",
+          "address": "7oxuDWP6AgtkE192t9nmo9xdLmk2g7LeqeuABJbrpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 531.5,
+            "liq_usd": 4300.0,
+            "holders": 4,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:23:18.942308+00:00"
+        },
+        {
+          "symbol": "Together",
+          "address": "FxiyW6ame4FYz92wPCmcRFa32BPMVajKA1XYXddrpump",
+          "signal_type": "DEV_BOUGHT",
+          "features": {
+            "mcp": 2100.0,
+            "liq_usd": 0,
+            "holders": 3,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:23:19.158358+00:00"
+        },
+        {
+          "symbol": "DuBALL",
+          "address": "G1J4Z6RxjU8RcVDHyujn5XGbEDYqepF7UUd1SwKFpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 5000.0,
+            "liq_usd": 6600.0,
+            "holders": 27,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:23:19.378663+00:00"
+        },
+        {
+          "symbol": "Goycream",
+          "address": "5d8mpw9nuVLMif8e8oNHd4rpyJdqiWa996nctwUdpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 6000.0,
+            "liq_usd": 7000.0,
+            "holders": 48,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:23:44.894671+00:00"
+        },
+        {
+          "symbol": "Pomni",
+          "address": "8iPTr56GZoj1XPmr2kWuxamePHnqSeWwg6sXz72Rpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 4600.0,
+            "liq_usd": 6400.0,
+            "holders": 60,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:23:45.258225+00:00"
+        },
+        {
+          "symbol": "DUDE",
+          "address": "6Vi2jsygReXsuRBoPGM87iYFwfb8gGw3fwt2Cvc3pump",
+          "signal_type": "KOTH",
+          "features": {
+            "mcp": 20400.0,
+            "liq_usd": 4200.0,
+            "holders": 3,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:23:46.044699+00:00"
+        },
+        {
+          "symbol": "Jonah",
+          "address": "MXu2DjXkVqd2LY8sDZr1eFgGSitPWRihsro3T1Fpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2600.0,
+            "liq_usd": 0,
+            "holders": 6,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:23:46.266868+00:00"
+        },
+        {
+          "symbol": "world",
+          "address": "AhwgLRBZxTZ44usLb9PpveANDczJBhuhGNp7uxmdpump",
+          "signal_type": "DEV_BOUGHT",
+          "features": {
+            "mcp": 2000.0,
+            "liq_usd": 0,
+            "holders": 3,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:24:07.295333+00:00"
+        },
+        {
+          "symbol": "dog",
+          "address": "22mcWy5BxxVa2b2AZnmPjT3GCUzzqMTVkQG9Scaqpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 3900.0,
+            "liq_usd": 0,
+            "holders": 11,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:24:07.514692+00:00"
+        },
+        {
+          "symbol": "Coded",
+          "address": "CYUkzf9dV53TtT5uCtmVyQCFz9CAQWkZ9CVDPswopump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 3200.0,
+            "liq_usd": 0,
+            "holders": 11,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:24:07.728739+00:00"
+        },
+        {
+          "symbol": "veyanet",
+          "address": "88zXFXm9fojL33N7kbw8wF2ef2FZkzDkRmukHLGJpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2200.0,
+            "liq_usd": 4300.0,
+            "holders": 19,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:24:08.085007+00:00"
+        },
+        {
+          "symbol": "cane",
+          "address": "EsJcPNgXo8QfJ9PQhDdm2yL32DUxRq7j1seaPLGopump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2300.0,
+            "liq_usd": 4700.0,
+            "holders": 3,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:24:55.599380+00:00"
+        },
+        {
+          "symbol": "四",
+          "address": "Dvj5mBTS8gXBt7VfT6MTx3ZCt1fweFx8KGNVHuq1pump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 1000.0,
+            "liq_usd": 4200.0,
+            "holders": 3,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:24:55.813199+00:00"
+        },
+        {
+          "symbol": "Nothing",
+          "address": "HVcWH3UyG3QqGEpNAqgbvZtV68oRHUejcoem6tvYpump",
+          "signal_type": "FDV_SURGE",
+          "features": {
+            "mcp": 3200.0,
+            "liq_usd": 5800.0,
+            "holders": 12,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:24:56.324589+00:00"
+        },
+        {
+          "symbol": "LIFE",
+          "address": "EtbqKfUjZRYrLzaikP8g2b374rvPszwBTjmPsJ2Xpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 3100.0,
+            "liq_usd": 0,
+            "holders": 3,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:24:56.688311+00:00"
+        },
+        {
+          "symbol": "ndoge",
+          "address": "Aa8s7gXb7cAqy6zzKghi9Yp2pXjheGxdhZhhqqtbpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 1500.0,
+            "liq_usd": 4200.0,
+            "holders": 2,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:25:21.463174+00:00"
+        },
+        {
+          "symbol": "PTSD",
+          "address": "HBHcrWWFjFDhe9HLda368BkZukQZuYqBmybd9UoHdtLG",
+          "signal_type": "CTO",
+          "features": {
+            "mcp": 2200.0,
+            "liq_usd": 0,
+            "holders": 4,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:25:44.857488+00:00"
+        },
+        {
+          "symbol": "LIFE",
+          "address": "65e42YronKpAyMgcGnevwTYLPuDRwui6fBMRBnLhpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 1700.0,
+            "liq_usd": 0,
+            "holders": 4,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:25:45.257525+00:00"
+        },
+        {
+          "symbol": "MULTICA",
+          "address": "8ZvzQnoTAPSPchHAiBRZFuKHc665Ki7Wc76vR7ekpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2200.0,
+            "liq_usd": 4400.0,
+            "holders": 6,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:25:45.502317+00:00"
+        },
+        {
+          "symbol": "CR7",
+          "address": "EnzCDz2nL2Hcv4nCkxBJ9HD4Psz7nYpVDwbqDb9Npump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2100.0,
+            "liq_usd": 0,
+            "holders": 5,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:25:45.767914+00:00"
+        },
+        {
+          "symbol": "STOICDOG",
+          "address": "41gwyynULxUPvmAcxyeTopZdFyVr4wWszUeKKmMYpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2000.0,
+            "liq_usd": 4300.0,
+            "holders": 1,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:26:09.363776+00:00"
+        },
+        {
+          "symbol": "RWA",
+          "address": "7HZTsrRcbNynzwNLVDnSTEn9nixXmVMfbxCN86rWpump",
+          "signal_type": "FDV_SURGE",
+          "features": {
+            "mcp": 2100.0,
+            "liq_usd": 4600.0,
+            "holders": 4,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:26:09.858723+00:00"
+        },
+        {
+          "symbol": "PTSD",
+          "address": "5ahw5r6MKNpyuxWCP6Dh5FzFG584Pf2Swmao6Aavpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2000.0,
+            "liq_usd": 0,
+            "holders": 2,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:26:10.555632+00:00"
+        },
+        {
+          "symbol": "ANSEM",
+          "address": "7FKQb4R5TcDSSmK6MdHM3U9puqbGJksG82hEEQS5pump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2300.0,
+            "liq_usd": 4600.0,
+            "holders": 10,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:26:10.858653+00:00"
+        },
+        {
+          "symbol": "EPHONE",
+          "address": "268F9HwFHzqhkfbENLG652ZNR1LCdkP5e2GcDg5Hpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2300.0,
+            "liq_usd": 5100.0,
+            "holders": 3,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:26:11.423547+00:00"
+        },
+        {
+          "symbol": "MESSI",
+          "address": "vRw1qEYHgeQux8MfnakH5BuAzve9CzGm1kuZHH3pump",
+          "signal_type": "KOTH",
+          "features": {
+            "mcp": 16600.0,
+            "liq_usd": 4300.0,
+            "holders": 4,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:26:12.723639+00:00"
+        },
+        {
+          "symbol": "MYTH",
+          "address": "FVgeRwSHw2x1PupzdzYrpbGZMPTatzATABtG9nuipump",
+          "signal_type": "FDV_SURGE",
+          "features": {
+            "mcp": 2100.0,
+            "liq_usd": 4200.0,
+            "holders": 5,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:26:36.009857+00:00"
+        },
+        {
+          "symbol": "PLAY",
+          "address": "EkykK7pir6JD8PApGNzrqqYeuYuzbfCScv5Yegy6pump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2000.0,
+            "liq_usd": 4200.0,
+            "holders": 4,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:26:36.739962+00:00"
+        },
+        {
+          "symbol": "Jonah",
+          "address": "Ad1U1tecvT2X917Gciw1D7qwt6LABcRpAsyfs2HZpump",
+          "signal_type": "DEV_BOUGHT",
+          "features": {
+            "mcp": 2500.0,
+            "liq_usd": 0,
+            "holders": 6,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:26:37.056071+00:00"
+        },
+        {
+          "symbol": "Mooners",
+          "address": "5gwM2HnzYVDinTrzU3PcDSZre2gYpYsWuytAJn4rpump",
+          "signal_type": "CTO",
+          "features": {
+            "mcp": 2900.0,
+            "liq_usd": 0,
+            "holders": 3,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:27:02.752314+00:00"
+        },
+        {
+          "symbol": "RWAF",
+          "address": "2fcczZg1cjpvPrTsAVvEUguYYS7u686v8MCxUuQCpump",
+          "signal_type": "KOTH",
+          "features": {
+            "mcp": 14600.0,
+            "liq_usd": 11200.0,
+            "holders": 570,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:27:03.078194+00:00"
+        },
+        {
+          "symbol": "ARYAN",
+          "address": "F9PRCo8peyw1AFhX7ExjajxEqYiVUgJkGMrDe2Lupump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 1400.0,
+            "liq_usd": 4200.0,
+            "holders": 5,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:27:03.422483+00:00"
+        },
+        {
+          "symbol": "RUNGELES",
+          "address": "228e9kC5Q1TFWxwGySKyWiZrh32SZavqmYgR2AjQpump",
+          "signal_type": "KOTH",
+          "features": {
+            "mcp": 16300.0,
+            "liq_usd": 5000.0,
+            "holders": 5,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:27:03.768924+00:00"
+        },
+        {
+          "symbol": "MYHW",
+          "address": "7P2JkPDW5aGaD5aMp5nSBRvUTxJzB1qpJc2PhuWjpump",
+          "signal_type": "CTO",
+          "features": {
+            "mcp": 2000.0,
+            "liq_usd": 4200.0,
+            "holders": 1,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:27:04.589038+00:00"
+        },
+        {
+          "symbol": "STEAK",
+          "address": "GPrLutUpcmSio9zu1JgNjDjjdtS2sETHbjE3V2Kppump",
+          "signal_type": "FDV_SURGE",
+          "features": {
+            "mcp": 1700.0,
+            "liq_usd": 0,
+            "holders": 4,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:27:28.669623+00:00"
+        },
+        {
+          "symbol": "Jonah",
+          "address": "DNbkn62gWzQDgZUU38csob2ZxiNGNpubZ5nGeEccpump",
+          "signal_type": "CTO",
+          "features": {
+            "mcp": 2500.0,
+            "liq_usd": 4700.0,
+            "holders": 6,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:28:18.433133+00:00"
+        },
+        {
+          "symbol": "Nothing",
+          "address": "FPMf4U7fjfsKzve6Acg4VTiyqj1gUZWnD1bUDPEhpump",
+          "signal_type": "CTO",
+          "features": {
+            "mcp": 2100.0,
+            "liq_usd": 4200.0,
+            "holders": 2,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:28:19.545815+00:00"
+        },
+        {
+          "symbol": "LIFE",
+          "address": "FxYim7djRART69JeEbZ38bd8jeyrdw6micR7f9qupump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 1700.0,
+            "liq_usd": 0,
+            "holders": 3,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:28:43.115917+00:00"
+        },
+        {
+          "symbol": "coded",
+          "address": "31Mc96gz5QkAhj2M6mj5MUYU51g8o9PmHBa7sQhPpump",
+          "signal_type": "FDV_SURGE",
+          "features": {
+            "mcp": 12800.0,
+            "liq_usd": 10700.0,
+            "holders": 55,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:29:06.455230+00:00"
+        },
+        {
+          "symbol": "LIFE",
+          "address": "2dT3G8PTMa1VJzqco6xnEdWH87UPxQuJHrbqe5KUpump",
+          "signal_type": "CTO",
+          "features": {
+            "mcp": 4600.0,
+            "liq_usd": 0,
+            "holders": 5,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:29:07.010711+00:00"
+        },
+        {
+          "symbol": "DOTT",
+          "address": "Hhp9s9yiEWTNtj1WLgMYvDkEj4UfW4BQNa7wMitxpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 1900.0,
+            "liq_usd": 4200.0,
+            "holders": 2,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:29:33.165505+00:00"
+        },
+        {
+          "symbol": "Eevee",
+          "address": "EdHxnrZvXuUf3GoHHNk8CqDncaTbs5YMNp5w83z3pump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 1600.0,
+            "liq_usd": 4400.0,
+            "holders": 2,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-23T21:29:33.669251+00:00"
         }
       ]
     }
