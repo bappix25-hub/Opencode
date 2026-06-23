@@ -186,7 +186,7 @@ def parse_gmgn_lv2_msg(text: str):
             symbol = heavy_match.group(1).strip()
 
     if not symbol:
-        sym_match = re.search(r'\*\*\$([\w\u0300-\u036f-]+)', text, re.UNICODE)
+        sym_match = re.search(r'\*\*\$([^\s*]+)', text)
         if sym_match:
             candidate = sym_match.group(1).strip()
             if not candidate.isdigit() and len(candidate) < 20:
