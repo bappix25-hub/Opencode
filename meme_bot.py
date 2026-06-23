@@ -361,6 +361,18 @@ class MemeBot:
         if mcap <= 0:
             return
         liquidity = float((pair.get("liquidity") or {}).get("usd", 0) or 0)
+
+        # ===== HARD HEALTH BLOCKS (early exit) =====
+        if liquidity <= 100 and mcap > 0:
+            logger.info(f"[SKIP] {launch_data.symbol}: pre-mig — zero LP (${liquidity:.0f}) scam")
+            return
+        if liquidity > 0 and liquidity < 500:
+            logger.info(f"[SKIP] {launch_data.symbol}: pre-mig — LP too low (${liquidity:.0f})")
+            return
+        if launch_data.holders > 0 and launch_data.holders <= 3:
+            logger.info(f"[SKIP] {launch_data.symbol}: pre-mig — only {launch_data.holders} holders dead")
+            return
+
         buys_1h = int(((pair.get("txns") or {}).get("h1") or {}).get("buys", 0) or 0)
         sells_1h = int(((pair.get("txns") or {}).get("h1") or {}).get("sells", 0) or 0)
         buys_5m = int(((pair.get("txns") or {}).get("m5") or {}).get("buys", 0) or 0)
@@ -388,6 +400,26 @@ class MemeBot:
         vol_24h = float((pair.get("volume") or {}).get("h24", 0) or 0)
         liquidity = float((pair.get("liquidity") or {}).get("usd", 0) or 0)
         vol_liq = vol_24h / max(liquidity, 1) if liquidity > 0 else 0
+        real_holders = launch_data.holders
+
+        # ===== HARD HEALTH BLOCKS (pre-migration) =====
+        symbol = launch_data.symbol
+        if liquidity <= 100 and mcap > 0:
+            logger.info(f"[SKIP] {symbol}: pre-mig blocked — zero LP (${liquidity:.0f}) scam")
+            return
+        if liquidity > 0 and liquidity < 500:
+            logger.info(f"[SKIP] {symbol}: pre-mig blocked — LP too low (${liquidity:.0f})")
+            return
+        if real_holders is not None and 0 < real_holders <= 3:
+            logger.info(f"[SKIP] {symbol}: pre-mig blocked — only {real_holders} holders dead")
+            return
+        # Price dump check: if ath_price known and current price <20% of it = rug
+        if launch_data.ath_price > 0 and price_usd > 0:
+            price_drop = 1.0 - (price_usd / launch_data.ath_price)
+            if price_drop > 0.80:
+                logger.info(f"[SKIP] {symbol}: pre-mig blocked — price dumped {price_drop:.0%} from ATH")
+                return
+
         score = 0.0
         reasons = []
         if mcap >= 5000 and mcap <= 500000:
@@ -406,8 +438,6 @@ class MemeBot:
             score += 0.1; reasons.append(f"1h +{price_change_1h:.0f}%")
         if price_change_5m > 10:
             score += 0.1; reasons.append(f"5m +{price_change_5m:.0f}%")
-        if liquidity < 500 and liquidity > 0:
-            score -= 0.2; reasons.append("low_liq")
         if score < 0.50:
             return
         now_ts = datetime.now(timezone.utc).timestamp()
@@ -1140,6 +1170,18 @@ class MemeBot:
                     if liquidity < 300:
                         await self.state.add_blacklisted(addr)
                         logger.info(f"🚫 লিকুইডিটি pull: {symbol}")
+                        continue
+
+                    # Price dump check: >80% from ATH = dead/rug
+                    if coin_info.ath_price > 0 and current_price > 0:
+                        price_drop = 1.0 - (current_price / coin_info.ath_price)
+                        if price_drop > 0.80:
+                            logger.info(f"[SKIP] {symbol}: price dumped {price_drop:.0%} from ATH dead")
+                            continue
+
+                    # Holders check: <=3 = dead
+                    if launch_data and launch_data.holders > 0 and launch_data.holders <= 3:
+                        logger.info(f"[SKIP] {symbol}: only {launch_data.holders} holders dead")
                         continue
 
                     if 0 < age <= 21600:
