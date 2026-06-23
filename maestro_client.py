@@ -3,7 +3,7 @@ import logging
 import os
 from telethon import TelegramClient, errors
 
-logger = logging.getLogger("maestro_client")
+logger = logging.getLogger("meme_bot.maestro_client")
 
 API_ID = 26413354
 API_HASH = "d0b3f351eea6bdd0623c75555430552c"
@@ -15,11 +15,29 @@ _lock = asyncio.Lock()
 
 async def get_client() -> TelegramClient:
     global _client
-    if _client is None:
+    if _client is not None:
+        if _client.is_connected():
+            return _client
+        logger.warning("Maestro client disconnected, reconnecting...")
+        try:
+            await _client.connect()
+            return _client
+        except Exception as e:
+            logger.error(f"Reconnect failed: {e}")
+            _client = None
+    async with _lock:
+        if _client is not None:
+            return _client
         _client = TelegramClient(SESSION_FILE, API_ID, API_HASH)
-        await _client.connect()
+        try:
+            await _client.connect()
+        except Exception as e:
+            logger.error(f"Telegram connect failed: {e}")
+            _client = None
+            return None
         if not await _client.is_user_authorized():
             logger.error("Maestro client not authorized - session expired")
+            _client = None
             return None
         await _client.get_entity(MAESTRO_ID)
     return _client
@@ -44,7 +62,7 @@ async def buy(address: str, sol_amount: str = "") -> bool:
         logger.warning(f"Maestro flood wait: {e.seconds}s")
         return False
     except Exception as e:
-        logger.debug(f"Maestro buy error: {e}")
+        logger.warning(f"Maestro buy error: {e}")
         return False
 
 async def close():

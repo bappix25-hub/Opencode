@@ -401,6 +401,29 @@ class PumpCollector:
                 if record and record["is_complete"]:
                     collected.append(record)
                     collected_addrs.add(coin["address"])
+                    # Record DexScreener sighting for convergence
+                    try:
+                        from convergence_scorer import ConvergenceScorer, TokenSighting
+                        conv_scorer = ConvergenceScorer()
+                        features = record.get("features", {})
+                        conv_sighting = TokenSighting(
+                            address=coin["address"],
+                            symbol=features.get("symbol", coin.get("name", "?")),
+                            source_type="dexscreener",
+                            source_id=f"dexscreener_{coin.get('source', 'unknown')}",
+                            source_name=f"DexScreener {coin.get('source', '?')}",
+                            timestamp=datetime.now(timezone.utc).timestamp(),
+                            signal_type=coin.get("source", ""),
+                            features={
+                                "mcp": features.get("mcap", 0),
+                                "liq_usd": features.get("liquidity", 0),
+                                "holders": features.get("holders", 0),
+                                "volume_24h": features.get("volume_24h", 0),
+                            },
+                        )
+                        conv_scorer.record_sighting(conv_sighting)
+                    except Exception:
+                        pass
                     if (i + 1) % 10 == 0:
                         logger.info(f"📊 Progress: {i+1}/{min(max_collect, len(new_coins))} "
                                   f"({len(collected)} complete)")

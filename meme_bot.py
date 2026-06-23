@@ -211,6 +211,10 @@ class MemeBot:
         self._tasks.append(asyncio.create_task(self.convergence_scan_loop(), name="convergence_scan"))
         logger.info("🔥 Convergence scan loop started (every 60s)")
 
+        # Alert sender loop: picks up pending alerts from collector
+        self._tasks.append(asyncio.create_task(self.alert_sender_loop(), name="alert_sender"))
+        logger.info("🚨 Alert sender loop started (every 10s)")
+
         await send_msg(self.telegram_app.bot, "🤖 <b>বট v3 চালু!</b>\n✅ 5x filter + Auto-verify + Social signals + Paper Trading সক্রিয়")
 
         try:
@@ -2423,6 +2427,27 @@ class MemeBot:
                 logger.error(f"convergence_scan_loop error: {e}")
 
             await asyncio.sleep(60)  # Every 60 seconds
+
+    async def alert_sender_loop(self):
+        """Check for pending signal alerts from collector and send to Telegram."""
+        alert_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".pending_alert")
+        while True:
+            try:
+                await asyncio.sleep(10)
+                if os.path.exists(alert_file):
+                    try:
+                        with open(alert_file, "r") as f:
+                            alert_msg = f.read().strip()
+                        if alert_msg:
+                            await send_msg(self.telegram_app.bot, alert_msg)
+                            logger.info("🚨 Signal alert sent to Telegram")
+                        os.remove(alert_file)
+                    except Exception:
+                        pass
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"alert_sender_loop error: {e}")
 
     async def paper_trading_loop(self):
         """Monitor paper trading positions and timeout old ones."""
