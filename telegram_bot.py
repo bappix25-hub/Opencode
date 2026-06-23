@@ -27,6 +27,32 @@ def _save_channel_id(channel_id: str):
     except Exception:
         pass
 
+_alert_chat_id = None
+
+def _load_alert_chat_id():
+    global _alert_chat_id
+    try:
+        if os.path.exists(CHAT_ID_FILE):
+            with open(CHAT_ID_FILE) as f:
+                _alert_chat_id = f.read().strip()
+    except Exception:
+        pass
+
+_load_alert_chat_id()
+
+async def send_signal_alert(text: str):
+    global _alert_chat_id
+    if not _alert_chat_id:
+        _load_alert_chat_id()
+    if not _alert_chat_id:
+        return
+    try:
+        from telegram import Bot
+        bot = Bot(token=os.environ.get("BOT_TOKEN", ""))
+        await bot.send_message(chat_id=_alert_chat_id, text=text, parse_mode="HTML", disable_web_page_preview=True)
+    except Exception:
+        pass
+
 def main_keyboard():
     keyboard = [
         [KeyboardButton("📊 স্ট্যাটাস"), KeyboardButton("📈 পারফরম্যান্স")],
