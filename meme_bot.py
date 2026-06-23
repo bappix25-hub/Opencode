@@ -211,6 +211,10 @@ class MemeBot:
         self._tasks.append(asyncio.create_task(self.convergence_scan_loop(), name="convergence_scan"))
         logger.info("🔥 Convergence scan loop started (every 60s)")
 
+        # GMGN Trending scanner: proactively find early gems
+        self._tasks.append(asyncio.create_task(self.gmgn_trending_loop(), name="gmgn_trending"))
+        logger.info("🔍 GMGN Trending scanner started (every 5min)")
+
         # Alert sender loop: picks up pending alerts from collector
         self._tasks.append(asyncio.create_task(self.alert_sender_loop(), name="alert_sender"))
         logger.info("🚨 Alert sender loop started (every 10s)")
@@ -2378,6 +2382,101 @@ class MemeBot:
                 break
             except Exception as e:
                 logger.debug(f"convergence_cleanup error: {e}")
+
+            await asyncio.sleep(300)  # Every 5 min
+
+    async def gmgn_trending_loop(self):
+        """Every 5min: scan GMGN trending/new tokens for early detection."""
+        await asyncio.sleep(60)
+
+        while True:
+            try:
+                from gmgn_trending import scan_gmgn_trending, scan_gmgn_new_pairs, score_trending_token
+
+                # Scan trending tokens
+                trending_tokens = await scan_gmgn_trending(self.dex)
+
+                # Scan new pairs
+                new_pairs = await scan_gmgn_new_pairs(self.dex)
+
+                # Score and alert on high-potential tokens
+                all_tokens = trending_tokens + new_pairs
+                for token_info in all_tokens:
+                    result = score_trending_token(token_info)
+                    if result["score"] >= 50:
+                        ca = token_info["ca"]
+                        # Check if already alerted
+                        try:
+                            if await self.state.is_alerted(ca):
+                                continue
+                        except Exception:
+                            pass
+
+                        # Score with unified signal
+                        try:
+                            from unified_signal import score_token
+                            unified_token = {
+                                "symbol": token_info.get("symbol", "?"),
+                                "name": token_info.get("name", "?"),
+                                "ca": ca,
+                                "mcp": token_info.get("mc", 0),
+                                "launch_mcp": token_info.get("mc", 0),
+                                "liq_usd": token_info.get("liq_usd", 0),
+                                "holders": 0,
+                                "signal_type": "TRENDING",
+                                "source_channel": "gmgn_trending",
+                                "source_channel_name": "GMGN Trending",
+                                "price_change_5m": token_info.get("price_change_5m", 0),
+                                "price_change_1h": token_info.get("price_change_1h", 0),
+                                "volume_5m": token_info.get("volume_5m", 0),
+                            }
+
+                            dex_health = None
+                            try:
+                                from dex_health import check_token_health
+                                dex_health = await check_token_health(self.dex, ca)
+                            except Exception:
+                                pass
+
+                            score_result = score_token(unified_token, dex_health)
+                            score = score_result["score"]
+                            action = score_result["action"]
+
+                            if action in ("BUY_NOW", "ALERT"):
+                                launch_mcp = token_info.get("mc", 0)
+                                dex_status = "✅" if dex_health and dex_health.get("healthy") else "❌"
+                                alert_msg = (
+                                    f"🔍 <b>EARLY GEM FOUND</b>\n"
+                                    f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                                    f"🏷️ <b>{token_info['symbol']}</b> (Trending)\n"
+                                    f"📍 <code>{ca}</code>\n"
+                                    f"🎯 Score: <b>{score:.0f}/100</b> ({score_result['verdict']})\n"
+                                    f"💰 MCP: ${launch_mcp:,.0f} | Liq: ${token_info.get('liq_usd', 0):,.0f}\n"
+                                    f"📊 Vol24h: ${token_info.get('volume_24h', 0):,.0f} | Age: {token_info.get('age_hours', 0):.1f}h\n"
+                                    f"📈 Buy: {token_info.get('buy_ratio', 0):.0%} | PC24h: {token_info.get('price_change_24h', 0):+.0f}%\n"
+                                    f"🔬 DexScreener: {dex_status}\n"
+                                    f"📝 {score_result.get('reason', '')}\n"
+                                    f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                                    f"🔗 <a href=\"https://gmgn.ai/sol/token/{ca}\">GMGN</a> | "
+                                    f"<a href=\"https://dexscreener.com/solana/{ca}\">DexScreener</a>"
+                                )
+                                try:
+                                    alert_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".pending_alert")
+                                    with open(alert_file, "w") as af:
+                                        af.write(alert_msg)
+                                except Exception:
+                                    pass
+                                logger.info(
+                                    f"🔍 TRENDING SIGNAL: {token_info['symbol']} score={score:.0f} "
+                                    f"{score_result['verdict']} MC=${launch_mcp:,.0f}"
+                                )
+                        except Exception:
+                            pass
+
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.debug(f"gmgn_trending_loop error: {e}")
 
             await asyncio.sleep(300)  # Every 5 min
 
