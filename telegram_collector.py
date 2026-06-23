@@ -452,10 +452,22 @@ async def scan_channels(client):
                     _tracked_tokens[ca] = token
                     _stats["new_tokens"] += 1
                     logger.info(f"[NEW] {token['symbol']} MCP=${token['mcp']:.0f} liq=${token['liq_usd']:.0f} holders={token['holders']} signal={token['signal_type']} ch={CHANNEL_NAMES.get(cid, '?')}")
-                    # UNIFIED SIGNAL: score from all research, alert if strong
+                    # UNIFIED SIGNAL: DexScreener check + multi-source scoring
                     try:
                         from unified_signal import score_token
-                        score_result = score_token(token)
+
+                        # Step 1: Quick DexScreener health check
+                        dex_health = None
+                        try:
+                            from dex_health import check_token_health
+                            from dex_client import DexScreenerClient
+                            async with DexScreenerClient() as dex_client:
+                                dex_health = await check_token_health(dex_client, ca)
+                        except Exception:
+                            pass
+
+                        # Step 2: Score with unified system
+                        score_result = score_token(token, dex_health)
                         token["unified_score"] = score_result.get("score", 0)
                         token["unified_verdict"] = score_result.get("verdict", "SKIP")
                         token["unified_action"] = score_result.get("action", "IGNORE")
@@ -463,17 +475,21 @@ async def scan_channels(client):
                         score = score_result["score"]
                         verdict = score_result["verdict"]
                         action = score_result["action"]
-                        breakdown = score_result["breakdown"]
+                        breakdown = score_result.get("breakdown", {})
+                        dex_verified = score_result.get("dex_verified", False)
+
                         if action in ("BUY_NOW", "ALERT"):
                             launch_mcp = token.get("mcp", 0) or token.get("launch_mcp", 0)
+                            dex_status = "✅ DexScreener verified" if dex_verified else "⚠️ No DexScreener check"
                             alert_msg = (
                                 f"{'🟢' if action == 'BUY_NOW' else '🟡'} <b>UNIFIED SIGNAL: {verdict}</b>\n"
                                 f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
                                 f"🏷️ <b>{token['symbol']}</b> ({token.get('signal_type', '?')})\n"
                                 f"📍 <code>{ca}</code>\n"
                                 f"🎯 Score: <b>{score:.0f}/100</b> ({verdict})\n"
-                                f"📊 Early: {breakdown['early_detection']:.0f} | Winner: {breakdown['winner_fit']:.0f} | Loser: {breakdown['loser_penalty']:.0f} | Fund: {breakdown['fundamentals']:.0f}\n"
+                                f"📊 Early: {breakdown.get('early_detection', 0):.0f} | Winner: {breakdown.get('winner_fit', 0):.0f} | Multi: {breakdown.get('multi_source', 0):.0f} | Fund: {breakdown.get('fundamentals', 0):.0f}\n"
                                 f"💰 MCP: ${launch_mcp:,.0f} | Liq: ${token.get('liq_usd', 0):,.0f} | Holders: {token.get('holders', 0)}\n"
+                                f"🔬 {dex_status}\n"
                                 f"📝 {score_result.get('reason', '')}\n"
                                 f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
                                 f"🔗 <a href=\"https://gmgn.ai/sol/token/{ca}\">GMGN</a> | "
@@ -485,8 +501,8 @@ async def scan_channels(client):
                                     af.write(alert_msg)
                             except Exception:
                                 pass
-                            logger.info(f"🚨 UNIFIED SIGNAL: {token['symbol']} score={score:.0f} {verdict} {action}")
-                        elif score >= 45:
+                            logger.info(f"🚨 UNIFIED SIGNAL: {token['symbol']} score={score:.0f} {verdict} {action} dex={'✅' if dex_verified else '❌'}")
+                        elif score >= 50:
                             logger.info(f"👀 WATCH: {token['symbol']} score={score:.0f} {verdict}")
                     except Exception:
                         pass
@@ -527,23 +543,38 @@ async def scan_channels(client):
                             from unified_signal import score_token
                             existing["source_channel"] = cid
                             existing["source_channel_name"] = CHANNEL_NAMES.get(cid, f"Channel {cid}")
-                            score_result = score_token(existing)
+
+                            # DexScreener health check
+                            dex_health = None
+                            try:
+                                from dex_health import check_token_health
+                                from dex_client import DexScreenerClient
+                                async with DexScreenerClient() as dex_client:
+                                    dex_health = await check_token_health(dex_client, ca)
+                            except Exception:
+                                pass
+
+                            score_result = score_token(existing, dex_health)
                             existing["unified_score"] = score_result.get("score", 0)
                             existing["unified_verdict"] = score_result.get("verdict", "SKIP")
                             existing["unified_action"] = score_result.get("action", "IGNORE")
                             score = score_result["score"]
                             action = score_result["action"]
+                            dex_verified = score_result.get("dex_verified", False)
+
                             if action in ("BUY_NOW", "ALERT") and not await self.state.is_alerted(ca):
-                                breakdown = score_result["breakdown"]
+                                breakdown = score_result.get("breakdown", {})
                                 launch_mcp = existing.get("mcp", 0) or existing.get("launch_mcp", 0)
+                                dex_status = "✅ DexScreener verified" if dex_verified else "⚠️ No DexScreener check"
                                 alert_msg = (
                                     f"{'🟢' if action == 'BUY_NOW' else '🟡'} <b>UNIFIED SIGNAL: {score_result['verdict']}</b>\n"
                                     f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
                                     f"🏷️ <b>{existing.get('symbol', '?')}</b> ({existing.get('signal_type', '?')})\n"
                                     f"📍 <code>{ca}</code>\n"
                                     f"🎯 Score: <b>{score:.0f}/100</b> ({score_result['verdict']})\n"
-                                    f"📊 Early: {breakdown['early_detection']:.0f} | Winner: {breakdown['winner_fit']:.0f} | Loser: {breakdown['loser_penalty']:.0f} | Fund: {breakdown['fundamentals']:.0f}\n"
+                                    f"📊 Early: {breakdown.get('early_detection', 0):.0f} | Winner: {breakdown.get('winner_fit', 0):.0f} | Multi: {breakdown.get('multi_source', 0):.0f} | Fund: {breakdown.get('fundamentals', 0):.0f}\n"
                                     f"💰 MCP: ${launch_mcp:,.0f} | Liq: ${existing.get('liq_usd', 0):,.0f} | Holders: {existing.get('holders', 0)}\n"
+                                    f"🔬 {dex_status}\n"
                                     f"📝 {score_result.get('reason', '')}\n"
                                     f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
                                     f"🔗 <a href=\"https://gmgn.ai/sol/token/{ca}\">GMGN</a> | "
@@ -555,7 +586,7 @@ async def scan_channels(client):
                                         af.write(alert_msg)
                                 except Exception:
                                     pass
-                                logger.info(f"🚨 UNIFIED RE-SCORE: {existing.get('symbol', '?')} score={score:.0f} {score_result['verdict']} {action}")
+                                logger.info(f"🚨 UNIFIED RE-SCORE: {existing.get('symbol', '?')} score={score:.0f} {score_result['verdict']} {action} dex={'✅' if dex_verified else '❌'}")
                         except Exception:
                             pass
             _last_msg_ids[cid] = msgs[0].id

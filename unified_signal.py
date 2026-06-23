@@ -1,27 +1,22 @@
 """
-unified_signal.py — ONE signal from multiple research inputs.
+unified_signal.py — ONE signal: multi-source confirmed + DexScreener verified.
 
-NOT "multiple channels said so" — that's convergence.
-This learns from ALL data: winner patterns, loser patterns,
-fundamentals, early-stage detection.
+Flow:
+1. Token detected from Telegram channel(s)
+2. Compare against learned winner patterns
+3. Check how many sources confirmed it
+4. FINAL: DexScreener health check
+5. Signal ONLY if all gates pass
 
-Key insight from data:
-  - Winners: launch_mcp $276 median (caught VERY early)
-  - Losers: launch_mcp $41,523 median (caught too late)
-  - Liq/Holders: similar — liq alone doesn't predict
-
-Signal = early_detection(35) + winner_fit(25) + loser_penalty(15)
-         + fundamentals(15) + channel_intel(10)
+"Early stage" = confirmed fast, not necessarily at launch.
 """
 
 import json
 import os
 import math
 from datetime import datetime, timezone
-from typing import Optional
 
 DATA_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "telegram_tracked_tokens.json")
-PATTERNS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "bot_data.json")
 
 
 def _load_all_data():
@@ -35,21 +30,17 @@ def _load_all_data():
 
 
 def _get_profiles(tokens: dict):
-    """Extract winner and loser feature profiles."""
-    winners = []
-    losers = []
+    winners, losers = [], []
     for ca, t in tokens.items():
         status = t.get("status", "")
         ath = t.get("ath_multiplier", 0)
-        launch_mcp = t.get("launch_mcp", 0) or t.get("mcp", 0)
         profile = {
-            "launch_mcp": launch_mcp,
+            "launch_mcp": t.get("launch_mcp", 0) or t.get("mcp", 0),
             "liq_usd": t.get("liq_usd", 0),
             "holders": t.get("holders", 0),
             "signal_type": t.get("signal_type", ""),
             "source_channel": t.get("source_channel", ""),
             "renounced": t.get("renounced", False),
-            "dev_balance_sol": t.get("dev_balance_sol", 0),
         }
         if status in ("winner", "mega_winner") or ath >= 5:
             winners.append(profile)
@@ -59,34 +50,79 @@ def _get_profiles(tokens: dict):
 
 
 def _compute_medians(profiles, key):
-    vals = [p[key] for p in profiles if p[key] > 0]
+    vals = sorted([p[key] for p in profiles if p[key] > 0])
     if not vals:
         return 0
-    vals.sort()
     n = len(vals)
     return (vals[n//2] + vals[(n-1)//2]) / 2 if n % 2 == 0 else vals[n//2]
 
 
-def _early_detection_score(token: dict) -> float:
-    """
-    How early was this token detected?
-    Winners median: $276, Losers median: $41,523.
-    Earlier = better. Score 0-1.
-    """
-    launch_mcp = token.get("launch_mcp", 0) or token.get("mcp", 0)
-    if launch_mcp <= 0:
-        return 0.3
+def _health_gate(token: dict) -> dict:
+    """Is this token alive or dead? Returns {"alive": bool, "reason": str}"""
+    mcp = token.get("mcp", 0) or token.get("launch_mcp", 0)
+    liq = token.get("liq_usd", 0)
+    holders = token.get("holders", 0)
+    ath_mcp = token.get("ath_mcp", 0)
 
-    # Score: $100 -> 0.95, $500 -> 0.78, $1K -> 0.65, $5K -> 0.43, $20K -> 0.25, $50K+ -> 0.12
-    score = 1.0 / (1.0 + math.log10(max(launch_mcp / 200, 0.1)))
-    return max(0.05, min(1.0, score))
+    if mcp <= 0 or mcp < 100:
+        return {"alive": False, "reason": "MC $0 — dead"}
+    if liq <= 0 and mcp > 0:
+        return {"alive": False, "reason": "Zero liquidity"}
+    if ath_mcp > 0 and mcp > 0:
+        drop = 1.0 - (mcp / ath_mcp)
+        if drop > 0.85:
+            return {"alive": False, "reason": f"Dumped {drop:.0%} from ATH"}
+    if holders > 0 and holders <= 2:
+        return {"alive": True, "reason": "Very few holders", "penalty": 0.3}
+
+    return {"alive": True, "reason": "", "penalty": 0.0}
+
+
+def _multi_source_score(token: dict, all_tokens: dict) -> float:
+    """
+    How many sources have confirmed this token?
+    More independent sources = higher confidence.
+    Score 0-1.
+    """
+    ca = token.get("ca", "")
+    if not ca:
+        return 0.3  # No address, can't check
+
+    # Count unique channels that have seen this token
+    sources = set()
+    for t_addr, t_data in all_tokens.items():
+        if t_addr == ca:
+            ch = t_data.get("source_channel", "")
+            if ch and ch != "?":
+                sources.add(ch)
+            # Also count GMGN as a source
+            if t_data.get("signal_type", "") in ("KOTH", "FDV_SURGE", "CTO", "DEV_BOUGHT", "DEV_SOLD", "KOL_FOMO", "PUMP_COMPLETED"):
+                sources.add("gmgn")
+
+    # Also check current token's source
+    current_ch = token.get("source_channel", "")
+    if current_ch and current_ch != "?":
+        sources.add(current_ch)
+    if token.get("signal_type", "") in ("KOTH", "FDV_SURGE", "CTO", "DEV_BOUGHT", "DEV_SOLD", "KOL_FOMO", "PUMP_COMPLETED"):
+        sources.add("gmgn")
+
+    num_sources = len(sources)
+
+    # 1 source = 0.3 (not confirmed)
+    # 2 sources = 0.6 (confirmed by 2)
+    # 3+ sources = 0.8 (strong confirmation)
+    if num_sources >= 3:
+        return 0.8
+    elif num_sources >= 2:
+        return 0.6
+    elif num_sources == 1:
+        return 0.3
+    else:
+        return 0.2
 
 
 def _winner_fit_score(token: dict, winners: list) -> float:
-    """
-    How well does this token fit the winner profile?
-    Higher = more similar to known winners.
-    """
+    """How similar to known winners? 0-1."""
     if not winners:
         return 0.5
 
@@ -101,16 +137,13 @@ def _winner_fit_score(token: dict, winners: list) -> float:
     score = 0.0
     total_w = 0.0
 
-    # MCP proximity to winner median (weight: 4) — MOST important
     if token_mcp > 0 and win_mcp_med > 0:
         wght = 4.0
         ratio = token_mcp / win_mcp_med
-        # Perfect if same, drops off with distance
         sim = max(0, 1.0 - abs(math.log10(max(ratio, 0.01))) / 2.0)
         score += sim * wght
         total_w += wght
 
-    # Liq proximity (weight: 3)
     if token_liq > 0 and win_liq_med > 0:
         wght = 3.0
         log_diff = abs(math.log10(max(token_liq, 1)) - math.log10(max(win_liq_med, 1)))
@@ -118,14 +151,12 @@ def _winner_fit_score(token: dict, winners: list) -> float:
         score += sim * wght
         total_w += wght
 
-    # Holders proximity (weight: 2)
     if token_hold > 0 and win_hold_med > 0:
         wght = 2.0
         dist = min(abs(token_hold - win_hold_med) / 30, 1.0)
         score += (1.0 - dist) * wght
         total_w += wght
 
-    # Renounced (weight: 1)
     wght = 1.0
     renounced_wins = sum(1 for w in winners if w["renounced"])
     renounced_rate = renounced_wins / len(winners) if winners else 0.5
@@ -138,62 +169,9 @@ def _winner_fit_score(token: dict, winners: list) -> float:
     return (score / total_w) if total_w > 0 else 0.5
 
 
-def _loser_penalty_score(token: dict, losers: list) -> float:
-    """
-    Penalty for matching loser profile.
-    Returns 0-1 where 1 = no penalty (different from losers),
-    0 = maximum penalty (matches losers perfectly).
-    """
-    if not losers:
-        return 1.0  # No loser data, no penalty
-
-    lose_liq_med = _compute_medians(losers, "liq_usd")
-    lose_hold_med = _compute_medians(losers, "holders")
-    lose_mcp_med = _compute_medians(losers, "launch_mcp")
-
-    token_liq = token.get("liq_usd", 0)
-    token_hold = token.get("holders", 0)
-    token_mcp = token.get("launch_mcp", 0) or token.get("mcp", 0)
-
-    penalty = 0.0
-    total_w = 0.0
-
-    # MCP penalty — if close to loser median, penalize (weight: 4)
-    if token_mcp > 0 and lose_mcp_med > 0:
-        wght = 4.0
-        ratio = token_mcp / lose_mcp_med
-        # Close to loser median = high penalty
-        closeness = max(0, 1.0 - abs(math.log10(max(ratio, 0.01))) / 2.0)
-        penalty += closeness * wght
-        total_w += wght
-
-    # Liq penalty — if close to loser median (weight: 2)
-    if token_liq > 0 and lose_liq_med > 0:
-        wght = 2.0
-        log_diff = abs(math.log10(max(token_liq, 1)) - math.log10(max(lose_liq_med, 1)))
-        closeness = max(0, 1.0 - log_diff / 3.0)
-        penalty += closeness * wght
-        total_w += wght
-
-    # Holders penalty (weight: 1)
-    if token_hold > 0 and lose_hold_med > 0:
-        wght = 1.0
-        dist = min(abs(token_hold - lose_hold_med) / 30, 1.0)
-        closeness = 1.0 - dist
-        penalty += closeness * wght
-        total_w += wght
-
-    if total_w > 0:
-        penalty_ratio = penalty / total_w  # 0-1, how much like a loser
-        return 1.0 - penalty_ratio  # Invert: 1 = no penalty, 0 = max penalty
-
-    return 1.0
-
-
 def _fundamentals_score(token: dict) -> float:
-    """Token fundamentals quality at early stage."""
+    """Token quality."""
     score = 0.5
-
     liq = token.get("liq_usd", 0)
     if 5000 <= liq <= 50000:
         score += 0.15
@@ -210,70 +188,98 @@ def _fundamentals_score(token: dict) -> float:
     elif holders < 3:
         score -= 0.05
 
-    dev_bal = token.get("dev_balance_sol", 0)
-    if 0 < dev_bal < 5:
-        score += 0.1
-    elif dev_bal > 50:
-        score -= 0.05
-
     if token.get("renounced", False):
         score += 0.1
 
     return max(0.0, min(1.0, score))
 
 
-def _channel_intelligence_score(token: dict, tokens: dict) -> float:
-    """Channel track record — learns over time."""
-    ch = token.get("source_channel", "")
-    if not ch:
-        return 0.5
-
-    ch_winners = 0
-    ch_total = 0
-    for ca, t in tokens.items():
-        if t.get("source_channel") == ch:
-            ch_total += 1
-            if t.get("status") in ("winner", "mega_winner") or t.get("ath_multiplier", 0) >= 5:
-                ch_winners += 1
-
-    if ch_total < 5:
-        return 0.5
-
-    win_rate = ch_winners / ch_total
-    return 0.2 + min(win_rate / 0.1, 0.6)
-
-
-def score_token(token: dict) -> dict:
+def score_token(token: dict, dex_health: dict = None) -> dict:
     """
-    UNIFIED SIGNAL SCORE — One score from multiple research inputs.
+    UNIFIED SIGNAL — Multi-source confirmed + health verified.
 
-    Components:
-    - Early detection (35%): How early was this caught vs winner median?
-    - Winner fit (25%): How similar to known winners?
-    - Loser penalty (15%): How different from known losers?
-    - Fundamentals (15%): Token quality metrics
-    - Channel intelligence (10%): Channel track record
+    Gates:
+    1. Health gate: is the token alive?
+    2. Winner fit: does it match winner patterns?
+    3. Multi-source: how many sources confirmed?
+    4. DexScreener: final health check (if available)
+
+    Signal only if:
+    - Token is alive (health gate)
+    - Winner fit >= 0.4
+    - DexScreener healthy (if checked)
     """
+    # ===== GATE 1: HEALTH =====
+    health = _health_gate(token)
+    if not health["alive"]:
+        return {
+            "score": 5.0,
+            "verdict": "DEAD",
+            "action": "SKIP",
+            "breakdown": {},
+            "reason": health["reason"],
+            "dex_verified": False,
+        }
+
     tokens_data = _load_all_data()
     winners, losers = _get_profiles(tokens_data)
 
-    early = _early_detection_score(token)
+    # ===== SCORING =====
     winner_fit = _winner_fit_score(token, winners)
-    loser_pen = _loser_penalty_score(token, losers)
+    multi_src = _multi_source_score(token, tokens_data)
     fundamentals = _fundamentals_score(token)
-    channel = _channel_intelligence_score(token, tokens_data)
 
+    # Early detection (how low is MCP?)
+    launch_mcp = token.get("launch_mcp", 0) or token.get("mcp", 0)
+    if launch_mcp > 0:
+        early = 1.0 / (1.0 + math.log10(max(launch_mcp / 200, 0.1)))
+        early = max(0.05, min(1.0, early))
+    else:
+        early = 0.3
+
+    # Raw score
     raw_score = (
-        early * 0.35 +
-        winner_fit * 0.25 +
-        loser_pen * 0.15 +
-        fundamentals * 0.15 +
-        channel * 0.10
+        early * 0.25 +
+        winner_fit * 0.30 +
+        multi_src * 0.25 +
+        fundamentals * 0.20
     )
+
+    # Health penalty
+    raw_score *= (1.0 - health.get("penalty", 0) * 0.5)
+
+    # ===== GATE 2: DEX SCREENER (if available) =====
+    dex_verified = False
+    dex_reason = ""
+    if dex_health:
+        if dex_health.get("healthy"):
+            dex_verified = True
+            dex_reason = dex_health.get("reason", "")
+            # Bonus for DexScreener verified
+            raw_score = min(1.0, raw_score * 1.15)
+        else:
+            # DexScreener says unhealthy — heavy penalty
+            dex_reason = dex_health.get("reason", "")
+            raw_score *= 0.3  # 70% penalty
 
     final_score = round(raw_score * 100, 1)
 
-    if final_score >= 75:
+    # ===== VERDICT =====
+    # Require: alive + winner_fit >= 0.4 + (dex verified OR 2+ sources)
+    can_signal = (
+        health["alive"] and
+        winner_fit >= 0.4 and
+        (dex_verified or multi_src >= 0.6)
+    )
+
+    if not can_signal:
+        if final_score >= 50:
+            verdict = "WATCH"
+            action = "MONITOR"
+        else:
+            verdict = "WEAK"
+            action = "SKIP"
+    elif final_score >= 75:
         verdict = "STRONG"
         action = "BUY_NOW"
     elif final_score >= 60:
@@ -282,36 +288,37 @@ def score_token(token: dict) -> dict:
     elif final_score >= 45:
         verdict = "WATCH"
         action = "MONITOR"
-    elif final_score >= 30:
+    else:
         verdict = "WEAK"
         action = "SKIP"
-    else:
-        verdict = "POOR"
-        action = "IGNORE"
 
+    # Reasons
     reasons = []
-    launch_mcp = token.get("launch_mcp", 0) or token.get("mcp", 0)
     if launch_mcp > 0 and launch_mcp < 1000:
         reasons.append(f"Very early (MCP ${launch_mcp:,.0f})")
     elif launch_mcp > 0 and launch_mcp < 5000:
         reasons.append(f"Early (MCP ${launch_mcp:,.0f})")
-    elif launch_mcp > 20000:
-        reasons.append(f"Late (MCP ${launch_mcp:,.0f})")
+
+    if health["reason"]:
+        reasons.append(f"⚠️ {health['reason']}")
+
+    if dex_verified:
+        reasons.append(f"DexScreener ✅ {dex_reason}")
+    elif dex_health and not dex_health.get("healthy"):
+        reasons.append(f"DexScreener ❌ {dex_reason}")
+
+    if multi_src >= 0.6:
+        reasons.append("Multi-source confirmed")
+    elif multi_src < 0.3:
+        reasons.append("Single source only")
 
     if winner_fit >= 0.7:
         reasons.append("Matches winner profile")
-    elif winner_fit < 0.3:
-        reasons.append("Differs from winners")
-
-    if loser_pen < 0.5:
-        reasons.append("Matches loser profile!")
-    elif loser_pen >= 0.8:
-        reasons.append("Unlike losers")
+    elif winner_fit < 0.4:
+        reasons.append("Doesn't match winners")
 
     if fundamentals >= 0.7:
         reasons.append("Strong fundamentals")
-    elif fundamentals < 0.3:
-        reasons.append("Weak fundamentals")
 
     reason = " | ".join(reasons) if reasons else "Insufficient data"
 
@@ -322,11 +329,11 @@ def score_token(token: dict) -> dict:
         "breakdown": {
             "early_detection": round(early * 100, 1),
             "winner_fit": round(winner_fit * 100, 1),
-            "loser_penalty": round(loser_pen * 100, 1),
+            "multi_source": round(multi_src * 100, 1),
             "fundamentals": round(fundamentals * 100, 1),
-            "channel_intelligence": round(channel * 100, 1),
         },
         "reason": reason,
+        "dex_verified": dex_verified,
         "num_winners": len(winners),
         "num_losers": len(losers),
     }
