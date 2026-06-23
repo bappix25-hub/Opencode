@@ -203,6 +203,15 @@ class MemeBot:
         except Exception as e:
             logger.debug(f"Telegram collector start error: {e}")
 
+        # Social tracker: backfill social data from tracked tokens
+        try:
+            from social_tracker import backfill_from_tracked
+            social_count = backfill_from_tracked()
+            if social_count > 0:
+                logger.info(f"🔗 Social tracker: backfilled {social_count} tokens")
+        except Exception as e:
+            logger.debug(f"Social backfill error: {e}")
+
         # Signal review loop: check every 6h, report TP/SL for each signal
         self._tasks.append(asyncio.create_task(self.signal_review_loop(), name="signal_review"))
         logger.info("📊 Signal review loop started (every 6h)")
@@ -1664,6 +1673,13 @@ class MemeBot:
                         record_signal_result(addr, sig_info.symbol, ath_multiplier, current_multiplier, sig_info.signal_age, sig_info.signal_time, min_price_multiplier)
                         await self.state.mark_signal_checked(addr)
                         logger.info(f"[OUTCOME] {sig_info.symbol}: ATH={ath_multiplier:.2f}x current={current_multiplier:.2f}x @ T+6h")
+                        # Learn social patterns from outcome
+                        try:
+                            from social_tracker import record_token_outcome
+                            is_winner = ath_multiplier >= 2.0
+                            record_token_outcome(addr, is_winner)
+                        except Exception:
+                            pass
                         try:
                             compute_signal_criteria()
                         except Exception:
@@ -2573,7 +2589,14 @@ class MemeBot:
                             except Exception:
                                 pass
 
-                            score_result = score_token(unified_token, dex_health)
+                                # Record social snapshot for learning
+                                try:
+                                    from social_tracker import record_social_snapshot
+                                    record_social_snapshot(ca, unified_token)
+                                except Exception:
+                                    pass
+
+                                score_result = score_token(unified_token, dex_health)
                             score = score_result["score"]
                             action = score_result["action"]
 
@@ -2629,6 +2652,94 @@ class MemeBot:
                                     pass
                         except Exception:
                             pass
+
+                # Check for long-time active tokens (from gmgn_trending.json)
+                try:
+                    import json as _json
+                    trending_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "gmgn_trending.json")
+                    if os.path.exists(trending_file):
+                        with open(trending_file) as tf:
+                            trending_data = _json.load(tf)
+                        for addr, t_info in trending_data.get("tracked", {}).items():
+                            if t_info.get("long_time_active") and not t_info.get("long_time_alerted"):
+                                # Check if already alerted
+                                if await self.state.is_alerted(addr):
+                                    continue
+                                
+                                # Score with unified signal
+                                unified_lt = {
+                                    "symbol": t_info.get("symbol", "?"),
+                                    "name": t_info.get("name", "?"),
+                                    "ca": addr,
+                                    "mcp": t_info.get("mc", 0),
+                                    "launch_mcp": t_info.get("mc", 0),
+                                    "liq_usd": t_info.get("liq_usd", 0),
+                                    "holders": 0,
+                                    "signal_type": "LONG_TIME_ACTIVE",
+                                    "source_channel": "gmgn_trending",
+                                    "source_channel_name": "GMGN Long-Time",
+                                    "volume_24h": t_info.get("volume_24h", 0),
+                                    "hours_active": t_info.get("hours_active", 0),
+                                    "has_website": False,
+                                    "has_twitter": False,
+                                    "has_telegram": False,
+                                }
+                                
+                                # Fetch social data
+                                try:
+                                    import aiohttp as _aio
+                                    async with _aio.ClientSession() as _sess:
+                                        _url = f"https://api.dexscreener.com/tokens/v1/solana/{addr}"
+                                        async with _sess.get(_url, timeout=_aio.ClientTimeout(total=8)) as _resp:
+                                            if _resp.status == 200:
+                                                _pairs = await _resp.json()
+                                                if _pairs and isinstance(_pairs, list) and _pairs[0]:
+                                                    _info = _pairs[0].get("info", {})
+                                                    _socials = _info.get("socials", [])
+                                                    _websites = _info.get("websites", [])
+                                                    unified_lt["socials_list"] = _socials
+                                                    unified_lt["websites_list"] = _websites
+                                                    unified_lt["has_website"] = len(_websites) > 0
+                                                    unified_lt["has_twitter"] = any(
+                                                        "twitter" in s.get("url", "") or "x.com" in s.get("url", "")
+                                                        for s in _socials
+                                                    )
+                                                    unified_lt["has_telegram"] = any(
+                                                        "t.me" in s.get("url", "") for s in _socials
+                                                    )
+                                except Exception:
+                                    pass
+                                
+                                lt_result = score_token(unified_lt)
+                                if lt_result["score"] >= 55:
+                                    lt_alert = (
+                                        f"🕐 <b>LONG-TIME ACTIVE</b>\n"
+                                        f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                                        f"🏷️ <b>{t_info['symbol']}</b>\n"
+                                        f"📍 <code>{addr}</code>\n"
+                                        f"🎯 Score: <b>{lt_result['score']:.0f}/100</b> ({lt_result['verdict']})\n"
+                                        f"💰 MCP: ${t_info.get('mc', 0):,.0f} | Liq: ${t_info.get('liq_usd', 0):,.0f}\n"
+                                        f"⏱️ Active: {t_info.get('hours_active', 0):.1f}h\n"
+                                        f"📊 Vol24h: ${t_info.get('volume_24h', 0):,.0f}\n"
+                                        f"📝 {lt_result.get('reason', '')}\n"
+                                        f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                                        f"🔗 <a href=\"https://gmgn.ai/sol/token/{addr}\">GMGN</a> | "
+                                        f"<a href=\"https://dexscreener.com/solana/{addr}\">DexScreener</a>"
+                                    )
+                                    try:
+                                        alert_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".pending_alert")
+                                        with open(alert_file, "w") as af:
+                                            af.write(lt_alert)
+                                    except Exception:
+                                        pass
+                                    t_info["long_time_alerted"] = True
+                                    logger.info(
+                                        f"🕐 LONG-TIME SIGNAL: {t_info['symbol']} "
+                                        f"active={t_info.get('hours_active',0):.1f}h "
+                                        f"MC=${t_info.get('mc',0):,.0f}"
+                                    )
+                except Exception:
+                    pass
 
             except asyncio.CancelledError:
                 break
