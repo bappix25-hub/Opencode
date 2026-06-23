@@ -2362,71 +2362,24 @@ class MemeBot:
             await asyncio.sleep(21600)  # Every 6 hours
 
     async def convergence_scan_loop(self):
-        """Every 60s: check convergence scores, alert on high-confidence multi-source signals."""
-        await asyncio.sleep(120)  # Wait 2 min for initial data collection
+        """Every 5min: cleanup old convergence data. Signals now scored at detection time."""
+        await asyncio.sleep(120)
 
         while True:
             try:
                 from convergence_scorer import ConvergenceScorer
                 scorer = ConvergenceScorer()
-
-                # Cleanup old sightings daily
                 now_ts = datetime.now(timezone.utc).timestamp()
-                if int(now_ts) % 86400 < 60:
+                if int(now_ts) % 86400 < 300:
                     removed = scorer.cleanup_old()
                     if removed:
                         logger.info(f"🧹 Convergence cleanup: {removed} old tokens removed")
-
-                # Get top converging tokens
-                top = scorer.get_top_converging(min_score=40, limit=10)
-
-                for conv in top:
-                    if await self.state.is_alerted(conv.address):
-                        continue
-
-                    score = conv.convergence_score
-                    level = conv.confidence_level
-                    action = conv.recommended_action
-
-                    if score >= 60:
-                        # STRONG/HIGH signal: send alert + auto-buy
-                        alert_text = (
-                            f"🔥 <b>CONVERGENCE SIGNAL</b>\n"
-                            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-                            f"🏷️ <b>{conv.symbol}</b>\n"
-                            f"📍 <code>{conv.address}</code>\n"
-                            f"🎯 Score: <b>{score:.0f}/100</b> ({level})\n"
-                            f"📡 Sources: {conv.source_summary}\n"
-                            f"🧠 {conv.reason}\n"
-                            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-                            f"🔗 <a href=\"https://gmgn.ai/sol/token/{conv.address}\">GMGN</a> | "
-                            f"<a href=\"https://dexscreener.com/solana/{conv.address}\">DexScreener</a>"
-                        )
-                        await send_msg(self.telegram_app.bot, alert_text)
-                        await self.state.add_alerted(conv.address)
-                        scorer.mark_alerted(conv.address)
-
-                        # Auto-buy if action is strong_signal
-                        if action == "strong_signal" and score >= 80:
-                            try:
-                                from maestro_client import get_client
-                                mc = get_client()
-                                await mc.buy(conv.address)
-                                logger.info(f"🔥 AUTO-BUY: {conv.symbol} score={score:.0f}")
-                            except Exception as e:
-                                logger.debug(f"Auto-buy error: {e}")
-
-                        logger.info(f"🔥 CONVERGENCE ALERT: {conv.symbol} score={score:.0f} {level} {conv.source_summary}")
-
-                    elif score >= 40:
-                        logger.info(f"👀 WATCH: {conv.symbol} score={score:.0f} {level} {conv.source_summary}")
-
             except asyncio.CancelledError:
                 break
             except Exception as e:
-                logger.error(f"convergence_scan_loop error: {e}")
+                logger.debug(f"convergence_cleanup error: {e}")
 
-            await asyncio.sleep(60)  # Every 60 seconds
+            await asyncio.sleep(300)  # Every 5 min
 
     async def alert_sender_loop(self):
         """Check for pending signal alerts from collector and send to Telegram."""

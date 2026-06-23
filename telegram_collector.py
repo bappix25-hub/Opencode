@@ -452,21 +452,42 @@ async def scan_channels(client):
                     _tracked_tokens[ca] = token
                     _stats["new_tokens"] += 1
                     logger.info(f"[NEW] {token['symbol']} MCP=${token['mcp']:.0f} liq=${token['liq_usd']:.0f} holders={token['holders']} signal={token['signal_type']} ch={CHANNEL_NAMES.get(cid, '?')}")
-                    # Score GMGN tokens and alert if good
+                    # UNIFIED SIGNAL: score from all research, alert if strong
                     try:
-                        from gmgn_scorer import score_gmgn_token, generate_signal_alert, should_alert
-                        score_result = score_gmgn_token(token)
-                        token["gmgn_score"] = score_result.get("score", 0)
-                        token["gmgn_verdict"] = score_result.get("verdict", "SKIP")
-                        if should_alert(token, score_result):
-                            alert_msg = generate_signal_alert(token, score_result)
+                        from unified_signal import score_token
+                        score_result = score_token(token)
+                        token["unified_score"] = score_result.get("score", 0)
+                        token["unified_verdict"] = score_result.get("verdict", "SKIP")
+                        token["unified_action"] = score_result.get("action", "IGNORE")
+                        token["unified_breakdown"] = score_result.get("breakdown", {})
+                        score = score_result["score"]
+                        verdict = score_result["verdict"]
+                        action = score_result["action"]
+                        breakdown = score_result["breakdown"]
+                        if action in ("BUY_NOW", "ALERT"):
+                            launch_mcp = token.get("mcp", 0) or token.get("launch_mcp", 0)
+                            alert_msg = (
+                                f"{'🟢' if action == 'BUY_NOW' else '🟡'} <b>UNIFIED SIGNAL: {verdict}</b>\n"
+                                f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                                f"🏷️ <b>{token['symbol']}</b> ({token.get('signal_type', '?')})\n"
+                                f"📍 <code>{ca}</code>\n"
+                                f"🎯 Score: <b>{score:.0f}/100</b> ({verdict})\n"
+                                f"📊 Early: {breakdown['early_detection']:.0f} | Winner: {breakdown['winner_fit']:.0f} | Loser: {breakdown['loser_penalty']:.0f} | Fund: {breakdown['fundamentals']:.0f}\n"
+                                f"💰 MCP: ${launch_mcp:,.0f} | Liq: ${token.get('liq_usd', 0):,.0f} | Holders: {token.get('holders', 0)}\n"
+                                f"📝 {score_result.get('reason', '')}\n"
+                                f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                                f"🔗 <a href=\"https://gmgn.ai/sol/token/{ca}\">GMGN</a> | "
+                                f"<a href=\"https://dexscreener.com/solana/{ca}\">DexScreener</a>"
+                            )
                             try:
                                 alert_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".pending_alert")
                                 with open(alert_file, "w") as af:
                                     af.write(alert_msg)
                             except Exception:
                                 pass
-                            logger.info(f"🚨 SIGNAL ALERT: {token['symbol']} score={score_result['score']:.2f} verdict={score_result['verdict']}")
+                            logger.info(f"🚨 UNIFIED SIGNAL: {token['symbol']} score={score:.0f} {verdict} {action}")
+                        elif score >= 45:
+                            logger.info(f"👀 WATCH: {token['symbol']} score={score:.0f} {verdict}")
                     except Exception:
                         pass
                     # Record channel signal for channel intelligence
@@ -489,32 +510,6 @@ async def scan_channels(client):
                         )
                     except Exception:
                         pass
-                    # Record convergence sighting
-                    try:
-                        from convergence_scorer import ConvergenceScorer, TokenSighting
-                        from learner import get_channel_weights
-                        weights = get_channel_weights()
-                        conv_scorer = ConvergenceScorer()
-                        conv_sighting = TokenSighting(
-                            address=ca,
-                            symbol=token.get("symbol", ""),
-                            source_type="telegram",
-                            source_id=str(cid),
-                            source_name=CHANNEL_NAMES.get(cid, f"Channel {cid}"),
-                            timestamp=datetime.now(timezone.utc).timestamp(),
-                            signal_type=token.get("signal_type", ""),
-                            features={
-                                "mcp": token.get("mcp", 0),
-                                "liq_usd": token.get("liq_usd", 0),
-                                "holders": token.get("holders", 0),
-                            },
-                            channel_weight=weights.get(str(cid), 1.0),
-                        )
-                        conv = conv_scorer.record_sighting(conv_sighting)
-                        if conv.convergence_score >= 60:
-                            logger.info(f"🔥 CONVERGENCE: {token['symbol']} score={conv.convergence_score:.0f} {conv.source_summary}")
-                    except Exception:
-                        pass
                 else:
                     existing = _tracked_tokens[ca]
                     existing["last_check"] = datetime.now(timezone.utc).timestamp()
@@ -526,32 +521,43 @@ async def scan_channels(client):
                         existing["top10_pct"] = token["top10_pct"]
                     if token.get("dev_status", "UNKNOWN") != "UNKNOWN":
                         existing["dev_status"] = token["dev_status"]
-                    # Record convergence sighting for existing token (cross-channel)
-                    try:
-                        from convergence_scorer import ConvergenceScorer, TokenSighting
-                        from learner import get_channel_weights
-                        weights = get_channel_weights()
-                        conv_scorer = ConvergenceScorer()
-                        conv_sighting = TokenSighting(
-                            address=ca,
-                            symbol=token.get("symbol", existing.get("symbol", "")),
-                            source_type="telegram",
-                            source_id=str(cid),
-                            source_name=CHANNEL_NAMES.get(cid, f"Channel {cid}"),
-                            timestamp=datetime.now(timezone.utc).timestamp(),
-                            signal_type=token.get("signal_type", ""),
-                            features={
-                                "mcp": token.get("mcp", 0),
-                                "liq_usd": token.get("liq_usd", 0),
-                                "holders": token.get("holders", 0),
-                            },
-                            channel_weight=weights.get(str(cid), 1.0),
-                        )
-                        conv = conv_scorer.record_sighting(conv_sighting)
-                        if conv.convergence_score >= 60:
-                            logger.info(f"🔥 CONVERGENCE: {existing.get('symbol', '?')} score={conv.convergence_score:.0f} {conv.source_summary}")
-                    except Exception:
-                        pass
+                    # Re-score existing token with unified signal when new data arrives
+                    if token.get("holders", 0) > 0 or token.get("liq_usd", 0) > 0:
+                        try:
+                            from unified_signal import score_token
+                            existing["source_channel"] = cid
+                            existing["source_channel_name"] = CHANNEL_NAMES.get(cid, f"Channel {cid}")
+                            score_result = score_token(existing)
+                            existing["unified_score"] = score_result.get("score", 0)
+                            existing["unified_verdict"] = score_result.get("verdict", "SKIP")
+                            existing["unified_action"] = score_result.get("action", "IGNORE")
+                            score = score_result["score"]
+                            action = score_result["action"]
+                            if action in ("BUY_NOW", "ALERT") and not await self.state.is_alerted(ca):
+                                breakdown = score_result["breakdown"]
+                                launch_mcp = existing.get("mcp", 0) or existing.get("launch_mcp", 0)
+                                alert_msg = (
+                                    f"{'🟢' if action == 'BUY_NOW' else '🟡'} <b>UNIFIED SIGNAL: {score_result['verdict']}</b>\n"
+                                    f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                                    f"🏷️ <b>{existing.get('symbol', '?')}</b> ({existing.get('signal_type', '?')})\n"
+                                    f"📍 <code>{ca}</code>\n"
+                                    f"🎯 Score: <b>{score:.0f}/100</b> ({score_result['verdict']})\n"
+                                    f"📊 Early: {breakdown['early_detection']:.0f} | Winner: {breakdown['winner_fit']:.0f} | Loser: {breakdown['loser_penalty']:.0f} | Fund: {breakdown['fundamentals']:.0f}\n"
+                                    f"💰 MCP: ${launch_mcp:,.0f} | Liq: ${existing.get('liq_usd', 0):,.0f} | Holders: {existing.get('holders', 0)}\n"
+                                    f"📝 {score_result.get('reason', '')}\n"
+                                    f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                                    f"🔗 <a href=\"https://gmgn.ai/sol/token/{ca}\">GMGN</a> | "
+                                    f"<a href=\"https://dexscreener.com/solana/{ca}\">DexScreener</a>"
+                                )
+                                try:
+                                    alert_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".pending_alert")
+                                    with open(alert_file, "w") as af:
+                                        af.write(alert_msg)
+                                except Exception:
+                                    pass
+                                logger.info(f"🚨 UNIFIED RE-SCORE: {existing.get('symbol', '?')} score={score:.0f} {score_result['verdict']} {action}")
+                        except Exception:
+                            pass
             _last_msg_ids[cid] = msgs[0].id
         except Exception as e:
             _stats["errors"] += 1
