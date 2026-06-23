@@ -996,6 +996,84 @@ class TelegramHandlers:
             await update.message.reply_text("❌ বট বন্ধ!")
 
 
+    async def cmd_scan(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Scan a token using @tokenscan bot for detailed analysis."""
+        if not context.args:
+            await update.message.reply_text("❌ /scan TOKEN_ADDRESS")
+            return
+        address = context.args[0].strip()
+        await update.message.reply_text("⏳ @tokenscan থেকে ডেটা আনছি...")
+        try:
+            from maestro_client import get_client
+            from tokenscan_client import scan_token
+            tg_client = await get_client()
+            if not tg_client:
+                await update.message.reply_text("❌ Telegram client পাওয়া যায়নি।")
+                return
+            ts_data = await scan_token(tg_client, address)
+            if not ts_data.get("parsed"):
+                await update.message.reply_text("❌ TokenScan থেকে ডেটা পাওয়া যায়নি।")
+                return
+
+            holders = ts_data.get("holders", 0)
+            top10 = ts_data.get("top10_pct", 0)
+            bundled = ts_data.get("bundled_pct", 0)
+            audit = ts_data.get("audit_score", 0)
+            audit_max = ts_data.get("audit_max", 10)
+            dex_paid = ts_data.get("dex_paid", False)
+            mc = ts_data.get("mc", 0)
+            ath = ts_data.get("ath", 0)
+            liq = ts_data.get("liq", 0)
+            vol = ts_data.get("vol_24h", 0)
+            dev = ts_data.get("dev_wallet", "")
+
+            # Risk assessment
+            risk = "🟢 LOW"
+            risks = []
+            if holders > 0 and holders <= 10:
+                risks.append("Holders too low")
+            if top10 > 40:
+                risks.append(f"Top10 {top10:.0f}%")
+            if bundled > 25:
+                risks.append(f"Bundled {bundled:.0f}%")
+            if audit > 0 and audit < 5:
+                risks.append(f"Audit {audit}/{audit_max}")
+            if not dex_paid:
+                risks.append("DEX not paid")
+            if risks:
+                risk = f"🟡 {' | '.join(risks[:3])}"
+            if (holders > 0 and holders <= 5) or top10 > 60 or bundled > 40:
+                risk = "🔴 HIGH"
+
+            # ATH drop
+            ath_drop = ""
+            if ath > 0 and mc > 0:
+                drop_pct = (1 - mc / ath) * 100
+                ath_drop = f"\n📉 ATH Drop: {drop_pct:.1f}%"
+
+            msg = (
+                f"🔍 <b>TokenScan Analysis</b>\n"
+                f"━━━━━━━━━━━━━━━━\n"
+                f"💰 MC: ${mc:,.0f} | LIQ: ${liq:,.0f}\n"
+                f"📊 VOL: ${vol:,.0f}{ath_drop}\n"
+                f"━━━━━━━━━━━━━━━━\n"
+                f"👥 Holders: <b>{holders}</b>\n"
+                f"🔟 Top 10: <b>{top10:.1f}%</b>\n"
+                f"📦 Bundled: <b>{bundled:.1f}%</b>\n"
+                f"🛡️ Audit: <b>{audit}/{audit_max}</b>\n"
+                f"💳 DEX: {'✅ PAID' if dex_paid else '❌ NOT PAID'}\n"
+                f"👨‍💻 Dev: <code>{dev}</code>\n"
+                f"━━━━━━━━━━━━━━━━\n"
+                f"⚠️ Risk: {risk}\n"
+                f"━━━━━━━━━━━━━━━━\n"
+                f"🔗 <a href=\"https://gmgn.ai/sol/token/{address}\">GMGN</a> | "
+                f"<a href=\"https://dexscreener.com/solana/{address}\">DexScreener</a>"
+            )
+            await update.message.reply_text(msg, parse_mode="HTML", disable_web_page_preview=True)
+        except Exception as e:
+            await update.message.reply_text(f"❌ Error: {e}")
+
+
 def register_handlers(app, handlers: TelegramHandlers):
     from telegram.ext import CallbackQueryHandler
     app.add_handler(CommandHandler("start", handlers.cmd_start))
@@ -1011,6 +1089,7 @@ def register_handlers(app, handlers: TelegramHandlers):
     app.add_handler(CommandHandler("freshstats", handlers.cmd_freshstats))
     app.add_handler(CommandHandler("convergence", handlers.cmd_convergence))
     app.add_handler(CommandHandler("config", handlers.cmd_config))
+    app.add_handler(CommandHandler("scan", handlers.cmd_scan))
     app.add_handler(CommandHandler("setchannel", handlers.cmd_setchannel))
     app.add_handler(CallbackQueryHandler(handlers.threshold_callback, pattern="^thr_"))
     app.add_handler(MessageHandler(filters.ALL & ~filters.COMMAND, handlers.handle_buttons))

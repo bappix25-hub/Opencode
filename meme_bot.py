@@ -373,6 +373,30 @@ class MemeBot:
             logger.info(f"[SKIP] {launch_data.symbol}: pre-mig — only {launch_data.holders} holders dead")
             return
 
+        # TokenScan check: holders, top10, bundled, audit
+        try:
+            from tokenscan_client import scan_token
+            ts_data = await scan_token(await mc.get_client(), address)
+            if ts_data.get("parsed"):
+                ts_holders = ts_data.get("holders", 0)
+                ts_top10 = ts_data.get("top10_pct", 0)
+                ts_bundled = ts_data.get("bundled_pct", 0)
+                ts_audit = ts_data.get("audit_score", 0)
+                if ts_holders > 0 and ts_holders <= 5:
+                    logger.info(f"[SKIP] {launch_data.symbol}: pre-mig — TokenScan {ts_holders} holders dead")
+                    return
+                if ts_top10 > 50:
+                    logger.info(f"[SKIP] {launch_data.symbol}: pre-mig — TokenScan top10 {ts_top10:.0f}% concentrated")
+                    return
+                if ts_bundled > 30:
+                    logger.info(f"[SKIP] {launch_data.symbol}: pre-mig — TokenScan bundled {ts_bundled:.0f}% bots")
+                    return
+                if ts_audit > 0 and ts_audit < 4:
+                    logger.info(f"[SKIP] {launch_data.symbol}: pre-mig — TokenScan audit {ts_audit}/10 suspicious")
+                    return
+        except Exception:
+            pass
+
         buys_1h = int(((pair.get("txns") or {}).get("h1") or {}).get("buys", 0) or 0)
         sells_1h = int(((pair.get("txns") or {}).get("h1") or {}).get("sells", 0) or 0)
         buys_5m = int(((pair.get("txns") or {}).get("m5") or {}).get("buys", 0) or 0)
@@ -413,10 +437,10 @@ class MemeBot:
         if real_holders is not None and 0 < real_holders <= 3:
             logger.info(f"[SKIP] {symbol}: pre-mig blocked — only {real_holders} holders dead")
             return
-        # Price dump check: if ath_price known and current price <20% of it = rug
+        # Price dump check: if ath_price known and current price <30% of it = rug
         if launch_data.ath_price > 0 and price_usd > 0:
             price_drop = 1.0 - (price_usd / launch_data.ath_price)
-            if price_drop > 0.80:
+            if price_drop > 0.70:
                 logger.info(f"[SKIP] {symbol}: pre-mig blocked — price dumped {price_drop:.0%} from ATH")
                 return
 
@@ -1172,16 +1196,45 @@ class MemeBot:
                         logger.info(f"🚫 লিকুইডিটি pull: {symbol}")
                         continue
 
-                    # Price dump check: >80% from ATH = dead/rug
+                    # Price dump check: >70% from ATH = dead/rug
                     if coin_info.ath_price > 0 and current_price > 0:
                         price_drop = 1.0 - (current_price / coin_info.ath_price)
-                        if price_drop > 0.80:
+                        if price_drop > 0.70:
                             logger.info(f"[SKIP] {symbol}: price dumped {price_drop:.0%} from ATH dead")
                             continue
 
                     # Holders check: <=3 = dead
                     if launch_data and launch_data.holders > 0 and launch_data.holders <= 3:
                         logger.info(f"[SKIP] {symbol}: only {launch_data.holders} holders dead")
+                        continue
+
+                    # TokenScan check: holders, top10, bundled, audit
+                    try:
+                        from tokenscan_client import scan_token
+                        ts_data = await scan_token(await mc.get_client(), addr)
+                        if ts_data.get("parsed"):
+                            ts_holders = ts_data.get("holders", 0)
+                            ts_top10 = ts_data.get("top10_pct", 0)
+                            ts_bundled = ts_data.get("bundled_pct", 0)
+                            ts_audit = ts_data.get("audit_score", 0)
+                            if ts_holders > 0 and ts_holders <= 5:
+                                logger.info(f"[SKIP] {symbol}: TokenScan — {ts_holders} holders dead")
+                                continue
+                            if ts_top10 > 50:
+                                logger.info(f"[SKIP] {symbol}: TokenScan — top10 {ts_top10:.0f}% concentrated")
+                                continue
+                            if ts_bundled > 30:
+                                logger.info(f"[SKIP] {symbol}: TokenScan — bundled {ts_bundled:.0f}% bots")
+                                continue
+                            if ts_audit > 0 and ts_audit < 4:
+                                logger.info(f"[SKIP] {symbol}: TokenScan — audit {ts_audit}/10 suspicious")
+                                continue
+                    except Exception:
+                        pass
+
+                    # Minimum MCAP for climbing: >$3K
+                    if mcap < 3000:
+                        logger.info(f"[SKIP] {symbol}: climbing — MC {format_number(mcap)} < $3K too low")
                         continue
 
                     if 0 < age <= 21600:
@@ -1277,7 +1330,17 @@ class MemeBot:
                                 climbing_score += 0.1
                                 climb_reasons.append(f"{buys_5m} buys/5m")
 
-                            if climbing_score >= 0.35:
+                            if climbing_score >= 0.50:
+                                # DexScreener health check before climbing signal
+                                try:
+                                    from dex_health import check_token_health
+                                    dex_health = await check_token_health(self.dex, addr)
+                                    if dex_health and not dex_health.get("healthy"):
+                                        logger.info(f"[SKIP] {symbol}: climbing — DexScreener unhealthy: {dex_health.get('reason','')}")
+                                        continue
+                                except Exception:
+                                    pass
+
                                 confidence_pct = int(climbing_score * 100)
                                 confidence_bar = "🟢" * max(1, int(confidence_pct/20)) + "⚪" * (5 - max(1, int(confidence_pct/20)))
                                 reason_text = ", ".join(climb_reasons[:3])
