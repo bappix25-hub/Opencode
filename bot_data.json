@@ -52607,6 +52607,17 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-23T12:25:11.479089+00:00",
         "timestamp": "2026-06-23T12:25:11.479118+00:00"
+      },
+      {
+        "address": "ZTpvi7fKwRT4iVKXcVB9wp23mKAd16Bu5NjodWepump",
+        "symbol": "MON",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.6016886019369256,
+        "current_multiplier": 0.018164887012664516,
+        "min_price_multiplier": 1.0,
+        "signal_age": 8907.941361904144,
+        "signal_time": "2026-06-23T17:41:16.262541+00:00",
+        "timestamp": "2026-06-23T17:41:16.262578+00:00"
       }
     ],
     "success_history": [
@@ -52881,15 +52892,15 @@
       }
     ],
     "auto_learn_insights": {
-      "win_rate": 78.0,
+      "win_rate": 76.0,
       "avg_win_bsr": 0,
       "avg_loss_bsr": 0,
       "avg_win_holders": 0,
       "avg_loss_holders": 0,
       "quality_score": 0.35,
-      "dump_rate": 12.0,
-      "avg_ath": 43812.52,
-      "updated_at": "2026-06-23T15:09:48.132885+00:00"
+      "dump_rate": 14.0,
+      "avg_ath": 43811.61,
+      "updated_at": "2026-06-23T17:41:16.667443+00:00"
     },
     "signal_criteria_stats": {
       "pump_medians": {
@@ -52921,13 +52932,15 @@
       "min_liq_pct": 10,
       "min_lp_locked": 80,
       "min_mcap": 3000,
-      "heuristic_threshold": 0.45,
+      "heuristic_threshold": 0.53,
       "pattern_threshold": 0.6,
       "dump_pattern_threshold": 0.7,
       "max_age_seconds": 21600,
-      "updated_at": "2026-06-23T16:46:02.383085+00:00",
+      "updated_at": "2026-06-23T17:41:16.563189+00:00",
       "sample_size": 550,
-      "min_lp_providers": 2
+      "min_lp_providers": 2,
+      "volatility_setting": "high",
+      "last_quality_score": 0.35
     },
     "channel_insights": {
       "patterns": {
