@@ -868,7 +868,7 @@ def _learn_pump(launch: dict) -> None:
     patterns[-MAX_PUMP_PATTERNS:]
     data["pump_patterns"] = patterns
 
-    data["model"]["total_pumps"] = data["model"].get("total_pumps", 0) + 1
+    data["model"]["total_pumps"] = len(data.get("pump_patterns", []))
     data["model"]["last_update"] = datetime.now(timezone.utc).isoformat()
     logger.info(f"🟢 LEARNED PUMP: {launch.get('symbol')} mcap={launch.get('outcome_mcap', 0):.0f} "
                 f"buy_sell={features.get('buy_sell_ratio')} holders={features.get('holders')} "
@@ -1072,7 +1072,7 @@ def record_signal_result(address: str, symbol: str, ath_multiplier: float, curre
                     "signal_age": signal_age,
                     "learned_at": datetime.now(timezone.utc).isoformat(),
                 })
-                data["model"]["total_dumps"] = data["model"].get("total_dumps", 0) + 1
+                data["model"]["total_dumps"] = len(data.get("dump_patterns", []))
                 logger.info(f"📚 ডাম্প প্যাটার্ন শেখা: {symbol} (ATH {ath_multiplier:.1f}x, age={signal_age:.0f}s)")
             else:
                 existing["ath_multiplier"] = ath_multiplier
@@ -1180,7 +1180,7 @@ def _analyze_and_fix_failure(address: str, symbol: str, features: dict, data: di
                 if reason == "low_bsr" and criteria.get("min_bsr", 1.5) < 2.0:
                     criteria["min_bsr"] = round(criteria["min_bsr"] + 0.1, 2)
                     logger.info(f"🔧 Auto-fix: min_bsr → {criteria['min_bsr']} ({pct:.0%} failures)")
-                elif reason == "low_holders" and criteria.get("min_holders", 5) < 15:
+                elif reason == "low_holders" and criteria.get("min_holders", 5) < 10:
                     criteria["min_holders"] = round(criteria["min_holders"] + 1, 1)
                     logger.info(f"🔧 Auto-fix: min_holders → {criteria['min_holders']} ({pct:.0%} failures)")
                 elif reason == "low_wallets" and criteria.get("min_wallets", 10) < 30:
@@ -2264,7 +2264,7 @@ def compute_signal_criteria() -> dict:
         holders_vals = [p.get("features", {}).get("holders", 0) for p in pumps if p.get("features", {}).get("holders", 0) > 0]
         if holders_vals:
             med = int(sorted(holders_vals)[len(holders_vals) // 2])
-            criteria["min_holders"] = min(med, 20)  # Cap at 20
+            criteria["min_holders"] = min(med, 10)  # Cap at 10 (winners have median 10)
 
         wallets_vals = [p.get("features", {}).get("unique_wallets", 0) for p in pumps if p.get("features", {}).get("unique_wallets", 0) > 0]
         if wallets_vals:

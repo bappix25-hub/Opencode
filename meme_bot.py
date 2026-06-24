@@ -2026,6 +2026,26 @@ class MemeBot:
             try:
                 now = datetime.now(timezone.utc).timestamp()
 
+                # Also check launches_tracked from bot_data.json (survives restarts)
+                try:
+                    from learner import load_data
+                    _ldata = load_data()
+                    for _lt in _ldata.get("launches_tracked", []):
+                        if _lt.get("outcome") is not None:
+                            continue
+                        addr = _lt.get("address", "")
+                        lt = _lt.get("launch_time", 0)
+                        age = now - lt
+                        if age >= 21600 and addr not in self.state.launch_tracking:
+                            pair = await self.dex.fetch_pair_data(addr)
+                            if pair:
+                                mcap = float(pair.get("fdv", 0) or 0)
+                                result = check_and_record_outcome(addr, mcap)
+                                if result:
+                                    logger.info(f"📊 Outcome (json): {_lt.get('symbol','?')}: {result} (mcap={int(mcap)})")
+                except Exception as e:
+                    logger.debug(f"launches_tracked outcome check error: {e}")
+
                 for addr, ld in list(self.state.launch_tracking.items()):
                     age = now - ld.launch_time
 
