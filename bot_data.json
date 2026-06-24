@@ -50715,15 +50715,15 @@
       }
     ],
     "auto_learn_insights": {
-      "win_rate": 36.0,
+      "win_rate": 44.0,
       "avg_win_bsr": 0,
       "avg_loss_bsr": 0,
       "avg_win_holders": 0,
       "avg_loss_holders": 0,
       "quality_score": 0.35,
-      "dump_rate": 62.0,
-      "avg_ath": 81.48,
-      "updated_at": "2026-06-24T00:11:43.533871+00:00"
+      "dump_rate": 54.0,
+      "avg_ath": 81.99,
+      "updated_at": "2026-06-24T04:02:25.238859+00:00"
     },
     "signal_criteria_stats": {
       "pump_medians": {
@@ -50755,13 +50755,15 @@
       "min_liq_pct": 10,
       "min_lp_locked": 80,
       "min_mcap": 3000,
-      "heuristic_threshold": 0.45,
-      "pattern_threshold": 0.6,
+      "heuristic_threshold": 0.53,
+      "pattern_threshold": 0.63,
       "dump_pattern_threshold": 0.7,
       "max_age_seconds": 21600,
       "updated_at": "2026-06-24T03:41:59.543382+00:00",
       "sample_size": 544,
-      "min_lp_providers": 2
+      "min_lp_providers": 2,
+      "volatility_setting": "high",
+      "last_quality_score": 0.35
     },
     "channel_insights": {
       "patterns": {
@@ -58206,13 +58208,52 @@
       },
       "ath_multiplier": 28.716950898477744,
       "timestamp": "2026-06-24T00:11:43.425147+00:00"
+    },
+    {
+      "address": "f4JXArtwRuNFWMPFwjp2Gmi4zuZyNob8LYNG2r7pump",
+      "symbol": "COVER",
+      "features": {
+        "buy_count": 0,
+        "sell_count": 0,
+        "buy_sell_ratio": 0.0,
+        "volume": 1763352.47,
+        "holders": 0,
+        "unique_wallets": 0,
+        "initial_liq": 36670.33,
+        "initial_mcap": 251898,
+        "liq_pct": 14.56,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 1,
+        "lp_locked": 0,
+        "deployer": "9eEjrqzN23Y4",
+        "ath_price": 0.0002518,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "volume_velocity": 180.7551,
+        "buy_sell_momentum": 0.0,
+        "liquidity_depth": 0.1456,
+        "volume_spike_ratio": 0.0,
+        "buy_spike_ratio": 0.0,
+        "social_score": 0,
+        "launch_weekday": 2,
+        "launch_month": 6,
+        "is_weekend": false,
+        "launch_session": "asian",
+        "insider_count": 0,
+        "launch_time": 1782263989.58116,
+        "liquidity": 36670.33,
+        "mcap": 251898.0
+      },
+      "ath_multiplier": 1.2059386973180075,
+      "timestamp": "2026-06-24T04:02:25.129140+00:00"
     }
   ],
   "fresh_start": "2026-06-22T13:38:36.943300+00:00",
   "channel_stats": {
     "-1002122751413": {
       "name": "New Pool Alert",
-      "total_signals": 756,
+      "total_signals": 778,
       "winners": 0,
       "mega_winners": 0,
       "losers": 1,
@@ -58221,319 +58262,11 @@
       "best_ath": 1.2919586735062496,
       "best_symbol": "SwuKQSbz",
       "signal_types": {
-        "FEATURED_NEW": 694,
+        "FEATURED_NEW": 716,
         "FDV_SURGE": 36,
         "CTO": 26
       },
       "recent_signals": [
-        {
-          "symbol": "Pokelana",
-          "address": "6xsAvD8QnR6JD2K7N3f2Lt3joyxqNhvHQSxH48ZqFLks",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 13109.24,
-            "holders": 11,
-            "initial_lp_pct": 100.0,
-            "dev_balance_sol": 77.35387,
-            "renounced": true
-          },
-          "timestamp": "2026-06-24T02:34:19.369815+00:00"
-        },
-        {
-          "symbol": "Elephant",
-          "address": "2c7p4qFFXdnodxWwNWJbSa1KgAkNMRZ2LoaWSp6qwG3L",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 13388.16,
-            "holders": 13,
-            "initial_lp_pct": 100.0,
-            "dev_balance_sol": 0.96708,
-            "renounced": true
-          },
-          "timestamp": "2026-06-24T02:34:57.413000+00:00"
-        },
-        {
-          "symbol": "Pokelana",
-          "address": "CeQub2kaN8LbmkoiWL5WhTmJPEQZv7FyNne5AvgwK1QN",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 11852.71,
-            "holders": 11,
-            "initial_lp_pct": 100.0,
-            "dev_balance_sol": 11.88781,
-            "renounced": true
-          },
-          "timestamp": "2026-06-24T02:34:57.992719+00:00"
-        },
-        {
-          "symbol": "Pokelana",
-          "address": "5C1Nx77aDGGvMQsKXN2BrNpyTBwagFKPaWd9Ym5YKVEy",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 7059.9776,
-            "holders": 8,
-            "initial_lp_pct": 100.0,
-            "dev_balance_sol": 82.98165,
-            "renounced": true
-          },
-          "timestamp": "2026-06-24T02:35:33.793852+00:00"
-        },
-        {
-          "symbol": "$WEN",
-          "address": "48vdpQ4qCX2GxvAC2FnPQNJaHzyBFUDR4HneTyuPteGR",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 69670.0,
-            "holders": 20,
-            "initial_lp_pct": 100.0,
-            "dev_balance_sol": 97.8856,
-            "renounced": true
-          },
-          "timestamp": "2026-06-24T02:35:34.374597+00:00"
-        },
-        {
-          "symbol": "0.0{4}35014",
-          "address": "DGK7wwGsvbrt2y6madJwZdxBkwYTo4fQiXx52HAjiFSx",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 35014.36,
-            "liq_usd": 0,
-            "holders": 11,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T02:36:13.397869+00:00"
-        },
-        {
-          "symbol": "0.0{4}26223",
-          "address": "AEaR3AjhFh5kijBG6WmSXceEdBdJrgVpEFqFipo1GqES",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 26223.81,
-            "liq_usd": 0,
-            "holders": 7,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T02:36:49.064719+00:00"
-        },
-        {
-          "symbol": "0.0{4}28122",
-          "address": "Gwj8bfKKRGecjCpGNNqHj9xFCdRTxnnX92Yc19F6Bnsd",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 28122.35,
-            "liq_usd": 0,
-            "holders": 13,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T02:37:21.912783+00:00"
-        },
-        {
-          "symbol": "Mack",
-          "address": "ErbK9smWXzwMniUMKNR4hYF4oGtryMRNyv6HzT5PyN1a",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 83476.64,
-            "holders": 7,
-            "initial_lp_pct": 100.0,
-            "dev_balance_sol": 69.46731,
-            "renounced": true
-          },
-          "timestamp": "2026-06-24T02:37:55.494621+00:00"
-        },
-        {
-          "symbol": "STACK",
-          "address": "Eys7RFFMGriWAWDrAyjcudfXi1AgAoAywWvtn4Q5ZKCb",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 11820.46,
-            "holders": 4,
-            "initial_lp_pct": 100.0,
-            "dev_balance_sol": 0.37983,
-            "renounced": true
-          },
-          "timestamp": "2026-06-24T02:39:28.037510+00:00"
-        },
-        {
-          "symbol": "0.0{4}12194",
-          "address": "CJAVTjwCZNxFMR5NfDmwLsFbFGjG6h7KLu7jQqSxu7CF",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 12194.23,
-            "liq_usd": 0,
-            "holders": 8,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T02:39:28.614646+00:00"
-        },
-        {
-          "symbol": "0.00014",
-          "address": "78Yzg52waiVUv8zRcjrbKg6MUdcd63jAWv8jgKDVrKPR",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 143700.0,
-            "liq_usd": 0,
-            "holders": 0,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T02:40:08.432363+00:00"
-        },
-        {
-          "symbol": "0.0{4}26272",
-          "address": "AmBWqARPuhA7wiimJeE6wd4kuNzANP3CMrhFTYyo9iZv",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 26272.77,
-            "liq_usd": 0,
-            "holders": 0,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T02:41:22.707969+00:00"
-        },
-        {
-          "symbol": "Pokelana",
-          "address": "62ShUc56F4yCwqEvbS4MWGwHW5KPnggJPUyY75g7y9vt",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 70108.14,
-            "holders": 16,
-            "initial_lp_pct": 100.0,
-            "dev_balance_sol": 1.58975,
-            "renounced": true
-          },
-          "timestamp": "2026-06-24T02:41:23.298359+00:00"
-        },
-        {
-          "symbol": "SLICK",
-          "address": "AcACauKMX3SYq69Uc4KDsU5eGySCqV6bz3M2DhZsKBqQ",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 11859.55,
-            "holders": 6,
-            "initial_lp_pct": 100.0,
-            "dev_balance_sol": 0.37993,
-            "renounced": true
-          },
-          "timestamp": "2026-06-24T02:42:42.070689+00:00"
-        },
-        {
-          "symbol": "VANT",
-          "address": "uickPZnT7h1Ppdv8nxjc3GW87n9N93pT2SPtMG3vmH8",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 11845.96,
-            "holders": 7,
-            "initial_lp_pct": 100.0,
-            "dev_balance_sol": 0.38007,
-            "renounced": true
-          },
-          "timestamp": "2026-06-24T02:43:17.127605+00:00"
-        },
-        {
-          "symbol": "0.0{4}87131",
-          "address": "FqPL1jHDiJMiGQLFv9XbughUamsMr6jrznsxyVNKbvZ5",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 87131.66,
-            "liq_usd": 0,
-            "holders": 1,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T02:43:17.775491+00:00"
-        },
-        {
-          "symbol": "0.0{4}87094",
-          "address": "2rrBc1d7mniu4wEdzrZboEvPaoWN3or48aUhPuHDzVp8",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 87094.16,
-            "liq_usd": 0,
-            "holders": 1,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T02:43:55.488673+00:00"
-        },
-        {
-          "symbol": "0.0{4}87131",
-          "address": "3k4SY34sBNcDLikyWiAdn5ZbWgrQoEZVoawGZkuCZRC7",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 87131.66,
-            "liq_usd": 0,
-            "holders": 1,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T02:43:56.070431+00:00"
-        },
-        {
-          "symbol": "WEN",
-          "address": "wG6GHw6NR54r3F5SBApXw4jGbbryTLD7Pp5dPVK3yXP",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 72498.4,
-            "holders": 13,
-            "initial_lp_pct": 100.0,
-            "dev_balance_sol": 16.67883,
-            "renounced": true
-          },
-          "timestamp": "2026-06-24T02:44:35.890943+00:00"
-        },
-        {
-          "symbol": "BIZSTAYZ",
-          "address": "AWYW9EmjPQ2mXhF9uijuqoj3upE98JwMYtZgASRumWEF",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 12352.49,
-            "holders": 11,
-            "initial_lp_pct": 100.0,
-            "dev_balance_sol": 8.82633,
-            "renounced": true
-          },
-          "timestamp": "2026-06-24T02:44:36.481630+00:00"
-        },
-        {
-          "symbol": "0.0{4}16764",
-          "address": "3iHxFDBPKiCCjJpLChTTfafyMpJajetDsQfU35Knqhde",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 16764.8,
-            "liq_usd": 0,
-            "holders": 0,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T02:45:23.454644+00:00"
-        },
         {
           "symbol": "0.0{5}8316",
           "address": "9JibSBva9yomKTq6W6FYFCFkTYfqRsHS8JXiByYE9HuT",
@@ -59625,12 +59358,320 @@
             "renounced": false
           },
           "timestamp": "2026-06-24T03:46:24.518742+00:00"
+        },
+        {
+          "symbol": "EC43",
+          "address": "2mvfyzFmwjrZrH793Sq7gj39LCQNvUGhd1XB2Pcdgyvo",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 12361.36,
+            "holders": 12,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 48.33585,
+            "renounced": true
+          },
+          "timestamp": "2026-06-24T03:48:22.168170+00:00"
+        },
+        {
+          "symbol": "PXM",
+          "address": "CREXPq4WHCMKmXp3CNDhoLQ2S1U45ioYGuSput84vpna",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 76692.0,
+            "holders": 5,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 33.61405,
+            "renounced": true
+          },
+          "timestamp": "2026-06-24T03:49:46.050380+00:00"
+        },
+        {
+          "symbol": "BOM",
+          "address": "4pg4Pnd2zqoYQdjJLBM97tWRZrMJFNhxvToVZnXdGQN2",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 11854.46,
+            "holders": 6,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 0.38082,
+            "renounced": true
+          },
+          "timestamp": "2026-06-24T03:49:46.695917+00:00"
+        },
+        {
+          "symbol": "STARCAT",
+          "address": "Ebn9ZDW4LibiuX2aGZJifUpFsjtJMRUzCn4GWdRBqMCR",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 13798.62,
+            "holders": 6,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 99.98167,
+            "renounced": true
+          },
+          "timestamp": "2026-06-24T03:50:35.017633+00:00"
+        },
+        {
+          "symbol": "0.0{4}21098",
+          "address": "8SzkU4c9fZAhKRzSz4zV8xiDyLtWvMA7amHyTTyzo1HK",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 21098.33,
+            "liq_usd": 0,
+            "holders": 1,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:50:58.960652+00:00"
+        },
+        {
+          "symbol": "EC43",
+          "address": "44evpYpGNnRr5kRZhzR6fBUP51GoYmkMjk2fntm6q1aK",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 4316.44,
+            "holders": 9,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 38.54849,
+            "renounced": true
+          },
+          "timestamp": "2026-06-24T03:51:29.182431+00:00"
+        },
+        {
+          "symbol": "0.0{4}12125",
+          "address": "BJJbshHL3qD7YqsbaVvWV8rA47JgQuMRakgUrpHrKupp",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 12125.01,
+            "liq_usd": 0,
+            "holders": 13,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:52:00.080288+00:00"
+        },
+        {
+          "symbol": "WEN",
+          "address": "7TCbXYNYHkXRpmNQ2J8p8dDFc6TLkCjnG3LyFNf2hp3h",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 13784.76,
+            "holders": 8,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 0.96708,
+            "renounced": true
+          },
+          "timestamp": "2026-06-24T03:52:32.688129+00:00"
+        },
+        {
+          "symbol": "0.0{4}41875",
+          "address": "Htn5C4mdocmL7sd6tdWPNaeV8qCjo2aRumLx2eHnvZcW",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 41875.36,
+            "liq_usd": 0,
+            "holders": 1,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:53:55.473679+00:00"
+        },
+        {
+          "symbol": "Scbr",
+          "address": "4GV87rrTfYiy33GePvzwqMneiVgj1vFUGWinx8UGmoon",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 34699.64,
+            "holders": 7,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 0.64417,
+            "renounced": true
+          },
+          "timestamp": "2026-06-24T03:54:22.849049+00:00"
+        },
+        {
+          "symbol": "0.0{4}34125",
+          "address": "4oawaAJ72PMLJtWmvtTwb3rc3ar8oyxW2yA1JFDBMEeS",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 34125.06,
+            "liq_usd": 0,
+            "holders": 17,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:54:44.750893+00:00"
+        },
+        {
+          "symbol": "0.0{4}10897",
+          "address": "D6VQZupnUGVL85dJmcKicYF6jSYaiGinYYhgaMn3Ef4K",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 10897.67,
+            "liq_usd": 0,
+            "holders": 11,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:55:10.368786+00:00"
+        },
+        {
+          "symbol": "0.0{4}21071",
+          "address": "BdP1QWbdVLMZcHFwQYoyf4e8AXtGhubAtPYAVFqCwSTk",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 21071.21,
+            "liq_usd": 0,
+            "holders": 0,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:56:02.802205+00:00"
+        },
+        {
+          "symbol": "0.0{4}60711",
+          "address": "544edoCBMvafacGFAiACzZwn6v7aknTdYEP66uhgzbtw",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 60711.93,
+            "liq_usd": 0,
+            "holders": 11,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:56:03.436738+00:00"
+        },
+        {
+          "symbol": "0.0{4}10522",
+          "address": "3c12AXsZNqZHnLRBpMGKsSJH4tNLv9Jq1gwYJ4KVeBEa",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 10522.08,
+            "liq_usd": 0,
+            "holders": 5,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:57:02.540910+00:00"
+        },
+        {
+          "symbol": "EC43",
+          "address": "CTSLeyVS5Zwck1vbR9HvuEmp5LWujNofviS5hPiF7kyr",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 4312.72,
+            "holders": 1,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 10.5657,
+            "renounced": true
+          },
+          "timestamp": "2026-06-24T03:58:36.917475+00:00"
+        },
+        {
+          "symbol": "0.00053",
+          "address": "2fhXWV5gbFJnEu8YVQ9idNVik27QoFvpAGqMt1V1Bugw",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 531900.0,
+            "liq_usd": 0,
+            "holders": 24,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:59:51.351109+00:00"
+        },
+        {
+          "symbol": "EC43",
+          "address": "4vS4Nz1oko2uCfkqyMqLBoRfKxhs336u1Nu7FgMGpy2f",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 83368.82,
+            "holders": 8,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 74.14098,
+            "renounced": true
+          },
+          "timestamp": "2026-06-24T03:59:51.986611+00:00"
+        },
+        {
+          "symbol": "EC43",
+          "address": "DC1E3XiLSsUJTxN4FkkguTgFpgtPxbzzCe7ey9PBSfi4",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 4311.48,
+            "holders": 12,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 53.8231,
+            "renounced": true
+          },
+          "timestamp": "2026-06-24T04:00:23.454112+00:00"
+        },
+        {
+          "symbol": "0.0{4}13967",
+          "address": "HmdtmNVa53pfL89Xd9vNRmLuCo9SGC1PfXVNqMQgUYt1",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 13967.37,
+            "liq_usd": 0,
+            "holders": 5,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T04:00:24.174536+00:00"
+        },
+        {
+          "symbol": "0.0{4}60703",
+          "address": "Au16nE8LmiMFiwYRJ8TvZfuBGbZwi3sd7wXq15PhQ9Pn",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 60703.78,
+            "liq_usd": 0,
+            "holders": 23,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T04:01:46.618967+00:00"
+        },
+        {
+          "symbol": "CALL",
+          "address": "8XWSi3RXZUhdiA8VNqsvWAajx6brKAiRozFVMArHAEea",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 0,
+            "liq_usd": 11825.56,
+            "holders": 6,
+            "initial_lp_pct": 100.0,
+            "dev_balance_sol": 0.37985,
+            "renounced": true
+          },
+          "timestamp": "2026-06-24T04:01:47.251841+00:00"
         }
       ]
     },
     "-1002202241417": {
       "name": "GMGN Signals",
-      "total_signals": 3073,
+      "total_signals": 3119,
       "winners": 0,
       "mega_winners": 0,
       "losers": 0,
@@ -59639,10 +59680,10 @@
       "best_ath": 0.0,
       "best_symbol": "",
       "signal_types": {
-        "FDV_SURGE": 301,
-        "DEV_SOLD": 1830,
-        "CTO": 259,
-        "DEV_BOUGHT": 469,
+        "FDV_SURGE": 303,
+        "DEV_SOLD": 1866,
+        "CTO": 263,
+        "DEV_BOUGHT": 473,
         "KOTH": 160,
         "KOL_FOMO": 18,
         "PUMP_COMPLETED": 8,
@@ -59650,650 +59691,6 @@
         "FEATURED_NEW": 15
       },
       "recent_signals": [
-        {
-          "symbol": "Chonky",
-          "address": "9wgbuAHYYq2XEWqfs8NYP96UaQLv1tMiSbQ1RSDGpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 3900.0,
-            "liq_usd": 6500.0,
-            "holders": 11,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:23:32.521846+00:00"
-        },
-        {
-          "symbol": "tree",
-          "address": "FyB3k1oRMgpnUhcLQpF8KJTRh3Zqu2GT2A4h9knNpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 819.7,
-            "liq_usd": 4400.0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:23:33.117259+00:00"
-        },
-        {
-          "symbol": "半拉锦鲤",
-          "address": "BEYZbMd4VVfyTG5dkq4sBefppGQ7C3Hxqe1LZUxGpump",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 2500.0,
-            "liq_usd": 0,
-            "holders": 4,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:24:42.316301+00:00"
-        },
-        {
-          "symbol": "STARCAT",
-          "address": "BupEyX7JBikbyJKUWzrUSygdAk6Wk2vjX9ZwUJ7mpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2000.0,
-            "liq_usd": 0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:25:09.563073+00:00"
-        },
-        {
-          "symbol": "WEN",
-          "address": "2bNNhWo3P25SoGVyxtMygH7LC1VnRLs2DuatDKAXpump",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 2100.0,
-            "liq_usd": 0,
-            "holders": 0,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:25:30.934192+00:00"
-        },
-        {
-          "symbol": "RACE",
-          "address": "7CkvUw5uPVJMoUfdZyMXa4ZpaVZf4kSX33aZPMwkpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2900.0,
-            "liq_usd": 6200.0,
-            "holders": 6,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:25:58.428397+00:00"
-        },
-        {
-          "symbol": "QUANTCUM",
-          "address": "Ew3mt9dWicgQipWkoH46oUf6cyqpFLakfX818Ucypump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2700.0,
-            "liq_usd": 5000.0,
-            "holders": 11,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:25:58.884923+00:00"
-        },
-        {
-          "symbol": "FDSF",
-          "address": "C1tfemgNnUc38DbGS6NeD6bSRLAgbUnWj9ofvPTpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 480.5,
-            "liq_usd": 4300.0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:26:19.515691+00:00"
-        },
-        {
-          "symbol": "YAP",
-          "address": "3AFLEQaaeGHxLscyFVrCCvmahD3wJ4bvqHnhyYHfpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2000.0,
-            "liq_usd": 4800.0,
-            "holders": 5,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:26:19.975666+00:00"
-        },
-        {
-          "symbol": "FDSF",
-          "address": "8LLPZDi1Ta1xr6KpKnm8djd3iMAbBTwe6SFqDJfWpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 4800.0,
-            "liq_usd": 0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:26:47.647664+00:00"
-        },
-        {
-          "symbol": "PULLIT",
-          "address": "GCutss8hqgmHPKMEME2k3XEhWwhCnXwnqKMPLRfcpump",
-          "signal_type": "FDV_SURGE",
-          "features": {
-            "mcp": 1200.0,
-            "liq_usd": 5500.0,
-            "holders": 9,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:26:48.102193+00:00"
-        },
-        {
-          "symbol": "Ituba",
-          "address": "GCjDbrkcFPCgmBSY6GRf3PmHhSFrTkvzB2bWPG4zpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2600.0,
-            "liq_usd": 4800.0,
-            "holders": 13,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:26:48.576265+00:00"
-        },
-        {
-          "symbol": "WEN",
-          "address": "2FRpDgDYosqcg6Jqxz6Si2JpdutWbG7vEDVn5LjKpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2000.0,
-            "liq_usd": 4200.0,
-            "holders": 1,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:27:12.052409+00:00"
-        },
-        {
-          "symbol": "tree",
-          "address": "6CcVBr7fsX4WZvrVWcCMMi7hf35iFja2Ls7F1PBZpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 1900.0,
-            "liq_usd": 4400.0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:27:12.513454+00:00"
-        },
-        {
-          "symbol": "CWIF",
-          "address": "F4fkN3KpQ32CTCF2cQisRSGdf6h7SsSkEv81CEz7pump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2300.0,
-            "liq_usd": 4900.0,
-            "holders": 12,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:27:12.980760+00:00"
-        },
-        {
-          "symbol": "DuckDuck",
-          "address": "GjokztjW39vQezJujcMhDBFPjvXBx3vtDpTvT4FPpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2900.0,
-            "liq_usd": 5100.0,
-            "holders": 12,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:27:44.112521+00:00"
-        },
-        {
-          "symbol": "FDSF",
-          "address": "G5VXbwcdi86i2dfquAwmPT8CUjxLPLfYQcLQpfu4pump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2800.0,
-            "liq_usd": 4400.0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:27:45.256188+00:00"
-        },
-        {
-          "symbol": "RACE",
-          "address": "H5txhGTEEqo1KYS2tpq8CPMFY1x3DHnxBAG5NHqfpump",
-          "signal_type": "CTO",
-          "features": {
-            "mcp": 2900.0,
-            "liq_usd": 6200.0,
-            "holders": 5,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:28:07.983485+00:00"
-        },
-        {
-          "symbol": "DUCKY",
-          "address": "HZEAnjZejqiaA9L4RuYfxYes8pqhMjJ4qi7YWKwwpump",
-          "signal_type": "CTO",
-          "features": {
-            "mcp": 2800.0,
-            "liq_usd": 0,
-            "holders": 5,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:28:34.051296+00:00"
-        },
-        {
-          "symbol": "HELLOOO",
-          "address": "G7En9MJosKgbYr5bTWEUtFp2MEdzNc5YpAhrQQpvpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2000.0,
-            "liq_usd": 4200.0,
-            "holders": 2,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:28:58.069586+00:00"
-        },
-        {
-          "symbol": "WSBKid",
-          "address": "NtiVXwXfJkPaVX6UVsZ7hzMRd7CnC6kds4Jjpo8pump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2100.0,
-            "liq_usd": 4200.0,
-            "holders": 2,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:29:27.115196+00:00"
-        },
-        {
-          "symbol": "$TAB",
-          "address": "82cTjUYSAjmE9Lxs4LEB8kk71tF7gy9EJfTtB7Hepump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 1900.0,
-            "liq_usd": 4200.0,
-            "holders": 1,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:29:28.100313+00:00"
-        },
-        {
-          "symbol": "GETUSOME",
-          "address": "Gh2WAU422QMFSMvw9TfXBWHKo9VJrsejznnsDeNtpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 968.3,
-            "liq_usd": 4700.0,
-            "holders": 5,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:30:06.181173+00:00"
-        },
-        {
-          "symbol": "Parismaxing",
-          "address": "G18SvmdPLYFL8ip1KZxNn4iN6feqtTH6B19bibFQphpp",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2300.0,
-            "liq_usd": 0,
-            "holders": 1,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:30:08.376037+00:00"
-        },
-        {
-          "symbol": "parismaxxing",
-          "address": "6eYqQVM9ZJiAPJUKfFbTZZjH1NKu2UpMeGmDvetkMgXK",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2300.0,
-            "liq_usd": 0,
-            "holders": 1,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:30:09.897600+00:00"
-        },
-        {
-          "symbol": "QROK",
-          "address": "6vU72ur9gaKtbXM1pnmUVBJyFHWLwaoWX37dfKZxD5NU",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2800.0,
-            "liq_usd": 4700.0,
-            "holders": 4,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:30:11.417430+00:00"
-        },
-        {
-          "symbol": "QROK",
-          "address": "6B5nqDsLZ4GzfudxiBkU8wg5B6EmB9VT7WsyWwybMCfi",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2200.0,
-            "liq_usd": 4300.0,
-            "holders": 4,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:30:12.722485+00:00"
-        },
-        {
-          "symbol": "QROK",
-          "address": "2q8oGGTVLrMA2aQZRgrPYAC6zdZNSmq3Kzxj2F8hpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2000.0,
-            "liq_usd": 4200.0,
-            "holders": 2,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:30:14.019878+00:00"
-        },
-        {
-          "symbol": "RACE",
-          "address": "CTGdo6gmDL2mWSVFsJ5Ea8oYnuZAFHxjpTqKbLUhpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 3000.0,
-            "liq_usd": 6300.0,
-            "holders": 7,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:30:16.627974+00:00"
-        },
-        {
-          "symbol": "QROK",
-          "address": "52HLPYQkJKoqqigGE7RF3WAgNwdPCmwSgyjgo69Cpump",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 2200.0,
-            "liq_usd": 0,
-            "holders": 2,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:30:20.119939+00:00"
-        },
-        {
-          "symbol": "WEN",
-          "address": "CuwbX6yqPwcVXmHxgTXmYX8tiZqTVEUz1hG3MVqopump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 15400.0,
-            "liq_usd": 11700.0,
-            "holders": 41,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:30:58.245206+00:00"
-        },
-        {
-          "symbol": "pulice",
-          "address": "J2kV22ZkkfgrX2XsBMSrGH7uqd7x8g3JxuQKgQZTpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2700.0,
-            "liq_usd": 0,
-            "holders": 13,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:31:03.079105+00:00"
-        },
-        {
-          "symbol": "ANGIE",
-          "address": "AA2Z3ZppDeLvTichcMk4omP4JdhBg6zzyW4TJjDtpump",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 2100.0,
-            "liq_usd": 4300.0,
-            "holders": 4,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:31:04.593436+00:00"
-        },
-        {
-          "symbol": "SLOP",
-          "address": "ETqykovPfoaSQWLuewQQwBSRRXMLeiNzYQbm1cowpump",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 2300.0,
-            "liq_usd": 4300.0,
-            "holders": 2,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:31:11.109671+00:00"
-        },
-        {
-          "symbol": "ANGIE",
-          "address": "4GdchSb5HXwWaiDJqBSmjrbuu8Z1D3Q3mBz5NErtpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2100.0,
-            "liq_usd": 4300.0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:31:44.402875+00:00"
-        },
-        {
-          "symbol": "FDSF",
-          "address": "5VzBuGNF27jeY4V3KomDHxXkBMMM3JnBAvFTWD1Bpump",
-          "signal_type": "FDV_SURGE",
-          "features": {
-            "mcp": 3800.0,
-            "liq_usd": 0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:31:47.567764+00:00"
-        },
-        {
-          "symbol": "FDSF",
-          "address": "4sejVin3VSomtWnZzRffMceFGJjtwdBSP6Kgv2Bzpump",
-          "signal_type": "FDV_SURGE",
-          "features": {
-            "mcp": 2000.0,
-            "liq_usd": 4200.0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:31:48.418796+00:00"
-        },
-        {
-          "symbol": "STARCAT",
-          "address": "3PETFW42V5bbi4PN9DYBiztpA8XtzBmFeSajAYQupump",
-          "signal_type": "PUMP_COMPLETED",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 0,
-            "holders": 155,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:32:18.522992+00:00"
-        },
-        {
-          "symbol": "RACE",
-          "address": "GsSNaNbE4PxhPaoPytd8EzbqhtXwKcg2SfmJcQmSpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2900.0,
-            "liq_usd": 6200.0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:32:19.148388+00:00"
-        },
-        {
-          "symbol": "RECORD",
-          "address": "CScGAnuZtb3tVWTbtTEPLsv9EbnvV529EGFdxvRCpump",
-          "signal_type": "CTO",
-          "features": {
-            "mcp": 3700.0,
-            "liq_usd": 4400.0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:32:52.197594+00:00"
-        },
-        {
-          "symbol": "awdawdawdasda",
-          "address": "FP3vbMsVNNwpB7xDezii16o8ajxw12oDddvNWrhspump",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 2100.0,
-            "liq_usd": 4200.0,
-            "holders": 1,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:32:52.812606+00:00"
-        },
-        {
-          "symbol": "WORLDCRAFT",
-          "address": "ELG8rqj4TDhMs9SonUGuxn64rhHSxtvxY1vnYJKWpump",
-          "signal_type": "CTO",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 0,
-            "holders": 0,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:32:53.947746+00:00"
-        },
-        {
-          "symbol": "PT",
-          "address": "B9Co4mhfaSEU5jrPEJW58cDGL5PBPS1yg5Azgv5AVV7A",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2000.0,
-            "liq_usd": 4200.0,
-            "holders": 2,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:32:54.564728+00:00"
-        },
-        {
-          "symbol": "CHIPS",
-          "address": "FDoCnRSgjz1DYTNfu2DK2KWphXLqwyvTns2BJp3Bpump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2200.0,
-            "liq_usd": 4400.0,
-            "holders": 4,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:32:55.191254+00:00"
-        },
-        {
-          "symbol": "ALLINU",
-          "address": "JBV5oSbqPtcj3uJ7JxtcWWHneZp3Ut2vQVxujsvtpump",
-          "signal_type": "CTO",
-          "features": {
-            "mcp": 2700.0,
-            "liq_usd": 5700.0,
-            "holders": 2,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:32:56.825767+00:00"
-        },
-        {
-          "symbol": "ANGIE",
-          "address": "FYGuw9YjhjUgiGPE2pSHCRwmS3Zvr2NJBS7r4HZopump",
-          "signal_type": "DEV_SOLD",
-          "features": {
-            "mcp": 2400.0,
-            "liq_usd": 4500.0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T03:33:29.881493+00:00"
-        },
         {
           "symbol": "Solmine",
           "address": "FfyMV7Zw2VsTkjudR2Qrq5gv9jPn2GEfzmctNaJUpump",
@@ -61049,6 +60446,650 @@
             "renounced": false
           },
           "timestamp": "2026-06-24T03:46:50.649441+00:00"
+        },
+        {
+          "symbol": "LOCOS",
+          "address": "6X9DJWAJwwo4RJH5L6xFCSMbSTmJ7aZJ6Lw47TkKpump",
+          "signal_type": "CTO",
+          "features": {
+            "mcp": 3100.0,
+            "liq_usd": 0,
+            "holders": 13,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:47:16.909862+00:00"
+        },
+        {
+          "symbol": "CLAVJAK",
+          "address": "Gv5RGUkkB2By134pDTnpYCQTS9jaeE8EYQJxLXFX5ojd",
+          "signal_type": "DEV_BOUGHT",
+          "features": {
+            "mcp": 2400.0,
+            "liq_usd": 0,
+            "holders": 2,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:47:17.538642+00:00"
+        },
+        {
+          "symbol": "Chadjak",
+          "address": "6Lf2mfWv1sBZukWA6Z6tz53qvcuEg3vpcEjZ94Uqpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 5400.0,
+            "liq_usd": 6900.0,
+            "holders": 66,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:47:18.162785+00:00"
+        },
+        {
+          "symbol": "SpaceJuice",
+          "address": "BwDpTCXb98csDhU6H3U6uMAN7Sy2V5vxnmrujKiCpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 3000.0,
+            "liq_usd": 5100.0,
+            "holders": 8,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:47:20.363974+00:00"
+        },
+        {
+          "symbol": "FDSF",
+          "address": "EtpH54Q7JJfyJVNJWRaVvjPg1smszQETZafxe52bpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 3100.0,
+            "liq_usd": 4500.0,
+            "holders": 3,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:47:22.595224+00:00"
+        },
+        {
+          "symbol": "FDSF",
+          "address": "9khVz5MbpkShf5e7oXDBU9CBVCnaSHYSpf8peqWCpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2400.0,
+            "liq_usd": 4600.0,
+            "holders": 4,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:47:53.398645+00:00"
+        },
+        {
+          "symbol": "gary",
+          "address": "C9gznjPiFX8Np6DjodG5Y6A3ex919JqgULh1PnfYpump",
+          "signal_type": "FDV_SURGE",
+          "features": {
+            "mcp": 3600.0,
+            "liq_usd": 0,
+            "holders": 7,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:47:54.034737+00:00"
+        },
+        {
+          "symbol": "Chadvicular",
+          "address": "BpXRVThYkENqam1FjSVRmrwnTzSza7Hnuu3L9eVapump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2400.0,
+            "liq_usd": 4500.0,
+            "holders": 2,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:47:54.674909+00:00"
+        },
+        {
+          "symbol": "GVlone",
+          "address": "4muXNaCrsaNzYpgpWcrWyaq3RYybkXzpXKzQZKFZpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2000.0,
+            "liq_usd": 0,
+            "holders": 1,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:48:28.898801+00:00"
+        },
+        {
+          "symbol": "MOSL",
+          "address": "4aaxGKSPHaLgnFS4mLYZ5zCv96pVteQbiAGwaQSopump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 3400.0,
+            "liq_usd": 5300.0,
+            "holders": 11,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:48:30.554912+00:00"
+        },
+        {
+          "symbol": "Chadjak",
+          "address": "9CARZXjvh6vLMjirxQ5Ywv9ddVjXEtZEwmKuPZTBpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2100.0,
+            "liq_usd": 0,
+            "holders": 5,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:48:31.181779+00:00"
+        },
+        {
+          "symbol": "MOSL",
+          "address": "7cy261RPy1UijFGfMKSfN5S9BDtkZkAVpjscJeQ3pump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2200.0,
+            "liq_usd": 4200.0,
+            "holders": 1,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:49:02.250094+00:00"
+        },
+        {
+          "symbol": "gary",
+          "address": "G6S6L27zPXzfefqSsTm3ckPt71ZyCGEfJkZEXhFopump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2200.0,
+            "liq_usd": 0,
+            "holders": 3,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:49:50.833374+00:00"
+        },
+        {
+          "symbol": "Wen",
+          "address": "5kTNYZDixiqVJtJmEjDh4z9csJV6V3GM4xm1cR3pump",
+          "signal_type": "FDV_SURGE",
+          "features": {
+            "mcp": 3600.0,
+            "liq_usd": 5400.0,
+            "holders": 22,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:50:39.459658+00:00"
+        },
+        {
+          "symbol": "FDSF",
+          "address": "Huh1GHbcssGPjusArEsu49QJKZ2xrWJToFCr1xitpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 1700.0,
+            "liq_usd": 4200.0,
+            "holders": 3,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:50:40.628408+00:00"
+        },
+        {
+          "symbol": "FDSF",
+          "address": "CUHQyUjQHyskyXJ12v8RhjWxVurF4gNWRAP1ALRkpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 513.2,
+            "liq_usd": 4300.0,
+            "holders": 4,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:51:03.927613+00:00"
+        },
+        {
+          "symbol": "frobot",
+          "address": "7WCU5QNW1GY6GkKTAW1FBiHBtZCNzShhS5PyToLRpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2200.0,
+            "liq_usd": 4800.0,
+            "holders": 1,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:51:33.081153+00:00"
+        },
+        {
+          "symbol": "EC43",
+          "address": "73JysrWxWBofqzHvYddtRBBhTJHv5q4DftwTFbnUpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 3200.0,
+            "liq_usd": 5200.0,
+            "holders": 7,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:51:33.707989+00:00"
+        },
+        {
+          "symbol": "WENDY",
+          "address": "CSyDyBKW2QeaELhjFXwyH6t2JooYX4JXJsKdLzHjpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2100.0,
+            "liq_usd": 0,
+            "holders": 1,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:51:34.353911+00:00"
+        },
+        {
+          "symbol": "FDSF",
+          "address": "FE5wWXzaUEwyeqJCwec66YCL3viTZiHLtNLrLDB8pump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 3800.0,
+            "liq_usd": 4400.0,
+            "holders": 3,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:51:34.991110+00:00"
+        },
+        {
+          "symbol": "WENDEEZ",
+          "address": "8BAZo7QjnxfDvELnuXTkGSm1pddjggZ4upu8Vdwtpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2800.0,
+            "liq_usd": 5500.0,
+            "holders": 9,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:52:04.538707+00:00"
+        },
+        {
+          "symbol": "ARTDEPOT",
+          "address": "5JwWM6vqvsbMf49PqrE3D5C7uHv6tJBrcUxhGwW8pump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 3900.0,
+            "liq_usd": 4600.0,
+            "holders": 4,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:52:05.846587+00:00"
+        },
+        {
+          "symbol": "WHALE",
+          "address": "BTYm7ARqreSgEJuPEJd66STaqPkLcAJSRjDLAA2pump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2000.0,
+            "liq_usd": 4200.0,
+            "holders": 1,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:52:07.538312+00:00"
+        },
+        {
+          "symbol": "FartShit",
+          "address": "6K6mWiorqLytvWQK4JZNUnafDP37YPP23GNW8TnJpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2900.0,
+            "liq_usd": 0,
+            "holders": 17,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:52:08.683969+00:00"
+        },
+        {
+          "symbol": "CITY",
+          "address": "5mYMEjXycpw6xwmwHyjRGeX7uEhAZe2szgzBau9fpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 3600.0,
+            "liq_usd": 4000.0,
+            "holders": 97,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:52:36.579159+00:00"
+        },
+        {
+          "symbol": "FDSF",
+          "address": "5rAzh2jvmj9E18A5MNhtg6z9cjXKwqteQDEaLCnEpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 8500.0,
+            "liq_usd": 4800.0,
+            "holders": 3,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:52:37.205618+00:00"
+        },
+        {
+          "symbol": "WENDYS",
+          "address": "BfWEuEAPyXwzLdqsQV9VpDHywEd3PU4CL1M83ayxpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2500.0,
+            "liq_usd": 4800.0,
+            "holders": 11,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:52:37.830692+00:00"
+        },
+        {
+          "symbol": "Wendyjak",
+          "address": "Cew69MSLyLnLA5kw8hsbL5e9PpBnFCLaYXW3qJL1pump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2000.0,
+            "liq_usd": 0,
+            "holders": 2,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:52:39.526198+00:00"
+        },
+        {
+          "symbol": "WENDYS",
+          "address": "2nJmBacy8izdBJUhiCnWoaskxL5tpamUkf2us1Gxpump",
+          "signal_type": "CTO",
+          "features": {
+            "mcp": 2900.0,
+            "liq_usd": 5100.0,
+            "holders": 10,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:53:07.762960+00:00"
+        },
+        {
+          "symbol": "DCI",
+          "address": "5tVzJdrg7XRh5aqwFP7XvUS5MSd3UiNkr8PioDuPpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2200.0,
+            "liq_usd": 4700.0,
+            "holders": 1,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:53:08.395194+00:00"
+        },
+        {
+          "symbol": "Wen",
+          "address": "28W9ZyCKQ7HvAcLatT8rYuihF58iSo6ne7AC2k9dpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2800.0,
+            "liq_usd": 5100.0,
+            "holders": 12,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:53:09.568673+00:00"
+        },
+        {
+          "symbol": "WENDYS",
+          "address": "7CnNchg3iBfaXP2vLDz8K3ygRwDdf5JZLJQwAAT7pump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2200.0,
+            "liq_usd": 4200.0,
+            "holders": 4,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:53:59.376310+00:00"
+        },
+        {
+          "symbol": "WENDYS",
+          "address": "EMDrAW9U429XVuUz692yKvUTWKw3govAf6Nbyt9Qpump",
+          "signal_type": "DEV_BOUGHT",
+          "features": {
+            "mcp": 2800.0,
+            "liq_usd": 0,
+            "holders": 0,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:54:00.022416+00:00"
+        },
+        {
+          "symbol": "FDSF",
+          "address": "BP3VAoTYFB6F8PnB6UmdVR3Pk11Wdwq9edEcis6Tpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2100.0,
+            "liq_usd": 4500.0,
+            "holders": 3,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:54:27.199560+00:00"
+        },
+        {
+          "symbol": "FDSF",
+          "address": "BjgAyib22am3YoPqdwfPPXW4KzmrqDcAJtkQMnzjpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 5300.0,
+            "liq_usd": 4400.0,
+            "holders": 4,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:55:37.540539+00:00"
+        },
+        {
+          "symbol": "MUSK",
+          "address": "8Ej5vzBveTgKH42MfuSr6b6s8KSoR1jLoi1YpobPXxe7",
+          "signal_type": "DEV_BOUGHT",
+          "features": {
+            "mcp": 2300.0,
+            "liq_usd": 0,
+            "holders": 2,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:56:09.768812+00:00"
+        },
+        {
+          "symbol": "Valerie",
+          "address": "BtKYN4MwokBxdrsbp8ogsR3xBvuyC69jwVML71Mkpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2700.0,
+            "liq_usd": 5000.0,
+            "holders": 10,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:56:38.216911+00:00"
+        },
+        {
+          "symbol": "SANDISK",
+          "address": "8FyZ2Q3WxA4YKJNWRkoMzS8VTqtTQeSn5dRZtmbWpump",
+          "signal_type": "DEV_BOUGHT",
+          "features": {
+            "mcp": 3200.0,
+            "liq_usd": 0,
+            "holders": 8,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:56:38.852609+00:00"
+        },
+        {
+          "symbol": "DIG",
+          "address": "5ViFBQYupUYFdJgPJvFrXDdrP3Wjbq4dvsFoQZLSpump",
+          "signal_type": "CTO",
+          "features": {
+            "mcp": 2800.0,
+            "liq_usd": 0,
+            "holders": 6,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:58:46.142051+00:00"
+        },
+        {
+          "symbol": "BACON",
+          "address": "H53uP4StnkmTTezUcVxRsD6taF6A86JERkh4ha8qpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2800.0,
+            "liq_usd": 0,
+            "holders": 1,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:58:46.776139+00:00"
+        },
+        {
+          "symbol": "AIVEST",
+          "address": "8na8ZiKpmkjW8a1teffqd1TQpQ6AEcyLBvoz94EDpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 1800.0,
+            "liq_usd": 4200.0,
+            "holders": 3,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T03:59:57.090098+00:00"
+        },
+        {
+          "symbol": "LUCKY",
+          "address": "2X3rHJpwcLKivmSPrUgz6sKJC2cgCnRQxKDoS1Uapump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 4100.0,
+            "liq_usd": 0,
+            "holders": 21,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T04:00:31.355066+00:00"
+        },
+        {
+          "symbol": "gary",
+          "address": "FCpRNmrEDYTRTf6Bz13iJmx2gygHXfYDYUZazjTtpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2800.0,
+            "liq_usd": 4900.0,
+            "holders": 7,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T04:00:31.984891+00:00"
+        },
+        {
+          "symbol": "WENDYPE",
+          "address": "BQhXYAn1B7cyecBszmaqwPt74zyuwBLgUgt3hDvRpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 3700.0,
+            "liq_usd": 5400.0,
+            "holders": 11,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T04:01:19.058089+00:00"
+        },
+        {
+          "symbol": "Wendy",
+          "address": "Aajdk2esoiVo8XEwBapdBzJpNJCKAoh6hAujerQDpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2100.0,
+            "liq_usd": 4400.0,
+            "holders": 2,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T04:01:20.225364+00:00"
+        },
+        {
+          "symbol": "FISHDEV",
+          "address": "5H7YoW96aZyo1YaYfBhMPzS4ZHWu6PtWyGBbF4vrpump",
+          "signal_type": "CTO",
+          "features": {
+            "mcp": 2400.0,
+            "liq_usd": 4700.0,
+            "holders": 8,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T04:01:53.095637+00:00"
         }
       ]
     },
