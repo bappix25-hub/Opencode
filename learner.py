@@ -1629,6 +1629,8 @@ def get_stats() -> dict:
     model = data.get("model", {})
     results = model.get("signal_results", [])
     fresh_start = data.get("fresh_start", "")
+    pumps = data.get("pump_patterns", [])
+    dumps = data.get("dump_patterns", [])
 
     now = datetime.now(timezone.utc).timestamp()
     yesterday = now - 86400
@@ -1726,6 +1728,8 @@ def get_stats() -> dict:
         "time_analysis": time_analysis,
         "risk_adjusted": risk_adjusted,
         "total_all_data": len(all_valid),
+        "total_pumps": model.get("total_pumps", len(pumps)),
+        "total_dumps": model.get("total_dumps", len(dumps)),
     }
 
 

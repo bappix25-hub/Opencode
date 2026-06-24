@@ -441,6 +441,13 @@ class MemeBot:
 
         # ===== HARD HEALTH BLOCKS (pre-migration) =====
         symbol = launch_data.symbol
+        
+        # Deployer block check
+        deployer = launch_data.deployer_wallet or ""
+        if deployer and await self.state.is_deployer_blocked(deployer):
+            logger.info(f"🚫 ডেপ্লয়ার ব্লক: {symbol} ({deployer[:8]}...) — pre-migration skip")
+            return
+        
         if liquidity <= 100 and mcap > 0:
             logger.info(f"[SKIP] {symbol}: pre-mig blocked — zero LP (${liquidity:.0f}) scam")
             return
@@ -1926,6 +1933,15 @@ class MemeBot:
         logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {pending.symbol} match={pending.match_score:.0%} "
                      f"liq=${int(pending.liquidity)} holders={pending.holders} "
                      f"mcap={format_number(pending.mcap)} confirmed_after={pending.check_count}x checks")
+
+        # Record signal for learning + hourly stats
+        try:
+            record_signal_result(
+                address, pending.symbol, 0.0, 0.0,
+                pending.age_seconds, datetime.now(timezone.utc), pending.price_at_match
+            )
+        except Exception:
+            pass
 
         # Save LP snapshot for monitoring
         try:
