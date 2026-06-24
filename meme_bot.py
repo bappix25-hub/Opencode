@@ -1934,15 +1934,6 @@ class MemeBot:
                      f"liq=${int(pending.liquidity)} holders={pending.holders} "
                      f"mcap={format_number(pending.mcap)} confirmed_after={pending.check_count}x checks")
 
-        # Record signal for learning + hourly stats
-        try:
-            record_signal_result(
-                address, pending.symbol, 0.0, 0.0,
-                pending.age_seconds, datetime.now(timezone.utc), pending.price_at_match
-            )
-        except Exception:
-            pass
-
         # Save LP snapshot for monitoring
         try:
             lp_analysis = await self.birdeye.get_lp_analysis(address) if self.birdeye else None

@@ -865,7 +865,7 @@ def _learn_pump(launch: dict) -> None:
 
     patterns = data.setdefault("pump_patterns", [])
     patterns.append(features)
-    patterns = patterns[-MAX_PUMP_PATTERNS:]
+    patterns[-MAX_PUMP_PATTERNS:]
     data["pump_patterns"] = patterns
 
     data["model"]["total_pumps"] = data["model"].get("total_pumps", 0) + 1
@@ -873,6 +873,21 @@ def _learn_pump(launch: dict) -> None:
     logger.info(f"🟢 LEARNED PUMP: {launch.get('symbol')} mcap={launch.get('outcome_mcap', 0):.0f} "
                 f"buy_sell={features.get('buy_sell_ratio')} holders={features.get('holders')} "
                 f"liq%={features.get('liq_pct')} snipers={features.get('snipers_30s')}")
+
+    # Record signal result for hourly stats and learning
+    try:
+        launch_mcp = features.get("launch_mcp", 0) or features.get("mcp", 0)
+        outcome_mcap = launch.get("outcome_mcap", 0)
+        ath_mult = outcome_mcap / launch_mcp if launch_mcp > 0 else 1.0
+        signal_time = features.get("signal_time")
+        if isinstance(signal_time, str):
+            signal_time = datetime.fromisoformat(signal_time.replace("Z", "+00:00"))
+        record_signal_result(
+            launch.get("address", ""), launch.get("symbol", "?"),
+            ath_mult, ath_mult, 0.0, signal_time, 0.0
+        )
+    except Exception:
+        pass
 
 
 def _learn_dump(launch: dict) -> None:
@@ -899,6 +914,21 @@ def _learn_dump(launch: dict) -> None:
 
     data["model"]["total_dumps"] = data["model"].get("total_dumps", 0) + 1
     data["model"]["last_update"] = datetime.now(timezone.utc).isoformat()
+
+    # Record signal result for hourly stats and learning
+    try:
+        launch_mcp = features.get("launch_mcp", 0) or features.get("mcp", 0)
+        outcome_mcap = launch.get("outcome_mcap", 0)
+        ath_mult = outcome_mcap / launch_mcp if launch_mcp > 0 else 0.5
+        signal_time = features.get("signal_time")
+        if isinstance(signal_time, str):
+            signal_time = datetime.fromisoformat(signal_time.replace("Z", "+00:00"))
+        record_signal_result(
+            launch.get("address", ""), launch.get("symbol", "?"),
+            ath_mult, ath_mult, 0.0, signal_time, 0.0
+        )
+    except Exception:
+        pass
 
 
 def match_pump_patterns(features: dict, min_similarity: float = 0.50, channel_id: int = None) -> tuple[bool, float, str]:
@@ -1072,7 +1102,7 @@ def record_signal_result(address: str, symbol: str, ath_multiplier: float, curre
         _analyze_and_amplify_success(address, symbol, launch["features"], data, ath_multiplier)
 
     # Update hourly win rate stats
-    _update_hourly_stats(signal_time, verdict)
+    _update_hourly_stats(data, signal_time, verdict)
 
     save_data(data)
 
@@ -1230,7 +1260,7 @@ def _analyze_and_amplify_success(address: str, symbol: str, features: dict, data
     data["model"]["signal_criteria"] = criteria
 
 
-def _update_hourly_stats(signal_time, verdict: str, pnl: float = 0.0) -> None:
+def _update_hourly_stats(data: dict, signal_time, verdict: str, pnl: float = 0.0) -> None:
     """Track win rate AND pnl per UTC hour for dynamic time filter."""
     if isinstance(signal_time, datetime):
         hour = signal_time.hour
@@ -1244,7 +1274,6 @@ def _update_hourly_stats(signal_time, verdict: str, pnl: float = 0.0) -> None:
 
     hour_str = str(hour)  # JSON keys are strings
 
-    data = load_data()
     hourly = data.get("model", {}).setdefault("hourly_stats", {})
 
     if hour_str not in hourly:
@@ -1254,9 +1283,6 @@ def _update_hourly_stats(signal_time, verdict: str, pnl: float = 0.0) -> None:
     hourly[hour_str]["total_pnl"] = hourly[hour_str].get("total_pnl", 0.0) + pnl
     if verdict in ("PUMP", "STRONG_PUMP"):
         hourly[hour_str]["wins"] = hourly[hour_str].get("wins", 0) + 1
-
-    data["model"]["hourly_stats"] = hourly
-    save_data(data)
 
 
 def get_bad_hours(min_signals: int = 5, max_win_rate: float = 0.15) -> set:
@@ -2237,11 +2263,13 @@ def compute_signal_criteria() -> dict:
 
         holders_vals = [p.get("features", {}).get("holders", 0) for p in pumps if p.get("features", {}).get("holders", 0) > 0]
         if holders_vals:
-            criteria["min_holders"] = int(sorted(holders_vals)[len(holders_vals) // 2])
+            med = int(sorted(holders_vals)[len(holders_vals) // 2])
+            criteria["min_holders"] = min(med, 20)  # Cap at 20
 
         wallets_vals = [p.get("features", {}).get("unique_wallets", 0) for p in pumps if p.get("features", {}).get("unique_wallets", 0) > 0]
         if wallets_vals:
-            criteria["min_wallets"] = int(sorted(wallets_vals)[len(wallets_vals) // 2])
+            med = int(sorted(wallets_vals)[len(wallets_vals) // 2])
+            criteria["min_wallets"] = min(med, 15)  # Cap at 15
 
         liq_vals = [p.get("features", {}).get("initial_liq_usd", 0) for p in pumps if p.get("features", {}).get("initial_liq_usd", 0) > 0]
         if liq_vals:
@@ -2259,7 +2287,7 @@ def compute_signal_criteria() -> dict:
 
 def auto_learn_update() -> dict:
     data = load_data()
-    results = data.get("signal_results", [])
+    results = data.get("model", {}).get("signal_results", [])
     if len(results) < 20:
         return {"total_recent": len(results)}
 
@@ -2297,7 +2325,7 @@ def auto_learn_update() -> dict:
 
 def learn_divergence_point() -> dict:
     data = load_data()
-    results = data.get("signal_results", [])
+    results = data.get("model", {}).get("signal_results", [])
     if len(results) < 10:
         return {}
 
