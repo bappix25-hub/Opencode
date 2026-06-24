@@ -2,37 +2,6 @@
   "pump_patterns": [
     {
       "address": "",
-      "symbol": "DOGECOIN",
-      "features": {
-        "buy_sell_ratio": 2.22,
-        "unique_wallets": 103,
-        "holders": 103,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 1,
-        "snipers_30s": 0,
-        "buy_count": 71,
-        "sell_count": 32,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 9,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781082686.034774,
-        "mcap": 9756.55
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-10T09:18:09.549364+00:00"
-    },
-    {
-      "address": "",
       "symbol": "Blub",
       "features": {
         "buy_sell_ratio": 2.08,
@@ -11261,6 +11230,21 @@
       "ath_multiplier": 0,
       "learned_at": "2026-06-24T03:21:26.807949+00:00",
       "source": "pump_collector"
+    },
+    {
+      "address": "Eav7v75ydZ5k3ToyRsbovn4c2J38fNRmZV6oW4wmpump",
+      "symbol": "WEN",
+      "features": {
+        "launch_time": 1782297538.928827,
+        "source": "historical_scan",
+        "ath_multiplier": 8.94,
+        "outcome": "STRONG_PUMP",
+        "signal_age": 0.0
+      },
+      "outcome": "STRONG_PUMP",
+      "ath_multiplier": 8.94,
+      "signal_age": 0.0,
+      "learned_at": "2026-06-24T10:49:34.451950+00:00"
     }
   ],
   "dump_patterns": [
@@ -49075,7 +49059,10 @@
       "symbol": "WEN",
       "features": {
         "launch_time": 1782297538.928827,
-        "source": "historical_scan"
+        "source": "historical_scan",
+        "ath_multiplier": 8.94,
+        "outcome": "STRONG_PUMP",
+        "signal_age": 0.0
       },
       "launch_time": 1782297538.928827,
       "outcome": null,
@@ -49085,7 +49072,7 @@
     }
   ],
   "model": {
-    "total_pumps": 4,
+    "total_pumps": 5,
     "total_dumps": 1000,
     "total_skipped": 0,
     "last_update": null,
@@ -50393,6 +50380,50 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-24T10:04:25.238074+00:00",
         "timestamp": "2026-06-24T10:04:25.238109+00:00"
+      },
+      {
+        "address": "Eav7v75ydZ5k3ToyRsbovn4c2J38fNRmZV6oW4wmpump",
+        "symbol": "WEN",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 8.94,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-24T10:49:34.451701+00:00",
+        "timestamp": "2026-06-24T10:49:34.451742+00:00"
+      },
+      {
+        "address": "24dzjDrCfU4P28kG8VofVugMUYWZK1muHAiKxmiPpump",
+        "symbol": "PLUSH",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 5.38,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-24T10:49:34.673679+00:00",
+        "timestamp": "2026-06-24T10:49:34.673712+00:00"
+      },
+      {
+        "address": "Hs8JDjxT2gGzSXe6KtycDhKkFGBu7BHR71emwJz5pump",
+        "symbol": "Macca",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.07,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-24T10:49:34.877758+00:00",
+        "timestamp": "2026-06-24T10:49:34.877792+00:00"
+      },
+      {
+        "address": "EKbauFR5WtEHbDds3AzF5zziRGsSXAPWmshvWstpump",
+        "symbol": "FINE",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 5.17,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-24T10:49:35.081324+00:00",
+        "timestamp": "2026-06-24T10:49:35.081357+00:00"
       }
     ],
     "success_history": [
@@ -50760,6 +50791,22 @@
           "signal_age": 0.0
         },
         "timestamp": "2026-06-24T03:43:36.890569+00:00"
+      },
+      {
+        "address": "Eav7v75ydZ5k3ToyRsbovn4c2J38fNRmZV6oW4wmpump",
+        "symbol": "WEN",
+        "reasons": [
+          "balanced"
+        ],
+        "ath_multiplier": 8.94,
+        "features": {
+          "launch_time": 1782297538.928827,
+          "source": "historical_scan",
+          "ath_multiplier": 8.94,
+          "outcome": "STRONG_PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-24T10:49:34.559669+00:00"
       }
     ],
     "auto_learn_insights": {
@@ -50797,8 +50844,8 @@
     },
     "signal_criteria": {
       "min_bsr": 1.26,
-      "min_holders": 20,
-      "min_wallets": 15,
+      "min_holders": 19.5,
+      "min_wallets": 14,
       "min_liq": 500,
       "min_liq_pct": 10,
       "min_lp_locked": 80,
@@ -51021,8 +51068,8 @@
         "total_pnl": 0.0
       },
       "10": {
-        "wins": 4,
-        "total": 4,
+        "wins": 8,
+        "total": 8,
         "total_pnl": 0.0
       }
     }
@@ -58403,7 +58450,7 @@
   "channel_stats": {
     "-1002122751413": {
       "name": "New Pool Alert",
-      "total_signals": 983,
+      "total_signals": 984,
       "winners": 0,
       "mega_winners": 0,
       "losers": 1,
@@ -58412,25 +58459,11 @@
       "best_ath": 1.2919586735062496,
       "best_symbol": "SwuKQSbz",
       "signal_types": {
-        "FEATURED_NEW": 902,
+        "FEATURED_NEW": 903,
         "FDV_SURGE": 44,
         "CTO": 37
       },
       "recent_signals": [
-        {
-          "symbol": "SOB",
-          "address": "DxwA88rAVQnLDd9VTbJVnEyiHVFoPrf7KroLXqt11Fhm",
-          "signal_type": "FEATURED_NEW",
-          "features": {
-            "mcp": 0,
-            "liq_usd": 36436.4,
-            "holders": 13,
-            "initial_lp_pct": 100.0,
-            "dev_balance_sol": 65.55745,
-            "renounced": true
-          },
-          "timestamp": "2026-06-24T05:52:34.555077+00:00"
-        },
         {
           "symbol": "0.00052",
           "address": "6PzkyqvbRKp9n2SDMkWRkDcKiJN6DdjiFnMEQt6Gdtrx",
@@ -59816,12 +59849,26 @@
             "renounced": false
           },
           "timestamp": "2026-06-24T10:39:57.104370+00:00"
+        },
+        {
+          "symbol": "0.02338",
+          "address": "3nGVDKwqr7VxzNhgCEQT4woSx4DnRHvmPXAJV7EJmoon",
+          "signal_type": "FEATURED_NEW",
+          "features": {
+            "mcp": 23380.35,
+            "liq_usd": 0,
+            "holders": 0,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T10:49:00.255957+00:00"
         }
       ]
     },
     "-1002202241417": {
       "name": "GMGN Signals",
-      "total_signals": 3759,
+      "total_signals": 3762,
       "winners": 0,
       "mega_winners": 0,
       "losers": 0,
@@ -59831,9 +59878,9 @@
       "best_symbol": "",
       "signal_types": {
         "FDV_SURGE": 361,
-        "DEV_SOLD": 2307,
+        "DEV_SOLD": 2309,
         "CTO": 321,
-        "DEV_BOUGHT": 542,
+        "DEV_BOUGHT": 543,
         "KOTH": 164,
         "KOL_FOMO": 19,
         "PUMP_COMPLETED": 9,
@@ -59841,48 +59888,6 @@
         "FEATURED_NEW": 16
       },
       "recent_signals": [
-        {
-          "symbol": "SMX",
-          "address": "6Tya8v5jvLURf5rgm8VwUXaZXJqQWFzFLGNMVBSzpump",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 2100.0,
-            "liq_usd": 0,
-            "holders": 2,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T06:16:49.197231+00:00"
-        },
-        {
-          "symbol": "GREEN",
-          "address": "8AkiNDRqCpKjCdzNZdbp1dUf8FKX3F5CsbhyaSrfpump",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 2400.0,
-            "liq_usd": 0,
-            "holders": 3,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T06:16:49.921208+00:00"
-        },
-        {
-          "symbol": "🤣🤣",
-          "address": "Fi1X6bQJL8nQnK2VfYmwbDjb31zsbEPvqn3uGy9KS74P",
-          "signal_type": "DEV_BOUGHT",
-          "features": {
-            "mcp": 2600.0,
-            "liq_usd": 5600.0,
-            "holders": 2,
-            "initial_lp_pct": 0,
-            "dev_balance_sol": 0,
-            "renounced": false
-          },
-          "timestamp": "2026-06-24T06:16:50.658503+00:00"
-        },
         {
           "symbol": "FSD",
           "address": "DhQyfK61e3d6YkkABhkgcpkfwA8HibpZE6MHsoyjpump",
@@ -61240,6 +61245,48 @@
             "renounced": false
           },
           "timestamp": "2026-06-24T10:40:07.322249+00:00"
+        },
+        {
+          "symbol": "moodeng",
+          "address": "8moVZaytKFjgW1qNa3gT25VeeZaJcvniKWq9Dp2omrmu",
+          "signal_type": "DEV_BOUGHT",
+          "features": {
+            "mcp": 2300.0,
+            "liq_usd": 0,
+            "holders": 0,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T10:49:04.921870+00:00"
+        },
+        {
+          "symbol": "moodeng",
+          "address": "FEKtcQPdVJC73N8ppym8y2hUMvwD3spUjZZFi2PXpump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2900.0,
+            "liq_usd": 5100.0,
+            "holders": 0,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T10:49:05.881919+00:00"
+        },
+        {
+          "symbol": "art",
+          "address": "yobKbvog3cTpVrCjPyFDEvLPbymBa65dbgpez9ppump",
+          "signal_type": "DEV_SOLD",
+          "features": {
+            "mcp": 2300.0,
+            "liq_usd": 4500.0,
+            "holders": 0,
+            "initial_lp_pct": 0,
+            "dev_balance_sol": 0,
+            "renounced": false
+          },
+          "timestamp": "2026-06-24T10:49:07.719101+00:00"
         }
       ]
     },
