@@ -198,10 +198,17 @@ def calculate_average_ath(results):
 
 def save_data(data: dict):
     try:
-        with open(DATA_FILE, "w") as f:
+        import tempfile
+        tmp_fd, tmp_path = tempfile.mkstemp(dir=os.path.dirname(DATA_FILE) or ".", suffix=".tmp")
+        with os.fdopen(tmp_fd, "w") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
+        os.replace(tmp_path, DATA_FILE)
     except Exception as e:
         logger.error(f"save_data error: {e}")
+        try:
+            os.unlink(tmp_path)
+        except Exception:
+            pass
 
 
 def calculate_signal_quality_score(recent_signals):
