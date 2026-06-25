@@ -42008,40 +42008,6 @@
   "signal_results": [],
   "launches_tracked": [
     {
-      "address": "BPumYEKGeiSbmea75dPTGFtTC3BdAFJFbgH8RJybpump",
-      "symbol": "fear",
-      "features": {
-        "mcp": 2400.0,
-        "liq_usd": 0,
-        "holders": 5,
-        "buy_sell_ratio": 0,
-        "unique_wallets": 0,
-        "initial_liq": 0,
-        "lp_locked": 0,
-        "top10_pct": 9.79,
-        "audit_score": 0,
-        "bundled_pct": 0,
-        "dev_status": "UNKNOWN",
-        "renounced": false,
-        "launch_time": 1782324312.279767,
-        "signal_type": "DEV_BOUGHT",
-        "source_channel": "GMGN Signals",
-        "fresh_1d": 0,
-        "fresh_7d": 0,
-        "has_web": false,
-        "has_twitter": false,
-        "has_telegram": false,
-        "outcome": "dump",
-        "outcome_mcap": 1823.49,
-        "symbol": "fear"
-      },
-      "launch_time": 1782324312.279767,
-      "outcome": "dump",
-      "outcome_mcap": 1823.49,
-      "outcome_time": "2026-06-25T00:05:20.182301+00:00",
-      "signal_sent": false
-    },
-    {
       "address": "ChjmrUenC9NBWwtQfXZdLrYj3AZBA7kr7D96rSFnpump",
       "symbol": "Puffins",
       "features": {
@@ -58891,6 +58857,19 @@
         "source": "historical_scan"
       },
       "launch_time": 1782399808.90117,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "AixKxcsoMXXfBTDRgvvnUBJ6FufaHZfc6Wnv2piVpump",
+      "symbol": "FSTR",
+      "features": {
+        "launch_time": 1782403512.370731,
+        "source": "historical_scan"
+      },
+      "launch_time": 1782403512.370731,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
