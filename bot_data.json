@@ -61518,18 +61518,15 @@
       }
     ],
     "auto_learn_insights": {
-      "total_recent": 50,
-      "wins": 47,
-      "losses": 3,
       "win_rate": 94.0,
       "avg_win_bsr": 0,
       "avg_loss_bsr": 0,
       "avg_win_holders": 0,
       "avg_loss_holders": 0,
-      "avg_win_liq": 0,
-      "avg_loss_liq": 0,
-      "avg_win_lp_locked": 0,
-      "avg_loss_lp_locked": 0
+      "quality_score": 0.35,
+      "dump_rate": 6.0,
+      "avg_ath": 9.77,
+      "updated_at": "2026-06-25T14:54:08.752527+00:00"
     },
     "signal_criteria_stats": {
       "pump_medians": {
@@ -61557,18 +61554,20 @@
       "min_bsr": 1.28,
       "min_holders": 20,
       "min_wallets": 15,
-      "min_liq": 8700.0,
-      "min_liq_pct": 25.7,
+      "min_liq": 8674.0,
+      "min_liq_pct": 25.8,
       "min_lp_locked": 80,
       "min_mcap": 3000,
-      "heuristic_threshold": 0.45,
+      "heuristic_threshold": 0.53,
       "pattern_threshold": 0.6,
       "dump_pattern_threshold": 0.7,
       "max_age_seconds": 21600,
-      "updated_at": "2026-06-25T13:19:31.814405+00:00",
-      "sample_size": 708,
+      "updated_at": "2026-06-25T14:36:20.374651+00:00",
+      "sample_size": 713,
       "min_lp_providers": 2,
-      "max_age_hours": 109.9
+      "max_age_hours": 107.2,
+      "volatility_setting": "high",
+      "last_quality_score": 0.35
     },
     "channel_insights": {
       "patterns": {
@@ -70190,6 +70189,45 @@
       },
       "ath_multiplier": 1.2956298200514138,
       "timestamp": "2026-06-25T04:16:10.720764+00:00"
+    },
+    {
+      "address": "192yaGfSk3TSW8bp3wZ7ZXyEjRsWiyiaPswpXLppump",
+      "symbol": "GOON",
+      "features": {
+        "buy_count": 0,
+        "sell_count": 0,
+        "buy_sell_ratio": 0.0,
+        "volume": 5832094.52,
+        "holders": 0,
+        "unique_wallets": 0,
+        "initial_liq": 37005.84,
+        "initial_mcap": 280267,
+        "liq_pct": 13.2,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 13,
+        "lp_locked": 0,
+        "deployer": "4Vut5rnQNE8A",
+        "ath_price": 0.0002802,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "volume_velocity": 1629.1385,
+        "buy_sell_momentum": 0.0,
+        "liquidity_depth": 0.132,
+        "volume_spike_ratio": 0.0,
+        "buy_spike_ratio": 0.0,
+        "social_score": 0,
+        "launch_weekday": 3,
+        "launch_month": 6,
+        "is_weekend": false,
+        "launch_session": "european",
+        "insider_count": 0,
+        "launch_time": 1782395668.65034,
+        "liquidity": 37005.84,
+        "mcap": 280267.0
+      },
+      "ath_multiplier": 1.0,
+      "timestamp": "2026-06-25T14:54:08.598710+00:00"
     }
   ],
   "fresh_start": "2026-06-22T13:38:36.943300+00:00",
