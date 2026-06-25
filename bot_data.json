@@ -42001,40 +42001,6 @@
   "signal_results": [],
   "launches_tracked": [
     {
-      "address": "6mUDk2GLsRdXVh5VhUmseQSzRHn1RkuYmdf49uVSiQak",
-      "symbol": "0.0{5}84677",
-      "features": {
-        "mcp": 8467.75141,
-        "liq_usd": 0,
-        "holders": 15,
-        "buy_sell_ratio": 0,
-        "unique_wallets": 0,
-        "initial_liq": 0,
-        "lp_locked": 0,
-        "top10_pct": 0,
-        "audit_score": 0,
-        "bundled_pct": 0,
-        "dev_status": "UNKNOWN",
-        "renounced": false,
-        "launch_time": 1782324305.981893,
-        "signal_type": "FEATURED_NEW",
-        "source_channel": "New Pool Alert",
-        "fresh_1d": 0,
-        "fresh_7d": 0,
-        "has_web": false,
-        "has_twitter": false,
-        "has_telegram": false,
-        "outcome": "dump",
-        "outcome_mcap": 15968.0,
-        "symbol": "0.0{5}84677"
-      },
-      "launch_time": 1782324305.981893,
-      "outcome": "dump",
-      "outcome_mcap": 15968.0,
-      "outcome_time": "2026-06-25T00:05:18.011402+00:00",
-      "signal_sent": false
-    },
-    {
       "address": "4CPa7SrqmfHeVUp4dXMAqvRdZL16SNFrhPULhM98pump",
       "symbol": "fight",
       "features": {
@@ -58939,6 +58905,19 @@
       "outcome_mcap": 0,
       "outcome_time": null,
       "signal_sent": false
+    },
+    {
+      "address": "GgqZq3znKRVSQTTMuridvUXvtqxy2tUbgFZ36jYEpump",
+      "symbol": "Hama",
+      "features": {
+        "launch_time": 1782366676.9042,
+        "source": "historical_scan"
+      },
+      "launch_time": 1782366676.9042,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
     }
   ],
   "model": {
@@ -60450,17 +60429,6 @@
         "timestamp": "2026-06-24T22:53:15.606623+00:00"
       },
       {
-        "address": "BGuwU5SdeH93cT3WyN2K4e4vJuqyaFBAkzaZ2wtJUSoH",
-        "symbol": "USOH",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 121.52,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-24T23:43:18.268901+00:00",
-        "timestamp": "2026-06-24T23:43:18.268939+00:00"
-      },
-      {
         "address": "5xHMRXNcrsipK89EGPN8whB38DWCwLSmPdwG6TQ8pump",
         "symbol": "WEN",
         "verdict": "PUMP",
@@ -60558,6 +60526,28 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-25T05:07:32.281370+00:00",
         "timestamp": "2026-06-25T05:07:32.281402+00:00"
+      },
+      {
+        "address": "9AE1BTVqGVZLrHHgZD87UnAApigDNkQn4VVZASxDpump",
+        "symbol": "FROG",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.6863849765258214,
+        "current_multiplier": 0.49295774647887325,
+        "min_price_multiplier": 0.9924882629107982,
+        "signal_age": 2203.2983689308167,
+        "signal_time": "2026-06-25T05:29:57.140097+00:00",
+        "timestamp": "2026-06-25T05:29:57.140138+00:00"
+      },
+      {
+        "address": "9xZuyYu9hk94EcXoWxrpsmCbQ1MowFsxdWUeMdjZpump",
+        "symbol": "JUAN",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.07616169248205515,
+        "current_multiplier": 0.04926331696259917,
+        "min_price_multiplier": 1.0,
+        "signal_age": 267.3609070777893,
+        "signal_time": "2026-06-25T05:33:28.527648+00:00",
+        "timestamp": "2026-06-25T05:33:28.527690+00:00"
       }
     ],
     "success_history": [
@@ -69118,34 +69108,7 @@
     "5kuTkFHSha6Dc4po34fhHVYfUf9XzqFSGxRN41rmpump",
     "HcJuEbc4KG2PRqmaJtqM5cwyvM3u3GuNUyxvSGD9Li5k",
     "4g6ZWbRzK2ajt9kay2os2STPk1H4XLrsU3Viu9q9qUMs",
-    "5qzPrLDmWt9TN7rJRfAifmNhjYjS6v5AJUhsnqrD3QwZ",
-    "4BMXS7ustoUu2efhB3T1FKEaDUzJHkLusxENDCSJpump",
-    "FMqh9mqR6drPZqqW6wPqLHxX4rqNDWGhYLaMfoaJpump",
-    "GQEEL98udpaC4QRnCVqdRPgUgSVjXpN4KaHCXjQMpump",
-    "TKrSWJq5sAZFHsmmE4CxN1NjPnoQLvwDvHn1gEze6ZP",
-    "DeaY79QpPqArVG4PuLxvvAZeg31zfFaxhvT7ybTspump",
-    "B8UWtPpCuCH69XtrpJf3XPUE2PBRKm9TbRt5mPayBAGS",
-    "2967eJLLpTuM5C3T68dv67b1LwJ83VoYxQY29PSrpump",
-    "GFN8dhSSjPswAa5NJUMBDpdwMdwj3FBtJTCvbY4tGoi",
-    "ZTpvi7fKwRT4iVKXcVB9wp23mKAd16Bu5NjodWepump",
-    "H6R1ki8iVYTLsgDjewXBzmXNCQLs7npsuZqiLsPrpump",
-    "9cjcMhk8WbCPCQN6eRTWjEofNueAqDncr7oNQxK9pump",
-    "3UzE83F1vg1HkEmnnRqM37T2YqtNSGZfdHTTZwR9pump",
-    "91NzDAeYc4dFrcooaUjAbGso9cc64MaWhvHSUqpxpump",
-    "Eors2YVLAXWFzSUfFwxKpGUTZUEXmQcEN37rt591pump",
-    "3DYqdzwvEJTP9biopMiH1dx1WsuRTVPdinrRMU7bpump",
-    "6eHwJo9jfWcouEfkPMtFF5W1TqaFEw5za7iufnhkYrpV",
-    "Bkkf6BuFc6Hxo5ydzRQTE1CRwL9MNK23uVPdEq1ipump",
-    "4BsYbLWnr5pHL3w3R7Z774YPwGvgC88ZtWWk76Lypump",
-    "68c1x52yJ5QBPH4yWpx3wSWh3447pSWMK6dVqav4pump",
-    "6KDh3wLSZMg37nnU7prtKZr7Rut7WQGSf33Vp1G7pump",
-    "5TnLnnPT77oNCgg8tYxVkM7SDkWB8UaBzMZwaB74pump",
-    "ARr8vR5dfpCruwFgM7YB2CkbDaqs8iw33PQzXNncpump",
-    "DcbJ88vkoaVNoaLGcehupsSB61P4WZX4aJCWENdypump",
-    "9qwxahBxcgKyn5X7kZvkN7qxKZg6pkVD8Lo4URtopump",
-    "GSHASZ3G1CPmLYHCRMQfR5Tjuwz5JkDTQZqAMdFtpump",
-    "EYPrKeSUXxcwd2nAbmv7aGwwJWsTXafacbBHZ7NBpump",
-    "FKwkXLduatvXkwfi4BnTGvLqAMZtnBMRxFTh2bFopump"
+    "5qzPrLDmWt9TN7rJRfAifmNhjYjS6v5AJUhsnqrD3QwZ"
   ],
   "launch_patterns": [],
   "trained_addresses": [],
