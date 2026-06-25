@@ -61134,20 +61134,19 @@
     },
     "signal_criteria": {
       "min_bsr": 1.26,
-      "min_holders": 20,
+      "min_holders": 10,
       "min_wallets": 15,
-      "min_liq": 8285.0,
-      "min_liq_pct": 26.5,
+      "min_liq": 500,
+      "min_liq_pct": 10,
       "min_lp_locked": 80,
       "min_mcap": 3000,
       "heuristic_threshold": 0.45,
       "pattern_threshold": 0.6,
       "dump_pattern_threshold": 0.7,
       "max_age_seconds": 21600,
-      "updated_at": "2026-06-25T02:18:31.841273+00:00",
-      "sample_size": 622,
-      "min_lp_providers": 2,
-      "max_age_hours": 80.2
+      "updated_at": "2026-06-25T03:04:19.347431+00:00",
+      "sample_size": 500,
+      "min_lp_providers": 2
     },
     "channel_insights": {
       "patterns": {
