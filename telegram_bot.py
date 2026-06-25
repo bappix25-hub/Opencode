@@ -245,22 +245,15 @@ class TelegramHandlers:
 
     async def cmd_health(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         stats = await self.state.get_stats()
-        learner_stats = get_stats()
         active = "🟢 চালু" if stats["bot_active"] else "🔴 বন্ধ"
 
         text = (
             f"📊 <b>বট স্ট্যাটাস</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"অবস্থা: {active}\n"
-            f"🆕 লঞ্চ: <b>{stats['launch_tracking']}</b> | "
-            f"🔍 মাইগ্রেশন: <b>{stats['tracked_coins']}</b>\n"
-            f"🚫 ব্ল্যাকলিস্ট: <b>{stats['blacklisted']}</b>\n"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"⚡ সিগন্যাল: <b>{learner_stats.get('total', 0)}</b>\n"
-            f"🏆 সফল (2x+): <b>{learner_stats.get('wins', 0)}</b>\n"
-            f"🎯 একুরেসি: <b>{learner_stats.get('win_rate', 0)}%</b>\n"
-            f"📚 পাম্প: <b>{learner_stats.get('total_pumps', 0)}</b> | "
-            f"ডাম্প: <b>{learner_stats.get('total_dumps', 0)}</b>"
+            f"🆕 লঞ্চ ট্র্যাকিং: <b>{stats['launch_tracking']}</b>\n"
+            f"🔍 মাইগ্রেশন ট্র্যাক: <b>{stats['tracked_coins']}</b>\n"
+            f"🚫 ব্ল্যাকলিস্ট: <b>{stats['blacklisted']}</b"
         )
         await update.message.reply_text(text, parse_mode="HTML")
 
