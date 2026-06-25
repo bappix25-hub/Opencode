@@ -453,6 +453,7 @@ class TelegramHandlers:
         total_all = perf.get("total_all_data", 0)
         tp_h = perf.get("tp_hits", 0)
         sl_h = perf.get("sl_hits", 0)
+        holds = perf.get("holds", 0)
 
         if total == 0 and total_all == 0:
             await update.message.reply_text(
@@ -463,28 +464,21 @@ class TelegramHandlers:
             )
             return
 
+        exited = tp_h + sl_h
+        win_rate = round(tp_h / max(exited, 1) * 100, 1) if exited > 0 else 0
+
         text = (
             f"📊 <b>পারফরম্যান্স (২৪ঘন্টা)</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"📈 টোটাল সিগন্যাল: <b>{total}</b>\n"
-            f"✅ TP হিট: <b>{tp_h}</b> | ❌ SL হিট: <b>{sl_h}</b>\n"
+            f"✅ TP হিট: <b>{tp_h}</b> | ❌ SL হিট: <b>{sl_h}</b> | ⏳ পেন্ডিং: <b>{holds}</b>\n"
+            f"🎯 উইন রেট: <b>{win_rate}%</b> ({tp_h}/{exited})\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"⭐ <b>অপ্টিমাল TP/SL (৬ঘন্টা ট্র্যাকিং):</b>\n"
             f"   TP: <b>+{perf['optimal_tp']}%</b>  |  SL: <b>{perf['optimal_sl']}%</b>\n"
             f"   → এক্সপেক্টেড প্রফিট: <b>{perf['expected_pnl']:+.1f}%</b>\n"
-            f"   → জিতবে: {tp_h}/{tp_h + sl_h} | হারবে: {sl_h}/{tp_h + sl_h}\n"
             f"━━━━━━━━━━━━━━━━\n"
         )
-
-        # Show best scenarios
-        scenarios = perf.get("tp_scenarios", [])
-        if scenarios:
-            hit_scenarios = [s for s in scenarios if s['tp_hits'] > 0]
-            show = hit_scenarios[:3]
-            text += f"<b>টপ TP সিনেরিও:</b>\n"
-            for sc in show:
-                star = "⭐" if sc['tp'] == perf['optimal_tp'] else "  "
-                text += f"  {star} +{sc['tp']}%: {sc['tp_hits']}/{total} ({sc['tp_rate']:.0f}%) = <b>{sc['avg_pnl']:+.0f}%</b>\n"
 
         if total == 0 and total_all > 0:
             text += f"\n📊 <i>{total_all} টি ঐতিহাসিক ডেটা থেকে</i>"

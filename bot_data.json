@@ -60657,17 +60657,6 @@
         "timestamp": "2026-06-25T18:38:25.167820+00:00"
       },
       {
-        "address": "6CGEykSSSGuT9pKvsWXRqMnVFsJsKMP1pwADnR9mpump",
-        "symbol": "YUNO",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 6.5,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-25T19:34:49.712816+00:00",
-        "timestamp": "2026-06-25T19:34:49.712860+00:00"
-      },
-      {
         "address": "3zk6n5VrsaJPXeH9G1CQPxx9FB87zcfhqpvxJVTQUSER",
         "symbol": "USER",
         "verdict": "STRONG_PUMP",
