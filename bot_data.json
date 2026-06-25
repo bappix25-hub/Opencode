@@ -58871,13 +58871,16 @@
         "launch_time": 1782351872.193569,
         "source": "historical_scan",
         "ath_multiplier": 6.43,
-        "outcome": "STRONG_PUMP",
-        "signal_age": 0.0
+        "outcome": "pump",
+        "signal_age": 0.0,
+        "outcome_mcap": 376661.0,
+        "symbol": "GTA",
+        "address": "y1Jx8x2yQCJbJ8xm6MDuahELaiBmb6KeNoXqTAspump"
       },
       "launch_time": 1782351872.193569,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "pump",
+      "outcome_mcap": 376661.0,
+      "outcome_time": "2026-06-25T07:45:04.972577+00:00",
       "signal_sent": false
     },
     {
