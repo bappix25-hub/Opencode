@@ -58886,13 +58886,16 @@
         "launch_time": 1782340948.715471,
         "source": "historical_scan",
         "ath_multiplier": 121.52,
-        "outcome": "STRONG_PUMP",
-        "signal_age": 0.0
+        "outcome": "pump",
+        "signal_age": 0.0,
+        "outcome_mcap": 5156257.0,
+        "symbol": "USOH",
+        "address": "BGuwU5SdeH93cT3WyN2K4e4vJuqyaFBAkzaZ2wtJUSoH"
       },
       "launch_time": 1782340948.715471,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "pump",
+      "outcome_mcap": 5156257.0,
+      "outcome_time": "2026-06-25T04:43:30.761632+00:00",
       "signal_sent": false
     },
     {
@@ -60462,6 +60465,17 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-24T23:43:18.696792+00:00",
         "timestamp": "2026-06-24T23:43:18.696821+00:00"
+      },
+      {
+        "address": "Esycn8mW3K9yqQdx7AazTqSGNokXnDVAgfM5HsXqpump",
+        "symbol": "SILLY",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.7150598973188819,
+        "current_multiplier": 0.038562464346834,
+        "min_price_multiplier": 1.0,
+        "signal_age": 425.61457991600037,
+        "signal_time": "2026-06-25T04:53:36.000671+00:00",
+        "timestamp": "2026-06-25T04:53:36.000714+00:00"
       }
     ],
     "success_history": [
@@ -61083,8 +61097,8 @@
       "avg_loss_holders": 0,
       "quality_score": 0.35,
       "dump_rate": 20.0,
-      "avg_ath": 89.81,
-      "updated_at": "2026-06-25T04:16:10.857412+00:00"
+      "avg_ath": 89.8,
+      "updated_at": "2026-06-25T04:53:36.409249+00:00"
     },
     "signal_criteria_stats": {
       "pump_medians": {
@@ -61120,7 +61134,7 @@
       "pattern_threshold": 0.6,
       "dump_pattern_threshold": 0.7,
       "max_age_seconds": 21600,
-      "updated_at": "2026-06-25T04:04:19.733196+00:00",
+      "updated_at": "2026-06-25T04:53:36.288779+00:00",
       "sample_size": 500,
       "min_lp_providers": 2,
       "volatility_setting": "high",
@@ -61393,6 +61407,11 @@
       "23": {
         "wins": 3,
         "total": 3,
+        "total_pnl": 0.0
+      },
+      "4": {
+        "wins": 0,
+        "total": 1,
         "total_pnl": 0.0
       }
     },
