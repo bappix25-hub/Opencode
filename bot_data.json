@@ -60723,6 +60723,61 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-25T17:14:03.132979+00:00",
         "timestamp": "2026-06-25T17:14:03.133007+00:00"
+      },
+      {
+        "address": "ks6QRjPxD7q32yDVBksMX3RLH6WEsUEawK7obFupump",
+        "symbol": "REEL",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.7229943145925457,
+        "current_multiplier": 0.6200252684775742,
+        "min_price_multiplier": 1.0,
+        "signal_age": 5709.601607084274,
+        "signal_time": "2026-06-25T18:38:13.453795+00:00",
+        "timestamp": "2026-06-25T18:38:13.453833+00:00"
+      },
+      {
+        "address": "E4bnF1Ceqovr32z9oT1hrN9kevYX8X3Y1Y2sDAXUpump",
+        "symbol": "MOONEXPRES",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.9881753683827545,
+        "current_multiplier": 0.02721484446061488,
+        "min_price_multiplier": 1.0782244860833183,
+        "signal_age": 1244.0309262275696,
+        "signal_time": "2026-06-25T18:38:16.055792+00:00",
+        "timestamp": "2026-06-25T18:38:16.055819+00:00"
+      },
+      {
+        "address": "2nes9dPbTWMssKdmoNToZraHnavAnN6rPq2FBHcCpump",
+        "symbol": "HL2",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.391578947368421,
+        "current_multiplier": 0.2817224880382775,
+        "min_price_multiplier": 1.0,
+        "signal_age": 1586.604500055313,
+        "signal_time": "2026-06-25T18:38:18.828392+00:00",
+        "timestamp": "2026-06-25T18:38:18.828447+00:00"
+      },
+      {
+        "address": "4Sg5zDKSJJ45jEcs5jEZ2kPrDL57GYFd5UfMkhexpump",
+        "symbol": "POLITE",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.283296541574687,
+        "current_multiplier": 0.11898454746136865,
+        "min_price_multiplier": 1.0,
+        "signal_age": 254.5374219417572,
+        "signal_time": "2026-06-25T18:38:22.121000+00:00",
+        "timestamp": "2026-06-25T18:38:22.121054+00:00"
+      },
+      {
+        "address": "53iWWxcn7aXdqveJZA7uxWV6kGBLWrCU9PdZ1NAtpump",
+        "symbol": "ayyaiyai",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.7404526166902408,
+        "current_multiplier": 0.010693069306930694,
+        "min_price_multiplier": 0.9243281471004244,
+        "signal_age": 794.3569412231445,
+        "signal_time": "2026-06-25T18:38:25.167788+00:00",
+        "timestamp": "2026-06-25T18:38:25.167820+00:00"
       }
     ],
     "success_history": [
@@ -61538,18 +61593,15 @@
       }
     ],
     "auto_learn_insights": {
-      "total_recent": 50,
-      "wins": 47,
-      "losses": 3,
-      "win_rate": 94.0,
+      "win_rate": 88.0,
       "avg_win_bsr": 0,
       "avg_loss_bsr": 0,
       "avg_win_holders": 0,
       "avg_loss_holders": 0,
-      "avg_win_liq": 0,
-      "avg_loss_liq": 0,
-      "avg_win_lp_locked": 0,
-      "avg_loss_lp_locked": 0
+      "quality_score": 0.35,
+      "dump_rate": 12.0,
+      "avg_ath": 9.26,
+      "updated_at": "2026-06-25T18:38:51.326770+00:00"
     },
     "signal_criteria_stats": {
       "pump_medians": {
@@ -61574,20 +61626,22 @@
       "dump_count": 1000
     },
     "signal_criteria": {
-      "min_bsr": 1.26,
-      "min_holders": 9.5,
-      "min_wallets": 14,
+      "min_bsr": 1.25,
+      "min_holders": 10,
+      "min_wallets": 15,
       "min_liq": 500,
       "min_liq_pct": 10,
       "min_lp_locked": 80,
       "min_mcap": 3000,
-      "heuristic_threshold": 0.45,
+      "heuristic_threshold": 0.6,
       "pattern_threshold": 0.6,
       "dump_pattern_threshold": 0.7,
       "max_age_seconds": 21600,
-      "updated_at": "2026-06-25T17:12:27.614123+00:00",
-      "sample_size": 732,
-      "min_lp_providers": 2
+      "updated_at": "2026-06-25T18:38:25.437039+00:00",
+      "sample_size": 500,
+      "min_lp_providers": 2,
+      "volatility_setting": "high",
+      "last_quality_score": 0.35
     },
     "channel_insights": {
       "patterns": {
@@ -61829,8 +61883,8 @@
         "total_pnl": 0.0
       },
       "18": {
-        "wins": 6,
-        "total": 6,
+        "wins": 7,
+        "total": 11,
         "total_pnl": 0.0
       },
       "19": {
@@ -70504,6 +70558,45 @@
       },
       "ath_multiplier": 1.0,
       "timestamp": "2026-06-25T16:02:17.553182+00:00"
+    },
+    {
+      "address": "7U74V3oJy4U2V2YmwJEQ1UcoZ5woTXGBvpKKXE4jpump",
+      "symbol": "DUMPSTR",
+      "features": {
+        "buy_count": 0,
+        "sell_count": 0,
+        "buy_sell_ratio": 0.0,
+        "volume": 96449438.14,
+        "holders": 0,
+        "unique_wallets": 0,
+        "initial_liq": 37733.54,
+        "initial_mcap": 273344,
+        "liq_pct": 13.8,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 16,
+        "lp_locked": 0,
+        "deployer": "5Y3RFK3DAJnh",
+        "ath_price": 0.0002733,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "volume_velocity": 12915.1048,
+        "buy_sell_momentum": 0.0,
+        "liquidity_depth": 0.138,
+        "volume_spike_ratio": 0.0,
+        "buy_spike_ratio": 0.0,
+        "social_score": 0,
+        "launch_weekday": 3,
+        "launch_month": 6,
+        "is_weekend": false,
+        "launch_session": "us",
+        "insider_count": 0,
+        "launch_time": 1782405263.189636,
+        "liquidity": 37733.54,
+        "mcap": 273344.0
+      },
+      "ath_multiplier": 1.7385496183206106,
+      "timestamp": "2026-06-25T18:38:51.203147+00:00"
     }
   ],
   "fresh_start": "2026-06-22T13:38:36.943300+00:00",
