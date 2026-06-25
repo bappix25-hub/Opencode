@@ -1713,8 +1713,8 @@ def get_stats() -> dict:
     best = max(recent, key=lambda r: r.get("ath_multiplier", 0)) if recent else None
     worst = min(recent, key=lambda r: r.get("ath_multiplier", 0)) if recent else None
 
-    # TP/SL from fresh data only
-    optimal = calculate_optimal_tp_sl(all_valid if all_valid else recent)
+    # TP/SL: use same dataset as recent signals
+    optimal = calculate_optimal_tp_sl(recent)
 
     signals = []
     for r in sorted(recent, key=lambda x: x.get("timestamp", ""), reverse=True):
@@ -1734,10 +1734,10 @@ def get_stats() -> dict:
             "verdict": r.get("verdict", "?"),
         })
 
-    scenarios = simulate_tp_scenarios(all_valid if all_valid else recent)
-    trailing = simulate_trailing_stop(all_valid if all_valid else recent)
-    time_analysis = get_time_analysis(all_valid if all_valid else recent)
-    risk_adjusted = calculate_risk_adjusted_tp_sl(all_valid if all_valid else recent)
+    scenarios = simulate_tp_scenarios(recent)
+    trailing = simulate_trailing_stop(recent)
+    time_analysis = get_time_analysis(recent)
+    risk_adjusted = calculate_risk_adjusted_tp_sl(recent)
 
     return {
         "total": len(recent),
@@ -1760,7 +1760,7 @@ def get_stats() -> dict:
         "trailing": trailing,
         "time_analysis": time_analysis,
         "risk_adjusted": risk_adjusted,
-        "total_all_data": len(all_valid),
+        "total_all_data": len(recent),
         "total_pumps": model.get("total_pumps", len(pumps)),
         "total_dumps": model.get("total_dumps", len(dumps)),
     }

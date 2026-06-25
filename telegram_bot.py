@@ -451,9 +451,10 @@ class TelegramHandlers:
 
         total = perf["total"]
         total_all = perf.get("total_all_data", 0)
-        tp_h = perf.get("tp_hits", 0)
-        sl_h = perf.get("sl_hits", 0)
-        holds = perf.get("holds", 0)
+        wins = perf.get("wins", 0)
+        losses = perf.get("losses", 0)
+        pending = perf.get("pending", 0)
+        win_rate = perf.get("win_rate", 0)
 
         if total == 0 and total_all == 0:
             await update.message.reply_text(
@@ -464,19 +465,17 @@ class TelegramHandlers:
             )
             return
 
-        exited = tp_h + sl_h
-        win_rate = round(tp_h / max(exited, 1) * 100, 1) if exited > 0 else 0
-
         text = (
             f"📊 <b>পারফরম্যান্স (২৪ঘন্টা)</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"📈 টোটাল সিগন্যাল: <b>{total}</b>\n"
-            f"✅ TP হিট: <b>{tp_h}</b> | ❌ SL হিট: <b>{sl_h}</b> | ⏳ পেন্ডিং: <b>{holds}</b>\n"
-            f"🎯 উইন রেট: <b>{win_rate}%</b> ({tp_h}/{exited})\n"
+            f"✅ জয় (PUMP): <b>{wins}</b> | ❌ হার (DUMP): <b>{losses}</b> | ⏳ পেন্ডিং: <b>{pending}</b>\n"
+            f"🎯 উইন রেট: <b>{win_rate}%</b> ({wins}/{total})\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"⭐ <b>অপ্টিমাল TP/SL (৬ঘন্টা ট্র্যাকিং):</b>\n"
             f"   TP: <b>+{perf['optimal_tp']}%</b>  |  SL: <b>{perf['optimal_sl']}%</b>\n"
             f"   → এক্সপেক্টেড প্রফিট: <b>{perf['expected_pnl']:+.1f}%</b>\n"
+            f"   → TP হিট: {perf.get('tp_hits', 0)} | SL হিট: {perf.get('sl_hits', 0)} | পেন্ডিং: {perf.get('holds', 0)}\n"
             f"━━━━━━━━━━━━━━━━\n"
         )
 
@@ -726,6 +725,7 @@ class TelegramHandlers:
             return
 
         text = "📺 <b>চ্যানেল পারফরম্যান্স</b>\n━━━━━━━━━━━━━━━━\n"
+        text += "<i>জয় = ATH ≥ 5x</i>\n\n"
         sorted_ch = sorted(ch_data.items(), key=lambda x: x[1].get("win_rate", 0), reverse=True)
         for ch, data in sorted_ch:
             wr = data.get("win_rate", 0)
@@ -733,9 +733,10 @@ class TelegramHandlers:
             w = data.get("winners", 0)
             emoji = "🥇" if wr == max(d.get("win_rate", 0) for _, d in sorted_ch) else "🥈" if wr > 30 else "🥉"
             text += f"{emoji} <b>{ch}</b>\n"
-            text += f"  📊 {n}টি কয়েন | 🏆 {w}টি জয় | <b>{wr:.1f}%</b>\n"
+            text += f"  📊 {n}টি কয়েন | 🏆 {w}টি জয় (5x+) | <b>{wr:.1f}%</b>\n"
 
         text += f"\n📊 <i>মোট {best.get('total_analyzed', 0)} টি কয়েন বিশ্লেষিত</i>"
+        text += f"\n💡 <i>জয় = টোকেন 5x বা তার বেশি পৌঁছেছে</i>"
         await update.message.reply_text(text, parse_mode="HTML")
 
     async def cmd_freshstats(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
