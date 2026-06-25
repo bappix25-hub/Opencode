@@ -55,7 +55,9 @@ async def send_signal_alert(text: str):
 
 def main_keyboard():
     keyboard = [
-        [KeyboardButton("✅ অন"), KeyboardButton("❌ অফ")],
+        [KeyboardButton("📊 স্ট্যাটাস"), KeyboardButton("📈 পারফরম্যান্স"), KeyboardButton("🔍 অ্যানালিটিক্স")],
+        [KeyboardButton("📺 চ্যানেল"), KeyboardButton("🏆 টপ কয়েন"), KeyboardButton("📊 ফ্রেশ")],
+        [KeyboardButton("🔗 কনভার্জেন্স"), KeyboardButton("⚙️ কনফিগ"), KeyboardButton("✅ অন"), KeyboardButton("❌ অফ")],
     ]
     return ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
 
@@ -78,17 +80,17 @@ class TelegramHandlers:
         text = (
             "🤖 <b>Meme Coin Auto-Trade Bot</b>\n"
             "━━━━━━━━━━━━━━━━\n"
-            "📊 <b>স্ট্যাটাস:</b> /health\n"
-            "📈 <b>পারফরম্যান্স:</b> /perf\n"
-            "🔍 <b>অ্যানালিটিক্স:</b> /analytics\n"
-            "⚙️ <b>কনফিগ:</b> /config\n"
+            "📊 স্ট্যাটাস — বট অবস্থা\n"
+            "📈 পারফরম্যান্স — TP/SL + ঘণ্টা\n"
+            "🔍 অ্যানালিটিক্স — সম্পূর্ণ বিশ্লেষণ\n"
             "━━━━━━━━━━━━━━━━\n"
-            "📡 <b>চ্যানেল:</b> /channelstats /dailybest\n"
-            "🎯 <b>সিগন্যাল:</b> /freshstats /convergence\n"
-            "🔬 <b>টোকেন:</b> /scan /similar\n"
+            "📺 চ্যানেল — চ্যানেল তুলনা\n"
+            "🏆 টপ কয়েন — আজকের সেরা\n"
+            "📊 ফ্রেশ — নতুন পারফরম্যান্স\n"
             "━━━━━━━━━━━━━━━━\n"
-            "✅ /autolearn — অটো-লার্নিং\n"
-            "🔧 /setchannel — চ্যানেট সেট"
+            "🔗 কনভার্জেন্স — মাল্টি-সোর্স\n"
+            "⚙️ কনফিগ — সেটিংস\n"
+            "✅ অন / ❌ অফ — বট চালু/বন্ধ"
         )
         await update.message.reply_text(
             text,
@@ -246,35 +248,6 @@ class TelegramHandlers:
         learner_stats = get_stats()
         active = "🟢 চালু" if stats["bot_active"] else "🔴 বন্ধ"
 
-        # Get auto-fix and hourly stats
-        try:
-            from learner import get_bad_hours, load_data as _ld
-            _d = _ld()
-            auto_fix = _d.get("model", {}).get("auto_fix_history", [])
-            hourly = _d.get("model", {}).get("hourly_stats", {})
-            bad_hours = get_bad_hours(min_signals=3, max_win_rate=0.15)
-            recent_fixes = auto_fix[-5:]
-            fix_count = len(auto_fix)
-        except Exception:
-            bad_hours = set()
-            recent_fixes = []
-            fix_count = 0
-            hourly = {}
-
-        # Build hourly line
-        if hourly:
-            hour_parts = []
-            for h in sorted(hourly.keys(), key=lambda x: int(x)):
-                s = hourly[h]
-                t = s.get("total", 0)
-                w = s.get("wins", 0)
-                wr = (w / t * 100) if t > 0 else 0
-                emoji = "🟢" if wr > 25 else ("🟡" if wr > 15 else "🔴")
-                hour_parts.append(f"{emoji}{int(h):02d}")
-            hour_line = " ".join(hour_parts)
-        else:
-            hour_line = "No data yet"
-
         text = (
             f"📊 <b>বট স্ট্যাটাস</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
@@ -287,13 +260,8 @@ class TelegramHandlers:
             f"🏆 সফল (2x+): <b>{learner_stats.get('wins', 0)}</b>\n"
             f"🎯 একুরেসি: <b>{learner_stats.get('win_rate', 0)}%</b>\n"
             f"📚 পাম্প: <b>{learner_stats.get('total_pumps', 0)}</b> | "
-            f"ডাম্প: <b>{learner_stats.get('total_dumps', 0)}</b>\n"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"⏰ <b>ঘণ্টা ভিত্তিক:</b> {hour_line}\n"
+            f"ডাম্প: <b>{learner_stats.get('total_dumps', 0)}</b>"
         )
-        if bad_hours:
-            text += f"🚫 <b>ব্যাড আওয়ার:</b> {', '.join(f'{h}:00' for h in sorted(bad_hours))}\n"
-        text += f"🔧 <b>অটো-ফিক্স:</b> {fix_count} fixes applied"
         await update.message.reply_text(text, parse_mode="HTML")
 
     async def cmd_config(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -912,7 +880,23 @@ class TelegramHandlers:
         _save_chat_id(chat.id)
         text = update.message.text
         logger.info(f"Button pressed: {repr(text)}")
-        if text == "✅ অন":
+        if text == "📊 স্ট্যাটাস":
+            await self.cmd_health(update, context)
+        elif text == "📈 পারফরম্যান্স":
+            await self.cmd_perf(update, context)
+        elif text == "🔍 অ্যানালিটিক্স":
+            await self.cmd_analytics(update, context)
+        elif text == "📺 চ্যানেল":
+            await self.cmd_channelstats(update, context)
+        elif text == "🏆 টপ কয়েন":
+            await self.cmd_dailybest(update, context)
+        elif text == "📊 ফ্রেশ":
+            await self.cmd_freshstats(update, context)
+        elif text == "🔗 কনভার্জেন্স":
+            await self.cmd_convergence(update, context)
+        elif text == "⚙️ কনফিগ":
+            await self.cmd_config(update, context)
+        elif text == "✅ অন":
             await self.state.set_bot_active(True)
             await update.message.reply_text("✅ বট চালু!")
         elif text == "❌ অফ":
