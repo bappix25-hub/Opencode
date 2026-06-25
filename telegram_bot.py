@@ -453,7 +453,7 @@ class TelegramHandlers:
         await update.message.reply_text("📊 /health দেখুন — সব ডেটা এক জায়গায়।")
 
     async def cmd_perf(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Scraper-ready TP/SL report — 1 message."""
+        """Last 24h signals + optimal TP/SL for max profit (6h tracking)."""
         perf = get_performance_report()
 
         total = perf["total"]
@@ -463,57 +463,39 @@ class TelegramHandlers:
 
         if total == 0 and total_all == 0:
             await update.message.reply_text(
-                "📊 <b>পারফরম্যান্স</b>\n"
+                "📊 <b>পারফরম্যান্স (২৪ঘন্টা)</b>\n"
                 "━━━━━━━━━━━━━━━━\n"
-                "গত ২৪ ঘন্টায় কোনো সিগন্যাল নেই।",
+                "কোনো সিগন্যাল নেই।",
                 parse_mode="HTML"
             )
             return
 
-        scenarios = perf.get("tp_scenarios", [])
-        hit_scenarios = [s for s in scenarios if s['tp_hits'] > 0]
-        opt_scenario = [s for s in scenarios if s['tp'] == perf['optimal_tp']]
-        show_scenarios = hit_scenarios[:6]
-        if opt_scenario and opt_scenario[0] not in show_scenarios:
-            show_scenarios.append(opt_scenario[0])
-
-        sc_lines = ""
-        for sc in show_scenarios:
-            star = "⭐" if sc['tp'] == perf['optimal_tp'] else "  "
-            sc_lines += (
-                f"  {star} +{sc['tp']:>3}%: "
-                f"{sc['tp_hits']}/{total} ({sc['tp_rate']:.0f}%) "
-                f"= <b>{sc['avg_pnl']:+.0f}%</b>\n"
-            )
-
         text = (
-            f"📊 <b>পারফরম্যান্স</b>\n"
+            f"📊 <b>পারফরম্যান্স (২৪ঘন্টা)</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"⭐ <b>সেট করো:</b> TP +{perf['optimal_tp']}% / SL {perf['optimal_sl']}%\n"
-            f"  → গড় লাভ: <b>{perf['expected_pnl']:+.1f}%</b>\n"
-            f"  → জিতবে {tp_h}/{tp_h + sl_h} | হারবে {sl_h}/{tp_h + sl_h}\n"
+            f"📈 টোটাল সিগন্যাল: <b>{total}</b>\n"
+            f"✅ TP হিট: <b>{tp_h}</b> | ❌ SL হিট: <b>{sl_h}</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"📋 <b>টিপি/এসএল:</b>\n"
-            f"{sc_lines}"
+            f"⭐ <b>অপ্টিমাল TP/SL (৬ঘন্টা ট্র্যাকিং):</b>\n"
+            f"   TP: <b>+{perf['optimal_tp']}%</b>  |  SL: <b>{perf['optimal_sl']}%</b>\n"
+            f"   → এক্সপেক্টেড প্রফিট: <b>{perf['expected_pnl']:+.1f}%</b>\n"
+            f"   → জিতবে: {tp_h}/{tp_h + sl_h} | হারবে: {sl_h}/{tp_h + sl_h}\n"
             f"━━━━━━━━━━━━━━━━\n"
         )
 
-        # Add hourly stats
-        try:
-            from learner import get_hourly_stats_report, get_bad_hours
-            hourly_report = get_hourly_stats_report()
-            bad_hours = get_bad_hours(min_signals=3, max_win_rate=0.15)
-            text += f"{hourly_report}\n"
-            if bad_hours:
-                text += f"🚫 <b>ব্যাড আওয়ার:</b> {', '.join(f'{h}:00' for h in sorted(bad_hours))}\n"
-            else:
-                text += "✅ <b>সব আওয়ার OK</b>\n"
-        except Exception:
-            pass
+        # Show best scenarios
+        scenarios = perf.get("tp_scenarios", [])
+        if scenarios:
+            hit_scenarios = [s for s in scenarios if s['tp_hits'] > 0]
+            show = hit_scenarios[:3]
+            text += f"<b>টপ TP সিনেরিও:</b>\n"
+            for sc in show:
+                star = "⭐" if sc['tp'] == perf['optimal_tp'] else "  "
+                text += f"  {star} +{sc['tp']}%: {sc['tp_hits']}/{total} ({sc['tp_rate']:.0f}%) = <b>{sc['avg_pnl']:+.0f}%</b>\n"
 
         if total == 0 and total_all > 0:
-            text += f"📊 <i>{total_all} টি ঐতিহাসিক সিগন্যাল থেকে গণনা</i>\n"
-        text += f"🕐 <i>গত ২৪ ঘন্টা</i>"
+            text += f"\n📊 <i>{total_all} টি ঐতিহাসিক ডেটা থেকে</i>"
+
         await update.message.reply_text(text, parse_mode="HTML")
 
     async def cmd_golden(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -810,7 +792,7 @@ class TelegramHandlers:
             text += f"🏆 <b>Best:</b> {best['symbol']} +{best['actual_pump_pct']}% (ATH {best['ath_multiplier']}x)\n"
         if worst:
             text += f"💀 <b>Worst:</b> {worst['symbol']} {worst['actual_pump_pct']}% (ATH {worst['ath_multiplier']}x)\n"
-        text += f"\n<b>📋 Signal Details:</b>\n"
+        text += f"\n<b>📋 Signal Details (per-trade SL):</b>\n"
         for s in signals[:15]:
             sym = s["symbol"]
             ath = s["ath_multiplier"]
@@ -821,7 +803,7 @@ class TelegramHandlers:
             text += f"  {emoji} <b>{sym}</b>: +{pump}% | SL: {sl}% | {curr_str}\n"
 
         text += f"\n━━━━━━━━━━━━━━━━\n"
-        text += f"💡 TP/SL based on actual price paths"
+        text += f"💡 TP/SL দেখতে /perf দিন (unified optimal 6h tracking)"
         await update.message.reply_text(text, parse_mode="HTML")
 
     async def cmd_convergence(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
