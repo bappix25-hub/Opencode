@@ -42018,40 +42018,6 @@
   "signal_results": [],
   "launches_tracked": [
     {
-      "address": "ChjmrUenC9NBWwtQfXZdLrYj3AZBA7kr7D96rSFnpump",
-      "symbol": "Puffins",
-      "features": {
-        "mcp": 9902.55,
-        "liq_usd": 3900.0,
-        "holders": 3,
-        "buy_sell_ratio": 0,
-        "unique_wallets": 0,
-        "initial_liq": 3900.0,
-        "lp_locked": 100,
-        "top10_pct": 5.45,
-        "audit_score": 0,
-        "bundled_pct": 0,
-        "dev_status": "UNKNOWN",
-        "renounced": false,
-        "launch_time": 1782324314.448546,
-        "signal_type": "DEV_SOLD",
-        "source_channel": "GMGN Signals",
-        "fresh_1d": 0,
-        "fresh_7d": 0,
-        "has_web": false,
-        "has_twitter": false,
-        "has_telegram": false,
-        "outcome": "dump",
-        "outcome_mcap": 8997.96,
-        "symbol": "Puffins"
-      },
-      "launch_time": 1782324314.448546,
-      "outcome": "dump",
-      "outcome_mcap": 8997.96,
-      "outcome_time": "2026-06-25T00:05:20.875082+00:00",
-      "signal_sent": false
-    },
-    {
       "address": "2Rebz2h75fDKxTySZKhVg3bqUxkwL7dHCkxRKzpspump",
       "symbol": "JEK",
       "features": {
@@ -58880,6 +58846,19 @@
         "source": "historical_scan"
       },
       "launch_time": 1782403512.370731,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "3zk6n5VrsaJPXeH9G1CQPxx9FB87zcfhqpvxJVTQUSER",
+      "symbol": "USER",
+      "features": {
+        "launch_time": 1782413285.258044,
+        "source": "historical_scan"
+      },
+      "launch_time": 1782413285.258044,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
