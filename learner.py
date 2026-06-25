@@ -1900,7 +1900,11 @@ def calculate_optimal_tp_sl(results):
             n = len(results)
             avg_pnl = total_pnl / n
             win_rate = tp_hits / n
-            score = avg_pnl + (win_rate * 15) - (holds / n * 10)
+            # Score = expected PnL primarily, small win_rate bonus only if positive PnL
+            if avg_pnl > 0:
+                score = avg_pnl + (win_rate * 5)
+            else:
+                score = avg_pnl  # No win_rate bonus for negative PnL
             if score > best_score or (score == best_score and avg_pnl > best_pnl):
                 best_score = score
                 best_pnl = avg_pnl
