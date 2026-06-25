@@ -55,8 +55,6 @@ async def send_signal_alert(text: str):
 
 def main_keyboard():
     keyboard = [
-        [KeyboardButton("📊 স্ট্যাটাস"), KeyboardButton("📈 পারফরম্যান্স")],
-        [KeyboardButton("🔍 অ্যানালিটিক্স"), KeyboardButton("⚙️ কনফিগ")],
         [KeyboardButton("✅ অন"), KeyboardButton("❌ অফ")],
     ]
     return ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
@@ -79,20 +77,18 @@ class TelegramHandlers:
         _save_chat_id(update.effective_chat.id)
         text = (
             "🤖 <b>Meme Coin Auto-Trade Bot</b>\n"
-            "🌟 AI লার্নিং + পেপার ট্রেডিং\n\n"
-            "📚 কমান্ড:\n"
-            "/pump — পাম্প শেখান\n"
-            "/dump — ডাম্প শেখান\n"
-            "/forcepump — ফোর্স পাম্প শেখান\n"
-            "/threshold — থ্রেশোল্ড সেট\n"
-            "/config — কনফিগারেশন\n"
-            "/balance — ব্যালেন্স দেখুন\n"
-            "/positions — ওপেন পজিশন দেখুন\n"
-            "/trades — ট্রেড হিস্ট্রি\n"
-            "/signalstats — সিগন্যাল পরিসংখ্যান\n"
-            "/freshstats — ফ্রেশ পারফরম্যান্স\n"
-            "/retrain — model retrain\n"
-            "/autolearn — স্মার্ট অটো-লার্নিং"
+            "━━━━━━━━━━━━━━━━\n"
+            "📊 <b>স্ট্যাটাস:</b> /health\n"
+            "📈 <b>পারফরম্যান্স:</b> /perf\n"
+            "🔍 <b>অ্যানালিটিক্স:</b> /analytics\n"
+            "⚙️ <b>কনফিগ:</b> /config\n"
+            "━━━━━━━━━━━━━━━━\n"
+            "📡 <b>চ্যানেল:</b> /channelstats /dailybest\n"
+            "🎯 <b>সিগন্যাল:</b> /freshstats /convergence\n"
+            "🔬 <b>টোকেন:</b> /scan /similar\n"
+            "━━━━━━━━━━━━━━━━\n"
+            "✅ /autolearn — অটো-লার্নিং\n"
+            "🔧 /setchannel — চ্যানেট সেট"
         )
         await update.message.reply_text(
             text,
@@ -287,72 +283,17 @@ class TelegramHandlers:
             f"🔍 মাইগ্রেশন: <b>{stats['tracked_coins']}</b>\n"
             f"🚫 ব্ল্যাকলিস্ট: <b>{stats['blacklisted']}</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"📚 পাম্প প্যাটার্ন: <b>{learner_stats.get('total_pumps', 0)}</b>\n"
-            f"📉 ডাম্প প্যাটার্ন: <b>{learner_stats.get('total_dumps', 0)}</b>\n"
-            f"━━━━━━━━━━━━━━━━\n"
             f"⚡ সিগন্যাল: <b>{learner_stats.get('total', 0)}</b>\n"
-            f"🏆 সফল: <b>{learner_stats.get('wins', 0)}</b>\n"
+            f"🏆 সফল (2x+): <b>{learner_stats.get('wins', 0)}</b>\n"
             f"🎯 একুরেসি: <b>{learner_stats.get('win_rate', 0)}%</b>\n"
+            f"📚 পাম্প: <b>{learner_stats.get('total_pumps', 0)}</b> | "
+            f"ডাম্প: <b>{learner_stats.get('total_dumps', 0)}</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"⏰ <b>ঘণ্টা ভিত্তিক:</b> {hour_line}\n"
         )
         if bad_hours:
             text += f"🚫 <b>ব্যাড আওয়ার:</b> {', '.join(f'{h}:00' for h in sorted(bad_hours))}\n"
         text += f"🔧 <b>অটো-ফিক্স:</b> {fix_count} fixes applied"
-        await update.message.reply_text(text, parse_mode="HTML")
-
-    async def cmd_patterns(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Show exact patterns bot uses for signal decisions."""
-        data = load_data()
-        pumps = data.get("pump_patterns", [])
-        dumps = data.get("dump_patterns", [])
-        criteria = data.get("model", {}).get("signal_criteria", {})
-
-        # Top pump patterns
-        top_pumps = sorted(pumps, key=lambda x: x.get("ath_multiplier", 0), reverse=True)[:8]
-        pump_lines = ""
-        for p in top_pumps:
-            feat = p
-            if "features" in p and "buy_sell_ratio" not in p:
-                feat = p["features"]
-            sym = p.get("symbol", "?")[:10]
-            bsr = feat.get("buy_sell_ratio", 0)
-            buys = feat.get("buy_count", 0)
-            liq = feat.get("initial_liq", 0)
-            ath = p.get("ath_multiplier", 0)
-            pump_lines += f"  • {sym}: BSR={bsr:.1f} buys={buys} liq=${liq:.0f} → {ath:.1f}x\n"
-
-        # Top dump patterns
-        top_dumps = sorted(dumps, key=lambda x: x.get("features", x).get("holders", 0), reverse=True)[:5]
-        dump_lines = ""
-        for d in top_dumps:
-            feat = d.get("features", d)
-            sym = d.get("symbol", "?")[:10]
-            bsr = feat.get("buy_sell_ratio", 0)
-            holders = feat.get("holders", 0)
-            dump_lines += f"  • {sym}: BSR={bsr:.1f} holders={holders}\n"
-
-        text = (
-            f"🎯 <b>সিগন্যাল প্যাটার্ন</b>\n"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"📋 <b>ফিল্টার:</b>\n"
-            f"  • BSR ≥ {criteria.get('min_bsr', 'N/A')}\n"
-            f"  • Holders ≥ {criteria.get('min_holders', 'N/A')}\n"
-            f"  • Wallets ≥ {criteria.get('min_wallets', 'N/A')}\n"
-            f"  • Pattern ≥ {criteria.get('pattern_threshold', 'N/A')}\n"
-            f"  • Heuristic ≥ {criteria.get('heuristic_threshold', 'N/A')}\n"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"🟢 <b>পাম্প প্যাটার্ন ({len(pumps)}টি):</b>\n"
-            f"{pump_lines}"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"🔴 <b>ডাম্প প্যাটার্ন ({len(dumps)}টি):</b>\n"
-            f"{dump_lines}"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"💡 <b>নিয়ম:</b>\n"
-            f"  • পাম্প প্যাটার্ন ম্যাচ → সিগনাল\n"
-            f"  • ডাম্প প্যাটার্ন ম্যাচ → রিজেক্ট\n"
-            f"  • হিউরিস্টিক স্কোর → ব্যাকআপ"
-        )
         await update.message.reply_text(text, parse_mode="HTML")
 
     async def cmd_config(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -540,17 +481,8 @@ class TelegramHandlers:
         await update.message.reply_text(text, parse_mode="HTML")
 
     async def cmd_signalstats(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        learner_stats = get_stats()
-        text = (
-            f"📊 <b>Signal Statistics</b>\n"
-            f"━━━━━━━━━━━━━━━━\n"
-            f"⚡ Total signals: <b>{learner_stats['total_signals']}</b>\n"
-            f"🏆 Successful (2x+): <b>{learner_stats['successful_signals']}</b>\n"
-            f"🎯 Accuracy: <b>{learner_stats['accuracy']}%</b>\n"
-            f"📚 Pump patterns: <b>{learner_stats['pump_patterns']}</b>\n"
-            f"📉 Dump patterns: <b>{learner_stats['dump_patterns']}</b>"
-        )
-        await update.message.reply_text(text, parse_mode="HTML")
+        """Merged into /health. Redirect user."""
+        await update.message.reply_text("📊 /health দেখুন — সব ডেটা এক জায়গায়।")
 
     async def cmd_perf(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Scraper-ready TP/SL report — 1 message."""
@@ -980,15 +912,7 @@ class TelegramHandlers:
         _save_chat_id(chat.id)
         text = update.message.text
         logger.info(f"Button pressed: {repr(text)}")
-        if text == "📊 স্ট্যাটাস":
-            await self.cmd_health(update, context)
-        elif text == "📈 পারফরম্যান্স":
-            await self.cmd_perf(update, context)
-        elif text == "🔍 অ্যানালিটিক্স":
-            await self.cmd_analytics(update, context)
-        elif text == "⚙️ কনফিগ":
-            await self.cmd_config(update, context)
-        elif text == "✅ অন":
+        if text == "✅ অন":
             await self.state.set_bot_active(True)
             await update.message.reply_text("✅ বট চালু!")
         elif text == "❌ অফ":

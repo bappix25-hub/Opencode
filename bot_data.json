@@ -58860,9 +58860,9 @@
         "signal_age": 0.0
       },
       "launch_time": 1782360101.182404,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "skip",
+      "outcome_mcap": 206528.0,
+      "outcome_time": "2026-06-25T10:02:21.035934+00:00",
       "signal_sent": false
     },
     {
@@ -60525,28 +60525,6 @@
         "timestamp": "2026-06-25T05:33:28.527690+00:00"
       },
       {
-        "address": "9zTTCUMaWbJFC83Cn4YhEYSwUZ8SVaz9k78zr6cVpump",
-        "symbol": "wCAT",
-        "verdict": "PUMP",
-        "ath_multiplier": 4.65,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-25T06:02:24.431258+00:00",
-        "timestamp": "2026-06-25T06:02:24.431301+00:00"
-      },
-      {
-        "address": "GDJDynz2wGkDX5JToeYgFwY8jg7o2okuoD7EhBXpump",
-        "symbol": "TRASHCAN",
-        "verdict": "PUMP",
-        "ath_multiplier": 4.68,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-25T06:02:24.656717+00:00",
-        "timestamp": "2026-06-25T06:02:24.656745+00:00"
-      },
-      {
         "address": "Dm8g1s9t28bynXtGizmCTrJkWHk3UrriwRX2QChRpump",
         "symbol": "Goku",
         "verdict": "PUMP",
@@ -60569,28 +60547,6 @@
         "timestamp": "2026-06-25T06:02:25.096330+00:00"
       },
       {
-        "address": "y1Jx8x2yQCJbJ8xm6MDuahELaiBmb6KeNoXqTAspump",
-        "symbol": "GTA",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 7.02,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-25T06:02:25.304359+00:00",
-        "timestamp": "2026-06-25T06:02:25.304389+00:00"
-      },
-      {
-        "address": "E7wbcQSGnuC29vNeDX8SrosiD46piaUnBHTg5X8apump",
-        "symbol": "Meep",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 5.13,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-25T06:02:25.508258+00:00",
-        "timestamp": "2026-06-25T06:02:25.508287+00:00"
-      },
-      {
         "address": "C2Vi8BQvPjSichZ1SCvGGHUN68xufcajGN3y1S3Bpump",
         "symbol": "KELL",
         "verdict": "PUMP",
@@ -60600,61 +60556,6 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-25T06:52:42.493675+00:00",
         "timestamp": "2026-06-25T06:52:42.493710+00:00"
-      },
-      {
-        "address": "9zTTCUMaWbJFC83Cn4YhEYSwUZ8SVaz9k78zr6cVpump",
-        "symbol": "wCAT",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 5.64,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-25T06:52:42.735837+00:00",
-        "timestamp": "2026-06-25T06:52:42.735865+00:00"
-      },
-      {
-        "address": "GDJDynz2wGkDX5JToeYgFwY8jg7o2okuoD7EhBXpump",
-        "symbol": "TRASHCAN",
-        "verdict": "PUMP",
-        "ath_multiplier": 4.67,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-25T06:52:42.949744+00:00",
-        "timestamp": "2026-06-25T06:52:42.949773+00:00"
-      },
-      {
-        "address": "Dm8g1s9t28bynXtGizmCTrJkWHk3UrriwRX2QChRpump",
-        "symbol": "Goku",
-        "verdict": "PUMP",
-        "ath_multiplier": 4.48,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-25T06:52:43.166239+00:00",
-        "timestamp": "2026-06-25T06:52:43.166267+00:00"
-      },
-      {
-        "address": "GgqZq3znKRVSQTTMuridvUXvtqxy2tUbgFZ36jYEpump",
-        "symbol": "Hama",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 15.41,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-25T06:52:43.380709+00:00",
-        "timestamp": "2026-06-25T06:52:43.380736+00:00"
-      },
-      {
-        "address": "y1Jx8x2yQCJbJ8xm6MDuahELaiBmb6KeNoXqTAspump",
-        "symbol": "GTA",
-        "verdict": "STRONG_PUMP",
-        "ath_multiplier": 6.43,
-        "current_multiplier": 0.0,
-        "min_price_multiplier": 0.0,
-        "signal_age": 0.0,
-        "signal_time": "2026-06-25T06:52:43.593391+00:00",
-        "timestamp": "2026-06-25T06:52:43.593420+00:00"
       }
     ],
     "success_history": [
@@ -69456,21 +69357,7 @@
     "96GjV6YmD6gPtyikgcKfCvba4dRv6VwRmEBuycXkpump",
     "BM7bbzRkmwbUWsTReiPBDTDXu4Jc5sabBNtNK1qLpump",
     "FPHHc5vUyF2pDccbLfkuhkiuYPt5CJ14Wuw3tx8QUvfT",
-    "GKPio535WcAG2xqeJvQeY2PkRswdbX3UgJMdscyGpump",
-    "8gmyP2ssQFbAHmDkKLB2UggMKb1QNhthMnL3DpNPpump",
-    "7Yaxyang4XqhZH7jUft2qhEFfEfuzL23msHMhUG58UXA",
-    "Ay6SiWmVkw269vLNvEaKLTbhqaiW9B9cJKCNuQ4b6Tqd",
-    "CHBPw8NYTRSzHYGNXUiQ4BYoQ5FGBdLrTvUae3ojpump",
-    "8yo564u5NKNzKV3jWQTSqSxXXFX69ALgweu4c8eapump",
-    "28b4z93aauCsSuBEixrS9nytHMzFFgHF7q6YE9btpump",
-    "HntbwRxTEYN8pFxDTJtJGH5NGEEbHX4Y9RVbnLBWLjFy",
-    "FgbwbhUo83MhXFwexH89QoKzGjBDtREWBQbDdPGJpump",
-    "CQzNEHjLn3CGVCDet6KFgoxshcCtUFWEfrQe4rTR1V1A",
-    "HSmjHsVcwVMiaVhpEwVkwPM1L3eNdBk8Q8yjyzPu1vfG",
-    "5X9TMUYWVHJZJLPKZssaVk8FrLaTC3RFainCVhvcTmz8",
-    "6zaoZHbZXyAuB15wsq7VNUa73vWjTiZnrNu4FqGopump",
-    "5iPoWhLAzoXRRk849LxkEJErPjWb1hK9MFGZdFPppump",
-    "7WWxAgSzRqouA8oYxkJZTR7veB5JEp3s6CFyJmSPpump"
+    "GKPio535WcAG2xqeJvQeY2PkRswdbX3UgJMdscyGpump"
   ],
   "launch_patterns": [],
   "trained_addresses": [],
