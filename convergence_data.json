@@ -6980,11 +6980,290 @@
       "source_count": 1,
       "last_calculated": 1782484185.797189,
       "alerted": false
+    },
+    "4i52FSf22KYBU8424Z2AGmJNG299jQhxM74YK1Espump": {
+      "symbol": "BRIDLE Marries AI agents, GPUs, APIs, PCs, wallets & datasets into one programmable network. Rein in the idle.",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_boosted",
+          "source_name": "DexScreener boosted",
+          "timestamp": 1782486368.931391,
+          "signal_type": "boosted",
+          "features": {
+            "mcp": 9948,
+            "liq_usd": 7057.02,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782486368.931391,
+      "last_seen": 1782486368.931391,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener boosted",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782486368.931455,
+      "alerted": false
+    },
+    "BhVo45Enc9hufHBDoeQu5XrXQZZ5Z1X3EW3A7Y7Gpump": {
+      "symbol": "Official CTO for Elon's 55th birthday memecoin.",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_boosted",
+          "source_name": "DexScreener boosted",
+          "timestamp": 1782486376.080256,
+          "signal_type": "boosted",
+          "features": {
+            "mcp": 16711,
+            "liq_usd": 9223.44,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782486376.080256,
+      "last_seen": 1782486376.080256,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener boosted",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782486376.080326,
+      "alerted": false
+    },
+    "BzWkBj39idjMnWPqeF7Baw28JQnhBFZGAMNGpacdpump": {
+      "symbol": "",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782486416.682832,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 28465,
+            "liq_usd": 11914.45,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782486416.682832,
+      "last_seen": 1782486416.682832,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener new_profile",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782486416.683068,
+      "alerted": false
+    },
+    "JChK1vv6CMBUKowEGiBrK6FTybt6f8FBX37CV2SPpump": {
+      "symbol": "",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782486426.332167,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 28875,
+            "liq_usd": 11971.56,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782486426.332167,
+      "last_seen": 1782486426.332167,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener new_profile",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782486426.332386,
+      "alerted": false
+    },
+    "8RLPD7NJJrTskyoNVY6bqKSsmd2oCq7d1WJKxfSzpump": {
+      "symbol": "",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782486436.186667,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 42896,
+            "liq_usd": 14621.27,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782486436.186667,
+      "last_seen": 1782486436.186667,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener new_profile",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782486436.186899,
+      "alerted": false
+    },
+    "7YW7D1nJhMXcVYwCGoSqaG4K9r69td6QKEvdmo96pump": {
+      "symbol": "",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782486443.573679,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 8167,
+            "liq_usd": 6398.46,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782486443.573679,
+      "last_seen": 1782486443.573679,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener new_profile",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782486443.57393,
+      "alerted": false
+    },
+    "6oPG5q5SPNtQTxeu8RRWvh6mngsauznC2SVVtXqPpump": {
+      "symbol": "",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782486450.350851,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 78489,
+            "liq_usd": 19809.22,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782486450.350851,
+      "last_seen": 1782486450.350851,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener new_profile",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782486450.350947,
+      "alerted": false
+    },
+    "AVZ9SXcCc5sifajJjoGJ2qi7abxJWxh9BNmKua4gpump": {
+      "symbol": "",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782486456.395429,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 31767,
+            "liq_usd": 12864.27,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782486456.395429,
+      "last_seen": 1782486456.395429,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener new_profile",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782486456.39561,
+      "alerted": false
+    },
+    "BzoaNd4L6Z8CLeZTjTffVm27iAr6DfYgsvzCwH8ypump": {
+      "symbol": "",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782486487.037073,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 6800,
+            "liq_usd": 5896.34,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782486487.037073,
+      "last_seen": 1782486487.037073,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener new_profile",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782486487.037134,
+      "alerted": false
     }
   },
-  "last_cleanup": "2026-06-26T14:29:45.797237+00:00",
+  "last_cleanup": "2026-06-26T15:08:07.037193+00:00",
   "stats": {
-    "total_tracked": 216,
+    "total_tracked": 225,
     "high_convergence": 0
   }
 }

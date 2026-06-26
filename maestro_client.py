@@ -39,60 +39,87 @@ async def get_client() -> TelegramClient:
         except Exception as e:
             logger.error(f"Reconnect failed: {e}")
             _client = None
-    async with _lock:
-        if _client is not None:
-            return _client
-        _cleanup_session_locks()
-        _client = TelegramClient(SESSION_FILE, API_ID, API_HASH)
-        try:
-            await _client.connect()
-        except Exception as e:
-            logger.error(f"Telegram connect failed: {e}")
+    
+    # Try up to 3 times with cleanup between attempts
+    for attempt in range(3):
+        async with _lock:
+            if _client is not None:
+                return _client
             _cleanup_session_locks()
-            _client = None
-            return None
-        if not await _client.is_user_authorized():
-            logger.error("Maestro client not authorized - session expired")
-            _client = None
-            return None
-        await _client.get_entity(MAESTRO_ID)
-
-        # Pre-resolve all bot entities to avoid "input entity" errors
-        BOT_IDS = [8436907499, 7178305557, 6126376117]  # Phanes, TokenScan, Rick
-        for bot_id in BOT_IDS:
             try:
-                await _client.get_entity(bot_id)
+                _client = TelegramClient(SESSION_FILE, API_ID, API_HASH)
+                await _client.connect()
+            except Exception as e:
+                logger.error(f"Telegram connect attempt {attempt+1} failed: {e}")
+                _client = None
+                _cleanup_session_locks()
+                await asyncio.sleep(1)
+                continue
+            
+            if not await _client.is_user_authorized():
+                logger.error("Maestro client not authorized - session expired")
+                _client = None
+                return None
+            
+            # Pre-resolve entities
+            try:
+                await _client.get_entity(MAESTRO_ID)
             except Exception:
-                # If get_entity fails, try iterating dialogs once
+                pass
+            
+            BOT_IDS = [8436907499, 7178305557, 6126376117]
+            for bot_id in BOT_IDS:
                 try:
-                    async for dialog in _client.iter_dialogs(limit=100):
-                        if dialog.id in BOT_IDS:
-                            logger.info(f"Resolved bot entity: {dialog.name} ({dialog.id})")
-                except Exception as e:
-                    logger.debug(f"Dialog iteration error: {e}")
-                break  # Only iterate once if needed
+                    await _client.get_entity(bot_id)
+                except Exception:
+                    try:
+                        async for dialog in _client.iter_dialogs(limit=100):
+                            if dialog.id in BOT_IDS:
+                                logger.info(f"Resolved bot entity: {dialog.name} ({dialog.id})")
+                    except Exception:
+                        pass
+                    break
+            
+            logger.info("✅ Maestro client connected and authorized")
+            return _client
+    
+    return None
 
-    return _client
+
+async def ensure_connected():
+    """Pre-connect at bot startup. Call this once."""
+    client = await get_client()
+    if client:
+        logger.info("🤖 Maestro client ready")
+    else:
+        logger.warning("⚠️ Maestro client failed to connect")
 
 
 async def buy(address: str, sol_amount: str = "") -> bool:
-    try:
-        client = await get_client()
-        if not client:
+    for attempt in range(2):
+        try:
+            client = await get_client()
+            if not client:
+                return False
+            
+            async with _lock:
+                await client.send_message(MAESTRO_ID, address)
+            
+            logger.info(f"🤖 Maestro buy sent: {address[:12]}...")
+            return True
+            
+        except errors.FloodWaitError as e:
+            logger.warning(f"Maestro flood wait: {e.seconds}s")
             return False
-        
-        async with _lock:
-            await client.send_message(MAESTRO_ID, address)
-        
-        logger.info(f"Maestro buy sent: {address[:12]}...")
-        return True
-        
-    except errors.FloodWaitError as e:
-        logger.warning(f"Maestro flood wait: {e.seconds}s")
-        return False
-    except Exception as e:
-        logger.warning(f"Maestro buy error: {e}")
-        return False
+        except Exception as e:
+            logger.warning(f"Maestro buy attempt {attempt+1} error: {e}")
+            # Reset client on error and retry
+            global _client
+            _client = None
+            _cleanup_session_locks()
+            await asyncio.sleep(1)
+    
+    return False
 
 
 async def close():

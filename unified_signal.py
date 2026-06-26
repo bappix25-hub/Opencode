@@ -170,17 +170,17 @@ def _multi_source_score(token: dict, all_tokens: dict) -> float:
 
     num_sources = len(sources)
 
-    # 1 source = 0.3 (not confirmed)
-    # 2 sources = 0.6 (confirmed by 2)
-    # 3+ sources = 0.8 (strong confirmation)
+    # 1 source = 0.5 (GMGN-only but still valid)
+    # 2 sources = 0.7 (confirmed by 2)
+    # 3+ sources = 0.85 (strong confirmation)
     if num_sources >= 3:
-        return 0.8
+        return 0.85
     elif num_sources >= 2:
-        return 0.6
+        return 0.7
     elif num_sources == 1:
-        return 0.3
+        return 0.5
     else:
-        return 0.2
+        return 0.3
 
 
 def _load_learned_scorer():
@@ -257,29 +257,29 @@ def _winner_fit_score(token: dict, winners: list) -> float:
 
 def _fundamentals_score(token: dict) -> float:
     """Token quality. Returns 0-1."""
-    score = 0.3  # base
+    score = 0.35  # base
 
     # Liquidity (0-0.25)
     liq = token.get("liq_usd", 0) or token.get("liquidity", 0)
     if liq > 20000:
         score += 0.25
     elif liq > 10000:
-        score += 0.20
+        score += 0.22
     elif liq > 5000:
-        score += 0.15
+        score += 0.18
     elif liq > 2000:
-        score += 0.10
+        score += 0.12
     elif liq > 500:
-        score += 0.05
+        score += 0.06
 
     # Holders (0-0.20)
     holders = token.get("holders", 0)
     if holders > 100:
         score += 0.20
     elif holders > 50:
-        score += 0.15
+        score += 0.16
     elif holders > 20:
-        score += 0.10
+        score += 0.12
     elif holders > 10:
         score += 0.08
     elif holders > 5:
@@ -292,14 +292,14 @@ def _fundamentals_score(token: dict) -> float:
     elif bsr > 2.0:
         score += 0.10
     elif bsr > 1.5:
-        score += 0.05
+        score += 0.06
 
     # LP locked (0-0.10)
     lp_locked = token.get("lp_locked", 0)
     if lp_locked > 90:
         score += 0.10
     elif lp_locked > 70:
-        score += 0.05
+        score += 0.06
 
     # Renounced (0-0.05)
     if token.get("renounced", False):
@@ -450,13 +450,13 @@ def score_token(token: dict, dex_health: dict = None) -> dict:
 
     # Raw score — reweighted: fundamentals + winner_fit dominant
     raw_score = (
-        early * 0.10 +
+        early * 0.15 +
         winner_fit * 0.30 +
         multi_src * 0.15 +
-        fundamentals * 0.30 +
-        lifecycle_score * 0.05 +
-        social_score * 0.05 +
-        social_history * 0.05
+        fundamentals * 0.35 +
+        lifecycle_score * 0.02 +
+        social_score * 0.02 +
+        social_history * 0.01
     )
 
     # TokenScan bonus/penalty
@@ -500,12 +500,14 @@ def score_token(token: dict, dex_health: dict = None) -> dict:
     except Exception:
         pass
 
-    # Health penalty
-    raw_score *= (1.0 - health.get("penalty", 0) * 0.5)
+    # Health penalty (mild)
+    raw_score *= (1.0 - health.get("penalty", 0) * 0.3)
 
-    # Rug probability penalty
-    if rug_prob > 0.3:
-        raw_score *= (1.0 - rug_prob * 0.5)
+    # Rug probability penalty (mild — new tokens have no data)
+    if rug_prob > 0.5:
+        raw_score *= (1.0 - rug_prob * 0.3)
+    elif rug_prob > 0.3:
+        raw_score *= (1.0 - rug_prob * 0.15)
 
     # ===== GATE 2: DEX SCREENER (if available) =====
     dex_verified = False
@@ -515,36 +517,36 @@ def score_token(token: dict, dex_health: dict = None) -> dict:
             dex_verified = True
             dex_reason = dex_health.get("reason", "")
             # Bonus for DexScreener verified
-            raw_score = min(1.0, raw_score * 1.15)
+            raw_score = min(1.0, raw_score * 1.20)
         else:
-            # DexScreener says unhealthy — heavy penalty
+            # DexScreener says unhealthy — moderate penalty (not death sentence)
             dex_reason = dex_health.get("reason", "")
-            raw_score *= 0.3  # 70% penalty
+            raw_score *= 0.6  # 40% penalty
 
     final_score = round(raw_score * 100, 1)
 
     # ===== VERDICT =====
-    # Require: alive + winner_fit >= 0.25 + (dex verified OR 2+ sources)
+    # Require: alive + winner_fit >= 0.25 + (dex verified OR 1+ source)
     can_signal = (
         health["alive"] and
-        winner_fit >= 0.25 and
-        (dex_verified or multi_src >= 0.5)
+        winner_fit >= 0.20 and
+        (dex_verified or multi_src >= 0.3)
     )
 
     if not can_signal:
-        if final_score >= 40:
+        if final_score >= 35:
             verdict = "WATCH"
             action = "MONITOR"
         else:
             verdict = "WEAK"
             action = "SKIP"
-    elif final_score >= 65:
+    elif final_score >= 55:
         verdict = "STRONG"
         action = "BUY_NOW"
-    elif final_score >= 50:
+    elif final_score >= 40:
         verdict = "GOOD"
         action = "ALERT"
-    elif final_score >= 35:
+    elif final_score >= 30:
         verdict = "WATCH"
         action = "MONITOR"
     else:
