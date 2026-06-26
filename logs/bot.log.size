@@ -2071,3 +2071,744 @@ telethon.errors.common.InvalidBufferError: Invalid response buffer (HTTP code 42
 2026-06-26 12:48:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: at (4UKLdTBi...)
 2026-06-26 12:48:35 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Memeluk (AufH68UF...)
 2026-06-26 12:48:53 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Memeluk (8NJ7Ujpj...)
+2026-06-26 12:48:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Memeluk (FCUPh2jM...)
+2026-06-26 12:49:03 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WCOIN (5P33CPao...)
+2026-06-26 12:49:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: at (4UKLdTBi...)
+2026-06-26 12:49:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CHOOM (2bZdgwv5...)
+2026-06-26 12:49:19 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: AIPUP (7iUEu8VP...)
+2026-06-26 12:49:34 - meme_bot - WARNING - 📴 Signal 15 received — ignoring (platform keepalive)
+2026-06-26 12:49:34 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: job (53R2hmmY...)
+2026-06-26 12:49:36 - meme_bot - WARNING - 📴 Signal 15 received — ignoring (platform keepalive)
+2026-06-26 12:49:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WCOIN (5P33CPao...)
+2026-06-26 12:49:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: at (4UKLdTBi...)
+2026-06-26 12:49:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: RETARD (4sAUSQFd...)
+2026-06-26 12:49:53 - meme_bot - WARNING - 📴 Signal 15 received — ignoring (platform keepalive)
+2026-06-26 12:50:00 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BUC-EE (39iMs4oJ...)
+2026-06-26 12:50:01 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VENEZUELA (FRXSTY8n...)
+2026-06-26 12:50:02 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Hamster (7E6Rw7na...)
+2026-06-26 12:50:07 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CHOOM (2bZdgwv5...)
+2026-06-26 12:50:33 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 8340 deployer
+2026-06-26 12:50:33 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-26 12:50:33 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-26 12:50:33 - meme_bot - INFO - 📡 Telegram collector loop started
+2026-06-26 12:50:33 - meme_bot.social_tracker - INFO - [SOCIAL] Backfilled 0 tokens from tracked data
+2026-06-26 12:50:33 - meme_bot - INFO - 📊 Signal review loop started (every 6h)
+2026-06-26 12:50:33 - meme_bot - INFO - 🔥 Convergence scan loop started (every 60s)
+2026-06-26 12:50:33 - meme_bot - INFO - 🔍 GMGN Trending scanner started (every 5min)
+2026-06-26 12:50:33 - meme_bot - INFO - 🔬 TokenScan monitor started (every 10min)
+2026-06-26 12:50:33 - meme_bot - INFO - 🚨 Alert sender loop started (every 10s)
+2026-06-26 12:50:34 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-26 12:50:34 - meme_bot - INFO - 📊 Midnight summary in 11h 9m
+2026-06-26 12:50:34 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-26 12:50:34 - meme_bot.telegram_collector - INFO - Starting Telegram collector loop...
+2026-06-26 12:50:34 - meme_bot - WARNING - 📴 Signal 15 received — ignoring (platform keepalive)
+2026-06-26 12:50:35 - meme_bot.telegram_collector - INFO - [NEW] c0mpinfra MCP=$0 liq=$11715 holders=8 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:50:37 - meme_bot.telegram_collector - INFO - 🚨 UNIFIED SIGNAL: c0mpinfra score=56 GOOD ALERT
+2026-06-26 12:50:37 - meme_bot.telegram_collector - INFO - [NEW] 0.0{4}53165 MCP=$53166 liq=$0 holders=19 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:50:38 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP 0.0{4}53165: liq=$0 — likely rug pulled
+2026-06-26 12:50:38 - meme_bot.telegram_collector - INFO - [NEW] VENEZUELA MCP=$0 liq=$14641 holders=4 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:50:39 - meme_bot.telegram_collector - INFO - [NEW] BARK MCP=$0 liq=$14603 holders=12 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:50:40 - meme_bot.telegram_collector - INFO - 🚨 UNIFIED SIGNAL: BARK score=66 STRONG BUY_NOW
+2026-06-26 12:50:41 - meme_bot.telegram_collector - INFO - [NEW] 0.0{4}85843 MCP=$85844 liq=$0 holders=1 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:50:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: at (4UKLdTBi...)
+2026-06-26 12:50:42 - meme_bot.telegram_collector - INFO - [NEW] COREY MCP=$0 liq=$15180 holders=1 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:50:43 - meme_bot.telegram_collector - INFO - [NEW] 21455.56 MCP=$0 liq=$0 holders=1 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:50:44 - meme_bot.telegram_collector - INFO - [NEW] POOL MCP=$0 liq=$35979 holders=7 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:50:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Memeluk (AtZ424xr...)
+2026-06-26 12:50:45 - meme_bot.telegram_collector - INFO - 🚨 UNIFIED SIGNAL: POOL score=56 GOOD ALERT
+2026-06-26 12:50:45 - meme_bot.telegram_collector - INFO - [NEW] POOL MCP=$0 liq=$11814 holders=15 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:50:46 - meme_bot.telegram_collector - INFO - [NEW] POOL MCP=$0 liq=$4862 holders=13 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:50:47 - meme_bot - INFO - 🚨 Signal alert sent to Telegram
+2026-06-26 12:50:48 - meme_bot.telegram_collector - INFO - 🚨 UNIFIED SIGNAL: POOL score=67 STRONG BUY_NOW
+2026-06-26 12:50:48 - meme_bot.telegram_collector - INFO - [NEW] MOO MCP=$0 liq=$13715 holders=7 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:50:49 - meme_bot.telegram_collector - INFO - [NEW] 0.0{4}423 MCP=$42300 liq=$0 holders=1 signal=FDV_SURGE ch=New Pool Alert
+2026-06-26 12:50:51 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] POOL stage=featured prev=featured time_gap=1184s total_signals=3 stages=['featured']
+2026-06-26 12:50:51 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] POOL stage=featured prev=featured gap=1184s total=3 stages=['featured']
+2026-06-26 12:50:51 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] POOL now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:50:51 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] 0.0{4}18735 stage=featured prev=featured time_gap=1184s total_signals=3 stages=['featured']
+2026-06-26 12:50:51 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] 0.0{4}18735 stage=featured prev=featured gap=1184s total=3 stages=['featured']
+2026-06-26 12:50:52 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] 0.0{4}18735 now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:50:52 - meme_bot.telegram_collector - INFO - 📊 SCORE: 0.0{4}18735 score=44 WATCH MONITOR (early=34 winner=0 fund=63)
+2026-06-26 12:50:52 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] GRVT stage=featured prev=featured time_gap=1183s total_signals=3 stages=['featured']
+2026-06-26 12:50:52 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] GRVT stage=featured prev=featured gap=1183s total=3 stages=['featured']
+2026-06-26 12:50:52 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] GRVT now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:50:53 - meme_bot.telegram_collector - INFO - 📊 SCORE: GRVT score=84 STRONG BUY_NOW (early=38 winner=100 fund=63)
+2026-06-26 12:50:53 - meme_bot.telegram_collector - INFO - 🚨 UNIFIED RE-SCORE: GRVT score=84 STRONG BUY_NOW dex=✅
+2026-06-26 12:50:53 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] MOO stage=featured prev=featured time_gap=1234s total_signals=3 stages=['featured']
+2026-06-26 12:50:53 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] MOO stage=featured prev=featured gap=1234s total=3 stages=['featured']
+2026-06-26 12:50:53 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] MOO now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:50:54 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Pump ICO stage=featured prev=featured time_gap=1235s total_signals=3 stages=['featured']
+2026-06-26 12:50:54 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Pump ICO stage=featured prev=featured gap=1235s total=3 stages=['featured']
+2026-06-26 12:50:54 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] Pump ICO now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:50:55 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] 0.0{4}42332 stage=featured prev=featured time_gap=1354s total_signals=3 stages=['featured']
+2026-06-26 12:50:55 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] 0.0{4}42332 stage=featured prev=featured gap=1354s total=3 stages=['featured']
+2026-06-26 12:50:55 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] 0.0{4}42332 now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:50:55 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] POOL stage=featured prev=featured time_gap=1354s total_signals=3 stages=['featured']
+2026-06-26 12:50:55 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] POOL stage=featured prev=featured gap=1354s total=3 stages=['featured']
+2026-06-26 12:50:56 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] POOL now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:50:56 - meme_bot.telegram_collector - INFO - 📊 SCORE: POOL score=85 STRONG BUY_NOW (early=30 winner=100 fund=68)
+2026-06-26 12:50:56 - meme_bot.telegram_collector - INFO - 🚨 UNIFIED RE-SCORE: POOL score=85 STRONG BUY_NOW dex=✅
+2026-06-26 12:50:56 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] BUOY stage=featured prev=featured time_gap=1390s total_signals=3 stages=['featured']
+2026-06-26 12:50:56 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] BUOY stage=featured prev=featured gap=1390s total=3 stages=['featured']
+2026-06-26 12:50:56 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] BUOY now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:50:58 - meme_bot.telegram_collector - INFO - [NEW] POOL MCP=$0 liq=$11724 holders=15 signal=FEATURED_NEW ch=LP Chat
+2026-06-26 12:50:58 - meme_bot - INFO - 🚨 Signal alert sent to Telegram
+2026-06-26 12:50:59 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] c0mpinfra stage=featured prev=featured time_gap=23s total_signals=2 stages=['featured']
+2026-06-26 12:50:59 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] c0mpinfra stage=featured prev=featured gap=23s total=2 stages=['featured']
+2026-06-26 12:50:59 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] c0mpinfra now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:50:59 - meme_bot.telegram_collector - INFO - 📊 SCORE: c0mpinfra score=65 STRONG BUY_NOW (early=40 winner=100 fund=60)
+2026-06-26 12:50:59 - meme_bot.telegram_collector - INFO - 🚨 UNIFIED RE-SCORE: c0mpinfra score=65 STRONG BUY_NOW dex=✅
+2026-06-26 12:50:59 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] 0.0{4}53165 stage=featured prev=featured time_gap=22s total_signals=2 stages=['featured']
+2026-06-26 12:50:59 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] 0.0{4}53165 stage=featured prev=featured gap=22s total=2 stages=['featured']
+2026-06-26 12:50:59 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] 0.0{4}53165 now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:50:59 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] VENEZUELA stage=featured prev=featured time_gap=21s total_signals=2 stages=['featured']
+2026-06-26 12:50:59 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] VENEZUELA stage=featured prev=featured gap=21s total=2 stages=['featured']
+2026-06-26 12:51:00 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] VENEZUELA now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:51:00 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] BARK stage=featured prev=featured time_gap=21s total_signals=2 stages=['featured']
+2026-06-26 12:51:00 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] BARK stage=featured prev=featured gap=21s total=2 stages=['featured']
+2026-06-26 12:51:00 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] BARK now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:51:00 - meme_bot.telegram_collector - INFO - 📊 SCORE: BARK score=77 STRONG BUY_NOW (early=36 winner=100 fund=63)
+2026-06-26 12:51:00 - meme_bot.telegram_collector - INFO - 🚨 UNIFIED RE-SCORE: BARK score=77 STRONG BUY_NOW dex=✅
+2026-06-26 12:51:00 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] 0.0{4}85843 stage=featured prev=featured time_gap=20s total_signals=2 stages=['featured']
+2026-06-26 12:51:00 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] 0.0{4}85843 stage=featured prev=featured gap=20s total=2 stages=['featured']
+2026-06-26 12:51:00 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] 0.0{4}85843 now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:51:00 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] COREY stage=featured prev=featured time_gap=19s total_signals=2 stages=['featured']
+2026-06-26 12:51:00 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] COREY stage=featured prev=featured gap=19s total=2 stages=['featured']
+2026-06-26 12:51:00 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] COREY now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:51:00 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] 21455.56 stage=featured prev=featured time_gap=18s total_signals=2 stages=['featured']
+2026-06-26 12:51:00 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] 21455.56 stage=featured prev=featured gap=18s total=2 stages=['featured']
+2026-06-26 12:51:01 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] 21455.56 now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:51:01 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] POOL stage=featured prev=featured time_gap=17s total_signals=2 stages=['featured']
+2026-06-26 12:51:01 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] POOL stage=featured prev=featured gap=17s total=2 stages=['featured']
+2026-06-26 12:51:01 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] POOL now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:51:01 - meme_bot.telegram_collector - INFO - 📊 SCORE: POOL score=66 STRONG BUY_NOW (early=31 winner=100 fund=65)
+2026-06-26 12:51:01 - meme_bot.telegram_collector - INFO - 🚨 UNIFIED RE-SCORE: POOL score=66 STRONG BUY_NOW dex=✅
+2026-06-26 12:51:01 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] POOL stage=featured prev=featured time_gap=16s total_signals=2 stages=['featured']
+2026-06-26 12:51:01 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] POOL stage=featured prev=featured gap=16s total=2 stages=['featured']
+2026-06-26 12:51:01 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] POOL now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:51:01 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] POOL stage=featured prev=featured time_gap=15s total_signals=2 stages=['featured']
+2026-06-26 12:51:01 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] POOL stage=featured prev=featured gap=15s total=2 stages=['featured']
+2026-06-26 12:51:01 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] POOL now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:51:02 - meme_bot.telegram_collector - INFO - 📊 SCORE: POOL score=78 STRONG BUY_NOW (early=29 winner=100 fund=68)
+2026-06-26 12:51:02 - meme_bot.telegram_collector - INFO - 🚨 UNIFIED RE-SCORE: POOL score=78 STRONG BUY_NOW dex=✅
+2026-06-26 12:51:02 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] MOO stage=featured prev=featured time_gap=14s total_signals=2 stages=['featured']
+2026-06-26 12:51:02 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] MOO stage=featured prev=featured gap=14s total=2 stages=['featured']
+2026-06-26 12:51:02 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] MOO now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:51:02 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] 0.0{4}423 stage=fdv_surge prev=fdv_surge time_gap=13s total_signals=2 stages=['fdv_surge']
+2026-06-26 12:51:02 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] 0.0{4}423 stage=fdv_surge prev=fdv_surge gap=13s total=2 stages=['fdv_surge']
+2026-06-26 12:51:02 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] 0.0{4}423 now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:51:03 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] POOL stage=featured prev=featured time_gap=12s total_signals=4 stages=['featured']
+2026-06-26 12:51:03 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] POOL stage=featured prev=featured gap=12s total=4 stages=['featured']
+2026-06-26 12:51:03 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] POOL now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:51:03 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] 0.0{4}18735 stage=featured prev=featured time_gap=11s total_signals=4 stages=['featured']
+2026-06-26 12:51:03 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] 0.0{4}18735 stage=featured prev=featured gap=11s total=4 stages=['featured']
+2026-06-26 12:51:03 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] 0.0{4}18735 now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:51:03 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] GRVT stage=featured prev=featured time_gap=11s total_signals=4 stages=['featured']
+2026-06-26 12:51:03 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] GRVT stage=featured prev=featured gap=11s total=4 stages=['featured']
+2026-06-26 12:51:03 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] GRVT now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:51:03 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] MOO stage=featured prev=featured time_gap=10s total_signals=4 stages=['featured']
+2026-06-26 12:51:03 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] MOO stage=featured prev=featured gap=10s total=4 stages=['featured']
+2026-06-26 12:51:03 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] MOO now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:51:03 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Pump ICO stage=featured prev=featured time_gap=9s total_signals=4 stages=['featured']
+2026-06-26 12:51:03 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Pump ICO stage=featured prev=featured gap=9s total=4 stages=['featured']
+2026-06-26 12:51:03 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] Pump ICO now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:51:03 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] 0.0{4}42332 stage=featured prev=featured time_gap=9s total_signals=4 stages=['featured']
+2026-06-26 12:51:03 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] 0.0{4}42332 stage=featured prev=featured gap=9s total=4 stages=['featured']
+2026-06-26 12:51:03 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] 0.0{4}42332 now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:51:04 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] POOL stage=featured prev=featured time_gap=8s total_signals=4 stages=['featured']
+2026-06-26 12:51:04 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] POOL stage=featured prev=featured gap=8s total=4 stages=['featured']
+2026-06-26 12:51:04 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] POOL now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:51:04 - meme_bot.pump_collector - INFO - 🔄 Pump collector cycle started...
+2026-06-26 12:51:04 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: YTB (AwjteQWH...)
+2026-06-26 12:51:07 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VENEZUELA (6K5zBU6E...)
+2026-06-26 12:51:08 - meme_bot.telegram_collector - INFO - [NEW] RSLV MCP=$2000 liq=$4200 holders=2 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:51:09 - meme_bot.telegram_collector - INFO - [NEW] FLAMY MCP=$7200 liq=$8700 holders=35 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:51:10 - meme_bot - INFO - 🚨 Signal alert sent to Telegram
+2026-06-26 12:51:10 - meme_bot.telegram_collector - INFO - [NEW] Memeluk MCP=$5800 liq=$6900 holders=55 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:51:12 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] FLAMY stage=dev_exiting prev=dev_exiting time_gap=3s total_signals=2 stages=['dev_exiting']
+2026-06-26 12:51:12 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] FLAMY stage=dev_exiting prev=dev_exiting gap=3s total=2 stages=['dev_exiting']
+2026-06-26 12:51:12 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Memeluk stage=dev_exiting prev=dev_exiting time_gap=2s total_signals=2 stages=['dev_exiting']
+2026-06-26 12:51:12 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Memeluk stage=dev_exiting prev=dev_exiting gap=2s total=2 stages=['dev_exiting']
+2026-06-26 12:51:13 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Memeluk stage=dev_exiting prev=dev_exiting time_gap=0s total_signals=3 stages=['dev_exiting']
+2026-06-26 12:51:13 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Memeluk stage=dev_exiting prev=dev_exiting gap=0s total=3 stages=['dev_exiting']
+2026-06-26 12:51:13 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Memeluk stage=dev_exiting prev=dev_exiting time_gap=0s total_signals=4 stages=['dev_exiting']
+2026-06-26 12:51:13 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Memeluk stage=dev_exiting prev=dev_exiting gap=0s total=4 stages=['dev_exiting']
+2026-06-26 12:51:13 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Memeluk stage=fdv_surge prev=dev_exiting time_gap=0s total_signals=5 stages=['dev_exiting', 'fdv_surge']
+2026-06-26 12:51:13 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Memeluk stage=fdv_surge prev=dev_exiting gap=0s total=5 stages=['dev_exiting', 'fdv_surge']
+2026-06-26 12:51:13 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Memeluk stage=dev_active prev=fdv_surge time_gap=0s total_signals=6 stages=['dev_exiting', 'fdv_surge', 'dev_active']
+2026-06-26 12:51:13 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Memeluk stage=dev_active prev=fdv_surge gap=0s total=6 stages=['dev_exiting', 'fdv_surge', 'dev_active']
+2026-06-26 12:51:13 - meme_bot.telegram_collector - INFO - [NEW] pisso MCP=$2100 liq=$5100 holders=1 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:51:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Memeluk (39iMs4oJ...)
+2026-06-26 12:51:14 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] FLAMY stage=community_takeover prev=dev_exiting time_gap=3s total_signals=3 stages=['dev_exiting', 'community_takeover']
+2026-06-26 12:51:14 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] FLAMY stage=community_takeover prev=dev_exiting gap=3s total=3 stages=['dev_exiting', 'community_takeover']
+2026-06-26 12:51:15 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] pisso stage=dev_exiting prev=dev_exiting time_gap=1s total_signals=2 stages=['dev_exiting']
+2026-06-26 12:51:15 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] pisso stage=dev_exiting prev=dev_exiting gap=1s total=2 stages=['dev_exiting']
+2026-06-26 12:51:15 - meme_bot.telegram_collector - INFO - [NEW] DREMORA MCP=$2500 liq=$4700 holders=10 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:51:16 - meme_bot.telegram_collector - INFO - [NEW] BUC MCP=$3300 liq=$5200 holders=13 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:51:17 - meme_bot.telegram_collector - INFO - [NEW] PDiddy MCP=$2000 liq=$4300 holders=3 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:51:18 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] PDiddy stage=dev_exiting prev=dev_exiting time_gap=1s total_signals=2 stages=['dev_exiting']
+2026-06-26 12:51:18 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] PDiddy stage=dev_exiting prev=dev_exiting gap=1s total=2 stages=['dev_exiting']
+2026-06-26 12:51:19 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] BUC stage=dev_exiting prev=dev_exiting time_gap=3s total_signals=2 stages=['dev_exiting']
+2026-06-26 12:51:19 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] BUC stage=dev_exiting prev=dev_exiting gap=3s total=2 stages=['dev_exiting']
+2026-06-26 12:51:19 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] PDiddy stage=dev_exiting prev=dev_exiting time_gap=1s total_signals=3 stages=['dev_exiting']
+2026-06-26 12:51:19 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] PDiddy stage=dev_exiting prev=dev_exiting gap=1s total=3 stages=['dev_exiting']
+2026-06-26 12:51:19 - meme_bot.telegram_collector - INFO - [NEW] SLAB MCP=$2600 liq=$5400 holders=26 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:51:21 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] PDiddy stage=dev_active prev=dev_exiting time_gap=2s total_signals=4 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:51:21 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] PDiddy stage=dev_active prev=dev_exiting gap=2s total=4 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:51:22 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VENEZUELA (FRXSTY8n...)
+2026-06-26 12:51:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: job (53R2hmmY...)
+2026-06-26 12:51:29 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13844 tracked | 15 winners | 19 losers | 21 new this session
+2026-06-26 12:51:33 - meme_bot - INFO - TRADE NO TRACK: EPjFWdd5... txType=create
+2026-06-26 12:51:34 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: AIPUP (7iUEu8VP...)
+2026-06-26 12:51:35 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: KART (39iMs4oJ...)
+2026-06-26 12:51:39 - meme_bot.gmgn_trending - INFO - [TRENDING] VIGIL MC=$176,679 Liq=$29,937 Vol24h=$290,016 Age=0.3h BuyRatio=63% PC24h=+220%
+2026-06-26 12:51:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Dreamer (DqeVuNmy...)
+2026-06-26 12:51:44 - meme_bot.gmgn_trending - INFO - [TRENDING] Found 1 new trending tokens
+2026-06-26 12:51:45 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] POOL stage=featured prev=featured time_gap=47s total_signals=2 stages=['featured']
+2026-06-26 12:51:45 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] POOL stage=featured prev=featured gap=47s total=2 stages=['featured']
+2026-06-26 12:51:45 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] POOL now in 2 channels: [-1002126036544, -1002122751413]
+2026-06-26 12:51:47 - meme_bot.telegram_collector - INFO - [NEW] Dreamer MCP=$3100 liq=$5200 holders=9 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:51:48 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Dreamer stage=dev_exiting prev=dev_exiting time_gap=1s total_signals=2 stages=['dev_exiting']
+2026-06-26 12:51:48 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Dreamer stage=dev_exiting prev=dev_exiting gap=1s total=2 stages=['dev_exiting']
+2026-06-26 12:51:48 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Dreamer stage=community_takeover prev=dev_exiting time_gap=0s total_signals=3 stages=['dev_exiting', 'community_takeover']
+2026-06-26 12:51:48 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Dreamer stage=community_takeover prev=dev_exiting gap=0s total=3 stages=['dev_exiting', 'community_takeover']
+2026-06-26 12:51:49 - meme_bot.telegram_collector - INFO - [NEW] KART MCP=$2000 liq=$0 holders=0 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:51:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Garfield (36A6mEN5...)
+2026-06-26 12:51:49 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP KART: liq=$0 — likely rug pulled
+2026-06-26 12:51:49 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] KART stage=dev_active prev=dev_exiting time_gap=1s total_signals=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:51:49 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] KART stage=dev_active prev=dev_exiting gap=1s total=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:51:50 - meme_bot.telegram_collector - INFO - [NEW] $ELN MCP=$821 liq=$4300 holders=4 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:51:51 - meme_bot.telegram_collector - INFO - [NEW] Memeluk MCP=$2400 liq=$0 holders=3 signal=DEV_BOUGHT ch=GMGN Signals
+2026-06-26 12:51:51 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP Memeluk: liq=$0 — likely rug pulled
+2026-06-26 12:51:51 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] MANIFEST stage=dev_exiting prev=dev_exiting time_gap=1600s total_signals=2 stages=['dev_exiting']
+2026-06-26 12:51:51 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] MANIFEST stage=dev_exiting prev=dev_exiting gap=1600s total=2 stages=['dev_exiting']
+2026-06-26 12:51:52 - meme_bot.telegram_collector - INFO - 📊 SCORE: MANIFEST score=41 WATCH MONITOR (early=31 winner=0 fund=75)
+2026-06-26 12:51:52 - meme_bot.telegram_collector - INFO - [NEW] VENEZUELA MCP=$2600 liq=$0 holders=0 signal=DEV_BOUGHT ch=GMGN Signals
+2026-06-26 12:51:53 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP VENEZUELA: liq=$0 — likely rug pulled
+2026-06-26 12:51:53 - meme_bot - INFO - 🚫 Deployer blocked (history): CHOOM deployer 2bZdgwv5... created 25 tokens
+2026-06-26 12:51:55 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: AFKBOT (2cMP6SPJ...)
+2026-06-26 12:51:56 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: COOOOK (bwamJzrJ...)
+2026-06-26 12:52:00 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GOKULANA (5FqUo9aB...)
+2026-06-26 12:52:00 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: gokulana (bwamJzzt...)
+2026-06-26 12:52:01 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13849 tracked | 15 winners | 19 losers | 26 new this session
+2026-06-26 12:52:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: $SEGIRLS (9s3KFzr5...)
+2026-06-26 12:52:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DWIDDY (8NJ7Ujpj...)
+2026-06-26 12:52:17 - meme_bot.telegram_collector - INFO - [NEW] COREY MCP=$0 liq=$13642 holders=10 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:52:17 - meme_bot.pump_collector - INFO - Fetched 297 unique Solana tokens from DexScreener (boosted=28, metas=55, search=138)
+2026-06-26 12:52:17 - meme_bot.pump_collector - INFO - Collecting data for 20 new coins...
+2026-06-26 12:52:18 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] COREY stage=featured prev=featured time_gap=2s total_signals=2 stages=['featured']
+2026-06-26 12:52:18 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] COREY stage=featured prev=featured gap=2s total=2 stages=['featured']
+2026-06-26 12:52:18 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] COREY now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:52:20 - meme_bot.telegram_collector - INFO - [NEW] DWIDDY MCP=$2100 liq=$4900 holders=6 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:52:21 - meme_bot.telegram_collector - INFO - [NEW] COOOOK MCP=$2200 liq=$4100 holders=1 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:52:22 - meme_bot.telegram_collector - INFO - [NEW] YTB MCP=$19200 liq=$5500 holders=6 signal=KOTH ch=GMGN Signals
+2026-06-26 12:52:24 - meme_bot.telegram_collector - INFO - [GMGN-PARSE-FAIL] msg_id=4798853 text=**👑 Pump King of the hill (KOTH)**
+
+**$50**(50)
+`DWxxNt8DKGSrYyNSUoH6r8FpNru77gwnaKDCCME1pump`
+
+📈 5m | 1h | 6h: **1.54%** | **1.54%** | **1.54%**
+🎲 5m TXs/Vol: **1**/**$3.2**
+💡 MCP: **$111.5K**
+💧 Liq:
+2026-06-26 12:52:24 - meme_bot.telegram_collector - INFO - [NEW] GOKULANA MCP=$2900 liq=$0 holders=3 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:52:24 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP GOKULANA: liq=$0 — likely rug pulled
+2026-06-26 12:52:24 - meme_bot.telegram_collector - INFO - [NEW] SOLKU MCP=$2100 liq=$4100 holders=1 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:52:26 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] SOLKU stage=dev_exiting prev=dev_exiting time_gap=1s total_signals=2 stages=['dev_exiting']
+2026-06-26 12:52:26 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] SOLKU stage=dev_exiting prev=dev_exiting gap=1s total=2 stages=['dev_exiting']
+2026-06-26 12:52:26 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] GOKULANA stage=dev_active prev=dev_exiting time_gap=2s total_signals=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:52:26 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] GOKULANA stage=dev_active prev=dev_exiting gap=2s total=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:52:26 - meme_bot.telegram_collector - INFO - [NEW] gokulana MCP=$2000 liq=$0 holders=2 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:52:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ROCK (97K6nsFh...)
+2026-06-26 12:52:27 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP gokulana: liq=$0 — likely rug pulled
+2026-06-26 12:52:27 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] gokulana stage=dev_active prev=dev_exiting time_gap=1s total_signals=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:52:27 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] gokulana stage=dev_active prev=dev_exiting gap=1s total=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:52:27 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] SOLKU stage=dev_active prev=dev_exiting time_gap=1s total_signals=3 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:52:27 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] SOLKU stage=dev_active prev=dev_exiting gap=1s total=3 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:52:27 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] COOOOK stage=dev_active prev=dev_exiting time_gap=6s total_signals=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:52:27 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] COOOOK stage=dev_active prev=dev_exiting gap=6s total=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:52:27 - meme_bot.telegram_collector - INFO - [NEW] Garfield MCP=$3000 liq=$5400 holders=10 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:52:29 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Garfield stage=dev_active prev=dev_exiting time_gap=1s total_signals=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:52:29 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Garfield stage=dev_active prev=dev_exiting gap=1s total=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:52:29 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Dreamer stage=community_takeover prev=community_takeover time_gap=41s total_signals=4 stages=['dev_exiting', 'community_takeover']
+2026-06-26 12:52:29 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Dreamer stage=community_takeover prev=community_takeover gap=41s total=4 stages=['dev_exiting', 'community_takeover']
+2026-06-26 12:52:29 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] $ELN stage=dev_exiting prev=dev_exiting time_gap=40s total_signals=2 stages=['dev_exiting']
+2026-06-26 12:52:29 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] $ELN stage=dev_exiting prev=dev_exiting gap=40s total=2 stages=['dev_exiting']
+2026-06-26 12:52:35 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: THC (42f7KN5w...)
+2026-06-26 12:52:35 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SUI (AvcWA3ng...)
+2026-06-26 12:52:37 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13857 tracked | 15 winners | 19 losers | 34 new this session
+2026-06-26 12:52:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: QUCY (J191mLVP...)
+2026-06-26 12:52:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DOJO (7iUEu8VP...)
+2026-06-26 12:52:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MEMORYLANA (9Q27kHAz...)
+2026-06-26 12:52:50 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PREMIS (2bZdgwv5...)
+2026-06-26 12:52:51 - meme_bot - INFO - [TOKENSCAN] Scanned 3 tokens this cycle
+2026-06-26 12:52:54 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] MANIFEST stage=dev_exiting prev=dev_exiting time_gap=63s total_signals=3 stages=['dev_exiting']
+2026-06-26 12:52:54 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] MANIFEST stage=dev_exiting prev=dev_exiting gap=63s total=3 stages=['dev_exiting']
+2026-06-26 12:52:54 - meme_bot.telegram_collector - INFO - [NEW] MEMORYLANA MCP=$2400 liq=$4600 holders=6 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:52:55 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] MEMORYLANA stage=dev_active prev=dev_exiting time_gap=1s total_signals=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:52:55 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] MEMORYLANA stage=dev_active prev=dev_exiting gap=1s total=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:52:56 - meme_bot.telegram_collector - INFO - [NEW] SUI MCP=$2300 liq=$4900 holders=2 signal=FDV_SURGE ch=GMGN Signals
+2026-06-26 12:52:57 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] SUI stage=dev_active prev=fdv_surge time_gap=1s total_signals=2 stages=['fdv_surge', 'dev_active']
+2026-06-26 12:52:57 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] SUI stage=dev_active prev=fdv_surge gap=1s total=2 stages=['fdv_surge', 'dev_active']
+2026-06-26 12:52:57 - meme_bot.telegram_collector - INFO - [NEW] ROCK MCP=$4400 liq=$5900 holders=27 signal=FDV_SURGE ch=GMGN Signals
+2026-06-26 12:52:58 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] ROCK stage=dev_exiting prev=fdv_surge time_gap=1s total_signals=2 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 12:52:58 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] ROCK stage=dev_exiting prev=fdv_surge gap=1s total=2 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 12:52:59 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] ROCK stage=dev_exiting prev=dev_exiting time_gap=0s total_signals=3 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 12:52:59 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] ROCK stage=dev_exiting prev=dev_exiting gap=0s total=3 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 12:53:01 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13860 tracked | 15 winners | 19 losers | 37 new this session
+2026-06-26 12:53:27 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] $ELN stage=dev_exiting prev=dev_exiting time_gap=58s total_signals=3 stages=['dev_exiting']
+2026-06-26 12:53:27 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] $ELN stage=dev_exiting prev=dev_exiting gap=58s total=3 stages=['dev_exiting']
+2026-06-26 12:53:27 - meme_bot.telegram_collector - INFO - [NEW] RSLV MCP=$3000 liq=$5300 holders=26 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:53:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DWIDDY (8NJ7Ujpj...)
+2026-06-26 12:53:36 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13861 tracked | 15 winners | 19 losers | 38 new this session
+2026-06-26 12:53:43 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: the trust (FRXSTY8n...)
+2026-06-26 12:53:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: job (53R2hmmY...)
+2026-06-26 12:53:52 - meme_bot.telegram_collector - INFO - [NEW] Teddy MCP=$0 liq=$68182 holders=9 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:53:53 - meme_bot.telegram_collector - INFO - [NEW] Idwga MCP=$0 liq=$27861 holders=4 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:53:55 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Teddy stage=featured prev=featured time_gap=3s total_signals=2 stages=['featured']
+2026-06-26 12:53:55 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Teddy stage=featured prev=featured gap=3s total=2 stages=['featured']
+2026-06-26 12:53:55 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] Teddy now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:53:55 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Idwga stage=featured prev=featured time_gap=2s total_signals=2 stages=['featured']
+2026-06-26 12:53:55 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Idwga stage=featured prev=featured gap=2s total=2 stages=['featured']
+2026-06-26 12:53:55 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] Idwga now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:53:56 - meme_bot.telegram_collector - INFO - [NEW] PROS MCP=$2100 liq=$4400 holders=5 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:53:58 - meme_bot.telegram_collector - INFO - [NEW] the MCP=$2200 liq=$0 holders=0 signal=DEV_BOUGHT ch=GMGN Signals
+2026-06-26 12:53:59 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP the: liq=$0 — likely rug pulled
+2026-06-26 12:53:59 - meme_bot.telegram_collector - INFO - [NEW] DWIDDY MCP=$2800 liq=$0 holders=9 signal=FDV_SURGE ch=GMGN Signals
+2026-06-26 12:53:59 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP DWIDDY: liq=$0 — likely rug pulled
+2026-06-26 12:54:00 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] DWIDDY stage=dev_exiting prev=fdv_surge time_gap=1s total_signals=2 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 12:54:00 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] DWIDDY stage=dev_exiting prev=fdv_surge gap=1s total=2 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 12:54:04 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Larry (ED8hdG6e...)
+2026-06-26 12:54:08 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13866 tracked | 15 winners | 19 losers | 43 new this session
+2026-06-26 12:54:23 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Ham (9iQL6159...)
+2026-06-26 12:54:25 - meme_bot.telegram_collector - INFO - [NEW] BARK MCP=$10500 liq=$9600 holders=93 signal=DEXSOCIAL ch=GMGN Signals
+2026-06-26 12:54:27 - meme_bot.telegram_collector - INFO - [NEW] Larry MCP=$2200 liq=$4600 holders=6 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:54:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DOG (25jZ7Ewn...)
+2026-06-26 12:54:28 - meme_bot.telegram_collector - INFO - [NEW] PP MCP=$2400 liq=$4800 holders=14 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:54:31 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13869 tracked | 15 winners | 19 losers | 46 new this session
+2026-06-26 12:54:31 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: sob (39iMs4oJ...)
+2026-06-26 12:54:40 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: OM (42f7KN5w...)
+2026-06-26 12:54:48 - meme_bot.telegram_collector - INFO - [NEW] WCOIN MCP=$19600 liq=$4800 holders=4 signal=KOTH ch=GMGN Signals
+2026-06-26 12:54:49 - meme_bot.telegram_collector - INFO - [NEW] sob MCP=$2600 liq=$4700 holders=9 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:54:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: the trust (FRXSTY8n...)
+2026-06-26 12:54:50 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] sob stage=fdv_surge prev=dev_exiting time_gap=1s total_signals=2 stages=['dev_exiting', 'fdv_surge']
+2026-06-26 12:54:50 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] sob stage=fdv_surge prev=dev_exiting gap=1s total=2 stages=['dev_exiting', 'fdv_surge']
+2026-06-26 12:54:50 - meme_bot.telegram_collector - INFO - [NEW] DOG MCP=$3000 liq=$5200 holders=10 signal=FDV_SURGE ch=GMGN Signals
+2026-06-26 12:54:51 - meme_bot.telegram_collector - INFO - [NEW] DREMORA MCP=$1900 liq=$0 holders=3 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:54:52 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP DREMORA: liq=$0 — likely rug pulled
+2026-06-26 12:54:52 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] sob stage=dev_active prev=fdv_surge time_gap=2s total_signals=3 stages=['dev_exiting', 'fdv_surge', 'dev_active']
+2026-06-26 12:54:52 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] sob stage=dev_active prev=fdv_surge gap=2s total=3 stages=['dev_exiting', 'fdv_surge', 'dev_active']
+2026-06-26 12:54:52 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] DOG stage=dev_exiting prev=fdv_surge time_gap=2s total_signals=2 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 12:54:52 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] DOG stage=dev_exiting prev=fdv_surge gap=2s total=2 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 12:54:52 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] DOG stage=dev_active prev=dev_exiting time_gap=0s total_signals=3 stages=['fdv_surge', 'dev_exiting', 'dev_active']
+2026-06-26 12:54:52 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] DOG stage=dev_active prev=dev_exiting gap=0s total=3 stages=['fdv_surge', 'dev_exiting', 'dev_active']
+2026-06-26 12:55:01 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13873 tracked | 15 winners | 19 losers | 50 new this session
+2026-06-26 12:55:05 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TWT (AwjteQWH...)
+2026-06-26 12:55:16 - meme_bot.telegram_collector - INFO - [NEW] AIRES MCP=$0 liq=$13670 holders=15 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:55:18 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] AIRES stage=featured prev=featured time_gap=2s total_signals=2 stages=['featured']
+2026-06-26 12:55:18 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] AIRES stage=featured prev=featured gap=2s total=2 stages=['featured']
+2026-06-26 12:55:18 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] AIRES now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:55:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: job (53R2hmmY...)
+2026-06-26 12:55:19 - meme_bot.telegram_collector - INFO - [NEW] TICKET MCP=$3500 liq=$0 holders=9 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:55:20 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP TICKET: liq=$0 — likely rug pulled
+2026-06-26 12:55:20 - meme_bot.telegram_collector - INFO - [NEW] ABB MCP=$0 liq=$0 holders=3 signal=PUMP_COMPLETED ch=GMGN Signals
+2026-06-26 12:55:21 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP ABB: liq=$95 below $500 minimum
+2026-06-26 12:55:21 - meme_bot.telegram_collector - INFO - [NEW] the MCP=$2100 liq=$4400 holders=3 signal=DEV_BOUGHT ch=GMGN Signals
+2026-06-26 12:55:23 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13877 tracked | 15 winners | 19 losers | 54 new this session
+2026-06-26 12:55:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SUI (FRXSTY8n...)
+2026-06-26 12:55:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: sob (39iMs4oJ...)
+2026-06-26 12:55:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DEGEN (BuKiYn6G...)
+2026-06-26 12:55:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: QC (AFrLHFHs...)
+2026-06-26 12:55:40 - meme_bot.telegram_collector - INFO - [NEW] sob MCP=$3200 liq=$5500 holders=15 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:55:41 - meme_bot.telegram_collector - INFO - [NEW] SCYTALE MCP=$0 liq=$0 holders=5 signal=PUMP_COMPLETED ch=GMGN Signals
+2026-06-26 12:55:42 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP SCYTALE: liq=$0 — likely rug pulled
+2026-06-26 12:55:42 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] sob stage=dev_exiting prev=dev_exiting time_gap=2s total_signals=2 stages=['dev_exiting']
+2026-06-26 12:55:42 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] sob stage=dev_exiting prev=dev_exiting gap=2s total=2 stages=['dev_exiting']
+2026-06-26 12:55:42 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] sob stage=dev_active prev=dev_exiting time_gap=0s total_signals=3 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:55:42 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] sob stage=dev_active prev=dev_exiting gap=0s total=3 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:55:43 - meme_bot.telegram_collector - INFO - [NEW] SUI MCP=$2200 liq=$0 holders=3 signal=DEV_BOUGHT ch=GMGN Signals
+2026-06-26 12:55:43 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP SUI: liq=$0 — likely rug pulled
+2026-06-26 12:55:43 - meme_bot.telegram_collector - INFO - [NEW] ABC15 MCP=$0 liq=$0 holders=2 signal=PUMP_COMPLETED ch=GMGN Signals
+2026-06-26 12:55:44 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP ABC15: liq=$0 — likely rug pulled
+2026-06-26 12:55:53 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13881 tracked | 15 winners | 19 losers | 58 new this session
+2026-06-26 12:55:59 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOLANA (bwamJzrJ...)
+2026-06-26 12:56:10 - meme_bot.telegram_collector - INFO - [NEW] SOLANA MCP=$2600 liq=$0 holders=3 signal=FDV_SURGE ch=GMGN Signals
+2026-06-26 12:56:11 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP SOLANA: liq=$0 below $500 minimum
+2026-06-26 12:56:11 - meme_bot.telegram_collector - INFO - [NEW] conduit MCP=$2400 liq=$4600 holders=7 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:56:12 - meme_bot.telegram_collector - INFO - [NEW] Judge MCP=$0 liq=$0 holders=4 signal=PUMP_COMPLETED ch=GMGN Signals
+2026-06-26 12:56:13 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP Judge: liq=$0 — likely rug pulled
+2026-06-26 12:56:13 - meme_bot.telegram_collector - INFO - [NEW] COREY MCP=$0 liq=$0 holders=158 signal=PUMP_COMPLETED ch=GMGN Signals
+2026-06-26 12:56:16 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13885 tracked | 15 winners | 19 losers | 62 new this session
+2026-06-26 12:56:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SUI (FRXSTY8n...)
+2026-06-26 12:56:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: OM (42f7KN5w...)
+2026-06-26 12:56:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Ham (9iQL6159...)
+2026-06-26 12:56:31 - meme_bot.telegram_collector - INFO - [NEW] 0.0{4}42203 MCP=$42203 liq=$0 holders=1 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:56:32 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP 0.0{4}42203: liq=$0 — likely rug pulled
+2026-06-26 12:56:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: job (53R2hmmY...)
+2026-06-26 12:56:34 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] SOLANA stage=dev_exiting prev=fdv_surge time_gap=24s total_signals=2 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 12:56:34 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] SOLANA stage=dev_exiting prev=fdv_surge gap=24s total=2 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 12:56:34 - meme_bot.telegram_collector - INFO - [NEW] SUI MCP=$2100 liq=$4400 holders=3 signal=DEV_BOUGHT ch=GMGN Signals
+2026-06-26 12:56:35 - meme_bot.telegram_collector - INFO - [NEW] GCR MCP=$0 liq=$0 holders=5 signal=PUMP_COMPLETED ch=GMGN Signals
+2026-06-26 12:56:35 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP GCR: liq=$0 — likely rug pulled
+2026-06-26 12:56:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WCOIN (5P33CPao...)
+2026-06-26 12:56:44 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13888 tracked | 15 winners | 19 losers | 65 new this session
+2026-06-26 12:56:59 - meme_bot.telegram_collector - INFO - [NEW] 0.0{4}86268 MCP=$86269 liq=$0 holders=1 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:57:00 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP 0.0{4}86268: liq=$0 — likely rug pulled
+2026-06-26 12:57:00 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] 0.0{4}86268 stage=featured prev=featured time_gap=1s total_signals=2 stages=['featured']
+2026-06-26 12:57:00 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] 0.0{4}86268 stage=featured prev=featured gap=1s total=2 stages=['featured']
+2026-06-26 12:57:01 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] 0.0{4}86268 now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:57:01 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] 0.0{4}42203 stage=featured prev=featured time_gap=29s total_signals=2 stages=['featured']
+2026-06-26 12:57:01 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] 0.0{4}42203 stage=featured prev=featured gap=29s total=2 stages=['featured']
+2026-06-26 12:57:01 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] 0.0{4}42203 now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:57:02 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] COREY stage=fdv_surge prev=pump_completed time_gap=49s total_signals=2 stages=['pump_completed', 'fdv_surge']
+2026-06-26 12:57:02 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] COREY stage=fdv_surge prev=pump_completed gap=49s total=2 stages=['pump_completed', 'fdv_surge']
+2026-06-26 12:57:02 - meme_bot.telegram_collector - INFO - 📊 SCORE: COREY score=42 WATCH MONITOR (early=32 winner=0 fund=70)
+2026-06-26 12:57:02 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] COREY stage=dexsocial prev=fdv_surge time_gap=0s total_signals=3 stages=['pump_completed', 'fdv_surge', 'dexsocial']
+2026-06-26 12:57:02 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] COREY stage=dexsocial prev=fdv_surge gap=0s total=3 stages=['pump_completed', 'fdv_surge', 'dexsocial']
+2026-06-26 12:57:02 - meme_bot.telegram_collector - INFO - [NEW] VENEZUELA MCP=$0 liq=$0 holders=273 signal=FEATURED_NEW ch=GMGN Signals
+2026-06-26 12:57:03 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP VENEZUELA: liq=$0 — likely rug pulled
+2026-06-26 12:57:04 - meme_bot - INFO - 🚫 Serial deployer blocked: MGG deployer 7E6Rw7na... has 2 tokens
+2026-06-26 12:57:05 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13890 tracked | 15 winners | 19 losers | 67 new this session
+2026-06-26 12:57:21 - meme_bot.telegram_collector - INFO - [NEW] Upstr MCP=$0 liq=$41006 holders=14 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:57:23 - meme_bot.telegram_collector - INFO - 🚨 UNIFIED SIGNAL: Upstr score=67 STRONG BUY_NOW
+2026-06-26 12:57:23 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ⬆️ (7FVfSdnR...)
+2026-06-26 12:57:24 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Upstr stage=featured prev=featured time_gap=3s total_signals=2 stages=['featured']
+2026-06-26 12:57:24 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Upstr stage=featured prev=featured gap=3s total=2 stages=['featured']
+2026-06-26 12:57:24 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] Upstr now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:57:25 - meme_bot.telegram_collector - INFO - 📊 SCORE: Upstr score=79 STRONG BUY_NOW (early=31 winner=100 fund=68)
+2026-06-26 12:57:25 - meme_bot.telegram_collector - INFO - 🚨 UNIFIED RE-SCORE: Upstr score=79 STRONG BUY_NOW dex=✅
+2026-06-26 12:57:26 - meme_bot - INFO - 🚨 Signal alert sent to Telegram
+2026-06-26 12:57:26 - meme_bot.telegram_collector - INFO - [NEW] MadeIt MCP=$3000 liq=$5200 holders=2 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:57:27 - meme_bot.telegram_collector - INFO - [NEW] TRPLIN MCP=$0 liq=$0 holders=4 signal=PUMP_COMPLETED ch=GMGN Signals
+2026-06-26 12:57:28 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP TRPLIN: liq=$0 — likely rug pulled
+2026-06-26 12:57:28 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] SUI stage=dev_exiting prev=dev_active time_gap=55s total_signals=2 stages=['dev_active', 'dev_exiting']
+2026-06-26 12:57:28 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] SUI stage=dev_exiting prev=dev_active gap=55s total=2 stages=['dev_active', 'dev_exiting']
+2026-06-26 12:57:29 - meme_bot.telegram_collector - INFO - [NEW] VENEZUELA MCP=$3700 liq=$5500 holders=12 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:57:30 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] VENEZUELA stage=community_takeover prev=dev_exiting time_gap=1s total_signals=2 stages=['dev_exiting', 'community_takeover']
+2026-06-26 12:57:30 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] VENEZUELA stage=community_takeover prev=dev_exiting gap=1s total=2 stages=['dev_exiting', 'community_takeover']
+2026-06-26 12:57:31 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] VENEZUELA stage=community_takeover prev=community_takeover time_gap=0s total_signals=3 stages=['dev_exiting', 'community_takeover']
+2026-06-26 12:57:31 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] VENEZUELA stage=community_takeover prev=community_takeover gap=0s total=3 stages=['dev_exiting', 'community_takeover']
+2026-06-26 12:57:31 - meme_bot.telegram_collector - INFO - [NEW] TICKET MCP=$14400 liq=$11000 holders=123 signal=KOTH ch=GMGN Signals
+2026-06-26 12:57:33 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] VENEZUELA stage=community_takeover prev=community_takeover time_gap=2s total_signals=4 stages=['dev_exiting', 'community_takeover']
+2026-06-26 12:57:33 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] VENEZUELA stage=community_takeover prev=community_takeover gap=2s total=4 stages=['dev_exiting', 'community_takeover']
+2026-06-26 12:57:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WCOIN (FRXSTY8n...)
+2026-06-26 12:57:34 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WCOIN (5P33CPao...)
+2026-06-26 12:57:42 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13895 tracked | 15 winners | 19 losers | 72 new this session
+2026-06-26 12:57:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ⬆️ (7FVfSdnR...)
+2026-06-26 12:57:45 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: NVIDIA (AwjteQWH...)
+2026-06-26 12:57:58 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BUY (53R2hmmY...)
+2026-06-26 12:57:59 - meme_bot.telegram_collector - INFO - [NEW] WCOIN MCP=$824 liq=$4400 holders=4 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:58:00 - meme_bot.telegram_collector - INFO - [NEW] £$¥X MCP=$0 liq=$0 holders=3 signal=PUMP_COMPLETED ch=GMGN Signals
+2026-06-26 12:58:01 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP £$¥X: liq=$0 — likely rug pulled
+2026-06-26 12:58:01 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] WCOIN stage=dev_active prev=dev_exiting time_gap=2s total_signals=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:58:01 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] WCOIN stage=dev_active prev=dev_exiting gap=2s total=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:58:01 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] MadeIt stage=dev_exiting prev=dev_exiting time_gap=35s total_signals=2 stages=['dev_exiting']
+2026-06-26 12:58:01 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] MadeIt stage=dev_exiting prev=dev_exiting gap=35s total=2 stages=['dev_exiting']
+2026-06-26 12:58:01 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] MadeIt stage=fdv_surge prev=dev_exiting time_gap=0s total_signals=3 stages=['dev_exiting', 'fdv_surge']
+2026-06-26 12:58:01 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] MadeIt stage=fdv_surge prev=dev_exiting gap=0s total=3 stages=['dev_exiting', 'fdv_surge']
+2026-06-26 12:58:01 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] MadeIt stage=dev_exiting prev=fdv_surge time_gap=0s total_signals=4 stages=['dev_exiting', 'fdv_surge']
+2026-06-26 12:58:01 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] MadeIt stage=dev_exiting prev=fdv_surge gap=0s total=4 stages=['dev_exiting', 'fdv_surge']
+2026-06-26 12:58:02 - meme_bot.telegram_collector - INFO - [NEW] madeit MCP=$2000 liq=$4100 holders=3 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:58:04 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13898 tracked | 15 winners | 19 losers | 75 new this session
+2026-06-26 12:58:21 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] TICKET stage=dexsocial prev=king_of_hill time_gap=50s total_signals=2 stages=['king_of_hill', 'dexsocial']
+2026-06-26 12:58:21 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] TICKET stage=dexsocial prev=king_of_hill gap=50s total=2 stages=['king_of_hill', 'dexsocial']
+2026-06-26 12:58:22 - meme_bot.telegram_collector - INFO - [NEW] baby MCP=$0 liq=$0 holders=4 signal=PUMP_COMPLETED ch=GMGN Signals
+2026-06-26 12:58:23 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP baby: liq=$0 — likely rug pulled
+2026-06-26 12:58:23 - meme_bot.telegram_collector - INFO - [NEW] NVIDIA MCP=$7500 liq=$4400 holders=4 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:58:24 - meme_bot.telegram_collector - INFO - [NEW] LOBBY MCP=$12800 liq=$7600 holders=64 signal=DEXSOCIAL ch=GMGN Signals
+2026-06-26 12:58:29 - meme_bot - INFO - 🔍 pre-mig scan: 31 launches in queue
+2026-06-26 12:58:29 - meme_bot - INFO - [SKIP] ENTROPY: pre-mig — zero LP ($0) scam
+2026-06-26 12:58:30 - meme_bot - INFO - [SKIP] KART: pre-mig — zero LP ($0) scam
+2026-06-26 12:58:31 - meme_bot - INFO - [SKIP] FABLE: pre-mig — zero LP ($0) scam
+2026-06-26 12:58:32 - meme_bot - INFO - [SKIP] join me : pre-mig — zero LP ($0) scam
+2026-06-26 12:58:32 - meme_bot - INFO - [SKIP] ESCOLAND: pre-mig — zero LP ($0) scam
+2026-06-26 12:58:34 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13901 tracked | 15 winners | 19 losers | 78 new this session
+2026-06-26 12:58:34 - meme_bot - INFO - [SKIP] Garfield : pre-mig — zero LP ($0) scam
+2026-06-26 12:58:34 - meme_bot - INFO - [SKIP] SOLKU: pre-mig — zero LP ($0) scam
+2026-06-26 12:58:35 - meme_bot - INFO - [SKIP] RSLV: pre-mig — zero LP ($0) scam
+2026-06-26 12:58:36 - meme_bot - INFO - [SKIP] Hamster: pre-mig — zero LP ($0) scam
+2026-06-26 12:58:37 - meme_bot - INFO - [SKIP] PROS: pre-mig — zero LP ($0) scam
+2026-06-26 12:58:38 - meme_bot - INFO - [SKIP] STAVE: pre-mig — zero LP ($0) scam
+2026-06-26 12:58:38 - meme_bot - INFO - [SKIP] Gamster: pre-mig — zero LP ($0) scam
+2026-06-26 12:58:39 - meme_bot - INFO - [SKIP] SPECS: pre-mig — zero LP ($0) scam
+2026-06-26 12:58:40 - meme_bot - INFO - [SKIP] DREMORA: pre-mig — zero LP ($0) scam
+2026-06-26 12:58:40 - meme_bot - INFO - [SKIP] AIRES: pre-mig — zero LP ($0) scam
+2026-06-26 12:58:41 - meme_bot - INFO - [SKIP] THICC: pre-mig — zero LP ($0) scam
+2026-06-26 12:58:42 - meme_bot - INFO - [SKIP] THICC: pre-mig — zero LP ($0) scam
+2026-06-26 12:58:43 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: loaftrain (39iMs4oJ...)
+2026-06-26 12:58:49 - meme_bot.telegram_collector - INFO - [NEW] 0.0{4}53676 MCP=$53676 liq=$0 holders=12 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 12:58:50 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP 0.0{4}53676: liq=$0 — likely rug pulled
+2026-06-26 12:58:50 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] 0.0{4}53676 stage=featured prev=featured time_gap=1s total_signals=2 stages=['featured']
+2026-06-26 12:58:50 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] 0.0{4}53676 stage=featured prev=featured gap=1s total=2 stages=['featured']
+2026-06-26 12:58:51 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] 0.0{4}53676 now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 12:58:52 - meme_bot.telegram_collector - INFO - [NEW] loaftrain MCP=$2600 liq=$0 holders=10 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:58:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Mayhem R (BduBwyQg...)
+2026-06-26 12:58:53 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP loaftrain: liq=$0 — likely rug pulled
+2026-06-26 12:58:53 - meme_bot.telegram_collector - INFO - [NEW] clanker MCP=$0 liq=$0 holders=3 signal=PUMP_COMPLETED ch=GMGN Signals
+2026-06-26 12:58:53 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP clanker: liq=$0 — likely rug pulled
+2026-06-26 12:58:53 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] loaftrain stage=dev_active prev=dev_exiting time_gap=2s total_signals=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:58:53 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] loaftrain stage=dev_active prev=dev_exiting gap=2s total=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:58:54 - meme_bot.telegram_collector - INFO - [NEW] LCORT MCP=$0 liq=$0 holders=5 signal=PUMP_COMPLETED ch=GMGN Signals
+2026-06-26 12:58:54 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP LCORT: liq=$31 below $500 minimum
+2026-06-26 12:58:56 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13905 tracked | 15 winners | 19 losers | 82 new this session
+2026-06-26 12:58:56 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LOM (HM83ZrK2...)
+2026-06-26 12:58:56 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: NOPPO (6WXZMDDA...)
+2026-06-26 12:59:14 - meme_bot.telegram_collector - INFO - [NEW] BUY MCP=$848 liq=$4400 holders=3 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 12:59:15 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] loaftrain stage=dev_exiting prev=dev_active time_gap=21s total_signals=3 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:59:15 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] loaftrain stage=dev_exiting prev=dev_active gap=21s total=3 stages=['dev_exiting', 'dev_active']
+2026-06-26 12:59:15 - meme_bot.telegram_collector - INFO - [NEW] Memeluk MCP=$7400 liq=$8200 holders=44 signal=CTO ch=GMGN Signals
+2026-06-26 12:59:16 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Memeluk stage=dexsocial prev=community_takeover time_gap=1s total_signals=2 stages=['community_takeover', 'dexsocial']
+2026-06-26 12:59:16 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Memeluk stage=dexsocial prev=community_takeover gap=1s total=2 stages=['community_takeover', 'dexsocial']
+2026-06-26 12:59:18 - meme_bot - INFO - [SKIP] TICKET: pre-mig — zero LP ($0) scam
+2026-06-26 12:59:19 - meme_bot - INFO - [SKIP] GNOME: pre-mig — zero LP ($0) scam
+2026-06-26 12:59:23 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Ham (9iQL6159...)
+2026-06-26 12:59:25 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13907 tracked | 15 winners | 19 losers | 84 new this session
+2026-06-26 12:59:41 - meme_bot.telegram_collector - INFO - [GMGN-PARSE-FAIL] msg_id=4798929 text=💊💊💊 PUMP已满 💊💊💊
+
+**wake up  (wake up now)**
+
+🎲 CA:
+`3s83Gtg9uAnHZCJrk6CUiNdWrH3ZxQPV7YjeM9Japump`
+
+Check 立即研究 [3s83Gtg9uAnHZCJrk6CUiNdWrH3ZxQPV7YjeM9Japump](https://gmgn.ai/sol/token/3s83Gtg9uAnHZCJrk6
+2026-06-26 12:59:41 - meme_bot.telegram_collector - INFO - [NEW] Mayhem MCP=$14500 liq=$4500 holders=6 signal=KOTH ch=GMGN Signals
+2026-06-26 12:59:43 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WCOIN (FRXSTY8n...)
+2026-06-26 12:59:44 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13908 tracked | 15 winners | 19 losers | 85 new this session
+2026-06-26 12:59:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ⬆️ (7FVfSdnR...)
+2026-06-26 13:00:00 - meme_bot.telegram_collector - INFO - [NEW] ADE MCP=$2500 liq=$0 holders=7 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 13:00:01 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP ADE: liq=$0 — likely rug pulled
+2026-06-26 13:00:01 - meme_bot.telegram_collector - INFO - [NEW] Ron MCP=$0 liq=$0 holders=3 signal=PUMP_COMPLETED ch=GMGN Signals
+2026-06-26 13:00:02 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP Ron: liq=$0 — likely rug pulled
+2026-06-26 13:00:02 - meme_bot.telegram_collector - INFO - [NEW] WCOIN MCP=$2100 liq=$0 holders=0 signal=DEV_BOUGHT ch=GMGN Signals
+2026-06-26 13:00:03 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: job (53R2hmmY...)
+2026-06-26 13:00:03 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP WCOIN: liq=$0 below $500 minimum
+2026-06-26 13:00:09 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: XMobile (5949hDDD...)
+2026-06-26 13:00:11 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13911 tracked | 15 winners | 19 losers | 88 new this session
+2026-06-26 13:00:16 - meme_bot - INFO - [SKIP] TICKET: pre-mig — zero LP ($0) scam
+2026-06-26 13:00:16 - meme_bot - INFO - [SKIP] ERAY: pre-mig — zero LP ($0) scam
+2026-06-26 13:00:17 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: XMobile (bwamJzzt...)
+2026-06-26 13:00:17 - meme_bot - INFO - [SKIP] conduit: pre-mig — zero LP ($0) scam
+2026-06-26 13:00:18 - meme_bot - INFO - [SKIP] THICC: pre-mig — zero LP ($0) scam
+2026-06-26 13:00:19 - meme_bot - INFO - [SKIP] MadeIt: pre-mig — zero LP ($0) scam
+2026-06-26 13:00:19 - meme_bot - INFO - [SKIP] PUMPSCAM: pre-mig — zero LP ($0) scam
+2026-06-26 13:00:20 - meme_bot - INFO - [SKIP] VENEZUELA: pre-mig — zero LP ($0) scam
+2026-06-26 13:00:21 - meme_bot - INFO - [SKIP] GCR: pre-mig — zero LP ($0) scam
+2026-06-26 13:00:21 - meme_bot - INFO - [SKIP] madeit: pre-mig — zero LP ($0) scam
+2026-06-26 13:00:29 - meme_bot.telegram_collector - INFO - [NEW] XMobile MCP=$4500 liq=$6500 holders=23 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 13:00:30 - meme_bot.telegram_collector - INFO - [NEW] XMobile MCP=$2200 liq=$0 holders=2 signal=DEV_BOUGHT ch=GMGN Signals
+2026-06-26 13:00:31 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP XMobile: liq=$0 — likely rug pulled
+2026-06-26 13:00:31 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] XMobile stage=dev_exiting prev=dev_exiting time_gap=2s total_signals=2 stages=['dev_exiting']
+2026-06-26 13:00:31 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] XMobile stage=dev_exiting prev=dev_exiting gap=2s total=2 stages=['dev_exiting']
+2026-06-26 13:00:31 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] XMobile stage=fdv_surge prev=dev_exiting time_gap=0s total_signals=3 stages=['dev_exiting', 'fdv_surge']
+2026-06-26 13:00:31 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] XMobile stage=fdv_surge prev=dev_exiting gap=0s total=3 stages=['dev_exiting', 'fdv_surge']
+2026-06-26 13:00:31 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] XMobile stage=dev_active prev=fdv_surge time_gap=0s total_signals=4 stages=['dev_exiting', 'fdv_surge', 'dev_active']
+2026-06-26 13:00:31 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] XMobile stage=dev_active prev=fdv_surge gap=0s total=4 stages=['dev_exiting', 'fdv_surge', 'dev_active']
+2026-06-26 13:00:32 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] WCOIN stage=dev_exiting prev=dev_active time_gap=29s total_signals=2 stages=['dev_active', 'dev_exiting']
+2026-06-26 13:00:32 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] WCOIN stage=dev_exiting prev=dev_active gap=29s total=2 stages=['dev_active', 'dev_exiting']
+2026-06-26 13:00:33 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13913 tracked | 15 winners | 19 losers | 90 new this session
+2026-06-26 13:00:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: StarMobile (EHmWN6EA...)
+2026-06-26 13:00:34 - meme_bot - INFO - 🔄 Continuous learn cycle started...
+2026-06-26 13:00:34 - meme_bot - INFO - 📥 Merged 309 new pump patterns from collector
+2026-06-26 13:00:34 - meme_bot - INFO - 🧠 Auto-learn: win_rate=68.0% | bsr: 0 vs 0 | holders: 0 vs 0 | liq: 0 vs 0 | lp: 0 vs 0
+2026-06-26 13:00:34 - meme_bot - INFO - 🎯 Criteria: bsr≥1.26 holders≥10 wallets≥15 liq≥$500 liq%≥10 lp≥80%
+2026-06-26 13:00:34 - meme_bot - INFO - 🔬 Divergence: pump_avg=1030.5s dump_avg=3555.5s → optimal_delay=2293s sep=0.947
+2026-06-26 13:00:34 - meme_bot - INFO - 🧠 Patterns: 809 pump + 1000 dump + 16 missed
+2026-06-26 13:00:43 - meme_bot - INFO - 🧠 Enriched 89 pump patterns with DexScreener data
+2026-06-26 13:00:43 - meme_bot - INFO - 🎯 Criteria updated: bsr≥1.26 holders≥10 wallets≥15 liq≥$500 liq%≥10 lp≥80%
+2026-06-26 13:00:49 - meme_bot.telegram_collector - INFO - [NEW] 0.0{4}12046 MCP=$12047 liq=$0 holders=5 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 13:00:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WCOIN (5P33CPao...)
+2026-06-26 13:00:50 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP 0.0{4}12046: liq=$0 — likely rug pulled
+2026-06-26 13:00:50 - meme_bot.telegram_collector - INFO - [NEW] 0.0{4}20233 MCP=$20234 liq=$0 holders=9 signal=FEATURED_NEW ch=New Pool Alert
+2026-06-26 13:00:51 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP 0.0{4}20233: liq=$0 — likely rug pulled
+2026-06-26 13:00:51 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] 0.0{4}12046 stage=featured prev=featured time_gap=2s total_signals=2 stages=['featured']
+2026-06-26 13:00:51 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] 0.0{4}12046 stage=featured prev=featured gap=2s total=2 stages=['featured']
+2026-06-26 13:00:51 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] 0.0{4}12046 now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 13:00:51 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] 0.0{4}20233 stage=featured prev=featured time_gap=2s total_signals=2 stages=['featured']
+2026-06-26 13:00:51 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] 0.0{4}20233 stage=featured prev=featured gap=2s total=2 stages=['featured']
+2026-06-26 13:00:52 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] 0.0{4}20233 now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 13:00:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MAMA (7FVfSdnR...)
+2026-06-26 13:00:53 - meme_bot.telegram_collector - INFO - [NEW] LOM MCP=$5100 liq=$6600 holders=22 signal=FDV_SURGE ch=GMGN Signals
+2026-06-26 13:00:54 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] XMobile stage=dev_exiting prev=dev_active time_gap=25s total_signals=2 stages=['dev_active', 'dev_exiting']
+2026-06-26 13:00:54 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] XMobile stage=dev_exiting prev=dev_active gap=25s total=2 stages=['dev_active', 'dev_exiting']
+2026-06-26 13:00:55 - meme_bot.telegram_collector - INFO - [NEW] SP500 MCP=$2400 liq=$4500 holders=5 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 13:00:56 - meme_bot.telegram_collector - INFO - [NEW] StarMobile MCP=$3000 liq=$5400 holders=9 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 13:00:57 - meme_bot.telegram_collector - INFO - [NEW] WKNGBJE MCP=$0 liq=$0 holders=3 signal=CTO ch=GMGN Signals
+2026-06-26 13:00:58 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP WKNGBJE: liq=$0 — likely rug pulled
+2026-06-26 13:00:58 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] StarMobile stage=dev_active prev=dev_exiting time_gap=2s total_signals=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 13:00:58 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] StarMobile stage=dev_active prev=dev_exiting gap=2s total=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 13:00:59 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] LOM stage=dev_exiting prev=fdv_surge time_gap=6s total_signals=2 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 13:00:59 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] LOM stage=dev_exiting prev=fdv_surge gap=6s total=2 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 13:00:59 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Solomaxxing (2nRqjYbT...)
+2026-06-26 13:01:08 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13919 tracked | 15 winners | 19 losers | 96 new this session
+2026-06-26 13:01:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MGG (7E6Rw7na...)
+2026-06-26 13:01:21 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HARDWARE (4LBEBNef...)
+2026-06-26 13:01:23 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GM (bwamJzzt...)
+2026-06-26 13:01:26 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Memeluk stage=king_of_hill prev=dev_active time_gap=612s total_signals=7 stages=['dev_exiting', 'fdv_surge', 'dev_active', 'king_of_hill']
+2026-06-26 13:01:26 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Memeluk stage=king_of_hill prev=dev_active gap=612s total=7 stages=['dev_exiting', 'fdv_surge', 'dev_active', 'king_of_hill']
+2026-06-26 13:01:26 - meme_bot.telegram_collector - INFO - [NEW] HARDWARE MCP=$2800 liq=$0 holders=5 signal=DEV_BOUGHT ch=GMGN Signals
+2026-06-26 13:01:27 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP HARDWARE: liq=$0 — likely rug pulled
+2026-06-26 13:01:27 - meme_bot.telegram_collector - INFO - [GMGN-PARSE-FAIL] msg_id=4798953 text=💊💊💊 PUMP已满 💊💊💊
+
+**So So (Solana Could )**
+
+🎲 CA:
+`Hz54jp3g3PBDBRDhXckVCeH7EaU8R7P9NDkq7P2Spump`
+
+Check 立即研究 [Hz54jp3g3PBDBRDhXckVCeH7EaU8R7P9NDkq7P2Spump](https://gmgn.ai/sol/token/Hz54jp3g3PBDBRDhXck
+2026-06-26 13:01:27 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] LOM stage=dev_exiting prev=dev_exiting time_gap=29s total_signals=3 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 13:01:27 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] LOM stage=dev_exiting prev=dev_exiting gap=29s total=3 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 13:01:27 - meme_bot.telegram_collector - INFO - [NEW] WCOIN MCP=$20000 liq=$4400 holders=4 signal=KOTH ch=GMGN Signals
+2026-06-26 13:01:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: bleeky (983qkFvG...)
+2026-06-26 13:01:29 - meme_bot.telegram_collector - INFO - [NEW] Solomaxxing MCP=$2500 liq=$4600 holders=13 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 13:01:30 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Solomaxxing stage=dev_exiting prev=dev_exiting time_gap=1s total_signals=2 stages=['dev_exiting']
+2026-06-26 13:01:30 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Solomaxxing stage=dev_exiting prev=dev_exiting gap=1s total=2 stages=['dev_exiting']
+2026-06-26 13:01:30 - meme_bot.telegram_collector - INFO - [NEW] Pump MCP=$0 liq=$0 holders=5 signal=PUMP_COMPLETED ch=GMGN Signals
+2026-06-26 13:01:31 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP Pump: liq=$30 below $500 minimum
+2026-06-26 13:01:31 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] VENEZUELA stage=kol_fomo prev=featured time_gap=269s total_signals=2 stages=['featured', 'kol_fomo']
+2026-06-26 13:01:31 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] VENEZUELA stage=kol_fomo prev=featured gap=269s total=2 stages=['featured', 'kol_fomo']
+2026-06-26 13:01:32 - meme_bot.telegram_collector - INFO - 📊 SCORE: VENEZUELA score=42 WATCH MONITOR (early=29 winner=0 fund=70)
+2026-06-26 13:01:32 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Solomaxxing stage=dev_active prev=dev_exiting time_gap=2s total_signals=3 stages=['dev_exiting', 'dev_active']
+2026-06-26 13:01:32 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Solomaxxing stage=dev_active prev=dev_exiting gap=2s total=3 stages=['dev_exiting', 'dev_active']
+2026-06-26 13:01:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Starpipe (5949hDDD...)
+2026-06-26 13:01:40 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VENEZUELA (GdRSPexh...)
+2026-06-26 13:01:41 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13923 tracked | 15 winners | 19 losers | 100 new this session
+2026-06-26 13:01:45 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: NOPPO (6WXZMDDA...)
+2026-06-26 13:01:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Ham (9iQL6159...)
+2026-06-26 13:01:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MAMA (7FVfSdnR...)
+2026-06-26 13:01:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Starpipe (6K5zBU6E...)
+2026-06-26 13:01:53 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: job (53R2hmmY...)
+2026-06-26 13:01:56 - meme_bot.telegram_collector - INFO - [NEW] 0.0{4}34351 MCP=$34351 liq=$0 holders=0 signal=FDV_SURGE ch=New Pool Alert
+2026-06-26 13:01:57 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP 0.0{4}34351: liq=$0 — likely rug pulled
+2026-06-26 13:01:58 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] 0.0{4}34351 stage=fdv_surge prev=fdv_surge time_gap=1s total_signals=2 stages=['fdv_surge']
+2026-06-26 13:01:58 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] 0.0{4}34351 stage=fdv_surge prev=fdv_surge gap=1s total=2 stages=['fdv_surge']
+2026-06-26 13:01:58 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] 0.0{4}34351 now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 13:01:59 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HIPLET (DZNmd6Vo...)
+2026-06-26 13:02:00 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] LOM stage=dev_exiting prev=dev_exiting time_gap=33s total_signals=4 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 13:02:00 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] LOM stage=dev_exiting prev=dev_exiting gap=33s total=4 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 13:02:00 - meme_bot.telegram_collector - INFO - [NEW] Starpipe MCP=$2400 liq=$4600 holders=4 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 13:02:01 - meme_bot.telegram_collector - INFO - [NEW] VENEZUELA MCP=$7500 liq=$7900 holders=34 signal=FDV_SURGE ch=GMGN Signals
+2026-06-26 13:02:03 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] VENEZUELA stage=fdv_surge prev=fdv_surge time_gap=1s total_signals=2 stages=['fdv_surge']
+2026-06-26 13:02:03 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] VENEZUELA stage=fdv_surge prev=fdv_surge gap=1s total=2 stages=['fdv_surge']
+2026-06-26 13:02:03 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] VENEZUELA stage=dev_exiting prev=fdv_surge time_gap=0s total_signals=3 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 13:02:03 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] VENEZUELA stage=dev_exiting prev=fdv_surge gap=0s total=3 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 13:02:03 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] VENEZUELA stage=dev_exiting prev=dev_exiting time_gap=0s total_signals=4 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 13:02:03 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] VENEZUELA stage=dev_exiting prev=dev_exiting gap=0s total=4 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 13:02:03 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] VENEZUELA stage=dev_active prev=dev_exiting time_gap=0s total_signals=5 stages=['fdv_surge', 'dev_exiting', 'dev_active']
+2026-06-26 13:02:03 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] VENEZUELA stage=dev_active prev=dev_exiting gap=0s total=5 stages=['fdv_surge', 'dev_exiting', 'dev_active']
+2026-06-26 13:02:03 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] LOM stage=dev_exiting prev=dev_exiting time_gap=4s total_signals=5 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 13:02:03 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] LOM stage=dev_exiting prev=dev_exiting gap=4s total=5 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 13:02:04 - meme_bot.telegram_collector - INFO - [NEW] GM MCP=$2000 liq=$4100 holders=3 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 13:02:04 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CADECUP (bwamJzrJ...)
+2026-06-26 13:02:05 - meme_bot.telegram_collector - INFO - [NEW] Starpipe MCP=$3000 liq=$4900 holders=12 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 13:02:06 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Starpipe stage=dev_exiting prev=dev_exiting time_gap=1s total_signals=2 stages=['dev_exiting']
+2026-06-26 13:02:06 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Starpipe stage=dev_exiting prev=dev_exiting gap=1s total=2 stages=['dev_exiting']
+2026-06-26 13:02:07 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Starpipe stage=dev_active prev=dev_exiting time_gap=0s total_signals=3 stages=['dev_exiting', 'dev_active']
+2026-06-26 13:02:07 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Starpipe stage=dev_active prev=dev_exiting gap=0s total=3 stages=['dev_exiting', 'dev_active']
+2026-06-26 13:02:07 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] HARDWARE stage=dev_exiting prev=dev_active time_gap=40s total_signals=2 stages=['dev_active', 'dev_exiting']
+2026-06-26 13:02:07 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] HARDWARE stage=dev_exiting prev=dev_active gap=40s total=2 stages=['dev_active', 'dev_exiting']
+2026-06-26 13:02:07 - meme_bot.telegram_collector - INFO - [NEW] bleeky MCP=$2100 liq=$5200 holders=6 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 13:02:08 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] HARDWARE stage=dev_exiting prev=dev_exiting time_gap=2s total_signals=3 stages=['dev_active', 'dev_exiting']
+2026-06-26 13:02:08 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] HARDWARE stage=dev_exiting prev=dev_exiting gap=2s total=3 stages=['dev_active', 'dev_exiting']
+2026-06-26 13:02:17 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13929 tracked | 15 winners | 19 losers | 106 new this session
+2026-06-26 13:02:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MOM (7FVfSdnR...)
+2026-06-26 13:02:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VENEZUELA (GdRSPexh...)
+2026-06-26 13:02:29 - meme_bot - INFO - 📊 Backtest: 0 signals, win_rate=0.0%, avg_pnl=0.0%
+2026-06-26 13:02:33 - meme_bot - INFO - 🧠 Patterns: 814 pump + 1000 dump
+2026-06-26 13:02:34 - meme_bot.telegram_collector - INFO - [NEW] CADECUP MCP=$2200 liq=$4100 holders=1 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 13:02:35 - meme_bot.telegram_collector - INFO - [NEW] SIMD MCP=$2900 liq=$0 holders=8 signal=DEV_BOUGHT ch=GMGN Signals
+2026-06-26 13:02:36 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP SIMD: liq=$0 — likely rug pulled
+2026-06-26 13:02:36 - meme_bot.telegram_collector - INFO - [NEW] VENEZUELA MCP=$3500 liq=$0 holders=8 signal=DEV_BOUGHT ch=GMGN Signals
+2026-06-26 13:02:37 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP VENEZUELA: liq=$0 — likely rug pulled
+2026-06-26 13:02:37 - meme_bot.telegram_collector - INFO - [NEW] WIC MCP=$0 liq=$0 holders=4 signal=PUMP_COMPLETED ch=GMGN Signals
+2026-06-26 13:02:38 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP WIC: liq=$0 — likely rug pulled
+2026-06-26 13:02:38 - meme_bot.telegram_collector - INFO - [NEW] HIPLET MCP=$2900 liq=$5000 holders=0 signal=DEV_BOUGHT ch=GMGN Signals
+2026-06-26 13:02:39 - meme_bot.telegram_collector - INFO - [NEW] mayhemduve MCP=$0 liq=$0 holders=3 signal=PUMP_COMPLETED ch=GMGN Signals
+2026-06-26 13:02:40 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP mayhemduve: liq=$33 below $500 minimum
+2026-06-26 13:02:43 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: NOPPO (6WXZMDDA...)
+2026-06-26 13:02:46 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOLANIME (AufH68UF...)
+2026-06-26 13:02:47 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Starpipe (5949hDDD...)
+2026-06-26 13:02:49 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13935 tracked | 15 winners | 19 losers | 112 new this session
+2026-06-26 13:03:02 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VENEZUELA (7XQyoTSo...)
+2026-06-26 13:03:05 - meme_bot.telegram_collector - INFO - [NEW] 0.0{4}32094 MCP=$32095 liq=$0 holders=6 signal=FDV_SURGE ch=New Pool Alert
+2026-06-26 13:03:06 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP 0.0{4}32094: liq=$0 — likely rug pulled
+2026-06-26 13:03:06 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] 0.0{4}32094 stage=fdv_surge prev=fdv_surge time_gap=2s total_signals=2 stages=['fdv_surge']
+2026-06-26 13:03:06 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] 0.0{4}32094 stage=fdv_surge prev=fdv_surge gap=2s total=2 stages=['fdv_surge']
+2026-06-26 13:03:07 - meme_bot.telegram_collector - INFO - [CROSS-CHANNEL] 0.0{4}32094 now in 2 channels: [-1002122751413, -1002126036544]
+2026-06-26 13:03:07 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MOM (7FVfSdnR...)
+2026-06-26 13:03:08 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] LOM stage=dev_exiting prev=dev_exiting time_gap=64s total_signals=6 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 13:03:08 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] LOM stage=dev_exiting prev=dev_exiting gap=64s total=6 stages=['fdv_surge', 'dev_exiting']
+2026-06-26 13:03:08 - meme_bot.telegram_collector - INFO - [NEW] VENEZUELA MCP=$2100 liq=$4400 holders=2 signal=DEV_BOUGHT ch=GMGN Signals
+2026-06-26 13:03:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Sol-Goku (6K5zBU6E...)
+2026-06-26 13:03:09 - meme_bot.telegram_collector - INFO - [NEW] Ornith MCP=$14100 liq=$11000 holders=104 signal=KOTH ch=GMGN Signals
+2026-06-26 13:03:10 - meme_bot.telegram_collector - INFO - [NEW] Starpipe MCP=$3300 liq=$0 holders=9 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 13:03:11 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP Starpipe: liq=$0 — likely rug pulled
+2026-06-26 13:03:11 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Starpipe stage=community_takeover prev=dev_exiting time_gap=1s total_signals=2 stages=['dev_exiting', 'community_takeover']
+2026-06-26 13:03:11 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Starpipe stage=community_takeover prev=dev_exiting gap=1s total=2 stages=['dev_exiting', 'community_takeover']
+2026-06-26 13:03:11 - meme_bot.telegram_collector - INFO - [NEW] SOLANIME MCP=$4400 liq=$5300 holders=24 signal=CTO ch=GMGN Signals
+2026-06-26 13:03:13 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] Starpipe stage=dev_active prev=community_takeover time_gap=2s total_signals=3 stages=['dev_exiting', 'community_takeover', 'dev_active']
+2026-06-26 13:03:13 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] Starpipe stage=dev_active prev=community_takeover gap=2s total=3 stages=['dev_exiting', 'community_takeover', 'dev_active']
+2026-06-26 13:03:13 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] SOLANIME stage=dev_exiting prev=community_takeover time_gap=2s total_signals=2 stages=['community_takeover', 'dev_exiting']
+2026-06-26 13:03:13 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] SOLANIME stage=dev_exiting prev=community_takeover gap=2s total=2 stages=['community_takeover', 'dev_exiting']
+2026-06-26 13:03:14 - meme_bot.telegram_collector - INFO - [NEW] CAROLINE MCP=$0 liq=$0 holders=3 signal=FDV_SURGE ch=GMGN Signals
+2026-06-26 13:03:14 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP CAROLINE: liq=$0 — likely rug pulled
+2026-06-26 13:03:14 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] SOLANIME stage=dev_active prev=dev_exiting time_gap=1s total_signals=3 stages=['community_takeover', 'dev_exiting', 'dev_active']
+2026-06-26 13:03:14 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] SOLANIME stage=dev_active prev=dev_exiting gap=1s total=3 stages=['community_takeover', 'dev_exiting', 'dev_active']
+2026-06-26 13:03:15 - meme_bot.telegram_collector - INFO - [NEW] FULCRUM MCP=$2300 liq=$4700 holders=3 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 13:03:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GEO (7DwDzBZZ...)
+2026-06-26 13:03:16 - meme_bot.telegram_collector - INFO - [NEW] MEGA MCP=$21600 liq=$13900 holders=18 signal=KOTH ch=GMGN Signals
+2026-06-26 13:03:16 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GEO (7DwDzBZZ...)
+2026-06-26 13:03:16 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VENEZUELA (GdRSPexh...)
+2026-06-26 13:03:17 - meme_bot.telegram_collector - INFO - [NEW] IRA MCP=$2000 liq=$0 holders=6 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 13:03:18 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP IRA: liq=$0 — likely rug pulled
+2026-06-26 13:03:18 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] IRA stage=fdv_surge prev=dev_exiting time_gap=1s total_signals=2 stages=['dev_exiting', 'fdv_surge']
+2026-06-26 13:03:18 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] IRA stage=fdv_surge prev=dev_exiting gap=1s total=2 stages=['dev_exiting', 'fdv_surge']
+2026-06-26 13:03:18 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] VENEZUELA stage=dev_exiting prev=dev_active time_gap=42s total_signals=2 stages=['dev_active', 'dev_exiting']
+2026-06-26 13:03:18 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] VENEZUELA stage=dev_exiting prev=dev_active gap=42s total=2 stages=['dev_active', 'dev_exiting']
+2026-06-26 13:03:18 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] VENEZUELA stage=dev_exiting prev=dev_exiting time_gap=0s total_signals=3 stages=['dev_active', 'dev_exiting']
+2026-06-26 13:03:18 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] VENEZUELA stage=dev_exiting prev=dev_exiting gap=0s total=3 stages=['dev_active', 'dev_exiting']
+2026-06-26 13:03:22 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: job (53R2hmmY...)
+2026-06-26 13:03:23 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: four.meme (bwamJzzt...)
+2026-06-26 13:03:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GEO (7DwDzBZZ...)
+2026-06-26 13:03:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GEO (7DwDzBZZ...)
+2026-06-26 13:03:28 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13944 tracked | 15 winners | 19 losers | 121 new this session
+2026-06-26 13:03:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Cube (FaBGrHWj...)
+2026-06-26 13:03:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LIFE (JDQKDrc1...)
+2026-06-26 13:03:31 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 迷因币 (7kGAXsa7...)
+2026-06-26 13:03:32 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: UNITY (AtZ424xr...)
+2026-06-26 13:03:32 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SRM (AwjteQWH...)
+2026-06-26 13:03:34 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PUMP (FTuqW6J1...)
+2026-06-26 13:03:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: UNITY (AvcWA3ng...)
+2026-06-26 13:03:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 4 (6ujZxnph...)
+2026-06-26 13:03:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: חַיִים (8NJ7Ujpj...)
+2026-06-26 13:03:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LIFE (Aqje5DsN...)
+2026-06-26 13:03:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: four.fun (bwamJzzt...)
+2026-06-26 13:03:45 - meme_bot.telegram_collector - INFO - [NEW] 4.3K MCP=$2200 liq=$4400 holders=8 signal=FDV_SURGE ch=GMGN Signals
+2026-06-26 13:03:45 - meme_bot - INFO - 🚫 Serial deployer blocked: UNITY deployer Hf63WjcQ... has 2 tokens
+2026-06-26 13:03:46 - meme_bot.telegram_collector - INFO - [NEW] UNITY MCP=$3100 liq=$0 holders=0 signal=DEV_BOUGHT ch=GMGN Signals
+2026-06-26 13:03:47 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP UNITY: liq=$0 — likely rug pulled
+2026-06-26 13:03:47 - meme_bot.telegram_collector - INFO - [NEW] UNITY MCP=$2100 liq=$4400 holders=3 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 13:03:47 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: peperun (GiZBjitt...)
+2026-06-26 13:03:48 - meme_bot.telegram_collector - INFO - [NEW] PUMP MCP=$3300 liq=$0 holders=5 signal=FDV_SURGE ch=GMGN Signals
+2026-06-26 13:03:49 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP PUMP: liq=$0 — likely rug pulled
+2026-06-26 13:03:49 - meme_bot.telegram_collector - INFO - [NEW] Cube MCP=$2000 liq=$0 holders=4 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 13:03:50 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP Cube: liq=$0 — likely rug pulled
+2026-06-26 13:03:50 - meme_bot.telegram_collector - INFO - [NEW] VENEZUELA MCP=$5100 liq=$8000 holders=17 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 13:03:52 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] UNITY stage=dev_active prev=dev_exiting time_gap=4s total_signals=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 13:03:52 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] UNITY stage=dev_active prev=dev_exiting gap=4s total=2 stages=['dev_exiting', 'dev_active']
+2026-06-26 13:03:52 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] 4.3K stage=dev_active prev=fdv_surge time_gap=7s total_signals=2 stages=['fdv_surge', 'dev_active']
+2026-06-26 13:03:52 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] 1.3K stage=dev_active prev=fdv_surge gap=7s total=2 stages=['fdv_surge', 'dev_active']
+2026-06-26 13:03:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: pumplife (bwamJzzt...)
+2026-06-26 13:03:53 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GEO (7DwDzBZZ...)
+2026-06-26 13:03:55 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BAGWORKING (FTuqW6J1...)
+2026-06-26 13:03:55 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BAGWORK (WB6dqX3n...)
+2026-06-26 13:03:55 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: bunni (983qkFvG...)
+2026-06-26 13:03:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MAME (dtrzJPj7...)
+2026-06-26 13:03:58 - meme_bot - INFO - [TOKENSCAN] Scanned 10 tokens this cycle
+2026-06-26 13:03:58 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PUMP 生活 (CzPdGaqJ...)
+2026-06-26 13:03:59 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 4 (5949hDDD...)
+2026-06-26 13:04:00 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: NOPPO (6WXZMDDA...)
+2026-06-26 13:04:01 - meme_bot.telegram_collector - INFO - [COLLECTOR] 13950 tracked | 15 winners | 19 losers | 127 new this session
+2026-06-26 13:04:05 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LIFE (FRXSTY8n...)
+2026-06-26 13:04:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Unity (AV5w3p1X...)
+2026-06-26 13:04:10 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 4 (AufH68UF...)
+2026-06-26 13:04:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 4 (F16ENZ8P...)

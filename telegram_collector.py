@@ -1046,25 +1046,28 @@ async def scan_channels(client, dex_client=None):
                             # Record signal result for learning (pump=signal sent)
                             try:
                                 from learner import record_signal_result
-                                # Build research_data from token features
+                                # Build research_data from ENRICHED full_token (not raw token)
                                 research = {
-                                    "holders": token.get("holders", 0),
-                                    "top10_pct": token.get("top10_pct", 0),
-                                    "bundled_pct": token.get("bundled_pct", 0),
-                                    "audit_score": token.get("audit_score", 0),
-                                    "renounced": token.get("renounced", False),
-                                    "dev_status": token.get("dev_status", "UNKNOWN"),
-                                    "lp_locked": token.get("liq_burn_pct", 0),
-                                    "initial_liq_usd": token.get("liq_usd", 0),
-                                    "buy_sell_ratio": token.get("buy_sell_ratio", 0),
+                                    "holders": full_token.get("holders", 0),
+                                    "top10_pct": full_token.get("top10_pct", 0),
+                                    "bundled_pct": full_token.get("bundled_pct", 0),
+                                    "audit_score": full_token.get("audit_score", 0),
+                                    "renounced": full_token.get("renounced", False),
+                                    "dev_status": full_token.get("dev_status", "UNKNOWN"),
+                                    "lp_locked": full_token.get("liq_burn_pct", 0),
+                                    "initial_liq_usd": full_token.get("liq_usd", 0),
+                                    "buy_sell_ratio": full_token.get("buy_sell_ratio", 0),
+                                    "signal_type": token.get("signal_type", ""),
+                                    "source_channel": CHANNEL_NAMES.get(cid, "?"),
+                                    "mcp": full_token.get("mcp", 0),
                                 }
                                 # Build dex_health from health_data
                                 dex_h = {
                                     "source": health_data.get("source", "unknown"),
                                     "dex_verified": dex_verified,
-                                    "holders": health_data.get("holders", token.get("holders", 0)),
-                                    "top10_pct": health_data.get("top10_pct", token.get("top10_pct", 0)),
-                                    "liquidity": health_data.get("liquidity", token.get("liq_usd", 0)),
+                                    "holders": health_data.get("holders", full_token.get("holders", 0)),
+                                    "top10_pct": health_data.get("top10_pct", full_token.get("top10_pct", 0)),
+                                    "liquidity": health_data.get("liquidity", full_token.get("liq_usd", 0)),
                                     "healthy": health_data.get("healthy", False),
                                 }
                                 record_signal_result(
@@ -1212,22 +1215,25 @@ async def scan_channels(client, dex_client=None):
                                 try:
                                     from learner import record_signal_result
                                     research = {
-                                        "holders": existing.get("holders", 0),
-                                        "top10_pct": existing.get("top10_pct", 0),
-                                        "bundled_pct": existing.get("bundled_pct", 0),
-                                        "audit_score": existing.get("audit_score", 0),
-                                        "renounced": existing.get("renounced", False),
-                                        "dev_status": existing.get("dev_status", "UNKNOWN"),
-                                        "lp_locked": existing.get("liq_burn_pct", 0),
-                                        "initial_liq_usd": existing.get("liq_usd", 0),
-                                        "buy_sell_ratio": existing.get("buy_sell_ratio", 0),
+                                        "holders": full_token.get("holders", 0),
+                                        "top10_pct": full_token.get("top10_pct", 0),
+                                        "bundled_pct": full_token.get("bundled_pct", 0),
+                                        "audit_score": full_token.get("audit_score", 0),
+                                        "renounced": full_token.get("renounced", False),
+                                        "dev_status": full_token.get("dev_status", "UNKNOWN"),
+                                        "lp_locked": full_token.get("liq_burn_pct", 0),
+                                        "initial_liq_usd": full_token.get("liq_usd", 0),
+                                        "buy_sell_ratio": full_token.get("buy_sell_ratio", 0),
+                                        "signal_type": existing.get("signal_type", ""),
+                                        "source_channel": CHANNEL_NAMES.get(cid, "?"),
+                                        "mcp": full_token.get("mcp", 0),
                                     }
                                     dex_h = {
                                         "source": health_data.get("source", "unknown"),
                                         "dex_verified": dex_verified,
-                                        "holders": health_data.get("holders", existing.get("holders", 0)),
-                                        "top10_pct": health_data.get("top10_pct", existing.get("top10_pct", 0)),
-                                        "liquidity": health_data.get("liquidity", existing.get("liq_usd", 0)),
+                                        "holders": health_data.get("holders", full_token.get("holders", 0)),
+                                        "top10_pct": health_data.get("top10_pct", full_token.get("top10_pct", 0)),
+                                        "liquidity": health_data.get("liquidity", full_token.get("liq_usd", 0)),
                                         "healthy": health_data.get("healthy", False),
                                     }
                                     record_signal_result(

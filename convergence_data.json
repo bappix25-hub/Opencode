@@ -6363,11 +6363,197 @@
       "source_count": 1,
       "last_calculated": 1782477100.560843,
       "alerted": false
+    },
+    "9iLSeMNMbaA1BUV6TgLJUi4t7NtHsDsvFjCRS5hmpump": {
+      "symbol": "Justice has no badge. The fight starts now.",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_boosted",
+          "source_name": "DexScreener boosted",
+          "timestamp": 1782478363.40876,
+          "signal_type": "boosted",
+          "features": {
+            "mcp": 190734,
+            "liq_usd": 31122.36,
+            "holders": 20,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782478363.40876,
+      "last_seen": 1782478363.40876,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener boosted",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782478363.408813,
+      "alerted": false
+    },
+    "fERD9husU3nj3YbFS1P2kesCW2Z5KHkq8FyGFfnpump": {
+      "symbol": "$MANIFEST isn't just a coin \u2014 it's a mindset. Built for dreamers, believers, and those who know abundance starts in the mind. Chant. Believe. Manifest. \ud83d\udcb8\ud83d\udd49",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_boosted",
+          "source_name": "DexScreener boosted",
+          "timestamp": 1782478421.620204,
+          "signal_type": "boosted",
+          "features": {
+            "mcp": 43834,
+            "liq_usd": 14601.96,
+            "holders": 20,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782478421.620204,
+      "last_seen": 1782478421.620204,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener boosted",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782478421.620376,
+      "alerted": false
+    },
+    "5rXhkFvzwxxA1HrH71uA2dPJXaoUqxBhpYTtErmtpump": {
+      "symbol": "The viral Japanese seal $POCHI is now here with owner onboard.",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_boosted",
+          "source_name": "DexScreener boosted",
+          "timestamp": 1782478475.293185,
+          "signal_type": "boosted",
+          "features": {
+            "mcp": 21491,
+            "liq_usd": 10260.88,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782478475.293185,
+      "last_seen": 1782478475.293185,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener boosted",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782478475.293253,
+      "alerted": false
+    },
+    "8UDQjmJMDCinoFqjorHSnncubTww4U92QjEBk97bpump": {
+      "symbol": "",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782478855.470861,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 140498,
+            "liq_usd": 26817.18,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782478855.470861,
+      "last_seen": 1782478855.470861,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener new_profile",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782478855.4709,
+      "alerted": false
+    },
+    "u2D8Ri8LPpyvXVHmM3dbgMxZH5PXQ4aeL9UE8zbpump": {
+      "symbol": "",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782478931.304457,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 31658,
+            "liq_usd": 13290.52,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782478931.304457,
+      "last_seen": 1782478931.304457,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener new_profile",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782478931.304521,
+      "alerted": false
+    },
+    "AU7U5REE584NXWJxn5PqK7wsXg1mnekfjeZCvrhkpump": {
+      "symbol": "",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782478991.476218,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 1441,
+            "liq_usd": 2648.57,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782478991.476218,
+      "last_seen": 1782478991.476218,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener new_profile",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782478991.476258,
+      "alerted": false
     }
   },
-  "last_cleanup": "2026-06-26T12:31:40.560935+00:00",
+  "last_cleanup": "2026-06-26T13:03:11.476297+00:00",
   "stats": {
-    "total_tracked": 199,
+    "total_tracked": 205,
     "high_convergence": 0
   }
 }

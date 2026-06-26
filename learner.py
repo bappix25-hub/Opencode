@@ -806,11 +806,21 @@ def extract_launch_features(launch_data, pair_data=None, unique_wallets=0) -> di
 
 def _pattern_similarity(features: dict, pattern: dict) -> float:
     """Calculate weighted similarity between features and a known pattern. 0.0 to 1.0.
-    Uses FEATURE_WEIGHTS for importance weighting.
+    Uses FEATURE_WEIGHTS for importance weighting (with learned overrides).
     Handles both flat patterns and nested patterns (features inside 'features' key).
     Applies recency decay: newer patterns get bonus, old patterns get penalty."""
     weighted_score = 0.0
     total_weight = 0.0
+
+    # Load learned weights from scorer (overrides static FEATURE_WEIGHTS)
+    _learned_weights = {}
+    try:
+        scorer_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "learned_scorer.json")
+        with open(scorer_path) as f:
+            _scorer = json.load(f)
+            _learned_weights = _scorer.get("feature_weights", {})
+    except Exception:
+        pass
 
     # Handle nested format: pattern may have features in pattern["features"]
     pat = pattern
@@ -819,7 +829,7 @@ def _pattern_similarity(features: dict, pattern: dict) -> float:
 
     def _compare(feat_key, pat_key):
         nonlocal weighted_score, total_weight
-        weight = FEATURE_WEIGHTS.get(feat_key, 1.0)
+        weight = _learned_weights.get(feat_key, FEATURE_WEIGHTS.get(feat_key, 1.0))
         f_val = features.get(feat_key, 0)
         p_val = pat.get(pat_key, 0)
         if p_val == 0 and f_val == 0:

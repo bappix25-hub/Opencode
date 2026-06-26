@@ -1285,8 +1285,10 @@ class MemeBot:
                                 logger.info(f"📚 Missed pump recorded: {symbol} (no pre-mig signal)")
                                 # Auto-learn after new data
                                 try:
-                                    from learner import enhanced_auto_learn
+                                    from learner import enhanced_auto_learn, learn_feature_weights, learn_signal_type_performance
                                     enhanced_auto_learn()
+                                    learn_feature_weights()
+                                    learn_signal_type_performance()
                                 except Exception:
                                     pass
 
@@ -1746,9 +1748,11 @@ class MemeBot:
                             pass
                         # Auto-learn after new data
                         try:
-                            from learner import enhanced_auto_learn, update_learned_scorer
+                            from learner import enhanced_auto_learn, update_learned_scorer, learn_feature_weights, learn_signal_type_performance
                             enhanced_auto_learn()
                             update_learned_scorer()
+                            learn_feature_weights()
+                            learn_signal_type_performance()
                         except Exception:
                             pass
                         # Send updated TP/SL recommendation after each result
