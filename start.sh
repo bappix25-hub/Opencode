@@ -173,27 +173,20 @@ sleep 2
 LOCK_FILE="/tmp/meme_bot_${BOT_INSTANCE:-main}.lock"
 rm -f "$LOCK_FILE"
 
-INTERNET_WAIT=15
-ATTEMPT=0
+# Restart loop — keeps bot alive forever
 while true; do
-    if check_internet "https://api.telegram.org"; then
-        if [ $ATTEMPT -gt 0 ]; then
-            echo "🌐 Internet back at $(date) (after $ATTEMPT retries)" >> "$LOG_FILE"
-        fi
-        ATTEMPT=0
-        echo "🚀 Launching at $(date)"
-        python3 meme_bot.py 2>&1 &
-        BOT_PID=$!
-        echo "$BOT_PID" > "$LOCK_FILE"
-        wait "$BOT_PID" 2>/dev/null
-        EXIT_CODE=$?
-        echo "❌ Exited code=$EXIT_CODE at $(date), restart in 10s"
-        sleep 10
-    else
-        ATTEMPT=$((ATTEMPT + 1))
-        if [ $((ATTEMPT % 4)) -eq 1 ]; then
-            echo "⏳ No internet (try $ATTEMPT) — waiting ${INTERNET_WAIT}s"
-        fi
-        sleep $INTERNET_WAIT
+    if ! check_internet "https://api.telegram.org"; then
+        echo "⏳ No internet — waiting 15s..."
+        sleep 15
+        continue
     fi
+    
+    echo "🚀 Launching at $(date)"
+    python3 meme_bot.py 2>&1 &
+    BOT_PID=$!
+    echo "$BOT_PID" > "$LOCK_FILE"
+    wait "$BOT_PID" 2>/dev/null
+    EXIT_CODE=$?
+    echo "❌ Exited code=$EXIT_CODE at $(date), restart in 10s"
+    sleep 10
 done

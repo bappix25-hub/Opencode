@@ -7290,11 +7290,73 @@
       "source_count": 1,
       "last_calculated": 1782487343.748966,
       "alerted": false
+    },
+    "H4CFQnSz3yjapiB6Z3qAoVH6MguggitXbyoGsgf4pump": {
+      "symbol": "OpenAI CEO Sam Altman reportedly told staff that GPT-5.6 will be released first in a limited preview to a small group of partners after a federal government request. In a memo, Altman said the government would be \u201capproving access customer by customer during this preview period.\u201d The request reportedly came after OpenAI worked with government agencies over the past month to preview the model, including the Office of the National Cyber Director and the Office of Science and Technology Policy.",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_boosted",
+          "source_name": "DexScreener boosted",
+          "timestamp": 1782500339.235265,
+          "signal_type": "boosted",
+          "features": {
+            "mcp": 88998,
+            "liq_usd": 24983.11,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782500339.235265,
+      "last_seen": 1782500339.235265,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener boosted",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782500339.235317,
+      "alerted": false
+    },
+    "14qW8bcMkmHQtgJ8VohkR4FXiuYWqvLy4AtpGbuDpyro": {
+      "symbol": "The first streaming platform powered by a Solana token.",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_boosted",
+          "source_name": "DexScreener boosted",
+          "timestamp": 1782503084.813489,
+          "signal_type": "boosted",
+          "features": {
+            "mcp": 8662,
+            "liq_usd": 7229.79,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782503084.813489,
+      "last_seen": 1782503084.813489,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener boosted",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782503084.81357,
+      "alerted": false
     }
   },
-  "last_cleanup": "2026-06-26T15:22:23.749095+00:00",
+  "last_cleanup": "2026-06-26T19:44:44.813640+00:00",
   "stats": {
-    "total_tracked": 226,
+    "total_tracked": 228,
     "high_convergence": 0
   }
 }

@@ -10371,3 +10371,1386 @@ ConnectionError: Connection to Telegram failed 5 time(s)
 2026-06-26 18:57:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: RT699 (BuBMjNCr...)
 2026-06-26 18:57:45 - meme_bot - INFO - TRADE NO TRACK: EPjFWdd5... txType=create
 2026-06-26 18:57:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CITTA (4PkTnSMT...)
+2026-06-26 18:57:51 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VWAMP (1mQj8VLF...)
+2026-06-26 18:57:54 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Tsunami (3sCHcbcZ...)
+2026-06-26 18:57:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (34SoLq2k...)
+2026-06-26 18:58:01 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SNAIL (9rDMVCH7...)
+2026-06-26 18:58:02 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: wKITTY (DbG7RyLF...)
+2026-06-26 18:58:03 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CHATGPT (CAMvbuJx...)
+2026-06-26 18:58:05 - meme_bot.pump_collector - INFO - Fetched 293 unique Solana tokens from DexScreener (boosted=27, metas=54, search=136)
+2026-06-26 18:58:05 - meme_bot.pump_collector - INFO - Collecting data for 20 new coins...
+2026-06-26 18:58:07 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 18:58:11 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 8372 deployer
+2026-06-26 18:58:11 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-26 18:58:11 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-26 18:58:11 - meme_bot - INFO - 📡 Telegram collector loop started
+2026-06-26 18:58:11 - meme_bot.social_tracker - INFO - [SOCIAL] Backfilled 0 tokens from tracked data
+2026-06-26 18:58:11 - meme_bot - INFO - 📊 Signal review loop started (every 6h)
+2026-06-26 18:58:11 - meme_bot - INFO - 🔥 Convergence scan loop started (every 60s)
+2026-06-26 18:58:11 - meme_bot - INFO - 🔍 GMGN Trending scanner started (every 5min)
+2026-06-26 18:58:11 - meme_bot - INFO - 🔬 TokenScan monitor started (every 10min)
+2026-06-26 18:58:11 - meme_bot - INFO - 🚨 Alert sender loop started (every 10s)
+2026-06-26 18:58:11 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-26 18:58:11 - meme_bot - INFO - 📊 Midnight summary in 5h 1m
+2026-06-26 18:58:11 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-26 18:58:11 - meme_bot.telegram_collector - INFO - Starting Telegram collector loop...
+2026-06-26 18:58:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Nigger (D6bTtoSg...)
+2026-06-26 18:58:16 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (6tbAjZta...)
+2026-06-26 18:58:16 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (6tbAjZta...)
+2026-06-26 18:58:17 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (GgBoSwL4...)
+2026-06-26 18:58:17 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (GgBoSwL4...)
+2026-06-26 18:58:17 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 18:58:17 - meme_bot.telegram_collector - ERROR - Cannot start collector - no client
+2026-06-26 18:58:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 90K (BuBMjNCr...)
+2026-06-26 18:58:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 90K (BuBMjNCr...)
+2026-06-26 18:58:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 18:58:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 18:58:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SNAIL (AqsW2qxw...)
+2026-06-26 18:58:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SNAIL (AqsW2qxw...)
+2026-06-26 18:58:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (DhWp9wdR...)
+2026-06-26 18:58:27 - meme_bot - INFO - 🔧 Self-heal: killed stale PID 31337 (instance: main)
+2026-06-26 18:58:27 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 18:58:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (DhWp9wdR...)
+2026-06-26 18:58:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 18:58:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PUMPE (34dVL1Ha...)
+2026-06-26 18:58:32 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (7hq1bV5S...)
+2026-06-26 18:58:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 5 sol (B1cJJMst...)
+2026-06-26 18:58:48 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 🔥 (7FVfSdnR...)
+2026-06-26 18:58:50 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (DCw7rwq3...)
+2026-06-26 18:58:58 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (6QuGkUsu...)
+2026-06-26 18:59:01 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 18:59:03 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CITTA (4PkTnSMT...)
+2026-06-26 18:59:04 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (9jkVqkA6...)
+2026-06-26 18:59:06 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Jacob (CAMvbuJx...)
+2026-06-26 18:59:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ANIMALS (FiwwHe2o...)
+2026-06-26 18:59:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 🔥 (7FVfSdnR...)
+2026-06-26 18:59:17 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DEAD (BuBMjNCr...)
+2026-06-26 18:59:19 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 5 sol (B1cJJMst...)
+2026-06-26 18:59:22 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 18:59:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (2nk6mtza...)
+2026-06-26 19:00:29 - meme_bot - INFO - 🔧 Self-heal: killed zombie watchdog.sh PID 32440
+2026-06-26 19:00:29 - meme_bot - INFO - 🔧 Self-heal: killed zombie watchdog.sh PID 32441
+2026-06-26 19:00:46 - meme_bot - INFO - 🔍 pre-mig scan: 32 launches in queue
+2026-06-26 19:01:33 - meme_bot.pump_collector - INFO - ✅ Batch complete: 1/20 in 208s (0.3/min)
+2026-06-26 19:01:33 - meme_bot.pump_collector - INFO - 📊 Collector: 833 total, 833 complete, 0 partial
+2026-06-26 19:01:33 - meme_bot.pump_collector - INFO - 📊 Analysis complete: 833 coins analyzed
+2026-06-26 19:01:33 - meme_bot.pump_collector - INFO -    Liquidity: median=$13902
+2026-06-26 19:01:33 - meme_bot.pump_collector - INFO -    Holders: median=20
+2026-06-26 19:01:33 - meme_bot.pump_collector - INFO -    BSR: median=1.26
+2026-06-26 19:01:33 - meme_bot.pump_collector - INFO -    LP Locked: median=0.0%
+2026-06-26 19:01:33 - meme_bot.pump_collector - INFO - 🎯 Signal criteria updated from collector analysis
+2026-06-26 19:01:46 - meme_bot - INFO - [SKIP] Chameleon: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:46 - meme_bot - INFO - [SKIP] Alerts: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:47 - meme_bot - INFO - [SKIP] FISSION: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:48 - meme_bot - INFO - [SKIP] USTRD: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:48 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:49 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:50 - meme_bot - INFO - [SKIP] ROAR: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:50 - meme_bot - INFO - [SKIP] X-COIN: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:51 - meme_bot - INFO - [SKIP] STAYPOOR: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:52 - meme_bot - INFO - [SKIP] HARVEST: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: THST5 (BuBMjNCr...)
+2026-06-26 19:01:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SNAIL (J1zKiWdK...)
+2026-06-26 19:01:52 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:53 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:54 - meme_bot - INFO - [SKIP] usefulp: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:54 - meme_bot - INFO - [SKIP] MBGA: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:55 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:56 - meme_bot - INFO - [SKIP] Postly: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:56 - meme_bot - INFO - [SKIP] PAWS: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:57 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:57 - meme_bot - INFO - [SKIP] Chameleon: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:58 - meme_bot - INFO - [SKIP] PVP: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:59 - meme_bot - INFO - [SKIP] FAGGOT: pre-mig — zero LP ($0) scam
+2026-06-26 19:01:59 - meme_bot - INFO - [SKIP] SOLGOD: pre-mig — zero LP ($0) scam
+2026-06-26 19:02:02 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Truth (7moqFjvm...)
+2026-06-26 19:02:04 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:02:07 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:02:09 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:02:10 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 8372 deployer
+2026-06-26 19:02:10 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-26 19:02:10 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-26 19:02:10 - meme_bot - INFO - 📡 Telegram collector loop started
+2026-06-26 19:02:10 - meme_bot.social_tracker - INFO - [SOCIAL] Backfilled 0 tokens from tracked data
+2026-06-26 19:02:10 - meme_bot - INFO - 📊 Signal review loop started (every 6h)
+2026-06-26 19:02:10 - meme_bot - INFO - 🔥 Convergence scan loop started (every 60s)
+2026-06-26 19:02:10 - meme_bot - INFO - 🔍 GMGN Trending scanner started (every 5min)
+2026-06-26 19:02:10 - meme_bot - INFO - 🔬 TokenScan monitor started (every 10min)
+2026-06-26 19:02:10 - meme_bot - INFO - 🚨 Alert sender loop started (every 10s)
+2026-06-26 19:02:10 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-26 19:02:10 - meme_bot - INFO - 📊 Midnight summary in 4h 57m
+2026-06-26 19:02:10 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-26 19:02:10 - meme_bot.telegram_collector - INFO - Starting Telegram collector loop...
+2026-06-26 19:02:11 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:02:11 - meme_bot.telegram_collector - ERROR - Cannot start collector - no client
+2026-06-26 19:02:12 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:02:14 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:02:16 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:02:16 - meme_bot - INFO - ট্র্যাক: 6 | লঞ্চ: 32 | পাম্প: 0
+2026-06-26 19:02:21 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Chetz (9rDMVCH7...)
+2026-06-26 19:02:21 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Chetz (9rDMVCH7...)
+2026-06-26 19:02:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: STO (7XQyoTSo...)
+2026-06-26 19:02:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: STO (7XQyoTSo...)
+2026-06-26 19:02:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SNAIL (J1zKiWdK...)
+2026-06-26 19:02:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SNAIL (J1zKiWdK...)
+2026-06-26 19:02:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SNAIL (J1zKiWdK...)
+2026-06-26 19:02:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SNAIL (J1zKiWdK...)
+2026-06-26 19:02:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SNAIL (J1zKiWdK...)
+2026-06-26 19:02:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SNAIL (J1zKiWdK...)
+2026-06-26 19:02:31 - meme_bot - INFO - 🔧 Self-heal: killed stale PID 4096 (instance: main)
+2026-06-26 19:02:31 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SNAIL (J1zKiWdK...)
+2026-06-26 19:02:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SNAIL (J1zKiWdK...)
+2026-06-26 19:02:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SNAIL (J1zKiWdK...)
+2026-06-26 19:02:37 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SNAIL (J1zKiWdK...)
+2026-06-26 19:02:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Chetz (FCUPh2jM...)
+2026-06-26 19:02:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Chamelon (7NJnSKER...)
+2026-06-26 19:02:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SNAIL (J1zKiWdK...)
+2026-06-26 19:02:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SNAIL (J1zKiWdK...)
+2026-06-26 19:02:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SNAIL (J1zKiWdK...)
+2026-06-26 19:02:45 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:02:47 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LIVE4 (BuBMjNCr...)
+2026-06-26 19:02:50 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 19:02:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BIBI (B1cJJMst...)
+2026-06-26 19:02:59 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: STO (7XQyoTSo...)
+2026-06-26 19:03:02 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CITTA (4PkTnSMT...)
+2026-06-26 19:03:07 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: RHINO (DetXn4fL...)
+2026-06-26 19:03:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 🔥 (7FVfSdnR...)
+2026-06-26 19:03:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CLOWN50K (BuBMjNCr...)
+2026-06-26 19:03:28 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:03:34 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: STO (7XQyoTSo...)
+2026-06-26 19:03:37 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: STO (29yFzeBZ...)
+2026-06-26 19:03:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BRO (BuBMjNCr...)
+2026-06-26 19:03:42 - meme_bot - INFO - 🚫 Serial deployer blocked: Chameleon deployer 9T15zXmq... has 2 tokens
+2026-06-26 19:03:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SPACE (CxxcsDAo...)
+2026-06-26 19:03:56 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:03:58 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: STO (8ZN71XTd...)
+2026-06-26 19:03:59 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: STO (CAMvbuJx...)
+2026-06-26 19:04:04 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BEERME (BuBMjNCr...)
+2026-06-26 19:04:05 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: STO (7XQyoTSo...)
+2026-06-26 19:04:07 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TokenB (B1cJJMst...)
+2026-06-26 19:04:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SPACE (CxxcsDAo...)
+2026-06-26 19:04:10 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 8372 deployer
+2026-06-26 19:04:10 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-26 19:04:10 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-26 19:04:10 - meme_bot - INFO - 📡 Telegram collector loop started
+2026-06-26 19:04:11 - meme_bot.social_tracker - INFO - [SOCIAL] Backfilled 0 tokens from tracked data
+2026-06-26 19:04:11 - meme_bot - INFO - 📊 Signal review loop started (every 6h)
+2026-06-26 19:04:11 - meme_bot - INFO - 🔥 Convergence scan loop started (every 60s)
+2026-06-26 19:04:11 - meme_bot - INFO - 🔍 GMGN Trending scanner started (every 5min)
+2026-06-26 19:04:11 - meme_bot - INFO - 🔬 TokenScan monitor started (every 10min)
+2026-06-26 19:04:11 - meme_bot - INFO - 🚨 Alert sender loop started (every 10s)
+2026-06-26 19:04:11 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-26 19:04:11 - meme_bot - INFO - 📊 Midnight summary in 4h 55m
+2026-06-26 19:04:11 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-26 19:04:11 - meme_bot.telegram_collector - INFO - Starting Telegram collector loop...
+2026-06-26 19:04:13 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:04:13 - meme_bot.telegram_collector - ERROR - Cannot start collector - no client
+2026-06-26 19:04:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: STO (AtZ424xr...)
+2026-06-26 19:04:17 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: RHINO (DetXn4fL...)
+2026-06-26 19:04:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: POOL (9FAkLRMp...)
+2026-06-26 19:04:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: STO (AtZ424xr...)
+2026-06-26 19:04:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: RHINO (DetXn4fL...)
+2026-06-26 19:04:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CITTA (4PkTnSMT...)
+2026-06-26 19:04:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: $PCAPY (C7wkjfmQ...)
+2026-06-26 19:04:36 - meme_bot - INFO - 🔧 Self-heal: killed stale PID 4809 (instance: main)
+2026-06-26 19:04:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CITTA (4PkTnSMT...)
+2026-06-26 19:04:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: $PCAPY (C7wkjfmQ...)
+2026-06-26 19:04:40 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HARD50 (BuBMjNCr...)
+2026-06-26 19:04:45 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Chamelon (7NJnSKER...)
+2026-06-26 19:04:45 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: traindog (29yFzeBZ...)
+2026-06-26 19:04:49 - meme_bot - INFO - 🔍 pre-mig scan: 47 launches in queue
+2026-06-26 19:04:50 - meme_bot - INFO - [SKIP] chatcoin: pre-mig — zero LP ($0) scam
+2026-06-26 19:04:50 - meme_bot - INFO - [SKIP] BAGE: pre-mig — zero LP ($0) scam
+2026-06-26 19:04:51 - meme_bot - INFO - [SKIP] chatcoin: pre-mig — zero LP ($0) scam
+2026-06-26 19:04:52 - meme_bot - INFO - [SKIP] PERSPECTIVE: pre-mig — zero LP ($0) scam
+2026-06-26 19:04:52 - meme_bot - INFO - [SKIP] PERSPECTIVE: pre-mig — zero LP ($0) scam
+2026-06-26 19:04:53 - meme_bot - INFO - [SKIP] NIGGER: pre-mig — zero LP ($0) scam
+2026-06-26 19:04:54 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:04:54 - meme_bot - INFO - [SKIP] FUCKFLOCK: pre-mig — zero LP ($0) scam
+2026-06-26 19:04:55 - meme_bot - INFO - [SKIP] Chameleon: pre-mig — zero LP ($0) scam
+2026-06-26 19:04:56 - meme_bot - INFO - [SKIP] Alerts: pre-mig — zero LP ($0) scam
+2026-06-26 19:04:56 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (7hq1bV5S...)
+2026-06-26 19:04:56 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (DCw7rwq3...)
+2026-06-26 19:04:56 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (6QuGkUsu...)
+2026-06-26 19:04:56 - meme_bot - INFO - [SKIP] FISSION: pre-mig — zero LP ($0) scam
+2026-06-26 19:04:57 - meme_bot - INFO - [SKIP] USTRD: pre-mig — zero LP ($0) scam
+2026-06-26 19:04:58 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:04:59 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:04:59 - meme_bot - INFO - [SKIP] ROAR: pre-mig — zero LP ($0) scam
+2026-06-26 19:04:59 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FISH (8eZTyqrs...)
+2026-06-26 19:04:59 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JOOBI (65pJi5UC...)
+2026-06-26 19:05:00 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Memeluk (6WM3V5hP...)
+2026-06-26 19:05:00 - meme_bot - INFO - [SKIP] X-COIN: pre-mig — zero LP ($0) scam
+2026-06-26 19:05:01 - meme_bot - INFO - [SKIP] STAYPOOR: pre-mig — zero LP ($0) scam
+2026-06-26 19:05:01 - meme_bot - INFO - [SKIP] HARVEST: pre-mig — zero LP ($0) scam
+2026-06-26 19:05:01 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JOOBI (65pJi5UC...)
+2026-06-26 19:05:02 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:05:02 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:05:03 - meme_bot - INFO - [SKIP] usefulp: pre-mig — zero LP ($0) scam
+2026-06-26 19:05:03 - meme_bot - INFO - [SKIP] MBGA: pre-mig — zero LP ($0) scam
+2026-06-26 19:05:04 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:05:04 - meme_bot - INFO - [SKIP] Postly: pre-mig — zero LP ($0) scam
+2026-06-26 19:05:04 - meme_bot - INFO - [SKIP] PAWS: pre-mig — zero LP ($0) scam
+2026-06-26 19:05:05 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:05:05 - meme_bot - INFO - [SKIP] Chameleon: pre-mig — zero LP ($0) scam
+2026-06-26 19:05:06 - meme_bot - INFO - [SKIP] PVP: pre-mig — zero LP ($0) scam
+2026-06-26 19:05:06 - meme_bot - INFO - [SKIP] FAGGOT: pre-mig — zero LP ($0) scam
+2026-06-26 19:05:07 - meme_bot - INFO - [SKIP] SOLGOD: pre-mig — zero LP ($0) scam
+2026-06-26 19:05:09 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BOOK (BuBMjNCr...)
+2026-06-26 19:05:10 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:05:12 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:05:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: fish (DetXn4fL...)
+2026-06-26 19:05:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CITTA (4PkTnSMT...)
+2026-06-26 19:05:14 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:05:16 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:05:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JOOBI (65pJi5UC...)
+2026-06-26 19:05:19 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:05:21 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:05:22 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 19:05:23 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:05:24 - meme_bot - INFO - 📂 CLIMBING SIGNAL: world mcap=$64.2K score=0.65
+2026-06-26 19:05:24 - meme_bot - INFO - ট্র্যাক: 7 | লঞ্চ: 47 | পাম্প: 0
+2026-06-26 19:05:25 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:05:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Horny (C7mHXbY6...)
+2026-06-26 19:05:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BULL700 (BuBMjNCr...)
+2026-06-26 19:05:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Ashura (DbG7RyLF...)
+2026-06-26 19:05:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TRUMP (FpsAnDmN...)
+2026-06-26 19:05:47 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:05:48 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JOOBI (65pJi5UC...)
+2026-06-26 19:05:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LOVEME (BuBMjNCr...)
+2026-06-26 19:05:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Blair (9ziY2cJC...)
+2026-06-26 19:06:10 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JOOBI (65pJi5UC...)
+2026-06-26 19:06:10 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (9jkVqkA6...)
+2026-06-26 19:06:13 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 8372 deployer
+2026-06-26 19:06:13 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-26 19:06:13 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-26 19:06:13 - meme_bot - INFO - 📡 Telegram collector loop started
+2026-06-26 19:06:14 - meme_bot.social_tracker - INFO - [SOCIAL] Backfilled 0 tokens from tracked data
+2026-06-26 19:06:14 - meme_bot - INFO - 📊 Signal review loop started (every 6h)
+2026-06-26 19:06:14 - meme_bot - INFO - 🔥 Convergence scan loop started (every 60s)
+2026-06-26 19:06:14 - meme_bot - INFO - 🔍 GMGN Trending scanner started (every 5min)
+2026-06-26 19:06:14 - meme_bot - INFO - 🔬 TokenScan monitor started (every 10min)
+2026-06-26 19:06:14 - meme_bot - INFO - 🚨 Alert sender loop started (every 10s)
+2026-06-26 19:06:14 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-26 19:06:14 - meme_bot - INFO - 📊 Midnight summary in 4h 53m
+2026-06-26 19:06:14 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-26 19:06:14 - meme_bot.telegram_collector - INFO - Starting Telegram collector loop...
+2026-06-26 19:06:16 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:06:16 - meme_bot.telegram_collector - ERROR - Cannot start collector - no client
+2026-06-26 19:06:22 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 🔥 (7FVfSdnR...)
+2026-06-26 19:06:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 阿舒拉 (5rHqMEqA...)
+2026-06-26 19:06:25 - meme_bot - INFO - TRADE NO TRACK: EPjFWdd5... txType=create
+2026-06-26 19:06:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TripleS (75GMVrr2...)
+2026-06-26 19:06:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Tesla (ATaCaRoE...)
+2026-06-26 19:06:34 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 90 (BuBMjNCr...)
+2026-06-26 19:06:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JOOBI (65pJi5UC...)
+2026-06-26 19:06:43 - meme_bot - INFO - 🔄 Continuous learn cycle started...
+2026-06-26 19:06:43 - meme_bot - INFO - 📥 Merged 340 new pump patterns from collector
+2026-06-26 19:06:44 - meme_bot - INFO - 🧠 Auto-learn: win_rate=48.0% | bsr: 0 vs 0 | holders: 0 vs 0 | liq: 0 vs 0 | lp: 0 vs 0
+2026-06-26 19:06:44 - meme_bot.pump_collector - INFO - 🔄 Pump collector cycle started...
+2026-06-26 19:06:44 - meme_bot - INFO - 🎯 Criteria: bsr≥1.26 holders≥10 wallets≥15 liq≥$500 liq%≥10 lp≥80%
+2026-06-26 19:06:44 - meme_bot - INFO - 🔬 Divergence: pump_avg=1030.5s dump_avg=3555.5s → optimal_delay=2293s sep=0.947
+2026-06-26 19:06:44 - meme_bot - INFO - 🧠 Patterns: 840 pump + 1000 dump + 16 missed
+2026-06-26 19:06:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 🔥 (7FVfSdnR...)
+2026-06-26 19:06:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 阿舒拉 (5rHqMEqA...)
+2026-06-26 19:06:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TripleS (75GMVrr2...)
+2026-06-26 19:06:49 - meme_bot - INFO - 🔧 Self-heal: killed stale PID 6021 (instance: main)
+2026-06-26 19:06:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 90 (BuBMjNCr...)
+2026-06-26 19:06:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JOOBI (65pJi5UC...)
+2026-06-26 19:06:50 - meme_bot - INFO - 🚫 Serial deployer blocked: CITTA deployer 3bGTJvRh... has 2 tokens
+2026-06-26 19:06:53 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Chameleon (9T15zXmq...)
+2026-06-26 19:06:55 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 🔥 (7FVfSdnR...)
+2026-06-26 19:06:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VUT (B1cJJMst...)
+2026-06-26 19:06:58 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 1 (BuBMjNCr...)
+2026-06-26 19:06:58 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Mayhem R (BduBwyQg...)
+2026-06-26 19:06:58 - meme_bot - INFO - 🧠 Enriched 94 pump patterns with DexScreener data
+2026-06-26 19:06:58 - meme_bot - INFO - 🎯 Criteria updated: bsr≥1.26 holders≥10 wallets≥15 liq≥$500 liq%≥10 lp≥80%
+2026-06-26 19:06:58 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PUMP (5RQ1UWAT...)
+2026-06-26 19:07:02 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:07:05 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JOOBI (65pJi5UC...)
+2026-06-26 19:07:06 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JOOBI (65pJi5UC...)
+2026-06-26 19:07:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GLITE (te9Pd2CC...)
+2026-06-26 19:07:13 - meme_bot - INFO - 🚫 Serial deployer blocked: CITTA deployer 7fvz7xqy... has 3 tokens
+2026-06-26 19:07:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (2nk6mtza...)
+2026-06-26 19:07:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LIBS4 (BuBMjNCr...)
+2026-06-26 19:07:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:07:34 - meme_bot - INFO - 🔍 pre-mig scan: 64 launches in queue
+2026-06-26 19:07:34 - meme_bot - INFO - [SKIP] chatcoin: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:35 - meme_bot - INFO - [SKIP] BAGE: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:36 - meme_bot - INFO - [SKIP] chatcoin: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:36 - meme_bot - INFO - [SKIP] PERSPECTIVE: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:37 - meme_bot - INFO - [SKIP] PERSPECTIVE: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:38 - meme_bot - INFO - [SKIP] NIGGER: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:38 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:39 - meme_bot - INFO - [SKIP] FUCKFLOCK: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:40 - meme_bot - INFO - [SKIP] Chameleon: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:40 - meme_bot - INFO - [SKIP] Alerts: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:41 - meme_bot - INFO - [SKIP] FISSION: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:42 - meme_bot - INFO - [SKIP] USTRD: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:42 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:43 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:44 - meme_bot - INFO - [SKIP] ROAR: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:44 - meme_bot - INFO - [SKIP] X-COIN: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:45 - meme_bot - INFO - [SKIP] STAYPOOR: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:45 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JOOBI (65pJi5UC...)
+2026-06-26 19:07:45 - meme_bot - INFO - [SKIP] HARVEST: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:46 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: AI (92cLih2c...)
+2026-06-26 19:07:46 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:46 - meme_bot.gmgn_trending - INFO - [TRENDING] DNT MC=$28,885 Liq=$0 Vol24h=$5,976 Age=5.2h BuyRatio=100% PC24h=+0%
+2026-06-26 19:07:47 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:48 - meme_bot - INFO - [SKIP] usefulp: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:48 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LULU (C7wkjfmQ...)
+2026-06-26 19:07:48 - meme_bot - INFO - [SKIP] MBGA: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:49 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:50 - meme_bot - INFO - [SKIP] Postly: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:51 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Aurum+ (BduBwyQg...)
+2026-06-26 19:07:51 - meme_bot - INFO - [SKIP] PAWS: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:52 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:53 - meme_bot - INFO - [SKIP] Chameleon: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:53 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TF (BuBMjNCr...)
+2026-06-26 19:07:54 - meme_bot.gmgn_trending - INFO - [TRENDING] Found 1 new trending tokens
+2026-06-26 19:07:54 - meme_bot - INFO - [SKIP] PVP: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:54 - meme_bot - INFO - [SKIP] FAGGOT: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:55 - meme_bot - INFO - [SKIP] SOLGOD: pre-mig — zero LP ($0) scam
+2026-06-26 19:07:57 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:07:59 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Kedagh  (CZ1arE9s...)
+2026-06-26 19:07:59 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VUT (B1cJJMst...)
+2026-06-26 19:07:59 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:08:00 - meme_bot - INFO - [SKIP] UPPY: price dumped 93% from ATH dead
+2026-06-26 19:08:01 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Luthor (5ZuV8eqk...)
+2026-06-26 19:08:02 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:08:05 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:08:09 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:08:11 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOL (AV7PjXHL...)
+2026-06-26 19:08:11 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:08:11 - meme_bot - INFO - ট্র্যাক: 7 | লঞ্চ: 66 | পাম্প: 0
+2026-06-26 19:08:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOL (7GhWwhaM...)
+2026-06-26 19:08:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JOOBI (65pJi5UC...)
+2026-06-26 19:08:13 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 8372 deployer
+2026-06-26 19:08:13 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-26 19:08:13 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-26 19:08:13 - meme_bot - INFO - 📡 Telegram collector loop started
+2026-06-26 19:08:13 - meme_bot.social_tracker - INFO - [SOCIAL] Backfilled 0 tokens from tracked data
+2026-06-26 19:08:13 - meme_bot - INFO - 📊 Signal review loop started (every 6h)
+2026-06-26 19:08:13 - meme_bot - INFO - 🔥 Convergence scan loop started (every 60s)
+2026-06-26 19:08:13 - meme_bot - INFO - 🔍 GMGN Trending scanner started (every 5min)
+2026-06-26 19:08:13 - meme_bot - INFO - 🔬 TokenScan monitor started (every 10min)
+2026-06-26 19:08:13 - meme_bot - INFO - 🚨 Alert sender loop started (every 10s)
+2026-06-26 19:08:14 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-26 19:08:14 - meme_bot - INFO - 📊 Midnight summary in 4h 51m
+2026-06-26 19:08:14 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-26 19:08:14 - meme_bot.telegram_collector - INFO - Starting Telegram collector loop...
+2026-06-26 19:08:14 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:08:14 - meme_bot.telegram_collector - ERROR - Cannot start collector - no client
+2026-06-26 19:08:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOLANA (bwamJzzt...)
+2026-06-26 19:08:16 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOL (D9gQ6RhK...)
+2026-06-26 19:08:16 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOL (D9gQ6RhK...)
+2026-06-26 19:08:18 - meme_bot - INFO - TRADE NO TRACK: EPjFWdd5... txType=create
+2026-06-26 19:08:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOL (7GhWwhaM...)
+2026-06-26 19:08:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOL (7GhWwhaM...)
+2026-06-26 19:08:21 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOLANA (CdNWVFQU...)
+2026-06-26 19:08:21 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOLANA (CdNWVFQU...)
+2026-06-26 19:08:21 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 19:08:21 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 19:08:22 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOLANA (CxxcsDAo...)
+2026-06-26 19:08:22 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOLANA (CxxcsDAo...)
+2026-06-26 19:08:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOLANA (FCUPh2jM...)
+2026-06-26 19:08:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JOOBI (65pJi5UC...)
+2026-06-26 19:08:26 - meme_bot - INFO - 📊 Backtest: 0 signals, win_rate=0.0%, avg_pnl=0.0%
+2026-06-26 19:08:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOLANA (FCUPh2jM...)
+2026-06-26 19:08:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JOOBI (65pJi5UC...)
+2026-06-26 19:08:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: READ (6VAX2rNk...)
+2026-06-26 19:08:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: READ (6VAX2rNk...)
+2026-06-26 19:08:29 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:08:31 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: READ (6VAX2rNk...)
+2026-06-26 19:08:31 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: READ (6VAX2rNk...)
+2026-06-26 19:08:31 - meme_bot - INFO - 🧠 Patterns: 500 pump + 1000 dump
+2026-06-26 19:08:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOL (FaJxvj5r...)
+2026-06-26 19:08:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOL (FaJxvj5r...)
+2026-06-26 19:08:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOL (BCuAu2fi...)
+2026-06-26 19:08:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOL (BCuAu2fi...)
+2026-06-26 19:08:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JOOBI (65pJi5UC...)
+2026-06-26 19:08:40 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JOOBI (65pJi5UC...)
+2026-06-26 19:08:43 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DOIT6 (BuBMjNCr...)
+2026-06-26 19:08:43 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DOIT6 (BuBMjNCr...)
+2026-06-26 19:08:44 - meme_bot.pump_collector - INFO - 🔄 Pump collector cycle started...
+2026-06-26 19:08:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOL (FUwBg3eS...)
+2026-06-26 19:08:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOL (FUwBg3eS...)
+2026-06-26 19:08:46 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: READ (6VAX2rNk...)
+2026-06-26 19:08:46 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: READ (6VAX2rNk...)
+2026-06-26 19:08:48 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: READ (6VAX2rNk...)
+2026-06-26 19:08:48 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: READ (6VAX2rNk...)
+2026-06-26 19:08:50 - meme_bot - INFO - 🔧 Self-heal: killed stale PID 7601 (instance: main)
+2026-06-26 19:09:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: READ (6VAX2rNk...)
+2026-06-26 19:09:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GOAL7000I (BuBMjNCr...)
+2026-06-26 19:09:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:09:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JUST1 (BuBMjNCr...)
+2026-06-26 19:09:48 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GREENHOUSE (4W3fiTa3...)
+2026-06-26 19:09:55 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOL (7moqFjvm...)
+2026-06-26 19:09:58 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Single (B1cJJMst...)
+2026-06-26 19:10:06 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: AI (EAD3mdhk...)
+2026-06-26 19:10:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: AI (EAD3mdhk...)
+2026-06-26 19:10:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: AI (EAD3mdhk...)
+2026-06-26 19:10:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: AI (EAD3mdhk...)
+2026-06-26 19:10:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 19:10:10 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: claweakular (75GMVrr2...)
+2026-06-26 19:10:13 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 8372 deployer
+2026-06-26 19:10:13 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-26 19:10:13 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-26 19:10:13 - meme_bot - INFO - 📡 Telegram collector loop started
+2026-06-26 19:10:14 - meme_bot.social_tracker - INFO - [SOCIAL] Backfilled 0 tokens from tracked data
+2026-06-26 19:10:14 - meme_bot - INFO - 📊 Signal review loop started (every 6h)
+2026-06-26 19:10:14 - meme_bot - INFO - 🔥 Convergence scan loop started (every 60s)
+2026-06-26 19:10:14 - meme_bot - INFO - 🔍 GMGN Trending scanner started (every 5min)
+2026-06-26 19:10:14 - meme_bot - INFO - 🔬 TokenScan monitor started (every 10min)
+2026-06-26 19:10:14 - meme_bot - INFO - 🚨 Alert sender loop started (every 10s)
+2026-06-26 19:10:14 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-26 19:10:14 - meme_bot - INFO - 📊 Midnight summary in 4h 49m
+2026-06-26 19:10:14 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-26 19:10:14 - meme_bot.telegram_collector - INFO - Starting Telegram collector loop...
+2026-06-26 19:10:16 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HAIRY (BuBMjNCr...)
+2026-06-26 19:10:17 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:10:17 - meme_bot.telegram_collector - ERROR - Cannot start collector - no client
+2026-06-26 19:10:19 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ROGER (DbG7RyLF...)
+2026-06-26 19:10:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HAIRY (BuBMjNCr...)
+2026-06-26 19:10:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ROGER (DbG7RyLF...)
+2026-06-26 19:10:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Sandbagging (bwamJzzt...)
+2026-06-26 19:10:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Sandbagging (bwamJzzt...)
+2026-06-26 19:10:23 - meme_bot - INFO - TRADE NO TRACK: EPjFWdd5... txType=create
+2026-06-26 19:10:26 - meme_bot - INFO - 🔍 pre-mig scan: 94 launches in queue
+2026-06-26 19:10:26 - meme_bot - INFO - [SKIP] chatcoin: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:27 - meme_bot - INFO - [SKIP] BAGE: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:10:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:10:27 - meme_bot - INFO - [SKIP] chatcoin: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:28 - meme_bot - INFO - [SKIP] PERSPECTIVE: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:29 - meme_bot - INFO - [SKIP] PERSPECTIVE: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:32 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Mayhem R (BduBwyQg...)
+2026-06-26 19:10:34 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Mayhem R (BduBwyQg...)
+2026-06-26 19:10:34 - meme_bot - INFO - [SKIP] NIGGER: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:35 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:35 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DAN (9FAkLRMp...)
+2026-06-26 19:10:35 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DAN (9FAkLRMp...)
+2026-06-26 19:10:35 - meme_bot - INFO - [SKIP] FUCKFLOCK: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:36 - meme_bot - INFO - [SKIP] Chameleon: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:37 - meme_bot - INFO - [SKIP] Alerts: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:37 - meme_bot - INFO - [SKIP] FISSION: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:38 - meme_bot - INFO - [SKIP] USTRD: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: slop (FmyPYQmJ...)
+2026-06-26 19:10:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: slop (FmyPYQmJ...)
+2026-06-26 19:10:39 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:39 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:40 - meme_bot - INFO - [SKIP] ROAR: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:40 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: YARA  (4rvJhA2c...)
+2026-06-26 19:10:40 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: YARA  (4rvJhA2c...)
+2026-06-26 19:10:40 - meme_bot - INFO - [SKIP] X-COIN: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CROW (7moqFjvm...)
+2026-06-26 19:10:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CROW (7moqFjvm...)
+2026-06-26 19:10:41 - meme_bot - INFO - [SKIP] STAYPOOR: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:42 - meme_bot - INFO - [SKIP] HARVEST: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Single (B1cJJMst...)
+2026-06-26 19:10:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Single (B1cJJMst...)
+2026-06-26 19:10:42 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:43 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:44 - meme_bot - INFO - [SKIP] usefulp: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:44 - meme_bot.pump_collector - INFO - 🔄 Pump collector cycle started...
+2026-06-26 19:10:44 - meme_bot - INFO - [SKIP] MBGA: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:45 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:46 - meme_bot - INFO - [SKIP] Postly: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:46 - meme_bot - INFO - [SKIP] PAWS: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:47 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:48 - meme_bot - INFO - [SKIP] Chameleon: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:48 - meme_bot - INFO - [SKIP] PVP: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:48 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: EAGLE250 (BuBMjNCr...)
+2026-06-26 19:10:48 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: EAGLE250 (BuBMjNCr...)
+2026-06-26 19:10:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: YARA (H6PFZeTA...)
+2026-06-26 19:10:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: YARA (H6PFZeTA...)
+2026-06-26 19:10:49 - meme_bot - INFO - [SKIP] FAGGOT: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:49 - meme_bot - INFO - [SKIP] SOLGOD: pre-mig — zero LP ($0) scam
+2026-06-26 19:10:50 - meme_bot - INFO - 🔧 Self-heal: killed stale PID 9346 (instance: main)
+2026-06-26 19:10:52 - meme_bot - INFO - 🚫 Serial deployer blocked: FUCKFLOCK deployer 2EU3eYEV... has 3 tokens
+2026-06-26 19:10:52 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:10:54 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:10:55 - meme_bot - INFO - [SKIP] UPPY: price dumped 92% from ATH dead
+2026-06-26 19:10:58 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: YARA (H6PFZeTA...)
+2026-06-26 19:11:00 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:11:02 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:11:03 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: YARA (AdNevuDE...)
+2026-06-26 19:11:04 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:11:04 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FREN (BuBMjNCr...)
+2026-06-26 19:11:06 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:11:06 - meme_bot - INFO - ট্র্যাক: 7 | লঞ্চ: 97 | পাম্প: 0
+2026-06-26 19:11:10 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Sandbaggin (Ao9D9xuK...)
+2026-06-26 19:11:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Sandbaggin (9ziY2cJC...)
+2026-06-26 19:11:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 4 (BuBMjNCr...)
+2026-06-26 19:11:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HOLLY (bwamJzzt...)
+2026-06-26 19:11:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:11:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: COPE (HobNMfvn...)
+2026-06-26 19:11:40 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Woodusky (BduBwyQg...)
+2026-06-26 19:11:43 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Aware (B1cJJMst...)
+2026-06-26 19:11:45 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (HFSNAE4f...)
+2026-06-26 19:11:48 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HOLLY (bwamJzzt...)
+2026-06-26 19:11:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Holly (7gRgFE53...)
+2026-06-26 19:11:55 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Web3 (FUwBg3eS...)
+2026-06-26 19:11:56 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: vSprouts L (FmyPYQmJ...)
+2026-06-26 19:12:01 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Squeagle (G3Nyg2ww...)
+2026-06-26 19:12:02 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: THE ANTHEM (FarUAUBN...)
+2026-06-26 19:12:05 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: hand (bwamJzzt...)
+2026-06-26 19:12:05 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 10G (CAMvbuJx...)
+2026-06-26 19:12:08 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 8372 deployer
+2026-06-26 19:12:08 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-26 19:12:08 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-26 19:12:08 - meme_bot - INFO - 📡 Telegram collector loop started
+2026-06-26 19:12:09 - meme_bot.social_tracker - INFO - [SOCIAL] Backfilled 0 tokens from tracked data
+2026-06-26 19:12:09 - meme_bot - INFO - 📊 Signal review loop started (every 6h)
+2026-06-26 19:12:09 - meme_bot - INFO - 🔥 Convergence scan loop started (every 60s)
+2026-06-26 19:12:09 - meme_bot - INFO - 🔍 GMGN Trending scanner started (every 5min)
+2026-06-26 19:12:09 - meme_bot - INFO - 🔬 TokenScan monitor started (every 10min)
+2026-06-26 19:12:09 - meme_bot - INFO - 🚨 Alert sender loop started (every 10s)
+2026-06-26 19:12:09 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-26 19:12:09 - meme_bot - INFO - 📊 Midnight summary in 4h 47m
+2026-06-26 19:12:09 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-26 19:12:09 - meme_bot.telegram_collector - INFO - Starting Telegram collector loop...
+2026-06-26 19:12:10 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: AI80 (BuBMjNCr...)
+2026-06-26 19:12:11 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:12:11 - meme_bot.telegram_collector - ERROR - Cannot start collector - no client
+2026-06-26 19:12:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 10G (9ziY2cJC...)
+2026-06-26 19:12:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 10G (9ziY2cJC...)
+2026-06-26 19:12:22 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 10G (FCUPh2jM...)
+2026-06-26 19:12:22 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 10G (FCUPh2jM...)
+2026-06-26 19:12:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 10G (CAMvbuJx...)
+2026-06-26 19:12:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 10G (CAMvbuJx...)
+2026-06-26 19:12:25 - meme_bot - INFO - TRADE NO TRACK: EPjFWdd5... txType=create
+2026-06-26 19:12:39 - meme_bot.pump_collector - INFO - 🔄 Pump collector cycle started...
+2026-06-26 19:12:40 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 10克 (bwamJzzt...)
+2026-06-26 19:12:40 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 10克 (bwamJzzt...)
+2026-06-26 19:12:47 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Chameleon (9T15zXmq...)
+2026-06-26 19:12:47 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Hiplet (GFA2t9fZ...)
+2026-06-26 19:12:47 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Hiplet (GFA2t9fZ...)
+2026-06-26 19:12:50 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 10克 (7XxGoRX1...)
+2026-06-26 19:12:50 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 10克 (7XxGoRX1...)
+2026-06-26 19:12:51 - meme_bot - INFO - 🔧 Self-heal: killed stale PID 10378 (instance: main)
+2026-06-26 19:13:02 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: RELIGION (BqtQh5of...)
+2026-06-26 19:13:02 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BURNIE (7naFFwuE...)
+2026-06-26 19:13:02 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BURNIE (FTuqW6J1...)
+2026-06-26 19:13:02 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: boden (7GhWwhaM...)
+2026-06-26 19:13:02 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ENDY (8pYJjGzN...)
+2026-06-26 19:13:02 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 10克 (7XxGoRX1...)
+2026-06-26 19:13:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BURNIE (4W3fiTa3...)
+2026-06-26 19:13:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: STL (EAbuAjF6...)
+2026-06-26 19:13:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 10克 (7XxGoRX1...)
+2026-06-26 19:13:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PNUT (CJYNMqDZ...)
+2026-06-26 19:13:18 - meme_bot.gmgn_trending - ERROR - Trending scan error: 
+2026-06-26 19:13:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: AVA (BuBMjNCr...)
+2026-06-26 19:13:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BURNIE (FCUPh2jM...)
+2026-06-26 19:13:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PNUT (BCuAu2fi...)
+2026-06-26 19:13:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: burnie (7GhWwhaM...)
+2026-06-26 19:13:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BURNIE (7naFFwuE...)
+2026-06-26 19:13:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CUM (3bVQnNgX...)
+2026-06-26 19:13:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GPTNUT (xfxxqS4t...)
+2026-06-26 19:13:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FUCKFLOCK (2EU3eYEV...)
+2026-06-26 19:13:19 - meme_bot - INFO - 🚫 Serial deployer blocked: THC deployer 2bmQdcGz... has 2 tokens
+2026-06-26 19:13:19 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BURNIE (7naFFwuE...)
+2026-06-26 19:13:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Aware (B1cJJMst...)
+2026-06-26 19:13:23 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: pnutboden (BT9PhhxA...)
+2026-06-26 19:13:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BURNIE (WB6dqX3n...)
+2026-06-26 19:13:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GPTNUT (23QuARJv...)
+2026-06-26 19:13:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: hat  (ATaCaRoE...)
+2026-06-26 19:13:29 - meme_bot - INFO - 🔍 pre-mig scan: 115 launches in queue
+2026-06-26 19:13:30 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:13:30 - meme_bot - INFO - [SKIP] chatcoin: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PNUT (CxxcsDAo...)
+2026-06-26 19:13:30 - meme_bot - INFO - [SKIP] BAGE: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:31 - meme_bot - INFO - [SKIP] chatcoin: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:32 - meme_bot - INFO - [SKIP] PERSPECTIVE: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:32 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (75GMVrr2...)
+2026-06-26 19:13:32 - meme_bot - INFO - [SKIP] PERSPECTIVE: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:33 - meme_bot - INFO - [SKIP] NIGGER: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: pnutboden (FciWQ5qf...)
+2026-06-26 19:13:33 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:33 - meme_bot - INFO - [SKIP] FUCKFLOCK: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Tatis the Tam (JC7BYVeB...)
+2026-06-26 19:13:34 - meme_bot - INFO - [SKIP] Chameleon: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:34 - meme_bot - INFO - [SKIP] Alerts: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:34 - meme_bot - INFO - [SKIP] FISSION: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:35 - meme_bot - INFO - [SKIP] USTRD: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:35 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:35 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:36 - meme_bot - INFO - [SKIP] ROAR: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:36 - meme_bot - INFO - [SKIP] X-COIN: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:36 - meme_bot - INFO - [SKIP] STAYPOOR: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:37 - meme_bot - INFO - [SKIP] HARVEST: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:37 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:38 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:38 - meme_bot - INFO - [SKIP] usefulp: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:39 - meme_bot - INFO - [SKIP] MBGA: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:39 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:40 - meme_bot - INFO - [SKIP] Postly: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:41 - meme_bot - INFO - [SKIP] PAWS: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Bnut (CEUuEUQT...)
+2026-06-26 19:13:41 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:42 - meme_bot - INFO - [SKIP] Chameleon: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TELE (BuBMjNCr...)
+2026-06-26 19:13:43 - meme_bot - INFO - [SKIP] PVP: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:43 - meme_bot - INFO - [SKIP] FAGGOT: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:44 - meme_bot - INFO - 🚫 Serial deployer blocked: TRUMP deployer 7y61vZ8w... has 3 tokens
+2026-06-26 19:13:44 - meme_bot - INFO - [SKIP] SOLGOD: pre-mig — zero LP ($0) scam
+2026-06-26 19:13:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 19:13:45 - meme_bot - INFO - [SKIP] PVP: price dumped 76% from ATH dead
+2026-06-26 19:13:46 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Bnut (BCuAu2fi...)
+2026-06-26 19:13:46 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Bnut (CJYNMqDZ...)
+2026-06-26 19:13:48 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:13:49 - meme_bot - INFO - [SKIP] UPPY: price dumped 92% from ATH dead
+2026-06-26 19:13:50 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (DhmZJgCv...)
+2026-06-26 19:13:51 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBPnut (FTuqW6J1...)
+2026-06-26 19:13:51 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (9rDMVCH7...)
+2026-06-26 19:13:51 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:13:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Grok 5.6 (JC1irmi7...)
+2026-06-26 19:13:53 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:13:55 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (AV7PjXHL...)
+2026-06-26 19:13:55 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:13:56 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Bnut (AqsW2qxw...)
+2026-06-26 19:13:56 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Grok 5.6 (9ziY2cJC...)
+2026-06-26 19:13:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Bnut (5RQ1UWAT...)
+2026-06-26 19:13:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GROK (CAMvbuJx...)
+2026-06-26 19:13:58 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:13:58 - meme_bot - INFO - ট্র্যাক: 7 | লঞ্চ: 124 | পাম্প: 0
+2026-06-26 19:14:00 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GPT5.7 (EvdJRftB...)
+2026-06-26 19:14:00 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DIPIT (BuBMjNCr...)
+2026-06-26 19:14:01 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBB (23QuARJv...)
+2026-06-26 19:14:02 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (9FAkLRMp...)
+2026-06-26 19:14:04 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (CdNWVFQU...)
+2026-06-26 19:14:04 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (7GhWwhaM...)
+2026-06-26 19:14:06 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBPnut (CxxcsDAo...)
+2026-06-26 19:14:07 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Aware (B1cJJMst...)
+2026-06-26 19:14:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BNUT (HXuuXP9Z...)
+2026-06-26 19:14:10 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 8372 deployer
+2026-06-26 19:14:10 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-26 19:14:10 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-26 19:14:10 - meme_bot - INFO - 📡 Telegram collector loop started
+2026-06-26 19:14:11 - meme_bot.social_tracker - INFO - [SOCIAL] Backfilled 0 tokens from tracked data
+2026-06-26 19:14:11 - meme_bot - INFO - 📊 Signal review loop started (every 6h)
+2026-06-26 19:14:11 - meme_bot - INFO - 🔥 Convergence scan loop started (every 60s)
+2026-06-26 19:14:11 - meme_bot - INFO - 🔍 GMGN Trending scanner started (every 5min)
+2026-06-26 19:14:11 - meme_bot - INFO - 🔬 TokenScan monitor started (every 10min)
+2026-06-26 19:14:11 - meme_bot - INFO - 🚨 Alert sender loop started (every 10s)
+2026-06-26 19:14:11 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-26 19:14:11 - meme_bot - INFO - 📊 Midnight summary in 4h 45m
+2026-06-26 19:14:11 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-26 19:14:11 - meme_bot.telegram_collector - INFO - Starting Telegram collector loop...
+2026-06-26 19:14:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (FUwBg3eS...)
+2026-06-26 19:14:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (FUwBg3eS...)
+2026-06-26 19:14:15 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:14:15 - meme_bot.telegram_collector - ERROR - Cannot start collector - no client
+2026-06-26 19:14:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (29yFzeBZ...)
+2026-06-26 19:14:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (29yFzeBZ...)
+2026-06-26 19:14:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (49Sx66Tc...)
+2026-06-26 19:14:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (49Sx66Tc...)
+2026-06-26 19:14:16 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TRUMP (7y61vZ8w...)
+2026-06-26 19:14:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BNUT (7naFFwuE...)
+2026-06-26 19:14:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BNUT (7naFFwuE...)
+2026-06-26 19:14:19 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GPnuT (AMEd7bE5...)
+2026-06-26 19:14:19 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GPnuT (AMEd7bE5...)
+2026-06-26 19:14:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50K (BuBMjNCr...)
+2026-06-26 19:14:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50K (BuBMjNCr...)
+2026-06-26 19:14:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (4W3fiTa3...)
+2026-06-26 19:14:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (4W3fiTa3...)
+2026-06-26 19:14:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GPT5.7 (EvdJRftB...)
+2026-06-26 19:14:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GPT5.7 (EvdJRftB...)
+2026-06-26 19:14:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP-5.7 (H6PFZeTA...)
+2026-06-26 19:14:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP-5.7 (H6PFZeTA...)
+2026-06-26 19:14:30 - meme_bot - INFO - TRADE NO TRACK: EPjFWdd5... txType=create
+2026-06-26 19:14:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (61GQQJWi...)
+2026-06-26 19:14:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (61GQQJWi...)
+2026-06-26 19:14:39 - meme_bot - INFO - 🚫 Serial deployer blocked: TYS deployer 3knpqMuU... has 2 tokens
+2026-06-26 19:14:39 - meme_bot - INFO - 🚫 Serial deployer blocked: Cigarette deployer 5AC5pCfv... has 2 tokens
+2026-06-26 19:14:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (5RQ1UWAT...)
+2026-06-26 19:14:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (5RQ1UWAT...)
+2026-06-26 19:14:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (DhmZJgCv...)
+2026-06-26 19:14:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (DhmZJgCv...)
+2026-06-26 19:14:41 - meme_bot.pump_collector - INFO - 🔄 Pump collector cycle started...
+2026-06-26 19:14:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (8pYJjGzN...)
+2026-06-26 19:14:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (8pYJjGzN...)
+2026-06-26 19:14:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GROK (DwyEawtM...)
+2026-06-26 19:14:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GROK (DwyEawtM...)
+2026-06-26 19:14:48 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: AMMENO (B1cJJMst...)
+2026-06-26 19:14:53 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBPnut (HJKuPTUV...)
+2026-06-26 19:14:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: COFFE5 (BuBMjNCr...)
+2026-06-26 19:14:58 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BNUT (7naFFwuE...)
+2026-06-26 19:14:58 - meme_bot - INFO - 🔧 Self-heal: killed stale PID 11554 (instance: main)
+2026-06-26 19:14:58 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: AMMENO (B1cJJMst...)
+2026-06-26 19:15:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBPnut (HJKuPTUV...)
+2026-06-26 19:15:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Chameleon (9T15zXmq...)
+2026-06-26 19:15:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: COFFE5 (BuBMjNCr...)
+2026-06-26 19:15:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BNUT (7naFFwuE...)
+2026-06-26 19:15:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (BT9PhhxA...)
+2026-06-26 19:15:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (GdRSPexh...)
+2026-06-26 19:15:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BNUT (8i5U2uNB...)
+2026-06-26 19:15:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (FUwBg3eS...)
+2026-06-26 19:15:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP-5.7 (H6PFZeTA...)
+2026-06-26 19:15:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GROK 5 (CyJLNEWd...)
+2026-06-26 19:15:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (8YcbyX92...)
+2026-06-26 19:15:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GPT-5.6 BBP (8b7YqpDd...)
+2026-06-26 19:15:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GPT6 (ETroz4qu...)
+2026-06-26 19:15:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (8NJ7Ujpj...)
+2026-06-26 19:15:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP 5 (H6PFZeTA...)
+2026-06-26 19:15:32 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TYS (3knpqMuU...)
+2026-06-26 19:15:35 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:15:35 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (GdRSPexh...)
+2026-06-26 19:15:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JOHN7000 (BuBMjNCr...)
+2026-06-26 19:15:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Bugs (GPPLkYXN...)
+2026-06-26 19:15:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GrokNut 5.7 (F5XvCe42...)
+2026-06-26 19:15:40 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Bugs (GPPLkYXN...)
+2026-06-26 19:15:43 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Bugs (GPPLkYXN...)
+2026-06-26 19:15:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (AtZ424xr...)
+2026-06-26 19:15:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LEIA (BuBMjNCr...)
+2026-06-26 19:15:55 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GPT6 (ETroz4qu...)
+2026-06-26 19:15:56 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Tyjuan  (CZ1arE9s...)
+2026-06-26 19:16:06 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LULU (C7wkjfmQ...)
+2026-06-26 19:16:09 - meme_bot - INFO - 🔍 pre-mig scan: 143 launches in queue
+2026-06-26 19:16:09 - meme_bot - INFO - [SKIP] chatcoin: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:10 - meme_bot - INFO - [SKIP] BAGE: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:10 - meme_bot - INFO - [SKIP] chatcoin: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:11 - meme_bot - INFO - [SKIP] PERSPECTIVE: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:11 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 8372 deployer
+2026-06-26 19:16:11 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-26 19:16:11 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-26 19:16:11 - meme_bot - INFO - 📡 Telegram collector loop started
+2026-06-26 19:16:12 - meme_bot - INFO - [SKIP] PERSPECTIVE: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 5.0 (xfxxqS4t...)
+2026-06-26 19:16:12 - meme_bot.social_tracker - INFO - [SOCIAL] Backfilled 0 tokens from tracked data
+2026-06-26 19:16:12 - meme_bot - INFO - 📊 Signal review loop started (every 6h)
+2026-06-26 19:16:12 - meme_bot - INFO - 🔥 Convergence scan loop started (every 60s)
+2026-06-26 19:16:12 - meme_bot - INFO - 🔍 GMGN Trending scanner started (every 5min)
+2026-06-26 19:16:12 - meme_bot - INFO - 🔬 TokenScan monitor started (every 10min)
+2026-06-26 19:16:12 - meme_bot - INFO - 🚨 Alert sender loop started (every 10s)
+2026-06-26 19:16:12 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-26 19:16:12 - meme_bot - INFO - 📊 Midnight summary in 4h 43m
+2026-06-26 19:16:12 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-26 19:16:12 - meme_bot.telegram_collector - INFO - Starting Telegram collector loop...
+2026-06-26 19:16:12 - meme_bot - INFO - [SKIP] NIGGER: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (FUwBg3eS...)
+2026-06-26 19:16:13 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:14 - meme_bot - INFO - [SKIP] FUCKFLOCK: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Bugs (GPPLkYXN...)
+2026-06-26 19:16:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Bugs (GPPLkYXN...)
+2026-06-26 19:16:14 - meme_bot - INFO - [SKIP] Chameleon: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: UGLY1 (BuBMjNCr...)
+2026-06-26 19:16:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: UGLY1 (BuBMjNCr...)
+2026-06-26 19:16:15 - meme_bot - INFO - [SKIP] Alerts: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: omen (B1cJJMst...)
+2026-06-26 19:16:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: omen (B1cJJMst...)
+2026-06-26 19:16:16 - meme_bot - INFO - [SKIP] FISSION: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:16 - meme_bot - INFO - [SKIP] USTRD: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:16 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:16:16 - meme_bot.telegram_collector - ERROR - Cannot start collector - no client
+2026-06-26 19:16:18 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:19 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:19 - meme_bot - INFO - [SKIP] ROAR: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TRUMP (7y61vZ8w...)
+2026-06-26 19:16:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (GdRSPexh...)
+2026-06-26 19:16:20 - meme_bot - INFO - [SKIP] X-COIN: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (GdRSPexh...)
+2026-06-26 19:16:21 - meme_bot - INFO - [SKIP] STAYPOOR: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:21 - meme_bot - INFO - [SKIP] HARVEST: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:22 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:23 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:23 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 19:16:23 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 19:16:23 - meme_bot - INFO - [SKIP] usefulp: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:24 - meme_bot - INFO - 🚫 Serial deployer blocked: DIV deployer 9xdS5Tud... has 2 tokens
+2026-06-26 19:16:24 - meme_bot - INFO - [SKIP] MBGA: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:25 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:25 - meme_bot - INFO - [SKIP] Postly: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (2EpBoAdo...)
+2026-06-26 19:16:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (2EpBoAdo...)
+2026-06-26 19:16:26 - meme_bot - INFO - [SKIP] PAWS: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:27 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:27 - meme_bot - INFO - [SKIP] Chameleon: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:28 - meme_bot - INFO - [SKIP] PVP: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:29 - meme_bot - INFO - [SKIP] FAGGOT: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:29 - meme_bot - INFO - [SKIP] SOLGOD: pre-mig — zero LP ($0) scam
+2026-06-26 19:16:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BNUT (7naFFwuE...)
+2026-06-26 19:16:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BNUT (7naFFwuE...)
+2026-06-26 19:16:31 - meme_bot - INFO - [SKIP] PVP: price dumped 82% from ATH dead
+2026-06-26 19:16:31 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (FcQHth9X...)
+2026-06-26 19:16:31 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (FcQHth9X...)
+2026-06-26 19:16:32 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:16:34 - meme_bot - INFO - [SKIP] UPPY: price dumped 92% from ATH dead
+2026-06-26 19:16:36 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:16:38 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:16:41 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:16:42 - meme_bot.pump_collector - INFO - 🔄 Pump collector cycle started...
+2026-06-26 19:16:43 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (8i5U2uNB...)
+2026-06-26 19:16:43 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (8i5U2uNB...)
+2026-06-26 19:16:43 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:16:43 - meme_bot - INFO - ট্র্যাক: 7 | লঞ্চ: 150 | পাম্প: 0
+2026-06-26 19:16:43 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MEMILIKI (DetXn4fL...)
+2026-06-26 19:16:43 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MEMILIKI (DetXn4fL...)
+2026-06-26 19:16:46 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: OMG7000 (BuBMjNCr...)
+2026-06-26 19:16:46 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: OMG7000 (BuBMjNCr...)
+2026-06-26 19:16:47 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:16:47 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:16:50 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (8b7YqpDd...)
+2026-06-26 19:16:50 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (8b7YqpDd...)
+2026-06-26 19:16:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (FUwBg3eS...)
+2026-06-26 19:16:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (FUwBg3eS...)
+2026-06-26 19:16:59 - meme_bot - INFO - 🔧 Self-heal: killed stale PID 12203 (instance: main)
+2026-06-26 19:17:01 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TYS (3knpqMuU...)
+2026-06-26 19:17:03 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TRADE[XYZ] (CAMvbuJx...)
+2026-06-26 19:17:07 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SPCX (DLQC7ts2...)
+2026-06-26 19:17:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (5RQ1UWAT...)
+2026-06-26 19:17:16 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 6 (BuBMjNCr...)
+2026-06-26 19:17:19 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: INJECT (5MTjkAZM...)
+2026-06-26 19:17:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (bwamJzzt...)
+2026-06-26 19:17:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Gooner (G3Nyg2ww...)
+2026-06-26 19:17:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SPCX6900 (CyJLNEWd...)
+2026-06-26 19:17:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Ace  (ATaCaRoE...)
+2026-06-26 19:17:34 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 19:17:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:17:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: POOP (BuBMjNCr...)
+2026-06-26 19:17:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TYS (3knpqMuU...)
+2026-06-26 19:17:58 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SAPWK (BuBMjNCr...)
+2026-06-26 19:18:09 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: INJECT (5MTjkAZM...)
+2026-06-26 19:18:10 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 8372 deployer
+2026-06-26 19:18:10 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-26 19:18:10 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-26 19:18:10 - meme_bot - INFO - 📡 Telegram collector loop started
+2026-06-26 19:18:10 - meme_bot.social_tracker - INFO - [SOCIAL] Backfilled 0 tokens from tracked data
+2026-06-26 19:18:10 - meme_bot - INFO - 📊 Signal review loop started (every 6h)
+2026-06-26 19:18:10 - meme_bot - INFO - 🔥 Convergence scan loop started (every 60s)
+2026-06-26 19:18:10 - meme_bot - INFO - 🔍 GMGN Trending scanner started (every 5min)
+2026-06-26 19:18:10 - meme_bot - INFO - 🔬 TokenScan monitor started (every 10min)
+2026-06-26 19:18:10 - meme_bot - INFO - 🚨 Alert sender loop started (every 10s)
+2026-06-26 19:18:10 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-26 19:18:10 - meme_bot - INFO - 📊 Midnight summary in 4h 41m
+2026-06-26 19:18:10 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-26 19:18:10 - meme_bot.telegram_collector - INFO - Starting Telegram collector loop...
+2026-06-26 19:18:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MAYA (BuBMjNCr...)
+2026-06-26 19:18:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MAYA (BuBMjNCr...)
+2026-06-26 19:18:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: RAGNAR (HobNMfvn...)
+2026-06-26 19:18:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: RAGNAR (HobNMfvn...)
+2026-06-26 19:18:13 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:18:13 - meme_bot.telegram_collector - ERROR - Cannot start collector - no client
+2026-06-26 19:18:20 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: attempt to write a readonly database
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/dist-packages/telethon/client/updates.py", line 552, in _keepalive_loop
+    await self._save_states_and_entities()
+  File "/usr/local/lib/python3.12/dist-packages/telethon/client/telegrambaseclient.py", line 715, in _save_states_and_entities
+    await utils.maybe_async(self.session.set_update_state(0, types.updates.State(**ss, unread_count=0)))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/telethon/sessions/sqlite.py", line 231, in set_update_state
+    self._execute('insert or replace into update_state values (?,?,?,?,?)',
+  File "/usr/local/lib/python3.12/dist-packages/telethon/sessions/sqlite.py", line 270, in _execute
+    return c.execute(stmt, values).fetchone()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: attempt to write a readonly database
+2026-06-26 19:18:20 - meme_bot - ERROR - 💥 UNHANDLED EXCEPTION: Connection to Telegram failed 5 time(s)
+ConnectionError: Connection to Telegram failed 5 time(s)
+2026-06-26 19:18:21 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: omen (B1cJJMst...)
+2026-06-26 19:18:21 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: omen (B1cJJMst...)
+2026-06-26 19:18:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:18:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:18:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (D2UgHejc...)
+2026-06-26 19:18:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (D2UgHejc...)
+2026-06-26 19:18:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (D2UgHejc...)
+2026-06-26 19:18:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (D2UgHejc...)
+2026-06-26 19:18:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (D2UgHejc...)
+2026-06-26 19:18:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (D2UgHejc...)
+2026-06-26 19:18:31 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:18:31 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Not Epstein (7XQyoTSo...)
+2026-06-26 19:18:31 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Not Epstein (7XQyoTSo...)
+2026-06-26 19:18:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SÁNCHEZ (7XxGoRX1...)
+2026-06-26 19:18:40 - meme_bot.pump_collector - INFO - 🔄 Pump collector cycle started...
+2026-06-26 19:18:47 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SÁNCHEZ (7XxGoRX1...)
+2026-06-26 19:18:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CHUDLET (DVhwSE98...)
+2026-06-26 19:18:51 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SÁNCHEZ (7XxGoRX1...)
+2026-06-26 19:18:53 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CLAVED (BuBMjNCr...)
+2026-06-26 19:18:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SÁNCHEZ (7XxGoRX1...)
+2026-06-26 19:18:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CHUDLET (DVhwSE98...)
+2026-06-26 19:18:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CLAVED (BuBMjNCr...)
+2026-06-26 19:18:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BTT (9T15zXmq...)
+2026-06-26 19:18:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FUCKFLOCK (2EU3eYEV...)
+2026-06-26 19:18:59 - meme_bot - INFO - 🔧 Self-heal: killed stale PID 13565 (instance: main)
+2026-06-26 19:19:06 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 19:19:07 - meme_bot - INFO - 🔍 pre-mig scan: 158 launches in queue
+2026-06-26 19:19:07 - meme_bot - INFO - [SKIP] chatcoin: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:08 - meme_bot - INFO - [SKIP] BAGE: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:08 - meme_bot - INFO - [SKIP] chatcoin: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:09 - meme_bot - INFO - [SKIP] PERSPECTIVE: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:10 - meme_bot - INFO - [SKIP] PERSPECTIVE: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:10 - meme_bot - INFO - [SKIP] NIGGER: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:11 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:12 - meme_bot - INFO - [SKIP] FUCKFLOCK: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DECOUPLING (bwamJzzt...)
+2026-06-26 19:19:13 - meme_bot - INFO - [SKIP] Chameleon: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:13 - meme_bot - INFO - [SKIP] Alerts: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:14 - meme_bot - INFO - [SKIP] FISSION: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:15 - meme_bot - INFO - [SKIP] USTRD: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HORMUZ (FU3LdAH5...)
+2026-06-26 19:19:15 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:16 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:17 - meme_bot - INFO - [SKIP] ROAR: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:17 - meme_bot - INFO - [SKIP] X-COIN: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:18 - meme_bot - INFO - [SKIP] STAYPOOR: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:19 - meme_bot - INFO - [SKIP] HARVEST: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:19 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:20 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:21 - meme_bot - INFO - [SKIP] usefulp: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:22 - meme_bot - INFO - [SKIP] MBGA: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:23 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:24 - meme_bot - INFO - [SKIP] Postly: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:24 - meme_bot - INFO - [SKIP] PAWS: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:25 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:26 - meme_bot - INFO - [SKIP] Chameleon: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Starlink (7XxGoRX1...)
+2026-06-26 19:19:26 - meme_bot - INFO - [SKIP] PVP: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:27 - meme_bot - INFO - [SKIP] FAGGOT: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:28 - meme_bot - INFO - [SKIP] SOLGOD: pre-mig — zero LP ($0) scam
+2026-06-26 19:19:29 - meme_bot - INFO - [SKIP] PVP: price dumped 85% from ATH dead
+2026-06-26 19:19:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CADE45 (BuBMjNCr...)
+2026-06-26 19:19:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: world (9xdS5Tud...)
+2026-06-26 19:19:31 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:19:32 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Starlink (7XxGoRX1...)
+2026-06-26 19:19:32 - meme_bot - INFO - [SKIP] UPPY: price dumped 92% from ATH dead
+2026-06-26 19:19:34 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:19:36 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:19:39 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:19:40 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:19:40 - meme_bot - INFO - ট্র্যাক: 7 | লঞ্চ: 161 | পাম্প: 0
+2026-06-26 19:19:43 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 🔥 (7FVfSdnR...)
+2026-06-26 19:19:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (75GMVrr2...)
+2026-06-26 19:19:48 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: trump2027 (EDyPdeUg...)
+2026-06-26 19:19:48 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LANAL (35SFgbJy...)
+2026-06-26 19:19:51 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:19:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DATA (3h6sRMnv...)
+2026-06-26 19:19:55 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CRONK (FTTGwytZ...)
+2026-06-26 19:19:55 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 1% (BuBMjNCr...)
+2026-06-26 19:19:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MMGA (FmyPYQmJ...)
+2026-06-26 19:20:09 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 8372 deployer
+2026-06-26 19:20:09 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-26 19:20:09 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-26 19:20:09 - meme_bot - INFO - 📡 Telegram collector loop started
+2026-06-26 19:20:10 - meme_bot.social_tracker - INFO - [SOCIAL] Backfilled 0 tokens from tracked data
+2026-06-26 19:20:10 - meme_bot - INFO - 📊 Signal review loop started (every 6h)
+2026-06-26 19:20:10 - meme_bot - INFO - 🔥 Convergence scan loop started (every 60s)
+2026-06-26 19:20:10 - meme_bot - INFO - 🔍 GMGN Trending scanner started (every 5min)
+2026-06-26 19:20:10 - meme_bot - INFO - 🔬 TokenScan monitor started (every 10min)
+2026-06-26 19:20:10 - meme_bot - INFO - 🚨 Alert sender loop started (every 10s)
+2026-06-26 19:20:10 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-26 19:20:10 - meme_bot - INFO - 📊 Midnight summary in 4h 39m
+2026-06-26 19:20:10 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-26 19:20:10 - meme_bot.telegram_collector - INFO - Starting Telegram collector loop...
+2026-06-26 19:20:12 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:20:12 - meme_bot.telegram_collector - ERROR - Cannot start collector - no client
+2026-06-26 19:20:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOLDIERS (bwamJzzt...)
+2026-06-26 19:20:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOLDIERS (bwamJzzt...)
+2026-06-26 19:20:32 - meme_bot - INFO - TRADE NO TRACK: EPjFWdd5... txType=create
+2026-06-26 19:20:40 - meme_bot.pump_collector - INFO - 🔄 Pump collector cycle started...
+2026-06-26 19:20:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TYS (3knpqMuU...)
+2026-06-26 19:20:45 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FROSTY (BuBMjNCr...)
+2026-06-26 19:20:46 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LANAL (35SFgbJy...)
+2026-06-26 19:20:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FROSTY (BuBMjNCr...)
+2026-06-26 19:20:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LANAL (35SFgbJy...)
+2026-06-26 19:20:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FUCKFLOCK (2EU3eYEV...)
+2026-06-26 19:21:00 - meme_bot - INFO - 🔧 Self-heal: killed stale PID 14786 (instance: main)
+2026-06-26 19:21:04 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: NARCISM (CgJUFSVJ...)
+2026-06-26 19:21:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JD (BuBMjNCr...)
+2026-06-26 19:21:15 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MMGA (FmyPYQmJ...)
+2026-06-26 19:21:16 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 19:21:17 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: tipping (7GhWwhaM...)
+2026-06-26 19:21:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:21:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: omen (B1cJJMst...)
+2026-06-26 19:21:34 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LANAL (35SFgbJy...)
+2026-06-26 19:21:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WWH  (FRXSTY8n...)
+2026-06-26 19:21:48 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:21:51 - meme_bot - INFO - 🔍 pre-mig scan: 180 launches in queue
+2026-06-26 19:21:52 - meme_bot - INFO - [SKIP] chatcoin: pre-mig — zero LP ($0) scam
+2026-06-26 19:21:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 19:21:52 - meme_bot - INFO - [SKIP] BAGE: pre-mig — zero LP ($0) scam
+2026-06-26 19:21:53 - meme_bot - INFO - [SKIP] chatcoin: pre-mig — zero LP ($0) scam
+2026-06-26 19:21:53 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50K (BuBMjNCr...)
+2026-06-26 19:21:53 - meme_bot - INFO - [SKIP] PERSPECTIVE: pre-mig — zero LP ($0) scam
+2026-06-26 19:21:54 - meme_bot - INFO - [SKIP] PERSPECTIVE: pre-mig — zero LP ($0) scam
+2026-06-26 19:21:55 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (49Sx66Tc...)
+2026-06-26 19:21:55 - meme_bot - INFO - [SKIP] NIGGER: pre-mig — zero LP ($0) scam
+2026-06-26 19:21:55 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Thomas (DVhwSE98...)
+2026-06-26 19:21:56 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:21:56 - meme_bot - INFO - [SKIP] FUCKFLOCK: pre-mig — zero LP ($0) scam
+2026-06-26 19:21:57 - meme_bot - INFO - [SKIP] Chameleon: pre-mig — zero LP ($0) scam
+2026-06-26 19:21:58 - meme_bot - INFO - [SKIP] Alerts: pre-mig — zero LP ($0) scam
+2026-06-26 19:21:58 - meme_bot - INFO - [SKIP] FISSION: pre-mig — zero LP ($0) scam
+2026-06-26 19:21:59 - meme_bot - INFO - [SKIP] USTRD: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:00 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:00 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:01 - meme_bot - INFO - [SKIP] ROAR: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:02 - meme_bot - INFO - [SKIP] X-COIN: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:02 - meme_bot - INFO - [SKIP] STAYPOOR: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:03 - meme_bot - INFO - [SKIP] HARVEST: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:04 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:04 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:05 - meme_bot - INFO - [SKIP] usefulp: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:06 - meme_bot - INFO - [SKIP] MBGA: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:06 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:07 - meme_bot - INFO - [SKIP] Postly: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:07 - meme_bot - INFO - [SKIP] PAWS: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LANAL (35SFgbJy...)
+2026-06-26 19:22:08 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:08 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 8372 deployer
+2026-06-26 19:22:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TYS (3knpqMuU...)
+2026-06-26 19:22:09 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-26 19:22:09 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-26 19:22:09 - meme_bot - INFO - 📡 Telegram collector loop started
+2026-06-26 19:22:09 - meme_bot - INFO - [SKIP] Chameleon: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:09 - meme_bot.social_tracker - INFO - [SOCIAL] Backfilled 0 tokens from tracked data
+2026-06-26 19:22:09 - meme_bot - INFO - 📊 Signal review loop started (every 6h)
+2026-06-26 19:22:09 - meme_bot - INFO - 🔥 Convergence scan loop started (every 60s)
+2026-06-26 19:22:09 - meme_bot - INFO - 🔍 GMGN Trending scanner started (every 5min)
+2026-06-26 19:22:09 - meme_bot - INFO - 🔬 TokenScan monitor started (every 10min)
+2026-06-26 19:22:09 - meme_bot - INFO - 🚨 Alert sender loop started (every 10s)
+2026-06-26 19:22:09 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-26 19:22:09 - meme_bot - INFO - 📊 Midnight summary in 4h 37m
+2026-06-26 19:22:09 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-26 19:22:09 - meme_bot.telegram_collector - INFO - Starting Telegram collector loop...
+2026-06-26 19:22:09 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: AI (EndJzwh6...)
+2026-06-26 19:22:09 - meme_bot - INFO - [SKIP] PVP: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:10 - meme_bot - INFO - [SKIP] FAGGOT: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:11 - meme_bot - INFO - [SKIP] SOLGOD: pre-mig — zero LP ($0) scam
+2026-06-26 19:22:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (3DT6ByGN...)
+2026-06-26 19:22:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (3DT6ByGN...)
+2026-06-26 19:22:12 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:22:12 - meme_bot.telegram_collector - ERROR - Cannot start collector - no client
+2026-06-26 19:22:12 - meme_bot - INFO - [SKIP] PVP: price dumped 86% from ATH dead
+2026-06-26 19:22:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (3DT6ByGN...)
+2026-06-26 19:22:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (3DT6ByGN...)
+2026-06-26 19:22:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: soyjak (5BVLzCnT...)
+2026-06-26 19:22:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: soyjak (5BVLzCnT...)
+2026-06-26 19:22:15 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:22:16 - meme_bot - INFO - [SKIP] UPPY: price dumped 91% from ATH dead
+2026-06-26 19:22:17 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (3DT6ByGN...)
+2026-06-26 19:22:17 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (3DT6ByGN...)
+2026-06-26 19:22:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Chameleon (9T15zXmq...)
+2026-06-26 19:22:18 - meme_bot - INFO - TRADE NO TRACK: EPjFWdd5... txType=create
+2026-06-26 19:22:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (3DT6ByGN...)
+2026-06-26 19:22:18 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (3DT6ByGN...)
+2026-06-26 19:22:18 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:22:20 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:22:22 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:22:22 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:22:22 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:22:25 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:22:25 - meme_bot - INFO - ট্র্যাক: 7 | লঞ্চ: 183 | পাম্প: 0
+2026-06-26 19:22:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 300K (BuBMjNCr...)
+2026-06-26 19:22:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 300K (BuBMjNCr...)
+2026-06-26 19:22:32 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: omen (B1cJJMst...)
+2026-06-26 19:22:32 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: omen (B1cJJMst...)
+2026-06-26 19:22:39 - meme_bot.pump_collector - INFO - 🔄 Pump collector cycle started...
+2026-06-26 19:22:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: tipping (FRXSTY8n...)
+2026-06-26 19:22:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: tipping (FRXSTY8n...)
+2026-06-26 19:22:51 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:22:51 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:22:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: NYC (BuBMjNCr...)
+2026-06-26 19:22:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: NYC (BuBMjNCr...)
+2026-06-26 19:23:01 - meme_bot - INFO - 🔧 Self-heal: killed stale PID 15227 (instance: main)
+2026-06-26 19:23:01 - meme_bot - INFO - 🚫 Serial deployer blocked: Memeluk deployer B1ZYNUku... has 2 tokens
+2026-06-26 19:23:01 - meme_bot - INFO - 🚫 Serial deployer blocked: Memeluk deployer B1ZYNUku... has 2 tokens
+2026-06-26 19:23:01 - meme_bot - INFO - 🚫 Serial deployer blocked: Memeluk deployer B1ZYNUku... has 2 tokens
+2026-06-26 19:23:01 - meme_bot - INFO - 🚫 Serial deployer blocked: Memeluk deployer B1ZYNUku... has 2 tokens
+2026-06-26 19:23:05 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: RITUAL (5AC5pCfv...)
+2026-06-26 19:23:09 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 63 (BuBMjNCr...)
+2026-06-26 19:23:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:23:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 🔥 (7FVfSdnR...)
+2026-06-26 19:23:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: popcorn (5ohHTjuC...)
+2026-06-26 19:23:32 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:23:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: D (BuBMjNCr...)
+2026-06-26 19:23:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:23:50 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CHAD  (12HAZefD...)
+2026-06-26 19:24:04 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: trenches (7GhWwhaM...)
+2026-06-26 19:24:06 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DABBY600 (BuBMjNCr...)
+2026-06-26 19:24:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HYDRATION (ARnZt3uN...)
+2026-06-26 19:24:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Chameleon (9T15zXmq...)
+2026-06-26 19:24:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:24:10 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 8372 deployer
+2026-06-26 19:24:11 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-26 19:24:11 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-26 19:24:11 - meme_bot - INFO - 📡 Telegram collector loop started
+2026-06-26 19:24:11 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FUCKFLOCK (2EU3eYEV...)
+2026-06-26 19:24:11 - meme_bot.social_tracker - INFO - [SOCIAL] Backfilled 0 tokens from tracked data
+2026-06-26 19:24:11 - meme_bot - INFO - 📊 Signal review loop started (every 6h)
+2026-06-26 19:24:11 - meme_bot - INFO - 🔥 Convergence scan loop started (every 60s)
+2026-06-26 19:24:11 - meme_bot - INFO - 🔍 GMGN Trending scanner started (every 5min)
+2026-06-26 19:24:11 - meme_bot - INFO - 🔬 TokenScan monitor started (every 10min)
+2026-06-26 19:24:11 - meme_bot - INFO - 🚨 Alert sender loop started (every 10s)
+2026-06-26 19:24:11 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-26 19:24:11 - meme_bot - INFO - 📊 Midnight summary in 4h 35m
+2026-06-26 19:24:11 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-26 19:24:11 - meme_bot.telegram_collector - INFO - Starting Telegram collector loop...
+2026-06-26 19:24:14 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:24:14 - meme_bot.telegram_collector - ERROR - Cannot start collector - no client
+2026-06-26 19:24:16 - meme_bot - INFO - TRADE NO TRACK: EPjFWdd5... txType=create
+2026-06-26 19:24:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VIP (BuBMjNCr...)
+2026-06-26 19:24:31 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CHATGPT (9ziY2cJC...)
+2026-06-26 19:24:34 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Asymmetric (Hh3zeEWt...)
+2026-06-26 19:24:41 - meme_bot.pump_collector - INFO - 🔄 Pump collector cycle started...
+2026-06-26 19:24:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VIP (BuBMjNCr...)
+2026-06-26 19:24:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CHATGPT (9ziY2cJC...)
+2026-06-26 19:24:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Asymmetric (Hh3zeEWt...)
+2026-06-26 19:24:46 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FUCKFLOCK (2EU3eYEV...)
+2026-06-26 19:24:54 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DON7000 (BuBMjNCr...)
+2026-06-26 19:24:54 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DON7000 (BuBMjNCr...)
+2026-06-26 19:24:56 - meme_bot - INFO - 🔍 pre-mig scan: 213 launches in queue
+2026-06-26 19:24:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 19:24:57 - meme_bot - INFO - [SKIP] chatcoin: pre-mig — zero LP ($0) scam
+2026-06-26 19:24:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 19:24:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: slinkpiss (6QDTeyMY...)
+2026-06-26 19:24:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: slinkpiss (6QDTeyMY...)
+2026-06-26 19:24:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (AMEd7bE5...)
+2026-06-26 19:24:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (AMEd7bE5...)
+2026-06-26 19:24:57 - meme_bot - INFO - [SKIP] BAGE: pre-mig — zero LP ($0) scam
+2026-06-26 19:24:58 - meme_bot - INFO - [SKIP] chatcoin: pre-mig — zero LP ($0) scam
+2026-06-26 19:24:59 - meme_bot - INFO - [SKIP] PERSPECTIVE: pre-mig — zero LP ($0) scam
+2026-06-26 19:25:00 - meme_bot - INFO - [SKIP] PERSPECTIVE: pre-mig — zero LP ($0) scam
+2026-06-26 19:25:00 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (AopYHZfQ...)
+2026-06-26 19:25:00 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (AopYHZfQ...)
+2026-06-26 19:25:00 - meme_bot - INFO - [SKIP] NIGGER: pre-mig — zero LP ($0) scam
+2026-06-26 19:25:01 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:25:01 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LANAL (35SFgbJy...)
+2026-06-26 19:25:01 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: LANAL (35SFgbJy...)
+2026-06-26 19:25:01 - meme_bot - INFO - 🔧 Self-heal: killed stale PID 16307 (instance: main)
+2026-06-26 19:25:02 - meme_bot - INFO - [SKIP] FUCKFLOCK: pre-mig — zero LP ($0) scam
+2026-06-26 19:25:03 - meme_bot - INFO - [SKIP] Chameleon: pre-mig — zero LP ($0) scam
+2026-06-26 19:25:04 - meme_bot - INFO - [SKIP] Alerts: pre-mig — zero LP ($0) scam
+2026-06-26 19:25:04 - meme_bot - INFO - [SKIP] FISSION: pre-mig — zero LP ($0) scam
+2026-06-26 19:25:05 - meme_bot - INFO - [SKIP] USTRD: pre-mig — zero LP ($0) scam
+2026-06-26 19:25:05 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:25:06 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:25:07 - meme_bot - INFO - [SKIP] ROAR: pre-mig — zero LP ($0) scam
+2026-06-26 19:25:07 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (29yFzeBZ...)
+2026-06-26 19:25:07 - meme_bot - INFO - [SKIP] X-COIN: pre-mig — zero LP ($0) scam
+2026-06-26 19:25:08 - meme_bot - INFO - [SKIP] STAYPOOR: pre-mig — zero LP ($0) scam
+2026-06-26 19:25:09 - meme_bot - INFO - [SKIP] HARVEST: pre-mig — zero LP ($0) scam
+2026-06-26 19:25:10 - meme_bot - INFO - [SKIP] VWAMP: pre-mig — zero LP ($0) scam
+2026-06-26 19:37:17 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 8372 deployer
+2026-06-26 19:37:17 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-26 19:37:17 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-26 19:37:17 - meme_bot - INFO - 📡 Telegram collector loop started
+2026-06-26 19:37:17 - meme_bot.social_tracker - INFO - [SOCIAL] Backfilled 0 tokens from tracked data
+2026-06-26 19:37:17 - meme_bot - INFO - 📊 Signal review loop started (every 6h)
+2026-06-26 19:37:17 - meme_bot - INFO - 🔥 Convergence scan loop started (every 60s)
+2026-06-26 19:37:17 - meme_bot - INFO - 🔍 GMGN Trending scanner started (every 5min)
+2026-06-26 19:37:17 - meme_bot - INFO - 🔬 TokenScan monitor started (every 10min)
+2026-06-26 19:37:17 - meme_bot - INFO - 🚨 Alert sender loop started (every 10s)
+2026-06-26 19:37:18 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-26 19:37:18 - meme_bot - INFO - 📊 Midnight summary in 4h 22m
+2026-06-26 19:37:18 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-26 19:37:18 - meme_bot.telegram_collector - INFO - Starting Telegram collector loop...
+2026-06-26 19:37:19 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:37:19 - meme_bot.telegram_collector - ERROR - Cannot start collector - no client
+2026-06-26 19:37:23 - meme_bot - INFO - TRADE NO TRACK: EPjFWdd5... txType=create
+2026-06-26 19:37:28 - meme_bot - WARNING - 📴 Signal 15 received — ignoring (platform keepalive)
+2026-06-26 19:37:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (GPPLkYXN...)
+2026-06-26 19:37:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GULF (2TAxiE3P...)
+2026-06-26 19:37:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MBAPPE (bwamJzzt...)
+2026-06-26 19:37:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 19:37:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:37:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CHUCK (BuBMjNCr...)
+2026-06-26 19:37:48 - meme_bot.pump_collector - INFO - 🔄 Pump collector cycle started...
+2026-06-26 19:37:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BERRYBOYS (B1cJJMst...)
+2026-06-26 19:37:58 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 8372 deployer
+2026-06-26 19:37:59 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-26 19:37:59 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-26 19:37:59 - meme_bot - INFO - 📡 Telegram collector loop started
+2026-06-26 19:38:00 - meme_bot.social_tracker - INFO - [SOCIAL] Backfilled 0 tokens from tracked data
+2026-06-26 19:38:00 - meme_bot - INFO - 📊 Signal review loop started (every 6h)
+2026-06-26 19:38:00 - meme_bot - INFO - 🔥 Convergence scan loop started (every 60s)
+2026-06-26 19:38:00 - meme_bot - INFO - 🔍 GMGN Trending scanner started (every 5min)
+2026-06-26 19:38:00 - meme_bot - INFO - 🔬 TokenScan monitor started (every 10min)
+2026-06-26 19:38:00 - meme_bot - INFO - 🚨 Alert sender loop started (every 10s)
+2026-06-26 19:38:00 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-26 19:38:00 - meme_bot - INFO - 📊 Midnight summary in 4h 21m
+2026-06-26 19:38:00 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-26 19:38:00 - meme_bot.telegram_collector - INFO - Starting Telegram collector loop...
+2026-06-26 19:38:01 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:38:01 - meme_bot.telegram_collector - ERROR - Cannot start collector - no client
+2026-06-26 19:38:07 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: POOPCAT (CbNU2pji...)
+2026-06-26 19:38:07 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: POOPCAT (CbNU2pji...)
+2026-06-26 19:38:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 5 (BuBMjNCr...)
+2026-06-26 19:38:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 5 (BuBMjNCr...)
+2026-06-26 19:38:09 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DECOUPLING (8YcbyX92...)
+2026-06-26 19:38:09 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DECOUPLING (8YcbyX92...)
+2026-06-26 19:38:19 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (8NJ7Ujpj...)
+2026-06-26 19:38:20 - meme_bot - INFO - 🔧 Self-heal: killed stale PID 26036 (instance: main)
+2026-06-26 19:38:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (8NJ7Ujpj...)
+2026-06-26 19:38:23 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MOT (7naFFwuE...)
+2026-06-26 19:38:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MOT (7naFFwuE...)
+2026-06-26 19:38:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Mesh (AV7PjXHL...)
+2026-06-26 19:38:31 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DECOUPLING (bwamJzzt...)
+2026-06-26 19:38:31 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DECOUPLING (FCUPh2jM...)
+2026-06-26 19:38:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOLCOUPLING (5RQ1UWAT...)
+2026-06-26 19:38:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOCCER (9FAkLRMp...)
+2026-06-26 19:38:36 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DECOUPLING (bwamJzzt...)
+2026-06-26 19:38:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WISHBONE (AvcWA3ng...)
+2026-06-26 19:38:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ELON MESH (CdNWVFQU...)
+2026-06-26 19:38:45 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 2001 (BuBMjNCr...)
+2026-06-26 19:38:47 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WEEKEND (HobNMfvn...)
+2026-06-26 19:38:48 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOCCER (FCUPh2jM...)
+2026-06-26 19:38:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 19:38:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DECOUPLING (FRXSTY8n...)
+2026-06-26 19:38:59 - meme_bot.pump_collector - INFO - Fetched 290 unique Solana tokens from DexScreener (boosted=26, metas=54, search=136)
+2026-06-26 19:38:59 - meme_bot.pump_collector - INFO - Collecting data for 20 new coins...
+2026-06-26 19:39:02 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BRICKS (ZQwAjVgx...)
+2026-06-26 19:39:03 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GM (BuBMjNCr...)
+2026-06-26 19:39:07 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BERRYBOYS (B1cJJMst...)
+2026-06-26 19:39:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BLAZE (5GbMGVYn...)
+2026-06-26 19:39:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: $Habibi (HFSNAE4f...)
+2026-06-26 19:39:20 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=978)
+2026-06-26 19:39:22 - meme_bot - INFO - 📊 Outcome (json): ASC: dump (mcap=1931)
+2026-06-26 19:39:23 - meme_bot - INFO - 📊 Outcome (json): gato: dump (mcap=22714)
+2026-06-26 19:39:23 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:39:24 - meme_bot - INFO - 📊 Outcome (json): RBNN: dump (mcap=490)
+2026-06-26 19:39:25 - meme_bot - INFO - 📊 Outcome (json): MOO: dump (mcap=3160)
+2026-06-26 19:39:27 - meme_bot - INFO - 📊 Outcome (json): TripleS: dump (mcap=8414)
+2026-06-26 19:39:28 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=2564)
+2026-06-26 19:39:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GOD (whamNNP9...)
+2026-06-26 19:39:29 - meme_bot - INFO - 📊 Outcome (json): Ornith: dump (mcap=15437)
+2026-06-26 19:39:30 - meme_bot - INFO - 📊 Outcome (json): SPOOK: dump (mcap=1923)
+2026-06-26 19:39:30 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক:  $PCAPY (C7wkjfmQ...)
+2026-06-26 19:39:31 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=3621)
+2026-06-26 19:39:32 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GG (BuBMjNCr...)
+2026-06-26 19:39:33 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=1442)
+2026-06-26 19:39:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: GOD (AV7PjXHL...)
+2026-06-26 19:39:34 - meme_bot - INFO - 📊 Outcome (json): Meowtwo: dump (mcap=1972)
+2026-06-26 19:39:35 - meme_bot - INFO - 📊 Outcome (json): GRIF: dump (mcap=1923)
+2026-06-26 19:39:37 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=3287)
+2026-06-26 19:39:38 - meme_bot - INFO - 📊 Outcome (json): 0.0{4}20207: dump (mcap=30576)
+2026-06-26 19:39:38 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SUL (2KFogVS8...)
+2026-06-26 19:39:39 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=2268)
+2026-06-26 19:39:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:39:41 - meme_bot - INFO - 📊 Outcome (json): DUBAI: dump (mcap=2029)
+2026-06-26 19:39:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: $b  (ASgfiBDF...)
+2026-06-26 19:39:42 - meme_bot - INFO - 📊 Outcome (json): LARRY: dump (mcap=440)
+2026-06-26 19:39:44 - meme_bot - INFO - 📊 Outcome (json): BSRCD: dump (mcap=59510)
+2026-06-26 19:39:45 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=2917)
+2026-06-26 19:39:46 - meme_bot - INFO - 📊 Outcome (json): job: dump (mcap=269)
+2026-06-26 19:39:46 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 🔥 (7FVfSdnR...)
+2026-06-26 19:39:48 - meme_bot - INFO - 📊 Outcome (json): hiplet: dump (mcap=8327)
+2026-06-26 19:39:49 - meme_bot - INFO - 📊 Outcome (json): Arena: dump (mcap=2050)
+2026-06-26 19:39:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: RoosterC (BduBwyQg...)
+2026-06-26 19:39:50 - meme_bot - INFO - 📊 Outcome (json): SMURF: dump (mcap=16648)
+2026-06-26 19:39:52 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=1453)
+2026-06-26 19:39:53 - meme_bot - INFO - 📊 Outcome (json): MOONBORK: dump (mcap=1931)
+2026-06-26 19:39:53 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Dembélé (bwamJzzt...)
+2026-06-26 19:39:53 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BBP (8tHMVmRP...)
+2026-06-26 19:39:55 - meme_bot - INFO - 📊 Outcome (json): John: dump (mcap=1929)
+2026-06-26 19:39:56 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=356)
+2026-06-26 19:39:58 - meme_bot - INFO - 📊 Outcome (json): USELESS: dump (mcap=2030)
+2026-06-26 19:39:59 - meme_bot - INFO - 📊 Outcome (json): CLONK: dump (mcap=1935)
+2026-06-26 19:40:00 - meme_bot - INFO - 📊 Outcome (json): Arena: dump (mcap=1934)
+2026-06-26 19:40:02 - meme_bot - INFO - 📊 Outcome (json): USM: dump (mcap=1937)
+2026-06-26 19:40:03 - meme_bot - INFO - 📊 Outcome (json): Juremi: dump (mcap=1937)
+2026-06-26 19:40:03 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 40K (BuBMjNCr...)
+2026-06-26 19:40:04 - meme_bot - INFO - 📊 Outcome (json): UBC: dump (mcap=1938)
+2026-06-26 19:40:06 - meme_bot - INFO - 📊 Outcome (json): PDF: dump (mcap=2100)
+2026-06-26 19:42:15 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 8372 deployer
+2026-06-26 19:42:16 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-26 19:42:16 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-26 19:42:16 - meme_bot - INFO - 📡 Telegram collector loop started
+2026-06-26 19:42:16 - meme_bot.social_tracker - INFO - [SOCIAL] Backfilled 0 tokens from tracked data
+2026-06-26 19:42:16 - meme_bot - INFO - 📊 Signal review loop started (every 6h)
+2026-06-26 19:42:16 - meme_bot - INFO - 🔥 Convergence scan loop started (every 60s)
+2026-06-26 19:42:16 - meme_bot - INFO - 🔍 GMGN Trending scanner started (every 5min)
+2026-06-26 19:42:16 - meme_bot - INFO - 🔬 TokenScan monitor started (every 10min)
+2026-06-26 19:42:16 - meme_bot - INFO - 🚨 Alert sender loop started (every 10s)
+2026-06-26 19:42:16 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-26 19:42:16 - meme_bot - INFO - 📊 Midnight summary in 4h 17m
+2026-06-26 19:42:16 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-26 19:42:16 - meme_bot.telegram_collector - INFO - Starting Telegram collector loop...
+2026-06-26 19:42:18 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:42:18 - meme_bot.telegram_collector - ERROR - Cannot start collector - no client
+2026-06-26 19:42:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Taffy (bwamJzzt...)
+2026-06-26 19:42:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Taffy (AV7PjXHL...)
+2026-06-26 19:42:28 - meme_bot - WARNING - 📴 Signal 15 received — ignoring (platform keepalive)
+2026-06-26 19:42:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: NR2 (B1cJJMst...)
+2026-06-26 19:42:45 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 59K (BuBMjNCr...)
+2026-06-26 19:42:46 - meme_bot.pump_collector - INFO - 🔄 Pump collector cycle started...
+2026-06-26 19:42:47 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Dembélé (AV7PjXHL...)
+2026-06-26 19:42:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Dembélé (HJKuPTUV...)
+2026-06-26 19:42:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: gtavi (EDyPdeUg...)
+2026-06-26 19:42:59 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: ROBIN (3k5nPmRy...)
+2026-06-26 19:43:10 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Dembélé (bwamJzzt...)
+2026-06-26 19:43:16 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:43:19 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Dembélé (FCUPh2jM...)
+2026-06-26 19:43:19 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: YOU (BuBMjNCr...)
+2026-06-26 19:43:20 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: COPIUM (HobNMfvn...)
+2026-06-26 19:43:20 - meme_bot.gmgn_trending - INFO - [TRENDING] BOO MC=$29,809 Liq=$0 Vol24h=$6,167 Age=2.7h BuyRatio=100% PC24h=+1369%
+2026-06-26 19:43:27 - meme_bot.gmgn_trending - INFO - [TRENDING] Found 1 new trending tokens
+2026-06-26 19:43:27 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 🔥 (7FVfSdnR...)
+2026-06-26 19:43:41 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 60000 (BuBMjNCr...)
+2026-06-26 19:43:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Look (CScBTnmR...)
+2026-06-26 19:43:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:43:58 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: $b  (ASgfiBDF...)
+2026-06-26 19:43:58 - meme_bot.pump_collector - INFO - Fetched 289 unique Solana tokens from DexScreener (boosted=26, metas=54, search=134)
+2026-06-26 19:43:58 - meme_bot.pump_collector - INFO - Collecting data for 20 new coins...
+2026-06-26 19:44:00 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: RIPPER (BuBMjNCr...)
+2026-06-26 19:44:07 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Mesh (FiwwHe2o...)
+2026-06-26 19:44:12 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SS (DvHZiDrM...)
+2026-06-26 19:44:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক:   (7BqHw3LU...)
+2026-06-26 19:44:19 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=3732)
+2026-06-26 19:44:20 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=826)
+2026-06-26 19:44:20 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 19:44:21 - meme_bot - INFO - 📊 Outcome (json): BEEP: dump (mcap=2041)
+2026-06-26 19:44:22 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=724)
+2026-06-26 19:44:22 - meme_bot - INFO - TRADE NO TRACK: EPjFWdd5... txType=create
+2026-06-26 19:44:23 - meme_bot - INFO - 📊 Outcome (json): JAPAN: dump (mcap=1980)
+2026-06-26 19:44:23 - meme_bot - INFO - 📊 Outcome (json): PDF: dump (mcap=1939)
+2026-06-26 19:44:24 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MEOW (7FVfSdnR...)
+2026-06-26 19:44:24 - meme_bot - INFO - 📊 Outcome (json): MEOW: dump (mcap=24747)
+2026-06-26 19:44:25 - meme_bot - INFO - 📊 Outcome (json): Brainch: dump (mcap=2048)
+2026-06-26 19:44:26 - meme_bot - INFO - 📊 Outcome (json): CLUCK: dump (mcap=1996)
+2026-06-26 19:44:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Dembélé (xfxxqS4t...)
+2026-06-26 19:44:27 - meme_bot - INFO - 📊 Outcome (json): Angrybird: dump (mcap=1937)
+2026-06-26 19:44:27 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=652)
+2026-06-26 19:44:28 - meme_bot - INFO - 📊 Outcome (json): LOM: dump (mcap=1365)
+2026-06-26 19:44:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 19:44:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: NR2 (B1cJJMst...)
+2026-06-26 19:44:29 - meme_bot - INFO - 📊 Outcome (json): CLUCK: dump (mcap=1937)
+2026-06-26 19:44:30 - meme_bot - INFO - 📊 Outcome (json): CLUCK: dump (mcap=1931)
+2026-06-26 19:44:31 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=1598)
+2026-06-26 19:44:32 - meme_bot - INFO - 📊 Outcome (json): CLUCK: dump (mcap=1936)
+2026-06-26 19:44:32 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 80s (BfAhuDzx...)
+2026-06-26 19:44:33 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=837)
+2026-06-26 19:44:33 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: OK (BuBMjNCr...)
+2026-06-26 19:44:34 - meme_bot - INFO - 📊 Outcome (json): Peanut: dump (mcap=1939)
+2026-06-26 19:44:35 - meme_bot - INFO - 📊 Outcome (json): CLUCK: dump (mcap=1938)
+2026-06-26 19:44:36 - meme_bot - INFO - 📊 Outcome (json): CLONK: dump (mcap=1935)
+2026-06-26 19:44:37 - meme_bot - INFO - 📊 Outcome (json): CLUCK: dump (mcap=1934)
+2026-06-26 19:44:38 - meme_bot - INFO - 📊 Outcome (json): CLUCK: dump (mcap=15293)
+2026-06-26 19:44:39 - meme_bot - INFO - 📊 Outcome (json): SIXTYFOUR: dump (mcap=5575)
+2026-06-26 19:44:40 - meme_bot - INFO - 📊 Outcome (json): SUSHIDOG: dump (mcap=1936)
+2026-06-26 19:44:41 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=1849)
+2026-06-26 19:44:42 - meme_bot - INFO - 📊 Outcome (json): HIPLET: dump (mcap=1955)
+2026-06-26 19:44:42 - meme_bot - INFO - 📊 Outcome (json): Mewtwo: dump (mcap=1940)
+2026-06-26 19:44:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 19:44:43 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Dembélé (49uaHiRQ...)
+2026-06-26 19:44:43 - meme_bot - INFO - 📊 Outcome (json): v: dump (mcap=1937)
+2026-06-26 19:44:44 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: bottom (EPGrHnQe...)
+2026-06-26 19:44:44 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=415)
+2026-06-26 19:44:45 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Memeluk (EdNcBDUF...)
+2026-06-26 19:44:45 - meme_bot - INFO - 📊 Outcome (json): SIXTYFOUR: dump (mcap=1996)
+2026-06-26 19:44:46 - meme_bot - INFO - 📊 Outcome (json): Pondeer: pump (mcap=598348)
+2026-06-26 19:44:47 - meme_bot - INFO - 📊 Outcome (json): LIFE: dump (mcap=1955)
+2026-06-26 19:44:48 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=223)
+2026-06-26 19:44:49 - meme_bot - INFO - 📊 Outcome (json): VISION: dump (mcap=1947)
+2026-06-26 19:44:50 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=486)
+2026-06-26 19:44:51 - meme_bot - INFO - 📊 Outcome (json): LOM: pump (mcap=1553417)
+2026-06-26 19:44:52 - meme_bot - INFO - 📊 Outcome (json): SUSHIPETS: dump (mcap=0)
+2026-06-26 19:44:53 - meme_bot - INFO - 📊 Outcome (json): mayham: dump (mcap=2740)
+2026-06-26 19:44:54 - meme_bot - INFO - 📊 Outcome (json): DRAM: dump (mcap=1940)
+2026-06-26 19:44:55 - meme_bot - INFO - 📊 Outcome (json): Corey: dump (mcap=1945)
+2026-06-26 19:44:56 - meme_bot - INFO - 📊 Outcome (json): Soylent: dump (mcap=1944)
+2026-06-26 19:44:57 - meme_bot - INFO - 📊 Outcome (json): mASSi: dump (mcap=2018)
+2026-06-26 19:44:58 - meme_bot - INFO - 📊 Outcome (json): ME: dump (mcap=2010)
+2026-06-26 19:44:59 - meme_bot - INFO - 📊 Outcome (json): スヤ: dump (mcap=1946)
+2026-06-26 19:45:03 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: HUGE45 (BuBMjNCr...)
+2026-06-26 19:45:10 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: POSTED (92cLih2c...)
+2026-06-26 19:45:14 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Look (CScBTnmR...)

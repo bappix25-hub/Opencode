@@ -1,7 +1,7 @@
 #!/bin/bash
 cd /root/Opencode
 
-# === WATCHDOG: Restart bot if stuck, dead, or internet was down ===
+# === WATCHDOG: Restart bot if stuck or dead ===
 
 NOW=$(date +%s)
 
@@ -13,18 +13,16 @@ fi
 
 # 2. Check bot process alive
 ALIVE=0
-for PID in $(pgrep -f "python3 meme_bot"); do
-    if [ -d "/proc/$PID/fd" ] && [ -r "/proc/$PID/fd/1" ]; then
-        ALIVE=1
-        break
-    fi
-done
+BOT_COUNT=$(pgrep -f "python3 meme_bot" | wc -l)
+if [ "$BOT_COUNT" -ge 1 ]; then
+    ALIVE=1
+fi
 
 # 3. Check log freshness (within 3 min = OK)
 LAST_LOG=$(stat -c %Y logs/bot.log 2>/dev/null || echo 0)
 AGE=$((NOW - LAST_LOG))
 
-# 4. Check heartbeat (bot writes timestamp to /tmp every 30s)
+# 4. Check heartbeat
 HEARTBEAT_AGE=999
 if [ -f /tmp/meme_bot_heartbeat ]; then
     HB=$(cat /tmp/meme_bot_heartbeat 2>/dev/null || echo 0)
@@ -35,9 +33,17 @@ fi
 SHOULD_RESTART=0
 REASON=""
 
-if [ "$ALIVE" -eq 0 ]; then
+if [ "$BOT_COUNT" -eq 0 ]; then
     SHOULD_RESTART=1
     REASON="process_dead"
+elif [ "$BOT_COUNT" -gt 1 ]; then
+    # Multiple instances = conflict! Kill extras, keep one
+    echo "$(date) CONFLICT: $BOT_COUNT instances running — killing extras"
+    pkill -f "python3 meme_bot"
+    sleep 3
+    # Start ONE fresh instance
+    SHOULD_RESTART=1
+    REASON="multi_instance_conflict"
 elif [ "$AGE" -gt 180 ]; then
     SHOULD_RESTART=1
     REASON="log_stale_${AGE}s"
@@ -53,11 +59,11 @@ if [ "$SHOULD_RESTART" -eq 0 ]; then
     exit 0
 fi
 
-echo "$(date) RESTART: $REASON alive=$ALIVE log_age=${AGE}s hb=${HEARTBEAT_AGE}s net=$INTERNET_OK"
+echo "$(date) RESTART: $REASON instances=$BOT_COUNT log_age=${AGE}s hb=${HEARTBEAT_AGE}s net=$INTERNET_OK"
 
-# Kill zombies
+# Kill ALL instances
 pkill -9 -f "python3 meme_bot" 2>/dev/null
-sleep 3
+sleep 5
 
 # Clean session locks
 rm -f maestro_session* 2>/dev/null
@@ -75,7 +81,7 @@ if [ "$INTERNET_OK" -eq 0 ]; then
     done
 fi
 
-# Start bot
+# Start ONE bot
 nohup python3 -u meme_bot.py >> logs/bot.log 2>&1 &
 disown
 echo "$(date) Bot started PID=$!"

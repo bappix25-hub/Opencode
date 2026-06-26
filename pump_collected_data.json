@@ -32447,23 +32447,62 @@
         "deployer_rugged": 0
       },
       "is_complete": true
+    },
+    {
+      "address": "H4CFQnSz3yjapiB6Z3qAoVH6MguggitXbyoGsgf4pump",
+      "collected_at": "2026-06-26T18:58:05.769596+00:00",
+      "features": {
+        "liquidity": 24983.11,
+        "mcap": 88998,
+        "price_change_24h": 232,
+        "buys_1h": 1210,
+        "sells_1h": 765,
+        "buys_6h": 10816,
+        "sells_6h": 9329,
+        "buys_24h": 10816,
+        "sells_24h": 9329,
+        "buy_sell_ratio": 1.58,
+        "volume": 1298422.14,
+        "price": 9.914e-05,
+        "age_hours": 1.9,
+        "is_migrated": 1,
+        "holders": 0,
+        "lp_providers_count": 0,
+        "deployer_has_lp": 0,
+        "lp_locked": 0,
+        "freeze_authority": 0,
+        "mint_authority": 0,
+        "liq_pct": 28.07,
+        "buy_sell_momentum": 0.23,
+        "unique_wallets": 1975
+      },
+      "metadata": {
+        "name": "GPT‑5.6 Sol",
+        "symbol": "SOL",
+        "deployer": "",
+        "dex_id": "pumpswap",
+        "pair_address": "CNjhgsu8vYTxnYo4aqg6fNguEMMbXCsa1JGofyJCaPd3",
+        "deployer_launches": 0,
+        "deployer_rugged": 0
+      },
+      "is_complete": true
     }
   ],
   "analysis": {
-    "total_collected": 832,
-    "complete_records": 832,
+    "total_collected": 833,
+    "complete_records": 833,
     "partial_records": 0,
-    "last_analysis": "2026-06-26T14:29:59.557877+00:00",
+    "last_analysis": "2026-06-26T19:01:33.542443+00:00",
     "pump_filters": {
       "min_liq": 8501.0,
       "min_holders": 20,
       "min_bsr": 1.06,
       "min_lp_locked": 0,
-      "min_liq_pct": 25.5,
+      "min_liq_pct": 25.7,
       "min_lp_providers": 0,
-      "max_age_hours": 85.1
+      "max_age_hours": 82.6
     }
   },
-  "last_fetch": "2026-06-26T15:08:24.653089+00:00",
+  "last_fetch": "2026-06-26T19:01:33.468291+00:00",
   "last_github_push": "2026-06-26T14:30:04.955834+00:00"
 }

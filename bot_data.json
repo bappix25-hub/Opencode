@@ -11031,37 +11031,6 @@
   ],
   "dump_patterns": [
     {
-      "address": "BfA9WP6LeC7guohhHmJeTgDpvLo8Z5mPEanNebZApump",
-      "symbol": "OGTWERK",
-      "features": {
-        "buy_sell_ratio": 1.0,
-        "unique_wallets": 32,
-        "holders": 22,
-        "liquidity": 0,
-        "lp_locked": 0,
-        "lp_providers_count": 0,
-        "snipers_30s": 0,
-        "buy_count": 16,
-        "sell_count": 16,
-        "volume_velocity": 0,
-        "buy_sell_momentum": 0,
-        "volume_spike_ratio": 0,
-        "buy_spike_ratio": 0,
-        "insider_count": 0,
-        "liq_pct": 0,
-        "social_score": 0,
-        "launch_hour": 22,
-        "launch_weekday": 0,
-        "launch_session": 0,
-        "launch_time": 1781649334.297185,
-        "mcap": 2060.3
-      },
-      "outcome": "DUMP",
-      "ath_multiplier": 0,
-      "signal_age": 0,
-      "learned_at": "2026-06-19T00:13:23.194275+00:00"
-    },
-    {
       "address": "EWawZJuDH393vHKnDAJ226GHhSMzmLSVXZ7k8guNpump",
       "symbol": "KSTR",
       "features": {
@@ -42073,6 +42042,39 @@
       "ath_multiplier": 1.0,
       "signal_age": 0.0,
       "learned_at": "2026-06-26T15:36:39.956126+00:00"
+    },
+    {
+      "address": "6nt7xzHv38sgJwaMeahk7EfFQtUGQgxSXq3igypHpump",
+      "symbol": "mayham",
+      "features": {
+        "mcp": 4944.87,
+        "liq_usd": 5300.0,
+        "holders": 4,
+        "buy_sell_ratio": 0,
+        "unique_wallets": 0,
+        "initial_liq": 5300.0,
+        "lp_locked": 100,
+        "top10_pct": 29.53,
+        "audit_score": 0,
+        "bundled_pct": 0,
+        "dev_status": "UNKNOWN",
+        "renounced": false,
+        "launch_time": 1782480885.765231,
+        "signal_type": "DEV_SOLD",
+        "source_channel": "GMGN Signals",
+        "fresh_1d": 0,
+        "fresh_7d": 0,
+        "has_web": false,
+        "has_twitter": false,
+        "has_telegram": false,
+        "ath_multiplier": 0.7547640281746537,
+        "outcome": "DUMP",
+        "signal_age": 0.0
+      },
+      "outcome": "DUMP",
+      "ath_multiplier": 0.7547640281746537,
+      "signal_age": 0.0,
+      "learned_at": "2026-06-26T19:40:06.967541+00:00"
     }
   ],
   "signal_results": [],
@@ -42100,12 +42102,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 978.13,
+        "symbol": "mayham"
       },
       "launch_time": 1782480446.275329,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 978.13,
+      "outcome_time": "2026-06-26T19:39:19.321398+00:00",
       "signal_sent": false
     },
     {
@@ -42131,12 +42136,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1931.75,
+        "symbol": "ASC"
       },
       "launch_time": 1782480496.423465,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1931.75,
+      "outcome_time": "2026-06-26T19:39:21.885543+00:00",
       "signal_sent": false
     },
     {
@@ -42162,12 +42170,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 22714.0,
+        "symbol": "gato"
       },
       "launch_time": 1782480522.204306,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 22714.0,
+      "outcome_time": "2026-06-26T19:39:22.905705+00:00",
       "signal_sent": false
     },
     {
@@ -42193,12 +42204,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 490.06,
+        "symbol": "RBNN"
       },
       "launch_time": 1782480527.950732,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 490.06,
+      "outcome_time": "2026-06-26T19:39:23.840841+00:00",
       "signal_sent": false
     },
     {
@@ -42224,12 +42238,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 3160.42,
+        "symbol": "MOO"
       },
       "launch_time": 1782480530.281058,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 3160.42,
+      "outcome_time": "2026-06-26T19:39:24.897742+00:00",
       "signal_sent": false
     },
     {
@@ -42255,12 +42272,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 8414.0,
+        "symbol": "TripleS"
       },
       "launch_time": 1782480556.098298,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 8414.0,
+      "outcome_time": "2026-06-26T19:39:26.116953+00:00",
       "signal_sent": false
     },
     {
@@ -42286,12 +42306,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2564.01,
+        "symbol": "mayham"
       },
       "launch_time": 1782480561.127281,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2564.01,
+      "outcome_time": "2026-06-26T19:39:27.537665+00:00",
       "signal_sent": false
     },
     {
@@ -42319,13 +42342,15 @@
         "has_twitter": false,
         "has_telegram": false,
         "ath_multiplier": 1.0,
-        "outcome": "DUMP",
-        "signal_age": 0.0
+        "outcome": "dump",
+        "signal_age": 0.0,
+        "outcome_mcap": 15437.0,
+        "symbol": "Ornith"
       },
       "launch_time": 1782480587.757244,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 15437.0,
+      "outcome_time": "2026-06-26T19:39:28.763836+00:00",
       "signal_sent": false
     },
     {
@@ -42351,12 +42376,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1923.36,
+        "symbol": "SPOOK"
       },
       "launch_time": 1782480593.062428,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1923.36,
+      "outcome_time": "2026-06-26T19:39:29.708360+00:00",
       "signal_sent": false
     },
     {
@@ -42382,12 +42410,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 3621.57,
+        "symbol": "mayham"
       },
       "launch_time": 1782480594.932412,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 3621.57,
+      "outcome_time": "2026-06-26T19:39:30.956315+00:00",
       "signal_sent": false
     },
     {
@@ -42413,12 +42444,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1442.82,
+        "symbol": "mayham"
       },
       "launch_time": 1782480626.101723,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1442.82,
+      "outcome_time": "2026-06-26T19:39:32.678846+00:00",
       "signal_sent": false
     },
     {
@@ -42444,12 +42478,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1972.85,
+        "symbol": "Meowtwo"
       },
       "launch_time": 1782480628.66583,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1972.85,
+      "outcome_time": "2026-06-26T19:39:33.907616+00:00",
       "signal_sent": false
     },
     {
@@ -42475,12 +42512,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1923.02,
+        "symbol": "GRIF"
       },
       "launch_time": 1782480630.402008,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1923.02,
+      "outcome_time": "2026-06-26T19:39:35.113974+00:00",
       "signal_sent": false
     },
     {
@@ -42506,12 +42546,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 3287.26,
+        "symbol": "mayham"
       },
       "launch_time": 1782480659.865817,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 3287.26,
+      "outcome_time": "2026-06-26T19:39:36.340392+00:00",
       "signal_sent": false
     },
     {
@@ -42537,12 +42580,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 30576.0,
+        "symbol": "0.0{4}20207"
       },
       "launch_time": 1782480688.72199,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 30576.0,
+      "outcome_time": "2026-06-26T19:39:37.544442+00:00",
       "signal_sent": false
     },
     {
@@ -42568,12 +42614,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2268.93,
+        "symbol": "mayham"
       },
       "launch_time": 1782480692.797595,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2268.93,
+      "outcome_time": "2026-06-26T19:39:38.836569+00:00",
       "signal_sent": false
     },
     {
@@ -42599,12 +42648,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2029.54,
+        "symbol": "DUBAI"
       },
       "launch_time": 1782480694.198375,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2029.54,
+      "outcome_time": "2026-06-26T19:39:40.077088+00:00",
       "signal_sent": false
     },
     {
@@ -42630,12 +42682,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 440.92,
+        "symbol": "LARRY"
       },
       "launch_time": 1782480695.654617,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 440.92,
+      "outcome_time": "2026-06-26T19:39:42.000756+00:00",
       "signal_sent": false
     },
     {
@@ -42661,12 +42716,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 59510.0,
+        "symbol": "BSRCD"
       },
       "launch_time": 1782480723.214094,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 59510.0,
+      "outcome_time": "2026-06-26T19:39:43.361106+00:00",
       "signal_sent": false
     },
     {
@@ -42692,12 +42750,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2917.36,
+        "symbol": "mayham"
       },
       "launch_time": 1782480727.058064,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2917.36,
+      "outcome_time": "2026-06-26T19:39:44.733824+00:00",
       "signal_sent": false
     },
     {
@@ -42723,12 +42784,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 269.94,
+        "symbol": "job"
       },
       "launch_time": 1782480728.538389,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 269.94,
+      "outcome_time": "2026-06-26T19:39:45.997664+00:00",
       "signal_sent": false
     },
     {
@@ -42754,12 +42818,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 8327.22,
+        "symbol": "hiplet"
       },
       "launch_time": 1782480731.158385,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 8327.22,
+      "outcome_time": "2026-06-26T19:39:47.352340+00:00",
       "signal_sent": false
     },
     {
@@ -42785,12 +42852,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2050.12,
+        "symbol": "Arena"
       },
       "launch_time": 1782480732.70967,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2050.12,
+      "outcome_time": "2026-06-26T19:39:48.605920+00:00",
       "signal_sent": false
     },
     {
@@ -42818,13 +42888,15 @@
         "has_twitter": false,
         "has_telegram": false,
         "ath_multiplier": 1.0,
-        "outcome": "DUMP",
-        "signal_age": 0.0
+        "outcome": "dump",
+        "signal_age": 0.0,
+        "outcome_mcap": 16648.0,
+        "symbol": "SMURF"
       },
       "launch_time": 1782480759.570306,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 16648.0,
+      "outcome_time": "2026-06-26T19:39:50.023604+00:00",
       "signal_sent": false
     },
     {
@@ -42850,12 +42922,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1453.29,
+        "symbol": "mayham"
       },
       "launch_time": 1782480765.097327,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1453.29,
+      "outcome_time": "2026-06-26T19:39:51.214303+00:00",
       "signal_sent": false
     },
     {
@@ -42881,12 +42956,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1931.69,
+        "symbol": "MOONBORK"
       },
       "launch_time": 1782480766.038342,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1931.69,
+      "outcome_time": "2026-06-26T19:39:52.729529+00:00",
       "signal_sent": false
     },
     {
@@ -42912,12 +42990,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1929.51,
+        "symbol": "John"
       },
       "launch_time": 1782480767.040653,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1929.51,
+      "outcome_time": "2026-06-26T19:39:54.255244+00:00",
       "signal_sent": false
     },
     {
@@ -42943,12 +43024,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 356.52,
+        "symbol": "mayham"
       },
       "launch_time": 1782480795.603284,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 356.52,
+      "outcome_time": "2026-06-26T19:39:55.703580+00:00",
       "signal_sent": false
     },
     {
@@ -42974,12 +43058,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2030.66,
+        "symbol": "USELESS"
       },
       "launch_time": 1782480796.783944,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2030.66,
+      "outcome_time": "2026-06-26T19:39:57.199205+00:00",
       "signal_sent": false
     },
     {
@@ -43005,12 +43092,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1935.04,
+        "symbol": "CLONK"
       },
       "launch_time": 1782480798.149318,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1935.04,
+      "outcome_time": "2026-06-26T19:39:58.628127+00:00",
       "signal_sent": false
     },
     {
@@ -43036,12 +43126,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1934.2,
+        "symbol": "Arena"
       },
       "launch_time": 1782480799.845501,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1934.2,
+      "outcome_time": "2026-06-26T19:40:00.131548+00:00",
       "signal_sent": false
     },
     {
@@ -43067,12 +43160,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1937.56,
+        "symbol": "USM"
       },
       "launch_time": 1782480850.143455,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1937.56,
+      "outcome_time": "2026-06-26T19:40:01.383160+00:00",
       "signal_sent": false
     },
     {
@@ -43098,12 +43194,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1937.62,
+        "symbol": "Juremi"
       },
       "launch_time": 1782480851.890242,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1937.62,
+      "outcome_time": "2026-06-26T19:40:02.828439+00:00",
       "signal_sent": false
     },
     {
@@ -43129,12 +43228,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1938.62,
+        "symbol": "UBC"
       },
       "launch_time": 1782480853.110648,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1938.62,
+      "outcome_time": "2026-06-26T19:40:04.064233+00:00",
       "signal_sent": false
     },
     {
@@ -43160,12 +43262,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2100.48,
+        "symbol": "PDF"
       },
       "launch_time": 1782480884.5582,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2100.48,
+      "outcome_time": "2026-06-26T19:40:05.435372+00:00",
       "signal_sent": false
     },
     {
@@ -43191,12 +43296,17 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "ath_multiplier": 0.7547640281746537,
+        "outcome": "dump",
+        "signal_age": 0.0,
+        "outcome_mcap": 3732.21,
+        "symbol": "mayham"
       },
       "launch_time": 1782480885.765231,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 3732.21,
+      "outcome_time": "2026-06-26T19:44:19.568783+00:00",
       "signal_sent": false
     },
     {
@@ -43222,12 +43332,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 826.58,
+        "symbol": "mayham"
       },
       "launch_time": 1782480916.94455,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 826.58,
+      "outcome_time": "2026-06-26T19:44:20.330914+00:00",
       "signal_sent": false
     },
     {
@@ -43253,12 +43366,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2041.83,
+        "symbol": "BEEP"
       },
       "launch_time": 1782480919.42117,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2041.83,
+      "outcome_time": "2026-06-26T19:44:21.049528+00:00",
       "signal_sent": false
     },
     {
@@ -43284,12 +43400,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 724.48,
+        "symbol": "mayham"
       },
       "launch_time": 1782480923.149701,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 724.48,
+      "outcome_time": "2026-06-26T19:44:21.872902+00:00",
       "signal_sent": false
     },
     {
@@ -43315,12 +43434,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1980.53,
+        "symbol": "JAPAN"
       },
       "launch_time": 1782480924.298111,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1980.53,
+      "outcome_time": "2026-06-26T19:44:22.671929+00:00",
       "signal_sent": false
     },
     {
@@ -43346,12 +43468,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1939.58,
+        "symbol": "PDF"
       },
       "launch_time": 1782480956.5831,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1939.58,
+      "outcome_time": "2026-06-26T19:44:23.496712+00:00",
       "signal_sent": false
     },
     {
@@ -43377,12 +43502,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 24747.76,
+        "symbol": "MEOW"
       },
       "launch_time": 1782480957.658506,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 24747.76,
+      "outcome_time": "2026-06-26T19:44:24.237452+00:00",
       "signal_sent": false
     },
     {
@@ -43408,12 +43536,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2048.18,
+        "symbol": "Brainch"
       },
       "launch_time": 1782480959.002811,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2048.18,
+      "outcome_time": "2026-06-26T19:44:25.010764+00:00",
       "signal_sent": false
     },
     {
@@ -43439,12 +43570,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1996.69,
+        "symbol": "CLUCK"
       },
       "launch_time": 1782480989.792376,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1996.69,
+      "outcome_time": "2026-06-26T19:44:25.851128+00:00",
       "signal_sent": false
     },
     {
@@ -43470,12 +43604,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1937.75,
+        "symbol": "Angrybird"
       },
       "launch_time": 1782480991.497282,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1937.75,
+      "outcome_time": "2026-06-26T19:44:26.747614+00:00",
       "signal_sent": false
     },
     {
@@ -43501,12 +43638,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 652.36,
+        "symbol": "mayham"
       },
       "launch_time": 1782480993.247805,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 652.36,
+      "outcome_time": "2026-06-26T19:44:27.577636+00:00",
       "signal_sent": false
     },
     {
@@ -43532,12 +43672,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1365.0,
+        "symbol": "LOM"
       },
       "launch_time": 1782480995.028277,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1365.0,
+      "outcome_time": "2026-06-26T19:44:28.470007+00:00",
       "signal_sent": false
     },
     {
@@ -43563,12 +43706,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1937.84,
+        "symbol": "CLUCK"
       },
       "launch_time": 1782481026.057956,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1937.84,
+      "outcome_time": "2026-06-26T19:44:29.374853+00:00",
       "signal_sent": false
     },
     {
@@ -43594,12 +43740,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1931.41,
+        "symbol": "CLUCK"
       },
       "launch_time": 1782481027.156744,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1931.41,
+      "outcome_time": "2026-06-26T19:44:30.172762+00:00",
       "signal_sent": false
     },
     {
@@ -43625,12 +43774,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1598.38,
+        "symbol": "mayham"
       },
       "launch_time": 1782481029.262111,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1598.38,
+      "outcome_time": "2026-06-26T19:44:30.996596+00:00",
       "signal_sent": false
     },
     {
@@ -43656,12 +43808,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1936.72,
+        "symbol": "CLUCK"
       },
       "launch_time": 1782481030.577968,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1936.72,
+      "outcome_time": "2026-06-26T19:44:31.897441+00:00",
       "signal_sent": false
     },
     {
@@ -43687,12 +43842,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 837.82,
+        "symbol": "mayham"
       },
       "launch_time": 1782481061.790916,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 837.82,
+      "outcome_time": "2026-06-26T19:44:33.263406+00:00",
       "signal_sent": false
     },
     {
@@ -43718,12 +43876,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1939.79,
+        "symbol": "Peanut"
       },
       "launch_time": 1782481093.9742,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1939.79,
+      "outcome_time": "2026-06-26T19:44:34.227533+00:00",
       "signal_sent": false
     },
     {
@@ -43749,12 +43910,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1938.98,
+        "symbol": "CLUCK"
       },
       "launch_time": 1782481095.173982,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1938.98,
+      "outcome_time": "2026-06-26T19:44:35.138806+00:00",
       "signal_sent": false
     },
     {
@@ -43780,12 +43944,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1935.54,
+        "symbol": "CLONK"
       },
       "launch_time": 1782481100.029463,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1935.54,
+      "outcome_time": "2026-06-26T19:44:35.995006+00:00",
       "signal_sent": false
     },
     {
@@ -43811,12 +43978,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1934.48,
+        "symbol": "CLUCK"
       },
       "launch_time": 1782481101.026635,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1934.48,
+      "outcome_time": "2026-06-26T19:44:36.868123+00:00",
       "signal_sent": false
     },
     {
@@ -43842,12 +44012,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 15293.0,
+        "symbol": "CLUCK"
       },
       "launch_time": 1782481126.871288,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 15293.0,
+      "outcome_time": "2026-06-26T19:44:37.749465+00:00",
       "signal_sent": false
     },
     {
@@ -43873,12 +44046,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 5575.12,
+        "symbol": "SIXTYFOUR"
       },
       "launch_time": 1782481161.782698,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 5575.12,
+      "outcome_time": "2026-06-26T19:44:38.688335+00:00",
       "signal_sent": false
     },
     {
@@ -43904,12 +44080,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1936.16,
+        "symbol": "SUSHIDOG"
       },
       "launch_time": 1782481166.268704,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1936.16,
+      "outcome_time": "2026-06-26T19:44:39.729785+00:00",
       "signal_sent": false
     },
     {
@@ -43935,12 +44114,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1849.91,
+        "symbol": "mayham"
       },
       "launch_time": 1782481167.283752,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1849.91,
+      "outcome_time": "2026-06-26T19:44:40.665546+00:00",
       "signal_sent": false
     },
     {
@@ -43966,12 +44148,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1955.0,
+        "symbol": "HIPLET"
       },
       "launch_time": 1782481169.840527,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1955.0,
+      "outcome_time": "2026-06-26T19:44:41.594495+00:00",
       "signal_sent": false
     },
     {
@@ -43997,12 +44182,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1940.35,
+        "symbol": "Mewtwo"
       },
       "launch_time": 1782481224.620567,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1940.35,
+      "outcome_time": "2026-06-26T19:44:42.497990+00:00",
       "signal_sent": false
     },
     {
@@ -44028,12 +44216,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1937.28,
+        "symbol": "v"
       },
       "launch_time": 1782481225.894422,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1937.28,
+      "outcome_time": "2026-06-26T19:44:43.448212+00:00",
       "signal_sent": false
     },
     {
@@ -44059,12 +44250,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 415.75,
+        "symbol": "mayham"
       },
       "launch_time": 1782481227.744001,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 415.75,
+      "outcome_time": "2026-06-26T19:44:44.338671+00:00",
       "signal_sent": false
     },
     {
@@ -44090,12 +44284,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1996.55,
+        "symbol": "SIXTYFOUR"
       },
       "launch_time": 1782481229.035272,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1996.55,
+      "outcome_time": "2026-06-26T19:44:45.227734+00:00",
       "signal_sent": false
     },
     {
@@ -44123,13 +44320,16 @@
         "has_twitter": false,
         "has_telegram": false,
         "ath_multiplier": 4.11,
-        "outcome": "PUMP",
-        "signal_age": 0.0
+        "outcome": "pump",
+        "signal_age": 0.0,
+        "outcome_mcap": 598348.0,
+        "symbol": "Pondeer",
+        "address": "5B8qahEJezLtTHPU1Du1AsfAMf4kUVAdaMky7vhjpump"
       },
       "launch_time": 1782481231.72023,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "pump",
+      "outcome_mcap": 598348.0,
+      "outcome_time": "2026-06-26T19:44:46.121800+00:00",
       "signal_sent": false
     },
     {
@@ -44155,12 +44355,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1955.17,
+        "symbol": "LIFE"
       },
       "launch_time": 1782481234.387408,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1955.17,
+      "outcome_time": "2026-06-26T19:44:46.910865+00:00",
       "signal_sent": false
     },
     {
@@ -44186,12 +44389,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 223.8,
+        "symbol": "mayham"
       },
       "launch_time": 1782481267.767732,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 223.8,
+      "outcome_time": "2026-06-26T19:44:47.832858+00:00",
       "signal_sent": false
     },
     {
@@ -44217,12 +44423,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1947.98,
+        "symbol": "VISION"
       },
       "launch_time": 1782481270.153803,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1947.98,
+      "outcome_time": "2026-06-26T19:44:48.972191+00:00",
       "signal_sent": false
     },
     {
@@ -44248,12 +44457,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 486.16,
+        "symbol": "mayham"
       },
       "launch_time": 1782481271.533437,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 486.16,
+      "outcome_time": "2026-06-26T19:44:49.949869+00:00",
       "signal_sent": false
     },
     {
@@ -44279,12 +44491,16 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "pump",
+        "outcome_mcap": 1553417.0,
+        "symbol": "LOM",
+        "address": "DM9BvzdM5qBTPxZEYP51u5bdYzAJcZ4pxEfvhgUHLpS3"
       },
       "launch_time": 1782481297.615952,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "pump",
+      "outcome_mcap": 1553417.0,
+      "outcome_time": "2026-06-26T19:44:50.917865+00:00",
       "signal_sent": false
     },
     {
@@ -44310,12 +44526,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 0.01,
+        "symbol": "SUSHIPETS"
       },
       "launch_time": 1782481298.82498,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 0.01,
+      "outcome_time": "2026-06-26T19:44:51.912383+00:00",
       "signal_sent": false
     },
     {
@@ -44341,12 +44560,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2740.51,
+        "symbol": "mayham"
       },
       "launch_time": 1782481302.869296,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2740.51,
+      "outcome_time": "2026-06-26T19:44:53.036145+00:00",
       "signal_sent": false
     },
     {
@@ -44372,12 +44594,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1940.07,
+        "symbol": "DRAM"
       },
       "launch_time": 1782481334.31388,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1940.07,
+      "outcome_time": "2026-06-26T19:44:53.960229+00:00",
       "signal_sent": false
     },
     {
@@ -44403,12 +44628,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1945.39,
+        "symbol": "Corey"
       },
       "launch_time": 1782481367.49498,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1945.39,
+      "outcome_time": "2026-06-26T19:44:54.915433+00:00",
       "signal_sent": false
     },
     {
@@ -44434,12 +44662,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1944.98,
+        "symbol": "Soylent"
       },
       "launch_time": 1782481368.710374,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1944.98,
+      "outcome_time": "2026-06-26T19:44:55.862615+00:00",
       "signal_sent": false
     },
     {
@@ -44465,12 +44696,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2018.64,
+        "symbol": "mASSi"
       },
       "launch_time": 1782481401.48616,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2018.64,
+      "outcome_time": "2026-06-26T19:44:56.791771+00:00",
       "signal_sent": false
     },
     {
@@ -44496,12 +44730,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2010.23,
+        "symbol": "ME"
       },
       "launch_time": 1782481403.810382,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2010.23,
+      "outcome_time": "2026-06-26T19:44:57.721736+00:00",
       "signal_sent": false
     },
     {
@@ -44527,12 +44764,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1946.23,
+        "symbol": "スヤ"
       },
       "launch_time": 1782481454.038182,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1946.23,
+      "outcome_time": "2026-06-26T19:44:58.668248+00:00",
       "signal_sent": false
     },
     {
@@ -60655,6 +60895,17 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-26T19:08:25.709687+00:00",
         "timestamp": "2026-06-26T19:08:25.709778+00:00"
+      },
+      {
+        "address": "6nt7xzHv38sgJwaMeahk7EfFQtUGQgxSXq3igypHpump",
+        "symbol": "mayham",
+        "verdict": "DUMP",
+        "ath_multiplier": 0.7547640281746537,
+        "current_multiplier": 0.7547640281746537,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-26T19:40:06.967331+00:00",
+        "timestamp": "2026-06-26T19:40:06.967417+00:00"
       }
     ],
     "success_history": [
