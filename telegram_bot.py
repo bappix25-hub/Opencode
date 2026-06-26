@@ -753,12 +753,33 @@ class TelegramHandlers:
 
     async def cmd_channelstats(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Show per-channel performance comparison."""
-        from telegram_collector import find_daily_best
+        from telegram_collector import find_daily_best, CHANNEL_NAMES
         best = find_daily_best()
         patterns = best.get("patterns", {})
         ch_data = patterns.get("channel", {})
 
         if not ch_data:
+            # Fallback: read directly from bot_data.json channel_stats
+            try:
+                from learner import load_data
+                data = load_data()
+                cs = data.get("channel_stats", {})
+                if cs:
+                    text = "📺 <b>চ্যানেল পারফরম্যান্স</b>\n━━━━━━━━━━━━━━━━\n"
+                    sorted_ch = sorted(cs.items(), key=lambda x: x[1].get("winners", 0), reverse=True)
+                    for ch_id, ch_info in sorted_ch:
+                        name = ch_info.get("name", CHANNEL_NAMES.get(int(ch_id) if str(ch_id).lstrip('-').isdigit() else 0, str(ch_id)))
+                        total = ch_info.get("total_signals", 0)
+                        winners = ch_info.get("winners", 0)
+                        losers = ch_info.get("losers", 0)
+                        wr = round(winners / max(total, 1) * 100, 1)
+                        text += f"📡 <b>{name}</b>\n"
+                        text += f"  📊 {total}টি সিগন্যাল | 🏆 {winners}টি জয় | ❌ {losers}টি হার | <b>{wr}%</b>\n"
+                    text += f"\n💡 <i>জয় = ATH ≥ 5x</i>"
+                    await update.message.reply_text(text, parse_mode="HTML")
+                    return
+            except Exception:
+                pass
             await update.message.reply_text("📊 এখনো পর্যাপ্ত ডেটা নেই।", parse_mode="HTML")
             return
 

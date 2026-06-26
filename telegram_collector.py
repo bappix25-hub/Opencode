@@ -13,12 +13,18 @@ except ImportError:
     record_launch = None
 
 try:
+    from cross_channel import get_tracker as _get_cross_channel
+except ImportError:
+    _get_cross_channel = None
+
+try:
     from maestro_client import get_client as _get_tg_client
 except ImportError:
     _get_tg_client = None
 
 logger = logging.getLogger("meme_bot.telegram_collector")
 
+# 5 Signal Channels (where tokens are posted)
 CHANNELS = [
     -1002122751413,  # Solana New Pool Alert
     -1002126036544,  # Solana LP Chat
@@ -33,6 +39,14 @@ CHANNEL_NAMES = {
     -1002037135333: "New Token Bot",
     -1002064472392: "Listing Bot",
     -1002202241417: "GMGN Signals",
+}
+
+# 3 Research Bots (query by sending token address, they reply with analysis)
+# Used via tokenscan_client.scan_token() - NOT in CHANNELS
+RESEARCH_BOTS = {
+    8436907499: "Phanes",
+    7178305557: "TokenScan",
+    6126376117: "Rick",
 }
 
 DATA_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "telegram_tracked_tokens.json")
@@ -398,6 +412,412 @@ def parse_gmgn_msg(text: str):
         "last_check": datetime.now(timezone.utc).timestamp(),
     }
 
+
+def parse_rick_msg(text: str):
+    """Parse Rick / Solana Listing Bot messages.
+    Format: CA, LP, Exchange, Market Cap, Liquidity, Token Price, Pooled SOL,
+    Total Supply, Liquid Supply%, Holders, Top holders%, Renounced, Freeze Revoked,
+    Creator info (Balance SOL, Balance USD, Transactions, Dev Wallet Empty, Wallet Has Decent History)
+    """
+    if not text:
+        return None
+
+    # Must have CA pattern
+    ca_match = re.search(r'CA:\s*([A-Za-z0-9]{32,})', text)
+    if not ca_match:
+        return None
+    ca = ca_match.group(1)
+
+    # Symbol from first line: "TokenName ($SYMBOL)"
+    sym_match = re.search(r'\$([A-Za-z0-9]+)', text)
+    symbol = sym_match.group(1) if sym_match else ""
+
+    # Market Cap
+    mcp = 0
+    mcp_match = re.search(r'Market Cap:\s*\$?([0-9,.]+[KMB]?)', text, re.IGNORECASE)
+    if mcp_match:
+        val = mcp_match.group(1).replace(",", "")
+        if val.endswith("B"): mcp = float(val[:-1]) * 1e9
+        elif val.endswith("M"): mcp = float(val[:-1]) * 1e6
+        elif val.endswith("K"): mcp = float(val[:-1]) * 1e3
+        else: mcp = float(val) if val else 0
+
+    # Liquidity
+    liq_usd = 0
+    liq_match = re.search(r'Liquidity:\s*\$?([0-9,.]+[KMB]?)', text, re.IGNORECASE)
+    if liq_match:
+        val = liq_match.group(1).replace(",", "")
+        if val.endswith("B"): liq_usd = float(val[:-1]) * 1e9
+        elif val.endswith("M"): liq_usd = float(val[:-1]) * 1e6
+        elif val.endswith("K"): liq_usd = float(val[:-1]) * 1e3
+        else: liq_usd = float(val) if val else 0
+
+    # Holders
+    holders = 0
+    h_match = re.search(r'Holders:\s*(\d+)', text)
+    if h_match:
+        holders = int(h_match.group(1))
+
+    # Top holders percentage (first one = largest)
+    top10_pct = 0
+    t10_match = re.search(r'Top holders?:\s*([0-9.]+)%', text)
+    if t10_match:
+        top10_pct = float(t10_match.group(1))
+
+    # Renounced
+    renounced = bool(re.search(r'Renounced:\s*✅', text))
+
+    # Freeze Revoked
+    freeze_revoked = bool(re.search(r'Freeze Revoked:\s*✅', text))
+
+    # Creator info
+    dev_wallet_empty = bool(re.search(r'Dev Wallet Empty', text))
+    wallet_decent_history = bool(re.search(r'Wallet Has Decent History', text))
+
+    # Dev status from creator info
+    dev_status = "UNKNOWN"
+    if dev_wallet_empty:
+        dev_status = "DEV_EMPTY"
+    elif wallet_decent_history:
+        dev_status = "DECENT_HISTORY"
+
+    # Liquid Supply %
+    liquid_supply_pct = 0
+    ls_match = re.search(r'Liquid Supply:\s*([0-9.]+)%', text)
+    if ls_match:
+        liquid_supply_pct = float(ls_match.group(1))
+
+    # Pooled SOL
+    pooled_sol = 0
+    ps_match = re.search(r'Pooled SOL:\s*([0-9.]+)', text)
+    if ps_match:
+        pooled_sol = float(ps_match.group(1))
+
+    # Total Supply
+    total_supply = 0
+    ts_match = re.search(r'Total Supply:\s*([0-9,]+)', text)
+    if ts_match:
+        total_supply = float(ts_match.group(1).replace(",", ""))
+
+    return {
+        "symbol": symbol,
+        "name": symbol,
+        "ca": ca,
+        "signal_type": "LISTING_BOT",
+        "mcp": mcp,
+        "liq_usd": liq_usd,
+        "liq_sol": 0,
+        "liq_burn_pct": 0,
+        "holders": holders,
+        "top10_pct": top10_pct,
+        "no_mint": False,
+        "blacklist_safe": False,
+        "burnt": False,
+        "dev_status": dev_status,
+        "renounced": renounced,
+        "freeze_revoked": freeze_revoked,
+        "dev_wallet_empty": dev_wallet_empty,
+        "wallet_decent_history": wallet_decent_history,
+        "liquid_supply_pct": liquid_supply_pct,
+        "pooled_sol": pooled_sol,
+        "total_supply": total_supply,
+        "price_change_5m": 0,
+        "price_change_1h": 0,
+        "price_change_6h": 0,
+        "txns_5m": 0,
+        "volume_5m": 0,
+        "first_seen": datetime.now(timezone.utc).timestamp(),
+        "launch_mcp": mcp,
+        "launch_liq": liq_usd,
+        "ath_mcp": mcp,
+        "ath_multiplier": 1.0,
+        "status": "tracking",
+        "last_check": datetime.now(timezone.utc).timestamp(),
+    }
+
+
+def parse_tokenscan_msg(text: str):
+    """Parse TokenScan messages.
+    Format: Token name, CA, Stats (MC, ATH, USD, LIQ, VOL, 1H, HLD, P, DEV),
+    Socials, Audit (score/10), DEX [PAID/UNPAID], Top 10 Holders %, Bundled %
+    """
+    if not text:
+        return None
+
+    # Strip Telegram markdown before parsing
+    clean = re.sub(r'\*{1,2}([^*]+)\*{1,2}', r'\1', text)
+    clean = re.sub(r'`([^`]+)`', r'\1', clean)
+    clean = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', clean)
+    clean = re.sub(r'🔴|🟢|🟣|🟡|🔵|⚪', '', clean)
+    clean = re.sub(r'🟣|💊|🌱|👀|✖️|🚫|✅|❌', '', clean)
+    text = clean
+
+    # Must have MC or Token Stats
+    if "Token Stats" not in text and "MC:" not in text:
+        return None
+
+    # CA from header or body
+    ca_match = re.search(r'([A-Za-z0-9]{32,})', text)
+    ca = ca_match.group(1) if ca_match else ""
+
+    # Symbol
+    sym_match = re.search(r'\$([A-Za-z0-9]+)', text)
+    symbol = sym_match.group(1) if sym_match else ""
+
+    # MC
+    mcp = 0
+    mc_match = re.search(r'MC:\s*\$?([0-9,.]+[KMB]?)', text, re.IGNORECASE)
+    if mc_match:
+        val = mc_match.group(1).replace(",", "")
+        if val.endswith("B"): mcp = float(val[:-1]) * 1e9
+        elif val.endswith("M"): mcp = float(val[:-1]) * 1e6
+        elif val.endswith("K"): mcp = float(val[:-1]) * 1e3
+        else: mcp = float(val) if val else 0
+
+    # LIQ
+    liq_usd = 0
+    liq_match = re.search(r'LIQ:\s*\$?([0-9,.]+[KMB]?)', text, re.IGNORECASE)
+    if liq_match:
+        val = liq_match.group(1).replace(",", "")
+        if val.endswith("B"): liq_usd = float(val[:-1]) * 1e9
+        elif val.endswith("M"): liq_usd = float(val[:-1]) * 1e6
+        elif val.endswith("K"): liq_usd = float(val[:-1]) * 1e3
+        else: liq_usd = float(val) if val else 0
+
+    # HLD (holders)
+    holders = 0
+    hld_match = re.search(r'HLD:\s*(\d+)', text)
+    if hld_match:
+        holders = int(hld_match.group(1))
+
+    # 1H buy/sell
+    buy_count = 0
+    sell_count = 0
+    bsr = 0
+    h1_match = re.search(r'1H:\s*B\s*([\d,]+)\s*/\s*S\s*([\d,]+)', text)
+    if h1_match:
+        buy_count = int(h1_match.group(1).replace(",", ""))
+        sell_count = int(h1_match.group(2).replace(",", ""))
+        bsr = buy_count / max(sell_count, 1)
+
+    # Audit score
+    audit_score = 0
+    audit_match = re.search(r'Audit\s+(\d+)/10', text)
+    if audit_match:
+        audit_score = int(audit_match.group(1))
+
+    # Top 10 Holders %
+    top10_pct = 0
+    t10_match = re.search(r'Top 10 Holders\s*\[?([0-9.]+)%', text)
+    if t10_match:
+        top10_pct = float(t10_match.group(1))
+
+    # Bundled %
+    bundled_pct = 0
+    bun_match = re.search(r'Bundled\s*\[?([0-9.]+)%', text)
+    if bun_match:
+        bundled_pct = float(bun_match.group(1))
+
+    # DEX paid
+    dex_paid = bool(re.search(r'DEX\s*\[?PAID', text, re.IGNORECASE))
+
+    # Socials
+    has_web = bool(re.search(r'Web', text))
+    has_twitter = bool(re.search(r'[Xx]\s*\[', text) or re.search(r'Twitter', text, re.IGNORECASE))
+    has_telegram = bool(re.search(r'TG\b', text))
+
+    return {
+        "symbol": symbol,
+        "name": symbol,
+        "ca": ca,
+        "signal_type": "TOKENSCAN",
+        "mcp": mcp,
+        "liq_usd": liq_usd,
+        "liq_sol": 0,
+        "liq_burn_pct": 0,
+        "holders": holders,
+        "top10_pct": top10_pct,
+        "bundled_pct": bundled_pct,
+        "audit_score": audit_score,
+        "dex_paid": dex_paid,
+        "buy_count": buy_count,
+        "sell_count": sell_count,
+        "buy_sell_ratio": bsr,
+        "has_web": has_web,
+        "has_twitter": has_twitter,
+        "has_telegram": has_telegram,
+        "no_mint": False,
+        "blacklist_safe": False,
+        "burnt": False,
+        "dev_status": "UNKNOWN",
+        "renounced": False,
+        "price_change_5m": 0,
+        "price_change_1h": 0,
+        "price_change_6h": 0,
+        "txns_5m": 0,
+        "volume_5m": 0,
+        "first_seen": datetime.now(timezone.utc).timestamp(),
+        "launch_mcp": mcp,
+        "launch_liq": liq_usd,
+        "ath_mcp": mcp,
+        "ath_multiplier": 1.0,
+        "status": "tracking",
+        "last_check": datetime.now(timezone.utc).timestamp(),
+    }
+
+
+def parse_phanes_msg(text: str):
+    """Parse Phanes messages.
+    Format: Token ($SYMBOL) #rank, CA, chain# age | eyes count,
+    Stats (USD, MC, Vol, LP, Sup, 1H buy/sell, ATH),
+    Socials, Security (Fresh 1D/7D, Top 10 %, TH, Dev Sold, DEX Paid)
+    """
+    if not text:
+        return None
+
+    # Strip Telegram markdown (bold, code, links) before parsing
+    clean = re.sub(r'\*{1,2}([^*]+)\*{1,2}', r'\1', text)
+    clean = re.sub(r'`([^`]+)`', r'\1', clean)
+    clean = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', clean)
+    clean = re.sub(r'🔴|🟢|🟣|🟡|🔵|⚪', '', clean)
+    clean = re.sub(r'🟣|💊|🌱|👀|✖️|🚫|✅|❌', '', clean)
+    clean = re.sub(r'#{1,2}\d+', '', clean)
+    text = clean
+
+    # Must have Stats or MC
+    if "Stats" not in text and "MC" not in text:
+        # Debug: log unmatched Phanes messages
+        if len(text) > 50:
+            logger.debug(f"[PHANES-PARSE] No Stats/MC in: {text[:150]}")
+        return None
+
+    # CA
+    ca_match = re.search(r'([A-Za-z0-9]{32,})', text)
+    ca = ca_match.group(1) if ca_match else ""
+
+    # Symbol
+    sym_match = re.search(r'\$([A-Za-z0-9]+)', text)
+    symbol = sym_match.group(1) if sym_match else ""
+
+    # MC
+    mcp = 0
+    mc_match = re.search(r'MC\s*:?\s*\$?([0-9,.]+[KMB]?)', text, re.IGNORECASE)
+    if mc_match:
+        val = mc_match.group(1).replace(",", "")
+        if val.endswith("B"): mcp = float(val[:-1]) * 1e9
+        elif val.endswith("M"): mcp = float(val[:-1]) * 1e6
+        elif val.endswith("K"): mcp = float(val[:-1]) * 1e3
+        else: mcp = float(val) if val else 0
+
+    # LP
+    liq_usd = 0
+    lp_match = re.search(r'LP\s*:?\s*\$?([0-9,.]+[KMB]?)', text, re.IGNORECASE)
+    if lp_match:
+        val = lp_match.group(1).replace(",", "")
+        if val.endswith("B"): liq_usd = float(val[:-1]) * 1e9
+        elif val.endswith("M"): liq_usd = float(val[:-1]) * 1e6
+        elif val.endswith("K"): liq_usd = float(val[:-1]) * 1e3
+        else: liq_usd = float(val) if val else 0
+
+    # Vol
+    volume = 0
+    vol_match = re.search(r'Vol\s*:?\s*\$?([0-9,.]+[KMB]?)', text, re.IGNORECASE)
+    if vol_match:
+        val = vol_match.group(1).replace(",", "")
+        if val.endswith("B"): volume = float(val[:-1]) * 1e9
+        elif val.endswith("M"): volume = float(val[:-1]) * 1e6
+        elif val.endswith("K"): volume = float(val[:-1]) * 1e3
+        else: volume = float(val) if val else 0
+
+    # 1H buy/sell
+    buy_count = 0
+    sell_count = 0
+    bsr = 0
+    h1_match = re.search(r'1H\s*\+?([-\d.]+)%?\s*B\s*([\d,]+)\s*S\s*([\d,]+)', text)
+    if h1_match:
+        buy_count = int(h1_match.group(2).replace(",", ""))
+        sell_count = int(h1_match.group(3).replace(",", ""))
+        bsr = buy_count / max(sell_count, 1)
+
+    # Holders (from eyes count or HLD)
+    holders = 0
+    hld_match = re.search(r'(\d+)\s*$', text, re.MULTILINE)  # fallback
+    hld_match2 = re.search(r'HLD:\s*(\d+)', text)
+    if hld_match2:
+        holders = int(hld_match2.group(1))
+
+    # Security section
+    fresh_1d = 0
+    fresh_7d = 0
+    top10_pct = 0
+    dev_sold = False
+    dex_paid = False
+
+    fresh_match = re.search(r'Fresh\s*([0-9.]+)%\s*1D\s*\|\s*([0-9.]+)%\s*7D', text)
+    if fresh_match:
+        fresh_1d = float(fresh_match.group(1))
+        fresh_7d = float(fresh_match.group(2))
+
+    t10_match = re.search(r'Top\s*10\s*([0-9.]+)%', text)
+    if t10_match:
+        top10_pct = float(t10_match.group(1))
+
+    dev_sold_match = re.search(r'Dev Sold\s*(🟢|🔴|✅|❌)', text)
+    if dev_sold_match:
+        dev_sold = dev_sold_match.group(1) in ("🟢", "✅")
+
+    dex_paid_match = re.search(r'DEX Paid\s*(🟢|🔴|✅|❌)', text)
+    if dex_paid_match:
+        dex_paid = dex_paid_match.group(1) in ("🟢", "✅")
+
+    # Socials
+    has_twitter = bool(re.search(r'[Xx]\s*\[', text))
+    has_telegram = bool(re.search(r'TG\b', text))
+
+    # Debug: log parsed data quality
+    if mcp == 0 and liq_usd == 0 and holders == 0:
+        logger.info(f"[PHANES-PARSE] All zeros: symbol={symbol} ca={ca[:12]}... text_preview={text[:300]}")
+
+    return {
+        "symbol": symbol,
+        "name": symbol,
+        "ca": ca,
+        "signal_type": "PHANES",
+        "mcp": mcp,
+        "liq_usd": liq_usd,
+        "liq_sol": 0,
+        "liq_burn_pct": 0,
+        "holders": holders,
+        "top10_pct": top10_pct,
+        "fresh_1d": fresh_1d,
+        "fresh_7d": fresh_7d,
+        "dev_sold": dev_sold,
+        "dex_paid": dex_paid,
+        "buy_count": buy_count,
+        "sell_count": sell_count,
+        "buy_sell_ratio": bsr,
+        "volume_24h": volume,
+        "has_twitter": has_twitter,
+        "has_telegram": has_telegram,
+        "no_mint": False,
+        "blacklist_safe": False,
+        "burnt": False,
+        "dev_status": "SOLD" if dev_sold else "UNKNOWN",
+        "renounced": False,
+        "price_change_5m": 0,
+        "price_change_1h": 0,
+        "price_change_6h": 0,
+        "txns_5m": 0,
+        "first_seen": datetime.now(timezone.utc).timestamp(),
+        "launch_mcp": mcp,
+        "launch_liq": liq_usd,
+        "ath_mcp": mcp,
+        "ath_multiplier": 1.0,
+        "status": "tracking",
+        "last_check": datetime.now(timezone.utc).timestamp(),
+    }
+
+
 def load_tracked():
     global _tracked_tokens
     try:
@@ -405,6 +825,28 @@ def load_tracked():
             _tracked_tokens = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         _tracked_tokens = {}
+    # Backfill lp_locked from liq_burn_pct on startup
+    fixed = 0
+    for ca, t in _tracked_tokens.items():
+        if t.get("liq_burn_pct", 0) > 0 and t.get("lp_locked", 0) == 0:
+            t["lp_locked"] = t["liq_burn_pct"]
+            fixed += 1
+    # Backfill source_channel from cross_channel data for old tokens
+    cc_fixed = 0
+    if _get_cross_channel:
+        try:
+            cc = _get_cross_channel()
+            for ca, t in _tracked_tokens.items():
+                if not t.get("source_channel"):
+                    ch_list = cc.get_channel_list(ca)
+                    if ch_list:
+                        t["source_channel"] = ch_list[0]
+                        cc_fixed += 1
+        except Exception:
+            pass
+    if fixed > 0 or cc_fixed > 0:
+        logger.info(f"[BACKFILL] Fixed lp_locked={fixed}, source_channel={cc_fixed}")
+        save_tracked()
 
 def save_tracked():
     with open(DATA_FILE, "w") as f:
@@ -415,7 +857,7 @@ async def get_client():
         return await _get_tg_client()
     return None
 
-async def scan_channels(client):
+async def scan_channels(client, dex_client=None):
     global _stats
     for cid in CHANNELS:
         try:
@@ -447,27 +889,116 @@ async def scan_channels(client):
                 ca = token["ca"]
                 token["source_channel"] = cid
                 token["source_channel_name"] = CHANNEL_NAMES.get(cid, f"Channel {cid}")
+                # Map burn % to lp_locked
+                if token.get("liq_burn_pct", 0) > 0:
+                    token["lp_locked"] = token["liq_burn_pct"]
+
+                # Record lifecycle event (multi-stage tracking)
+                try:
+                    from token_lifecycle import record_signal
+                    lifecycle_result = record_signal(ca, token)
+                    if not lifecycle_result["is_new"]:
+                        logger.info(
+                            f"[LIFECYCLE-UPDATE] {token['symbol']} stage={lifecycle_result['stage']} "
+                            f"prev={lifecycle_result['prev_stage']} gap={lifecycle_result['time_since_last']:.0f}s "
+                            f"total={lifecycle_result['total_signals']} stages={lifecycle_result['stages_seen']}"
+                        )
+                except Exception:
+                    pass
+
+                # Rug detector: snapshot LP at signal time
+                try:
+                    from rug_detector import snapshot_lp
+                    snapshot_lp(ca, token)
+                except Exception:
+                    pass
 
                 if ca not in _tracked_tokens:
                     _tracked_tokens[ca] = token
                     _stats["new_tokens"] += 1
                     logger.info(f"[NEW] {token['symbol']} MCP=${token['mcp']:.0f} liq=${token['liq_usd']:.0f} holders={token['holders']} signal={token['signal_type']} ch={CHANNEL_NAMES.get(cid, '?')}")
-                    # UNIFIED SIGNAL: DexScreener check + multi-source scoring
-                    try:
-                        from unified_signal import score_token
-
-                        # Step 1: Quick DexScreener health check
-                        dex_health = None
+                    # Cross-channel tracking
+                    if _get_cross_channel:
                         try:
-                            from dex_health import check_token_health
-                            from dex_client import DexScreenerClient
-                            async with DexScreenerClient() as dex_client:
-                                dex_health = await check_token_health(dex_client, ca)
+                            _get_cross_channel().record_token(ca, cid, token)
+                            _get_cross_channel().save()
+                            cc = _get_cross_channel().get_channel_count(ca)
+                            if cc >= 2:
+                                logger.info(f"[CROSS-CHANNEL] {token['symbol']} seen in {cc} channels!")
                         except Exception:
                             pass
 
-                        # Step 2: Score with unified system
-                        score_result = score_token(token, dex_health)
+                    # UNIFIED SIGNAL: Parallel DexScreener + TokenScan check
+                    try:
+                        from unified_signal import score_token
+                        from fast_health import fast_check
+                        from maestro_client import get_client as _get_tg_client
+
+                        tg_client = None
+                        try:
+                            tg_client = await _get_tg_client()
+                        except Exception:
+                            pass
+
+                        health_data = await fast_check(dex_client, ca, tg_client)
+
+                        # Record social snapshot from health data
+                        try:
+                            from social_tracker import record_social_snapshot
+                            social_snap = {
+                                "symbol": token.get("symbol", "?"),
+                                "has_website": health_data.get("has_website", False),
+                                "has_twitter": health_data.get("has_twitter", False),
+                                "has_telegram": health_data.get("has_telegram", False),
+                            }
+                            record_social_snapshot(ca, social_snap)
+                        except Exception:
+                            pass
+
+                        # Build token dict with all data
+                        full_token = {**token}
+                        if health_data.get("holders"):
+                            full_token["holders"] = health_data["holders"]
+                        if health_data.get("top10_pct"):
+                            full_token["top10_pct"] = health_data["top10_pct"]
+                        if health_data.get("liquidity"):
+                            full_token["liq_usd"] = health_data["liquidity"]
+                        if health_data.get("fdv"):
+                            full_token["mcp"] = health_data["fdv"]
+                            full_token["launch_mcp"] = health_data["fdv"]
+
+                        # NOW record launch with enriched data (AFTER DexScreener/TokenScan)
+                        try:
+                            from learner import record_launch
+                            record_launch(ca, token.get("symbol", "?"), {
+                                "mcp": full_token.get("mcp", 0),
+                                "liq_usd": full_token.get("liq_usd", 0),
+                                "holders": full_token.get("holders", 0),
+                                "buy_sell_ratio": full_token.get("buy_sell_ratio", 0),
+                                "unique_wallets": full_token.get("unique_wallets", 0),
+                                "initial_liq": full_token.get("liq_usd", 0),
+                                "lp_locked": full_token.get("lp_locked", 0),
+                                "top10_pct": full_token.get("top10_pct", 0),
+                                "audit_score": health_data.get("audit_score", 0),
+                                "bundled_pct": health_data.get("bundled_pct", 0),
+                                "dev_status": full_token.get("dev_status", "UNKNOWN"),
+                                "renounced": full_token.get("renounced", False),
+                                "launch_time": datetime.now(timezone.utc).timestamp(),
+                                "signal_type": full_token.get("signal_type", ""),
+                                "source_channel": CHANNEL_NAMES.get(cid, "?"),
+                                "fresh_1d": full_token.get("fresh_1d", 0),
+                                "fresh_7d": full_token.get("fresh_7d", 0),
+                                "has_web": full_token.get("has_web", False),
+                                "has_twitter": full_token.get("has_twitter", False),
+                                "has_telegram": full_token.get("has_telegram", False),
+                            })
+                        except Exception:
+                            pass
+
+                        # Build dex_health dict for unified_signal
+                        dex_health = {"healthy": health_data.get("healthy", False), "reason": health_data.get("reason", ""), "data": health_data}
+
+                        score_result = score_token(full_token, dex_health)
                         token["unified_score"] = score_result.get("score", 0)
                         token["unified_verdict"] = score_result.get("verdict", "SKIP")
                         token["unified_action"] = score_result.get("action", "IGNORE")
@@ -480,7 +1011,8 @@ async def scan_channels(client):
 
                         if action in ("BUY_NOW", "ALERT"):
                             launch_mcp = token.get("mcp", 0) or token.get("launch_mcp", 0)
-                            dex_status = "✅ DexScreener verified" if dex_verified else "⚠️ No DexScreener check"
+                            dex_status = "✅" if dex_verified else "⚠️"
+                            ts_info = f" | HLD:{health_data.get('holders',0)} T10:{health_data.get('top10_pct',0):.0f}% Audit:{health_data.get('audit_score',0)}/10" if health_data.get("holders") else ""
                             alert_msg = (
                                 f"{'🟢' if action == 'BUY_NOW' else '🟡'} <b>UNIFIED SIGNAL: {verdict}</b>\n"
                                 f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
@@ -488,8 +1020,8 @@ async def scan_channels(client):
                                 f"📍 <code>{ca}</code>\n"
                                 f"🎯 Score: <b>{score:.0f}/100</b> ({verdict})\n"
                                 f"📊 Early: {breakdown.get('early_detection', 0):.0f} | Winner: {breakdown.get('winner_fit', 0):.0f} | Multi: {breakdown.get('multi_source', 0):.0f} | Fund: {breakdown.get('fundamentals', 0):.0f}\n"
-                                f"💰 MCP: ${launch_mcp:,.0f} | Liq: ${token.get('liq_usd', 0):,.0f} | Holders: {token.get('holders', 0)}\n"
-                                f"🔬 {dex_status}\n"
+                                f"💰 MCP: ${launch_mcp:,.0f} | Liq: ${token.get('liq_usd', 0):,.0f} | Holders: {token.get('holders', 0)}{ts_info}\n"
+                                f"🔬 {dex_status} | src: {health_data.get('source','?')}\n"
                                 f"📝 {score_result.get('reason', '')}\n"
                                 f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
                                 f"🔗 <a href=\"https://gmgn.ai/sol/token/{ca}\">GMGN</a> | "
@@ -501,8 +1033,19 @@ async def scan_channels(client):
                                     af.write(alert_msg)
                             except Exception:
                                 pass
-                            logger.info(f"🚨 UNIFIED SIGNAL: {token['symbol']} score={score:.0f} {verdict} {action} dex={'✅' if dex_verified else '❌'}")
-                        elif score >= 50:
+                            # Record signal result for learning (pump=signal sent)
+                            try:
+                                from learner import record_signal_result
+                                record_signal_result(
+                                    ca, token.get("symbol", "?"),
+                                    ath_multiplier=1.0, current_multiplier=1.0,
+                                    signal_age=0.0, signal_time=datetime.now(timezone.utc),
+                                    min_price_multiplier=0.0
+                                )
+                            except Exception:
+                                pass
+                            logger.info(f"🚨 UNIFIED SIGNAL: {token['symbol']} score={score:.0f} {verdict} {action}")
+                        elif score >= 40:
                             logger.info(f"👀 WATCH: {token['symbol']} score={score:.0f} {verdict}")
                     except Exception:
                         pass
@@ -537,44 +1080,89 @@ async def scan_channels(client):
                         existing["top10_pct"] = token["top10_pct"]
                     if token.get("dev_status", "UNKNOWN") != "UNKNOWN":
                         existing["dev_status"] = token["dev_status"]
-                    # Re-score existing token with unified signal when new data arrives
-                    if token.get("holders", 0) > 0 or token.get("liq_usd", 0) > 0:
+                    # Cross-channel: record this token in new channel
+                    if _get_cross_channel:
+                        try:
+                            _get_cross_channel().record_token(ca, cid, token)
+                            _get_cross_channel().save()
+                            cc = _get_cross_channel().get_channel_count(ca)
+                            if cc >= 2:
+                                logger.info(f"[CROSS-CHANNEL] {token['symbol']} now in {cc} channels: {_get_cross_channel().get_channel_list(ca)}")
+                        except Exception:
+                            pass
+                    # Record signal for lifecycle tracking
+                    try:
+                        from token_lifecycle import record_signal
+                        stage = token.get("signal_type", "unknown").lower()
+                        record_signal(ca, token.get("symbol", "?"), stage, {
+                            "mcp": token.get("mcp", 0),
+                            "liq_usd": token.get("liq_usd", 0),
+                            "holders": token.get("holders", 0),
+                            "signal_type": token.get("signal_type", ""),
+                            "source_channel": CHANNEL_NAMES.get(cid, "?"),
+                        })
+                    except Exception:
+                        pass
+                    # Re-score existing token with fast_health when new data arrives
+                    last_score_time = existing.get("last_score_time", 0)
+                    now_ts = datetime.now(timezone.utc).timestamp()
+                    if now_ts - last_score_time > 300:
                         try:
                             from unified_signal import score_token
+                            from fast_health import fast_check
+                            from maestro_client import get_client as _get_tg_client
+
                             existing["source_channel"] = cid
                             existing["source_channel_name"] = CHANNEL_NAMES.get(cid, f"Channel {cid}")
 
-                            # DexScreener health check
-                            dex_health = None
+                            tg_client = None
                             try:
-                                from dex_health import check_token_health
-                                from dex_client import DexScreenerClient
-                                async with DexScreenerClient() as dex_client:
-                                    dex_health = await check_token_health(dex_client, ca)
+                                tg_client = await _get_tg_client()
                             except Exception:
                                 pass
 
-                            score_result = score_token(existing, dex_health)
+                            health_data = await fast_check(dex_client, ca, tg_client)
+
+                            full_token = {**existing}
+                            if health_data.get("holders"):
+                                full_token["holders"] = health_data["holders"]
+                            if health_data.get("top10_pct"):
+                                full_token["top10_pct"] = health_data["top10_pct"]
+                            if health_data.get("liquidity"):
+                                full_token["liq_usd"] = health_data["liquidity"]
+                            if health_data.get("fdv"):
+                                full_token["mcp"] = health_data["fdv"]
+
+                            dex_health = {"healthy": health_data.get("healthy", False), "reason": health_data.get("reason", ""), "data": health_data}
+
+                            score_result = score_token(full_token, dex_health)
                             existing["unified_score"] = score_result.get("score", 0)
                             existing["unified_verdict"] = score_result.get("verdict", "SKIP")
                             existing["unified_action"] = score_result.get("action", "IGNORE")
+                            existing["last_score_time"] = now_ts
                             score = score_result["score"]
                             action = score_result["action"]
+                            verdict = score_result["verdict"]
                             dex_verified = score_result.get("dex_verified", False)
+                            breakdown = score_result.get("breakdown", {})
 
-                            if action in ("BUY_NOW", "ALERT") and not await self.state.is_alerted(ca):
+                            if score >= 30:
+                                logger.info(f"📊 SCORE: {token['symbol']} score={score:.0f} {verdict} {action} (early={breakdown.get('early_detection',0):.0f} winner={breakdown.get('winner_fit',0):.0f} fund={breakdown.get('fundamentals',0):.0f})")
+
+                            if action in ("BUY_NOW", "ALERT"):
                                 breakdown = score_result.get("breakdown", {})
                                 launch_mcp = existing.get("mcp", 0) or existing.get("launch_mcp", 0)
-                                dex_status = "✅ DexScreener verified" if dex_verified else "⚠️ No DexScreener check"
+                                dex_status = "✅" if dex_verified else "⚠️"
+                                ts_info = f" | HLD:{health_data.get('holders',0)} T10:{health_data.get('top10_pct',0):.0f}%" if health_data.get("holders") else ""
                                 alert_msg = (
-                                    f"{'🟢' if action == 'BUY_NOW' else '🟡'} <b>UNIFIED SIGNAL: {score_result['verdict']}</b>\n"
+                                    f"{'🟢' if action == 'BUY_NOW' else '🟡'} <b>UNIFIED RE-SCORE: {score_result['verdict']}</b>\n"
                                     f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
                                     f"🏷️ <b>{existing.get('symbol', '?')}</b> ({existing.get('signal_type', '?')})\n"
                                     f"📍 <code>{ca}</code>\n"
                                     f"🎯 Score: <b>{score:.0f}/100</b> ({score_result['verdict']})\n"
                                     f"📊 Early: {breakdown.get('early_detection', 0):.0f} | Winner: {breakdown.get('winner_fit', 0):.0f} | Multi: {breakdown.get('multi_source', 0):.0f} | Fund: {breakdown.get('fundamentals', 0):.0f}\n"
-                                    f"💰 MCP: ${launch_mcp:,.0f} | Liq: ${existing.get('liq_usd', 0):,.0f} | Holders: {existing.get('holders', 0)}\n"
-                                    f"🔬 {dex_status}\n"
+                                    f"💰 MCP: ${launch_mcp:,.0f} | Liq: ${existing.get('liq_usd', 0):,.0f} | Holders: {existing.get('holders', 0)}{ts_info}\n"
+                                    f"🔬 {dex_status} | src: {health_data.get('source','?')}\n"
                                     f"📝 {score_result.get('reason', '')}\n"
                                     f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
                                     f"🔗 <a href=\"https://gmgn.ai/sol/token/{ca}\">GMGN</a> | "
@@ -586,9 +1174,20 @@ async def scan_channels(client):
                                         af.write(alert_msg)
                                 except Exception:
                                     pass
+                                # Record signal result for learning (re-score)
+                                try:
+                                    from learner import record_signal_result
+                                    record_signal_result(
+                                        ca, existing.get("symbol", "?"),
+                                        ath_multiplier=1.0, current_multiplier=1.0,
+                                        signal_age=0.0, signal_time=datetime.now(timezone.utc),
+                                        min_price_multiplier=0.0
+                                    )
+                                except Exception:
+                                    pass
                                 logger.info(f"🚨 UNIFIED RE-SCORE: {existing.get('symbol', '?')} score={score:.0f} {score_result['verdict']} {action} dex={'✅' if dex_verified else '❌'}")
-                        except Exception:
-                            pass
+                        except Exception as e:
+                            logger.debug(f"Unified signal error for {token.get('symbol','?')}: {e}")
             _last_msg_ids[cid] = msgs[0].id
         except Exception as e:
             _stats["errors"] += 1
@@ -639,15 +1238,34 @@ async def run_ath_checks(dex_client):
                             logger.info(f"[MEGA WINNER] {token['symbol']} x{multiplier:.0f} (${launch:.0f}→${current_mcp:.0f})")
                             _sync_winner(token)
                             _update_channel_outcome(token, multiplier, "MEGA_PUMP")
+                            if _get_cross_channel:
+                                try:
+                                    _get_cross_channel().record_outcome(ca, "mega_winner", multiplier)
+                                    _get_cross_channel().save()
+                                except Exception:
+                                    pass
                     elif multiplier >= 5:
                         if token.get("status") not in ("mega_winner", "winner"):
                             token["status"] = "winner"
                             logger.info(f"[WINNER] {token['symbol']} x{multiplier:.1f}")
                             _sync_winner(token)
                             _update_channel_outcome(token, multiplier, "PUMP")
+                            if _get_cross_channel:
+                                try:
+                                    _get_cross_channel().record_outcome(ca, "winner", multiplier)
+                                    _get_cross_channel().save()
+                                except Exception:
+                                    pass
                     elif current_mcp < launch * 0.3 and token.get("status") == "tracking":
                         token["status"] = "loser"
+                        _sync_loser(token)
                         _update_channel_outcome(token, multiplier, "DUMP")
+                        if _get_cross_channel:
+                            try:
+                                _get_cross_channel().record_outcome(ca, "loser", multiplier)
+                                _get_cross_channel().save()
+                            except Exception:
+                                pass
 
 async def run_loop(dex_client, interval: int = 15):
     logger.info("Starting Telegram collector loop...")
@@ -658,7 +1276,7 @@ async def run_loop(dex_client, interval: int = 15):
     load_tracked()
     while True:
         try:
-            await scan_channels(client)
+            await scan_channels(client, dex_client)
             await run_ath_checks(dex_client)
             save_tracked()
             tracked = len(_tracked_tokens)
@@ -700,6 +1318,22 @@ def find_daily_best():
 
     if not recent:
         recent = list(_tracked_tokens.values())
+
+    # Fallback: if _tracked_tokens is empty (e.g. after restart), load from bot_data.json
+    if not recent:
+        try:
+            with open(BOT_DATA_FILE) as f:
+                bd = json.load(f)
+            saved = bd.get("channel_insights", {}).get("top_coins", [])
+            if saved:
+                return {
+                    "top10": saved[:10],
+                    "patterns": bd.get("channel_insights", {}).get("patterns", {}),
+                    "best_combos": bd.get("channel_insights", {}).get("best_combos", []),
+                    "total_analyzed": len(saved),
+                }
+        except Exception:
+            pass
 
     recent.sort(key=lambda x: x.get("ath_multiplier", 0), reverse=True)
 
@@ -766,6 +1400,8 @@ def find_daily_best():
         signal_types[sig].append(is_winner)
 
         ch = t.get("source_channel", 0)
+        if not ch or ch == 0:
+            continue
         channel_stats[ch].append(is_winner)
 
     def win_rate(lst):
@@ -790,7 +1426,7 @@ def find_daily_best():
     patterns["channel"] = {}
     for ch, outcomes in channel_stats.items():
         wr, w, n = win_rate(outcomes)
-        ch_name = CHANNEL_NAMES.get(ch, f"Channel {ch}")
+        ch_name = CHANNEL_NAMES.get(ch, f"Channel {ch}") if isinstance(ch, int) else str(ch)
         patterns["channel"][ch_name] = {"win_rate": wr, "winners": w, "total": n}
 
     top10 = recent[:10]
@@ -829,7 +1465,7 @@ def find_daily_best():
             "patterns": patterns,
             "best_combos": best_combos[:10],
             "top_coins": [{"symbol": t.get("symbol"), "ath": t.get("ath_multiplier", 0),
-                           "channel": CHANNEL_NAMES.get(t.get("source_channel", 0), "?"),
+                           "channel": CHANNEL_NAMES.get(t.get("source_channel", 0), t.get("source_channel_name", "?")),
                            "signal_type": t.get("signal_type", "?")} for t in top10],
             "updated_at": datetime.now(timezone.utc).isoformat(),
         }
@@ -953,7 +1589,7 @@ def _sync_winner(token: dict):
             "name": token["name"],
             "ath_multiplier": ath,
             "current_multiplier": ath,
-            "min_price_multiplier": 1.0,
+            "min_price_multiplier": min(1.0, token.get("current_multiplier", 1.0)),
             "launch_mcap": token.get("launch_mcp", 0),
             "peak_mcap": token.get("ath_mcp", 0),
             "launch_liq": token.get("launch_liq", 0),
@@ -970,6 +1606,25 @@ def _sync_winner(token: dict):
             "timestamp": now_str,
             "detected_at": now_str,
             "source": "collector_sync",
+            "research_data": {
+                "holders": token.get("holders", 0),
+                "top10_pct": token.get("top10_pct", 0),
+                "bundled_pct": token.get("bundled_pct", 0),
+                "audit_score": token.get("audit_score", 0),
+                "renounced": token.get("renounced", False),
+                "dev_status": token.get("dev_status", "UNKNOWN"),
+                "healthy": token.get("healthy", True),
+                "lp_locked": token.get("lp_locked", 0),
+            },
+            "score_breakdown": token.get("score_breakdown", {}),
+            "dex_health": {
+                "holders": token.get("holders", 0),
+                "top10_pct": token.get("top10_pct", 0),
+                "bundled_pct": token.get("bundled_pct", 0),
+                "audit_score": token.get("audit_score", 0),
+                "healthy": token.get("healthy", True),
+                "liquidity": token.get("liquidity", 0),
+            },
         })
         with open(BOT_DATA_FILE, "w") as f:
             json.dump(data, f, indent=2)
@@ -978,10 +1633,82 @@ def _sync_winner(token: dict):
         logger.debug(f"Sync winner error: {e}")
 
 
+def _sync_loser(token: dict):
+    """Sync loser token to signal_results with research data."""
+    try:
+        ca = token["ca"]
+        with open(BOT_DATA_FILE) as f:
+            data = json.load(f)
+        sr = data.setdefault("model", {}).setdefault("signal_results", [])
+        for entry in sr:
+            if entry.get("address") == ca:
+                return
+        now_str = datetime.now(timezone.utc).isoformat()
+        ath = round(token["ath_multiplier"], 2)
+        sr.append({
+            "address": ca,
+            "symbol": token["symbol"],
+            "name": token["name"],
+            "ath_multiplier": ath,
+            "current_multiplier": round(token.get("current_multiplier", 0), 2),
+            "min_price_multiplier": min(1.0, token.get("current_multiplier", 1.0)),
+            "launch_mcap": token.get("launch_mcp", 0),
+            "peak_mcap": token.get("ath_mcp", 0),
+            "launch_liq": token.get("launch_liq", 0),
+            "holders": token.get("holders", 0),
+            "signal_type": token.get("signal_type", "UNKNOWN"),
+            "source_channel": token.get("source_channel_name", "Unknown"),
+            "top10_pct": token.get("top10_pct", 0),
+            "no_mint": token.get("no_mint", False),
+            "blacklist_safe": token.get("blacklist_safe", False),
+            "dev_status": token.get("dev_status", "UNKNOWN"),
+            "is_pump": False,
+            "score": 0.2,
+            "verdict": "DUMP",
+            "timestamp": now_str,
+            "detected_at": now_str,
+            "source": "collector_sync",
+            "research_data": {
+                "holders": token.get("holders", 0),
+                "top10_pct": token.get("top10_pct", 0),
+                "bundled_pct": token.get("bundled_pct", 0),
+                "audit_score": token.get("audit_score", 0),
+                "renounced": token.get("renounced", False),
+                "dev_status": token.get("dev_status", "UNKNOWN"),
+                "healthy": token.get("healthy", True),
+                "lp_locked": token.get("lp_locked", 0),
+            },
+            "score_breakdown": token.get("score_breakdown", {}),
+            "dex_health": {
+                "holders": token.get("holders", 0),
+                "top10_pct": token.get("top10_pct", 0),
+                "bundled_pct": token.get("bundled_pct", 0),
+                "audit_score": token.get("audit_score", 0),
+                "healthy": token.get("healthy", True),
+                "liquidity": token.get("liquidity", 0),
+            },
+        })
+        with open(BOT_DATA_FILE, "w") as f:
+            json.dump(data, f, indent=2)
+        logger.info(f"[SYNC] Added {token['symbol']} x{token['ath_multiplier']:.1f} (DUMP) from {token.get('source_channel_name', '?')}")
+    except Exception as e:
+        logger.debug(f"Sync loser error: {e}")
+
+
 def _update_channel_outcome(token: dict, ath_multiplier: float, verdict: str):
     """Update channel stats when a token outcome is determined."""
     try:
         ch_id = token.get("source_channel")
+        # Fallback: look up channel from cross_channel data if source_channel missing
+        if not ch_id and _get_cross_channel:
+            try:
+                cc = _get_cross_channel()
+                ch_list = cc.get_channel_list(token.get("ca", ""))
+                if ch_list:
+                    ch_id = ch_list[0]
+                    token["source_channel"] = ch_id
+            except Exception:
+                pass
         if not ch_id:
             return
         from learner import update_channel_outcome
