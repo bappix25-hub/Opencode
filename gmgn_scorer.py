@@ -23,7 +23,7 @@ def score_gmgn_token(token: dict) -> dict:
         # Map verdict to old format for compatibility
         verdict_map = {"STRONG": "CONFIRMED", "GOOD": "PROBABLE", "FAIR": "WEAK", "WEAK": "SKIP", "NO_DATA": "SKIP"}
         return {
-            "score": result["score"] * 2 - 1,  # Convert 0-1 to -1 to +1
+            "score": result["score"],  # Keep 0-1 scale
             "verdict": verdict_map.get(result["verdict"], "SKIP"),
             "matched": result.get("matched", []),
             "holders": token.get("holders", 0),

@@ -1,6 +1,7 @@
 import asyncio
 import logging
 import os
+import glob
 from telethon import TelegramClient, errors
 
 logger = logging.getLogger("meme_bot.maestro_client")
@@ -12,6 +13,19 @@ SESSION_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "maestro
 
 _client = None
 _lock = asyncio.Lock()
+
+
+def _cleanup_session_locks():
+    """Remove SQLite lock files that cause 'database is locked' errors."""
+    for pattern in [f"{SESSION_FILE}*", f"{SESSION_FILE}-*"]:
+        for lock_file in glob.glob(pattern):
+            if lock_file.endswith(("-journal", "-shm", "-wal", ".lock")):
+                try:
+                    os.remove(lock_file)
+                    logger.info(f"Removed stale lock file: {lock_file}")
+                except Exception:
+                    pass
+
 
 async def get_client() -> TelegramClient:
     global _client
@@ -28,11 +42,13 @@ async def get_client() -> TelegramClient:
     async with _lock:
         if _client is not None:
             return _client
+        _cleanup_session_locks()
         _client = TelegramClient(SESSION_FILE, API_ID, API_HASH)
         try:
             await _client.connect()
         except Exception as e:
             logger.error(f"Telegram connect failed: {e}")
+            _cleanup_session_locks()
             _client = None
             return None
         if not await _client.is_user_authorized():
@@ -40,7 +56,24 @@ async def get_client() -> TelegramClient:
             _client = None
             return None
         await _client.get_entity(MAESTRO_ID)
+
+        # Pre-resolve all bot entities to avoid "input entity" errors
+        BOT_IDS = [8436907499, 7178305557, 6126376117]  # Phanes, TokenScan, Rick
+        for bot_id in BOT_IDS:
+            try:
+                await _client.get_entity(bot_id)
+            except Exception:
+                # If get_entity fails, try iterating dialogs once
+                try:
+                    async for dialog in _client.iter_dialogs(limit=100):
+                        if dialog.id in BOT_IDS:
+                            logger.info(f"Resolved bot entity: {dialog.name} ({dialog.id})")
+                except Exception as e:
+                    logger.debug(f"Dialog iteration error: {e}")
+                break  # Only iterate once if needed
+
     return _client
+
 
 async def buy(address: str, sol_amount: str = "") -> bool:
     try:
@@ -48,12 +81,8 @@ async def buy(address: str, sol_amount: str = "") -> bool:
         if not client:
             return False
         
-        cmd = f"/buy {address}"
-        if sol_amount:
-            cmd += f" {sol_amount}"
-        
         async with _lock:
-            await client.send_message(MAESTRO_ID, cmd)
+            await client.send_message(MAESTRO_ID, address)
         
         logger.info(f"Maestro buy sent: {address[:12]}...")
         return True
@@ -65,8 +94,13 @@ async def buy(address: str, sol_amount: str = "") -> bool:
         logger.warning(f"Maestro buy error: {e}")
         return False
 
+
 async def close():
     global _client
     if _client:
-        await _client.disconnect()
+        try:
+            await _client.disconnect()
+        except Exception:
+            pass
         _client = None
+        _cleanup_session_locks()

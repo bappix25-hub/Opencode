@@ -1,0 +1,1964 @@
+{
+  "rugs": [],
+  "patterns": {},
+  "lp_snapshots": {
+    "9KqKGX1dwPwMYqonGZ75G8ZzkG8fxBdeXKiZVa9eytKt": {
+      "symbol": "0.0{4}12047",
+      "signal_time": 1782476588.829466,
+      "signal_liq": 0,
+      "signal_mcp": 12047.8,
+      "signal_holders": 12,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "CTO",
+      "lp_history": [
+        [
+          1782476588.829466,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "EYQpmDEw8RV7wDUzgnoNLQeCbgH3UsvJPre4VgcBpge": {
+      "symbol": "CDOF",
+      "signal_time": 1782476591.124793,
+      "signal_liq": 41340.0,
+      "signal_mcp": 0,
+      "signal_holders": 10,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476591.124793,
+          41340.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "ACYkpAuUtHbtwBHZuSRSHE8r68gRZdrDowoo1FRFPgpX": {
+      "symbol": "0.0{4}86356",
+      "signal_time": 1782476592.367283,
+      "signal_liq": 0,
+      "signal_mcp": 86356.49,
+      "signal_holders": 1,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476592.367283,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "iACepJW3vyevPBMe2CwyzLTF9Hj6nWRYW4QukqVEASY": {
+      "symbol": "0.0{4}54909",
+      "signal_time": 1782476593.481116,
+      "signal_liq": 0,
+      "signal_mcp": 54906.96,
+      "signal_holders": 105,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476593.481116,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "842WRaxaQk7mtGMWtWm28qZ1uwiRkFfp5pxu2iY7r1Mm": {
+      "symbol": "PIXELFARM",
+      "signal_time": 1782476594.380572,
+      "signal_liq": 12242.33,
+      "signal_mcp": 0,
+      "signal_holders": 1,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476594.380572,
+          12242.33
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "3oBvAEmEgX6jRHHp8sVX95XV8wAYNTrXnWh4kVRcCkHJ": {
+      "symbol": "0.0{4}11881",
+      "signal_time": 1782476595.45781,
+      "signal_liq": 0,
+      "signal_mcp": 11881.44,
+      "signal_holders": 0,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476595.45781,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "Do9mNi7VaUF1dWBv7nrFVPN3qTXTAeGfc5a1Knqrf9JW": {
+      "symbol": "PIXELFARM",
+      "signal_time": 1782476597.045004,
+      "signal_liq": 12229.89,
+      "signal_mcp": 0,
+      "signal_holders": 1,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476597.045004,
+          12229.89
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "HqfnRhH33x5ow2EwZtLimizevUcBYsWkoAAE9Vu3BAGS": {
+      "symbol": "Frdh",
+      "signal_time": 1782476598.352449,
+      "signal_liq": 31336.39,
+      "signal_mcp": 0,
+      "signal_holders": 12,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476598.352449,
+          31336.39
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "4Cv4Get7RXCUtrC6mSLjz7jH5LMCpD8LNqvJXE4XuRZr": {
+      "symbol": "Ornith",
+      "signal_time": 1782476599.679101,
+      "signal_liq": 13636.26,
+      "signal_mcp": 0,
+      "signal_holders": 12,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476599.679101,
+          13636.26
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "3J9553NgM5FZz8gNve4qvRJovB6yFaiwQRtN2JpDLXj6": {
+      "symbol": "Cryptoquee",
+      "signal_time": 1782476601.252664,
+      "signal_liq": 11704.82,
+      "signal_mcp": 0,
+      "signal_holders": 19,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476601.252664,
+          11704.82
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "77B5t2SpwZo8sEQdYnKvzz4iosdYSKDsuJxFidTGjXqa": {
+      "symbol": "FCKED",
+      "signal_time": 1782476602.461714,
+      "signal_liq": 11704.87,
+      "signal_mcp": 0,
+      "signal_holders": 1,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476602.461714,
+          11704.87
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "8DY3SeQPodeKFysMCx1PXuU8GN7fsEw3d8T9B7cAks87": {
+      "symbol": "VECTA",
+      "signal_time": 1782476604.044669,
+      "signal_liq": 11703.17,
+      "signal_mcp": 0,
+      "signal_holders": 6,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476604.044669,
+          11703.17
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "5bZpyGGhMs6s9x1TTSP74LfxidYykKryNJgaEYZb8EXe": {
+      "symbol": "Panoptes",
+      "signal_time": 1782476606.110387,
+      "signal_liq": 11708.22,
+      "signal_mcp": 0,
+      "signal_holders": 7,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476606.110387,
+          11708.22
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "BmbV7WJiMq5xqXxFNCnWU5pwMfcQ6aF6vrVi7ReofpS8": {
+      "symbol": "0.0{4}86018",
+      "signal_time": 1782476607.974827,
+      "signal_liq": 0,
+      "signal_mcp": 86018.92,
+      "signal_holders": 1,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476607.974827,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "2sQMLmjZ8k7jqyYRcUpqbMjLjJ9GwVyqPD5sRUzBRmbN": {
+      "symbol": "0.0{4}86056",
+      "signal_time": 1782476609.801712,
+      "signal_liq": 0,
+      "signal_mcp": 86056.43,
+      "signal_holders": 1,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476609.801712,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "8QjEkP3GMbVrENaqxCf3fJNJV4f8FCbYqqKqnYK5kYP5": {
+      "symbol": "0.0{4}12041",
+      "signal_time": 1782476611.916258,
+      "signal_liq": 0,
+      "signal_mcp": 12041.85,
+      "signal_holders": 8,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476611.916258,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "7ukCDiYCpNBSQjqjH3r8AoWjZFmUEtEShksAf2ooYHnH": {
+      "symbol": "Teddy",
+      "signal_time": 1782476614.835773,
+      "signal_liq": 67473.0,
+      "signal_mcp": 0,
+      "signal_holders": 15,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476614.835773,
+          67473.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "3SsZH8EsLfvAa4HRd9dwpYTvCctisAwxihLe7y12Dvk2": {
+      "symbol": "Ruja",
+      "signal_time": 1782476616.218223,
+      "signal_liq": 13624.38,
+      "signal_mcp": 0,
+      "signal_holders": 10,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476616.218223,
+          13624.38
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "5xRSecwhFxrwEMx9uASZt1eWruTxHDrtFTVo3KqtPtVc": {
+      "symbol": "Panoptes",
+      "signal_time": 1782476619.197486,
+      "signal_liq": 11684.43,
+      "signal_mcp": 0,
+      "signal_holders": 7,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476619.197486,
+          11684.43
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "35m99HdbDMfrCa8kbWZnRFKGcVCxue8bozPg8xzz1M9X": {
+      "symbol": "POCHI",
+      "signal_time": 1782476621.674303,
+      "signal_liq": 11675.93,
+      "signal_mcp": 0,
+      "signal_holders": 1,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476621.674303,
+          11675.93
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "4q3ZBdxGP3WmyHPeACM8h7KN3bDcfY4xvZ1mK1qPTFqN": {
+      "symbol": "good",
+      "signal_time": 1782476624.245289,
+      "signal_liq": 4827.2204,
+      "signal_mcp": 0,
+      "signal_holders": 1,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476624.245289,
+          4827.2204
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "5jrWTyKNYhDzRaC7NZ4z4xKfJq2wapqRsR16JcMhqBLw": {
+      "symbol": "SYNTHETIC",
+      "signal_time": 1782476644.539445,
+      "signal_liq": 4600.0,
+      "signal_mcp": 2100.0,
+      "signal_holders": 0,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 206.9,
+      "signal_price_change_5m": 0.0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0.0,
+      "signal_txns_5m": 1,
+      "signal_signal_type": "DEV_BOUGHT",
+      "lp_history": [
+        [
+          1782476644.539445,
+          4600.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "3gCJbNHTb9XZwNXbo168An4knJWRP1PdxwRjBWvDpump": {
+      "symbol": "CLUADE",
+      "signal_time": 1782476647.182291,
+      "signal_liq": 4500.0,
+      "signal_mcp": 2600.0,
+      "signal_holders": 5,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 1200.0,
+      "signal_price_change_5m": 16.37,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 24.81,
+      "signal_txns_5m": 10,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476647.182291,
+          4500.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "D3rCCdrpYG8YnKfAd2af5ucS1qxqbebgefSiZXc8pump": {
+      "symbol": "SToken",
+      "signal_time": 1782476649.654216,
+      "signal_liq": 0,
+      "signal_mcp": 1900.0,
+      "signal_holders": 2,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 1300.0,
+      "signal_price_change_5m": -8.24,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 6.88,
+      "signal_txns_5m": 17,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476649.654216,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "C29i7py8uWbA36UwaSnm2z3fokuasRBgARe4Vx88pump": {
+      "symbol": "SToken",
+      "signal_time": 1782476651.50111,
+      "signal_liq": 7300.0,
+      "signal_mcp": 5400.0,
+      "signal_holders": 17,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 3200.0,
+      "signal_price_change_5m": 141.4,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0.0,
+      "signal_txns_5m": 22,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476651.50111,
+          7300.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "8Nwe9Pa6ubaunhT26XUxRjU5AUCs55ZppFEKwGaipump": {
+      "symbol": "Angry",
+      "signal_time": 1782476656.401883,
+      "signal_liq": 0,
+      "signal_mcp": 2900.0,
+      "signal_holders": 13,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 1100.0,
+      "signal_price_change_5m": 37.99,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0.0,
+      "signal_txns_5m": 13,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476656.401883,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "Ai9Zkkkyp2pRxM8NBt7dzyFa1NiSpMsk8CUurMswhzMB": {
+      "symbol": "FART",
+      "signal_time": 1782476659.558304,
+      "signal_liq": 4100.0,
+      "signal_mcp": 2100.0,
+      "signal_holders": 1,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 413.8,
+      "signal_price_change_5m": 0.0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0.0,
+      "signal_txns_5m": 2,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476659.558304,
+          4100.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "FUPHgEFGunk9Sibtz4eq9tc2ozM32D4AeaEgBfmnpump": {
+      "symbol": "Ditto",
+      "signal_time": 1782476662.019223,
+      "signal_liq": 0,
+      "signal_mcp": 3600.0,
+      "signal_holders": 8,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 1500.0,
+      "signal_price_change_5m": 82.28,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 31.9,
+      "signal_txns_5m": 13,
+      "signal_signal_type": "CTO",
+      "lp_history": [
+        [
+          1782476662.019223,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "6Nc8KDkv6PghwxpuM8hGuuzGzUDuxzXBkuhFLxJUpump": {
+      "symbol": "FART",
+      "signal_time": 1782476664.514763,
+      "signal_liq": 0,
+      "signal_mcp": 2000.0,
+      "signal_holders": 3,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 992.2,
+      "signal_price_change_5m": -3.93,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 19.59,
+      "signal_txns_5m": 10,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476664.514763,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "4ZszzELABuZpgviwGhXKuTg246GhoBoMz1d5Mwhspump": {
+      "symbol": "FLAMY",
+      "signal_time": 1782476666.033204,
+      "signal_liq": 8000.0,
+      "signal_mcp": 7100.0,
+      "signal_holders": 16,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 1400.0,
+      "signal_price_change_5m": 41.46,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 52.83,
+      "signal_txns_5m": 33,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476666.033204,
+          8000.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "saBoDifzLFwTYvN2wUH7kH6cZj9XN69nzCQtygDpump": {
+      "symbol": "Neuro",
+      "signal_time": 1782476668.118901,
+      "signal_liq": 4200.0,
+      "signal_mcp": 2100.0,
+      "signal_holders": 2,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 202.4,
+      "signal_price_change_5m": 3.8,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 5.39,
+      "signal_txns_5m": 5,
+      "signal_signal_type": "CTO",
+      "lp_history": [
+        [
+          1782476668.118901,
+          4200.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "13zs3MMJx2fPNVoDdJNXr4Yo5kU5HAct1Gm9BDCzBEq8": {
+      "symbol": "CDOF",
+      "signal_time": 1782476697.684899,
+      "signal_liq": 41424.0,
+      "signal_mcp": 0,
+      "signal_holders": 1,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476697.684899,
+          41424.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "BNjnGsENk1StzLBRCaFj3GSMSMoXwQwizqpeFdE4pump": {
+      "symbol": "10G",
+      "signal_time": 1782476702.861783,
+      "signal_liq": 4600.0,
+      "signal_mcp": 2600.0,
+      "signal_holders": 7,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 1200.0,
+      "signal_price_change_5m": 20.42,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 19.87,
+      "signal_txns_5m": 15,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476702.861783,
+          4600.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "J2eaKn35rp82T6RFEsNK9CLRHEKV9BLXjedFM3q6pump": {
+      "symbol": "FTP",
+      "signal_time": 1782476707.388644,
+      "signal_liq": 25700.0,
+      "signal_mcp": 56200.0,
+      "signal_holders": 3332,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 287.9,
+      "signal_price_change_5m": -3.13,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 22.06,
+      "signal_txns_5m": 6,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476707.388644,
+          25700.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "fERD9husU3nj3YbFS1P2kesCW2Z5KHkq8FyGFfnpump": {
+      "symbol": "MANIFEST",
+      "signal_time": 1782476711.43278,
+      "signal_liq": 13200.0,
+      "signal_mcp": 34200.0,
+      "signal_holders": 70,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 4000.0,
+      "signal_price_change_5m": 29.36,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 77.96,
+      "signal_txns_5m": 120,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476711.43278,
+          13200.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "8VD3jkgbqUiW8GitxPYSjxvheYU8MR1WEgwrxFeapump": {
+      "symbol": "Angry",
+      "signal_time": 1782476713.808802,
+      "signal_liq": 0,
+      "signal_mcp": 1900.0,
+      "signal_holders": 2,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 856.9,
+      "signal_price_change_5m": -8.19,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0.4,
+      "signal_txns_5m": 11,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476713.808802,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "GuM5CYUG8xEiroEse1NfjcAfyBAbB9RsnYZKSFTmcJA4": {
+      "symbol": "BUOY",
+      "signal_time": 1782476740.387396,
+      "signal_liq": 13679.82,
+      "signal_mcp": 0,
+      "signal_holders": 12,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476740.387396,
+          13679.82
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "Bck1JUUs8HADaqNedmYxQTAvnhpW8yCg3KMZFfibdY92": {
+      "symbol": "0.0{4}413",
+      "signal_time": 1782476741.946278,
+      "signal_liq": 0,
+      "signal_mcp": 41300.99,
+      "signal_holders": 1,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "CTO",
+      "lp_history": [
+        [
+          1782476741.946278,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "J1NcWMdcC1BTyykCDoWcwegdXTeaLfKnB8cgKbdD9pAg": {
+      "symbol": "Teddy",
+      "signal_time": 1782476743.468745,
+      "signal_liq": 67816.92,
+      "signal_mcp": 0,
+      "signal_holders": 9,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476743.468745,
+          67816.92
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "AD6zFfYrLx8dw5atwMromiXJCkaWqGVNqX5gvpwFpump": {
+      "symbol": "SIMD",
+      "signal_time": 1782476747.995169,
+      "signal_liq": 5100.0,
+      "signal_mcp": 3000.0,
+      "signal_holders": 6,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 626.3,
+      "signal_price_change_5m": 41.82,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 22.59,
+      "signal_txns_5m": 6,
+      "signal_signal_type": "FDV_SURGE",
+      "lp_history": [
+        [
+          1782476747.995169,
+          5100.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "Cvs7deW5cTy4m9UV66MezM157BNmSozZKEg9Efekpump": {
+      "symbol": "POOL",
+      "signal_time": 1782476749.890499,
+      "signal_liq": 10100.0,
+      "signal_mcp": 20700.0,
+      "signal_holders": 388,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 74700.0,
+      "signal_price_change_5m": -26.6,
+      "signal_dev_status": "SELL_ALL",
+      "signal_top10_pct": 25.1,
+      "signal_txns_5m": 1900,
+      "signal_signal_type": "FDV_SURGE",
+      "lp_history": [
+        [
+          1782476749.890499,
+          10100.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "popDLSwkcumUBK8ncmzmdn9thatUHRTPjCxmFdXpump": {
+      "symbol": "RC",
+      "signal_time": 1782476751.755822,
+      "signal_liq": 5200.0,
+      "signal_mcp": 2300.0,
+      "signal_holders": 6,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 861.6,
+      "signal_price_change_5m": 4.41,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 21.05,
+      "signal_txns_5m": 9,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476751.755822,
+          5200.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "61JDcDTha5RsLjG7RiE2qeFSP153j3Hd1aMBwTPMpump": {
+      "symbol": "job",
+      "signal_time": 1782476753.667477,
+      "signal_liq": 4400.0,
+      "signal_mcp": 839.8,
+      "signal_holders": 2,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 1500.0,
+      "signal_price_change_5m": -56.59,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0.0,
+      "signal_txns_5m": 99,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476753.667477,
+          4400.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "GyePxvquMKcaS6QTCJtnMmSEmKJwDx1bKkcV176Hpump": {
+      "symbol": "OTRUN",
+      "signal_time": 1782476755.409272,
+      "signal_liq": 0,
+      "signal_mcp": 2200.0,
+      "signal_holders": 0,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 1800.0,
+      "signal_price_change_5m": -1.5,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0.0,
+      "signal_txns_5m": 13,
+      "signal_signal_type": "DEV_BOUGHT",
+      "lp_history": [
+        [
+          1782476755.409272,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "BEPS3PvSgAyCS9Z2LVQjv8qGsd6cEtSg7R8dmrzWpump": {
+      "symbol": "INHERIT",
+      "signal_time": 1782476756.811219,
+      "signal_liq": 4200.0,
+      "signal_mcp": 2000.0,
+      "signal_holders": 3,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 1600.0,
+      "signal_price_change_5m": -11.69,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0.99,
+      "signal_txns_5m": 11,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476756.811219,
+          4200.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "Dt5YjxifNLTb1eK9SSazMAZU4SUnNW5DkV5Dg4xvpump": {
+      "symbol": "Lock",
+      "signal_time": 1782476758.283274,
+      "signal_liq": 4900.0,
+      "signal_mcp": 2900.0,
+      "signal_holders": 8,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 1500.0,
+      "signal_price_change_5m": 34.52,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 3.26,
+      "signal_txns_5m": 17,
+      "signal_signal_type": "CTO",
+      "lp_history": [
+        [
+          1782476758.283274,
+          4900.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "CKu7uBVsy42ybqbhGxWUNLCtjjioZZGXV8Seg6vapump": {
+      "symbol": "10G",
+      "signal_time": 1782476760.659403,
+      "signal_liq": 4900.0,
+      "signal_mcp": 2100.0,
+      "signal_holders": 4,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 1300.0,
+      "signal_price_change_5m": 0.6,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0.0,
+      "signal_txns_5m": 18,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476760.659403,
+          4900.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "AXYqDqmCawgPxZ3Cg453mD6AEv7Pby3ABFud9ExLpump": {
+      "symbol": "POKELOBBY",
+      "signal_time": 1782476763.989598,
+      "signal_liq": 4400.0,
+      "signal_mcp": 2200.0,
+      "signal_holders": 21,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 4400.0,
+      "signal_price_change_5m": 11.45,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 13.94,
+      "signal_txns_5m": 167,
+      "signal_signal_type": "FDV_SURGE",
+      "lp_history": [
+        [
+          1782476763.989598,
+          4400.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "8p41a7vJkgFcK6AdUGsFhxQK6jTQgVLJN3Qb9ZDJpump": {
+      "symbol": "Dickbutt",
+      "signal_time": 1782476765.767237,
+      "signal_liq": 7100.0,
+      "signal_mcp": 5900.0,
+      "signal_holders": 27,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 3900.0,
+      "signal_price_change_5m": 187.1,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 26.26,
+      "signal_txns_5m": 50,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476765.767237,
+          7100.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "AwjBtHLLRdK9b6Vx9bWBeEhntBt97BYTKidrJTsijkY4": {
+      "symbol": "0.0{4}12095",
+      "signal_time": 1782476791.860196,
+      "signal_liq": 0,
+      "signal_mcp": 12095.46,
+      "signal_holders": 13,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "CTO",
+      "lp_history": [
+        [
+          1782476791.860196,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "4NQRq7tUmXFZ4He15AK64bXsVtAuGEzHMSf3YQpWAmGv": {
+      "symbol": "Teddy",
+      "signal_time": 1782476793.138839,
+      "signal_liq": 14647.08,
+      "signal_mcp": 0,
+      "signal_holders": 6,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476793.138839,
+          14647.08
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "7NKbM7chZHRrXxNAj7sNxEMGNSYdJnUAJCcr4hJkUmo9": {
+      "symbol": "0.0{4}20316",
+      "signal_time": 1782476794.98975,
+      "signal_liq": 0,
+      "signal_mcp": 20316.1,
+      "signal_holders": 13,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476794.98975,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "BvjUTa92JPpYnYdeDwyA924muiQv92ifMRkzb1Fnpump": {
+      "symbol": "POOL",
+      "signal_time": 1782476799.823474,
+      "signal_liq": 0,
+      "signal_mcp": 2100.0,
+      "signal_holders": 3,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 136.5,
+      "signal_price_change_5m": 0.0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0.0,
+      "signal_txns_5m": 1,
+      "signal_signal_type": "DEV_BOUGHT",
+      "lp_history": [
+        [
+          1782476799.823474,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "ESYXRxY5smdi3AS8T5Dw8wFZoTq8JHaLoMXqBAPPpump": {
+      "symbol": "Dickbutt",
+      "signal_time": 1782476801.204244,
+      "signal_liq": 4100.0,
+      "signal_mcp": 2200.0,
+      "signal_holders": 1,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 552.6,
+      "signal_price_change_5m": -0.03,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0.0,
+      "signal_txns_5m": 2,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476801.204244,
+          4100.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "GtFMD75GEvnceLdXpyG6GJXuhnwDQWiga8xzc2bgpump": {
+      "symbol": "WORLD",
+      "signal_time": 1782476802.83299,
+      "signal_liq": 0,
+      "signal_mcp": 2000.0,
+      "signal_holders": 3,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 1300.0,
+      "signal_price_change_5m": -6.39,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 24.94,
+      "signal_txns_5m": 10,
+      "signal_signal_type": "CTO",
+      "lp_history": [
+        [
+          1782476802.83299,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "CJhYF5cBQ8MV45Lt9aCwaWveDc7GLXFkR3bPz81tpump": {
+      "symbol": "FART",
+      "signal_time": 1782476804.438115,
+      "signal_liq": 8100.0,
+      "signal_mcp": 6500.0,
+      "signal_holders": 73,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 9200.0,
+      "signal_price_change_5m": 186.3,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 29.59,
+      "signal_txns_5m": 263,
+      "signal_signal_type": "CTO",
+      "lp_history": [
+        [
+          1782476804.438115,
+          8100.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "FbKXvEVo3B71PHhdwDxHywYuxxn5N4s5c4WjSvUnpump": {
+      "symbol": "SIMD",
+      "signal_time": 1782476807.012884,
+      "signal_liq": 0,
+      "signal_mcp": 2500.0,
+      "signal_holders": 4,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 595.8,
+      "signal_price_change_5m": 22.15,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0.0,
+      "signal_txns_5m": 7,
+      "signal_signal_type": "CTO",
+      "lp_history": [
+        [
+          1782476807.012884,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "BvL9cXfc4Btg81Uif34UJMVmT2g3yfX7tTBQSMfrpump": {
+      "symbol": "HARDWARE",
+      "signal_time": 1782476835.951346,
+      "signal_liq": 6300.0,
+      "signal_mcp": 4300.0,
+      "signal_holders": 20,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 2000.0,
+      "signal_price_change_5m": 100.5,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 23.17,
+      "signal_txns_5m": 43,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476835.951346,
+          6300.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "FqUGH76f1S2uTXdp9Xmsmy3uqtZhqBV8TzWSNhobpump": {
+      "symbol": "Stretch",
+      "signal_time": 1782476837.583981,
+      "signal_liq": 4500.0,
+      "signal_mcp": 2200.0,
+      "signal_holders": 6,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 860.4,
+      "signal_price_change_5m": 3.65,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 12.52,
+      "signal_txns_5m": 17,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476837.583981,
+          4500.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "GrBkJr5wxHD9en1J3dp5HHo3JRPk2Z8viosYdtavRE7N": {
+      "symbol": "BUOY",
+      "signal_time": 1782476864.520498,
+      "signal_liq": 13687.74,
+      "signal_mcp": 0,
+      "signal_holders": 9,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476864.520498,
+          13687.74
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "29HoYqyVFB6pWQMQqHSALnLcTT8XXk5VgjVHpgnWpump": {
+      "symbol": "\u30b9\u30e4",
+      "signal_time": 1782476869.040068,
+      "signal_liq": 0,
+      "signal_mcp": 2500.0,
+      "signal_holders": 7,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 1300.0,
+      "signal_price_change_5m": 16.2,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0.0,
+      "signal_txns_5m": 15,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476869.040068,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "26SUJpgj5qMkT8cG5M15KnURkvd2YaXLyeC6ZAGyDFeS": {
+      "symbol": "0.0{4}42332",
+      "signal_time": 1782476895.790102,
+      "signal_liq": 0,
+      "signal_mcp": 42332.19,
+      "signal_holders": 0,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476895.790102,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "GzjuEUfD4ARqFhpTo6HvcYPW52zBJqZEH9UG8regnnVs": {
+      "symbol": "POOL",
+      "signal_time": 1782476897.68039,
+      "signal_liq": 69120.0,
+      "signal_mcp": 0,
+      "signal_holders": 19,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782476897.68039,
+          69120.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "Ne6CsS4k86nsAZTNwCZVyFY7VAd1qcWEjfBaKPWpump": {
+      "symbol": "Nagi-Chan",
+      "signal_time": 1782476904.482753,
+      "signal_liq": 5200.0,
+      "signal_mcp": 5600.0,
+      "signal_holders": 159,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 282.7,
+      "signal_price_change_5m": 8.89,
+      "signal_dev_status": "SELL_ALL",
+      "signal_top10_pct": 25.74,
+      "signal_txns_5m": 7,
+      "signal_signal_type": "KOL_FOMO",
+      "lp_history": [
+        [
+          1782476904.482753,
+          5200.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "5bvfRdy8LXNUrXXitT51h2XDAmXyKN8u5E5gkyyapump": {
+      "symbol": "704.8",
+      "signal_time": 1782476905.37626,
+      "signal_liq": 4900.0,
+      "signal_mcp": 9600.0,
+      "signal_holders": 6,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 704.8,
+      "signal_price_change_5m": 390.6,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 3.08,
+      "signal_txns_5m": 31,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476905.37626,
+          4900.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "2vNm65J1qk99SVfnsHgYdKLEHqkqbbiLK9WcS5V2pump": {
+      "symbol": "MOINU",
+      "signal_time": 1782476909.400645,
+      "signal_liq": 4200.0,
+      "signal_mcp": 2100.0,
+      "signal_holders": 1,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 213.3,
+      "signal_price_change_5m": 0.99,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0.0,
+      "signal_txns_5m": 24,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476909.400645,
+          4200.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "5gc1VyxDKjnhrMR1MM6iYnZKWsNYrR6s4qAb3ZoEpump": {
+      "symbol": "BULLRUN",
+      "signal_time": 1782476912.293778,
+      "signal_liq": 11200.0,
+      "signal_mcp": 15000.0,
+      "signal_holders": 105,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 1300.0,
+      "signal_price_change_5m": 30.58,
+      "signal_dev_status": "HOLD",
+      "signal_top10_pct": 29.5,
+      "signal_txns_5m": 5,
+      "signal_signal_type": "KOTH",
+      "lp_history": [
+        [
+          1782476912.293778,
+          11200.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "F7F1tS5L28BKPFHUgorm9Dsdg7m1jjxvQguGHCWBpump": {
+      "symbol": "Aurum+",
+      "signal_time": 1782476914.916502,
+      "signal_liq": 4200.0,
+      "signal_mcp": 17600.0,
+      "signal_holders": 3,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 675.0,
+      "signal_price_change_5m": 808.6,
+      "signal_dev_status": "HOLD",
+      "signal_top10_pct": 0.21,
+      "signal_txns_5m": 66,
+      "signal_signal_type": "KOTH",
+      "lp_history": [
+        [
+          1782476914.916502,
+          4200.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "4tb9NF4xQ6Hy2Rxyzschb4WNgiiTv41RdZfYcKotpump": {
+      "symbol": "job",
+      "signal_time": 1782476916.826287,
+      "signal_liq": 4300.0,
+      "signal_mcp": 441.2,
+      "signal_holders": 2,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 426.7,
+      "signal_price_change_5m": -77.21,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 21.38,
+      "signal_txns_5m": 41,
+      "signal_signal_type": "CTO",
+      "lp_history": [
+        [
+          1782476916.826287,
+          4300.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "2rVhougY2bvudhjGgnz4PNbLH3nUsCadFAQGCkeLpump": {
+      "symbol": "\u666e\u901a\u8bdd",
+      "signal_time": 1782476945.87279,
+      "signal_liq": 4600.0,
+      "signal_mcp": 2500.0,
+      "signal_holders": 11,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 1700.0,
+      "signal_price_change_5m": 11.12,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 12.36,
+      "signal_txns_5m": 27,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476945.87279,
+          4600.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "GkLTSwCYzUorzKhvcAFeDXqL1kBtM2787ktH2f6ipump": {
+      "symbol": "mandarin",
+      "signal_time": 1782476949.310421,
+      "signal_liq": 6600.0,
+      "signal_mcp": 4300.0,
+      "signal_holders": 31,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 6100.0,
+      "signal_price_change_5m": 80.8,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 38.85,
+      "signal_txns_5m": 55,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476949.310421,
+          6600.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "4eRotfmFZtDXKSbMPa4TW1HTPDFQs3rJo4mfvnPgpump": {
+      "symbol": "TAP",
+      "signal_time": 1782476979.190367,
+      "signal_liq": 5200.0,
+      "signal_mcp": 2800.0,
+      "signal_holders": 20,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 11800.0,
+      "signal_price_change_5m": 36.35,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 14.46,
+      "signal_txns_5m": 265,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476979.190367,
+          5200.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "FH9LSiFm3joDCYR6iW4XpXsBhm6Nixg6GZdg1dXapump": {
+      "symbol": "hypeflow",
+      "signal_time": 1782476981.301447,
+      "signal_liq": 4600.0,
+      "signal_mcp": 2200.0,
+      "signal_holders": 4,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 588.8,
+      "signal_price_change_5m": 2.94,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 1.45,
+      "signal_txns_5m": 7,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476981.301447,
+          4600.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "EUF9MHCqoSJv1jPJFKEURHWczagL5kLaN6qHbVcipump": {
+      "symbol": "DATALAND",
+      "signal_time": 1782476982.75301,
+      "signal_liq": 5100.0,
+      "signal_mcp": 3100.0,
+      "signal_holders": 12,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 921.2,
+      "signal_price_change_5m": 47.81,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 18.52,
+      "signal_txns_5m": 14,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476982.75301,
+          5100.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "GcwibgSiF8J1GjwSdHN7B6Wb56sFFKuqDjSzeDU2pump": {
+      "symbol": "Alicorn",
+      "signal_time": 1782476984.531127,
+      "signal_liq": 0,
+      "signal_mcp": 2400.0,
+      "signal_holders": 6,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 1100.0,
+      "signal_price_change_5m": 14.56,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0.0,
+      "signal_txns_5m": 12,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476984.531127,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "G3rYn5mKaesPaZqxex6YqoTfkfeQQURxT99Ft3wLpump": {
+      "symbol": "\u30b9\u30e4",
+      "signal_time": 1782476987.718797,
+      "signal_liq": 4600.0,
+      "signal_mcp": 2600.0,
+      "signal_holders": 5,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 1100.0,
+      "signal_price_change_5m": 22.89,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0.0,
+      "signal_txns_5m": 10,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782476987.718797,
+          4600.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "5SHCHorv8BBVEDsoZn8YkpSLrUw1J2mYnkguvq4AMwyr": {
+      "symbol": "MOO",
+      "signal_time": 1782477015.115435,
+      "signal_liq": 13709.52,
+      "signal_mcp": 0,
+      "signal_holders": 13,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782477015.115435,
+          13709.52
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "6qdytEh1waKovu2Y5zfNjhUkvhFEEKH8ETP6uy8SciY6": {
+      "symbol": "Pump ICO",
+      "signal_time": 1782477016.722216,
+      "signal_liq": 11762.67,
+      "signal_mcp": 0,
+      "signal_holders": 1,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782477016.722216,
+          11762.67
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "8nZNMu8qxMhvX6iK67yaXvi5tL96bFrLFvb87HDzpump": {
+      "symbol": "LARP",
+      "signal_time": 1782477021.985613,
+      "signal_liq": 6400.0,
+      "signal_mcp": 2600.0,
+      "signal_holders": 8,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 2700.0,
+      "signal_price_change_5m": 10.34,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 37.18,
+      "signal_txns_5m": 33,
+      "signal_signal_type": "CTO",
+      "lp_history": [
+        [
+          1782477021.985613,
+          6400.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "7H3mTfqr3hTswUPvskDitB9mUZpKafW81YyGWNJLpump": {
+      "symbol": "MOO",
+      "signal_time": 1782477023.764479,
+      "signal_liq": 0,
+      "signal_mcp": 2000.0,
+      "signal_holders": 0,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 1100.0,
+      "signal_price_change_5m": 0.64,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 19.11,
+      "signal_txns_5m": 19,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782477023.764479,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "2vNK4gfXTNiqQ1pH5GTaicvavuixBjn8VoCCBFZfpump": {
+      "symbol": "Corey",
+      "signal_time": 1782477025.981818,
+      "signal_liq": 4200.0,
+      "signal_mcp": 2000.0,
+      "signal_holders": 3,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 534.9,
+      "signal_price_change_5m": -2.43,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 1.68,
+      "signal_txns_5m": 6,
+      "signal_signal_type": "FDV_SURGE",
+      "lp_history": [
+        [
+          1782477025.981818,
+          4200.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "GQNh2TCe1VYPHYfhDN53koV2yUomF1R5aazPf6v4pump": {
+      "symbol": "amelia",
+      "signal_time": 1782477027.563236,
+      "signal_liq": 0,
+      "signal_mcp": 2000.0,
+      "signal_holders": 1,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 84.4,
+      "signal_price_change_5m": 0.49,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 4.19,
+      "signal_txns_5m": 1,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782477027.563236,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "Gse8vFhZKnjBcCopRwwkVsr59ToNano46jeY6DX7CNzR": {
+      "symbol": "POOL",
+      "signal_time": 1782477054.117645,
+      "signal_liq": 35989.2,
+      "signal_mcp": 0,
+      "signal_holders": 14,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782477054.117645,
+          35989.2
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "DmwkkDrwY3KNeTy3FvHe4A9kWDv2Y7WzyvKgGZtH3EAK": {
+      "symbol": "0.0{4}18735",
+      "signal_time": 1782477056.265681,
+      "signal_liq": 0,
+      "signal_mcp": 18735.92,
+      "signal_holders": 15,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782477056.265681,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "92r5KmMDUAVRcCABDYfsun7tcESaUa4bssrzEsdMjvBz": {
+      "symbol": "GRVT",
+      "signal_time": 1782477061.08146,
+      "signal_liq": 11090.7,
+      "signal_mcp": 0,
+      "signal_holders": 12,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 0,
+      "signal_price_change_5m": 0,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0,
+      "signal_txns_5m": 0,
+      "signal_signal_type": "FEATURED_NEW",
+      "lp_history": [
+        [
+          1782477061.08146,
+          11090.7
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "WN8Mxwjxyg4i3pZnpdm8qWnDemZnTGHx7JxVNKDpump": {
+      "symbol": "Apollo",
+      "signal_time": 1782477077.696918,
+      "signal_liq": 0,
+      "signal_mcp": 2000.0,
+      "signal_holders": 4,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 2900.0,
+      "signal_price_change_5m": -9.56,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0.0,
+      "signal_txns_5m": 31,
+      "signal_signal_type": "FDV_SURGE",
+      "lp_history": [
+        [
+          1782477077.696918,
+          0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "FfywJB6V5CsmFHp2EpbMedfduDUYKnrFmdvq5BCfpump": {
+      "symbol": "Apollo",
+      "signal_time": 1782477082.545339,
+      "signal_liq": 5300.0,
+      "signal_mcp": 3200.0,
+      "signal_holders": 5,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 716.5,
+      "signal_price_change_5m": 52.68,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 25.54,
+      "signal_txns_5m": 7,
+      "signal_signal_type": "DEV_BOUGHT",
+      "lp_history": [
+        [
+          1782477082.545339,
+          5300.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "FiRRD62pbVNFxwpwxFroMdnaXfD81WZeKYz9V7Fjpump": {
+      "symbol": "975.7",
+      "signal_time": 1782477087.892271,
+      "signal_liq": 4900.0,
+      "signal_mcp": 2900.0,
+      "signal_holders": 8,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 975.7,
+      "signal_price_change_5m": 36.21,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 22.04,
+      "signal_txns_5m": 10,
+      "signal_signal_type": "DEV_SOLD",
+      "lp_history": [
+        [
+          1782477087.892271,
+          4900.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    },
+    "91DtAgTzaGy3a2J7E66abQHtX9YRncAPB9TrL6Qkpump": {
+      "symbol": "540.2",
+      "signal_time": 1782477095.362217,
+      "signal_liq": 4400.0,
+      "signal_mcp": 16000.0,
+      "signal_holders": 2,
+      "signal_buy_sell_ratio": 0,
+      "signal_volume_5m": 540.2,
+      "signal_price_change_5m": 719.5,
+      "signal_dev_status": "UNKNOWN",
+      "signal_top10_pct": 0.89,
+      "signal_txns_5m": 26,
+      "signal_signal_type": "CTO",
+      "lp_history": [
+        [
+          1782477095.362217,
+          4400.0
+        ]
+      ],
+      "is_rug": false,
+      "rug_detected_at": null
+    }
+  }
+}

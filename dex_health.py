@@ -1,11 +1,15 @@
 """
-dex_health.py — Pre-signal DexScreener health check.
+dex_health.py — Pre-signal health check with DexScreener + TokenScan.
 
-Before sending ANY signal, verify on DexScreener:
-1. Token is alive (has price, volume)
-2. Not dumping (price not crashing)
-3. Has activity (recent trades)
-4. Liquidity is real (not fake)
+Before sending ANY signal, verify:
+1. Token is alive (has price, volume) — from DexScreener
+2. Not dumping (price not crashing) — from DexScreener
+3. Has activity (recent trades) — from DexScreener
+4. Liquidity is real (not fake) — from DexScreener
+5. Holders > 5 (not dead/scam) — from TokenScan
+6. Top 10 holders < 50% (not concentrated) — from TokenScan
+7. Bundled < 30% (not bot manipulation) — from TokenScan
+8. Audit score >= 5/10 (has basic checks) — from TokenScan
 
 This is the FINAL gate before signal goes out.
 """
@@ -17,9 +21,9 @@ from datetime import datetime, timezone
 logger = logging.getLogger("dex_health")
 
 
-async def check_token_health(dex_client, address: str) -> dict:
+async def check_token_health(dex_client, address: str, tokenscan_data: dict = None) -> dict:
     """
-    Quick DexScreener health check.
+    Quick DexScreener + TokenScan health check.
     Returns: {"healthy": bool, "reason": str, "data": dict}
     """
     try:
@@ -51,7 +55,7 @@ async def check_token_health(dex_client, address: str) -> dict:
             "pair_created": pair_created,
         }
 
-        # ===== HEALTH CHECKS =====
+        # ===== DexScreener HEALTH CHECKS =====
 
         # 1. Has price?
         if price_usd <= 0:
@@ -83,6 +87,31 @@ async def check_token_health(dex_client, address: str) -> dict:
                 if volume_24h < 1000:
                     return {"healthy": False, "reason": f"Old pair ({age_minutes:.0f}min) with low volume", "data": data}
 
+        # ===== TokenScan HEALTH CHECKS =====
+        if tokenscan_data and tokenscan_data.get("parsed"):
+            holders = tokenscan_data.get("holders", 0)
+            top10_pct = tokenscan_data.get("top10_pct", 0)
+            bundled_pct = tokenscan_data.get("bundled_pct", 0)
+            audit_score = tokenscan_data.get("audit_score", 0)
+
+            # 7. Holders check: <=5 = dead/scam
+            if holders > 0 and holders <= 5:
+                return {"healthy": False, "reason": f"Only {holders} holders — dead/scam", "data": {**data, **tokenscan_data}}
+
+            # 8. Top 10 holders: >50% = too concentrated (rug risk)
+            if top10_pct > 50:
+                return {"healthy": False, "reason": f"Top 10 hold {top10_pct:.0f}% — concentrated", "data": {**data, **tokenscan_data}}
+
+            # 9. Bundled: >30% = bot manipulation
+            if bundled_pct > 30:
+                return {"healthy": False, "reason": f"Bundled {bundled_pct:.0f}% — bot activity", "data": {**data, **tokenscan_data}}
+
+            # 10. Audit score: <4/10 = suspicious
+            if audit_score > 0 and audit_score < 4:
+                return {"healthy": False, "reason": f"Audit {audit_score}/10 — suspicious", "data": {**data, **tokenscan_data}}
+
+            data.update(tokenscan_data)
+
         # ALL CHECKS PASSED
         reasons = []
         if volume_5m > 100:
@@ -91,6 +120,13 @@ async def check_token_health(dex_client, address: str) -> dict:
             reasons.append(f"Buys>{txns_5m_sells}")
         if price_change_5m > 0:
             reasons.append(f"+{price_change_5m:.0f}%5m")
+        if tokenscan_data and tokenscan_data.get("parsed"):
+            holders = tokenscan_data.get("holders", 0)
+            if holders > 0:
+                reasons.append(f"HLD:{holders}")
+            audit = tokenscan_data.get("audit_score", 0)
+            if audit > 0:
+                reasons.append(f"Audit:{audit}/10")
 
         return {
             "healthy": True,

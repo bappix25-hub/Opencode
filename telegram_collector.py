@@ -955,6 +955,15 @@ async def scan_channels(client, dex_client=None):
                         except Exception:
                             pass
 
+                        # HARD GATE: Skip tokens with zero or near-zero liquidity
+                        liq_usd = token.get("liq_usd", 0) or health_data.get("liquidity", 0) or 0
+                        if liq_usd <= 0:
+                            logger.info(f"[LIQ-GATE] SKIP {token['symbol']}: liq=${liq_usd:.0f} — likely rug pulled")
+                            continue
+                        if liq_usd < 500:
+                            logger.info(f"[LIQ-GATE] SKIP {token['symbol']}: liq=${liq_usd:.0f} below $500 minimum")
+                            continue
+
                         # Build token dict with all data
                         full_token = {**token}
                         if health_data.get("holders"):
@@ -1003,6 +1012,7 @@ async def scan_channels(client, dex_client=None):
                         token["unified_verdict"] = score_result.get("verdict", "SKIP")
                         token["unified_action"] = score_result.get("action", "IGNORE")
                         token["unified_breakdown"] = score_result.get("breakdown", {})
+                        token["score_breakdown"] = score_result.get("breakdown", {})
                         score = score_result["score"]
                         verdict = score_result["verdict"]
                         action = score_result["action"]
@@ -1036,11 +1046,35 @@ async def scan_channels(client, dex_client=None):
                             # Record signal result for learning (pump=signal sent)
                             try:
                                 from learner import record_signal_result
+                                # Build research_data from token features
+                                research = {
+                                    "holders": token.get("holders", 0),
+                                    "top10_pct": token.get("top10_pct", 0),
+                                    "bundled_pct": token.get("bundled_pct", 0),
+                                    "audit_score": token.get("audit_score", 0),
+                                    "renounced": token.get("renounced", False),
+                                    "dev_status": token.get("dev_status", "UNKNOWN"),
+                                    "lp_locked": token.get("liq_burn_pct", 0),
+                                    "initial_liq_usd": token.get("liq_usd", 0),
+                                    "buy_sell_ratio": token.get("buy_sell_ratio", 0),
+                                }
+                                # Build dex_health from health_data
+                                dex_h = {
+                                    "source": health_data.get("source", "unknown"),
+                                    "dex_verified": dex_verified,
+                                    "holders": health_data.get("holders", token.get("holders", 0)),
+                                    "top10_pct": health_data.get("top10_pct", token.get("top10_pct", 0)),
+                                    "liquidity": health_data.get("liquidity", token.get("liq_usd", 0)),
+                                    "healthy": health_data.get("healthy", False),
+                                }
                                 record_signal_result(
                                     ca, token.get("symbol", "?"),
                                     ath_multiplier=1.0, current_multiplier=1.0,
                                     signal_age=0.0, signal_time=datetime.now(timezone.utc),
-                                    min_price_multiplier=0.0
+                                    min_price=0.0,
+                                    research_data=research,
+                                    score_breakdown=breakdown,
+                                    dex_health=dex_h,
                                 )
                             except Exception:
                                 pass
@@ -1177,11 +1211,33 @@ async def scan_channels(client, dex_client=None):
                                 # Record signal result for learning (re-score)
                                 try:
                                     from learner import record_signal_result
+                                    research = {
+                                        "holders": existing.get("holders", 0),
+                                        "top10_pct": existing.get("top10_pct", 0),
+                                        "bundled_pct": existing.get("bundled_pct", 0),
+                                        "audit_score": existing.get("audit_score", 0),
+                                        "renounced": existing.get("renounced", False),
+                                        "dev_status": existing.get("dev_status", "UNKNOWN"),
+                                        "lp_locked": existing.get("liq_burn_pct", 0),
+                                        "initial_liq_usd": existing.get("liq_usd", 0),
+                                        "buy_sell_ratio": existing.get("buy_sell_ratio", 0),
+                                    }
+                                    dex_h = {
+                                        "source": health_data.get("source", "unknown"),
+                                        "dex_verified": dex_verified,
+                                        "holders": health_data.get("holders", existing.get("holders", 0)),
+                                        "top10_pct": health_data.get("top10_pct", existing.get("top10_pct", 0)),
+                                        "liquidity": health_data.get("liquidity", existing.get("liq_usd", 0)),
+                                        "healthy": health_data.get("healthy", False),
+                                    }
                                     record_signal_result(
                                         ca, existing.get("symbol", "?"),
                                         ath_multiplier=1.0, current_multiplier=1.0,
                                         signal_age=0.0, signal_time=datetime.now(timezone.utc),
-                                        min_price_multiplier=0.0
+                                        min_price=0.0,
+                                        research_data=research,
+                                        score_breakdown=breakdown,
+                                        dex_health=dex_h,
                                     )
                                 except Exception:
                                     pass

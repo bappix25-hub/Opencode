@@ -1261,6 +1261,11 @@ class MemeBot:
                         logger.info(f"[SKIP] {symbol}: climbing — MC {format_number(mcap)} < $3K too low")
                         continue
 
+                    # Minimum liquidity for climbing: >$500
+                    if liquidity < 500:
+                        logger.info(f"[SKIP] {symbol}: climbing — liq ${int(liquidity)} < $500 too low")
+                        continue
+
                     if 0 < age <= 21600:
                         if mcap >= PUMP_THRESHOLD and not await self.state.is_alerted(addr):
                             await self.state.add_pump_coin(addr, CoinInfo(name=name, symbol=symbol))
@@ -1390,6 +1395,15 @@ class MemeBot:
                                     f"💰 SOL Amount: @MaestroBot → /buy {addr[:8]}...{addr[-6:]} 0.01SOL",
                                     addr
                                 )
+                                # FINAL liquidity re-check before buy
+                                try:
+                                    fresh_pair = await self.dex.fetch_pair_data(addr)
+                                    fresh_liq = float((fresh_pair or {}).get("liquidity", {}).get("usd", 0) or 0) if fresh_pair else 0
+                                    if fresh_liq < 500:
+                                        logger.info(f"[CLIMBING ABORT] {symbol}: liq dropped to ${fresh_liq:.0f} before buy")
+                                        continue
+                                except Exception:
+                                    pass
                                 asyncio.create_task(mc.buy(addr))
 
                                 from bot_state import SignalInfo
@@ -1425,6 +1439,11 @@ class MemeBot:
                         # Time-of-day filter
                         current_hour = datetime.now(timezone.utc).hour
                         if current_hour in {2, 10, 22}:
+                            continue
+
+                        # Minimum liquidity for early signal
+                        if liquidity < 500:
+                            logger.info(f"[SKIP] {symbol}: early — liq ${int(liquidity)} < $500 too low")
                             continue
 
                         launch_data = await self.state.get_launch_tracking(addr)
@@ -1516,6 +1535,15 @@ class MemeBot:
                             f"🤖 Maestro: /buy {addr[:12]}...{addr[-6:]} 0.01SOL",
                             addr
                         )
+                        # FINAL liquidity re-check before buy
+                        try:
+                            fresh_pair = await self.dex.fetch_pair_data(addr)
+                            fresh_liq = float((fresh_pair or {}).get("liquidity", {}).get("usd", 0) or 0) if fresh_pair else 0
+                            if fresh_liq < 500:
+                                logger.info(f"[EARLY ABORT] {symbol}: liq dropped to ${fresh_liq:.0f} before buy")
+                                continue
+                        except Exception:
+                            pass
                         asyncio.create_task(mc.buy(addr))
 
                         from bot_state import SignalInfo
@@ -1777,6 +1805,17 @@ class MemeBot:
                             expired.append(addr)
                         continue
 
+                    # HARD GATE: Check liquidity still exists — reject rug pulls
+                    current_liq = float((pair.get("liquidity") or {}).get("usd", 0) or 0)
+                    if current_liq <= 0:
+                        logger.info(f"[CONFIRM REJECT] {pending.symbol}: liq=${current_liq:.0f} — liquidity drained (rug pull)")
+                        expired.append(addr)
+                        continue
+                    if current_liq < 500:
+                        logger.info(f"[CONFIRM REJECT] {pending.symbol}: liq=${current_liq:.0f} below $500 minimum")
+                        expired.append(addr)
+                        continue
+
                     current_price = float(pair.get("priceUsd", 0) or 0)
                     if current_price <= 0:
                         if elapsed > MAX_WAIT:
@@ -1955,6 +1994,16 @@ class MemeBot:
             f"💰 সোল পরিমাণ: @MaestroBot → /buy {address[:8]}...{address[-6:]} 0.01SOL",
             address
         )
+
+        # FINAL liquidity re-check before buy (race condition safety)
+        try:
+            fresh_pair = await self.dex.fetch_pair_data(address)
+            fresh_liq = float((fresh_pair or {}).get("liquidity", {}).get("usd", 0) or 0) if fresh_pair else 0
+            if fresh_liq < 500:
+                logger.info(f"[CONFIRM ABORT] {pending.symbol}: liq dropped to ${fresh_liq:.0f} before buy")
+                return
+        except Exception:
+            pass
 
         asyncio.create_task(mc.buy(address))
 

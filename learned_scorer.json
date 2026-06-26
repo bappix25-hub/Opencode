@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "sample_size": 112,
+  "winner_medians": {
+    "ath_multiplier": 5.0
+  },
+  "signal_criteria": {
+    "min_liq": 500,
+    "min_holders": 5,
+    "min_mcp": 100,
+    "max_top10_pct": 50,
+    "max_bundled_pct": 30,
+    "min_audit_score": 3
+  },
+  "updated_at": "2026-06-26T11:14:50.525786+00:00"
+}
