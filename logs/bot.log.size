@@ -10310,3 +10310,64 @@ ConnectionError: Connection to Telegram failed 5 time(s)
 2026-06-26 15:37:38 - meme_bot - INFO - 🚫 Serial deployer blocked: FOOTBALL  deployer 3M9oWHiC... has 2 tokens
 2026-06-26 15:37:38 - meme_bot - INFO - 🚫 Serial deployer blocked: $jhonny deployer 61HDB7Sp... has 2 tokens
 2026-06-26 15:37:39 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Aurum+ (BduBwyQg...)
+2026-06-26 15:37:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Selfie (6kkjU6JU...)
+2026-06-26 15:37:43 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: DCAT (6rNGbsAU...)
+2026-06-26 15:37:45 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Selfie (B5L9BZDs...)
+2026-06-26 15:37:47 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: MBAPEPE (GiZBjitt...)
+2026-06-26 15:37:49 - meme_bot.telegram_collector - INFO - [NEW] Selfie MCP=$2300 liq=$0 holders=2 signal=DEV_BOUGHT ch=GMGN Signals
+2026-06-26 15:37:50 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP Selfie: liq=$0 — likely rug pulled
+2026-06-26 15:37:50 - meme_bot.token_lifecycle - INFO - [LIFECYCLE] METEOR stage=king_of_hill prev=dexsocial time_gap=42s total_signals=2 stages=['dexsocial', 'king_of_hill']
+2026-06-26 15:37:50 - meme_bot.telegram_collector - INFO - [LIFECYCLE-UPDATE] METEOR stage=king_of_hill prev=dexsocial gap=42s total=2 stages=['dexsocial', 'king_of_hill']
+2026-06-26 15:37:50 - meme_bot.telegram_collector - INFO - 📊 SCORE: METEOR score=35 WATCH MONITOR (early=36 winner=35 fund=87)
+2026-06-26 15:37:51 - meme_bot.telegram_collector - INFO - [NEW] LL MCP=$2100 liq=$4700 holders=2 signal=DEV_SOLD ch=GMGN Signals
+2026-06-26 15:37:51 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: TIM (5RQ1UWAT...)
+2026-06-26 15:37:52 - meme_bot.telegram_collector - INFO - [NEW] meme MCP=$15900 liq=$0 holders=65 signal=KOTH ch=GMGN Signals
+2026-06-26 15:37:53 - meme_bot.telegram_collector - INFO - [LIQ-GATE] SKIP meme: liq=$0 — likely rug pulled
+2026-06-26 15:37:54 - meme_bot.telegram_collector - INFO - [COLLECTOR] 14873 tracked | 15 winners | 19 losers | 168 new this session
+2026-06-26 15:37:57 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: JEWSLOP (9RrKUhRp...)
+2026-06-26 18:56:20 - meme_bot - INFO - ♻️ হানিপট ব্লকলিস্ট লোড: 55 addr, 8372 deployer
+2026-06-26 18:56:21 - meme_bot - INFO - 🚀 বট চালু হচ্ছে...
+2026-06-26 18:56:21 - meme_bot - INFO - 🔄 Pump collector loop started
+2026-06-26 18:56:21 - meme_bot - INFO - 📡 Telegram collector loop started
+2026-06-26 18:56:22 - meme_bot.social_tracker - INFO - [SOCIAL] Backfilled 0 tokens from tracked data
+2026-06-26 18:56:22 - meme_bot - INFO - 📊 Signal review loop started (every 6h)
+2026-06-26 18:56:22 - meme_bot - INFO - 🔥 Convergence scan loop started (every 60s)
+2026-06-26 18:56:22 - meme_bot - INFO - 🔍 GMGN Trending scanner started (every 5min)
+2026-06-26 18:56:22 - meme_bot - INFO - 🔬 TokenScan monitor started (every 10min)
+2026-06-26 18:56:22 - meme_bot - INFO - 🚨 Alert sender loop started (every 10s)
+2026-06-26 18:56:23 - meme_bot - INFO - 📚 হিস্ট্রি স্ক্যান...
+2026-06-26 18:56:23 - meme_bot - INFO - 📊 Midnight summary in 5h 3m
+2026-06-26 18:56:23 - meme_bot.pump_collector - INFO - 🔄 Pump collector loop starting...
+2026-06-26 18:56:23 - meme_bot.telegram_collector - INFO - Starting Telegram collector loop...
+2026-06-26 18:56:25 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VOTE4ME (BuBMjNCr...)
+2026-06-26 18:56:26 - meme_bot.maestro_client - ERROR - Maestro client not authorized - session expired
+2026-06-26 18:56:26 - meme_bot.telegram_collector - ERROR - Cannot start collector - no client
+2026-06-26 18:56:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VAMP (bwamJzzt...)
+2026-06-26 18:56:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VAMP (9ziY2cJC...)
+2026-06-26 18:56:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: FLUX (76Fpb6jH...)
+2026-06-26 18:56:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VWAMP (FCUPh2jM...)
+2026-06-26 18:56:45 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BIBI (B1cJJMst...)
+2026-06-26 18:56:52 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PAL (AwjteQWH...)
+2026-06-26 18:56:53 - meme_bot.pump_collector - INFO - 🔄 Pump collector cycle started...
+2026-06-26 18:56:54 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 50 (4FEGV9up...)
+2026-06-26 18:56:54 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CITTA (4PkTnSMT...)
+2026-06-26 18:56:58 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: SOL0 (BuBMjNCr...)
+2026-06-26 18:56:58 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: WIFE (HrWfjhyA...)
+2026-06-26 18:57:03 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: 🔥 (7FVfSdnR...)
+2026-06-26 18:57:07 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Tsunami (3sCHcbcZ...)
+2026-06-26 18:57:07 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: PVP (5D3BpTiT...)
+2026-06-26 18:57:08 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: grokstein (G3Nyg2ww...)
+2026-06-26 18:57:13 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Nigger (EpkdNrC1...)
+2026-06-26 18:57:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: VAMP (1mQj8VLF...)
+2026-06-26 18:57:26 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CUP (BuBMjNCr...)
+2026-06-26 18:57:28 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: BIBI (B1cJJMst...)
+2026-06-26 18:57:28 - meme_bot.gmgn_trending - INFO - [TRENDING] GRAVEN MC=$30,462 Liq=$12,533 Vol24h=$89,346 Age=4.0h BuyRatio=54% PC24h=+5%
+2026-06-26 18:57:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Tsunami (3sCHcbcZ...)
+2026-06-26 18:57:29 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: Nigger (5RQ1UWAT...)
+2026-06-26 18:57:31 - meme_bot.gmgn_trending - INFO - [TRENDING] Terra MC=$266,274 Liq=$38,598 Vol24h=$689,934 Age=1.1h BuyRatio=55% PC24h=+424%
+2026-06-26 18:57:34 - meme_bot.gmgn_trending - INFO - [TRENDING] MOXIE MC=$29,008 Liq=$0 Vol24h=$6,001 Age=5.0h BuyRatio=100% PC24h=+1369%
+2026-06-26 18:57:35 - meme_bot.gmgn_trending - INFO - [TRENDING] $OVER MC=$8,545 Liq=$16,893 Vol24h=$272,314 Age=3.5h BuyRatio=54% PC24h=+8%
+2026-06-26 18:57:36 - meme_bot.gmgn_trending - INFO - [TRENDING] Found 4 new trending tokens
+2026-06-26 18:57:42 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: RT699 (BuBMjNCr...)
+2026-06-26 18:57:45 - meme_bot - INFO - TRADE NO TRACK: EPjFWdd5... txType=create
+2026-06-26 18:57:49 - meme_bot - INFO - 🚫 ডেপ্লয়ার ব্লক: CITTA (4PkTnSMT...)

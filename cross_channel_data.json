@@ -113414,8 +113414,8 @@
       "channels": {
         "-1002202241417": {
           "first_seen": 1782488228.0316617,
-          "last_seen": 1782488228.0316617,
-          "count": 1,
+          "last_seen": 1782488270.4358282,
+          "count": 2,
           "mcp_at_first": 11600.0,
           "liq_at_first": 10400.0,
           "holders_at_first": 91,
@@ -113534,6 +113534,60 @@
       "first_channel": -1002202241417,
       "status": "tracking",
       "ath_multiplier": 1.0
+    },
+    "C9GV6o1XLta2z6rBRQGRPwujqVwVVa6TaWwvUSzLpump": {
+      "symbol": "Selfie",
+      "channels": {
+        "-1002202241417": {
+          "first_seen": 1782488269.2777715,
+          "last_seen": 1782488269.2777715,
+          "count": 1,
+          "mcp_at_first": 2300.0,
+          "liq_at_first": 0,
+          "holders_at_first": 2,
+          "signal_type": "DEV_BOUGHT"
+        }
+      },
+      "first_seen": 1782488269.2777677,
+      "first_channel": -1002202241417,
+      "status": "tracking",
+      "ath_multiplier": 1.0
+    },
+    "4xpJKBQTXKri6wCzaSySL9nafsshFLHet3EbZGCwpump": {
+      "symbol": "LL",
+      "channels": {
+        "-1002202241417": {
+          "first_seen": 1782488271.0375216,
+          "last_seen": 1782488271.0375216,
+          "count": 1,
+          "mcp_at_first": 2100.0,
+          "liq_at_first": 4700.0,
+          "holders_at_first": 2,
+          "signal_type": "DEV_SOLD"
+        }
+      },
+      "first_seen": 1782488271.0375152,
+      "first_channel": -1002202241417,
+      "status": "tracking",
+      "ath_multiplier": 1.0
+    },
+    "8knwhjZp5751BYFYupn1dXSaf8WMErVroqtvRUxnpump": {
+      "symbol": "meme",
+      "channels": {
+        "-1002202241417": {
+          "first_seen": 1782488272.328155,
+          "last_seen": 1782488272.328155,
+          "count": 1,
+          "mcp_at_first": 15900.0,
+          "liq_at_first": 0,
+          "holders_at_first": 65,
+          "signal_type": "KOTH"
+        }
+      },
+      "first_seen": 1782488272.3281496,
+      "first_channel": -1002202241417,
+      "status": "tracking",
+      "ath_multiplier": 1.0
     }
   },
   "channel_stats": {
@@ -113562,7 +113616,7 @@
       "total_return": 0.0
     },
     "-1002202241417": {
-      "total_signals": 10387,
+      "total_signals": 10391,
       "winners": 0,
       "losers": 0,
       "total_return": 0.0

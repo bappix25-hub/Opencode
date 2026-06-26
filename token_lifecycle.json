@@ -71411,13 +71411,32 @@
           "top10_pct": 22.19,
           "source_channel": -1002202241417,
           "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "king_of_hill",
+          "signal_type": "KOTH",
+          "timestamp": 1782488270.292073,
+          "mcp": 15000.0,
+          "liq_usd": 11500.0,
+          "liq_sol": 50.33,
+          "holders": 125,
+          "price_change_5m": 630.4,
+          "price_change_1h": 630.4,
+          "price_change_6h": 630.4,
+          "txns_5m": 310,
+          "volume_5m": 17600.0,
+          "dev_status": "HOLD",
+          "top10_pct": 21.53,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
         }
       ],
       "stages_seen": [
-        "dexsocial"
+        "dexsocial",
+        "king_of_hill"
       ],
       "first_seen": 1782488227.880597,
-      "last_seen": 1782488227.880597,
+      "last_seen": 1782488270.292073,
       "launch_mcp": 11600.0,
       "is_winner": false,
       "is_loser": false
@@ -71754,6 +71773,99 @@
       "first_seen": 1782488242.612079,
       "last_seen": 1782488244.041704,
       "launch_mcp": 2600.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "C9GV6o1XLta2z6rBRQGRPwujqVwVVa6TaWwvUSzLpump": {
+      "symbol": "Selfie",
+      "signal_history": [
+        {
+          "stage": "dev_active",
+          "signal_type": "DEV_BOUGHT",
+          "timestamp": 1782488269.127353,
+          "mcp": 2300.0,
+          "liq_usd": 0,
+          "liq_sol": 0,
+          "holders": 2,
+          "price_change_5m": 0.0,
+          "price_change_1h": 0.0,
+          "price_change_6h": 0.0,
+          "txns_5m": 1,
+          "volume_5m": 359.1,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 0.0,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_active"
+      ],
+      "first_seen": 1782488269.127353,
+      "last_seen": 1782488269.127353,
+      "launch_mcp": 2300.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "4xpJKBQTXKri6wCzaSySL9nafsshFLHet3EbZGCwpump": {
+      "symbol": "LL",
+      "signal_history": [
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782488270.885726,
+          "mcp": 2100.0,
+          "liq_usd": 4700.0,
+          "liq_sol": 2.44,
+          "holders": 2,
+          "price_change_5m": 1.2,
+          "price_change_1h": 1.2,
+          "price_change_6h": 1.2,
+          "txns_5m": 4,
+          "volume_5m": 350.5,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 0.0,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_exiting"
+      ],
+      "first_seen": 1782488270.885726,
+      "last_seen": 1782488270.885726,
+      "launch_mcp": 2100.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "8knwhjZp5751BYFYupn1dXSaf8WMErVroqtvRUxnpump": {
+      "symbol": "meme",
+      "signal_history": [
+        {
+          "stage": "king_of_hill",
+          "signal_type": "KOTH",
+          "timestamp": 1782488272.173033,
+          "mcp": 15900.0,
+          "liq_usd": 0,
+          "liq_sol": 0,
+          "holders": 65,
+          "price_change_5m": 44.44,
+          "price_change_1h": 111.8,
+          "price_change_6h": 124.8,
+          "txns_5m": 18,
+          "volume_5m": 1900.0,
+          "dev_status": "SELL_ALL",
+          "top10_pct": 24.79,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "king_of_hill"
+      ],
+      "first_seen": 1782488272.173033,
+      "last_seen": 1782488272.173033,
+      "launch_mcp": 15900.0,
       "is_winner": false,
       "is_loser": false
     }
@@ -72553,14 +72665,15 @@
       ]
     },
     "dexsocial->king_of_hill": {
-      "count": 4,
+      "count": 5,
       "pumped": 0,
-      "avg_time": 1200.6802705526352,
+      "avg_time": 969.0265116214753,
       "times": [
         401.4847161769867,
         1660.5483429431915,
         2665.856000185013,
-        74.83202290534973
+        74.83202290534973,
+        42.41147589683533
       ]
     },
     "king_of_hill->dev_active": {
@@ -72784,22 +72897,22 @@
       "avg_pc1h": 0.0
     },
     "dev_exiting": {
-      "count": 1328,
+      "count": 1329,
       "pumped": 0,
-      "avg_mcp": 10174.035240963847,
-      "avg_holders": 29.65737951807229,
-      "avg_liq": 5468.298448795182,
-      "avg_pc5m": 253.70428463855473,
-      "avg_pc1h": 340.9754894578319
+      "avg_mcp": 10167.959969902175,
+      "avg_holders": 29.636568848758465,
+      "avg_liq": 5467.720346124907,
+      "avg_pc5m": 253.51428893905245,
+      "avg_pc1h": 340.7198269375476
     },
     "dev_active": {
-      "count": 462,
+      "count": 463,
       "pumped": 0,
-      "avg_mcp": 3799.3506493506484,
-      "avg_holders": 5.37445887445888,
-      "avg_liq": 1997.8388961038966,
-      "avg_pc5m": 71.65813852813864,
-      "avg_pc1h": 72.50664502164504
+      "avg_mcp": 3796.112311015118,
+      "avg_holders": 5.367170626349898,
+      "avg_liq": 1993.5239092872573,
+      "avg_pc5m": 71.50336933045367,
+      "avg_pc1h": 72.35004319654429
     },
     "dexsocial": {
       "count": 32,
@@ -72820,13 +72933,13 @@
       "avg_pc1h": 507.95142857142855
     },
     "king_of_hill": {
-      "count": 122,
+      "count": 124,
       "pumped": 0,
-      "avg_mcp": 21081.147540983606,
-      "avg_holders": 81.84426229508196,
-      "avg_liq": 8093.442622950819,
-      "avg_pc5m": 560.6388524590166,
-      "avg_pc1h": 673.1841803278695
+      "avg_mcp": 20990.322580645163,
+      "avg_holders": 82.05645161290323,
+      "avg_liq": 8055.645161290322,
+      "avg_pc5m": 557.0385483870969,
+      "avg_pc1h": 668.3118548387102
     },
     "pump_completed": {
       "count": 25,
