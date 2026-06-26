@@ -55013,12 +55013,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2074.03,
+        "symbol": "POOR"
       },
       "launch_time": 1782485099.183799,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2074.03,
+      "outcome_time": "2026-06-26T20:45:51.991775+00:00",
       "signal_sent": false
     },
     {
@@ -55044,12 +55047,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 13334.0,
+        "symbol": "Aleph"
       },
       "launch_time": 1782485126.720537,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 13334.0,
+      "outcome_time": "2026-06-26T20:45:52.860313+00:00",
       "signal_sent": false
     },
     {
@@ -55075,12 +55081,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 3224.23,
+        "symbol": "Lyca‘s"
       },
       "launch_time": 1782485167.745707,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 3224.23,
+      "outcome_time": "2026-06-26T20:47:43.689305+00:00",
       "signal_sent": false
     },
     {
@@ -55106,12 +55115,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1985.37,
+        "symbol": "ELDENRING"
       },
       "launch_time": 1782485170.124647,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1985.37,
+      "outcome_time": "2026-06-26T20:47:45.057707+00:00",
       "signal_sent": false
     },
     {
@@ -62937,18 +62949,18 @@
       }
     ],
     "auto_learn_insights": {
-      "win_rate": 50.0,
-      "dump_rate": 50.0,
-      "avg_ath": 16.48,
+      "win_rate": 54.0,
+      "dump_rate": 46.0,
+      "avg_ath": 16.64,
       "quality_score": 0.35,
       "research_avg_win_holders": 10,
       "research_avg_lose_holders": 5,
       "research_avg_win_top10": 30,
       "research_avg_lose_top10": 50,
       "source_win_rates": {
-        "unknown": 50.0
+        "unknown": 54.0
       },
-      "updated_at": "2026-06-26T20:04:40.529576+00:00"
+      "updated_at": "2026-06-26T20:51:44.846827+00:00"
     },
     "signal_criteria_stats": {
       "pump_medians": {
@@ -62980,8 +62992,8 @@
       "min_liq_pct": 25.7,
       "min_lp_locked": 80,
       "min_mcap": 3000,
-      "heuristic_threshold": 0.53,
-      "pattern_threshold": 0.63,
+      "heuristic_threshold": 0.6,
+      "pattern_threshold": 0.66,
       "dump_pattern_threshold": 0.7,
       "max_age_seconds": 21600,
       "updated_at": "2026-06-26T20:01:50.201744+00:00",
@@ -73316,6 +73328,45 @@
       },
       "ath_multiplier": 1.4980609418282549,
       "timestamp": "2026-06-26T20:04:40.352257+00:00"
+    },
+    {
+      "address": "DZH4UcUMoFn6bSizLFPcBn8XK3i4NXBFgr3yWFqUpump",
+      "symbol": "SolSocks",
+      "features": {
+        "buy_count": 0,
+        "sell_count": 0,
+        "buy_sell_ratio": 0.0,
+        "volume": 105149220.48,
+        "holders": 0,
+        "unique_wallets": 0,
+        "initial_liq": 37146.39,
+        "initial_mcap": 253733,
+        "liq_pct": 14.64,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 20,
+        "lp_locked": 0,
+        "deployer": "Hk5sDN22Sh1Q",
+        "ath_price": 0.0002537,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "volume_velocity": 36426.0155,
+        "buy_sell_momentum": 0.0,
+        "liquidity_depth": 0.1464,
+        "volume_spike_ratio": 0.0,
+        "buy_spike_ratio": 0.0,
+        "social_score": 0,
+        "launch_weekday": 4,
+        "launch_month": 6,
+        "is_weekend": false,
+        "launch_session": "us",
+        "insider_count": 0,
+        "launch_time": 1782504217.403103,
+        "liquidity": 37146.39,
+        "mcap": 253733.0
+      },
+      "ath_multiplier": 1.0,
+      "timestamp": "2026-06-26T20:51:44.173176+00:00"
     }
   ],
   "fresh_start": "2026-06-22T13:38:36.943300+00:00",
