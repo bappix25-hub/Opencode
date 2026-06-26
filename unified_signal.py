@@ -204,6 +204,11 @@ def _winner_fit_score(token: dict, winners: list) -> float:
         win_liq_med = med.get("liq_usd", 0)
         win_hold_med = med.get("holders", 0)
         win_mcp_med = med.get("launch_mcp", 0)
+        # If medians are incomplete (only ath_multiplier), fall back to winner list
+        if not win_liq_med and not win_hold_med and not win_mcp_med and winners:
+            win_liq_med = _compute_medians(winners, "liq_usd")
+            win_hold_med = _compute_medians(winners, "holders")
+            win_mcp_med = _compute_medians(winners, "launch_mcp")
     elif winners:
         win_liq_med = _compute_medians(winners, "liq_usd")
         win_hold_med = _compute_medians(winners, "holders")
