@@ -6856,11 +6856,135 @@
       "source_count": 1,
       "last_calculated": 1782482197.726113,
       "alerted": false
+    },
+    "PUZd1oWu5r67NzekiEvMCNnynMn4YxxiD5tz2xCghpq": {
+      "symbol": "Take Over The $WURLD \ud83d\udde3\ufe0f\n\nWe\u2019re here to Take Over CT \n\nGet Prepared For Full Domination \ud83d\ude31",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_boosted",
+          "source_name": "DexScreener boosted",
+          "timestamp": 1782484102.515738,
+          "signal_type": "boosted",
+          "features": {
+            "mcp": 32468,
+            "liq_usd": 12811.61,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782484102.515738,
+      "last_seen": 1782484102.515738,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener boosted",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782484102.515815,
+      "alerted": false
+    },
+    "QeBK1Hn9kNhdCST55o2ds8ytd21jtyFLsivcgTVpump": {
+      "symbol": "",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782484149.227378,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 15143,
+            "liq_usd": 8778.39,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782484149.227378,
+      "last_seen": 1782484149.227378,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener new_profile",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782484149.227429,
+      "alerted": false
+    },
+    "fM71v9UMnET9h4CB4ZZszy1Q9NwE7zhKXQPSmZbaByo": {
+      "symbol": "",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782484161.561876,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 85202,
+            "liq_usd": 54602.79,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782484161.561876,
+      "last_seen": 1782484161.561876,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener new_profile",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782484161.561928,
+      "alerted": false
+    },
+    "4VD3s96wD8SYdiEDt6xHXM1oof2KveZzxRmZfqospump": {
+      "symbol": "",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782484185.797137,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 51214,
+            "liq_usd": 16190.61,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782484185.797137,
+      "last_seen": 1782484185.797137,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener new_profile",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782484185.797189,
+      "alerted": false
     }
   },
-  "last_cleanup": "2026-06-26T13:56:37.726139+00:00",
+  "last_cleanup": "2026-06-26T14:29:45.797237+00:00",
   "stats": {
-    "total_tracked": 212,
+    "total_tracked": 216,
     "high_convergence": 0
   }
 }

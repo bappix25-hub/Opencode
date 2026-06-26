@@ -1785,6 +1785,100 @@ class MemeBot:
             except Exception as e:
                 logger.error(f"সিগন্যাল চেক এরর: {e}")
 
+            # COLLECTOR SIGNAL OUTCOME CHECK
+            # Scan telegram_tracked_tokens.json for signals from collector
+            try:
+                import json as _json
+                data_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "telegram_tracked_tokens.json")
+                with open(data_file) as f:
+                    tracked = _json.load(f)
+                
+                for ca, token in tracked.items():
+                    sig_time_str = token.get("signal_time")
+                    if not sig_time_str:
+                        continue
+                    # Skip if already checked in bot_data.json signal_results
+                    from learner import load_data
+                    bd = load_data()
+                    existing = next((r for r in bd.get("model", {}).get("signal_results", []) if r.get("address") == ca), None)
+                    if existing:
+                        continue
+                    
+                    try:
+                        sig_ts = datetime.fromisoformat(sig_time_str).timestamp()
+                    except Exception:
+                        continue
+                    
+                    age_hours = (now - sig_ts) / 3600
+                    if age_hours < 6:
+                        continue
+                    
+                    # 6h passed — check outcome
+                    pair = await self.dex.fetch_pair_data(ca)
+                    if not pair:
+                        continue
+                    
+                    current_price = float(pair.get("priceUsd", 0) or 0)
+                    sig_price = token.get("signal_price", 0)
+                    if current_price <= 0 or sig_price <= 0:
+                        continue
+                    
+                    current_multiplier = current_price / sig_price
+                    # Estimate ATH from token data
+                    ath_mcp = token.get("ath_mcp", 0)
+                    launch_mcp = token.get("launch_mcp", 0) or token.get("mcp", 0)
+                    ath_multiplier = ath_mcp / launch_mcp if launch_mcp > 0 and ath_mcp > 0 else current_multiplier
+                    
+                    emoji = "✅" if ath_multiplier >= 2.0 else ("😐" if ath_multiplier >= 0.8 else "❌")
+                    sym = token.get("symbol", "?")
+                    
+                    await send_msg(self.telegram_app.bot,
+                        f"{emoji} <b>Collector Signal Result (6h)!</b>\n"
+                        f"🏷️ ${sym}\n"
+                        f"📈 ATH: <b>{ath_multiplier:.2f}x</b>\n"
+                        f"📊 Current: <b>{current_multiplier:.2f}x</b>\n"
+                        f"📍 <code>{ca}</code>"
+                    )
+                    
+                    # Record for learning
+                    record_signal_result(
+                        ca, sym, ath_multiplier, current_multiplier,
+                        0, datetime.fromisoformat(sig_time_str), current_multiplier,
+                        research_data={
+                            "holders": token.get("holders", 0),
+                            "top10_pct": token.get("top10_pct", 0),
+                            "liq_usd": token.get("liq_usd", 0),
+                            "mcp": token.get("mcp", 0),
+                            "signal_type": token.get("signal_type", ""),
+                            "source_channel": token.get("source_channel_name", "?"),
+                        },
+                        score_breakdown=token.get("unified_breakdown", {}),
+                        dex_health={"healthy": True, "source": "dexscreener"},
+                    )
+                    
+                    # Remove signal_time so we don't check again
+                    token.pop("signal_time", None)
+                    token.pop("signal_price", None)
+                    
+                    logger.info(f"[COLLECTOR OUTCOME] {sym}: ATH={ath_multiplier:.2f}x current={current_multiplier:.2f}x @ T+6h")
+                    
+                    # Auto-learn
+                    try:
+                        from learner import enhanced_auto_learn, update_learned_scorer
+                        enhanced_auto_learn()
+                        update_learned_scorer()
+                    except Exception:
+                        pass
+                
+                # Save updated tracked tokens
+                with open(data_file, "w") as f:
+                    _json.dump(tracked, f, indent=2, default=str)
+                    
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"Collector outcome check error: {e}")
+
     async def signal_confirmation_loop(self):
         """Multi-stage confirmation with volume + momentum + price."""
         CHECK_INTERVAL = 15
