@@ -7259,11 +7259,42 @@
       "source_count": 1,
       "last_calculated": 1782486487.037134,
       "alerted": false
+    },
+    "13Fu8ArFtU9av8GiLSBzgvDohSuGFEKaFQFPymjGLAND": {
+      "symbol": "A shared farming & adventure valley.",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_boosted",
+          "source_name": "DexScreener boosted",
+          "timestamp": 1782487343.748827,
+          "signal_type": "boosted",
+          "features": {
+            "mcp": 58618,
+            "liq_usd": 17759.92,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782487343.748827,
+      "last_seen": 1782487343.748827,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener boosted",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782487343.748966,
+      "alerted": false
     }
   },
-  "last_cleanup": "2026-06-26T15:08:07.037193+00:00",
+  "last_cleanup": "2026-06-26T15:22:23.749095+00:00",
   "stats": {
-    "total_tracked": 225,
+    "total_tracked": 226,
     "high_convergence": 0
   }
 }

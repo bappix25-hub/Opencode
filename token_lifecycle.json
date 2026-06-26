@@ -63191,18 +63191,1526 @@
       "launch_mcp": 2100.0,
       "is_winner": false,
       "is_loser": false
+    },
+    "22Gvh33H8wbrmgruENiSzi7hRkghPUv2HZUhoWRYpump": {
+      "symbol": "CIGGY",
+      "signal_history": [
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487190.480344,
+          "mcp": 6400.0,
+          "liq_usd": 5000.0,
+          "liq_sol": 5.19,
+          "holders": 4,
+          "price_change_5m": 209.5,
+          "price_change_1h": 209.5,
+          "price_change_6h": 209.5,
+          "txns_5m": 18,
+          "volume_5m": 880.7,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 1.4,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_exiting"
+      ],
+      "first_seen": 1782487190.480344,
+      "last_seen": 1782487190.480344,
+      "launch_mcp": 6400.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "BuiRWf6YrvDcS7neHPWvZGWzeivdRRwWZwhJBabhpump": {
+      "symbol": "$KINGFI",
+      "signal_history": [
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487191.863773,
+          "mcp": 112400.0,
+          "liq_usd": 23900.0,
+          "liq_sol": 168.31,
+          "holders": 342,
+          "price_change_5m": 5008.5,
+          "price_change_1h": 5008.5,
+          "price_change_6h": 5008.5,
+          "txns_5m": 979,
+          "volume_5m": 137700.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 33.31,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487193.536739,
+          "mcp": 112000.0,
+          "liq_usd": 24800.0,
+          "liq_sol": 174.66,
+          "holders": 341,
+          "price_change_5m": 4989.2,
+          "price_change_1h": 4989.2,
+          "price_change_6h": 4989.2,
+          "txns_5m": 978,
+          "volume_5m": 137700.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 33.04,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487194.207361,
+          "mcp": 120600.0,
+          "liq_usd": 24800.0,
+          "liq_sol": 174.34,
+          "holders": 338,
+          "price_change_5m": 5382.8,
+          "price_change_1h": 5382.8,
+          "price_change_6h": 5382.8,
+          "txns_5m": 975,
+          "volume_5m": 136900.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 33.04,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487194.491132,
+          "mcp": 118900.0,
+          "liq_usd": 25400.0,
+          "liq_sol": 179.05,
+          "holders": 337,
+          "price_change_5m": 5303.8,
+          "price_change_1h": 5303.8,
+          "price_change_6h": 5303.8,
+          "txns_5m": 973,
+          "volume_5m": 136900.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 33.04,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487194.787553,
+          "mcp": 126000.0,
+          "liq_usd": 25400.0,
+          "liq_sol": 178.53,
+          "holders": 337,
+          "price_change_5m": 5626.2,
+          "price_change_1h": 5626.2,
+          "price_change_6h": 5626.2,
+          "txns_5m": 971,
+          "volume_5m": 136500.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 33.31,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487195.084623,
+          "mcp": 122200.0,
+          "liq_usd": 24200.0,
+          "liq_sol": 170.05,
+          "holders": 338,
+          "price_change_5m": 5453.1,
+          "price_change_1h": 5453.1,
+          "price_change_6h": 5453.1,
+          "txns_5m": 962,
+          "volume_5m": 136200.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 33.31,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "community_takeover",
+          "signal_type": "CTO",
+          "timestamp": 1782487195.368473,
+          "mcp": 114600.0,
+          "liq_usd": 24700.0,
+          "liq_sol": 173.48,
+          "holders": 335,
+          "price_change_5m": 5107.4,
+          "price_change_1h": 5107.4,
+          "price_change_6h": 5107.4,
+          "txns_5m": 950,
+          "volume_5m": 135500.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 38.63,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487195.658843,
+          "mcp": 118200.0,
+          "liq_usd": 24500.0,
+          "liq_sol": 172.59,
+          "holders": 332,
+          "price_change_5m": 5271.9,
+          "price_change_1h": 5271.9,
+          "price_change_6h": 5271.9,
+          "txns_5m": 942,
+          "volume_5m": 134800.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 38.36,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487195.953262,
+          "mcp": 118200.0,
+          "liq_usd": 24400.0,
+          "liq_sol": 171.81,
+          "holders": 332,
+          "price_change_5m": 5271.9,
+          "price_change_1h": 5271.9,
+          "price_change_6h": 5271.9,
+          "txns_5m": 942,
+          "volume_5m": 134800.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 38.36,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487202.954679,
+          "mcp": 120700.0,
+          "liq_usd": 23100.0,
+          "liq_sol": 162.59,
+          "holders": 231,
+          "price_change_5m": 5386.9,
+          "price_change_1h": 5386.9,
+          "price_change_6h": 5386.9,
+          "txns_5m": 501,
+          "volume_5m": 80400.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 57.6,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487204.446107,
+          "mcp": 111800.0,
+          "liq_usd": 23100.0,
+          "liq_sol": 162.59,
+          "holders": 234,
+          "price_change_5m": 4982.3,
+          "price_change_1h": 4982.3,
+          "price_change_6h": 4982.3,
+          "txns_5m": 496,
+          "volume_5m": 79700.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 57.88,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487204.83773,
+          "mcp": 104000.0,
+          "liq_usd": 22700.0,
+          "liq_sol": 160.04,
+          "holders": 231,
+          "price_change_5m": 4627.1,
+          "price_change_1h": 4627.1,
+          "price_change_6h": 4627.1,
+          "txns_5m": 494,
+          "volume_5m": 79300.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 57.88,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487205.141888,
+          "mcp": 104000.0,
+          "liq_usd": 23300.0,
+          "liq_sol": 164.23,
+          "holders": 231,
+          "price_change_5m": 4627.1,
+          "price_change_1h": 4627.1,
+          "price_change_6h": 4627.1,
+          "txns_5m": 494,
+          "volume_5m": 79300.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 57.88,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "fdv_surge",
+          "signal_type": "FDV_SURGE",
+          "timestamp": 1782487264.000254,
+          "mcp": 118600.0,
+          "liq_usd": 24500.0,
+          "liq_sol": 172.16,
+          "holders": 398,
+          "price_change_5m": 5290.2,
+          "price_change_1h": 5290.2,
+          "price_change_6h": 5290.2,
+          "txns_5m": 1609,
+          "volume_5m": 186400.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 14.1,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487264.295909,
+          "mcp": 116400.0,
+          "liq_usd": 24500.0,
+          "liq_sol": 172.11,
+          "holders": 393,
+          "price_change_5m": 5191.9,
+          "price_change_1h": 5191.9,
+          "price_change_6h": 5191.9,
+          "txns_5m": 1600,
+          "volume_5m": 186000.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 12.33,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487264.879648,
+          "mcp": 115300.0,
+          "liq_usd": 23900.0,
+          "liq_sol": 168.31,
+          "holders": 390,
+          "price_change_5m": 5141.0,
+          "price_change_1h": 5141.0,
+          "price_change_6h": 5141.0,
+          "txns_5m": 1597,
+          "volume_5m": 186000.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 14.1,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487265.198178,
+          "mcp": 108200.0,
+          "liq_usd": 23500.0,
+          "liq_sol": 165.09,
+          "holders": 389,
+          "price_change_5m": 4816.8,
+          "price_change_1h": 4816.8,
+          "price_change_6h": 4816.8,
+          "txns_5m": 1591,
+          "volume_5m": 185400.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 14.1,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "community_takeover",
+          "signal_type": "CTO",
+          "timestamp": 1782487265.500645,
+          "mcp": 106800.0,
+          "liq_usd": 23600.0,
+          "liq_sol": 165.73,
+          "holders": 388,
+          "price_change_5m": 4757.1,
+          "price_change_1h": 4757.1,
+          "price_change_6h": 4757.1,
+          "txns_5m": 1590,
+          "volume_5m": 185300.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 14.1,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_exiting",
+        "community_takeover",
+        "fdv_surge"
+      ],
+      "first_seen": 1782487191.863773,
+      "last_seen": 1782487265.500645,
+      "launch_mcp": 112400.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "5tZ9wDTmuhTUUvsN1WSBcZ2d15fPoTLY7xRuGeMipump": {
+      "symbol": "XMAGIC",
+      "signal_history": [
+        {
+          "stage": "fdv_surge",
+          "signal_type": "FDV_SURGE",
+          "timestamp": 1782487196.274099,
+          "mcp": 2900.0,
+          "liq_usd": 0,
+          "liq_sol": 0,
+          "holders": 6,
+          "price_change_5m": 27.06,
+          "price_change_1h": 27.06,
+          "price_change_6h": 27.06,
+          "txns_5m": 4,
+          "volume_5m": 428.1,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 0.0,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487237.956965,
+          "mcp": 3300.0,
+          "liq_usd": 5400.0,
+          "liq_sol": 7.91,
+          "holders": 11,
+          "price_change_5m": 45.92,
+          "price_change_1h": 45.92,
+          "price_change_6h": 45.92,
+          "txns_5m": 19,
+          "volume_5m": 917.3,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 25.07,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "fdv_surge",
+        "dev_exiting"
+      ],
+      "first_seen": 1782487196.274099,
+      "last_seen": 1782487237.956965,
+      "launch_mcp": 2900.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "7JF7ApnXgGvRCeATARQNMePyqEsSLdNZkYQKv3qKpump": {
+      "symbol": "Nakama",
+      "signal_history": [
+        {
+          "stage": "fdv_surge",
+          "signal_type": "FDV_SURGE",
+          "timestamp": 1782487197.382437,
+          "mcp": 2300.0,
+          "liq_usd": 4400.0,
+          "liq_sol": 1.22,
+          "holders": 3,
+          "price_change_5m": 8.64,
+          "price_change_1h": 8.64,
+          "price_change_6h": 8.64,
+          "txns_5m": 4,
+          "volume_5m": 390.7,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 10.8,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "fdv_surge"
+      ],
+      "first_seen": 1782487197.382437,
+      "last_seen": 1782487197.382437,
+      "launch_mcp": 2300.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "21xwaGsxzT1c7iGBrtMG7D9iE4BHvCcm35KSLa3tpump": {
+      "symbol": "Nakama",
+      "signal_history": [
+        {
+          "stage": "king_of_hill",
+          "signal_type": "KOTH",
+          "timestamp": 1782487198.556827,
+          "mcp": 15400.0,
+          "liq_usd": 10000.0,
+          "liq_sol": 40.17,
+          "holders": 73,
+          "price_change_5m": 628.8,
+          "price_change_1h": 628.8,
+          "price_change_6h": 628.8,
+          "txns_5m": 267,
+          "volume_5m": 14100.0,
+          "dev_status": "SELL_ALL",
+          "top10_pct": 24.72,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "king_of_hill"
+      ],
+      "first_seen": 1782487198.556827,
+      "last_seen": 1782487198.556827,
+      "launch_mcp": 15400.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "36hyAefW2TQ91LvCFd21dQGRVVmyo7bCeFsRvg8upump": {
+      "symbol": "Namaka",
+      "signal_history": [
+        {
+          "stage": "king_of_hill",
+          "signal_type": "KOTH",
+          "timestamp": 1782487199.973112,
+          "mcp": 14500.0,
+          "liq_usd": 11700.0,
+          "liq_sol": 52.6,
+          "holders": 116,
+          "price_change_5m": 526.5,
+          "price_change_1h": 526.5,
+          "price_change_6h": 526.5,
+          "txns_5m": 525,
+          "volume_5m": 23400.0,
+          "dev_status": "SELL_ALL",
+          "top10_pct": 28.15,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "king_of_hill"
+      ],
+      "first_seen": 1782487199.973112,
+      "last_seen": 1782487199.973112,
+      "launch_mcp": 14500.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "83huNHpavcnqrATx8BYasGNtELfMpvumHygpktgQpump": {
+      "symbol": "XMAGIC",
+      "signal_history": [
+        {
+          "stage": "king_of_hill",
+          "signal_type": "KOTH",
+          "timestamp": 1782487201.497577,
+          "mcp": 15500.0,
+          "liq_usd": 11700.0,
+          "liq_sol": 52.74,
+          "holders": 77,
+          "price_change_5m": 679.3,
+          "price_change_1h": 655.6,
+          "price_change_6h": 655.6,
+          "txns_5m": 217,
+          "volume_5m": 8500.0,
+          "dev_status": "SELL_ALL",
+          "top10_pct": 20.41,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "king_of_hill"
+      ],
+      "first_seen": 1782487201.497577,
+      "last_seen": 1782487201.497577,
+      "launch_mcp": 15500.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "AknAWyPMeLQ8XeNhKHRALWy4W92L67DQCbtiFPDepump": {
+      "symbol": "X",
+      "signal_history": [
+        {
+          "stage": "community_takeover",
+          "signal_type": "CTO",
+          "timestamp": 1782487203.251686,
+          "mcp": 7100.0,
+          "liq_usd": 8000.0,
+          "liq_sol": 26.14,
+          "holders": 29,
+          "price_change_5m": 207.6,
+          "price_change_1h": 207.6,
+          "price_change_6h": 207.6,
+          "txns_5m": 43,
+          "volume_5m": 3500.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 41.69,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "community_takeover"
+      ],
+      "first_seen": 1782487203.251686,
+      "last_seen": 1782487203.251686,
+      "launch_mcp": 7100.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "7feWADwudSfNyfw9yek834EL5KpKKkPdi9NN74P2pump": {
+      "symbol": "E8.G",
+      "signal_history": [
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487229.116765,
+          "mcp": 4100.0,
+          "liq_usd": 6100.0,
+          "liq_sol": 13.16,
+          "holders": 42,
+          "price_change_5m": 84.44,
+          "price_change_1h": 84.44,
+          "price_change_6h": 84.44,
+          "txns_5m": 208,
+          "volume_5m": 10900.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 37.46,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "king_of_hill",
+          "signal_type": "KOTH",
+          "timestamp": 1782487238.26748,
+          "mcp": 15200.0,
+          "liq_usd": 11400.0,
+          "liq_sol": 50.37,
+          "holders": 74,
+          "price_change_5m": 586.3,
+          "price_change_1h": 586.3,
+          "price_change_6h": 586.3,
+          "txns_5m": 170,
+          "volume_5m": 7600.0,
+          "dev_status": "HOLD",
+          "top10_pct": 37.46,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_exiting",
+        "king_of_hill"
+      ],
+      "first_seen": 1782487229.116765,
+      "last_seen": 1782487238.26748,
+      "launch_mcp": 4100.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "JCXYav5nJz66YvfpHXvjqUcfCQ2u2o8Y4DiNBP2Qpump": {
+      "symbol": "X",
+      "signal_history": [
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487230.575717,
+          "mcp": 2700.0,
+          "liq_usd": 0,
+          "liq_sol": 0,
+          "holders": 4,
+          "price_change_5m": 24.92,
+          "price_change_1h": 24.92,
+          "price_change_6h": 24.92,
+          "txns_5m": 14,
+          "volume_5m": 1500.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 18.91,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487233.53782,
+          "mcp": 3000.0,
+          "liq_usd": 0,
+          "liq_sol": 0,
+          "holders": 5,
+          "price_change_5m": 39.04,
+          "price_change_1h": 39.04,
+          "price_change_6h": 39.04,
+          "txns_5m": 13,
+          "volume_5m": 1300.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 0.0,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_exiting"
+      ],
+      "first_seen": 1782487230.575717,
+      "last_seen": 1782487233.53782,
+      "launch_mcp": 2700.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "8fVoEyQKLv1kwZrEFDqJxKBtfkszSe7EvXoHkfxwpump": {
+      "symbol": "GAINZ",
+      "signal_history": [
+        {
+          "stage": "community_takeover",
+          "signal_type": "CTO",
+          "timestamp": 1782487231.584558,
+          "mcp": 9700.0,
+          "liq_usd": 9400.0,
+          "liq_sol": 36.07,
+          "holders": 70,
+          "price_change_5m": 29.65,
+          "price_change_1h": 353.6,
+          "price_change_6h": 353.6,
+          "txns_5m": 33,
+          "volume_5m": 832.7,
+          "dev_status": "SELL_ALL",
+          "top10_pct": 33.43,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dexsocial",
+          "signal_type": "DEXSOCIAL",
+          "timestamp": 1782487232.999402,
+          "mcp": 9700.0,
+          "liq_usd": 9400.0,
+          "liq_sol": 36.07,
+          "holders": 70,
+          "price_change_5m": 29.65,
+          "price_change_1h": 353.6,
+          "price_change_6h": 353.6,
+          "txns_5m": 33,
+          "volume_5m": 832.7,
+          "dev_status": "SELL_ALL",
+          "top10_pct": 33.43,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "community_takeover",
+        "dexsocial"
+      ],
+      "first_seen": 1782487231.584558,
+      "last_seen": 1782487232.999402,
+      "launch_mcp": 9700.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "3svG4ReLDbYdznvybRHnmoDzmfHfBLXHHc6ey8ynpump": {
+      "symbol": "Chameleon",
+      "signal_history": [
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487233.826999,
+          "mcp": 6600.0,
+          "liq_usd": 5800.0,
+          "liq_sol": 40.89,
+          "holders": 92,
+          "price_change_5m": -15.72,
+          "price_change_1h": 126.2,
+          "price_change_6h": 180.6,
+          "txns_5m": 41,
+          "volume_5m": 2000.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 29.57,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_exiting"
+      ],
+      "first_seen": 1782487233.826999,
+      "last_seen": 1782487233.826999,
+      "launch_mcp": 6600.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "6oGL188ZyMZ8BF5W2vwSRXa6wk97Kf45Fbc4iR4wpump": {
+      "symbol": "Nakama",
+      "signal_history": [
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487235.541,
+          "mcp": 3500.0,
+          "liq_usd": 6200.0,
+          "liq_sol": 13.57,
+          "holders": 10,
+          "price_change_5m": 48.93,
+          "price_change_1h": 48.93,
+          "price_change_6h": 48.93,
+          "txns_5m": 18,
+          "volume_5m": 2100.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 33.41,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_exiting"
+      ],
+      "first_seen": 1782487235.541,
+      "last_seen": 1782487235.541,
+      "launch_mcp": 3500.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "4Lvrg1RPj2q7kpWS6Et3E3wgYezv44mq3UVqtE7Mpump": {
+      "symbol": "HAMEWORLD",
+      "signal_history": [
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487236.783569,
+          "mcp": 2000.0,
+          "liq_usd": 5100.0,
+          "liq_sol": 5.69,
+          "holders": 2,
+          "price_change_5m": -40.33,
+          "price_change_1h": -1.32,
+          "price_change_6h": -1.32,
+          "txns_5m": 85,
+          "volume_5m": 4100.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 21.57,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_exiting"
+      ],
+      "first_seen": 1782487236.783569,
+      "last_seen": 1782487236.783569,
+      "launch_mcp": 2000.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "FhgqRiRGaHXxTe3CjgCsrkzPUh7mztA4tt78W2Yspump": {
+      "symbol": "X",
+      "signal_history": [
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487262.979476,
+          "mcp": 3200.0,
+          "liq_usd": 0,
+          "liq_sol": 0,
+          "holders": 8,
+          "price_change_5m": 51.85,
+          "price_change_1h": 51.85,
+          "price_change_6h": 51.85,
+          "txns_5m": 31,
+          "volume_5m": 1200.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 23.28,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_active",
+          "signal_type": "DEV_BOUGHT",
+          "timestamp": 1782487264.589839,
+          "mcp": 3200.0,
+          "liq_usd": 0,
+          "liq_sol": 0,
+          "holders": 10,
+          "price_change_5m": 53.8,
+          "price_change_1h": 53.8,
+          "price_change_6h": 53.8,
+          "txns_5m": 18,
+          "volume_5m": 821.9,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 0.0,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_exiting",
+        "dev_active"
+      ],
+      "first_seen": 1782487262.979476,
+      "last_seen": 1782487264.589839,
+      "launch_mcp": 3200.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "AvqGsZjDFUMRBPREdkVw9zcnEqCKzUw6bctM1hTypump": {
+      "symbol": "X",
+      "signal_history": [
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487282.445496,
+          "mcp": 5500.0,
+          "liq_usd": 0,
+          "liq_sol": 0,
+          "holders": 27,
+          "price_change_5m": 150.8,
+          "price_change_1h": 150.8,
+          "price_change_6h": 150.8,
+          "txns_5m": 33,
+          "volume_5m": 2500.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 31.36,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487284.588444,
+          "mcp": 4200.0,
+          "liq_usd": 5400.0,
+          "liq_sol": 7.91,
+          "holders": 17,
+          "price_change_5m": 93.79,
+          "price_change_1h": 93.79,
+          "price_change_6h": 93.79,
+          "txns_5m": 21,
+          "volume_5m": 1700.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 0.0,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_active",
+          "signal_type": "DEV_BOUGHT",
+          "timestamp": 1782487284.919032,
+          "mcp": 2900.0,
+          "liq_usd": 0,
+          "liq_sol": 0,
+          "holders": 5,
+          "price_change_5m": 30.26,
+          "price_change_1h": 30.26,
+          "price_change_6h": 30.26,
+          "txns_5m": 4,
+          "volume_5m": 462.7,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 0.0,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487316.948291,
+          "mcp": 8200.0,
+          "liq_usd": 0,
+          "liq_sol": 0,
+          "holders": 45,
+          "price_change_5m": 272.9,
+          "price_change_1h": 272.9,
+          "price_change_6h": 272.9,
+          "txns_5m": 62,
+          "volume_5m": 4300.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 33.19,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_exiting",
+        "dev_active"
+      ],
+      "first_seen": 1782487282.445496,
+      "last_seen": 1782487316.948291,
+      "launch_mcp": 5500.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "DdmnMR76tzSsaz9ZqD37SnRjL7CTDr94udnfmGeSpump": {
+      "symbol": "Tardo",
+      "signal_history": [
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487283.423653,
+          "mcp": 2400.0,
+          "liq_usd": 5300.0,
+          "liq_sol": 7.0,
+          "holders": 6,
+          "price_change_5m": 4.76,
+          "price_change_1h": 4.76,
+          "price_change_6h": 4.76,
+          "txns_5m": 32,
+          "volume_5m": 2700.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 0.0,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "community_takeover",
+          "signal_type": "CTO",
+          "timestamp": 1782487318.409201,
+          "mcp": 2200.0,
+          "liq_usd": 4400.0,
+          "liq_sol": 1.19,
+          "holders": 5,
+          "price_change_5m": -6.26,
+          "price_change_1h": -6.26,
+          "price_change_6h": -6.26,
+          "txns_5m": 46,
+          "volume_5m": 3000.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 4.09,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_exiting",
+        "community_takeover"
+      ],
+      "first_seen": 1782487283.423653,
+      "last_seen": 1782487318.409201,
+      "launch_mcp": 2400.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "Ea7foKfkqx6RZnxN14EzVC1QXUnpR5JvS8ThhsdKpump": {
+      "symbol": "NAKAMA",
+      "signal_history": [
+        {
+          "stage": "dev_active",
+          "signal_type": "DEV_BOUGHT",
+          "timestamp": 1782487309.061982,
+          "mcp": 3400.0,
+          "liq_usd": 0,
+          "liq_sol": 0,
+          "holders": 10,
+          "price_change_5m": 55.1,
+          "price_change_1h": 55.1,
+          "price_change_6h": 55.1,
+          "txns_5m": 15,
+          "volume_5m": 938.9,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 0.0,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "community_takeover",
+          "signal_type": "CTO",
+          "timestamp": 1782487347.131456,
+          "mcp": 4100.0,
+          "liq_usd": 6200.0,
+          "liq_sol": 13.23,
+          "holders": 18,
+          "price_change_5m": 87.34,
+          "price_change_1h": 87.34,
+          "price_change_6h": 87.34,
+          "txns_5m": 55,
+          "volume_5m": 3300.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 27.67,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487348.798339,
+          "mcp": 3400.0,
+          "liq_usd": 0,
+          "liq_sol": 0,
+          "holders": 10,
+          "price_change_5m": 53.01,
+          "price_change_1h": 53.01,
+          "price_change_6h": 53.01,
+          "txns_5m": 31,
+          "volume_5m": 2300.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 30.54,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487349.407788,
+          "mcp": 3000.0,
+          "liq_usd": 0,
+          "liq_sol": 0,
+          "holders": 7,
+          "price_change_5m": 34.84,
+          "price_change_1h": 34.84,
+          "price_change_6h": 34.84,
+          "txns_5m": 20,
+          "volume_5m": 1100.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 22.85,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_active",
+        "community_takeover",
+        "dev_exiting"
+      ],
+      "first_seen": 1782487309.061982,
+      "last_seen": 1782487349.407788,
+      "launch_mcp": 3400.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "4obpfLdgpq1ebY9KLrKrLDBS2dw6725fuUdYoYE1pump": {
+      "symbol": "NICO",
+      "signal_history": [
+        {
+          "stage": "community_takeover",
+          "signal_type": "CTO",
+          "timestamp": 1782487311.297724,
+          "mcp": 2600.0,
+          "liq_usd": 4500.0,
+          "liq_sol": 1.32,
+          "holders": 3,
+          "price_change_5m": 25.92,
+          "price_change_1h": 25.92,
+          "price_change_6h": 25.92,
+          "txns_5m": 6,
+          "volume_5m": 209.3,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 3.63,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "community_takeover"
+      ],
+      "first_seen": 1782487311.297724,
+      "last_seen": 1782487311.297724,
+      "launch_mcp": 2600.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "22GvhornR3GxnRZvFb3Yenird31E942GrtiLsBedpump": {
+      "symbol": "CIGGY",
+      "signal_history": [
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487312.533079,
+          "mcp": 2800.0,
+          "liq_usd": 4500.0,
+          "liq_sol": 1.78,
+          "holders": 3,
+          "price_change_5m": 32.34,
+          "price_change_1h": 32.34,
+          "price_change_6h": 32.34,
+          "txns_5m": 18,
+          "volume_5m": 620.3,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 6.3,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_exiting"
+      ],
+      "first_seen": 1782487312.533079,
+      "last_seen": 1782487312.533079,
+      "launch_mcp": 2800.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "EG8XyFdiVBrXdVCxhyU7Dz2a9r7NUqNxZwZm4QDMpump": {
+      "symbol": "UNICLE",
+      "signal_history": [
+        {
+          "stage": "king_of_hill",
+          "signal_type": "KOTH",
+          "timestamp": 1782487313.67055,
+          "mcp": 15000.0,
+          "liq_usd": 11400.0,
+          "liq_sol": 50.42,
+          "holders": 64,
+          "price_change_5m": 375.7,
+          "price_change_1h": 610.3,
+          "price_change_6h": 610.3,
+          "txns_5m": 192,
+          "volume_5m": 9100.0,
+          "dev_status": "SELL_ALL",
+          "top10_pct": 32.7,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "king_of_hill"
+      ],
+      "first_seen": 1782487313.67055,
+      "last_seen": 1782487313.67055,
+      "launch_mcp": 15000.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "2MifSozmtfGDPL1hiVDTUwEPfRKSsPhNb8cHdAjdDUgc": {
+      "symbol": "X",
+      "signal_history": [
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487315.065296,
+          "mcp": 3100.0,
+          "liq_usd": 5400.0,
+          "liq_sol": 7.69,
+          "holders": 4,
+          "price_change_5m": 35.53,
+          "price_change_1h": 35.53,
+          "price_change_6h": 35.53,
+          "txns_5m": 7,
+          "volume_5m": 999.6,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 0.0,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487316.360896,
+          "mcp": 3100.0,
+          "liq_usd": 0,
+          "liq_sol": 0,
+          "holders": 4,
+          "price_change_5m": 35.53,
+          "price_change_1h": 35.53,
+          "price_change_6h": 35.53,
+          "txns_5m": 7,
+          "volume_5m": 999.6,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 15.17,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "fdv_surge",
+          "signal_type": "FDV_SURGE",
+          "timestamp": 1782487316.650755,
+          "mcp": 2300.0,
+          "liq_usd": 0,
+          "liq_sol": 0,
+          "holders": 2,
+          "price_change_5m": 0.0,
+          "price_change_1h": 0.0,
+          "price_change_6h": 0.0,
+          "txns_5m": 1,
+          "volume_5m": 351.6,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 15.17,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487348.503494,
+          "mcp": 2100.0,
+          "liq_usd": 4400.0,
+          "liq_sol": 0.93996,
+          "holders": 2,
+          "price_change_5m": -11.46,
+          "price_change_1h": -11.46,
+          "price_change_6h": -11.46,
+          "txns_5m": 11,
+          "volume_5m": 1600.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 3.25,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_exiting",
+        "fdv_surge"
+      ],
+      "first_seen": 1782487315.065296,
+      "last_seen": 1782487348.503494,
+      "launch_mcp": 3100.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "FVq462CgrBNm14FWfi4d3P81yBsphDyTttktuTM5qS63": {
+      "symbol": "Nakama",
+      "signal_history": [
+        {
+          "stage": "community_takeover",
+          "signal_type": "CTO",
+          "timestamp": 1782487317.245407,
+          "mcp": 2000.0,
+          "liq_usd": 4300.0,
+          "liq_sol": 0.53882,
+          "holders": 4,
+          "price_change_5m": -11.61,
+          "price_change_1h": -11.61,
+          "price_change_6h": -11.61,
+          "txns_5m": 9,
+          "volume_5m": 1200.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 17.05,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "community_takeover"
+      ],
+      "first_seen": 1782487317.245407,
+      "last_seen": 1782487317.245407,
+      "launch_mcp": 2000.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "FHgSxNmju9oQHhoJB1st1oauXdNGKx9kWpzMLKwEpump": {
+      "symbol": "RAEL",
+      "signal_history": [
+        {
+          "stage": "dev_active",
+          "signal_type": "DEV_BOUGHT",
+          "timestamp": 1782487342.876613,
+          "mcp": 2900.0,
+          "liq_usd": 0,
+          "liq_sol": 0,
+          "holders": 8,
+          "price_change_5m": 40.37,
+          "price_change_1h": 40.37,
+          "price_change_6h": 40.37,
+          "txns_5m": 7,
+          "volume_5m": 460.4,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 4.59,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_active"
+      ],
+      "first_seen": 1782487342.876613,
+      "last_seen": 1782487342.876613,
+      "launch_mcp": 2900.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "7qd8KNS4hZUKUstN7sRmvu4XN5vGpa5gKbhdbC2opump": {
+      "symbol": "WaterGate",
+      "signal_history": [
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487344.145427,
+          "mcp": 2900.0,
+          "liq_usd": 4900.0,
+          "liq_sol": 4.68,
+          "holders": 4,
+          "price_change_5m": 24.86,
+          "price_change_1h": 24.86,
+          "price_change_6h": 24.86,
+          "txns_5m": 6,
+          "volume_5m": 798.9,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 0.0,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_active",
+          "signal_type": "DEV_BOUGHT",
+          "timestamp": 1782487346.536001,
+          "mcp": 3200.0,
+          "liq_usd": 5400.0,
+          "liq_sol": 7.8,
+          "holders": 5,
+          "price_change_5m": 36.61,
+          "price_change_1h": 36.61,
+          "price_change_6h": 36.61,
+          "txns_5m": 4,
+          "volume_5m": 566.1,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 0.0,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_exiting",
+        "dev_active"
+      ],
+      "first_seen": 1782487344.145427,
+      "last_seen": 1782487346.536001,
+      "launch_mcp": 2900.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "4V1LjVRJ1kGNT2hpLosZQaVBtTgAodq3KSnKgkwCpump": {
+      "symbol": "X",
+      "signal_history": [
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487345.314149,
+          "mcp": 2100.0,
+          "liq_usd": 4400.0,
+          "liq_sol": 0.98949,
+          "holders": 3,
+          "price_change_5m": -3.8,
+          "price_change_1h": -3.8,
+          "price_change_6h": -3.8,
+          "txns_5m": 15,
+          "volume_5m": 1100.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 6.85,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "community_takeover",
+          "signal_type": "CTO",
+          "timestamp": 1782487346.829391,
+          "mcp": 3000.0,
+          "liq_usd": 0,
+          "liq_sol": 0,
+          "holders": 6,
+          "price_change_5m": 35.3,
+          "price_change_1h": 35.3,
+          "price_change_6h": 35.3,
+          "txns_5m": 7,
+          "volume_5m": 592.8,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 0.0,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_exiting",
+        "community_takeover"
+      ],
+      "first_seen": 1782487345.314149,
+      "last_seen": 1782487346.829391,
+      "launch_mcp": 2100.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "F7ivLD7y4shupNYVoLzPv1DGDCrtrFcEkdhgfseHpump": {
+      "symbol": "MEXICO",
+      "signal_history": [
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487347.431269,
+          "mcp": 2100.0,
+          "liq_usd": 0,
+          "liq_sol": 0,
+          "holders": 3,
+          "price_change_5m": -11.93,
+          "price_change_1h": -11.93,
+          "price_change_6h": -11.93,
+          "txns_5m": 6,
+          "volume_5m": 945.7,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 17.88,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        },
+        {
+          "stage": "dev_active",
+          "signal_type": "DEV_BOUGHT",
+          "timestamp": 1782487349.097691,
+          "mcp": 2900.0,
+          "liq_usd": 5100.0,
+          "liq_sol": 6.0,
+          "holders": 2,
+          "price_change_5m": 20.49,
+          "price_change_1h": 20.49,
+          "price_change_6h": 20.49,
+          "txns_5m": 3,
+          "volume_5m": 448.2,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 17.88,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_exiting",
+        "dev_active"
+      ],
+      "first_seen": 1782487347.431269,
+      "last_seen": 1782487349.097691,
+      "launch_mcp": 2100.0,
+      "is_winner": false,
+      "is_loser": false
+    },
+    "CgJx3UFKveDyKcNFzw3V3Xij6XSWaKygz2vE3Nwtpump": {
+      "symbol": "RAEL",
+      "signal_history": [
+        {
+          "stage": "dev_exiting",
+          "signal_type": "DEV_SOLD",
+          "timestamp": 1782487373.330378,
+          "mcp": 2100.0,
+          "liq_usd": 4700.0,
+          "liq_sol": 3.06,
+          "holders": 2,
+          "price_change_5m": -2.79,
+          "price_change_1h": -2.79,
+          "price_change_6h": -2.79,
+          "txns_5m": 19,
+          "volume_5m": 1800.0,
+          "dev_status": "UNKNOWN",
+          "top10_pct": 9.16,
+          "source_channel": -1002202241417,
+          "source_channel_name": "GMGN Signals"
+        }
+      ],
+      "stages_seen": [
+        "dev_exiting"
+      ],
+      "first_seen": 1782487373.330378,
+      "last_seen": 1782487373.330378,
+      "launch_mcp": 2100.0,
+      "is_winner": false,
+      "is_loser": false
     }
   },
   "transitions": {
     "dev_exiting->dev_active": {
-      "count": 221,
+      "count": 225,
       "pumped": 0,
-      "avg_time": 2.1641144275665285,
+      "avg_time": 2.1892410254478456,
       "times": [
-        0.4194471836090088,
-        0.35492420196533203,
-        1.0713460445404053,
-        1.6395699977874756,
         1.1885950565338135,
         1.2754409313201904,
         2.683316946029663,
@@ -63298,13 +64806,17 @@
         0.3034210205078125,
         0.30959296226501465,
         0.5818519592285156,
-        3.6435091495513916
+        3.6435091495513916,
+        1.6103630065917969,
+        0.33058810234069824,
+        2.3905739784240723,
+        1.6664221286773682
       ]
     },
     "community_takeover->dexsocial": {
-      "count": 7,
+      "count": 8,
       "pumped": 0,
-      "avg_time": 1.0961081981658936,
+      "avg_time": 1.1359501779079437,
       "times": [
         1.4805591106414795,
         1.2653069496154785,
@@ -63312,13 +64824,14 @@
         1.0084450244903564,
         1.0123200416564941,
         0.30175209045410156,
-        1.0226850509643555
+        1.0226850509643555,
+        1.414844036102295
       ]
     },
     "fdv_surge->dev_exiting": {
-      "count": 57,
+      "count": 60,
       "pumped": 0,
-      "avg_time": 24.475612770047103,
+      "avg_time": 24.48235313097636,
       "times": [
         56.402791023254395,
         5.830892086029053,
@@ -63376,13 +64889,16 @@
         3.0503718852996826,
         1.2922520637512207,
         201.55610704421997,
-        0.5839989185333252
+        0.5839989185333252,
+        41.682865858078,
+        0.2956550121307373,
+        31.852739095687866
       ]
     },
     "dev_active->dev_exiting": {
-      "count": 80,
+      "count": 81,
       "pumped": 0,
-      "avg_time": 268.42394078075887,
+      "avg_time": 265.50548791885376,
       "times": [
         23.468419075012207,
         104.75975894927979,
@@ -63463,13 +64979,14 @@
         41.010926961898804,
         1.3081719875335693,
         39.65672206878662,
-        36.02626705169678
+        36.02626705169678,
+        32.02925896644592
       ]
     },
     "dev_exiting->fdv_surge": {
-      "count": 57,
+      "count": 59,
       "pumped": 0,
-      "avg_time": 34.15879770747402,
+      "avg_time": 34.00338464672283,
       "times": [
         1.6437749862670898,
         3.127156972885132,
@@ -63527,7 +65044,9 @@
         1.3584959506988525,
         0.5759990215301514,
         0.4622220993041992,
-        2.1263489723205566
+        2.1263489723205566,
+        58.85836601257324,
+        0.2898588180541992
       ]
     },
     "fdv_surge->dev_active": {
@@ -63567,9 +65086,9 @@
       ]
     },
     "dev_exiting->community_takeover": {
-      "count": 67,
+      "count": 71,
       "pumped": 0,
-      "avg_time": 23.47988694461424,
+      "avg_time": 22.679430031440628,
       "times": [
         1.7708139419555664,
         9.375413179397583,
@@ -63637,7 +65156,11 @@
         0.296921968460083,
         1.266941785812378,
         4.124192953109741,
-        0.2260599136352539
+        0.2260599136352539,
+        0.28384995460510254,
+        0.30246686935424805,
+        34.98554801940918,
+        1.515242099761963
       ]
     },
     "community_takeover->dev_active": {
@@ -63668,9 +65191,9 @@
       ]
     },
     "dev_exiting->king_of_hill": {
-      "count": 15,
+      "count": 16,
       "pumped": 0,
-      "avg_time": 115.27111264864604,
+      "avg_time": 108.63858778774738,
       "times": [
         35.782005071640015,
         77.7898998260498,
@@ -63686,7 +65209,8 @@
         67.77630400657654,
         411.0934998989105,
         164.16878986358643,
-        155.6741180419922
+        155.6741180419922,
+        9.150714874267578
       ]
     },
     "fdv_surge->community_takeover": {
@@ -63703,9 +65227,9 @@
       ]
     },
     "dev_active->community_takeover": {
-      "count": 11,
+      "count": 12,
       "pumped": 0,
-      "avg_time": 53.5713849067688,
+      "avg_time": 52.279558996359505,
       "times": [
         39.031810998916626,
         3.456181049346924,
@@ -63717,7 +65241,8 @@
         53.903522968292236,
         41.36617183685303,
         173.81609416007996,
-        32.942660093307495
+        32.942660093307495,
+        38.0694739818573
       ]
     },
     "dev_exiting->dexsocial": {
@@ -63729,9 +65254,9 @@
       ]
     },
     "community_takeover->dev_exiting": {
-      "count": 40,
+      "count": 42,
       "pumped": 0,
-      "avg_time": 159.0146747291088,
+      "avg_time": 151.4891486224674,
       "times": [
         8.517119884490967,
         84.94208812713623,
@@ -63772,7 +65297,9 @@
         1.8594880104064941,
         0.8158261775970459,
         35.98290300369263,
-        31.23072910308838
+        31.23072910308838,
+        0.29036998748779297,
+        1.6668829917907715
       ]
     },
     "king_of_hill->fdv_surge": {
@@ -64087,22 +65614,22 @@
   },
   "stage_stats": {
     "fdv_surge": {
-      "count": 206,
+      "count": 210,
       "pumped": 0,
-      "avg_mcp": 11273.745897087381,
-      "avg_holders": 35.160194174757265,
-      "avg_liq": 4220.87446601942,
-      "avg_pc5m": 155.73135922330107,
-      "avg_pc1h": 215.54237864077663
+      "avg_mcp": 11659.484070476194,
+      "avg_holders": 36.43809523809522,
+      "avg_liq": 4278.095904761907,
+      "avg_pc5m": 178.1264761904763,
+      "avg_pc1h": 236.79823809523802
     },
     "community_takeover": {
-      "count": 202,
+      "count": 211,
       "pumped": 0,
-      "avg_mcp": 11586.08488910891,
-      "avg_holders": 32.19306930693069,
-      "avg_liq": 3962.8755445544552,
-      "avg_pc5m": 98.94975247524754,
-      "avg_pc1h": 146.56465346534662
+      "avg_mcp": 12286.67842464455,
+      "avg_holders": 34.886255924170605,
+      "avg_liq": 4197.160473933649,
+      "avg_pc5m": 143.22412322274883,
+      "avg_pc1h": 190.34336492891
     },
     "featured": {
       "count": 486,
@@ -64114,31 +65641,31 @@
       "avg_pc1h": 0.0
     },
     "dev_exiting": {
-      "count": 1139,
+      "count": 1177,
       "pumped": 0,
-      "avg_mcp": 9147.30482879719,
-      "avg_holders": 26.50131694468832,
-      "avg_liq": 5382.528832309043,
-      "avg_pc5m": 220.46709394205465,
-      "avg_pc1h": 291.29656716417963
+      "avg_mcp": 10390.382497875957,
+      "avg_holders": 29.988105352591333,
+      "avg_liq": 5577.5703823279555,
+      "avg_pc5m": 279.8211129991507,
+      "avg_pc1h": 348.5175446049283
     },
     "dev_active": {
-      "count": 402,
+      "count": 408,
       "pumped": 0,
-      "avg_mcp": 3922.8855721393024,
-      "avg_holders": 5.335820895522395,
-      "avg_liq": 2025.6253980099507,
-      "avg_pc5m": 77.63383084577126,
-      "avg_pc1h": 78.6089800995025
+      "avg_mcp": 3910.5392156862736,
+      "avg_holders": 5.355392156862751,
+      "avg_liq": 2021.5720833333337,
+      "avg_pc5m": 77.07213235294128,
+      "avg_pc1h": 78.0329411764706
     },
     "dexsocial": {
-      "count": 25,
+      "count": 26,
       "pumped": 0,
-      "avg_mcp": 31520.0,
-      "avg_holders": 271.72,
-      "avg_liq": 11368.0,
-      "avg_pc5m": 82.70160000000004,
-      "avg_pc1h": 907.4792000000001
+      "avg_mcp": 30680.76923076923,
+      "avg_holders": 263.9615384615385,
+      "avg_liq": 11292.307692307691,
+      "avg_pc5m": 80.66115384615388,
+      "avg_pc1h": 886.176153846154
     },
     "kol_fomo": {
       "count": 11,
@@ -64150,13 +65677,13 @@
       "avg_pc1h": 588.2509090909091
     },
     "king_of_hill": {
-      "count": 100,
+      "count": 105,
       "pumped": 0,
-      "avg_mcp": 21943.0,
-      "avg_holders": 90.3,
-      "avg_liq": 8280.000000000002,
-      "avg_pc5m": 576.0068000000002,
-      "avg_pc1h": 687.7747000000003
+      "avg_mcp": 21618.095238095237,
+      "avg_holders": 89.84761904761905,
+      "avg_liq": 8420.952380952382,
+      "avg_pc5m": 575.2121904761906,
+      "avg_pc1h": 683.6663809523814
     },
     "pump_completed": {
       "count": 24,
