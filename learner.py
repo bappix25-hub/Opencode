@@ -2547,7 +2547,21 @@ def update_channel_outcome(channel_id: int, address: str, ath_multiplier: float,
     ch_key = str(channel_id)
     ch_stats = data.get("channel_stats", {}).get(ch_key)
     if not ch_stats:
-        return
+        # Initialize if missing
+        from telegram_collector import CHANNEL_NAMES
+        ch_stats = data.setdefault("channel_stats", {}).setdefault(ch_key, {
+            "name": CHANNEL_NAMES.get(channel_id, f"Channel {channel_id}"),
+            "total_signals": 0,
+            "winners": 0,
+            "mega_winners": 0,
+            "losers": 0,
+            "pending": 0,
+            "ath_sum": 0.0,
+            "best_ath": 0.0,
+            "best_symbol": "",
+            "signal_types": {},
+            "recent_signals": [],
+        })
 
     if verdict in ("PUMP", "STRONG_PUMP", "MEGA_PUMP"):
         ch_stats["winners"] += 1

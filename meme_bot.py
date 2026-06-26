@@ -2761,7 +2761,7 @@ class MemeBot:
                                     "liq_usd": t_info.get("liq_usd", 0),
                                     "holders": 0,
                                     "signal_type": "LONG_TIME_ACTIVE",
-                                    "source_channel": "gmgn_trending",
+                                        "source_channel": -1002202241417,
                                     "source_channel_name": "GMGN Long-Time",
                                     "volume_24h": t_info.get("volume_24h", 0),
                                     "hours_active": t_info.get("hours_active", 0),
