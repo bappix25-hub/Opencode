@@ -96,20 +96,20 @@ class PaperTrader:
 
     def _calculate_tp(self, ai_score: float, social_score: float, signal_score: float, age_seconds: float,
                      buy_velocity: float = 0, curve_fill_pct: float = 0) -> tuple:
-        base_tp_pct = 50.0
+        base_tp_pct = 100.0
         base_sl_pct = -25.0
 
         if ai_score >= 0.8:
-            base_tp_pct = 120.0
+            base_tp_pct = 200.0
             base_sl_pct = -20.0
         elif ai_score >= 0.65:
-            base_tp_pct = 80.0
+            base_tp_pct = 150.0
             base_sl_pct = -22.0
         elif ai_score >= 0.50:
-            base_tp_pct = 50.0
+            base_tp_pct = 100.0
             base_sl_pct = -25.0
         else:
-            base_tp_pct = 35.0
+            base_tp_pct = 75.0
             base_sl_pct = -20.0
 
         if signal_score >= 0.8:

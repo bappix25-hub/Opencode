@@ -1966,14 +1966,14 @@ def _exit_pnl(ath, current, tp_mult, sl_mult, min_price=0.0):
 
 def calculate_optimal_tp_sl(results):
     if not results:
-        return {"optimal_tp": 50, "optimal_sl": -25, "expected_pnl": 0,
+        return {"optimal_tp": 100, "optimal_sl": -25, "expected_pnl": 0,
                 "win_rate": 0, "tp_hits": 0, "sl_hits": 0, "holds": 0}
     best_score = -999
     best_pnl = -999
-    best_tp = 50
+    best_tp = 100
     best_sl = -25
-    for tp_pct in range(5, 201, 5):
-        for sl_pct in range(-50, -5, 5):
+    for tp_pct in range(20, 501, 10):  # Start at 20%, go up to 500% for 3-4x pumps
+        for sl_pct in range(-40, -5, 5):  # SL from -40% to -5%
             tp_mult = 1 + tp_pct / 100
             sl_mult = 1 + sl_pct / 100
             total_pnl = 0
@@ -1995,11 +1995,12 @@ def calculate_optimal_tp_sl(results):
             n = len(results)
             avg_pnl = total_pnl / n
             win_rate = tp_hits / n
-            # Score = expected PnL primarily, small win_rate bonus only if positive PnL
-            if avg_pnl > 0:
-                score = avg_pnl + (win_rate * 5)
+            # Score: prioritize PnL, but require reasonable win rate
+            # Kelly-style: score = avg_pnl * win_rate - penalty for low win rate
+            if win_rate >= 0.2:  # Require at least 20% win rate
+                score = avg_pnl * win_rate
             else:
-                score = avg_pnl  # No win_rate bonus for negative PnL
+                score = avg_pnl * win_rate * 0.5  # Heavy penalty for low win rate
             if score > best_score or (score == best_score and avg_pnl > best_pnl):
                 best_score = score
                 best_pnl = avg_pnl

@@ -1901,6 +1901,20 @@ class MemeBot:
         else:
             session = "🌎 US"
 
+        # Calculate TP/SL for this signal
+        from paper_trader import get_paper_trader
+        paper = get_paper_trader()
+        tp_pct, sl_pct = paper._calculate_tp(
+            ai_score=pending.match_score,
+            social_score=0.0,
+            signal_score=pending.match_score,
+            age_seconds=pending.age_seconds,
+            buy_velocity=pending.buy_count / max(pending.age_seconds / 60, 1),
+            curve_fill_pct=0
+        )
+        tp_price = pending.price_at_match * (1 + tp_pct / 100)
+        sl_price = pending.price_at_match * (1 + sl_pct / 100)
+
         await send_signal(self.telegram_app.bot,
             f"⚡ প্রি-মাইগ্রেশন সিগন্যাল!\n"
             f"━━━━━━━━━━━━━━━━\n"
@@ -1918,6 +1932,9 @@ class MemeBot:
             f"{lp_text + chr(10) if lp_text else ''}"
             f"📈 বর্তমান MCap: {format_number(current_mcap)}\n"
             f"━━━━━━━━━━━━━━━━\n"
+            f"🎯 TP: +{tp_pct:.0f}% (${tp_price:.8f})\n"
+            f"🛑 SL: {sl_pct:.0f}% (${sl_price:.8f})\n"
+            f"━━━━━━━━━━━━━━━━\n"
             f"🔗 GMGN: {link}\n"
             f"🔗 DexScreener: {dexscreener_link(address)}\n"
             f"━━━━━━━━━━━━━━━━\n"
@@ -1926,7 +1943,6 @@ class MemeBot:
             address
         )
 
-        # Auto-buy via Maestro
         asyncio.create_task(mc.buy(address))
 
         await self.state.add_alerted(address)
@@ -1951,6 +1967,8 @@ class MemeBot:
                 "buy_count": pending.buy_count,
                 "sell_count": pending.sell_count,
                 "buy_sell_ratio": pending.buy_sell_ratio,
+                "tp_pct": tp_pct,
+                "sl_pct": sl_pct,
             },
         ))
 
