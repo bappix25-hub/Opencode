@@ -82,6 +82,31 @@ async def check_token_health(dex_client, address: str, tokenscan_data: dict = No
         # 6. Pair age check (new pairs are riskier but OK)
         if pair_created:
             age_minutes = (datetime.now(timezone.utc).timestamp() * 1000 - pair_created) / 60000
+            
+            # SNIPER-BOT DUMP DETECTION
+            # Pattern: massive first candle (snipers buy) → small candles → dump
+            # Key signal: token < 10 min old + very high volume relative to age
+            if 0 < age_minutes < 10 and volume_5m > 0:
+                # Healthy new token: ~$500-3000 volume in first 5 min
+                # Sniper dump: $10,000+ volume in first 5 min (snipers front-run)
+                expected_max_vol = age_minutes * 2000  # ~$2k per minute is normal
+                if volume_5m > expected_max_vol * 3:  # 3x expected = sniper dump
+                    return {
+                        "healthy": False,
+                        "reason": f"Sniper dump: ${volume_5m:,.0f} vol in {age_minutes:.0f}min (snipers front-ran)",
+                        "data": {**data, "sniper_dump": True}
+                    }
+                
+                # Also check: high volume but mostly sells = dump in progress
+                if txns_5m_buys + txns_5m_sells > 10:
+                    sell_ratio = txns_5m_sells / (txns_5m_buys + txns_5m_sells)
+                    if sell_ratio > 0.6 and volume_5m > 5000:
+                        return {
+                            "healthy": False,
+                            "reason": f"Sniper dump in progress: {sell_ratio:.0%} sells, ${volume_5m:,.0f} vol",
+                            "data": {**data, "sniper_dump": True}
+                        }
+            
             if age_minutes > 60:
                 # Older than 1 hour — should have some volume
                 if volume_24h < 1000:

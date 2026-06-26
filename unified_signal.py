@@ -137,6 +137,36 @@ def _health_gate(token: dict) -> dict:
     if top10 > 80:
         return {"alive": False, "reason": f"Insider controlled: top10 holds {top10}%"}
 
+    # SNIPER-BOT DUMP DETECTION
+    # Pattern: massive first candle (snipers buy) → small candles → dump
+    pair_created = token.get("pair_created", 0)
+    volume_5m = token.get("volume_5m", 0)
+    txns_buys = token.get("txns_5m_buys", 0)
+    txns_sells = token.get("txns_5m_sells", 0)
+    
+    if pair_created > 0 and volume_5m > 0:
+        import time
+        age_minutes = (time.time() * 1000 - pair_created) / 60000
+        if 0 < age_minutes < 10:
+            # Healthy new token: ~$500-3000 vol in first 5 min
+            # Sniper dump: $10,000+ (snipers front-ran the launch)
+            expected_max_vol = age_minutes * 2000
+            if volume_5m > expected_max_vol * 3:
+                return {
+                    "alive": False,
+                    "reason": f"Sniper dump: ${volume_5m:,.0f} vol in {age_minutes:.0f}min (snipers front-ran)",
+                    "penalty": 0.0
+                }
+            # High volume + mostly sells = dump in progress
+            if txns_buys + txns_sells > 10:
+                sell_ratio = txns_sells / (txns_buys + txns_sells)
+                if sell_ratio > 0.6 and volume_5m > 5000:
+                    return {
+                        "alive": False,
+                        "reason": f"Sniper dump: {sell_ratio:.0%} sells, ${volume_5m:,.0f} vol",
+                        "penalty": 0.0
+                    }
+
     return {"alive": True, "reason": "", "penalty": 0.0}
 
 

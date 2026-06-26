@@ -980,6 +980,14 @@ async def scan_channels(client, dex_client=None):
                         if health_data.get("fdv"):
                             full_token["mcp"] = health_data["fdv"]
                             full_token["launch_mcp"] = health_data["fdv"]
+                        if health_data.get("volume_5m"):
+                            full_token["volume_5m"] = health_data["volume_5m"]
+                        if health_data.get("pair_created"):
+                            full_token["pair_created"] = health_data["pair_created"]
+                        if health_data.get("txns_5m_buys"):
+                            full_token["txns_5m_buys"] = health_data["txns_5m_buys"]
+                        if health_data.get("txns_5m_sells"):
+                            full_token["txns_5m_sells"] = health_data["txns_5m_sells"]
 
                         # NOW record launch with enriched data (AFTER DexScreener/TokenScan)
                         try:

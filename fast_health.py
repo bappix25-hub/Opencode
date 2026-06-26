@@ -47,6 +47,7 @@ async def fast_check(dex_client, address: str, tg_client=None) -> dict:
         "fresh_7d": 0,
         "price_usd": 0,
         "volume_24h": 0,
+        "volume_5m": 0,
         "liquidity": 0,
         "fdv": 0,
         "price_change_5m": 0,
@@ -119,6 +120,7 @@ async def fast_check(dex_client, address: str, tg_client=None) -> dict:
                         dex_d = data["data"]
                         result["price_usd"] = dex_d.get("price_usd", 0)
                         result["volume_24h"] = dex_d.get("volume_24h", 0)
+                        result["volume_5m"] = dex_d.get("volume_5m", 0)
                         result["liquidity"] = dex_d.get("liquidity", 0)
                         result["fdv"] = dex_d.get("fdv", 0)
                         result["price_change_5m"] = dex_d.get("price_change_5m", 0)
