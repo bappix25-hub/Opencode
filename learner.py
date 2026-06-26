@@ -1900,6 +1900,7 @@ def calculate_signal_review() -> dict:
             "address": address[:8] + "...",
             "ath_multiplier": round(ath, 2),
             "current_multiplier": round(current, 2) if current > 0 else None,
+            "min_price_multiplier": round(min_price, 4) if min_price > 0 else 0,
             "actual_pump_pct": actual_pump_pct,
             "current_pump_pct": current_pump_pct,
             "optimal_sl_pct": optimal_sl_pct,
@@ -2029,6 +2030,42 @@ def calculate_optimal_tp_sl(results):
         "tp_hits": final_tp,
         "sl_hits": final_sl,
         "holds": final_hold,
+    }
+
+
+def calculate_fixed_tp_sl(results, tp_pct=10, sl_pct=-50):
+    """Calculate TP/SL simulation with FIXED realistic thresholds (not optimized).
+    Shows what would happen with standard risk management."""
+    if not results:
+        return {"tp_pct": tp_pct, "sl_pct": sl_pct, "expected_pnl": 0,
+                "tp_hits": 0, "sl_hits": 0, "holds": 0, "win_rate": 0}
+    tp_mult = 1 + tp_pct / 100
+    sl_mult = 1 + sl_pct / 100
+    total_pnl = 0
+    tp_hits = 0
+    sl_hits = 0
+    holds = 0
+    for r in results:
+        ath = r.get("ath_multiplier", 1)
+        current = r.get("current_multiplier", 1)
+        min_price = r.get("min_price_multiplier", 0)
+        pnl, exit_type = _exit_pnl(ath, current, tp_mult, sl_mult, min_price)
+        total_pnl += pnl
+        if exit_type == "tp":
+            tp_hits += 1
+        elif exit_type == "sl":
+            sl_hits += 1
+        else:
+            holds += 1
+    n = len(results)
+    return {
+        "tp_pct": tp_pct,
+        "sl_pct": sl_pct,
+        "expected_pnl": round(total_pnl / n, 1),
+        "tp_hits": tp_hits,
+        "sl_hits": sl_hits,
+        "holds": holds,
+        "win_rate": round(tp_hits / n * 100, 1),
     }
 
 

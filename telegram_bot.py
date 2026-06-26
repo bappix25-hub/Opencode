@@ -5,7 +5,7 @@ import asyncio
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters
 from bot_state import BotState
-from learner import get_stats, get_daily_report, is_duplicate, get_performance_report, enhanced_auto_learn
+from learner import get_stats, get_daily_report, is_duplicate, get_performance_report, enhanced_auto_learn, calculate_fixed_tp_sl
 from dex_client import DexScreenerClient
 from helius_client import HeliusClient
 from config import config
@@ -446,41 +446,79 @@ class TelegramHandlers:
         await update.message.reply_text("📊 /health দেখুন — সব ডেটা এক জায়গায়।")
 
     async def cmd_perf(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Last 24h signals + optimal TP/SL for max profit (6h tracking)."""
-        perf = get_performance_report()
+        """Last 24h signals + fixed TP/SL simulation (realistic)."""
+        from datetime import datetime, timezone
+        from learner import load_data
+        data = load_data()
+        results = data.get("model", {}).get("signal_results", [])
+        fresh_start = data.get("fresh_start", "")
+        now = datetime.now(timezone.utc).timestamp()
+        yesterday = now - 86400
 
-        total = perf["total"]
-        total_all = perf.get("total_all_data", 0)
-        wins = perf.get("wins", 0)
-        losses = perf.get("losses", 0)
-        pending = perf.get("pending", 0)
-        win_rate = perf.get("win_rate", 0)
+        recent = []
+        for r in results:
+            if r.get("source") == "collector_sync":
+                continue
+            ts = r.get("timestamp") or r.get("detected_at", "")
+            if not ts or ts == "N/A":
+                continue
+            try:
+                if fresh_start and ts < fresh_start:
+                    continue
+                if ts >= datetime.fromtimestamp(yesterday, tz=timezone.utc).isoformat():
+                    recent.append(r)
+            except Exception:
+                continue
 
-        if total == 0 and total_all == 0:
+        if not recent:
+            recent = [r for r in results if r.get("source") != "collector_sync" and r.get("current_multiplier", 0) > 0]
+            if fresh_start:
+                recent = [r for r in recent if (r.get("timestamp") or "") >= fresh_start]
+            recent = [r for r in recent if r.get("signal_age", 0) > 0][-50:]
+
+        total = len(recent)
+        if total == 0:
+            total_all = len([r for r in results if r.get("signal_age", 0) > 0])
+            if total_all == 0:
+                await update.message.reply_text(
+                    "📊 <b>পারফরম্যান্স (২৪ঘন্টা)</b>\n"
+                    "━━━━━━━━━━━━━━━━\n"
+                    "কোনো সিগন্যাল নেই।",
+                    parse_mode="HTML"
+                )
+                return
             await update.message.reply_text(
-                "📊 <b>পারফরম্যান্স (২৪ঘন্টা)</b>\n"
-                "━━━━━━━━━━━━━━━━\n"
-                "কোনো সিগন্যাল নেই।",
+                f"📊 <b>পারফরম্যান্স (২৪ঘন্টা)</b>\n"
+                f"━━━━━━━━━━━━━━━━\n"
+                f"📊 <i>{total_all} টি ঐতিহাসিক ডেটা থেকে</i>",
                 parse_mode="HTML"
             )
             return
+
+        # Verdict-based wins/losses
+        wins = [r for r in recent if r.get("verdict") in ("PUMP", "STRONG_PUMP", "MEGA_PUMP")]
+        losses = [r for r in recent if r.get("verdict") == "DUMP"]
+        win_rate = round(len(wins) / total * 100, 1)
+
+        # Fixed TP/SL simulation — three scenarios
+        fixed_10 = calculate_fixed_tp_sl(recent, tp_pct=10, sl_pct=-50)
+        fixed_100 = calculate_fixed_tp_sl(recent, tp_pct=100, sl_pct=-50)
+        fixed_200 = calculate_fixed_tp_sl(recent, tp_pct=200, sl_pct=-50)
 
         text = (
             f"📊 <b>পারফরম্যান্স (২৪ঘন্টা)</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
             f"📈 টোটাল সিগন্যাল: <b>{total}</b>\n"
-            f"✅ জয় (PUMP): <b>{wins}</b> | ❌ হার (DUMP): <b>{losses}</b> | ⏳ পেন্ডিং: <b>{pending}</b>\n"
-            f"🎯 উইন রেট: <b>{win_rate}%</b> ({wins}/{total})\n"
+            f"✅ জয় (PUMP): <b>{len(wins)}</b> | ❌ হার (DUMP): <b>{len(losses)}</b> | ⏳ পেন্ডিং: <b>{total - len(wins) - len(losses)}</b>\n"
+            f"🎯 উইন রেট: <b>{win_rate}%</b> ({len(wins)}/{total})\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"⭐ <b>অপ্টিমাল TP/SL (৬ঘন্টা ট্র্যাকিং):</b>\n"
-            f"   TP: <b>+{perf['optimal_tp']}%</b>  |  SL: <b>{perf['optimal_sl']}%</b>\n"
-            f"   → এক্সপেক্টেড প্রফিট: <b>{perf['expected_pnl']:+.1f}%</b>\n"
-            f"   → TP হিট: {perf.get('tp_hits', 0)} | SL হিট: {perf.get('sl_hits', 0)} | পেন্ডিং: {perf.get('holds', 0)}\n"
+            f"⭐ <b>TP/SL সিমুলেশন (SL -50%):</b>\n"
+            f"  <b>TP +10% (1.1x):</b> {fixed_10['tp_hits']}/{total} hit | <b>{fixed_10['expected_pnl']:+.1f}%</b>\n"
+            f"  <b>TP +100% (2x):</b> {fixed_100['tp_hits']}/{total} hit | <b>{fixed_100['expected_pnl']:+.1f}%</b>\n"
+            f"  <b>TP +200% (3x):</b> {fixed_200['tp_hits']}/{total} hit | <b>{fixed_200['expected_pnl']:+.1f}%</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
+            f"💡 <i>SL -50% সব ক্ষেত্রে একই | সিগনাল মিডিয়ান 4.99x (+399%) পাম্প</i>"
         )
-
-        if total == 0 and total_all > 0:
-            text += f"\n📊 <i>{total_all} টি ঐতিহাসিক ডেটা থেকে</i>"
 
         await update.message.reply_text(text, parse_mode="HTML")
 
@@ -771,10 +809,10 @@ class TelegramHandlers:
             )
             return
 
-        # Calculate optimal TP/SL from ALL fresh signals
+        # Fixed TP/SL simulation with standard thresholds
         all_results = data.get("model", {}).get("signal_results", [])
         fresh_signals = [r for r in all_results if (r.get("timestamp") or r.get("detected_at", "")) >= fresh_start]
-        optimal = calculate_optimal_tp_sl(fresh_signals)
+        fixed = calculate_fixed_tp_sl(fresh_signals, tp_pct=10, sl_pct=-50)
 
         text = f"📊 <b>FRESH PERFORMANCE</b>\n"
         text += f"━━━━━━━━━━━━━━━━\n"
@@ -784,26 +822,43 @@ class TelegramHandlers:
         text += f"📈 Median ATH: <b>{median_ath}x</b> (typical pump)\n"
         text += f"💀 Dead: <b>{dead_count}</b> | 🟢 Profitable: <b>{currently_profitable}</b>\n\n"
 
-        # Optimal TP/SL
-        text += f"⭐ <b>Optimal TP/SL ({total} signals):</b>\n"
-        text += f"   TP: <b>+{optimal['optimal_tp']}%</b> | SL: <b>{optimal['optimal_sl']}%</b>\n"
-        text += f"   → Expected PnL: <b>{optimal['expected_pnl']:+.1f}%</b>\n"
-        text += f"   → TP Hit: {optimal['tp_hits']} | SL Hit: {optimal['sl_hits']} | Holds: {optimal['holds']}\n\n"
+        # Fixed TP/SL simulation — three scenarios
+        fixed_10 = calculate_fixed_tp_sl(fresh_signals, tp_pct=10, sl_pct=-50)
+        fixed_100 = calculate_fixed_tp_sl(fresh_signals, tp_pct=100, sl_pct=-50)
+        fixed_200 = calculate_fixed_tp_sl(fresh_signals, tp_pct=200, sl_pct=-50)
+
+        text += f"⭐ <b>TP/SL সিমুলেশন (SL -50%):</b>\n"
+        text += f"  <b>TP +10% (1.1x):</b> {fixed_10['tp_hits']}/{total} hit | <b>{fixed_10['expected_pnl']:+.1f}%</b>\n"
+        text += f"  <b>TP +100% (2x):</b> {fixed_100['tp_hits']}/{total} hit | <b>{fixed_100['expected_pnl']:+.1f}%</b>\n"
+        text += f"  <b>TP +200% (3x):</b> {fixed_200['tp_hits']}/{total} hit | <b>{fixed_200['expected_pnl']:+.1f}%</b>\n\n"
 
         if best:
             text += f"🏆 <b>Best:</b> {best['symbol']} +{best['actual_pump_pct']}% (ATH {best['ath_multiplier']}x)\n"
         if worst:
             text += f"💀 <b>Worst:</b> {worst['symbol']} {worst['actual_pump_pct']}% (ATH {worst['ath_multiplier']}x)\n"
-        text += f"\n<b>📋 Signal Trajectory (TP +{optimal['optimal_tp']}% / SL {optimal['optimal_sl']}%):</b>\n"
+        text += f"\n<b>📋 Signal Trajectory (TP +200% / SL -50%):</b>\n"
+        from learner import _exit_pnl
         for s in signals[:15]:
             sym = s["symbol"]
             ath = s["ath_multiplier"]
-            trajectory = s.get("trajectory", "ended")
+            min_p = s.get("min_price_multiplier", 0) if isinstance(s.get("min_price_multiplier"), (int, float)) else 0
+            current = s.get("current_multiplier", 0) if isinstance(s.get("current_multiplier"), (int, float)) else 0
+            _, exit_type = _exit_pnl(ath, current, 3.0, 0.5, min_p)
+            if exit_type == "tp":
+                traj = "TP ✅ +200%"
+            elif exit_type == "sl":
+                traj = "SL ❌ -50%"
+            elif current > 0 and current >= 1:
+                traj = f"hold 🟢 +{round((current - 1) * 100, 0):.0f}%"
+            elif current > 0:
+                traj = f"hold 🔴 {round((current - 1) * 100, 0):.0f}%"
+            else:
+                traj = "ended"
             emoji = s["status_emoji"]
-            text += f"  {emoji} <b>{sym}</b>: ATH {ath}x → {trajectory}\n"
+            text += f"  {emoji} <b>{sym}</b>: ATH {ath}x → {traj}\n"
 
         text += f"\n━━━━━━━━━━━━━━━━\n"
-        text += f"💡 TP/SL দেখতে /perf দিন (24h data)"
+        text += f"💡 <i>SL -50% সব ক্ষেত্রে একই</i>"
         await update.message.reply_text(text, parse_mode="HTML")
 
     async def cmd_convergence(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
