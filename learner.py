@@ -441,6 +441,78 @@ def enhanced_auto_learn():
     }
 
 
+def update_learned_scorer() -> None:
+    """Update learned_scorer.json from actual signal results (winners only)."""
+    data = load_data()
+    results = data.get("model", {}).get("signal_results", [])
+    
+    winners = [r for r in results if r.get("verdict") in ("PUMP", "STRONG_PUMP") and r.get("ath_multiplier", 0) >= 2.0]
+    if len(winners) < 5:
+        return
+    
+    def _median(vals):
+        vals = sorted(vals)
+        n = len(vals)
+        return (vals[n//2] + vals[(n-1)//2]) / 2 if n % 2 == 0 else vals[n//2]
+    
+    rd = {k: [] for k in ["liq_usd", "holders", "top10_pct", "launch_mcp", "ath_multiplier"]}
+    for w in winners:
+        r = w.get("research_data", {})
+        if r.get("liq_usd", 0) > 0:
+            rd["liq_usd"].append(r["liq_usd"])
+        if r.get("holders", 0) > 0:
+            rd["holders"].append(r["holders"])
+        if r.get("top10_pct", 0) > 0:
+            rd["top10_pct"].append(r["top10_pct"])
+        sb = w.get("score_breakdown", {})
+        mcp = sb.get("mcp", 0) or r.get("mcp", 0)
+        if mcp > 0:
+            rd["launch_mcp"].append(mcp)
+        ath = w.get("ath_multiplier", 0)
+        if ath > 0:
+            rd["ath_multiplier"].append(ath)
+    
+    medians = {}
+    for k, vals in rd.items():
+        if vals:
+            medians[k] = _median(vals)
+    
+    if not medians:
+        return
+    
+    # Load existing or create new
+    scorer_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "learned_scorer.json")
+    try:
+        with open(scorer_path) as f:
+            scorer = json.load(f)
+    except Exception:
+        scorer = {"version": 2}
+    
+    scorer["sample_size"] = len(winners)
+    scorer["winner_medians"] = medians
+    
+    # Update signal_criteria from latest thresholds
+    criteria = data.get("model", {}).get("signal_criteria", {})
+    if criteria:
+        scorer["signal_criteria"] = {
+            "min_liq": criteria.get("research_min_holders", 500),
+            "min_holders": criteria.get("research_min_holders", 5),
+            "min_mcp": 100,
+            "max_top10_pct": criteria.get("research_max_top10", 50),
+            "max_bundled_pct": 30,
+            "min_audit_score": 3,
+        }
+    
+    scorer["updated_at"] = datetime.now(timezone.utc).isoformat()
+    
+    try:
+        with open(scorer_path, "w") as f:
+            json.dump(scorer, f, indent=2, default=str)
+        logger.info(f"📚 learned_scorer.json updated: {len(winners)} winners, medians={medians}")
+    except Exception as e:
+        logger.error(f"Failed to update learned_scorer.json: {e}")
+
+
 def _hash_address(address: str) -> str:
     import hashlib
     return hashlib.md5(address.encode()).hexdigest()[:12]
@@ -1054,7 +1126,7 @@ def match_dump_patterns(features: dict, min_similarity: float = 0.70) -> tuple[b
 
 
 def record_signal_result(address: str, symbol: str, ath_multiplier: float, current_multiplier: float = 0.0, signal_age: float = 0.0, signal_time=None, min_price: float = 0.0, research_data: dict = None, score_breakdown: dict = None, dex_health: dict = None) -> None:
-    """Record signal outcome and learn from it."""
+    """Record signal outcome and learn from it. Deduplicates by address — updates if exists."""
     data = load_data()
     results = data["model"].setdefault("signal_results", [])
 
@@ -1064,6 +1136,32 @@ def record_signal_result(address: str, symbol: str, ath_multiplier: float, curre
     elif ath_multiplier >= 2.0:
         verdict = "PUMP"
 
+    ts_str = signal_time.isoformat() if isinstance(signal_time, datetime) else datetime.now(timezone.utc).isoformat()
+
+    # Dedup: if address already exists, UPDATE instead of append
+    existing = next((r for r in results if r.get("address") == address), None)
+    if existing:
+        # Only update if new data is better (higher ATH, or first real outcome)
+        old_ath = existing.get("ath_multiplier", 0)
+        if ath_multiplier > old_ath:
+            existing["verdict"] = verdict
+            existing["ath_multiplier"] = ath_multiplier
+            existing["current_multiplier"] = current_multiplier
+            existing["min_price_multiplier"] = min_price
+            existing["signal_age"] = signal_age
+            existing["timestamp"] = datetime.now(timezone.utc).isoformat()
+            if signal_time:
+                existing["signal_time"] = ts_str
+        if research_data:
+            existing["research_data"] = research_data
+        if score_breakdown:
+            existing["score_breakdown"] = score_breakdown
+        if dex_health:
+            existing["dex_health"] = dex_health
+        data["model"]["signal_results"] = results[-500:]
+        save_data(data)
+        return
+
     result_entry = {
         "address": address,
         "symbol": symbol,
@@ -1072,11 +1170,10 @@ def record_signal_result(address: str, symbol: str, ath_multiplier: float, curre
         "current_multiplier": current_multiplier,
         "min_price_multiplier": min_price,
         "signal_age": signal_age,
-        "signal_time": signal_time.isoformat() if isinstance(signal_time, datetime) else datetime.now(timezone.utc).isoformat(),
+        "signal_time": ts_str,
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
     
-    # Store research data if provided
     if research_data:
         result_entry["research_data"] = research_data
     if score_breakdown:

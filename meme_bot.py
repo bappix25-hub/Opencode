@@ -30,6 +30,10 @@ from learner import (
     get_bad_hours, get_good_hours, get_hourly_stats_report
 )
 from github_sync import sync_to_github, restore_from_github
+try:
+    from cross_channel import get_tracker as _get_cross_channel
+except ImportError:
+    _get_cross_channel = None
 from utils import format_number, gmgn_link, dexscreener_link, setup_logging
 from backtest import BacktestEngine, REPORTS_DIR, MAX_REPORTS
 from social_signals import SocialSignalEngine
@@ -1693,6 +1697,14 @@ class MemeBot:
                         )
                         await self.state.mark_signal_checked(addr)
                         logger.info(f"[OUTCOME] {sig_info.symbol}: ATH={ath_multiplier:.2f}x current={current_multiplier:.2f}x @ T+6h")
+                        # Cross-channel outcome tracking
+                        if _get_cross_channel:
+                            try:
+                                cc_outcome = "mega_winner" if ath_multiplier >= 50 else ("winner" if ath_multiplier >= 2.0 else "loser")
+                                _get_cross_channel().record_outcome(addr, cc_outcome, ath_multiplier)
+                                _get_cross_channel().save()
+                            except Exception:
+                                pass
                         # Learn social patterns from outcome
                         try:
                             from social_tracker import record_token_outcome
@@ -1706,8 +1718,9 @@ class MemeBot:
                             pass
                         # Auto-learn after new data
                         try:
-                            from learner import enhanced_auto_learn
+                            from learner import enhanced_auto_learn, update_learned_scorer
                             enhanced_auto_learn()
+                            update_learned_scorer()
                         except Exception:
                             pass
                         # Send updated TP/SL recommendation after each result
