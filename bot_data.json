@@ -1,28 +1,6 @@
 {
   "pump_patterns": [
     {
-      "address": "AfvfUbGb4psAqd78RwQ27moAcTCi3wsyWkwAvLocpump",
-      "symbol": "CHICKWIF",
-      "features": {
-        "buy_sell_ratio": 1.26,
-        "unique_wallets": 1841,
-        "holders": 0,
-        "liquidity": 19552.48,
-        "lp_locked": 0,
-        "lp_providers_count": 0,
-        "liq_pct": 37.21,
-        "mcap": 52545,
-        "volume": 50921.39,
-        "buy_sell_momentum": 0.11,
-        "age_hours": 0.5,
-        "price": 7.677e-05
-      },
-      "outcome": "PUMP",
-      "ath_multiplier": 0,
-      "learned_at": "2026-06-24T01:40:28.814303+00:00",
-      "source": "pump_collector"
-    },
-    {
       "address": "7jVXjqwUdQJxswTP66yBA3VCDTWkevMQiWkiftazpump",
       "symbol": "GRACIE",
       "features": {
@@ -11034,6 +11012,21 @@
       "learned_at": "2026-06-26T15:29:58.796182+00:00",
       "dexscreener_url": "https://dexscreener.com/solana/3hk1e2MZotYsU3Uhtt3ueLvRUEZztRWVdVz6xtPTDcDZ",
       "pair_created_at": 1782298907000
+    },
+    {
+      "address": "2j6CApLFvzSaRZ21bAStanY5qKAJwkuit6yn7eQbpump",
+      "symbol": "Terra",
+      "features": {
+        "launch_time": 1782500194.091168,
+        "source": "historical_scan",
+        "ath_multiplier": 4.81,
+        "outcome": "PUMP",
+        "signal_age": 0.0
+      },
+      "outcome": "PUMP",
+      "ath_multiplier": 4.81,
+      "signal_age": 0.0,
+      "learned_at": "2026-06-26T19:08:25.385624+00:00"
     }
   ],
   "dump_patterns": [
@@ -57588,7 +57581,10 @@
       "symbol": "Terra",
       "features": {
         "launch_time": 1782500194.091168,
-        "source": "historical_scan"
+        "source": "historical_scan",
+        "ath_multiplier": 4.81,
+        "outcome": "PUMP",
+        "signal_age": 0.0
       },
       "launch_time": 1782500194.091168,
       "outcome": null,
@@ -57598,7 +57594,7 @@
     }
   ],
   "model": {
-    "total_pumps": 14,
+    "total_pumps": 15,
     "total_dumps": 1001,
     "total_skipped": 2,
     "last_update": null,
@@ -59449,13 +59445,13 @@
       {
         "address": "2ZAm1ekz9WWAx7BJxfNnfCrQe7KWNYECqfNDFdxPpump",
         "symbol": "CATerpillar",
-        "verdict": "PUMP",
-        "ath_multiplier": 4.24,
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 5.46,
         "current_multiplier": 0.0,
         "min_price_multiplier": 0.0,
         "signal_age": 0.0,
         "signal_time": "2026-06-26T09:01:21.531985+00:00",
-        "timestamp": "2026-06-26T13:17:22.637175+00:00"
+        "timestamp": "2026-06-26T19:08:25.997743+00:00"
       },
       {
         "address": "382YojVQdcb5DV1QCj1KdN4XPVZebS22XAfDr1EMpump",
@@ -60626,6 +60622,39 @@
           "liquidity": 12845.1,
           "healthy": true
         }
+      },
+      {
+        "address": "zhEB966fvU1aB85Qov1HeR8zGTabm9LbVMfWzvwpump",
+        "symbol": "$CATWIF",
+        "verdict": "STRONG_PUMP",
+        "ath_multiplier": 15.85,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-26T19:08:25.004151+00:00",
+        "timestamp": "2026-06-26T19:08:25.004270+00:00"
+      },
+      {
+        "address": "2j6CApLFvzSaRZ21bAStanY5qKAJwkuit6yn7eQbpump",
+        "symbol": "Terra",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.81,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-26T19:08:25.385334+00:00",
+        "timestamp": "2026-06-26T19:08:25.385452+00:00"
+      },
+      {
+        "address": "C8aHA1FBxTCb9S4QTgmYJWD9tnBzZ7xMcvB9KwoGpump",
+        "symbol": "GPT-5.6",
+        "verdict": "PUMP",
+        "ath_multiplier": 4.12,
+        "current_multiplier": 0.0,
+        "min_price_multiplier": 0.0,
+        "signal_age": 0.0,
+        "signal_time": "2026-06-26T19:08:25.709687+00:00",
+        "timestamp": "2026-06-26T19:08:25.709778+00:00"
       }
     ],
     "success_history": [
@@ -61692,6 +61721,22 @@
           "signal_age": 0.0
         },
         "timestamp": "2026-06-26T15:31:58.008909+00:00"
+      },
+      {
+        "address": "2j6CApLFvzSaRZ21bAStanY5qKAJwkuit6yn7eQbpump",
+        "symbol": "Terra",
+        "reasons": [
+          "balanced"
+        ],
+        "ath_multiplier": 4.81,
+        "features": {
+          "launch_time": 1782500194.091168,
+          "source": "historical_scan",
+          "ath_multiplier": 4.81,
+          "outcome": "PUMP",
+          "signal_age": 0.0
+        },
+        "timestamp": "2026-06-26T19:08:25.551292+00:00"
       }
     ],
     "auto_learn_insights": {
@@ -62688,8 +62733,8 @@
         "total_pnl": 0.0
       },
       "19": {
-        "wins": 11,
-        "total": 11,
+        "wins": 14,
+        "total": 14,
         "total_pnl": 0.0
       },
       "20": {
