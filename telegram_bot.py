@@ -253,7 +253,7 @@ class TelegramHandlers:
             f"অবস্থা: {active}\n"
             f"🆕 লঞ্চ ট্র্যাকিং: <b>{stats['launch_tracking']}</b>\n"
             f"🔍 মাইগ্রেশন ট্র্যাক: <b>{stats['tracked_coins']}</b>\n"
-            f"🚫 ব্ল্যাকলিস্ট: <b>{stats['blacklisted']}</b"
+            f"🚫 ব্ল্যাকলিস্ট: <b>{stats['blacklisted']}</b>\n"
         )
         await update.message.reply_text(text, parse_mode="HTML")
 

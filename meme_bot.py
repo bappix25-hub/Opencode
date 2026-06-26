@@ -2725,7 +2725,8 @@ class MemeBot:
                                     record_signal(ca, {
                                         "symbol": token_info['symbol'],
                                         "signal_type": "TRENDING",
-                                        "source_channel": "gmgn_trending",
+                                "source_channel": -1002202241417,
+                                "source_channel_name": "GMGN Signals",
                                         "mcp": launch_mcp,
                                         "liq_usd": token_info.get('liq_usd', 0),
                                         "holders": 0,
