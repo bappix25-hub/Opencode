@@ -96,55 +96,9 @@ class PaperTrader:
 
     def _calculate_tp(self, ai_score: float, social_score: float, signal_score: float, age_seconds: float,
                      buy_velocity: float = 0, curve_fill_pct: float = 0) -> tuple:
-        base_tp_pct = 100.0
-        base_sl_pct = -25.0
-
-        if ai_score >= 0.8:
-            base_tp_pct = 200.0
-            base_sl_pct = -20.0
-        elif ai_score >= 0.65:
-            base_tp_pct = 150.0
-            base_sl_pct = -22.0
-        elif ai_score >= 0.50:
-            base_tp_pct = 100.0
-            base_sl_pct = -25.0
-        else:
-            base_tp_pct = 75.0
-            base_sl_pct = -20.0
-
-        if signal_score >= 0.8:
-            base_tp_pct *= 1.3
-        elif signal_score >= 0.6:
-            base_tp_pct *= 1.1
-
-        if social_score >= 0.5:
-            base_tp_pct *= 1.1
-
-        if age_seconds < 120:
-            base_tp_pct *= 1.2
-            base_sl_pct *= 0.9
-
-        if buy_velocity > 0:
-            try:
-                from learner import load_data
-                model = load_data().get("model", {})
-                avg_vel = model.get("avg_early_pump_velocity", 0)
-                if avg_vel > 0 and buy_velocity >= avg_vel * 1.5:
-                    base_tp_pct *= 1.25
-                    base_sl_pct *= 0.85
-                elif avg_vel > 0 and buy_velocity >= avg_vel:
-                    base_tp_pct *= 1.1
-                    base_sl_pct *= 0.9
-            except Exception:
-                pass
-
-        if curve_fill_pct > 0:
-            if curve_fill_pct >= 80:
-                base_tp_pct *= 1.15
-            elif curve_fill_pct >= 60:
-                base_tp_pct *= 1.05
-
-        return round(base_tp_pct, 1), round(base_sl_pct, 1)
+        """Fixed TP/SL based on data: 93% of pumps die after ATH.
+        TP +100% (2x), SL -50% (half) — take profit fast, cut losses fast."""
+        return 100.0, -50.0
 
     async def buy(self, address: str, symbol: str, name: str,
                   price_usd: float, ai_score: float, social_score: float,

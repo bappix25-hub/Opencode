@@ -71,13 +71,33 @@ def _health_gate(token: dict) -> dict:
         min_liq = criteria.get("min_liq", 0)
         min_holders = criteria.get("min_holders", 0)
         min_mcp = criteria.get("min_mcp", 0)
+        min_wallets = criteria.get("min_wallets", 0)
+        min_lp_locked = criteria.get("min_lp_locked", 0)
+        max_top10_pct = criteria.get("max_top10_pct", 100)
+        min_bsr = criteria.get("min_bsr", 0)
         
         if min_liq > 0 and liq > 0 and liq < min_liq:
-            return {"alive": False, "reason": f"LP ${liq:,.0f} below learned minimum ${min_liq:,.0f}"}
+            return {"alive": False, "reason": f"LP ${liq:,.0f} below minimum ${min_liq:,.0f}"}
         if min_holders > 0 and holders > 0 and holders < min_holders:
-            return {"alive": False, "reason": f"Holders {holders} below learned minimum {min_holders}"}
+            return {"alive": False, "reason": f"Holders {holders} below minimum {min_holders}"}
         if min_mcp > 0 and mcp > 0 and mcp < min_mcp:
-            return {"alive": False, "reason": f"MCP ${mcp:,.0f} below learned minimum ${min_mcp:,.0f}"}
+            return {"alive": False, "reason": f"MCP ${mcp:,.0f} below minimum ${min_mcp:,.0f}"}
+        
+        # New strict filters
+        top10 = token.get("top10_pct", 0)
+        lp_locked = token.get("lp_locked", 0)
+        bsr = token.get("buy_sell_ratio", 0)
+        
+        if min_wallets > 0:
+            wallets = token.get("unique_wallets", 0)
+            if wallets > 0 and wallets < min_wallets:
+                return {"alive": False, "reason": f"Wallets {wallets} below minimum {min_wallets}"}
+        if min_lp_locked > 0 and lp_locked > 0 and lp_locked < min_lp_locked:
+            return {"alive": False, "reason": f"LP locked {lp_locked:.0f}% below minimum {min_lp_locked}%"}
+        if max_top10_pct > 0 and top10 > 0 and top10 > max_top10_pct:
+            return {"alive": False, "reason": f"Top10 {top10:.0f}% above maximum {max_top10_pct}%"}
+        if min_bsr > 0 and bsr > 0 and bsr < min_bsr:
+            return {"alive": False, "reason": f"BSR {bsr:.2f} below minimum {min_bsr}"}
 
     # Dead token: MC too low
     if mcp <= 0 or mcp < 100:

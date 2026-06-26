@@ -7,6 +7,11 @@ from datetime import datetime, timezone
 from collections import defaultdict
 
 try:
+    import maestro_client as mc
+except ImportError:
+    mc = None
+
+try:
     from learner import extract_launch_features, record_launch
 except ImportError:
     extract_launch_features = None
@@ -24,20 +29,20 @@ except ImportError:
 
 logger = logging.getLogger("meme_bot.telegram_collector")
 
-# 5 Signal Channels (where tokens are posted)
+# Signal Channels (where tokens are posted)
+# TEST: Only GMGN Signals for 1 week — other channels have 50% win rate (coin flip)
 CHANNELS = [
-    -1002122751413,  # Solana New Pool Alert
-    -1002126036544,  # Solana LP Chat
-    -1002037135333,  # Solana New Token Bot
-    -1002064472392,  # Solana Listing Bot
     -1002202241417,  # GMGN Featured Signals(Lv2) - SOL
 ]
+# CHANNELS = [
+#     -1002122751413,  # Solana New Pool Alert
+#     -1002126036544,  # Solana LP Chat
+#     -1002037135333,  # Solana New Token Bot
+#     -1002064472392,  # Solana Listing Bot
+#     -1002202241417,  # GMGN Featured Signals(Lv2) - SOL
+# ]
 
 CHANNEL_NAMES = {
-    -1002122751413: "New Pool Alert",
-    -1002126036544: "LP Chat",
-    -1002037135333: "New Token Bot",
-    -1002064472392: "Listing Bot",
     -1002202241417: "GMGN Signals",
 }
 
@@ -1043,6 +1048,13 @@ async def scan_channels(client, dex_client=None):
                                     af.write(alert_msg)
                             except Exception:
                                 pass
+                            # BUY via Maestro
+                            if mc:
+                                try:
+                                    asyncio.create_task(mc.buy(ca))
+                                    logger.info(f"🤖 Maestro BUY: {token['symbol']} ({ca[:12]}...)")
+                                except Exception as e:
+                                    logger.error(f"Maestro buy error: {e}")
                             # Record signal result for learning (pump=signal sent)
                             try:
                                 from learner import record_signal_result
@@ -1081,6 +1093,10 @@ async def scan_channels(client, dex_client=None):
                                 )
                             except Exception:
                                 pass
+                            # Store signal time for 6h outcome check
+                            token["signal_time"] = datetime.now(timezone.utc).isoformat()
+                            token["signal_price"] = health_data.get("price_usd", 0)
+                            token["unified_action"] = action
                             logger.info(f"🚨 UNIFIED SIGNAL: {token['symbol']} score={score:.0f} {verdict} {action}")
                         elif score >= 40:
                             logger.info(f"👀 WATCH: {token['symbol']} score={score:.0f} {verdict}")
@@ -1211,6 +1227,13 @@ async def scan_channels(client, dex_client=None):
                                         af.write(alert_msg)
                                 except Exception:
                                     pass
+                                # BUY via Maestro (re-score signal)
+                                if mc:
+                                    try:
+                                        asyncio.create_task(mc.buy(ca))
+                                        logger.info(f"🤖 Maestro BUY (re-score): {existing.get('symbol','?')} ({ca[:12]}...)")
+                                    except Exception as e:
+                                        logger.error(f"Maestro buy error: {e}")
                                 # Record signal result for learning (re-score)
                                 try:
                                     from learner import record_signal_result
@@ -1247,6 +1270,10 @@ async def scan_channels(client, dex_client=None):
                                     )
                                 except Exception:
                                     pass
+                                # Store signal time for 6h outcome check
+                                existing["signal_time"] = datetime.now(timezone.utc).isoformat()
+                                existing["signal_price"] = health_data.get("price_usd", 0)
+                                existing["unified_action"] = action
                                 logger.info(f"🚨 UNIFIED RE-SCORE: {existing.get('symbol', '?')} score={score:.0f} {score_result['verdict']} {action} dex={'✅' if dex_verified else '❌'}")
                         except Exception as e:
                             logger.debug(f"Unified signal error for {token.get('symbol','?')}: {e}")
