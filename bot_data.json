@@ -62949,18 +62949,18 @@
       }
     ],
     "auto_learn_insights": {
+      "total_recent": 50,
+      "wins": 27,
+      "losses": 23,
       "win_rate": 54.0,
-      "dump_rate": 46.0,
-      "avg_ath": 16.64,
-      "quality_score": 0.35,
-      "research_avg_win_holders": 10,
-      "research_avg_lose_holders": 5,
-      "research_avg_win_top10": 30,
-      "research_avg_lose_top10": 50,
-      "source_win_rates": {
-        "unknown": 54.0
-      },
-      "updated_at": "2026-06-26T20:51:44.846827+00:00"
+      "avg_win_bsr": 0,
+      "avg_loss_bsr": 0,
+      "avg_win_holders": 0,
+      "avg_loss_holders": 0,
+      "avg_win_liq": 0,
+      "avg_loss_liq": 0,
+      "avg_win_lp_locked": 0,
+      "avg_loss_lp_locked": 0
     },
     "signal_criteria_stats": {
       "pump_medians": {
@@ -62985,23 +62985,21 @@
       "dump_count": 1000
     },
     "signal_criteria": {
-      "min_bsr": 1.26,
-      "min_holders": 19.5,
-      "min_wallets": 14,
-      "min_liq": 8501.0,
-      "min_liq_pct": 25.7,
+      "min_bsr": 1.27,
+      "min_holders": 20,
+      "min_wallets": 15,
+      "min_liq": 8414.0,
+      "min_liq_pct": 25.6,
       "min_lp_locked": 80,
       "min_mcap": 3000,
-      "heuristic_threshold": 0.6,
-      "pattern_threshold": 0.66,
+      "heuristic_threshold": 0.45,
+      "pattern_threshold": 0.6,
       "dump_pattern_threshold": 0.7,
       "max_age_seconds": 21600,
-      "updated_at": "2026-06-26T20:01:50.201744+00:00",
-      "sample_size": 842,
+      "updated_at": "2026-06-26T21:08:08.255086+00:00",
+      "sample_size": 858,
       "min_lp_providers": 2,
-      "max_age_hours": 85.1,
-      "volatility_setting": "high",
-      "last_quality_score": 0.35
+      "max_age_hours": 78.3
     },
     "channel_insights": {
       "patterns": {
