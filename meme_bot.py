@@ -1399,6 +1399,8 @@ class MemeBot:
                                     signal_age=age,
                                     min_price=current_price,
                                     source="climbing",
+                                    dex_health=dex_health if 'dex_health' in locals() else {},
+                                    score_breakdown={"climbing_score": climbing_score, "reasons": climb_reasons},
                                 ))
                                 await self.state.add_alerted(addr)
                                 logger.info(f"\U0001F4C2 CLIMBING SIGNAL: {symbol} mcap={format_number(mcap)} score={climbing_score:.2f}")
@@ -1523,6 +1525,7 @@ class MemeBot:
                             signal_age=age,
                             min_price=current_price,
                             source="tracked_coin_scan",
+                            score_breakdown={"heuristic_score": score, "social_score": social_score, "reasons": reasons},
                         ))
                         await self.state.add_alerted(addr)
 
@@ -1653,6 +1656,10 @@ class MemeBot:
                     if current_price > sig_info.ath_price:
                         sig_info.ath_price = current_price
 
+                    # Track minimum price after signal
+                    if sig_info.min_price <= 0 or current_price < sig_info.min_price:
+                        sig_info.min_price = current_price
+
                     next_check = None
                     for interval in CHECK_INTERVALS:
                         if age >= interval and not sig_info.eval_done.get(str(interval), False):
@@ -1677,7 +1684,13 @@ class MemeBot:
                             f"📊 বর্তমান: <b>{current_multiplier:.2f}x</b>\n"
                             f"💰 {'🟢 ATH 2x+' if ath_multiplier >= 2 else '🔴 Missed' if ath_multiplier < 0.8 else '➡️ Neutral'}"
                         )
-                        record_signal_result(addr, sig_info.symbol, ath_multiplier, current_multiplier, sig_info.signal_age, sig_info.signal_time, min_price_multiplier)
+                        record_signal_result(
+                            addr, sig_info.symbol, ath_multiplier, current_multiplier,
+                            sig_info.signal_age, sig_info.signal_time, min_price_multiplier,
+                            research_data=sig_info.research_data if hasattr(sig_info, 'research_data') else {},
+                            score_breakdown=sig_info.score_breakdown if hasattr(sig_info, 'score_breakdown') else {},
+                            dex_health=sig_info.dex_health if hasattr(sig_info, 'dex_health') else {},
+                        )
                         await self.state.mark_signal_checked(addr)
                         logger.info(f"[OUTCOME] {sig_info.symbol}: ATH={ath_multiplier:.2f}x current={current_multiplier:.2f}x @ T+6h")
                         # Learn social patterns from outcome
@@ -1928,6 +1941,17 @@ class MemeBot:
             signal_age=pending.age_seconds,
             min_price=pending.min_price if pending.min_price > 0 else pending.price_at_match,
             source=pending.source,
+            score_breakdown={
+                "match_score": pending.match_score,
+                "match_reason": pending.match_reason,
+                "mcap": pending.mcap,
+                "liquidity": pending.liquidity,
+                "holders": pending.holders,
+                "unique_wallets": pending.unique_wallets,
+                "buy_count": pending.buy_count,
+                "sell_count": pending.sell_count,
+                "buy_sell_ratio": pending.buy_sell_ratio,
+            },
         ))
 
         logger.info(f"⚡ প্রি-মাইগ্রেশন সিগন্যাল: {pending.symbol} match={pending.match_score:.0%} "
@@ -2662,6 +2686,21 @@ class MemeBot:
                                     f"🔍 TRENDING SIGNAL: {token_info['symbol']} score={score:.0f} "
                                     f"{score_result['verdict']} MC=${launch_mcp:,.0f}"
                                 )
+                                # Create SignalInfo for tracking (with research data)
+                                from bot_state import SignalInfo
+                                await self.state.add_signal(ca, SignalInfo(
+                                    symbol=token_info['symbol'],
+                                    price_at_signal=token_info.get('price', 0),
+                                    signal_time=datetime.now(timezone.utc).timestamp(),
+                                    launch_time=token_info.get('launch_time', 0) or datetime.now(timezone.utc).timestamp(),
+                                    signal_age=token_info.get('age_hours', 0) * 3600,
+                                    source="gmgn_trending",
+                                    dex_health=dex_health if dex_health else {},
+                                    score_breakdown=score_result.get('breakdown', {}),
+                                    research_data=unified_token.get('research_data', {}),
+                                ))
+                                await self.state.add_alerted(ca)
+
                                 # Record lifecycle event for trending tokens
                                 try:
                                     from token_lifecycle import record_signal
@@ -2765,6 +2804,18 @@ class MemeBot:
                                         f"active={t_info.get('hours_active',0):.1f}h "
                                         f"MC=${t_info.get('mc',0):,.0f}"
                                     )
+                                    # Create SignalInfo for tracking
+                                    from bot_state import SignalInfo
+                                    await self.state.add_signal(addr, SignalInfo(
+                                        symbol=t_info['symbol'],
+                                        price_at_signal=t_info.get('price', 0),
+                                        signal_time=datetime.now(timezone.utc).timestamp(),
+                                        launch_time=t_info.get('launch_time', 0) or datetime.now(timezone.utc).timestamp(),
+                                        signal_age=t_info.get('hours_active', 0) * 3600,
+                                        source="gmgn_long_time",
+                                        score_breakdown=lt_result.get('breakdown', {}),
+                                    ))
+                                    await self.state.add_alerted(addr)
                 except Exception:
                     pass
 

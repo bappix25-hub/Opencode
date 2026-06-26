@@ -741,7 +741,7 @@ class TelegramHandlers:
 
     async def cmd_freshstats(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Show fresh performance stats from the current starting point."""
-        from learner import calculate_signal_review, load_data
+        from learner import calculate_signal_review, calculate_optimal_tp_sl, load_data
         data = load_data()
         fresh_start = data.get("fresh_start", "")
 
@@ -755,7 +755,9 @@ class TelegramHandlers:
         wins = review.get("wins", 0)
         losses = review.get("losses", 0)
         win_rate = review.get("win_rate", 0)
-        avg_ath = review.get("avg_ath", 0)
+        median_ath = review.get("median_ath", 0)
+        dead_count = review.get("dead_count", 0)
+        currently_profitable = review.get("currently_profitable", 0)
         best = review.get("best")
         worst = review.get("worst")
 
@@ -769,29 +771,39 @@ class TelegramHandlers:
             )
             return
 
+        # Calculate optimal TP/SL from ALL fresh signals
+        all_results = data.get("model", {}).get("signal_results", [])
+        fresh_signals = [r for r in all_results if (r.get("timestamp") or r.get("detected_at", "")) >= fresh_start]
+        optimal = calculate_optimal_tp_sl(fresh_signals)
+
         text = f"📊 <b>FRESH PERFORMANCE</b>\n"
         text += f"━━━━━━━━━━━━━━━━\n"
         text += f"🕐 Since: {fresh_start[:16]}\n"
         text += f"📈 Total: {total} | Win: {wins} | Loss: {losses}\n"
         text += f"🎯 Win Rate: <b>{win_rate}%</b>\n"
-        text += f"📈 Avg ATH: <b>{avg_ath}x</b>\n\n"
+        text += f"📈 Median ATH: <b>{median_ath}x</b> (typical pump)\n"
+        text += f"💀 Dead: <b>{dead_count}</b> | 🟢 Profitable: <b>{currently_profitable}</b>\n\n"
+
+        # Optimal TP/SL
+        text += f"⭐ <b>Optimal TP/SL ({total} signals):</b>\n"
+        text += f"   TP: <b>+{optimal['optimal_tp']}%</b> | SL: <b>{optimal['optimal_sl']}%</b>\n"
+        text += f"   → Expected PnL: <b>{optimal['expected_pnl']:+.1f}%</b>\n"
+        text += f"   → TP Hit: {optimal['tp_hits']} | SL Hit: {optimal['sl_hits']} | Holds: {optimal['holds']}\n\n"
 
         if best:
             text += f"🏆 <b>Best:</b> {best['symbol']} +{best['actual_pump_pct']}% (ATH {best['ath_multiplier']}x)\n"
         if worst:
             text += f"💀 <b>Worst:</b> {worst['symbol']} {worst['actual_pump_pct']}% (ATH {worst['ath_multiplier']}x)\n"
-        text += f"\n<b>📋 Signal Details (per-trade SL):</b>\n"
+        text += f"\n<b>📋 Signal Trajectory (TP +{optimal['optimal_tp']}% / SL {optimal['optimal_sl']}%):</b>\n"
         for s in signals[:15]:
             sym = s["symbol"]
             ath = s["ath_multiplier"]
-            pump = s["actual_pump_pct"]
-            sl = s["optimal_sl_pct"]
+            trajectory = s.get("trajectory", "ended")
             emoji = s["status_emoji"]
-            curr_str = f"now {s['current_pump_pct']}%" if s.get("current_multiplier") else "ended"
-            text += f"  {emoji} <b>{sym}</b>: +{pump}% | SL: {sl}% | {curr_str}\n"
+            text += f"  {emoji} <b>{sym}</b>: ATH {ath}x → {trajectory}\n"
 
         text += f"\n━━━━━━━━━━━━━━━━\n"
-        text += f"💡 TP/SL দেখতে /perf দিন (unified optimal 6h tracking)"
+        text += f"💡 TP/SL দেখতে /perf দিন (24h data)"
         await update.message.reply_text(text, parse_mode="HTML")
 
     async def cmd_convergence(self, update: Update, context: ContextTypes.DEFAULT_TYPE):

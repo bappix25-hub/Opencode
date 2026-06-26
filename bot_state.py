@@ -57,6 +57,10 @@ class SignalInfo:
     min_price: float = 0.0
     signal_age: float = 0.0  # age in seconds at signal time
     source: str = ""
+    # Research bot data at signal time
+    research_data: dict = field(default_factory=dict)
+    score_breakdown: dict = field(default_factory=dict)
+    dex_health: dict = field(default_factory=dict)
 
 @dataclass
 class PendingSignal:

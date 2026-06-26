@@ -314,8 +314,7 @@ def calculate_advanced_tp_sl(results):
 
 
 def enhanced_auto_learn():
-    """Enhanced auto-learn that considers multiple performance metrics.
-    """
+    """Enhanced auto-learn that considers multiple performance metrics including research bot data."""
     from datetime import datetime, timezone
     
     data = load_data()
@@ -324,27 +323,56 @@ def enhanced_auto_learn():
     if len(results) < 10:
         return {"status": "insufficient_data", "count": len(results)}
     
-    # Get last 50 signals for analysis
     recent_signals = results[-50:] if len(results) >= 50 else results
     
-    # Calculate multiple metrics
+    winners = [s for s in recent_signals if s.get("verdict") in ("PUMP", "STRONG_PUMP")]
+    losers = [s for s in recent_signals if s.get("verdict") == "DUMP"]
+    
     metrics = {
-        "win_rate": sum(1 for s in recent_signals if s.get("verdict") in ("PUMP", "STRONG_PUMP")) / len(recent_signals),
-        "avg_pnl": sum(s.get("pnl", 0) for s in recent_signals) / len(recent_signals),
-        "pattern_strength": calculate_pattern_strength(recent_signals),
-        "recent_trend": calculate_pattern_strength(recent_signals[-10:]) if len(recent_signals) >= 10 else 0,
-        "dump_rate": sum(1 for s in recent_signals if s.get("verdict") == "DUMP") / len(recent_signals),
+        "win_rate": len(winners) / len(recent_signals),
+        "dump_rate": len(losers) / len(recent_signals),
         "avg_ath": sum(s.get("ath_multiplier", 1) for s in recent_signals) / len(recent_signals),
     }
     
-    # Calculate overall quality score
+    # Analyze research data: compare winners vs losers
+    research_metrics = {"holders": {}, "top10": {}, "dex_health": {}, "source": {}}
+    for s in recent_signals:
+        dh = s.get("dex_health", {})
+        sb = s.get("score_breakdown", {})
+        verdict = s.get("verdict", "DUMP")
+        is_win = verdict in ("PUMP", "STRONG_PUMP")
+        
+        if dh:
+            holders = dh.get("holders", 0)
+            top10 = dh.get("top10_pct", 0)
+            healthy = dh.get("healthy", True)
+            key = "winners" if is_win else "losers"
+            research_metrics["holders"].setdefault(key, []).append(holders)
+            research_metrics["top10"].setdefault(key, []).append(top10)
+            research_metrics["dex_health"].setdefault(key, []).append(1 if healthy else 0)
+        
+        source = sb.get("source", "unknown")
+        research_metrics["source"].setdefault(source, {"wins": 0, "total": 0})
+        research_metrics["source"][source]["total"] += 1
+        if is_win:
+            research_metrics["source"][source]["wins"] += 1
+    
+    # Calculate optimal thresholds from research
+    win_holders = [h for h in research_metrics["holders"].get("winners", []) if h > 0]
+    lose_holders = [h for h in research_metrics["holders"].get("losers", []) if h > 0]
+    win_top10 = [t for t in research_metrics["top10"].get("winners", []) if t > 0]
+    lose_top10 = [t for t in research_metrics["top10"].get("losers", []) if t > 0]
+    
+    avg_win_holders = sum(win_holders) / len(win_holders) if win_holders else 10
+    avg_lose_holders = sum(lose_holders) / len(lose_holders) if lose_holders else 5
+    avg_win_top10 = sum(win_top10) / len(win_top10) if win_top10 else 30
+    avg_lose_top10 = sum(lose_top10) / len(lose_top10) if lose_top10 else 50
+    
     quality_score = calculate_signal_quality_score(recent_signals)
     
-    # Determine new heuristic_threshold based on comprehensive analysis
     current_threshold = data.get("model", {}).get("signal_criteria", {}).get("heuristic_threshold", 0.45)
     current_pattern_threshold = data.get("model", {}).get("signal_criteria", {}).get("pattern_threshold", 0.55)
     
-    # Only TIGHTEN thresholds on failure, NEVER relax on success
     if quality_score < 0.45:
         new_threshold = min(0.60, current_threshold + 0.08)
     elif quality_score < 0.50:
@@ -352,17 +380,15 @@ def enhanced_auto_learn():
     elif metrics["win_rate"] < 0.15:
         new_threshold = min(0.55, current_threshold + 0.03)
     else:
-        new_threshold = current_threshold  # Never lower
+        new_threshold = current_threshold
     
-    # Adjust pattern_threshold based on dump rate (only tighten, never relax)
     if metrics["dump_rate"] > 0.35:
         new_pattern_threshold = min(0.85, current_pattern_threshold + 0.03)
     elif metrics["dump_rate"] > 0.25:
         new_pattern_threshold = min(0.82, current_pattern_threshold + 0.02)
     else:
-        new_pattern_threshold = current_pattern_threshold  # Never lower
+        new_pattern_threshold = current_pattern_threshold
     
-    # Adjust volatility setting based on average ATH
     if metrics["avg_ath"] > 3.5:
         volatility_setting = "high"
     elif metrics["avg_ath"] < 2.0:
@@ -370,24 +396,32 @@ def enhanced_auto_learn():
     else:
         volatility_setting = "medium"
     
-    # Update the criteria
     criteria_data = data.get("model", {}).get("signal_criteria", {})
     criteria_data["heuristic_threshold"] = round(new_threshold, 2)
     criteria_data["pattern_threshold"] = round(new_pattern_threshold, 2)
     criteria_data["volatility_setting"] = volatility_setting
     criteria_data["last_quality_score"] = round(quality_score, 2)
+    
+    # Update research-based thresholds
+    if win_holders or lose_holders:
+        criteria_data["research_min_holders"] = max(5, round(avg_lose_holders * 0.8))
+        criteria_data["research_avg_win_holders"] = round(avg_win_holders)
+    if win_top10 or lose_top10:
+        criteria_data["research_max_top10"] = min(60, round(avg_lose_top10 * 1.2))
+        criteria_data["research_avg_win_top10"] = round(avg_win_top10)
+    
     data["model"]["signal_criteria"] = criteria_data
     
-    # Update auto_learn_insights for daily reports
     data["model"]["auto_learn_insights"] = {
         "win_rate": round(metrics["win_rate"] * 100, 1),
-        "avg_win_bsr": round(metrics.get("avg_win_bsr", 0), 2),
-        "avg_loss_bsr": round(metrics.get("avg_loss_bsr", 0), 2),
-        "avg_win_holders": round(metrics.get("avg_win_holders", 0), 0),
-        "avg_loss_holders": round(metrics.get("avg_loss_holders", 0), 0),
-        "quality_score": round(quality_score, 2),
         "dump_rate": round(metrics["dump_rate"] * 100, 1),
         "avg_ath": round(metrics["avg_ath"], 2),
+        "quality_score": round(quality_score, 2),
+        "research_avg_win_holders": round(avg_win_holders),
+        "research_avg_lose_holders": round(avg_lose_holders),
+        "research_avg_win_top10": round(avg_win_top10, 1),
+        "research_avg_lose_top10": round(avg_lose_top10, 1),
+        "source_win_rates": {src: round(d["wins"] / d["total"] * 100, 1) for src, d in research_metrics["source"].items() if d["total"] > 0},
         "updated_at": datetime.now(timezone.utc).isoformat(),
     }
     
@@ -398,7 +432,12 @@ def enhanced_auto_learn():
         "pattern_threshold": round(new_pattern_threshold, 2),
         "volatility_setting": volatility_setting,
         "quality_score": round(quality_score, 2),
-        "metrics": metrics,
+        "research": {
+            "min_holders": criteria_data.get("research_min_holders"),
+            "max_top10": criteria_data.get("research_max_top10"),
+            "avg_win_holders": round(avg_win_holders),
+            "avg_win_top10": round(avg_win_top10, 1),
+        },
     }
 
 
@@ -1014,7 +1053,7 @@ def match_dump_patterns(features: dict, min_similarity: float = 0.70) -> tuple[b
     return False, best_score, f"Best dump match {best_score:.0%} < {min_similarity:.0%}"
 
 
-def record_signal_result(address: str, symbol: str, ath_multiplier: float, current_multiplier: float = 0.0, signal_age: float = 0.0, signal_time=None, min_price: float = 0.0) -> None:
+def record_signal_result(address: str, symbol: str, ath_multiplier: float, current_multiplier: float = 0.0, signal_age: float = 0.0, signal_time=None, min_price: float = 0.0, research_data: dict = None, score_breakdown: dict = None, dex_health: dict = None) -> None:
     """Record signal outcome and learn from it."""
     data = load_data()
     results = data["model"].setdefault("signal_results", [])
@@ -1025,7 +1064,7 @@ def record_signal_result(address: str, symbol: str, ath_multiplier: float, curre
     elif ath_multiplier >= 2.0:
         verdict = "PUMP"
 
-    results.append({
+    result_entry = {
         "address": address,
         "symbol": symbol,
         "verdict": verdict,
@@ -1035,7 +1074,17 @@ def record_signal_result(address: str, symbol: str, ath_multiplier: float, curre
         "signal_age": signal_age,
         "signal_time": signal_time.isoformat() if isinstance(signal_time, datetime) else datetime.now(timezone.utc).isoformat(),
         "timestamp": datetime.now(timezone.utc).isoformat(),
-    })
+    }
+    
+    # Store research data if provided
+    if research_data:
+        result_entry["research_data"] = research_data
+    if score_breakdown:
+        result_entry["score_breakdown"] = score_breakdown
+    if dex_health:
+        result_entry["dex_health"] = dex_health
+
+    results.append(result_entry)
     data["model"]["signal_results"] = results[-500:]
 
     launches = data.get("launches_tracked", [])
@@ -1791,6 +1840,11 @@ def calculate_signal_review() -> dict:
     if not signals_after_fresh:
         return {"signals": [], "summary": "No signals since fresh start"}
 
+    # Calculate optimal TP/SL from all fresh signals
+    optimal = calculate_optimal_tp_sl(signals_after_fresh)
+    tp_mult = 1 + optimal["optimal_tp"] / 100
+    sl_mult = 1 + optimal["optimal_sl"] / 100
+
     reviewed = []
     for r in signals_after_fresh:
         ath = r.get("ath_multiplier", 1)
@@ -1813,6 +1867,30 @@ def calculate_signal_review() -> dict:
         else:
             optimal_sl_pct = -50  # conservative default
 
+        # TP/SL simulation: what would have happened with optimal TP/SL?
+        tp_hit = False
+        sl_hit = False
+        
+        # Check if price trajectory would have hit TP or SL
+        # IMPORTANT: Check SL FIRST - if price dropped before pumping, SL would have been hit
+        if min_price > 0 and min_price <= sl_mult:
+            sl_hit = True
+            trajectory = f"SL ❌ {optimal['optimal_sl']}%"
+        elif ath >= tp_mult:
+            tp_hit = True
+            trajectory = f"TP ✅ +{optimal['optimal_tp']}%"
+        elif current > 0 and current >= 1:
+            current_pump_pct = round((current - 1) * 100, 0)
+            trajectory = f"hold 🟢 +{current_pump_pct:.0f}%"
+        elif current > 0:
+            current_pump_pct = round((current - 1) * 100, 0)
+            trajectory = f"hold 🔴 {current_pump_pct:.0f}%"
+        else:
+            trajectory = "ended"
+        
+        # For display: show max pump from signal price
+        max_pump_pct = round((ath - 1) * 100, 0) if ath > 1 else 0
+
         # Determine if signal was profitable
         is_win = verdict in ("PUMP", "STRONG_PUMP", "MEGA_PUMP")
         status_emoji = "🔥" if ath >= 5 else ("✅" if ath >= 2 else ("😐" if ath >= 1 else "❌"))
@@ -1830,6 +1908,10 @@ def calculate_signal_review() -> dict:
             "status_emoji": status_emoji,
             "entry_mcap": entry_mcap,
             "timestamp": ts,
+            "tp_hit": tp_hit,
+            "sl_hit": sl_hit,
+            "trajectory": trajectory,
+            "max_pump_pct": max_pump_pct,
         })
 
     # Sort by timestamp (newest first)
@@ -1839,7 +1921,17 @@ def calculate_signal_review() -> dict:
     total = len(reviewed)
     wins = sum(1 for r in reviewed if r["is_win"])
     losses = total - wins
-    avg_ath = sum(r["ath_multiplier"] for r in reviewed) / max(total, 1)
+    
+    # Use median instead of mean (outliers like NUTGOD 2M+ x skew the average)
+    aths = [r["ath_multiplier"] for r in reviewed if r["ath_multiplier"] > 0]
+    aths_sorted = sorted(aths)
+    median_ath = aths_sorted[len(aths_sorted) // 2] if aths_sorted else 0
+    avg_ath = sum(aths) / len(aths) if aths else 0
+    
+    # Count currently profitable vs dead
+    dead_count = sum(1 for r in reviewed if r.get("current_multiplier") is None or r.get("current_multiplier", 0) == 0)
+    currently_profitable = sum(1 for r in reviewed if (r.get("current_multiplier") or 0) > 1.0)
+    
     best = max(reviewed, key=lambda x: x["ath_multiplier"]) if reviewed else None
     worst = min(reviewed, key=lambda x: x["ath_multiplier"]) if reviewed else None
 
@@ -1850,6 +1942,9 @@ def calculate_signal_review() -> dict:
         "losses": losses,
         "win_rate": round(wins / max(total, 1) * 100, 1),
         "avg_ath": round(avg_ath, 2),
+        "median_ath": round(median_ath, 2),
+        "dead_count": dead_count,
+        "currently_profitable": currently_profitable,
         "best": best,
         "worst": worst,
         "fresh_start": fresh_start,
@@ -2145,7 +2240,8 @@ def get_performance_report():
     avg_ath = sum(aths) / len(aths) if aths else 0
     best = max(recent, key=lambda r: r.get("ath_multiplier", 0)) if recent else None
     worst = min(recent, key=lambda r: r.get("ath_multiplier", 0)) if recent else None
-    optimal = calculate_optimal_tp_sl(all_valid if all_valid else recent)
+    # Use recent for optimal TP/SL (consistent with wins/losses)
+    optimal = calculate_optimal_tp_sl(recent)
 
     signals = []
     for r in sorted(recent, key=lambda x: x.get("timestamp", ""), reverse=True):
