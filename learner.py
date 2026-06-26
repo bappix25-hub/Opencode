@@ -2166,6 +2166,55 @@ def calculate_fixed_tp_sl(results, tp_pct=10, sl_pct=-50):
     }
 
 
+def calculate_fixed_tp_sl_current(results, tp_pct=10, sl_pct=-50):
+    """Calculate TP/SL using ONLY current price (not ATH). More realistic."""
+    if not results:
+        return {"tp_pct": tp_pct, "sl_pct": sl_pct, "expected_pnl": 0,
+                "tp_hits": 0, "sl_hits": 0, "holds": 0, "no_data": 0, "win_rate": 0}
+    tp_mult = 1 + tp_pct / 100
+    sl_mult = 1 + sl_pct / 100
+    total_pnl = 0
+    tp_hits = 0
+    sl_hits = 0
+    holds = 0
+    no_data = 0
+    for r in results:
+        current = r.get("current_multiplier", 0)
+        if current <= 0:
+            no_data += 1
+            continue
+        min_price = r.get("min_price_multiplier", 0)
+        if min_price <= 0:
+            min_price = current
+        if min_price <= sl_mult:
+            pnl = (sl_mult - 1) * 100
+            exit_type = "sl"
+        elif current >= tp_mult:
+            pnl = (tp_mult - 1) * 100
+            exit_type = "tp"
+        else:
+            pnl = (current - 1) * 100
+            exit_type = "hold"
+        total_pnl += pnl
+        if exit_type == "tp":
+            tp_hits += 1
+        elif exit_type == "sl":
+            sl_hits += 1
+        else:
+            holds += 1
+    n = tp_hits + sl_hits + holds
+    return {
+        "tp_pct": tp_pct,
+        "sl_pct": sl_pct,
+        "expected_pnl": round(total_pnl / n, 1) if n > 0 else 0,
+        "tp_hits": tp_hits,
+        "sl_hits": sl_hits,
+        "holds": holds,
+        "no_data": no_data,
+        "win_rate": round(tp_hits / n * 100, 1) if n > 0 else 0,
+    }
+
+
 def simulate_tp_scenarios(results):
     if not results:
         return []

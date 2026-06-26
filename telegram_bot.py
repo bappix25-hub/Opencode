@@ -448,7 +448,7 @@ class TelegramHandlers:
     async def cmd_perf(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Last 24h signals + fixed TP/SL simulation (realistic)."""
         from datetime import datetime, timezone
-        from learner import load_data
+        from learner import load_data, calculate_fixed_tp_sl, calculate_fixed_tp_sl_current
         data = load_data()
         results = data.get("model", {}).get("signal_results", [])
         fresh_start = data.get("fresh_start", "")
@@ -500,10 +500,17 @@ class TelegramHandlers:
         losses = [r for r in recent if r.get("verdict") == "DUMP"]
         win_rate = round(len(wins) / total * 100, 1)
 
-        # Fixed TP/SL simulation — three scenarios
-        fixed_10 = calculate_fixed_tp_sl(recent, tp_pct=10, sl_pct=-50)
-        fixed_100 = calculate_fixed_tp_sl(recent, tp_pct=100, sl_pct=-50)
-        fixed_200 = calculate_fixed_tp_sl(recent, tp_pct=200, sl_pct=-50)
+        # Fixed TP/SL — ATH-based (inflated) and current-price-based (realistic)
+        ath_10 = calculate_fixed_tp_sl(recent, tp_pct=10, sl_pct=-50)
+        ath_100 = calculate_fixed_tp_sl(recent, tp_pct=100, sl_pct=-50)
+        ath_200 = calculate_fixed_tp_sl(recent, tp_pct=200, sl_pct=-50)
+
+        cur_10 = calculate_fixed_tp_sl_current(recent, tp_pct=10, sl_pct=-50)
+        cur_100 = calculate_fixed_tp_sl_current(recent, tp_pct=100, sl_pct=-50)
+        cur_200 = calculate_fixed_tp_sl_current(recent, tp_pct=200, sl_pct=-50)
+
+        no_data = cur_10.get("no_data", 0)
+        with_data = total - no_data
 
         text = (
             f"📊 <b>পারফরম্যান্স (২৪ঘন্টা)</b>\n"
@@ -512,12 +519,18 @@ class TelegramHandlers:
             f"✅ জয় (PUMP): <b>{len(wins)}</b> | ❌ হার (DUMP): <b>{len(losses)}</b> | ⏳ পেন্ডিং: <b>{total - len(wins) - len(losses)}</b>\n"
             f"🎯 উইন রেট: <b>{win_rate}%</b> ({len(wins)}/{total})\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"⭐ <b>TP/SL সিমুলেশন (SL -50%):</b>\n"
-            f"  <b>TP +10% (1.1x):</b> {fixed_10['tp_hits']}/{total} hit | <b>{fixed_10['expected_pnl']:+.1f}%</b>\n"
-            f"  <b>TP +100% (2x):</b> {fixed_100['tp_hits']}/{total} hit | <b>{fixed_100['expected_pnl']:+.1f}%</b>\n"
-            f"  <b>TP +200% (3x):</b> {fixed_200['tp_hits']}/{total} hit | <b>{fixed_200['expected_pnl']:+.1f}%</b>\n"
+            f"⭐ <b>ATH-ভিত্তিক (শুধু পিক প্রাইস):</b>\n"
+            f"  <b>TP +10%:</b> {ath_10['tp_hits']}/{total} hit | <b>{ath_10['expected_pnl']:+.1f}%</b>\n"
+            f"  <b>TP +100%:</b> {ath_100['tp_hits']}/{total} hit | <b>{ath_100['expected_pnl']:+.1f}%</b>\n"
+            f"  <b>TP +200%:</b> {ath_200['tp_hits']}/{total} hit | <b>{ath_200['expected_pnl']:+.1f}%</b>\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"💡 <i>SL -50% সব ক্ষেত্রে একই | সিগনাল মিডিয়ান 4.99x (+399%) পাম্প</i>"
+            f"📊 <b>বর্তমান প্রাইস-ভিত্তিক (বাস্তবসম্মত):</b>\n"
+            f"  <i>ডেটা আছে: {with_data}/{total} সিগন্যাল</i>\n"
+            f"  <b>TP +10%:</b> {cur_10['tp_hits']}/{with_data} hit | <b>{cur_10['expected_pnl']:+.1f}%</b>\n"
+            f"  <b>TP +100%:</b> {cur_100['tp_hits']}/{with_data} hit | <b>{cur_100['expected_pnl']:+.1f}%</b>\n"
+            f"  <b>TP +200%:</b> {cur_200['tp_hits']}/{with_data} hit | <b>{cur_200['expected_pnl']:+.1f}%</b>\n"
+            f"━━━━━━━━━━━━━━━━\n"
+            f"💡 <i>SL -50% সব ক্ষেত্রে একই | বর্তমান প্রাইস ডেটা নেই: {no_data} সিগন্যাল</i>"
         )
 
         await update.message.reply_text(text, parse_mode="HTML")
