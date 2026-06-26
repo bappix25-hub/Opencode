@@ -441,6 +441,160 @@ def enhanced_auto_learn():
     }
 
 
+def learn_feature_weights() -> dict:
+    """Learn FEATURE_WEIGHTS from actual pump vs dump outcomes.
+    Compares feature distributions between pumps and dumps to find
+    which features best predict success. Updates FEATURE_WEIGHTS in-place."""
+    global FEATURE_WEIGHTS
+
+    data = load_data()
+    results = data.get("model", {}).get("signal_results", [])
+
+    if len(results) < 20:
+        return {"status": "insufficient_data", "count": len(results)}
+
+    pumps = []
+    dumps = []
+    for r in results:
+        verdict = r.get("verdict", "DUMP")
+        rd = r.get("research_data", {})
+        sb = r.get("score_breakdown", {})
+        # Merge research_data and score_breakdown into features
+        features = {**rd, **sb}
+        if not features:
+            continue
+        if verdict in ("PUMP", "STRONG_PUMP"):
+            pumps.append(features)
+        elif verdict == "DUMP":
+            dumps.append(features)
+
+    if len(pumps) < 5 or len(dumps) < 5:
+        return {"status": "insufficient_outcomes", "pumps": len(pumps), "dumps": len(dumps)}
+
+    # For each feature, compute separation power
+    feature_keys = ["holders", "top10_pct", "bundled_pct", "audit_score",
+                    "buy_sell_ratio", "initial_liq_usd", "mcp", "lp_locked"]
+    new_weights = {}
+    changes = []
+
+    for key in feature_keys:
+        pump_vals = [f.get(key, 0) for f in pumps if f.get(key, 0) > 0]
+        dump_vals = [f.get(key, 0) for f in dumps if f.get(key, 0) > 0]
+
+        if len(pump_vals) < 3 or len(dump_vals) < 3:
+            continue
+
+        pump_avg = sum(pump_vals) / len(pump_vals)
+        dump_avg = sum(dump_vals) / len(dump_vals)
+
+        # Separation ratio: how different are pump vs dump averages?
+        if dump_avg > 0:
+            separation = abs(pump_avg - dump_avg) / max(pump_avg, dump_avg)
+        elif pump_avg > 0:
+            separation = 1.0
+        else:
+            separation = 0.0
+
+        # Map separation to weight: higher separation = higher weight
+        # Base weight from FEATURE_WEIGHTS, adjusted by separation
+        base_weight = FEATURE_WEIGHTS.get(key, 1.0)
+        if separation >= 0.5:
+            # Strong separator — increase weight
+            new_w = min(4.0, base_weight * 1.3)
+        elif separation >= 0.3:
+            # Moderate separator — slight increase
+            new_w = min(3.0, base_weight * 1.1)
+        elif separation <= 0.1:
+            # Weak separator — decrease weight
+            new_w = max(0.3, base_weight * 0.7)
+        else:
+            new_w = base_weight
+
+        new_weights[key] = round(new_w, 2)
+        if abs(new_w - base_weight) > 0.2:
+            changes.append(f"{key}: {base_weight:.1f}→{new_w:.1f} (sep={separation:.2f})")
+
+    # Update FEATURE_WEIGHTS in-place
+    for key, w in new_weights.items():
+        FEATURE_WEIGHTS[key] = w
+
+    # Save to learned_scorer.json
+    scorer_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "learned_scorer.json")
+    try:
+        with open(scorer_path) as f:
+            scorer = json.load(f)
+    except Exception:
+        scorer = {"version": 2}
+
+    scorer["feature_weights"] = new_weights
+    scorer["weight_changes"] = changes
+    scorer["weight_learned_at"] = datetime.now(timezone.utc).isoformat()
+    scorer["weight_sample_size"] = {"pumps": len(pumps), "dumps": len(dumps)}
+
+    with open(scorer_path, "w") as f:
+        json.dump(scorer, f, indent=2)
+
+    if changes:
+        logger.info(f"⚖️ Feature weights updated: {'; '.join(changes)}")
+
+    return {"new_weights": new_weights, "changes": changes, "pumps": len(pumps), "dumps": len(dumps)}
+
+
+def learn_signal_type_performance() -> dict:
+    """Track win rate per signal_type (KOTH, CTO, DEV_BOUGHT, etc.).
+    Returns performance data per signal type."""
+    data = load_data()
+    results = data.get("model", {}).get("signal_results", [])
+
+    type_stats = {}
+    for r in results:
+        rd = r.get("research_data", {})
+        sig_type = rd.get("signal_type", "UNKNOWN")
+        if not sig_type:
+            sig_type = "UNKNOWN"
+
+        if sig_type not in type_stats:
+            type_stats[sig_type] = {"total": 0, "wins": 0, "losses": 0, "aths": []}
+
+        verdict = r.get("verdict", "DUMP")
+        ath = r.get("ath_multiplier", 1.0)
+        type_stats[sig_type]["total"] += 1
+        type_stats[sig_type]["aths"].append(ath)
+        if verdict in ("PUMP", "STRONG_PUMP"):
+            type_stats[sig_type]["wins"] += 1
+        elif verdict == "DUMP":
+            type_stats[sig_type]["losses"] += 1
+
+    # Calculate win rates and avg ATH
+    performance = {}
+    for sig_type, stats in type_stats.items():
+        if stats["total"] < 3:
+            continue
+        win_rate = stats["wins"] / stats["total"] * 100
+        avg_ath = sum(stats["aths"]) / len(stats["aths"]) if stats["aths"] else 1.0
+        performance[sig_type] = {
+            "total": stats["total"],
+            "wins": stats["wins"],
+            "win_rate": round(win_rate, 1),
+            "avg_ath": round(avg_ath, 2),
+        }
+
+    # Save to learned_scorer.json
+    scorer_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "learned_scorer.json")
+    try:
+        with open(scorer_path) as f:
+            scorer = json.load(f)
+    except Exception:
+        scorer = {"version": 2}
+
+    scorer["signal_type_performance"] = performance
+
+    with open(scorer_path, "w") as f:
+        json.dump(scorer, f, indent=2)
+
+    return performance
+
+
 def update_learned_scorer() -> None:
     """Update learned_scorer.json from actual signal results (winners only)."""
     data = load_data()
