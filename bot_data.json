@@ -46075,12 +46075,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1971.95,
+        "symbol": "MEMORY"
       },
       "launch_time": 1782481995.820265,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1971.95,
+      "outcome_time": "2026-06-26T19:54:06.722658+00:00",
       "signal_sent": false
     },
     {
@@ -46106,12 +46109,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2028.0,
+        "symbol": "BOKK"
       },
       "launch_time": 1782481997.770112,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2028.0,
+      "outcome_time": "2026-06-26T19:54:07.730189+00:00",
       "signal_sent": false
     },
     {
@@ -46137,12 +46143,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2153.69,
+        "symbol": "MEMORY"
       },
       "launch_time": 1782481999.744616,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2153.69,
+      "outcome_time": "2026-06-26T19:54:08.626256+00:00",
       "signal_sent": false
     },
     {
@@ -46168,12 +46177,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1964.96,
+        "symbol": "MINU"
       },
       "launch_time": 1782482030.305638,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1964.96,
+      "outcome_time": "2026-06-26T19:54:09.387480+00:00",
       "signal_sent": false
     },
     {
@@ -46199,12 +46211,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 688.7,
+        "symbol": "Saj"
       },
       "launch_time": 1782482061.769369,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 688.7,
+      "outcome_time": "2026-06-26T19:55:13.664380+00:00",
       "signal_sent": false
     },
     {
@@ -46230,12 +46245,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 15049.51,
+        "symbol": "nobody"
       },
       "launch_time": 1782482062.990652,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 15049.51,
+      "outcome_time": "2026-06-26T19:55:14.406196+00:00",
       "signal_sent": false
     },
     {
@@ -46261,12 +46279,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1965.52,
+        "symbol": "CTOISWORKI"
       },
       "launch_time": 1782482064.464516,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1965.52,
+      "outcome_time": "2026-06-26T19:55:15.244031+00:00",
       "signal_sent": false
     },
     {
@@ -46292,12 +46313,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 8540.0,
+        "symbol": "CORA"
       },
       "launch_time": 1782482093.765259,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 8540.0,
+      "outcome_time": "2026-06-26T19:55:15.982646+00:00",
       "signal_sent": false
     },
     {
@@ -46323,12 +46347,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 42635.0,
+        "symbol": "0.0{4}26332"
       },
       "launch_time": 1782482095.958072,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 42635.0,
+      "outcome_time": "2026-06-26T19:55:16.840639+00:00",
       "signal_sent": false
     },
     {
@@ -46354,12 +46381,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1994.87,
+        "symbol": "werld"
       },
       "launch_time": 1782482103.44742,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1994.87,
+      "outcome_time": "2026-06-26T19:55:17.630775+00:00",
       "signal_sent": false
     },
     {
@@ -46385,12 +46415,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1964.4,
+        "symbol": "Twilight"
       },
       "launch_time": 1782482104.994113,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1964.4,
+      "outcome_time": "2026-06-26T19:55:18.482000+00:00",
       "signal_sent": false
     },
     {
@@ -46416,12 +46449,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1980.06,
+        "symbol": "pumpfun"
       },
       "launch_time": 1782482107.507248,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1980.06,
+      "outcome_time": "2026-06-26T19:55:19.207439+00:00",
       "signal_sent": false
     },
     {
@@ -46447,12 +46483,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1975.3,
+        "symbol": "Stocks"
       },
       "launch_time": 1782482136.564068,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1975.3,
+      "outcome_time": "2026-06-26T19:56:22.850088+00:00",
       "signal_sent": false
     },
     {
@@ -46478,12 +46517,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1972.79,
+        "symbol": "AIUSX"
       },
       "launch_time": 1782482137.807665,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1972.79,
+      "outcome_time": "2026-06-26T19:56:23.682000+00:00",
       "signal_sent": false
     },
     {
@@ -46509,12 +46551,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1974.74,
+        "symbol": "AI"
       },
       "launch_time": 1782482139.029777,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1974.74,
+      "outcome_time": "2026-06-26T19:56:24.399213+00:00",
       "signal_sent": false
     },
     {
@@ -46540,12 +46585,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2150.1,
+        "symbol": "PropHunt"
       },
       "launch_time": 1782482141.285569,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2150.1,
+      "outcome_time": "2026-06-26T19:56:25.230938+00:00",
       "signal_sent": false
     },
     {
@@ -46571,12 +46619,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1976.98,
+        "symbol": "STOCKS"
       },
       "launch_time": 1782482144.58363,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1976.98,
+      "outcome_time": "2026-06-26T19:56:26.036149+00:00",
       "signal_sent": false
     },
     {
@@ -46602,12 +46653,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 344.28,
+        "symbol": "job"
       },
       "launch_time": 1782482173.801983,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 344.28,
+      "outcome_time": "2026-06-26T19:56:26.854470+00:00",
       "signal_sent": false
     },
     {
@@ -46633,12 +46687,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1974.74,
+        "symbol": "Stocks"
       },
       "launch_time": 1782482177.413428,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1974.74,
+      "outcome_time": "2026-06-26T19:56:27.650781+00:00",
       "signal_sent": false
     },
     {
@@ -46664,12 +46721,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2032.29,
+        "symbol": "STRAIT"
       },
       "launch_time": 1782482178.613165,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2032.29,
+      "outcome_time": "2026-06-26T19:56:28.358585+00:00",
       "signal_sent": false
     },
     {
@@ -46695,12 +46755,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 0.0,
+        "symbol": "🔜Solana"
       },
       "launch_time": 1782482205.570462,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 0.0,
+      "outcome_time": "2026-06-26T19:57:33.883837+00:00",
       "signal_sent": false
     },
     {
@@ -46726,12 +46789,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 4031.22,
+        "symbol": "CHILLHORSE"
       },
       "launch_time": 1782482211.193976,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 4031.22,
+      "outcome_time": "2026-06-26T19:57:34.723614+00:00",
       "signal_sent": false
     },
     {
@@ -46757,12 +46823,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1973.72,
+        "symbol": "PUMPCHAMELEON"
       },
       "launch_time": 1782482243.149029,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1973.72,
+      "outcome_time": "2026-06-26T19:57:35.512317+00:00",
       "signal_sent": false
     },
     {
@@ -46788,12 +46857,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1980.06,
+        "symbol": "MERRY"
       },
       "launch_time": 1782482244.479242,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1980.06,
+      "outcome_time": "2026-06-26T19:57:36.214728+00:00",
       "signal_sent": false
     },
     {
@@ -46819,12 +46891,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 12109.69,
+        "symbol": "BBL"
       },
       "launch_time": 1782482246.455088,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 12109.69,
+      "outcome_time": "2026-06-26T19:57:37.036161+00:00",
       "signal_sent": false
     },
     {
@@ -46850,12 +46925,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 9035.0,
+        "symbol": "🔜Solana"
       },
       "launch_time": 1782482297.928003,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 9035.0,
+      "outcome_time": "2026-06-26T19:58:41.272886+00:00",
       "signal_sent": false
     },
     {
@@ -46881,12 +46959,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1973.9,
+        "symbol": "GORDA"
       },
       "launch_time": 1782482307.057983,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1973.9,
+      "outcome_time": "2026-06-26T19:58:42.083688+00:00",
       "signal_sent": false
     },
     {
@@ -46912,12 +46993,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 21260.0,
+        "symbol": "SIXTYFOUR"
       },
       "launch_time": 1782482337.74302,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 21260.0,
+      "outcome_time": "2026-06-26T19:59:45.664438+00:00",
       "signal_sent": false
     },
     {
@@ -46943,12 +47027,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1969.71,
+        "symbol": "団結する"
       },
       "launch_time": 1782482346.387734,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1969.71,
+      "outcome_time": "2026-06-26T19:59:46.404795+00:00",
       "signal_sent": false
     },
     {
@@ -46974,12 +47061,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2033.18,
+        "symbol": "団結する"
       },
       "launch_time": 1782482350.123144,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2033.18,
+      "outcome_time": "2026-06-26T19:59:47.178671+00:00",
       "signal_sent": false
     },
     {
@@ -47005,12 +47095,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1966.36,
+        "symbol": "VWANCE"
       },
       "launch_time": 1782482396.194598,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1966.36,
+      "outcome_time": "2026-06-26T20:01:00.085626+00:00",
       "signal_sent": false
     },
     {
@@ -47036,12 +47129,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1975.02,
+        "symbol": "white"
       },
       "launch_time": 1782482401.713456,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1975.02,
+      "outcome_time": "2026-06-26T20:01:00.966372+00:00",
       "signal_sent": false
     },
     {
@@ -47067,12 +47163,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1966.36,
+        "symbol": "ユナイト"
       },
       "launch_time": 1782482403.638419,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1966.36,
+      "outcome_time": "2026-06-26T20:01:01.745955+00:00",
       "signal_sent": false
     },
     {
@@ -47098,12 +47197,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2041.14,
+        "symbol": "MASSI"
       },
       "launch_time": 1782482406.35629,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2041.14,
+      "outcome_time": "2026-06-26T20:01:02.609928+00:00",
       "signal_sent": false
     },
     {
@@ -47129,12 +47231,16 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "pump",
+        "outcome_mcap": 7308700.0,
+        "symbol": "gato",
+        "address": "cnATS4oJdnjanesnM5XwrWyDaaDdQHs5jSQebAdcfZL"
       },
       "launch_time": 1782482438.296782,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "pump",
+      "outcome_mcap": 7308700.0,
+      "outcome_time": "2026-06-26T20:01:03.920423+00:00",
       "signal_sent": false
     },
     {
@@ -47160,12 +47266,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1990.4,
+        "symbol": "HAPPY"
       },
       "launch_time": 1782482444.420505,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1990.4,
+      "outcome_time": "2026-06-26T20:01:04.876745+00:00",
       "signal_sent": false
     },
     {
@@ -47191,12 +47300,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1965.52,
+        "symbol": "future"
       },
       "launch_time": 1782482447.701622,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1965.52,
+      "outcome_time": "2026-06-26T20:01:05.628998+00:00",
       "signal_sent": false
     },
     {
@@ -47222,12 +47334,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1971.67,
+        "symbol": "FUTURE"
       },
       "launch_time": 1782482449.452966,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1971.67,
+      "outcome_time": "2026-06-26T20:01:06.475243+00:00",
       "signal_sent": false
     },
     {
@@ -47253,12 +47368,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1974.74,
+        "symbol": "HAPPY"
       },
       "launch_time": 1782482450.965503,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1974.74,
+      "outcome_time": "2026-06-26T20:01:07.346932+00:00",
       "signal_sent": false
     },
     {
@@ -47284,12 +47402,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1987.85,
+        "symbol": "EVO"
       },
       "launch_time": 1782482452.941236,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1987.85,
+      "outcome_time": "2026-06-26T20:01:08.185353+00:00",
       "signal_sent": false
     },
     {
@@ -47317,13 +47438,15 @@
         "has_twitter": false,
         "has_telegram": false,
         "ath_multiplier": 3.07,
-        "outcome": "PUMP",
-        "signal_age": 0.0
+        "outcome": "dump",
+        "signal_age": 0.0,
+        "outcome_mcap": 92935.0,
+        "symbol": "werld"
       },
       "launch_time": 1782482454.534565,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 92935.0,
+      "outcome_time": "2026-06-26T20:01:08.982947+00:00",
       "signal_sent": false
     },
     {
@@ -47349,12 +47472,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2010.9,
+        "symbol": "Investment"
       },
       "launch_time": 1782482456.630621,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2010.9,
+      "outcome_time": "2026-06-26T20:01:09.638964+00:00",
       "signal_sent": false
     },
     {
@@ -47380,12 +47506,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2008.83,
+        "symbol": "SKOPX"
       },
       "launch_time": 1782482458.594208,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2008.83,
+      "outcome_time": "2026-06-26T20:01:10.461026+00:00",
       "signal_sent": false
     },
     {
@@ -47411,12 +47540,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2044.38,
+        "symbol": "EVO"
       },
       "launch_time": 1782482460.614696,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2044.38,
+      "outcome_time": "2026-06-26T20:02:24.510267+00:00",
       "signal_sent": false
     },
     {
@@ -47442,12 +47574,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1999.07,
+        "symbol": "MASSI"
       },
       "launch_time": 1782482501.221416,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1999.07,
+      "outcome_time": "2026-06-26T20:02:25.358899+00:00",
       "signal_sent": false
     },
     {
@@ -47473,12 +47608,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1973.63,
+        "symbol": "GUY"
       },
       "launch_time": 1782482502.754647,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1973.63,
+      "outcome_time": "2026-06-26T20:02:26.195165+00:00",
       "signal_sent": false
     },
     {
@@ -47504,12 +47642,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1978.1,
+        "symbol": "HAO"
       },
       "launch_time": 1782482504.944485,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1978.1,
+      "outcome_time": "2026-06-26T20:02:27.048695+00:00",
       "signal_sent": false
     },
     {
@@ -47535,12 +47676,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 713.37,
+        "symbol": "gmood"
       },
       "launch_time": 1782482506.515167,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 713.37,
+      "outcome_time": "2026-06-26T20:02:27.860013+00:00",
       "signal_sent": false
     },
     {
@@ -47566,12 +47710,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1978.38,
+        "symbol": "HAO"
       },
       "launch_time": 1782482508.077222,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1978.38,
+      "outcome_time": "2026-06-26T20:02:28.628393+00:00",
       "signal_sent": false
     },
     {
@@ -47597,12 +47744,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1982.27,
+        "symbol": "SHITVALID"
       },
       "launch_time": 1782482511.273617,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1982.27,
+      "outcome_time": "2026-06-26T20:02:29.437631+00:00",
       "signal_sent": false
     },
     {
@@ -47628,12 +47778,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1975.02,
+        "symbol": "Media"
       },
       "launch_time": 1782482542.806974,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1975.02,
+      "outcome_time": "2026-06-26T20:02:30.249643+00:00",
       "signal_sent": false
     },
     {
@@ -47659,12 +47812,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1965.8,
+        "symbol": "Anserm"
       },
       "launch_time": 1782482544.173893,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1965.8,
+      "outcome_time": "2026-06-26T20:03:35.326002+00:00",
       "signal_sent": false
     },
     {
@@ -47690,12 +47846,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1971.67,
+        "symbol": "OPTIMISTIC"
       },
       "launch_time": 1782482546.093225,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1971.67,
+      "outcome_time": "2026-06-26T20:03:36.095485+00:00",
       "signal_sent": false
     },
     {
@@ -47721,12 +47880,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2117.41,
+        "symbol": "AUTOASSETS"
       },
       "launch_time": 1782482547.733157,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2117.41,
+      "outcome_time": "2026-06-26T20:03:36.834233+00:00",
       "signal_sent": false
     },
     {
@@ -47752,12 +47914,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1973.07,
+        "symbol": "FUTURE"
       },
       "launch_time": 1782482549.355731,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1973.07,
+      "outcome_time": "2026-06-26T20:03:37.527518+00:00",
       "signal_sent": false
     },
     {
@@ -47783,12 +47948,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 844.0,
+        "symbol": "WEN"
       },
       "launch_time": 1782482576.229764,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 844.0,
+      "outcome_time": "2026-06-26T20:03:38.242819+00:00",
       "signal_sent": false
     },
     {
@@ -47814,12 +47982,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2036.25,
+        "symbol": "STANCE"
       },
       "launch_time": 1782482580.056911,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2036.25,
+      "outcome_time": "2026-06-26T20:03:38.968998+00:00",
       "signal_sent": false
     },
     {
@@ -47845,12 +48016,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 2715.08,
+        "symbol": "JETIX"
       },
       "launch_time": 1782482581.568968,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 2715.08,
+      "outcome_time": "2026-06-26T20:03:39.832759+00:00",
       "signal_sent": false
     },
     {
@@ -47876,12 +48050,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1996.55,
+        "symbol": "GP"
       },
       "launch_time": 1782482582.796274,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1996.55,
+      "outcome_time": "2026-06-26T20:03:40.558893+00:00",
       "signal_sent": false
     },
     {
@@ -47907,12 +48084,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1980.06,
+        "symbol": "Optimist"
       },
       "launch_time": 1782482584.018209,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1980.06,
+      "outcome_time": "2026-06-26T20:03:41.888595+00:00",
       "signal_sent": false
     },
     {
@@ -47938,12 +48118,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1966.36,
+        "symbol": "Media"
       },
       "launch_time": 1782482585.291566,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1966.36,
+      "outcome_time": "2026-06-26T20:03:42.589888+00:00",
       "signal_sent": false
     },
     {
@@ -47969,12 +48152,15 @@
         "fresh_7d": 0,
         "has_web": false,
         "has_twitter": false,
-        "has_telegram": false
+        "has_telegram": false,
+        "outcome": "dump",
+        "outcome_mcap": 1293.0,
+        "symbol": "FOLIMOX"
       },
       "launch_time": 1782482588.173536,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 1293.0,
+      "outcome_time": "2026-06-26T20:03:43.298562+00:00",
       "signal_sent": false
     },
     {
@@ -62156,18 +62342,18 @@
       }
     ],
     "auto_learn_insights": {
-      "total_recent": 50,
-      "wins": 28,
-      "losses": 22,
-      "win_rate": 56.0,
-      "avg_win_bsr": 0,
-      "avg_loss_bsr": 0,
-      "avg_win_holders": 0,
-      "avg_loss_holders": 0,
-      "avg_win_liq": 0,
-      "avg_loss_liq": 0,
-      "avg_win_lp_locked": 0,
-      "avg_loss_lp_locked": 0
+      "win_rate": 50.0,
+      "dump_rate": 50.0,
+      "avg_ath": 16.48,
+      "quality_score": 0.35,
+      "research_avg_win_holders": 10,
+      "research_avg_lose_holders": 5,
+      "research_avg_win_top10": 30,
+      "research_avg_lose_top10": 50,
+      "source_win_rates": {
+        "unknown": 50.0
+      },
+      "updated_at": "2026-06-26T20:04:40.529576+00:00"
     },
     "signal_criteria_stats": {
       "pump_medians": {
@@ -62193,19 +62379,22 @@
     },
     "signal_criteria": {
       "min_bsr": 1.26,
-      "min_holders": 10,
+      "min_holders": 20,
       "min_wallets": 15,
-      "min_liq": 500,
-      "min_liq_pct": 10,
+      "min_liq": 8501.0,
+      "min_liq_pct": 25.7,
       "min_lp_locked": 80,
       "min_mcap": 3000,
-      "heuristic_threshold": 0.45,
-      "pattern_threshold": 0.6,
+      "heuristic_threshold": 0.53,
+      "pattern_threshold": 0.63,
       "dump_pattern_threshold": 0.7,
       "max_age_seconds": 21600,
-      "updated_at": "2026-06-26T19:52:26.947775+00:00",
-      "sample_size": 844,
-      "min_lp_providers": 2
+      "updated_at": "2026-06-26T20:01:50.201744+00:00",
+      "sample_size": 842,
+      "min_lp_providers": 2,
+      "max_age_hours": 85.1,
+      "volatility_setting": "high",
+      "last_quality_score": 0.35
     },
     "channel_insights": {
       "patterns": {
@@ -72461,6 +72650,45 @@
       },
       "ath_multiplier": 1.7385496183206106,
       "timestamp": "2026-06-25T18:38:51.203147+00:00"
+    },
+    {
+      "address": "26Rre7jT3jUaU29s6oS6QbLSwpbV2ZSZmouZAFWApump",
+      "symbol": "FRONT",
+      "features": {
+        "buy_count": 0,
+        "sell_count": 0,
+        "buy_sell_ratio": 0.0,
+        "volume": 20000000.0,
+        "holders": 0,
+        "unique_wallets": 0,
+        "initial_liq": 38994.54,
+        "initial_mcap": 270403,
+        "liq_pct": 14.42,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 19,
+        "lp_locked": 0,
+        "deployer": "31UNKVhjvJQo",
+        "ath_price": 0.0002704,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "volume_velocity": 29202.6891,
+        "buy_sell_momentum": 0.0,
+        "liquidity_depth": 0.1442,
+        "volume_spike_ratio": 0.0,
+        "buy_spike_ratio": 0.0,
+        "social_score": 0,
+        "launch_weekday": 4,
+        "launch_month": 6,
+        "is_weekend": false,
+        "launch_session": "us",
+        "insider_count": 0,
+        "launch_time": 1782503595.444875,
+        "liquidity": 38994.54,
+        "mcap": 270403.0
+      },
+      "ath_multiplier": 1.4980609418282549,
+      "timestamp": "2026-06-26T20:04:40.352257+00:00"
     }
   ],
   "fresh_start": "2026-06-22T13:38:36.943300+00:00",
