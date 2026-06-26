@@ -169,6 +169,7 @@ class MemeBot:
             asyncio.create_task(self.signal_confirmation_loop(), name="signal_confirm"),
             asyncio.create_task(self.track_outcomes_loop(), name="track_outcomes"),
             asyncio.create_task(self.connection_monitor_loop(), name="conn_monitor"),
+            asyncio.create_task(self._heartbeat_loop(), name="heartbeat"),
         ]
 
         if config.enable_github_sync:
@@ -2320,6 +2321,20 @@ class MemeBot:
                 break
             except Exception as e:
                 logger.error(f"connection_monitor error: {e}")
+
+    async def _heartbeat_loop(self):
+        """Write timestamp every 30s for watchdog to verify bot is alive."""
+        import time as _time
+        heartbeat_file = "/tmp/meme_bot_heartbeat"
+        while True:
+            try:
+                with open(heartbeat_file, "w") as f:
+                    f.write(str(int(_time.time())))
+                await asyncio.sleep(30)
+            except asyncio.CancelledError:
+                break
+            except Exception:
+                await asyncio.sleep(30)
 
     async def github_sync_loop(self):
         while True:
