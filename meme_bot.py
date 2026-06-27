@@ -2429,6 +2429,8 @@ class MemeBot:
                 if results:
                     breakouts = [r for r in results if r.get("status") == "breakout"]
                     consolidations = [r for r in results if r.get("status") == "consolidation"]
+                    watching = [r for r in results if r.get("status") == "watching"]
+                    too_young = [r for r in results if r.get("status") == "too_young"]
                     if breakouts:
                         for b in breakouts:
                             sym = b.get("symbol", "?")
@@ -2439,12 +2441,15 @@ class MemeBot:
                                 f"age={b.get('age_minutes', 0)}min"
                             )
                     stats = self.breakout.get_stats()
-                    if stats["monitored"] > 0:
-                        logger.info(
-                            f"🔍 Breakout scan: {stats['monitored']} watching | "
-                            f"{len(consolidations)} consolidating | "
-                            f"{stats['breakouts']} breakouts found"
-                        )
+                    logger.info(
+                        f"🔍 Breakout scan: {stats['monitored']} monitoring | "
+                        f"{len(watching)} watching | {len(too_young)} young | "
+                        f"{len(consolidations)} consolidating | "
+                        f"{stats['breakouts']} breakouts"
+                    )
+                else:
+                    stats = self.breakout.get_stats()
+                    logger.info(f"🔍 Breakout scan: {stats['monitored']} monitored, no results")
             except asyncio.CancelledError:
                 break
             except Exception as e:
