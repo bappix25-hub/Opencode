@@ -2,6 +2,7 @@ import asyncio
 import logging
 import os
 import glob
+import time
 from telethon import TelegramClient, errors
 
 logger = logging.getLogger("meme_bot.maestro_client")
@@ -13,6 +14,8 @@ SESSION_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "maestro
 
 _client = None
 _lock = asyncio.Lock()
+_last_attempt = 0  # timestamp of last connection attempt
+_COOLDOWN = 120    # seconds between reconnect attempts
 
 
 def _cleanup_session_locks():
@@ -28,61 +31,70 @@ def _cleanup_session_locks():
 
 
 async def get_client() -> TelegramClient:
-    global _client
+    global _client, _last_attempt
+
+    # Fast path: client already connected
     if _client is not None:
         if _client.is_connected():
             return _client
+        # Client disconnected — don't reconnect immediately, cooldown
+        now = time.time()
+        if now - _last_attempt < _COOLDOWN:
+            logger.debug("Maestro client disconnected, waiting cooldown")
+            return None
         logger.warning("Maestro client disconnected, reconnecting...")
-        try:
-            await _client.connect()
-            return _client
-        except Exception as e:
-            logger.error(f"Reconnect failed: {e}")
-            _client = None
-    
-    # Try up to 3 times with cleanup between attempts
-    for attempt in range(3):
+
+    # Rate limit reconnection attempts
+    now = time.time()
+    if now - _last_attempt < _COOLDOWN:
+        return None
+    _last_attempt = now
+
+    # Try up to 2 times
+    for attempt in range(2):
         async with _lock:
-            if _client is not None:
+            if _client is not None and _client.is_connected():
                 return _client
             _cleanup_session_locks()
             try:
-                _client = TelegramClient(SESSION_FILE, API_ID, API_HASH)
-                await _client.connect()
+                new_client = TelegramClient(SESSION_FILE, API_ID, API_HASH)
+                await new_client.connect()
             except Exception as e:
                 logger.error(f"Telegram connect attempt {attempt+1} failed: {e}")
-                _client = None
                 _cleanup_session_locks()
-                await asyncio.sleep(1)
+                await asyncio.sleep(2)
                 continue
-            
-            if not await _client.is_user_authorized():
+
+            if not await new_client.is_user_authorized():
                 logger.error("Maestro client not authorized - session expired")
-                _client = None
+                await new_client.disconnect()
                 return None
-            
-            # Pre-resolve entities
-            try:
-                await _client.get_entity(MAESTRO_ID)
-            except Exception:
-                pass
-            
-            BOT_IDS = [8436907499, 7178305557, 6126376117]
-            for bot_id in BOT_IDS:
+
+            # Pre-resolve entities (non-blocking, errors ignored)
+            for bot_id in [MAESTRO_ID, 8436907499, 7178305557, 6126376117,
+                           8308748868, 6556421217, 6832064371, 6113783210,
+                           7060758339, 7294318663]:
                 try:
-                    await _client.get_entity(bot_id)
+                    await new_client.get_entity(bot_id)
                 except Exception:
                     try:
-                        async for dialog in _client.iter_dialogs(limit=100):
-                            if dialog.id in BOT_IDS:
-                                logger.info(f"Resolved bot entity: {dialog.name} ({dialog.id})")
+                        async for dialog in new_client.iter_dialogs(limit=50):
+                            if dialog.id == bot_id:
+                                break
                     except Exception:
                         pass
-                    break
-            
+
+            _client = new_client
             logger.info("✅ Maestro client connected and authorized")
             return _client
-    
+
+    # All attempts failed
+    if _client:
+        try:
+            await _client.disconnect()
+        except Exception:
+            pass
+        _client = None
     return None
 
 
