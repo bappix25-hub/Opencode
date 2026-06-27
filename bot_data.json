@@ -73279,7 +73279,7 @@
       "source_win_rates": {
         "unknown": 42.0
       },
-      "updated_at": "2026-06-27T17:17:45.431416+00:00"
+      "updated_at": "2026-06-27T18:00:54.522856+00:00"
     },
     "signal_criteria_stats": {
       "pump_medians": {
@@ -73307,7 +73307,7 @@
       "min_bsr": 1.26,
       "min_holders": 20,
       "min_wallets": 15,
-      "min_liq": 8289.0,
+      "min_liq": 8331.0,
       "min_liq_pct": 25.2,
       "min_lp_locked": 80,
       "min_mcap": 3000,
@@ -73315,10 +73315,10 @@
       "pattern_threshold": 0.63,
       "dump_pattern_threshold": 0.7,
       "max_age_seconds": 21600,
-      "updated_at": "2026-06-27T16:28:06.627635+00:00",
-      "sample_size": 943,
+      "updated_at": "2026-06-27T17:34:19.741556+00:00",
+      "sample_size": 951,
       "min_lp_providers": 2,
-      "max_age_hours": 51.8,
+      "max_age_hours": 47.9,
       "volatility_setting": "medium",
       "last_quality_score": 0.35
     },
@@ -84005,6 +84005,45 @@
       },
       "ath_multiplier": 1.4173949230129004,
       "timestamp": "2026-06-27T17:17:45.273474+00:00"
+    },
+    {
+      "address": "HwMj453mE86QxusK2x2RDhd6fGFZ2Dzgt5HcpNCvpump",
+      "symbol": "Love SOL",
+      "features": {
+        "buy_count": 0,
+        "sell_count": 0,
+        "buy_sell_ratio": 0.0,
+        "volume": 105149220.48,
+        "holders": 0,
+        "unique_wallets": 0,
+        "initial_liq": 38867.15,
+        "initial_mcap": 272902,
+        "liq_pct": 14.24,
+        "snipers_30s": 0,
+        "insiders_30s": 0,
+        "launch_hour": 17,
+        "lp_locked": 0,
+        "deployer": "7CsvBSnKYjc3",
+        "ath_price": 0.0002729,
+        "lp_providers_count": 0,
+        "deployer_has_lp": false,
+        "volume_velocity": 29474.2165,
+        "buy_sell_momentum": 0.0,
+        "liquidity_depth": 0.1424,
+        "volume_spike_ratio": 0.0,
+        "buy_spike_ratio": 0.0,
+        "social_score": 0,
+        "launch_weekday": 5,
+        "launch_month": 6,
+        "is_weekend": true,
+        "launch_session": "us",
+        "insider_count": 0,
+        "launch_time": 1782579686.802082,
+        "liquidity": 38867.15,
+        "mcap": 272902.0
+      },
+      "ath_multiplier": 1.0825069416898057,
+      "timestamp": "2026-06-27T18:00:54.367013+00:00"
     }
   ],
   "fresh_start": "2026-06-22T13:38:36.943300+00:00",
