@@ -1038,8 +1038,10 @@ async def scan_channels(client, dex_client=None):
                         if _breakout_detector:
                             try:
                                 _breakout_detector.add_token(full_token)
+                                if ca in _breakout_detector.monitored:
+                                    logger.info(f"📡 Breakout: monitoring {token.get('symbol','?')} ({ca[:8]}...) top10={full_token.get('top10_pct',0):.0f}% h={full_token.get('holders',0)}")
                             except Exception as e:
-                                logger.debug(f"Breakout add_token error: {e}")
+                                logger.info(f"Breakout add_token error: {e}")
 
                         if action in ("BUY_NOW", "ALERT"):
                             launch_mcp = token.get("mcp", 0) or token.get("launch_mcp", 0)
