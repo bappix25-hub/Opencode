@@ -174,6 +174,7 @@ class SnapshotCollector:
         self.birdeye = birdeye_client
         self.sessions = {}  # ca -> SnapshotSession
         self.completed = []  # finished sessions
+        self._last_session_count = 0
         self._load()
 
     def _load(self):
@@ -303,7 +304,10 @@ class SnapshotCollector:
             return
 
         for ca in list(self.sessions.keys()):
-            await self.take_snapshot(ca)
+            try:
+                await self.take_snapshot(ca)
+            except Exception as e:
+                logger.debug(f"Snapshot error {ca[:8]}: {e}")
             await asyncio.sleep(2)
 
         logger.info(
