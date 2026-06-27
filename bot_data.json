@@ -62093,7 +62093,33 @@
         "min_price_multiplier": 0.0,
         "signal_age": 0.0,
         "signal_time": "2026-06-26T19:53:54.291274+00:00",
-        "timestamp": "2026-06-26T20:43:51.357868+00:00"
+        "timestamp": "2026-06-26T20:43:51.357868+00:00",
+        "score_breakdown": {
+          "climbing_score": 0.75,
+          "reasons": [
+            "1h +36%",
+            "5m +21%",
+            "Vol/Liq 2.2",
+            "B/S 6.0",
+            "Vol Spike 2.1x"
+          ]
+        },
+        "dex_health": {
+          "healthy": true,
+          "reason": "Vol5m $163 | Buys>1 | +21%5m",
+          "data": {
+            "price_usd": 6.202e-06,
+            "volume_24h": 7354.96,
+            "volume_5m": 163.23,
+            "price_change_5m": 20.93,
+            "price_change_1h": 35.99,
+            "txns_5m_buys": 6,
+            "txns_5m_sells": 1,
+            "liquidity": 3280.97,
+            "fdv": 6203.0,
+            "pair_created": 1782485219000
+          }
+        }
       },
       {
         "address": "CaoTCN3SR6kB4aVm2JmSiucqpwe6KWZBUW3FXEPipump",
@@ -62138,6 +62164,116 @@
         "signal_age": 0.0,
         "signal_time": "2026-06-27T01:55:41.018422+00:00",
         "timestamp": "2026-06-27T01:55:41.018521+00:00"
+      },
+      {
+        "address": "8Xt1JFonRKkWUzTbgycR7hFUFiud4cRe9ridnsaqpump",
+        "symbol": "user1472",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.367468091421787,
+        "current_multiplier": 0.04761056693380825,
+        "min_price_multiplier": 0.04761056693380825,
+        "signal_age": 846.7770450115204,
+        "signal_time": "2026-06-27T01:59:39.198390+00:00",
+        "timestamp": "2026-06-27T01:59:39.198562+00:00",
+        "score_breakdown": {
+          "match_score": 0.6,
+          "match_reason": "MCap $33693, Liq $13250, Vol/Liq 3.2",
+          "mcap": 33693.0,
+          "liquidity": 13250.68,
+          "holders": 296,
+          "unique_wallets": 769,
+          "buy_count": 228,
+          "sell_count": 148,
+          "buy_sell_ratio": 1.5405405405405406,
+          "tp_pct": 100.0,
+          "sl_pct": -50.0
+        }
+      },
+      {
+        "address": "FpzZHtp5tbvz6xndEtoJHoGEWcT7cFEuscdCh9RApump",
+        "symbol": "VOICEBOX",
+        "verdict": "PUMP",
+        "ath_multiplier": 2.7955968874549253,
+        "current_multiplier": 2.0573163788195106,
+        "min_price_multiplier": 0.7373315619662175,
+        "signal_age": 1163.274677991867,
+        "signal_time": "2026-06-27T02:26:24.579073+00:00",
+        "timestamp": "2026-06-27T02:26:24.579197+00:00",
+        "score_breakdown": {
+          "climbing_score": 1.1500000000000001,
+          "reasons": [
+            "1h +74%",
+            "5m +161%",
+            "Vol/Liq 5.3",
+            "B/S 2.0",
+            "Vol Spike 10.3x",
+            "1209 buys/5m"
+          ]
+        },
+        "dex_health": {
+          "healthy": true,
+          "reason": "Vol5m $71,572 | Buys>594",
+          "data": {
+            "price_usd": 3.591e-05,
+            "volume_24h": 116095.6,
+            "volume_5m": 71572.31,
+            "price_change_5m": -10.41,
+            "price_change_1h": 18.64,
+            "txns_5m_buys": 1371,
+            "txns_5m_sells": 594,
+            "liquidity": 13735.97,
+            "fdv": 35913.0,
+            "pair_created": 1782504691000
+          }
+        }
+      },
+      {
+        "address": "DW8bK9iXxgQJK6xSipx25pxiPoFxFkCimS3oPbVUpump",
+        "symbol": "Solism",
+        "verdict": "PUMP",
+        "ath_multiplier": 3.420981539846916,
+        "current_multiplier": 0.17330031517334535,
+        "min_price_multiplier": 0.14934714092751014,
+        "signal_age": 1470.5448129177094,
+        "signal_time": "2026-06-27T02:36:27.135522+00:00",
+        "timestamp": "2026-06-27T02:36:27.135642+00:00",
+        "score_breakdown": {
+          "match_score": 0.6,
+          "match_reason": "MCap $22214, Liq $10680, Vol/Liq 2.3",
+          "mcap": 22214.0,
+          "liquidity": 10680.35,
+          "holders": 0,
+          "unique_wallets": 0,
+          "buy_count": 430,
+          "sell_count": 243,
+          "buy_sell_ratio": 1.7695473251028806,
+          "tp_pct": 100.0,
+          "sl_pct": -50.0
+        }
+      },
+      {
+        "address": "nZdJAqPctShfYATmiwDkqcX4ze7ntDuJpQPWUSZpump",
+        "symbol": "SOLAI",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.2069510268562402,
+        "current_multiplier": 0.010884676145339653,
+        "min_price_multiplier": 0.010774091627172197,
+        "signal_age": 2017.7895398139954,
+        "signal_time": "2026-06-27T02:36:30.115505+00:00",
+        "timestamp": "2026-06-27T02:36:30.115605+00:00",
+        "score_breakdown": {
+          "match_score": 0.95,
+          "match_reason": "MCap $126622, Liq $25915, Vol/Liq 8.3",
+          "mcap": 126622.0,
+          "liquidity": 25915.08,
+          "holders": 0,
+          "unique_wallets": 0,
+          "buy_count": 524,
+          "sell_count": 144,
+          "buy_sell_ratio": 3.638888888888889,
+          "tp_pct": 100.0,
+          "sl_pct": -50.0
+        }
       }
     ],
     "success_history": [
@@ -63291,18 +63427,18 @@
       }
     ],
     "auto_learn_insights": {
-      "total_recent": 50,
-      "wins": 27,
-      "losses": 23,
-      "win_rate": 54.0,
-      "avg_win_bsr": 0,
-      "avg_loss_bsr": 0,
-      "avg_win_holders": 0,
-      "avg_loss_holders": 0,
-      "avg_win_liq": 0,
-      "avg_loss_liq": 0,
-      "avg_win_lp_locked": 0,
-      "avg_loss_lp_locked": 0
+      "win_rate": 50.0,
+      "dump_rate": 50.0,
+      "avg_ath": 3.74,
+      "quality_score": 0.35,
+      "research_avg_win_holders": 10,
+      "research_avg_lose_holders": 5,
+      "research_avg_win_top10": 30,
+      "research_avg_lose_top10": 50,
+      "source_win_rates": {
+        "unknown": 50.0
+      },
+      "updated_at": "2026-06-27T02:36:30.800458+00:00"
     },
     "signal_criteria_stats": {
       "pump_medians": {
@@ -63327,20 +63463,23 @@
       "dump_count": 1000
     },
     "signal_criteria": {
-      "min_bsr": 1.26,
-      "min_holders": 9.5,
-      "min_wallets": 14,
-      "min_liq": 500,
-      "min_liq_pct": 10,
+      "min_bsr": 1.24,
+      "min_holders": 20,
+      "min_wallets": 15,
+      "min_liq": 8414.0,
+      "min_liq_pct": 25.6,
       "min_lp_locked": 80,
       "min_mcap": 3000,
-      "heuristic_threshold": 0.45,
-      "pattern_threshold": 0.6,
+      "heuristic_threshold": 0.53,
+      "pattern_threshold": 0.63,
       "dump_pattern_threshold": 0.7,
       "max_age_seconds": 21600,
-      "updated_at": "2026-06-27T01:54:12.460035+00:00",
-      "sample_size": 900,
-      "min_lp_providers": 2
+      "updated_at": "2026-06-27T02:38:39.059858+00:00",
+      "sample_size": 893,
+      "min_lp_providers": 2,
+      "volatility_setting": "high",
+      "last_quality_score": 0.35,
+      "max_age_hours": 59.1
     },
     "channel_insights": {
       "patterns": {
@@ -64335,7 +64474,12 @@
       },
       "1": {
         "wins": 1,
-        "total": 1,
+        "total": 2,
+        "total_pnl": 0.0
+      },
+      "2": {
+        "wins": 2,
+        "total": 3,
         "total_pnl": 0.0
       }
     },
