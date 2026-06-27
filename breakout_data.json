@@ -1,0 +1,19 @@
+{
+  "breakouts": [
+    {
+      "status": "breakout",
+      "symbol": "SOL",
+      "price": 1.151e-05,
+      "consolidation_low": 8.661e-06,
+      "pct_change": 32.9,
+      "multiplier": 1.16,
+      "age_minutes": 42.4,
+      "top10_pct": 0,
+      "holders": 0,
+      "target_3x": false,
+      "ca": "6fdQ3iKaUDcGQJ6jRvP1DUuiDDt2VZZyEGJd75QGpump",
+      "detected_at": "2026-06-27T17:40:32.292310+00:00"
+    }
+  ],
+  "updated": "2026-06-27T17:40:32.293359+00:00"
+}

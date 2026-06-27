@@ -15,10 +15,10 @@
   "updated_at": "2026-06-27T05:47:36.598686+00:00",
   "signal_type_performance": {
     "UNKNOWN": {
-      "total": 198,
-      "wins": 126,
-      "win_rate": 63.6,
-      "avg_ath": 11090.73
+      "total": 202,
+      "wins": 130,
+      "win_rate": 64.4,
+      "avg_ath": 10871.22
     },
     "FEATURED_NEW": {
       "total": 9,

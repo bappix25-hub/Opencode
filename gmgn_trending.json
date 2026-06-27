@@ -93,9 +93,9 @@
       "name": "TOES",
       "ca": "6ehEcTMCc85aNF4x9CWx8HuvWGhxQtvKdhKVf2HDpump",
       "price_usd": 0.01209,
-      "mc": 11244642.0,
-      "liq_usd": 341334.94,
-      "volume_24h": 1224555.51,
+      "mc": 10288078.0,
+      "liq_usd": 324706.53,
+      "volume_24h": 735659.09,
       "volume_5m": 26.59,
       "price_change_24h": -15.94,
       "price_change_1h": 0.43,
@@ -104,7 +104,7 @@
       "age_hours": 850.4484502230496,
       "first_seen_trending": 1782244238.420803,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782587155.169317
     },
     "yMJPZbnhoHib3ib8n8PfiVcp9yauk1vnaGKLx7epump": {
       "symbol": "FARM",
@@ -129,9 +129,9 @@
       "name": "The Black Bull",
       "ca": "9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump",
       "price_usd": 0.0005628,
-      "mc": 6535677.0,
-      "liq_usd": 234223.45,
-      "volume_24h": 2747482.0,
+      "mc": 4869820.0,
+      "liq_usd": 209092.55,
+      "volume_24h": 5557251.24,
       "volume_5m": 2171.77,
       "price_change_24h": -20.94,
       "price_change_1h": 39.55,
@@ -140,7 +140,7 @@
       "age_hours": 166.7473391119385,
       "first_seen_trending": 1782244238.420803,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782587155.169317
     },
     "5mYMEjXycpw6xwmwHyjRGeX7uEhAZe2szgzBau9fpump": {
       "symbol": "CITY",
@@ -183,9 +183,9 @@
       "name": "Law Of Attraction",
       "ca": "EhHyfjRwj2jhmSE7GW5uJfizaLcNDa5C4HWPiSqjpump",
       "price_usd": 0.002321,
-      "mc": 1765200.0,
-      "liq_usd": 111549.29,
-      "volume_24h": 52504.11,
+      "mc": 1741107.0,
+      "liq_usd": 110122.38,
+      "volume_24h": 47642.58,
       "volume_5m": 498.47,
       "price_change_24h": -7.98,
       "price_change_1h": 10.28,
@@ -194,16 +194,16 @@
       "age_hours": 754.0384502230496,
       "first_seen_trending": 1782244238.420803,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782587155.169317
     },
     "7XLu71Wvq7zuNU7TP5qjYY8kqg9zxtrsb7sJEEF6pump": {
       "symbol": "XRPS",
       "name": "XRP SUPERCYCLE",
       "ca": "7XLu71Wvq7zuNU7TP5qjYY8kqg9zxtrsb7sJEEF6pump",
       "price_usd": 0.0003486,
-      "mc": 412124.0,
-      "liq_usd": 53087.12,
-      "volume_24h": 14896.41,
+      "mc": 404290.0,
+      "liq_usd": 52259.46,
+      "volume_24h": 13046.02,
       "volume_5m": 30.63,
       "price_change_24h": -4.95,
       "price_change_1h": 11.37,
@@ -212,7 +212,7 @@
       "age_hours": 518.9440057786052,
       "first_seen_trending": 1782244238.420803,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782587155.169317
     },
     "9CK18Vc5daUGwgt9pBYVwSuXmEDrR2T2HxV6fasjpump": {
       "symbol": "Eepy",
@@ -559,9 +559,9 @@
       "name": "catwifhat",
       "ca": "5pYB12kEhfhSFXJjZ7JtyqDpt6uUqhsF6iu6Ee9spump",
       "price_usd": 0.0006708,
-      "mc": 452079.0,
-      "liq_usd": 81968.06,
-      "volume_24h": 737507.99,
+      "mc": 480487.0,
+      "liq_usd": 84644.08,
+      "volume_24h": 788287.59,
       "volume_5m": 1177.2,
       "price_change_24h": 119.0,
       "price_change_1h": -7.03,
@@ -570,7 +570,7 @@
       "age_hours": 50.887560082194014,
       "first_seen_trending": 1782294816.216296,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782576627.328231
     },
     "7pxjACBtoH6prGEMrnhnHgA6RyeXCCzPWT8enrpapump": {
       "symbol": "SMUDGE",
@@ -955,9 +955,9 @@
       "name": "drooling cat",
       "ca": "B6f27ETGcjgGNB1fqULJbXVmw9FnL8HgBp7R83hmpump",
       "price_usd": 0.000646,
-      "mc": 943794.0,
-      "liq_usd": 106896.89,
-      "volume_24h": 515566.45,
+      "mc": 1138952.0,
+      "liq_usd": 118446.52,
+      "volume_24h": 804475.57,
       "volume_5m": 2823.46,
       "price_change_24h": -45.53,
       "price_change_1h": -2.83,
@@ -966,7 +966,7 @@
       "age_hours": 646.2952256013997,
       "first_seen_trending": 1782367931.812165,
       "hours_active": 0.0,
-      "last_updated": 1782537839.204615
+      "last_updated": 1782587155.169317
     },
     "EhR8t2Hd9KikSPiRHdHs8WidCLa3T1VEPFpnCsRRpump": {
       "symbol": "HTML",
@@ -1117,9 +1117,9 @@
       "name": "SPCX69",
       "ca": "SPCXwBHVrKpRqMRawL3NNvt1sXP2Yf3edwRbta53N69",
       "price_usd": 0.002433,
-      "mc": 3315371.0,
-      "liq_usd": 180614.72,
-      "volume_24h": 3208017.99,
+      "mc": 3327116.0,
+      "liq_usd": 181122.26,
+      "volume_24h": 3229532.53,
       "volume_5m": 3351.8,
       "price_change_24h": 2.83,
       "price_change_1h": 1.64,
@@ -1128,7 +1128,7 @@
       "age_hours": 314.39000232977975,
       "first_seen_trending": 1782404774.008387,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782576318.000843
     },
     "J1CGp9QmaCZhXSCAs7LfBkNZJ1NEeUHFrzjb1ob8pump": {
       "symbol": "AYAI",
@@ -1333,9 +1333,9 @@
       "name": "Believe In Something",
       "ca": "DYiMpP9V4CWJpapV35533xoXDiE6N3DJAvKBd4sxpump",
       "price_usd": 2.688e-06,
-      "mc": 1956.0,
-      "liq_usd": 3130.18,
-      "volume_24h": 75443.36,
+      "mc": 3703.0,
+      "liq_usd": 4368.22,
+      "volume_24h": 40612.73,
       "volume_5m": 0.0,
       "price_change_24h": -90.04,
       "price_change_1h": -19.03,
@@ -1344,7 +1344,7 @@
       "age_hours": 5.355263154432508,
       "first_seen_trending": 1782460853.947356,
       "hours_active": 0.0,
-      "last_updated": 1782483549.911638
+      "last_updated": 1782587155.169317
     },
     "8CJ3gpPj5vN4CitVyLLnYAoT3HqEAu9pR9iMzFqWpump": {
       "symbol": "Rubenhood",
@@ -1441,9 +1441,9 @@
       "name": "Hodly",
       "ca": "6oPG5q5SPNtQTxeu8RRWvh6mngsauznC2SVVtXqPpump",
       "price_usd": 9.174e-05,
-      "mc": 334687.0,
-      "liq_usd": 43635.12,
-      "volume_24h": 1001687.23,
+      "mc": 249273.0,
+      "liq_usd": 37715.5,
+      "volume_24h": 816535.21,
       "volume_5m": 7645.37,
       "price_change_24h": 208.0,
       "price_change_1h": 208.0,
@@ -1452,16 +1452,16 @@
       "age_hours": 0.9620029761420356,
       "first_seen_trending": 1782487250.210714,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782587155.169317
     },
     "BzWkBj39idjMnWPqeF7Baw28JQnhBFZGAMNGpacdpump": {
       "symbol": "GRAVEN",
       "name": "Graven",
       "ca": "BzWkBj39idjMnWPqeF7Baw28JQnhBFZGAMNGpacdpump",
       "price_usd": 3.046e-05,
-      "mc": 14304.0,
-      "liq_usd": 8624.56,
-      "volume_24h": 182372.83,
+      "mc": 9271.0,
+      "liq_usd": 6910.36,
+      "volume_24h": 105439.98,
       "volume_5m": 332.76,
       "price_change_24h": 4.8,
       "price_change_1h": 116.0,
@@ -1470,16 +1470,16 @@
       "age_hours": 3.978298746948242,
       "first_seen_trending": 1782500246.875489,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782584646.143638
     },
     "2j6CApLFvzSaRZ21bAStanY5qKAJwkuit6yn7eQbpump": {
       "symbol": "Terra",
       "name": "GPT\u20115.6 Terra",
       "ca": "2j6CApLFvzSaRZ21bAStanY5qKAJwkuit6yn7eQbpump",
       "price_usd": 0.0002662,
-      "mc": 1713.0,
-      "liq_usd": 3306.81,
-      "volume_24h": 1845084.34,
+      "mc": 1684.0,
+      "liq_usd": 3266.83,
+      "volume_24h": 1699425.13,
       "volume_5m": 27779.24,
       "price_change_24h": 424.0,
       "price_change_1h": 152.0,
@@ -1488,7 +1488,7 @@
       "age_hours": 1.1146876358371312,
       "first_seen_trending": 1782500246.875489,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782583105.34573
     },
     "8Uot4zYbnABDHXgeWBUMu31agMEj2gdLVrDCS22pump": {
       "symbol": "MOXIE",
@@ -1531,9 +1531,9 @@
       "name": "Death and Taxes",
       "ca": "4TTwPqbR1jxtRRX6rYgSWzK55wqqFLkC2GrMedzUpump",
       "price_usd": 2.888e-05,
-      "mc": 386354.0,
-      "liq_usd": 44641.15,
-      "volume_24h": 44763.76,
+      "mc": 1930.0,
+      "liq_usd": 3146.43,
+      "volume_24h": 57622.64,
       "volume_5m": 0.0,
       "price_change_24h": 0.01,
       "price_change_1h": 0.0,
@@ -1542,16 +1542,16 @@
       "age_hours": 5.217346421712239,
       "first_seen_trending": 1782500866.447118,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782586544.58053
     },
     "Go6nQcPqwwvH4MBTcoFEZ2G3yULgkFctwLDUSLMNpump": {
       "symbol": "BOO",
       "name": "BooBeat",
       "ca": "Go6nQcPqwwvH4MBTcoFEZ2G3yULgkFctwLDUSLMNpump",
       "price_usd": 2.98e-05,
-      "mc": 29809.36,
-      "liq_usd": 0.0,
-      "volume_24h": 6167.13,
+      "mc": 3909.0,
+      "liq_usd": 5875.89,
+      "volume_24h": 7455225.97,
       "volume_5m": 0.0,
       "price_change_24h": 1369.0,
       "price_change_1h": 0.0,
@@ -1560,16 +1560,16 @@
       "age_hours": 2.6560760305447046,
       "first_seen_trending": 1782502998.87371,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782587155.169317
     },
     "26Rre7jT3jUaU29s6oS6QbLSwpbV2ZSZmouZAFWApump": {
       "symbol": "FRONT",
       "name": "The Frontier",
       "ca": "26Rre7jT3jUaU29s6oS6QbLSwpbV2ZSZmouZAFWApump",
       "price_usd": 0.0002545,
-      "mc": 58236.0,
-      "liq_usd": 21061.9,
-      "volume_24h": 2974139.63,
+      "mc": 35428.0,
+      "liq_usd": 16386.02,
+      "volume_24h": 3003906.55,
       "volume_5m": 68415.18,
       "price_change_24h": 308.0,
       "price_change_1h": 308.0,
@@ -1578,7 +1578,7 @@
       "age_hours": 0.19105676561143664,
       "first_seen_trending": 1782504237.804356,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782587155.169317
     },
     "BzoaNd4L6Z8CLeZTjTffVm27iAr6DfYgsvzCwH8ypump": {
       "symbol": "werld",
@@ -1711,9 +1711,9 @@
       "name": "Pump ICO",
       "ca": "Ha1JzNcMtzffLaivL7b4Wzoj5um7Nctcy529BbbYpump",
       "price_usd": 0.0001613,
-      "mc": 93697.0,
-      "liq_usd": 23278.61,
-      "volume_24h": 338506.27,
+      "mc": 34663.0,
+      "liq_usd": 14160.39,
+      "volume_24h": 292396.06,
       "volume_5m": 203.65,
       "price_change_24h": -23.35,
       "price_change_1h": 29.39,
@@ -1722,16 +1722,16 @@
       "age_hours": 35.81593295857748,
       "first_seen_trending": 1782565048.358651,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782587155.169317
     },
     "4fWAePz1u4avHhFJqa1f7Bni28vaPq2abb98CahTpump": {
       "symbol": "BANANA",
       "name": "Banana For Scale",
       "ca": "4fWAePz1u4avHhFJqa1f7Bni28vaPq2abb98CahTpump",
       "price_usd": 9.295e-05,
-      "mc": 179043.0,
-      "liq_usd": 32919.86,
-      "volume_24h": 920935.45,
+      "mc": 68278.0,
+      "liq_usd": 20628.02,
+      "volume_24h": 1210801.74,
       "volume_5m": 3298.59,
       "price_change_24h": 228.0,
       "price_change_1h": 43.12,
@@ -1740,16 +1740,16 @@
       "age_hours": 5.408988514133029,
       "first_seen_trending": 1782565048.358651,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782587155.169317
     },
     "8j7kvT7xLg8Ramzr3K9KngGLtTKrvgReWNDvKM7gpump": {
       "symbol": "Wolfy",
       "name": "Wolfy",
       "ca": "8j7kvT7xLg8Ramzr3K9KngGLtTKrvgReWNDvKM7gpump",
       "price_usd": 8.148e-05,
-      "mc": 81521.0,
-      "liq_usd": 20935.78,
-      "volume_24h": 229540.9,
+      "mc": 111885.0,
+      "liq_usd": 24723.51,
+      "volume_24h": 384725.23,
       "volume_5m": 4077.85,
       "price_change_24h": 175.0,
       "price_change_1h": 175.0,
@@ -1758,16 +1758,16 @@
       "age_hours": 0.9528774030219184,
       "first_seen_trending": 1782565048.358651,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782587155.169317
     },
     "6jxPEQ1q4wwUHGAvTBXzQM1VTktKcFSB158U5Ekbpump": {
       "symbol": "PJOTCHUA",
       "name": "Purple Jotchua",
       "ca": "6jxPEQ1q4wwUHGAvTBXzQM1VTktKcFSB158U5Ekbpump",
       "price_usd": 1.342e-05,
-      "mc": 16191.09,
+      "mc": 16215.38,
       "liq_usd": 0.0,
-      "volume_24h": 35720.48,
+      "volume_24h": 44949.32,
       "volume_5m": 56.95,
       "price_change_24h": 563.0,
       "price_change_1h": 3.54,
@@ -1776,16 +1776,16 @@
       "age_hours": 2.9306551807996963,
       "first_seen_trending": 1782565048.358651,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782587155.169317
     },
     "8XKVSyKQudQEBu4jv7RNiXEVG9XXSU7QrnueiRwkpump": {
       "symbol": "BOLEX",
       "name": "BOLEX",
       "ca": "8XKVSyKQudQEBu4jv7RNiXEVG9XXSU7QrnueiRwkpump",
       "price_usd": 1.703e-06,
-      "mc": 1723.0,
-      "liq_usd": 3095.86,
-      "volume_24h": 559572.64,
+      "mc": 1717.0,
+      "liq_usd": 3095.36,
+      "volume_24h": 559589.63,
       "volume_5m": 0.0,
       "price_change_24h": -94.7,
       "price_change_1h": -0.71,
@@ -1794,16 +1794,16 @@
       "age_hours": 8.933432958577473,
       "first_seen_trending": 1782565048.358651,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782577245.756789
     },
     "62yzpmKJB6XiVtZcQZhUkUXhqwN3UgCbffUi4JM9pump": {
       "symbol": "world",
       "name": "worldxyz",
       "ca": "62yzpmKJB6XiVtZcQZhUkUXhqwN3UgCbffUi4JM9pump",
       "price_usd": 0.0001588,
-      "mc": 412390.0,
-      "liq_usd": 67523.06,
-      "volume_24h": 1138105.07,
+      "mc": 752411.0,
+      "liq_usd": 91505.22,
+      "volume_24h": 1265734.0,
       "volume_5m": 7061.62,
       "price_change_24h": 170.0,
       "price_change_1h": 45.26,
@@ -1812,16 +1812,16 @@
       "age_hours": 19.17778595472548,
       "first_seen_trending": 1782569386.029437,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782572362.641982
     },
     "3oX9emrqYRGzFEDPP3jA6tYnUBML4QSr3DfgD2r5pump": {
       "symbol": "\u6ed1\u308b\u732b",
       "name": "Sliding Cat",
       "ca": "3oX9emrqYRGzFEDPP3jA6tYnUBML4QSr3DfgD2r5pump",
       "price_usd": 0.0008017,
-      "mc": 781493.0,
-      "liq_usd": 83199.13,
-      "volume_24h": 887439.05,
+      "mc": 609469.0,
+      "liq_usd": 73211.5,
+      "volume_24h": 683504.75,
       "volume_5m": 1062.5,
       "price_change_24h": 129.0,
       "price_change_1h": -9.39,
@@ -1830,230 +1830,154 @@
       "age_hours": 244.49711963894313,
       "first_seen_trending": 1782570626.6307,
       "hours_active": 0.0,
-      "last_updated": 1782571426.883043
+      "last_updated": 1782587155.169317
+    },
+    "Eb2zbWj8a9oes8t4DC1kjuQEPWgjYCgjGSXqLoLpump": {
+      "symbol": "WAGR",
+      "name": "Wagr",
+      "ca": "Eb2zbWj8a9oes8t4DC1kjuQEPWgjYCgjGSXqLoLpump",
+      "price_usd": 2.106e-05,
+      "mc": 16631.0,
+      "liq_usd": 9572.35,
+      "volume_24h": 344687.57,
+      "volume_5m": 770.01,
+      "price_change_24h": -29.92,
+      "price_change_1h": -49.65,
+      "buy_ratio": 0.5514622104063805,
+      "txns_24h": 7899,
+      "age_hours": 10.684756786702474,
+      "first_seen_trending": 1782572673.124432,
+      "hours_active": 0.0,
+      "last_updated": 1782577862.054307
+    },
+    "5rZrG8YqtWV4iSPgUNE1VU4kGPcVxWNQauphqjyqpump": {
+      "symbol": "ANSEMSTR",
+      "name": "AnsemStrategy",
+      "ca": "5rZrG8YqtWV4iSPgUNE1VU4kGPcVxWNQauphqjyqpump",
+      "price_usd": 0.000142,
+      "mc": 1487.0,
+      "liq_usd": 2908.6,
+      "volume_24h": 873215.26,
+      "volume_5m": 19846.78,
+      "price_change_24h": 138.0,
+      "price_change_1h": 138.0,
+      "buy_ratio": 0.7874030291835981,
+      "txns_24h": 5414,
+      "age_hours": 0.7961955294460721,
+      "first_seen_trending": 1782575391.303906,
+      "hours_active": 0.0,
+      "last_updated": 1782587155.169317
+    },
+    "yrS59k8QfFXjo8BTA2ZUuSTAiwJsMFri3xxYrJQpump": {
+      "symbol": "DoGe",
+      "name": "DoGeCo1n",
+      "ca": "yrS59k8QfFXjo8BTA2ZUuSTAiwJsMFri3xxYrJQpump",
+      "price_usd": 2.174e-05,
+      "mc": 9542.0,
+      "liq_usd": 7035.96,
+      "volume_24h": 176319.67,
+      "volume_5m": 181.05,
+      "price_change_24h": -26.79,
+      "price_change_1h": -9.61,
+      "buy_ratio": 0.566285472257518,
+      "txns_24h": 4722,
+      "age_hours": 8.297410253634983,
+      "first_seen_trending": 1782577553.676913,
+      "hours_active": 0.0,
+      "last_updated": 1782584955.830779
+    },
+    "BXFPRH78negdDuPiC7voGZun6cm4vQfjGxBD3GzApump": {
+      "symbol": "PARABOLA",
+      "name": "The Parabola",
+      "ca": "BXFPRH78negdDuPiC7voGZun6cm4vQfjGxBD3GzApump",
+      "price_usd": 2.782e-06,
+      "mc": 2354.0,
+      "liq_usd": 3496.23,
+      "volume_24h": 120450.4,
+      "volume_5m": 5.86,
+      "price_change_24h": -90.59,
+      "price_change_1h": -18.96,
+      "buy_ratio": 0.566028821167021,
+      "txns_24h": 4233,
+      "age_hours": 10.962072654147677,
+      "first_seen_trending": 1782578170.461555,
+      "hours_active": 0.0,
+      "last_updated": 1782579404.141831
+    },
+    "3pQk2G2pBRQsV3W9ALmCrDM8g6frfNqC8mpcNrskpump": {
+      "symbol": "PTSD",
+      "name": "Post Traumatic Sell Disorder",
+      "ca": "3pQk2G2pBRQsV3W9ALmCrDM8g6frfNqC8mpcNrskpump",
+      "price_usd": 2.408e-05,
+      "mc": 4273.0,
+      "liq_usd": 4700.62,
+      "volume_24h": 44275.08,
+      "volume_5m": 6367.52,
+      "price_change_24h": -18.38,
+      "price_change_1h": -18.38,
+      "buy_ratio": 0.5682730923694779,
+      "txns_24h": 498,
+      "age_hours": 0.16185931193033853,
+      "first_seen_trending": 1782579712.693523,
+      "hours_active": 0.0,
+      "last_updated": 1782587155.169317
+    },
+    "562ve6KNpiCtzT2RcvJ9nuA8yBSZSV5GLkawEFGipump": {
+      "symbol": "PENSION",
+      "name": "The Green Bear",
+      "ca": "562ve6KNpiCtzT2RcvJ9nuA8yBSZSV5GLkawEFGipump",
+      "price_usd": 0.0004054,
+      "mc": 303553.0,
+      "liq_usd": 41517.24,
+      "volume_24h": 1068536.11,
+      "volume_5m": 111865.42,
+      "price_change_24h": 561.0,
+      "price_change_1h": 561.0,
+      "buy_ratio": 0.44862436833239755,
+      "txns_24h": 1781,
+      "age_hours": 0.1927806399875217,
+      "first_seen_trending": 1782580946.010304,
+      "hours_active": 0.0,
+      "last_updated": 1782587155.169317
+    },
+    "6bczfX29RXSx5pyX5WUmYXRc8NVYHgTo6Ry87MjZpump": {
+      "symbol": "MOVEMENT",
+      "name": "The Movement",
+      "ca": "6bczfX29RXSx5pyX5WUmYXRc8NVYHgTo6Ry87MjZpump",
+      "price_usd": 2.972e-05,
+      "mc": 29727.18,
+      "liq_usd": 0.0,
+      "volume_24h": 6150.13,
+      "volume_5m": 0.0,
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "buy_ratio": 1.0,
+      "txns_24h": 1,
+      "age_hours": 18.332402566663955,
+      "first_seen_trending": 1782585265.64924,
+      "hours_active": 0.0,
+      "last_updated": 1782587155.169317
+    },
+    "EWhqwYvieNsYCbn5Mb71ZopXYqiMvHmSfV2dUYNpdv2M": {
+      "symbol": "VATRENI",
+      "name": "Vatreni Token",
+      "ca": "EWhqwYvieNsYCbn5Mb71ZopXYqiMvHmSfV2dUYNpdv2M",
+      "price_usd": 1.51,
+      "mc": 6046420.0,
+      "liq_usd": 168294.3,
+      "volume_24h": 24520.17,
+      "volume_5m": 0.0,
+      "price_change_24h": -2.36,
+      "price_change_1h": -0.42,
+      "buy_ratio": 0.43137254901960786,
+      "txns_24h": 51,
+      "age_hours": 364.77390437330456,
+      "first_seen_trending": 1782585926.055744,
+      "hours_active": 0.0,
+      "last_updated": 1782587155.169317
     }
   },
   "scans": [
-    {
-      "timestamp": 1782516913.624686,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782517221.944469,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782517529.368842,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782517836.297934,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782518143.50064,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782518451.448285,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782518759.39617,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782519067.032212,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782519373.860826,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782519680.864394,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782519988.344204,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782520296.634434,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782520605.179851,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782520912.908374,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782521220.178505,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782521527.854795,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782521836.598758,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782522144.713954,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782522451.772348,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782522758.834029,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782523066.055373,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782523374.915221,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782523682.710972,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782523989.58735,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782524296.698313,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782524605.923648,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782524913.843088,
-      "tokens_found": 0,
-      "total_tracked": 90
-    },
-    {
-      "timestamp": 1782525225.147549,
-      "tokens_found": 1,
-      "total_tracked": 91
-    },
-    {
-      "timestamp": 1782525532.649193,
-      "tokens_found": 0,
-      "total_tracked": 91
-    },
-    {
-      "timestamp": 1782525840.143442,
-      "tokens_found": 0,
-      "total_tracked": 91
-    },
-    {
-      "timestamp": 1782526147.311613,
-      "tokens_found": 0,
-      "total_tracked": 91
-    },
-    {
-      "timestamp": 1782526455.126711,
-      "tokens_found": 0,
-      "total_tracked": 91
-    },
-    {
-      "timestamp": 1782526764.839184,
-      "tokens_found": 0,
-      "total_tracked": 91
-    },
-    {
-      "timestamp": 1782527071.725333,
-      "tokens_found": 1,
-      "total_tracked": 92
-    },
-    {
-      "timestamp": 1782527383.130089,
-      "tokens_found": 0,
-      "total_tracked": 92
-    },
-    {
-      "timestamp": 1782528000.635133,
-      "tokens_found": 1,
-      "total_tracked": 93
-    },
-    {
-      "timestamp": 1782528308.797829,
-      "tokens_found": 0,
-      "total_tracked": 93
-    },
-    {
-      "timestamp": 1782528615.894843,
-      "tokens_found": 0,
-      "total_tracked": 93
-    },
-    {
-      "timestamp": 1782528923.535701,
-      "tokens_found": 0,
-      "total_tracked": 93
-    },
-    {
-      "timestamp": 1782529230.798417,
-      "tokens_found": 0,
-      "total_tracked": 93
-    },
-    {
-      "timestamp": 1782529537.814409,
-      "tokens_found": 0,
-      "total_tracked": 93
-    },
-    {
-      "timestamp": 1782529845.297491,
-      "tokens_found": 0,
-      "total_tracked": 93
-    },
-    {
-      "timestamp": 1782530152.586585,
-      "tokens_found": 0,
-      "total_tracked": 93
-    },
-    {
-      "timestamp": 1782530459.603751,
-      "tokens_found": 0,
-      "total_tracked": 93
-    },
     {
       "timestamp": 1782530766.774153,
       "tokens_found": 0,
@@ -2333,6 +2257,226 @@
       "timestamp": 1782571426.883043,
       "tokens_found": 0,
       "total_tracked": 102
+    },
+    {
+      "timestamp": 1782572362.641982,
+      "tokens_found": 0,
+      "total_tracked": 102
+    },
+    {
+      "timestamp": 1782572673.124432,
+      "tokens_found": 1,
+      "total_tracked": 103
+    },
+    {
+      "timestamp": 1782572983.200702,
+      "tokens_found": 0,
+      "total_tracked": 103
+    },
+    {
+      "timestamp": 1782574155.52154,
+      "tokens_found": 0,
+      "total_tracked": 103
+    },
+    {
+      "timestamp": 1782574463.64461,
+      "tokens_found": 0,
+      "total_tracked": 103
+    },
+    {
+      "timestamp": 1782574772.414608,
+      "tokens_found": 0,
+      "total_tracked": 103
+    },
+    {
+      "timestamp": 1782575082.152729,
+      "tokens_found": 0,
+      "total_tracked": 103
+    },
+    {
+      "timestamp": 1782575391.303906,
+      "tokens_found": 1,
+      "total_tracked": 104
+    },
+    {
+      "timestamp": 1782575700.413994,
+      "tokens_found": 0,
+      "total_tracked": 104
+    },
+    {
+      "timestamp": 1782576008.718805,
+      "tokens_found": 0,
+      "total_tracked": 104
+    },
+    {
+      "timestamp": 1782576318.000843,
+      "tokens_found": 0,
+      "total_tracked": 104
+    },
+    {
+      "timestamp": 1782576627.328231,
+      "tokens_found": 0,
+      "total_tracked": 104
+    },
+    {
+      "timestamp": 1782576936.456391,
+      "tokens_found": 0,
+      "total_tracked": 104
+    },
+    {
+      "timestamp": 1782577245.756789,
+      "tokens_found": 0,
+      "total_tracked": 104
+    },
+    {
+      "timestamp": 1782577553.676913,
+      "tokens_found": 1,
+      "total_tracked": 105
+    },
+    {
+      "timestamp": 1782577862.054307,
+      "tokens_found": 0,
+      "total_tracked": 105
+    },
+    {
+      "timestamp": 1782578170.461555,
+      "tokens_found": 1,
+      "total_tracked": 106
+    },
+    {
+      "timestamp": 1782578479.740981,
+      "tokens_found": 0,
+      "total_tracked": 106
+    },
+    {
+      "timestamp": 1782578788.737348,
+      "tokens_found": 0,
+      "total_tracked": 106
+    },
+    {
+      "timestamp": 1782579094.578537,
+      "tokens_found": 0,
+      "total_tracked": 106
+    },
+    {
+      "timestamp": 1782579404.141831,
+      "tokens_found": 0,
+      "total_tracked": 106
+    },
+    {
+      "timestamp": 1782579712.693523,
+      "tokens_found": 1,
+      "total_tracked": 107
+    },
+    {
+      "timestamp": 1782580021.734279,
+      "tokens_found": 0,
+      "total_tracked": 107
+    },
+    {
+      "timestamp": 1782580329.975168,
+      "tokens_found": 0,
+      "total_tracked": 107
+    },
+    {
+      "timestamp": 1782580637.682038,
+      "tokens_found": 0,
+      "total_tracked": 107
+    },
+    {
+      "timestamp": 1782580946.010304,
+      "tokens_found": 1,
+      "total_tracked": 108
+    },
+    {
+      "timestamp": 1782581255.714119,
+      "tokens_found": 0,
+      "total_tracked": 108
+    },
+    {
+      "timestamp": 1782581564.041736,
+      "tokens_found": 0,
+      "total_tracked": 108
+    },
+    {
+      "timestamp": 1782581871.754537,
+      "tokens_found": 0,
+      "total_tracked": 108
+    },
+    {
+      "timestamp": 1782582180.274928,
+      "tokens_found": 0,
+      "total_tracked": 108
+    },
+    {
+      "timestamp": 1782582488.142814,
+      "tokens_found": 0,
+      "total_tracked": 108
+    },
+    {
+      "timestamp": 1782582797.304031,
+      "tokens_found": 0,
+      "total_tracked": 108
+    },
+    {
+      "timestamp": 1782583105.34573,
+      "tokens_found": 0,
+      "total_tracked": 108
+    },
+    {
+      "timestamp": 1782583413.494466,
+      "tokens_found": 0,
+      "total_tracked": 108
+    },
+    {
+      "timestamp": 1782583721.149205,
+      "tokens_found": 0,
+      "total_tracked": 108
+    },
+    {
+      "timestamp": 1782584029.116932,
+      "tokens_found": 0,
+      "total_tracked": 108
+    },
+    {
+      "timestamp": 1782584337.605438,
+      "tokens_found": 0,
+      "total_tracked": 108
+    },
+    {
+      "timestamp": 1782584646.143638,
+      "tokens_found": 0,
+      "total_tracked": 108
+    },
+    {
+      "timestamp": 1782584955.830779,
+      "tokens_found": 0,
+      "total_tracked": 108
+    },
+    {
+      "timestamp": 1782585265.64924,
+      "tokens_found": 1,
+      "total_tracked": 109
+    },
+    {
+      "timestamp": 1782585926.055744,
+      "tokens_found": 1,
+      "total_tracked": 110
+    },
+    {
+      "timestamp": 1782586234.76847,
+      "tokens_found": 0,
+      "total_tracked": 110
+    },
+    {
+      "timestamp": 1782586544.58053,
+      "tokens_found": 0,
+      "total_tracked": 110
+    },
+    {
+      "timestamp": 1782587155.169317,
+      "tokens_found": 0,
+      "total_tracked": 110
     }
   ]
 }

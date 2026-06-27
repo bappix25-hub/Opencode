@@ -73224,18 +73224,18 @@
       }
     ],
     "auto_learn_insights": {
+      "total_recent": 50,
+      "wins": 21,
+      "losses": 29,
       "win_rate": 42.0,
-      "dump_rate": 58.0,
-      "avg_ath": 2.79,
-      "quality_score": 0.35,
-      "research_avg_win_holders": 10,
-      "research_avg_lose_holders": 5,
-      "research_avg_win_top10": 30,
-      "research_avg_lose_top10": 50,
-      "source_win_rates": {
-        "unknown": 42.0
-      },
-      "updated_at": "2026-06-27T18:00:54.522856+00:00"
+      "avg_win_bsr": 0,
+      "avg_loss_bsr": 0,
+      "avg_win_holders": 0,
+      "avg_loss_holders": 0,
+      "avg_win_liq": 0,
+      "avg_loss_liq": 0,
+      "avg_win_lp_locked": 0,
+      "avg_loss_lp_locked": 0
     },
     "signal_criteria_stats": {
       "pump_medians": {
@@ -73263,20 +73263,18 @@
       "min_bsr": 1.26,
       "min_holders": 20,
       "min_wallets": 15,
-      "min_liq": 8331.0,
+      "min_liq": 8414.0,
       "min_liq_pct": 25.2,
       "min_lp_locked": 80,
       "min_mcap": 3000,
-      "heuristic_threshold": 0.53,
-      "pattern_threshold": 0.63,
+      "heuristic_threshold": 0.45,
+      "pattern_threshold": 0.6,
       "dump_pattern_threshold": 0.7,
       "max_age_seconds": 21600,
-      "updated_at": "2026-06-27T17:34:19.741556+00:00",
-      "sample_size": 951,
+      "updated_at": "2026-06-27T18:40:59.403502+00:00",
+      "sample_size": 973,
       "min_lp_providers": 2,
-      "max_age_hours": 47.9,
-      "volatility_setting": "medium",
-      "last_quality_score": 0.35
+      "max_age_hours": 72.1
     },
     "channel_insights": {
       "patterns": {
