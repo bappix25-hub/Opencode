@@ -141,8 +141,12 @@ class BreakoutDetector:
         cutoff = now - 1800
         self.price_history[ca] = [(t, p) for t, p in self.price_history[ca] if t > cutoff]
 
-        # Build candles from price history
-        self._build_candles(ca)
+        # Get real 3m candles from Birdeye (primary) or build from snapshots (fallback)
+        birdeye_candles = await self._get_candles(ca)
+        if birdeye_candles and len(birdeye_candles) >= MIN_RED_CANDLES:
+            self.candles[ca] = birdeye_candles[-20:]
+        else:
+            self._build_candles(ca)
 
         # Check consolidation (3+ red candles on 3m)
         candle_status = self._check_consolidation(ca)
@@ -190,6 +194,22 @@ class BreakoutDetector:
         except Exception:
             pass
         return 0
+
+    async def _get_candles(self, ca: str) -> list:
+        """Get real 3m candles from Birdeye OHLCV."""
+        if not self.birdeye:
+            return []
+        try:
+            candles = await asyncio.wait_for(
+                self.birdeye.get_ohlcv(ca, interval="3m", limit=20), timeout=10
+            )
+            if candles:
+                for c in candles:
+                    c["red"] = c["close"] < c["open"]
+                return candles
+        except Exception as e:
+            logger.debug(f"Birdeye OHLCV error for {ca[:8]}: {e}")
+        return []
 
     def _build_candles(self, ca: str):
         """Build 3-minute candles from price history."""
