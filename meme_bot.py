@@ -440,6 +440,31 @@ class MemeBot:
         if bsr < bsr_thresh:
             return
 
+        # Feed to breakout detector (every token that passes health blocks)
+        try:
+            ts_top10 = 0
+            ts_holders = launch_data.holders or 0
+            try:
+                from tokenscan_client import scan_token as _ts_scan
+                _ts_data = await _ts_scan(await mc.get_client(), address)
+                if _ts_data and _ts_data.get("parsed"):
+                    ts_top10 = _ts_data.get("top10_pct", 0)
+                    ts_holders = _ts_data.get("holders", 0) or ts_holders
+            except Exception:
+                pass
+            pair_created_ts = int(launch_data.launch_time * 1000) if launch_data.launch_time > 0 else int(datetime.now(timezone.utc).timestamp() * 1000)
+            self.breakout.add_token({
+                "ca": address,
+                "symbol": launch_data.symbol,
+                "pair_created": pair_created_ts,
+                "top10_pct": ts_top10,
+                "holders": ts_holders,
+                "mcp": mcap,
+                "liq_usd": liquidity,
+            })
+        except Exception as e:
+            logger.debug(f"Breakout pre-mig feed error: {e}")
+
         await self.evaluate_and_signal(address, launch_data, pair)
 
     async def evaluate_and_signal(self, address: str, launch_data, pair: dict):
@@ -1030,6 +1055,28 @@ class MemeBot:
                         )
                         await self.state.add_tracked_coin(addr, tracked)
 
+                        # Feed to breakout detector
+                        try:
+                            pair_created_ts = int(launch_ts * 1000)
+                            top10 = 0
+                            try:
+                                rug = await self.rugcheck.check_token(addr, pair.get("baseToken", {}).get("symbol", "???"))
+                                if rug and hasattr(rug, 'top10_pct'):
+                                    top10 = rug.top10_pct
+                            except Exception:
+                                pass
+                            self.breakout.add_token({
+                                "ca": addr,
+                                "symbol": pair.get("baseToken", {}).get("symbol", "???"),
+                                "pair_created": pair_created_ts,
+                                "top10_pct": top10,
+                                "holders": holders,
+                                "mcp": mcap,
+                                "liq_usd": liquidity,
+                            })
+                        except Exception as e:
+                            logger.debug(f"Breakout feed error: {e}")
+
                 # Pre-migration scan
                 launch_dict = dict(self.state.launch_tracking)
                 if launch_dict:
@@ -1147,6 +1194,21 @@ class MemeBot:
                             pending.source = "gmgn_scan"
                             self.state.pending_signals[ca] = pending
                             logger.info(f"[GMGN MATCH] {gt['symbol']}: pattern={pattern_score:.2f}+dex={signal_score:.2f}{sim_text} → pending signal source={pending.source}")
+
+                            # Feed to breakout detector
+                            try:
+                                pair_created_ts = int((now_ts - 600) * 1000)  # Assume ~10min
+                                self.breakout.add_token({
+                                    "ca": ca,
+                                    "symbol": gt["symbol"],
+                                    "pair_created": pair_created_ts,
+                                    "top10_pct": gt.get("top10_pct", 0),
+                                    "holders": gt.get("holders", 0),
+                                    "mcp": mcap,
+                                    "liq_usd": liquidity,
+                                })
+                            except Exception as e:
+                                logger.debug(f"Breakout feed error: {e}")
                     if gmgn_scanned > 0:
                         logger.info(f"🔍 GMGN scan: {gmgn_scanned} high-score tokens checked")
                 except Exception as e:
