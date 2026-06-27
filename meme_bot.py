@@ -468,11 +468,9 @@ class MemeBot:
         except Exception as e:
             logger.debug(f"Breakout pre-mig feed error: {e}")
 
-        # Start snapshot collection for GMGN FEATURED tokens
+        # Start snapshot collection for every token that passes pre-migration checks
         try:
-            source_ch = launch_data.source_channel if hasattr(launch_data, 'source_channel') else ""
-            if "FEATURED" in source_ch or "featured" in source_ch:
-                pair_created_ts = int(launch_data.launch_time * 1000) if launch_data.launch_time > 0 else int(datetime.now(timezone.utc).timestamp() * 1000)
+            if liquidity >= 500 and mcap > 0:
                 self.snapshots.start_tracking(
                     ca=address,
                     symbol=launch_data.symbol,
