@@ -81708,8 +81708,8 @@
       },
       "first_seen": 1782461461.942695,
       "first_channel": -1002202241417,
-      "status": "tracking",
-      "ath_multiplier": 1.0
+      "status": "winner",
+      "ath_multiplier": 1.0203805394990366
     },
     "CJrDU2XdxY3RwJpy5VqevkR1N6ccRpUHExhN5wbxpump": {
       "symbol": "rune-pump",
@@ -113617,9 +113617,9 @@
     },
     "-1002202241417": {
       "total_signals": 10391,
-      "winners": 0,
+      "winners": 1,
       "losers": 0,
-      "total_return": 0.0
+      "total_return": 2.0380539499036607
     }
   }
 }

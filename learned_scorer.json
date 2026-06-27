@@ -1,20 +1,30 @@
 {
   "version": 4,
-  "sample_size": 112,
+  "sample_size": 126,
   "winner_medians": {
     "ath_multiplier": 5.0
   },
   "signal_criteria": {
-    "min_liq": 2000,
-    "min_holders": 15,
-    "min_wallets": 10,
-    "min_mcp": 1000,
+    "min_liq": 500,
+    "min_holders": 5,
+    "min_mcp": 100,
     "max_top10_pct": 50,
     "max_bundled_pct": 30,
-    "min_audit_score": 4,
-    "min_bsr": 1.2,
-    "min_lp_locked": 60,
-    "max_age_seconds": 10800
+    "min_audit_score": 3
   },
-  "updated_at": "2026-06-26T14:45:00+00:00"
+  "updated_at": "2026-06-27T05:46:26.960332+00:00",
+  "signal_type_performance": {
+    "UNKNOWN": {
+      "total": 197,
+      "wins": 126,
+      "win_rate": 64.0,
+      "avg_ath": 11147.03
+    },
+    "FEATURED_NEW": {
+      "total": 9,
+      "wins": 0,
+      "win_rate": 0.0,
+      "avg_ath": 1.0
+    }
+  }
 }

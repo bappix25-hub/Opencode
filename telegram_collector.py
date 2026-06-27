@@ -3,6 +3,8 @@ import json
 import logging
 import os
 import re
+
+_breakout_detector = None  # Set from meme_bot.py
 from datetime import datetime, timezone
 from collections import defaultdict
 
@@ -1032,6 +1034,13 @@ async def scan_channels(client, dex_client=None):
                         breakdown = score_result.get("breakdown", {})
                         dex_verified = score_result.get("dex_verified", False)
 
+                        # Feed token to breakout detector (research only)
+                        if _breakout_detector:
+                            try:
+                                _breakout_detector.add_token(full_token)
+                            except Exception:
+                                pass
+
                         if action in ("BUY_NOW", "ALERT"):
                             launch_mcp = token.get("mcp", 0) or token.get("launch_mcp", 0)
                             dex_status = "✅" if dex_verified else "⚠️"
@@ -1050,19 +1059,20 @@ async def scan_channels(client, dex_client=None):
                                 f"🔗 <a href=\"https://gmgn.ai/sol/token/{ca}\">GMGN</a> | "
                                 f"<a href=\"https://dexscreener.com/solana/{ca}\">DexScreener</a>"
                             )
-                            try:
-                                alert_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".pending_alert")
-                                with open(alert_file, "w") as af:
-                                    af.write(alert_msg)
-                            except Exception:
-                                pass
-                            # BUY via Maestro
-                            if mc:
-                                try:
-                                    asyncio.create_task(mc.buy(ca))
-                                    logger.info(f"🤖 Maestro BUY: {token['symbol']} ({ca[:12]}...)")
-                                except Exception as e:
-                                    logger.error(f"Maestro buy error: {e}")
+                            # DISABLED: research-only mode — no alert file, no buy
+                            # try:
+                            #     alert_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".pending_alert")
+                            #     with open(alert_file, "w") as af:
+                            #         af.write(alert_msg)
+                            # except Exception:
+                            #     pass
+                            # DISABLED: research-only mode
+                            # if mc:
+                            #     try:
+                            #         asyncio.create_task(mc.buy(ca))
+                            #         logger.info(f"🤖 Maestro BUY: {token['symbol']} ({ca[:12]}...)")
+                            #     except Exception as e:
+                            #         logger.error(f"Maestro buy error: {e}")
                             # Record signal result for learning (pump=signal sent)
                             try:
                                 from learner import record_signal_result
@@ -1229,19 +1239,20 @@ async def scan_channels(client, dex_client=None):
                                     f"🔗 <a href=\"https://gmgn.ai/sol/token/{ca}\">GMGN</a> | "
                                     f"<a href=\"https://dexscreener.com/solana/{ca}\">DexScreener</a>"
                                 )
-                                try:
-                                    alert_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".pending_alert")
-                                    with open(alert_file, "w") as af:
-                                        af.write(alert_msg)
-                                except Exception:
-                                    pass
-                                # BUY via Maestro (re-score signal)
-                                if mc:
-                                    try:
-                                        asyncio.create_task(mc.buy(ca))
-                                        logger.info(f"🤖 Maestro BUY (re-score): {existing.get('symbol','?')} ({ca[:12]}...)")
-                                    except Exception as e:
-                                        logger.error(f"Maestro buy error: {e}")
+                                # DISABLED: research-only mode — no alert file, no buy (re-score)
+                                # try:
+                                #     alert_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".pending_alert")
+                                #     with open(alert_file, "w") as af:
+                                #         af.write(alert_msg)
+                                # except Exception:
+                                #     pass
+                                # DISABLED: research-only mode
+                                # if mc:
+                                #     try:
+                                #         asyncio.create_task(mc.buy(ca))
+                                #         logger.info(f"🤖 Maestro BUY (re-score): {existing.get('symbol','?')} ({ca[:12]}...)")
+                                #     except Exception as e:
+                                #         logger.error(f"Maestro buy error: {e}")
                                 # Record signal result for learning (re-score)
                                 try:
                                     from learner import record_signal_result

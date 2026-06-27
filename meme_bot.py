@@ -13,6 +13,7 @@ from bot_state import BotState, TrackedCoin, CoinInfo
 from config import config
 from dex_client import DexScreenerClient
 from rugcheck_client import RugcheckClient
+from breakout_detector import BreakoutDetector
 from helius_client import HeliusClient
 from birdeye_client import BirdeyeClient
 from jupiter_client import JupiterClient
@@ -91,6 +92,12 @@ async def send_maestro(bot: Bot, address: str) -> None:
         logger.debug(f"Channel send error: {e}")
 
 
+_bot_instance = None
+
+def _get_bot():
+    return _bot_instance
+
+
 class MemeBot:
     def __init__(self):
         self.state = BotState()
@@ -126,6 +133,7 @@ class MemeBot:
         self.rugcheck = RugcheckClient(self.session)
         self.helius = HeliusClient(self.session)
         self.birdeye = BirdeyeClient(self.session, config.birdeye_api_key)
+        self.breakout = BreakoutDetector(self.dex, self.birdeye)
         self.jupiter = JupiterClient(self.session)
         self.social = SocialSignalEngine(self.session)
         self.honeypot = HoneypotDetector(self.session, rugcheck=self.rugcheck, helius=self.helius, dex=self.dex, birdeye=self.birdeye)
@@ -170,6 +178,7 @@ class MemeBot:
             asyncio.create_task(self.track_outcomes_loop(), name="track_outcomes"),
             asyncio.create_task(self.connection_monitor_loop(), name="conn_monitor"),
             asyncio.create_task(self._heartbeat_loop(), name="heartbeat"),
+            asyncio.create_task(self._breakout_scan_loop(), name="breakout_scan"),
         ]
 
         if config.enable_github_sync:
@@ -203,6 +212,7 @@ class MemeBot:
         # Telegram collector: real-time token data from GMGN channels
         try:
             import telegram_collector as tc
+            tc._breakout_detector = self.breakout
             self._tasks.append(asyncio.create_task(tc.run_loop(self.dex, 15), name="telegram_collector"))
             logger.info("📡 Telegram collector loop started")
         except Exception as e:
@@ -359,7 +369,8 @@ class MemeBot:
                 f"━━━━━━━━━━━━━━━━\n"
                 f"⚠️ <b>দ্রুত বিক্রি করো!</b>"
             )
-            await send_maestro(self.telegram_app.bot, address)
+            # DISABLED: research-only mode
+            # await send_maestro(self.telegram_app.bot, address)
 
         await self.check_pre_migration_signal(address)
 
@@ -1407,7 +1418,8 @@ class MemeBot:
                                         continue
                                 except Exception:
                                     pass
-                                asyncio.create_task(mc.buy(addr))
+                                # DISABLED: research-only mode
+                                # asyncio.create_task(mc.buy(addr))
 
                                 from bot_state import SignalInfo
                                 await self.state.add_signal(addr, SignalInfo(
@@ -1426,16 +1438,17 @@ class MemeBot:
                                 await self.state.add_alerted(addr)
                                 logger.info(f"\U0001F4C2 CLIMBING SIGNAL: {symbol} mcap={format_number(mcap)} score={climbing_score:.2f}")
 
-                                if config.paper_trading:
-                                    try:
-                                        pos = await self.paper_trader.buy(
-                                            addr, symbol, name, current_price,
-                                            climbing_score, 0.0, climbing_score, age,
-                                        )
-                                        if pos:
-                                            logger.info(f"📝 Paper buy: {symbol} @ ${current_price:.8f}")
-                                    except Exception as e:
-                                        logger.debug(f"Paper buy error: {e}")
+                                # DISABLED: research-only mode
+                                # if config.paper_trading:
+                                #     try:
+                                #         pos = await self.paper_trader.buy(
+                                #             addr, symbol, name, current_price,
+                                #             climbing_score, 0.0, climbing_score, age,
+                                #         )
+                                #         if pos:
+                                #             logger.info(f"📝 Paper buy: {symbol} @ ${current_price:.8f}")
+                                #     except Exception as e:
+                                #         logger.debug(f"Paper buy error: {e}")
                         continue
 
                     if not await self.state.is_alerted(addr) and 0 < age <= 600:
@@ -1547,7 +1560,8 @@ class MemeBot:
                                 continue
                         except Exception:
                             pass
-                        asyncio.create_task(mc.buy(addr))
+                        # DISABLED: research-only mode
+                        # asyncio.create_task(mc.buy(addr))
 
                         from bot_state import SignalInfo
                         await self.state.add_signal(addr, SignalInfo(
@@ -1564,26 +1578,27 @@ class MemeBot:
                         ))
                         await self.state.add_alerted(addr)
 
-                        if config.paper_trading:
-                            try:
-                                launch_vel = getattr(launch_data, 'buy_velocity', 0) if launch_data else 0
-                                launch_curve = getattr(launch_data, 'curve_fill_pct', 0) if launch_data else 0
-                                pos = await self.paper_trader.buy(
-                                    addr, symbol, name, current_price,
-                                    score, social_score, score, age,
-                                    launch_vel, launch_curve
-                                )
-                                if pos:
-                                    await send_msg(self.telegram_app.bot,
-                                        f"🟢 <b>Paper Buy!</b>\n"
-                                        f"🏷️ ${symbol} @ ${current_price:.8f}\n"
-                                        f"💰 {pos.sol_amount:.4f} SOL\n"
-                                        f"🎯 TP: ${pos.tp_price:.8f} ({((pos.tp_price/pos.entry_price)-1)*100:+.0f}%)\n"
-                                        f"🛑 SL: ${pos.sl_price:.8f} ({((pos.sl_price/pos.entry_price)-1)*100:+.0f}%)\n"
-                                        f"💵 ব্যালেন্স: {self.paper_trader.state.current_sol:.4f} SOL"
-                                    )
-                            except Exception as e:
-                                logger.debug(f"Paper buy error: {e}")
+                        # DISABLED: research-only mode
+                        # if config.paper_trading:
+                        #     try:
+                        #         launch_vel = getattr(launch_data, 'buy_velocity', 0) if launch_data else 0
+                        #         launch_curve = getattr(launch_data, 'curve_fill_pct', 0) if launch_data else 0
+                        #         pos = await self.paper_trader.buy(
+                        #             addr, symbol, name, current_price,
+                        #             score, social_score, score, age,
+                        #             launch_vel, launch_curve
+                        #         )
+                        #         if pos:
+                        #             await send_msg(self.telegram_app.bot,
+                        #                 f"🟢 <b>Paper Buy!</b>\n"
+                        #                 f"🏷️ ${symbol} @ ${current_price:.8f}\n"
+                        #                 f"💰 {pos.sol_amount:.4f} SOL\n"
+                        #                 f"🎯 TP: ${pos.tp_price:.8f} ({((pos.tp_price/pos.entry_price)-1)*100:+.0f}%)\n"
+                        #                 f"🛑 SL: ${pos.sl_price:.8f} ({((pos.sl_price/pos.entry_price)-1)*100:+.0f}%)\n"
+                        #                 f"💵 ব্যালেন্স: {self.paper_trader.state.current_sol:.4f} SOL"
+                        #             )
+                        #     except Exception as e:
+                        #         logger.debug(f"Paper buy error: {e}")
 
                 sync_counter += 1
                 if sync_counter >= config.github_sync_interval // max(config.scan_interval, 1):
@@ -2104,7 +2119,8 @@ class MemeBot:
         except Exception:
             pass
 
-        asyncio.create_task(mc.buy(address))
+        # DISABLED: research-only mode
+        # asyncio.create_task(mc.buy(address))
 
         await self.state.add_alerted(address)
 
@@ -2334,6 +2350,37 @@ class MemeBot:
             except asyncio.CancelledError:
                 break
             except Exception:
+                await asyncio.sleep(30)
+
+    async def _breakout_scan_loop(self):
+        """Scan all monitored tokens for breakout patterns every 60s."""
+        while True:
+            try:
+                await asyncio.sleep(60)
+                results = await self.breakout.scan_all()
+                if results:
+                    breakouts = [r for r in results if r.get("status") == "breakout"]
+                    consolidations = [r for r in results if r.get("status") == "consolidation"]
+                    if breakouts:
+                        for b in breakouts:
+                            sym = b.get("symbol", "?")
+                            mult = b.get("multiplier", 0)
+                            pct = b.get("pct_change", 0)
+                            logger.info(
+                                f"🎯 BREAKOUT {sym}: {pct:+.1f}% | {mult:.1f}x | "
+                                f"age={b.get('age_minutes', 0)}min"
+                            )
+                    stats = self.breakout.get_stats()
+                    if stats["monitored"] > 0:
+                        logger.info(
+                            f"🔍 Breakout scan: {stats['monitored']} watching | "
+                            f"{len(consolidations)} consolidating | "
+                            f"{stats['breakouts']} breakouts found"
+                        )
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"Breakout scan error: {e}")
                 await asyncio.sleep(30)
 
     async def github_sync_loop(self):
@@ -2869,12 +2916,13 @@ class MemeBot:
                                     f"🔗 <a href=\"https://gmgn.ai/sol/token/{ca}\">GMGN</a> | "
                                     f"<a href=\"https://dexscreener.com/solana/{ca}\">DexScreener</a>"
                                 )
-                                try:
-                                    alert_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".pending_alert")
-                                    with open(alert_file, "w") as af:
-                                        af.write(alert_msg)
-                                except Exception:
-                                    pass
+                                # DISABLED: research-only mode — no alert file
+                                # try:
+                                #     alert_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".pending_alert")
+                                #     with open(alert_file, "w") as af:
+                                #         af.write(alert_msg)
+                                # except Exception:
+                                #     pass
                                 logger.info(
                                     f"🔍 TRENDING SIGNAL: {token_info['symbol']} score={score:.0f} "
                                     f"{score_result['verdict']} MC=${launch_mcp:,.0f}"
@@ -2986,12 +3034,13 @@ class MemeBot:
                                         f"🔗 <a href=\"https://gmgn.ai/sol/token/{addr}\">GMGN</a> | "
                                         f"<a href=\"https://dexscreener.com/solana/{addr}\">DexScreener</a>"
                                     )
-                                    try:
-                                        alert_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".pending_alert")
-                                        with open(alert_file, "w") as af:
-                                            af.write(lt_alert)
-                                    except Exception:
-                                        pass
+                                    # DISABLED: research-only mode — no alert file
+                                    # try:
+                                    #     alert_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".pending_alert")
+                                    #     with open(alert_file, "w") as af:
+                                    #         af.write(lt_alert)
+                                    # except Exception:
+                                    #     pass
                                     t_info["long_time_alerted"] = True
                                     logger.info(
                                         f"🕐 LONG-TIME SIGNAL: {t_info['symbol']} "
@@ -3343,11 +3392,13 @@ def _global_exception_handler(loop, context):
     logger.error(f"💥 UNHANDLED EXCEPTION: {msg}", exc_info=context.get("exception"))
 
 def main():
+    global _bot_instance
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     loop.set_exception_handler(_global_exception_handler)
 
     bot = MemeBot()
+    _bot_instance = bot
 
     def handle_signal(signum, frame):
         try:

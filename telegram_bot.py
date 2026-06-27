@@ -1052,6 +1052,49 @@ class TelegramHandlers:
         except Exception as e:
             await update.message.reply_text(f"❌ Error: {e}")
 
+    async def cmd_breakout(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Show breakout detector status and recent breakouts."""
+        try:
+            from meme_bot import _get_bot
+            bot = _get_bot()
+            if not bot or not hasattr(bot, 'breakout'):
+                await update.message.reply_text("❌ Breakout detector not running.")
+                return
+
+            detector = bot.breakout
+            stats = detector.get_stats()
+
+            msg = (
+                f"🔍 <b>Breakout Detector</b>\n"
+                f"━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                f"📡 Monitoring: <b>{stats['monitored']}</b> tokens\n"
+                f"🕯️ Candles built: <b>{stats['candles_built']}</b>\n"
+                f"🎯 Breakouts found: <b>{stats['breakouts']}</b>\n"
+                f"━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                f"⚙️ Rules:\n"
+                f"  • Min age: 12 min\n"
+                f"  • Max top10: 40%\n"
+                f"  • Min red candles: 3 (3m)\n"
+                f"  • Breakout: +30% from low\n"
+                f"  • Target: 3x pump\n"
+            )
+
+            if detector.breakouts:
+                msg += f"\n📊 <b>Recent Breakouts:</b>\n"
+                for b in detector.breakouts[-5:]:
+                    sym = b.get("symbol", "?")
+                    mult = b.get("multiplier", 0)
+                    pct = b.get("pct_change", 0)
+                    t = b.get("detected_at", "?")[:16]
+                    msg += f"  • {sym}: {pct:+.1f}% | {mult:.1f}x | {t}\n"
+
+            if not detector.breakouts:
+                msg += "\n⏳ No breakouts detected yet. Watching..."
+
+            await update.message.reply_text(msg, parse_mode="HTML", disable_web_page_preview=True)
+        except Exception as e:
+            await update.message.reply_text(f"❌ Error: {e}")
+
 
 def register_handlers(app, handlers: TelegramHandlers):
     from telegram.ext import CallbackQueryHandler
@@ -1069,6 +1112,7 @@ def register_handlers(app, handlers: TelegramHandlers):
     app.add_handler(CommandHandler("convergence", handlers.cmd_convergence))
     app.add_handler(CommandHandler("config", handlers.cmd_config))
     app.add_handler(CommandHandler("scan", handlers.cmd_scan))
+    app.add_handler(CommandHandler("breakout", handlers.cmd_breakout))
     app.add_handler(CommandHandler("setchannel", handlers.cmd_setchannel))
     app.add_handler(CallbackQueryHandler(handlers.threshold_callback, pattern="^thr_"))
     app.add_handler(MessageHandler(filters.ALL & ~filters.COMMAND, handlers.handle_buttons))
