@@ -72886,19 +72886,20 @@
     },
     "signal_criteria": {
       "min_bsr": 1.26,
-      "min_holders": 10,
+      "min_holders": 20,
       "min_wallets": 15,
-      "min_liq": 500,
-      "min_liq_pct": 10,
+      "min_liq": 8414.0,
+      "min_liq_pct": 25.2,
       "min_lp_locked": 80,
       "min_mcap": 3000,
       "heuristic_threshold": 0.45,
       "pattern_threshold": 0.6,
       "dump_pattern_threshold": 0.7,
       "max_age_seconds": 21600,
-      "updated_at": "2026-06-27T13:06:41.005044+00:00",
-      "sample_size": 915,
-      "min_lp_providers": 2
+      "updated_at": "2026-06-27T13:16:08.662716+00:00",
+      "sample_size": 920,
+      "min_lp_providers": 2,
+      "max_age_hours": 48.5
     },
     "channel_insights": {
       "patterns": {
