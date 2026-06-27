@@ -113,7 +113,11 @@ class SnapshotSession:
     def add_snapshot(self, ts: float, price: float, volume_5m: float,
                      volume_1h: float, liquidity: float, mcap: float,
                      buys_5m: int, sells_5m: int, holders: int = 0,
-                     top10_pct: float = 0):
+                     top10_pct: float = 0, bundled_pct: float = 0,
+                     audit_score: int = 0, dev_status: str = "UNKNOWN",
+                     renounced: bool = False, freeze_revoked: bool = False,
+                     has_website: bool = False, has_twitter: bool = False,
+                     has_telegram: bool = False):
         snap = {
             "time": ts,
             "price": price,
@@ -126,6 +130,14 @@ class SnapshotSession:
             "bsr_5m": buys_5m / max(sells_5m, 1),
             "holders": holders,
             "top10_pct": top10_pct,
+            "bundled_pct": bundled_pct,
+            "audit_score": audit_score,
+            "dev_status": dev_status,
+            "renounced": renounced,
+            "freeze_revoked": freeze_revoked,
+            "has_website": has_website,
+            "has_twitter": has_twitter,
+            "has_telegram": has_telegram,
         }
         self.snapshots.append(snap)
 
@@ -288,6 +300,40 @@ class SnapshotCollector:
             sells_5m = int((txns.get("m5") or {}).get("sells", 0) or 0)
             holders = 0
             top10_pct = 0
+            dev_status = "UNKNOWN"
+            renounced = False
+            freeze_revoked = False
+            bundled_pct = 0.0
+            audit_score = 0
+            has_website = False
+            has_twitter = False
+            has_telegram = False
+
+            # MULTI-BOT SCAN: TokenScan + Rick + Phanes + extras (rotated)
+            try:
+                from multi_bot_client import scan_all as multi_scan
+                from maestro_client import get_client as get_tg_client
+                tg = await get_tg_client()
+                if tg and tg.is_connected():
+                    mb_data = await multi_scan(tg, ca)
+                    if mb_data.get("sources"):
+                        holders = mb_data.get("holders", 0) or holders
+                        top10_pct = mb_data.get("top10_pct", 0) or top10_pct
+                        bundled_pct = mb_data.get("bundled_pct", 0) or bundled_pct
+                        audit_score = mb_data.get("audit_score", 0) or audit_score
+                        dev_status = mb_data.get("dev_status", "UNKNOWN") or dev_status
+                        renounced = mb_data.get("renounced", False) or renounced
+                        freeze_revoked = mb_data.get("freeze_revoked", False) or freeze_revoked
+                        has_website = mb_data.get("has_website", False) or has_website
+                        has_twitter = mb_data.get("has_twitter", False) or has_twitter
+                        has_telegram = mb_data.get("has_telegram", False) or has_telegram
+                        logger.info(
+                            f"📊 Multi-bot scan {ca[:8]}: {len(mb_data['sources'])} sources, "
+                            f"h={holders} t10={top10_pct:.0f}% bundled={bundled_pct:.0f}% "
+                            f"audit={audit_score}/10 dev={dev_status[:4]}"
+                        )
+            except Exception as e:
+                logger.debug(f"Multi-bot scan error for {ca[:8]}: {e}")
 
             # Try Birdeye for holder data + real OHLCV candles
             if self.birdeye:
@@ -318,6 +364,11 @@ class SnapshotCollector:
                 liquidity=liquidity, mcap=mcap,
                 buys_5m=buys_5m, sells_5m=sells_5m,
                 holders=holders, top10_pct=top10_pct,
+                bundled_pct=bundled_pct, audit_score=audit_score,
+                dev_status=dev_status, renounced=renounced,
+                freeze_revoked=freeze_revoked,
+                has_website=has_website, has_twitter=has_twitter,
+                has_telegram=has_telegram,
             )
 
             # Check dump
