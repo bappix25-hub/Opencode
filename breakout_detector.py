@@ -74,15 +74,18 @@ class BreakoutDetector:
         # Apply entry filters
         top10 = token.get("top10_pct", 0)
         if top10 > MAX_TOP10_PCT:
-            return  # Too concentrated
+            logger.debug(f"SKIP {token.get('symbol','?')}: top10={top10:.0f}% > {MAX_TOP10_PCT}%")
+            return
 
         holders = token.get("holders", 0)
         if holders > 0 and holders <= 5:
-            return  # Too few holders
+            logger.debug(f"SKIP {token.get('symbol','?')}: holders={holders} <= 5")
+            return
 
         pair_created = token.get("pair_created", 0)
         if pair_created <= 0:
-            return  # No age data
+            logger.debug(f"SKIP {token.get('symbol','?')}: no pair_created")
+            return
 
         self.monitored[ca] = {
             "symbol": token.get("symbol", "?"),
@@ -104,6 +107,8 @@ class BreakoutDetector:
         if len(self.monitored) > MAX_MONITORED_TOKENS:
             oldest = min(self.monitored.keys(), key=lambda k: self.monitored[k]["added_at"])
             del self.monitored[oldest]
+
+        logger.info(f"📡 Monitoring {token.get('symbol','?')} ({ca[:8]}...) | top10={top10:.0f}% holders={holders} | {len(self.monitored)} total")
 
     async def check_token(self, ca: str) -> dict:
         """Check a single token for breakout conditions. Returns status dict."""

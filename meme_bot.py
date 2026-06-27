@@ -2357,6 +2357,11 @@ class MemeBot:
         while True:
             try:
                 await asyncio.sleep(60)
+                stats = self.breakout.get_stats()
+                if stats["monitored"] == 0:
+                    logger.debug(f"🔍 Breakout scan: 0 tokens monitored (waiting for collector)")
+                    continue
+
                 results = await self.breakout.scan_all()
                 if results:
                     breakouts = [r for r in results if r.get("status") == "breakout"]

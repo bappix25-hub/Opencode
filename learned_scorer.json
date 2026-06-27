@@ -12,13 +12,13 @@
     "max_bundled_pct": 30,
     "min_audit_score": 3
   },
-  "updated_at": "2026-06-27T05:46:26.960332+00:00",
+  "updated_at": "2026-06-27T05:47:36.598686+00:00",
   "signal_type_performance": {
     "UNKNOWN": {
-      "total": 197,
+      "total": 198,
       "wins": 126,
-      "win_rate": 64.0,
-      "avg_ath": 11147.03
+      "win_rate": 63.6,
+      "avg_ath": 11090.73
     },
     "FEATURED_NEW": {
       "total": 9,

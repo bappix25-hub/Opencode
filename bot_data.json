@@ -58875,13 +58875,15 @@
         "launch_time": 1782506625.929833,
         "source": "historical_scan",
         "ath_multiplier": 5.19,
-        "outcome": "STRONG_PUMP",
-        "signal_age": 0.0
+        "outcome": "dump",
+        "signal_age": 0.0,
+        "outcome_mcap": 93705.0,
+        "symbol": "FRONT"
       },
       "launch_time": 1782506625.929833,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 93705.0,
+      "outcome_time": "2026-06-27T05:52:35.401987+00:00",
       "signal_sent": false
     },
     {
@@ -58891,13 +58893,15 @@
         "launch_time": 1782506662.336472,
         "source": "historical_scan",
         "ath_multiplier": 1.1604256996452504,
-        "outcome": "DUMP",
-        "signal_age": 2883.746375799179
+        "outcome": "dump",
+        "signal_age": 2883.746375799179,
+        "outcome_mcap": 3221.0,
+        "symbol": "SolSocks"
       },
       "launch_time": 1782506662.336472,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "dump",
+      "outcome_mcap": 3221.0,
+      "outcome_time": "2026-06-27T05:52:36.753288+00:00",
       "signal_sent": false
     },
     {

@@ -4212,11 +4212,42 @@
       "source_count": 1,
       "last_calculated": 1782537784.851025,
       "alerted": false
+    },
+    "BXFPRH78negdDuPiC7voGZun6cm4vQfjGxBD3GzApump": {
+      "symbol": "This is THE parabola",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_boosted",
+          "source_name": "DexScreener boosted",
+          "timestamp": 1782539561.415101,
+          "signal_type": "boosted",
+          "features": {
+            "mcp": 35053,
+            "liq_usd": 13356.27,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782539561.415101,
+      "last_seen": 1782539561.415101,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener boosted",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782539561.415268,
+      "alerted": false
     }
   },
-  "last_cleanup": "2026-06-27T05:23:04.851128+00:00",
+  "last_cleanup": "2026-06-27T05:52:41.415427+00:00",
   "stats": {
-    "total_tracked": 133,
+    "total_tracked": 134,
     "high_convergence": 0
   }
 }
