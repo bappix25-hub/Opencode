@@ -14,6 +14,7 @@ from config import config
 from dex_client import DexScreenerClient
 from rugcheck_client import RugcheckClient
 from breakout_detector import BreakoutDetector
+from snapshot_collector import SnapshotCollector
 from helius_client import HeliusClient
 from birdeye_client import BirdeyeClient
 from jupiter_client import JupiterClient
