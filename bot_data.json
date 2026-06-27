@@ -42031,40 +42031,6 @@
   "signal_results": [],
   "launches_tracked": [
     {
-      "address": "G7rbJkLcXyeqcYt1N9FsaVTgJXUZMeaBPuARR3Sppump",
-      "symbol": "MOO",
-      "features": {
-        "mcp": 3883.27,
-        "liq_usd": 6700.0,
-        "holders": 75,
-        "buy_sell_ratio": 0,
-        "unique_wallets": 0,
-        "initial_liq": 6700.0,
-        "lp_locked": 100,
-        "top10_pct": 21.28,
-        "audit_score": 0,
-        "bundled_pct": 0,
-        "dev_status": "UNKNOWN",
-        "renounced": false,
-        "launch_time": 1782480530.281058,
-        "signal_type": "FDV_SURGE",
-        "source_channel": "GMGN Signals",
-        "fresh_1d": 0,
-        "fresh_7d": 0,
-        "has_web": false,
-        "has_twitter": false,
-        "has_telegram": false,
-        "outcome": "dump",
-        "outcome_mcap": 3160.42,
-        "symbol": "MOO"
-      },
-      "launch_time": 1782480530.281058,
-      "outcome": "dump",
-      "outcome_mcap": 3160.42,
-      "outcome_time": "2026-06-26T19:39:24.897742+00:00",
-      "signal_sent": false
-    },
-    {
       "address": "C9JxB3hq3yiqwv5hbRKBcJMDHwjzwVZPycMp3JhdYVha",
       "symbol": "TripleS",
       "features": {
@@ -58939,12 +58905,16 @@
       "symbol": "A250",
       "features": {
         "launch_time": 1782517707.665129,
-        "source": "historical_scan"
+        "source": "historical_scan",
+        "outcome": "pump",
+        "outcome_mcap": 1048719.0,
+        "symbol": "A250",
+        "address": "3vKARo7H9pjwXNrL9oddCk9wSQZgJ5h3KnEK4EVN5MAs"
       },
       "launch_time": 1782517707.665129,
-      "outcome": null,
-      "outcome_mcap": 0,
-      "outcome_time": null,
+      "outcome": "pump",
+      "outcome_mcap": 1048719.0,
+      "outcome_time": "2026-06-27T05:49:12.496940+00:00",
       "signal_sent": false
     },
     {
@@ -58958,6 +58928,19 @@
         "signal_age": 0.0
       },
       "launch_time": 1782525039.887626,
+      "outcome": null,
+      "outcome_mcap": 0,
+      "outcome_time": null,
+      "signal_sent": false
+    },
+    {
+      "address": "62yzpmKJB6XiVtZcQZhUkUXhqwN3UgCbffUi4JM9pump",
+      "symbol": "world",
+      "features": {
+        "launch_time": 1782539461.263014,
+        "source": "historical_scan"
+      },
+      "launch_time": 1782539461.263014,
       "outcome": null,
       "outcome_mcap": 0,
       "outcome_time": null,
@@ -62501,6 +62484,30 @@
             "fdv": 36840.0,
             "pair_created": 1782506841000
           }
+        }
+      },
+      {
+        "address": "29gx4isgdzZNveEED1ASrcy8E3hS1Vzirw1mPjyxpump",
+        "symbol": "BEEP",
+        "verdict": "DUMP",
+        "ath_multiplier": 1.108555657773689,
+        "current_multiplier": 0.15694572217111316,
+        "min_price_multiplier": 0.15694572217111316,
+        "signal_age": 1817.2883410453796,
+        "signal_time": "2026-06-27T05:47:35.823801+00:00",
+        "timestamp": "2026-06-27T05:47:35.823954+00:00",
+        "score_breakdown": {
+          "match_score": 0.6,
+          "match_reason": "MCap $10874, Liq $7430, Vol/Liq 5.0",
+          "mcap": 10874.0,
+          "liquidity": 7430.1,
+          "holders": 0,
+          "unique_wallets": 0,
+          "buy_count": 374,
+          "sell_count": 280,
+          "buy_sell_ratio": 1.3357142857142856,
+          "tp_pct": 100.0,
+          "sl_pct": -50.0
         }
       }
     ],
@@ -73590,38 +73597,7 @@
     "46xFLyPHXZJzAT8LwyQXZdDpLMUMUgVmiPvBVVXvpump",
     "2FjgWHpdBvCe8d7RhsKiGixd4mMyq4cEAWgXJwgbaobz",
     "2uDhb7wZuxdLpGymtfP5unrUTCwS4ZQxjC3aBXt6chrD",
-    "D2izZ7cygXpFyTeXKcuRZFrGLhfSw3xZr62WWCsoCxjL",
-    "4rFVUhyj1EK8tJbm6usb4yHkvRvMMLGuAs3A5GiQpump",
-    "9iZQ5U1xTyVTH9nkZRqXiXzbjndk7sEpSY3daxoXpump",
-    "m7MP55DJ5k4wKrEARGoChanpSNpWy7cmiPzmHbCpump",
-    "6NkoNtngX1yF9JeuDhUnhS4hP3FVYbUJLHpBXzQc1wfn",
-    "9i23rv9LvTyF8HERSmQGtmhrm5UDtGzbDC6efYe6pump",
-    "GapojponqvHJ9iwu9gJoFkbM2qxshf9Hc3K8YjfGpump",
-    "bgVgEFWjMYv7MTfEY9yLNHgSgGxv5XyxCLwpDPvpump",
-    "6kKVmP1FZM7wtDNLDcHKx7zLGhA4sUt9WAo6kG9mpump",
-    "6TntU6ZqPtmUFyzrWffv4b6VtWT3aZdw5dMhmTtrpump",
-    "22hQGvFG9BWxohtnQuTj7XQjJayBJqeaiWsyFfZmpump",
-    "21pM85YYDrcEiHRYSeAbEmecx688xmxc6PHoh4fNVHKx",
-    "6raznvsRtEJWJvpi5dPco7uM6JYRvrxnpxKQmBcngFo",
-    "GFziLKWd2JX7XpzGMCL5fpWZfZ2DnbCraPkTkF5upump",
-    "6snUbikeEfoenoF3eTp91ENg3ZnkDp4wUhy1fiwBpump",
-    "5AqFURXa2ajzkbBpBTdYyY9WADdxaNoGpMj8LtT5dGNy",
-    "3XhQa9baZzP9CVHBSnryqUSwJsiS2RiYozNT1kEYpump",
-    "8pf88J1k3dekJpap397rjLMmdf19tYeYsDc7BtiPpump",
-    "DwHTcxdWp9x8P7hg7qiqNEhPiGGPRX2N3jjJiw9zpump",
-    "BouVwirMiBerFiQkjt3TdARh2ccKQDWfbpRJGwThpump",
-    "DRuiWiackJbKAgHt771ytXDeFrjC8Tab7FwH4Q8upump",
-    "9dkHNDP9r8mzVBtgNv39cxqGCuohc5J1cEZfMtt5fomo",
-    "AE3RYXQ1ACGvLj63mmwkCtGdPNhWR6XsmgFAZfZgpump",
-    "GdAKxh3N4GTXz1igTwLsJzMPUVutyiD4aSenhnJipump",
-    "8UKBPxmwhBDYhy3fgpU1sZrdtYpFxz1YBDcFL1ewpump",
-    "72T6RQLFc7TVn9EGEyR5iZqPFFpGAiZqov5QkzKypump",
-    "FJsNw4qvk7pA9vWUYSgaKeJvvFbbrhxsW2KWLHU2fsvH",
-    "7LjyeatcfwWRDVMmix9Hu6frMimikRnJyQKCxWcjvAyP",
-    "CaoTCN3SR6kB4aVm2JmSiucqpwe6KWZBUW3FXEPipump",
-    "SwuKQSbzNVcc2Gh7PTLskGu5U9v9w8Lgv2NnA292uok",
-    "5qzPrLDmWt9TN7rJRfAifmNhjYjS6v5AJUhsnqrD3QwZ",
-    "3sUQ1Ro5eWFP1LpMLJfha6T8wk92ubgVtQPNw1Eapump"
+    "D2izZ7cygXpFyTeXKcuRZFrGLhfSw3xZr62WWCsoCxjL"
   ],
   "launch_patterns": [],
   "trained_addresses": [],
