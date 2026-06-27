@@ -1038,8 +1038,8 @@ async def scan_channels(client, dex_client=None):
                         if _breakout_detector:
                             try:
                                 _breakout_detector.add_token(full_token)
-                            except Exception:
-                                pass
+                            except Exception as e:
+                                logger.debug(f"Breakout add_token error: {e}")
 
                         if action in ("BUY_NOW", "ALERT"):
                             launch_mcp = token.get("mcp", 0) or token.get("launch_mcp", 0)

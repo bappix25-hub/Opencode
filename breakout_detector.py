@@ -84,8 +84,8 @@ class BreakoutDetector:
 
         pair_created = token.get("pair_created", 0)
         if pair_created <= 0:
-            logger.debug(f"SKIP {token.get('symbol','?')}: no pair_created")
-            return
+            pair_created = int(time.time() * 1000) - 600000  # Assume 10min old
+            logger.debug(f"{token.get('symbol','?')}: no pair_created, assuming ~10min")
 
         self.monitored[ca] = {
             "symbol": token.get("symbol", "?"),

@@ -213,8 +213,8 @@ class MemeBot:
         try:
             import telegram_collector as tc
             tc._breakout_detector = self.breakout
+            logger.info(f"📡 Telegram collector loop started (breakout_detector={'SET' if tc._breakout_detector else 'NONE'})")
             self._tasks.append(asyncio.create_task(tc.run_loop(self.dex, 15), name="telegram_collector"))
-            logger.info("📡 Telegram collector loop started")
         except Exception as e:
             logger.debug(f"Telegram collector start error: {e}")
 
@@ -2354,12 +2354,13 @@ class MemeBot:
 
     async def _breakout_scan_loop(self):
         """Scan all monitored tokens for breakout patterns every 60s."""
+        logger.info("🔍 Breakout scan loop started")
         while True:
             try:
                 await asyncio.sleep(60)
                 stats = self.breakout.get_stats()
                 if stats["monitored"] == 0:
-                    logger.debug(f"🔍 Breakout scan: 0 tokens monitored (waiting for collector)")
+                    logger.info(f"🔍 Breakout scan: 0 tokens monitored (waiting for collector to feed)")
                     continue
 
                 results = await self.breakout.scan_all()

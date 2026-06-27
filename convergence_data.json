@@ -4230,22 +4230,37 @@
           },
           "channel_weight": 1.0,
           "confidence_raw": 0.0
+        },
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_boosted",
+          "source_name": "DexScreener boosted",
+          "timestamp": 1782540009.812172,
+          "signal_type": "boosted",
+          "features": {
+            "mcp": 26402,
+            "liq_usd": 11608.1,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
         }
       ],
       "first_seen": 1782539561.415101,
-      "last_seen": 1782539561.415101,
-      "convergence_score": 36.0,
-      "confidence_level": "LOW",
+      "last_seen": 1782540009.812172,
+      "convergence_score": 44.4,
+      "confidence_level": "MEDIUM",
       "recommended_action": "watch",
       "reason": "DexScreener: DexScreener boosted",
       "source_summary": "Dex(1)",
       "channel_count": 0,
       "source_count": 1,
-      "last_calculated": 1782539561.415268,
+      "last_calculated": 1782540009.812359,
       "alerted": false
     }
   },
-  "last_cleanup": "2026-06-27T05:52:41.415427+00:00",
+  "last_cleanup": "2026-06-27T06:00:09.812560+00:00",
   "stats": {
     "total_tracked": 134,
     "high_convergence": 0
