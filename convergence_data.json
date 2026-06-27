@@ -4709,18 +4709,63 @@
           },
           "channel_weight": 1.0,
           "confidence_raw": 0.0
+        },
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_boosted",
+          "source_name": "DexScreener boosted",
+          "timestamp": 1782567941.74433,
+          "signal_type": "boosted",
+          "features": {
+            "mcp": 12496175,
+            "liq_usd": 1383504.67,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        },
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_boosted",
+          "source_name": "DexScreener boosted",
+          "timestamp": 1782568069.504869,
+          "signal_type": "boosted",
+          "features": {
+            "mcp": 12488041,
+            "liq_usd": 1382768.38,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        },
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_boosted",
+          "source_name": "DexScreener boosted",
+          "timestamp": 1782568274.698631,
+          "signal_type": "boosted",
+          "features": {
+            "mcp": 12488041,
+            "liq_usd": 1382768.38,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
         }
       ],
       "first_seen": 1782567225.862754,
-      "last_seen": 1782567225.862754,
-      "convergence_score": 36.0,
-      "confidence_level": "LOW",
+      "last_seen": 1782568274.698631,
+      "convergence_score": 51.6,
+      "confidence_level": "MEDIUM",
       "recommended_action": "watch",
       "reason": "DexScreener: DexScreener boosted",
       "source_summary": "Dex(1)",
       "channel_count": 0,
       "source_count": 1,
-      "last_calculated": 1782567225.862823,
+      "last_calculated": 1782568274.698683,
       "alerted": false
     },
     "5NFcUdd5BqSpAS1Us6uiMAf8LoYPEY4TWvxXUr7jpump": {
@@ -4755,7 +4800,7 @@
       "alerted": false
     }
   },
-  "last_cleanup": "2026-06-27T13:35:34.187749+00:00",
+  "last_cleanup": "2026-06-27T13:51:14.698736+00:00",
   "stats": {
     "total_tracked": 149,
     "high_convergence": 0

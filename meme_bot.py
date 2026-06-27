@@ -405,7 +405,21 @@ class MemeBot:
             logger.info(f"[SKIP] {launch_data.symbol}: pre-mig — only {launch_data.holders} holders dead")
             return
 
-        # TokenScan check: holders, top10, bundled, audit
+        # Start snapshot collection early (before strict pre-mig filters)
+        try:
+            if liquidity >= 500 and mcap > 0:
+                self.snapshots.start_tracking(
+                    ca=address,
+                    symbol=launch_data.symbol,
+                    launch_ts=launch_data.launch_time if launch_data.launch_time > 0 else datetime.now(timezone.utc).timestamp(),
+                    initial_price=launch_data.initial_price or float(pair.get("priceUsd", 0) or 0),
+                    initial_mcap=mcap,
+                    initial_liq=liquidity,
+                )
+        except Exception as e:
+            logger.debug(f"Snapshot pre-mig feed error: {e}")
+
+        # ===== TOKENSCAN CHECK =====
         try:
             from tokenscan_client import scan_token
             ts_data = await scan_token(await mc.get_client(), address)
@@ -1093,6 +1107,20 @@ class MemeBot:
                             })
                         except Exception as e:
                             logger.debug(f"Breakout feed error: {e}")
+
+                        # Start snapshot collection for new tracked tokens
+                        try:
+                            if liquidity >= 500 and mcap > 0:
+                                self.snapshots.start_tracking(
+                                    ca=addr,
+                                    symbol=pair.get("baseToken", {}).get("symbol", "?"),
+                                    launch_ts=launch_ts,
+                                    initial_price=price,
+                                    initial_mcap=mcap,
+                                    initial_liq=liquidity,
+                                )
+                        except Exception as e:
+                            logger.debug(f"Snapshot new-token feed error: {e}")
 
                 # Pre-migration scan
                 launch_dict = dict(self.state.launch_tracking)

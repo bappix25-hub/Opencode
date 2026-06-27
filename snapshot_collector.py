@@ -297,6 +297,9 @@ class SnapshotCollector:
     async def scan_loop(self):
         """Snapshot all active tokens (called externally every ~60s)."""
         if not self.sessions:
+            if self._last_session_count > 0:
+                logger.info(f"📸 Snapshot scan: 0 active sessions")
+            self._last_session_count = 0
             return
 
         for ca in list(self.sessions.keys()):
@@ -307,6 +310,7 @@ class SnapshotCollector:
             f"📸 Snapshot scan: {len(self.sessions)} active, "
             f"{len(self.completed)} completed"
         )
+        self._last_session_count = len(self.sessions)
 
     def get_session_stats(self) -> dict:
         return {
