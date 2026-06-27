@@ -4769,10 +4769,40 @@
           },
           "channel_weight": 1.0,
           "confidence_raw": 0.0
+        },
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_boosted",
+          "source_name": "DexScreener boosted",
+          "timestamp": 1782568638.103799,
+          "signal_type": "boosted",
+          "features": {
+            "mcp": 12488041,
+            "liq_usd": 1382768.38,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        },
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_boosted",
+          "source_name": "DexScreener boosted",
+          "timestamp": 1782568850.753994,
+          "signal_type": "boosted",
+          "features": {
+            "mcp": 12530304,
+            "liq_usd": 1383768.01,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
         }
       ],
       "first_seen": 1782567225.862754,
-      "last_seen": 1782568452.33317,
+      "last_seen": 1782568850.753994,
       "convergence_score": 54.0,
       "confidence_level": "MEDIUM",
       "recommended_action": "watch",
@@ -4780,7 +4810,7 @@
       "source_summary": "Dex(1)",
       "channel_count": 0,
       "source_count": 1,
-      "last_calculated": 1782568452.333234,
+      "last_calculated": 1782568850.754151,
       "alerted": false
     },
     "5NFcUdd5BqSpAS1Us6uiMAf8LoYPEY4TWvxXUr7jpump": {
@@ -4800,10 +4830,56 @@
           },
           "channel_weight": 1.0,
           "confidence_raw": 0.0
+        },
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782569022.446333,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 10423,
+            "liq_usd": 7290.27,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
         }
       ],
       "first_seen": 1782567334.187576,
-      "last_seen": 1782567334.187576,
+      "last_seen": 1782569022.446333,
+      "convergence_score": 44.4,
+      "confidence_level": "MEDIUM",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener new_profile",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782569022.446444,
+      "alerted": false
+    },
+    "925gDTbAGb8CSbRxMRNSQH7Z6ydpwamczF1CuBJSpump": {
+      "symbol": "",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782568962.544585,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 74952,
+            "liq_usd": 19743.29,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782568962.544585,
+      "last_seen": 1782568962.544585,
       "convergence_score": 36.0,
       "confidence_level": "LOW",
       "recommended_action": "watch",
@@ -4811,13 +4887,137 @@
       "source_summary": "Dex(1)",
       "channel_count": 0,
       "source_count": 1,
-      "last_calculated": 1782567334.187665,
+      "last_calculated": 1782568962.544758,
+      "alerted": false
+    },
+    "FehNxmUWyrmJZfYsndJCYduiuMdQXiMsVXCoHDY7pump": {
+      "symbol": "",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782569511.962721,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 12446,
+            "liq_usd": 8083.84,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782569511.962721,
+      "last_seen": 1782569511.962721,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener new_profile",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782569511.962908,
+      "alerted": false
+    },
+    "EeTCJK2Qsvrnhyydsm2Mv1f2MvWsaxJRMJJBfzs3pump": {
+      "symbol": "",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782569762.965462,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 4790,
+            "liq_usd": 4997.21,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782569762.965462,
+      "last_seen": 1782569762.965462,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener new_profile",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782569762.965538,
+      "alerted": false
+    },
+    "FnDaeZytG6mZfcs5KvJGoWBJuFW4aDYngvJY7uhtpump": {
+      "symbol": "",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782571312.820283,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 7569,
+            "liq_usd": 6230.33,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782571312.820283,
+      "last_seen": 1782571312.820283,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener new_profile",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782571312.820366,
+      "alerted": false
+    },
+    "GqgGkGWD2DfHAtZyTwGDN6VULaqicy2Z45BYhyicpump": {
+      "symbol": "",
+      "sightings": [
+        {
+          "source_type": "dexscreener",
+          "source_id": "dexscreener_new_profile",
+          "source_name": "DexScreener new_profile",
+          "timestamp": 1782571355.065657,
+          "signal_type": "new_profile",
+          "features": {
+            "mcp": 80253,
+            "liq_usd": 20952.77,
+            "holders": 0,
+            "volume_24h": 0
+          },
+          "channel_weight": 1.0,
+          "confidence_raw": 0.0
+        }
+      ],
+      "first_seen": 1782571355.065657,
+      "last_seen": 1782571355.065657,
+      "convergence_score": 36.0,
+      "confidence_level": "LOW",
+      "recommended_action": "watch",
+      "reason": "DexScreener: DexScreener new_profile",
+      "source_summary": "Dex(1)",
+      "channel_count": 0,
+      "source_count": 1,
+      "last_calculated": 1782571355.065713,
       "alerted": false
     }
   },
-  "last_cleanup": "2026-06-27T13:54:12.333297+00:00",
+  "last_cleanup": "2026-06-27T14:42:35.065768+00:00",
   "stats": {
-    "total_tracked": 149,
+    "total_tracked": 154,
     "high_convergence": 0
   }
 }

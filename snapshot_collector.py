@@ -91,6 +91,7 @@ class SnapshotSession:
         self.last_top10 = 0
         self.status = "active"  # active | dumped | expired
         self.snapshots = []
+        self.birdeye_candles_3m = []
 
         self.builders = {i: CandleBuilder(i) for i in SNAPSHOT_INTERVALS}
 
@@ -198,6 +199,50 @@ class SnapshotCollector:
         except Exception as e:
             logger.debug(f"Save error: {e}")
 
+    def _save_interim(self):
+        """Save all active session data (snapshots + candles) for persistence."""
+        try:
+            if not self.sessions:
+                return
+            sessions_data = {}
+            for ca, s in self.sessions.items():
+                sessions_data[ca] = {
+                    "symbol": s.symbol,
+                    "start_time": s.start_time,
+                    "status": s.status,
+                    "initial_price": s.initial_price,
+                    "peak_price": s.peak_price,
+                    "last_price": s.last_price,
+                    "snapshots": s.snapshots[-100:],
+                    "candles_3m": s.builders[180].candles[-20:],
+                    "candles_5m": s.builders[300].candles[-20:],
+                    "candles_15m": s.builders[900].candles[-20:],
+                    "birdeye_3m": s.birdeye_candles_3m[-30:],
+                }
+            data = {
+                "active": sessions_data,
+                "completed": self.completed[-200:],
+                "updated": datetime.now(timezone.utc).isoformat(),
+            }
+            with open(DATA_FILE, "w") as f:
+                json.dump(data, f, indent=2)
+        except Exception as e:
+            logger.debug(f"Interim save error: {e}")
+
+    def get_candles(self, ca: str) -> dict:
+        """Get candle data for a specific token."""
+        s = self.sessions.get(ca)
+        if not s:
+            return {}
+        return {
+            "symbol": s.symbol,
+            "snapshots": len(s.snapshots),
+            "candles_3m": s.builders[180].candles[-20:],
+            "candles_5m": s.builders[300].candles[-20:],
+            "candles_15m": s.builders[900].candles[-20:],
+            "birdeye_3m": s.birdeye_candles_3m[-30:],
+        }
+
     def start_tracking(self, ca: str, symbol: str, launch_ts: float,
                        initial_price: float, initial_mcap: float,
                        initial_liq: float):
@@ -244,8 +289,18 @@ class SnapshotCollector:
             holders = 0
             top10_pct = 0
 
-            # Try Birdeye for holder data
+            # Try Birdeye for holder data + real OHLCV candles
             if self.birdeye:
+                try:
+                    ohlcv = await asyncio.wait_for(
+                        self.birdeye.get_ohlcv(ca, interval="3m", limit=20), timeout=8
+                    )
+                    if ohlcv and len(ohlcv) > 1:
+                        for c in ohlcv:
+                            c["red"] = c["close"] < c["open"]
+                        session.birdeye_candles_3m = ohlcv
+                except Exception:
+                    pass
                 try:
                     overview = await asyncio.wait_for(
                         self.birdeye.get_overview(ca), timeout=8
@@ -297,6 +352,7 @@ class SnapshotCollector:
 
     async def scan_loop(self):
         """Snapshot all active tokens (called externally every ~60s)."""
+        self._save_counter = getattr(self, '_save_counter', 0) + 1
         if not self.sessions:
             if self._last_session_count > 0:
                 logger.info(f"📸 Snapshot scan: 0 active sessions")
@@ -315,6 +371,10 @@ class SnapshotCollector:
             f"{len(self.completed)} completed"
         )
         self._last_session_count = len(self.sessions)
+
+        # Save interim data every 5 cycles (~5 min)
+        if self._save_counter % 5 == 0:
+            self._save_interim()
 
     def get_session_stats(self) -> dict:
         return {

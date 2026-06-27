@@ -1,0 +1,657 @@
+{
+  "active": {
+    "FnDaeZytG6mZfcs5KvJGoWBJuFW4aDYngvJY7uhtpump": {
+      "symbol": "PUMPDROP",
+      "start_time": 1782571057.9206882,
+      "status": "active",
+      "initial_price": 5.68e-06,
+      "peak_price": 1.014e-05,
+      "snapshots": [
+        {
+          "time": 1782571117.7623231,
+          "price": 5.821e-06,
+          "volume_5m": 8915.01,
+          "volume_1h": 27791.35,
+          "liquidity": 5457.09,
+          "mcap": 5822.0,
+          "buys_5m": 122,
+          "sells_5m": 120,
+          "bsr_5m": 1.0166666666666666,
+          "holders": 0,
+          "top10_pct": 0
+        },
+        {
+          "time": 1782571183.8407302,
+          "price": 7.407e-06,
+          "volume_5m": 9094.63,
+          "volume_1h": 29033.32,
+          "liquidity": 6161.35,
+          "mcap": 7407.0,
+          "buys_5m": 124,
+          "sells_5m": 124,
+          "bsr_5m": 1.0,
+          "holders": 0,
+          "top10_pct": 0
+        },
+        {
+          "time": 1782571250.0151458,
+          "price": 7.568e-06,
+          "volume_5m": 6393.15,
+          "volume_1h": 29488.28,
+          "liquidity": 6230.33,
+          "mcap": 7569.0,
+          "buys_5m": 98,
+          "sells_5m": 106,
+          "bsr_5m": 0.9245283018867925,
+          "holders": 0,
+          "top10_pct": 0
+        },
+        {
+          "time": 1782571318.7991855,
+          "price": 8.699e-06,
+          "volume_5m": 3070.56,
+          "volume_1h": 29884.84,
+          "liquidity": 6679.86,
+          "mcap": 8700.0,
+          "buys_5m": 75,
+          "sells_5m": 54,
+          "bsr_5m": 1.3888888888888888,
+          "holders": 0,
+          "top10_pct": 0
+        },
+        {
+          "time": 1782571394.1170247,
+          "price": 1.014e-05,
+          "volume_5m": 2836.07,
+          "volume_1h": 30357.73,
+          "liquidity": 7215.84,
+          "mcap": 10148.0,
+          "buys_5m": 65,
+          "sells_5m": 41,
+          "bsr_5m": 1.5853658536585367,
+          "holders": 0,
+          "top10_pct": 0
+        }
+      ],
+      "candles_3m": [
+        {
+          "time": 1782570960,
+          "open": 5.821e-06,
+          "high": 5.821e-06,
+          "low": 5.821e-06,
+          "close": 5.821e-06,
+          "volume": 8915.01,
+          "buys": 122,
+          "sells": 120,
+          "red": false
+        },
+        {
+          "time": 1782571140,
+          "open": 7.407e-06,
+          "high": 8.699e-06,
+          "low": 7.407e-06,
+          "close": 8.699e-06,
+          "volume": 9094.63,
+          "buys": 124,
+          "sells": 124,
+          "red": false
+        },
+        {
+          "time": 1782571320,
+          "open": 1.014e-05,
+          "high": 1.014e-05,
+          "low": 1.014e-05,
+          "close": 1.014e-05,
+          "volume": 2836.07,
+          "buys": 65,
+          "sells": 41,
+          "red": false
+        }
+      ],
+      "candles_5m": [
+        {
+          "time": 1782570900,
+          "open": 5.821e-06,
+          "high": 7.407e-06,
+          "low": 5.821e-06,
+          "close": 7.407e-06,
+          "volume": 9094.63,
+          "buys": 124,
+          "sells": 124,
+          "red": false
+        },
+        {
+          "time": 1782571200,
+          "open": 7.568e-06,
+          "high": 1.014e-05,
+          "low": 7.568e-06,
+          "close": 1.014e-05,
+          "volume": 6393.15,
+          "buys": 98,
+          "sells": 106,
+          "red": false
+        }
+      ],
+      "candles_15m": [
+        {
+          "time": 1782570600,
+          "open": 5.821e-06,
+          "high": 1.014e-05,
+          "low": 5.821e-06,
+          "close": 1.014e-05,
+          "volume": 9094.63,
+          "buys": 124,
+          "sells": 124,
+          "red": false
+        }
+      ]
+    },
+    "e3Rw27Am9Bd2eXZLHKdfeCanMsjJ3gt8iMAhLV4pump": {
+      "symbol": "gIONS",
+      "start_time": 1782571088.1045468,
+      "status": "active",
+      "initial_price": 1.361e-05,
+      "peak_price": 1.45e-05,
+      "snapshots": [
+        {
+          "time": 1782571121.8091967,
+          "price": 1.361e-05,
+          "volume_5m": 30.78,
+          "volume_1h": 884.79,
+          "liquidity": 2696.37,
+          "mcap": 27206.0,
+          "buys_5m": 0,
+          "sells_5m": 1,
+          "bsr_5m": 0.0,
+          "holders": 0,
+          "top10_pct": 0
+        },
+        {
+          "time": 1782571187.987871,
+          "price": 1.385e-05,
+          "volume_5m": 96.69,
+          "volume_1h": 950.7,
+          "liquidity": 2721.11,
+          "mcap": 27691.0,
+          "buys_5m": 2,
+          "sells_5m": 2,
+          "bsr_5m": 1.0,
+          "holders": 0,
+          "top10_pct": 0
+        },
+        {
+          "time": 1782571254.399214,
+          "price": 1.385e-05,
+          "volume_5m": 96.69,
+          "volume_1h": 950.7,
+          "liquidity": 2721.11,
+          "mcap": 27691.0,
+          "buys_5m": 2,
+          "sells_5m": 2,
+          "bsr_5m": 1.0,
+          "holders": 0,
+          "top10_pct": 0
+        },
+        {
+          "time": 1782571322.8650796,
+          "price": 1.444e-05,
+          "volume_5m": 75.56,
+          "volume_1h": 960.36,
+          "liquidity": 2778.45,
+          "mcap": 28856.0,
+          "buys_5m": 11,
+          "sells_5m": 1,
+          "bsr_5m": 11.0,
+          "holders": 0,
+          "top10_pct": 0
+        },
+        {
+          "time": 1782571398.9261482,
+          "price": 1.45e-05,
+          "volume_5m": 79.84,
+          "volume_1h": 930.97,
+          "liquidity": 2785.5,
+          "mcap": 28986.0,
+          "buys_5m": 12,
+          "sells_5m": 1,
+          "bsr_5m": 12.0,
+          "holders": 0,
+          "top10_pct": 0
+        }
+      ],
+      "candles_3m": [
+        {
+          "time": 1782570960,
+          "open": 1.361e-05,
+          "high": 1.361e-05,
+          "low": 1.361e-05,
+          "close": 1.361e-05,
+          "volume": 30.78,
+          "buys": 0,
+          "sells": 1,
+          "red": false
+        },
+        {
+          "time": 1782571140,
+          "open": 1.385e-05,
+          "high": 1.385e-05,
+          "low": 1.385e-05,
+          "close": 1.385e-05,
+          "volume": 96.69,
+          "buys": 2,
+          "sells": 2,
+          "red": false
+        },
+        {
+          "time": 1782571320,
+          "open": 1.444e-05,
+          "high": 1.45e-05,
+          "low": 1.444e-05,
+          "close": 1.45e-05,
+          "volume": 79.84,
+          "buys": 12,
+          "sells": 1,
+          "red": false
+        }
+      ],
+      "candles_5m": [
+        {
+          "time": 1782570900,
+          "open": 1.361e-05,
+          "high": 1.385e-05,
+          "low": 1.361e-05,
+          "close": 1.385e-05,
+          "volume": 96.69,
+          "buys": 2,
+          "sells": 2,
+          "red": false
+        },
+        {
+          "time": 1782571200,
+          "open": 1.385e-05,
+          "high": 1.45e-05,
+          "low": 1.385e-05,
+          "close": 1.45e-05,
+          "volume": 96.69,
+          "buys": 12,
+          "sells": 2,
+          "red": false
+        }
+      ],
+      "candles_15m": [
+        {
+          "time": 1782570600,
+          "open": 1.361e-05,
+          "high": 1.45e-05,
+          "low": 1.361e-05,
+          "close": 1.45e-05,
+          "volume": 96.69,
+          "buys": 12,
+          "sells": 2,
+          "red": false
+        }
+      ]
+    },
+    "5NFcUdd5BqSpAS1Us6uiMAf8LoYPEY4TWvxXUr7jpump": {
+      "symbol": "CV",
+      "start_time": 1782571201.4094243,
+      "status": "active",
+      "initial_price": 6.351e-06,
+      "peak_price": 6.351e-06,
+      "snapshots": [
+        {
+          "time": 1782571256.753532,
+          "price": 6.102e-06,
+          "volume_5m": 542.72,
+          "volume_1h": 21085.28,
+          "liquidity": 5601.2,
+          "mcap": 6103.0,
+          "buys_5m": 17,
+          "sells_5m": 11,
+          "bsr_5m": 1.5454545454545454,
+          "holders": 0,
+          "top10_pct": 0
+        },
+        {
+          "time": 1782571325.2500825,
+          "price": 6.107e-06,
+          "volume_5m": 480.82,
+          "volume_1h": 20252.78,
+          "liquidity": 5604.05,
+          "mcap": 6107.0,
+          "buys_5m": 14,
+          "sells_5m": 11,
+          "bsr_5m": 1.2727272727272727,
+          "holders": 0,
+          "top10_pct": 0
+        },
+        {
+          "time": 1782571401.2863114,
+          "price": 6.107e-06,
+          "volume_5m": 278.06,
+          "volume_1h": 19836.31,
+          "liquidity": 5604.05,
+          "mcap": 6107.0,
+          "buys_5m": 10,
+          "sells_5m": 10,
+          "bsr_5m": 1.0,
+          "holders": 0,
+          "top10_pct": 0
+        }
+      ],
+      "candles_3m": [
+        {
+          "time": 1782571140,
+          "open": 6.102e-06,
+          "high": 6.102e-06,
+          "low": 6.102e-06,
+          "close": 6.102e-06,
+          "volume": 542.72,
+          "buys": 17,
+          "sells": 11,
+          "red": false
+        },
+        {
+          "time": 1782571320,
+          "open": 6.107e-06,
+          "high": 6.107e-06,
+          "low": 6.107e-06,
+          "close": 6.107e-06,
+          "volume": 480.82,
+          "buys": 14,
+          "sells": 11,
+          "red": false
+        }
+      ],
+      "candles_5m": [
+        {
+          "time": 1782571200,
+          "open": 6.102e-06,
+          "high": 6.107e-06,
+          "low": 6.102e-06,
+          "close": 6.107e-06,
+          "volume": 542.72,
+          "buys": 17,
+          "sells": 11,
+          "red": false
+        }
+      ],
+      "candles_15m": [
+        {
+          "time": 1782570600,
+          "open": 6.102e-06,
+          "high": 6.107e-06,
+          "low": 6.102e-06,
+          "close": 6.107e-06,
+          "volume": 542.72,
+          "buys": 17,
+          "sells": 11,
+          "red": false
+        }
+      ]
+    },
+    "K5c5rHNftqs3dD33J4CV4ZiX3suD5vuBqpNyiH1pump": {
+      "symbol": "LEG",
+      "start_time": 1782571251.237526,
+      "status": "active",
+      "initial_price": 0.0001551,
+      "peak_price": 0.0001604,
+      "snapshots": [
+        {
+          "time": 1782571327.2876797,
+          "price": 0.0001488,
+          "volume_5m": 13452.64,
+          "volume_1h": 352804.26,
+          "liquidity": 29653.09,
+          "mcap": 148875.0,
+          "buys_5m": 116,
+          "sells_5m": 131,
+          "bsr_5m": 0.8854961832061069,
+          "holders": 0,
+          "top10_pct": 0
+        },
+        {
+          "time": 1782571403.6550376,
+          "price": 0.0001604,
+          "volume_5m": 19004.93,
+          "volume_1h": 353191.69,
+          "liquidity": 30807.65,
+          "mcap": 160462.0,
+          "buys_5m": 148,
+          "sells_5m": 182,
+          "bsr_5m": 0.8131868131868132,
+          "holders": 0,
+          "top10_pct": 0
+        }
+      ],
+      "candles_3m": [
+        {
+          "time": 1782571320,
+          "open": 0.0001488,
+          "high": 0.0001604,
+          "low": 0.0001488,
+          "close": 0.0001604,
+          "volume": 19004.93,
+          "buys": 148,
+          "sells": 182,
+          "red": false
+        }
+      ],
+      "candles_5m": [
+        {
+          "time": 1782571200,
+          "open": 0.0001488,
+          "high": 0.0001604,
+          "low": 0.0001488,
+          "close": 0.0001604,
+          "volume": 19004.93,
+          "buys": 148,
+          "sells": 182,
+          "red": false
+        }
+      ],
+      "candles_15m": [
+        {
+          "time": 1782570600,
+          "open": 0.0001488,
+          "high": 0.0001604,
+          "low": 0.0001488,
+          "close": 0.0001604,
+          "volume": 19004.93,
+          "buys": 148,
+          "sells": 182,
+          "red": false
+        }
+      ]
+    },
+    "712cHfCpjCy4ZAPNvihQBfZxJRqBjthGtbWTypF2pump": {
+      "symbol": "COZYTOWN",
+      "start_time": 1782571313.2378855,
+      "status": "active",
+      "initial_price": 1.476e-06,
+      "peak_price": 1.476e-06,
+      "snapshots": [
+        {
+          "time": 1782571329.6480212,
+          "price": 1.476e-06,
+          "volume_5m": 0.0,
+          "volume_1h": 251.49,
+          "liquidity": 2854.38,
+          "mcap": 1477.0,
+          "buys_5m": 0,
+          "sells_5m": 0,
+          "bsr_5m": 0.0,
+          "holders": 0,
+          "top10_pct": 0
+        },
+        {
+          "time": 1782571406.01696,
+          "price": 1.476e-06,
+          "volume_5m": 0.0,
+          "volume_1h": 251.49,
+          "liquidity": 2854.38,
+          "mcap": 1477.0,
+          "buys_5m": 0,
+          "sells_5m": 0,
+          "bsr_5m": 0.0,
+          "holders": 0,
+          "top10_pct": 0
+        }
+      ],
+      "candles_3m": [
+        {
+          "time": 1782571320,
+          "open": 1.476e-06,
+          "high": 1.476e-06,
+          "low": 1.476e-06,
+          "close": 1.476e-06,
+          "volume": 0.0,
+          "buys": 0,
+          "sells": 0,
+          "red": false
+        }
+      ],
+      "candles_5m": [
+        {
+          "time": 1782571200,
+          "open": 1.476e-06,
+          "high": 1.476e-06,
+          "low": 1.476e-06,
+          "close": 1.476e-06,
+          "volume": 0.0,
+          "buys": 0,
+          "sells": 0,
+          "red": false
+        }
+      ],
+      "candles_15m": [
+        {
+          "time": 1782570600,
+          "open": 1.476e-06,
+          "high": 1.476e-06,
+          "low": 1.476e-06,
+          "close": 1.476e-06,
+          "volume": 0.0,
+          "buys": 0,
+          "sells": 0,
+          "red": false
+        }
+      ]
+    },
+    "AsJVCgLnw5c7Me9gFHSJYSKd99RYm4dzQDtsTqRGpump": {
+      "symbol": "BLACKWHALE",
+      "start_time": 1782571316.7202475,
+      "status": "active",
+      "initial_price": 3.983e-05,
+      "peak_price": 4.271e-05,
+      "snapshots": [
+        {
+          "time": 1782571331.7031271,
+          "price": 3.983e-05,
+          "volume_5m": 19226.32,
+          "volume_1h": 19226.32,
+          "liquidity": 14323.47,
+          "mcap": 39835.0,
+          "buys_5m": 250,
+          "sells_5m": 151,
+          "bsr_5m": 1.6556291390728477,
+          "holders": 0,
+          "top10_pct": 0
+        },
+        {
+          "time": 1782571408.0729508,
+          "price": 4.271e-05,
+          "volume_5m": 5661.03,
+          "volume_1h": 19529.11,
+          "liquidity": 14830.4,
+          "mcap": 42713.0,
+          "buys_5m": 100,
+          "sells_5m": 69,
+          "bsr_5m": 1.4492753623188406,
+          "holders": 0,
+          "top10_pct": 0
+        }
+      ],
+      "candles_3m": [
+        {
+          "time": 1782571320,
+          "open": 3.983e-05,
+          "high": 4.271e-05,
+          "low": 3.983e-05,
+          "close": 4.271e-05,
+          "volume": 19226.32,
+          "buys": 250,
+          "sells": 151,
+          "red": false
+        }
+      ],
+      "candles_5m": [
+        {
+          "time": 1782571200,
+          "open": 3.983e-05,
+          "high": 4.271e-05,
+          "low": 3.983e-05,
+          "close": 4.271e-05,
+          "volume": 19226.32,
+          "buys": 250,
+          "sells": 151,
+          "red": false
+        }
+      ],
+      "candles_15m": [
+        {
+          "time": 1782570600,
+          "open": 3.983e-05,
+          "high": 4.271e-05,
+          "low": 3.983e-05,
+          "close": 4.271e-05,
+          "volume": 19226.32,
+          "buys": 250,
+          "sells": 151,
+          "red": false
+        }
+      ]
+    }
+  },
+  "completed": [
+    {
+      "ca": "925gDTbAGb8CSbRxMRNSQH7Z6ydpwamczF1CuBJSpump",
+      "symbol": "Gamja",
+      "age_hours": 0.58,
+      "status": "dumped",
+      "initial_price": 4.014e-05,
+      "peak_price": 7.477e-05,
+      "last_price": 1.957e-05,
+      "multiplier": 0.49,
+      "peak_multiplier": 1.86,
+      "initial_mcap": 40148.0,
+      "initial_liq": 14411.58,
+      "last_holders": 0,
+      "last_top10": 0,
+      "snapshot_count": 27,
+      "candles_3m": 12,
+      "candles_5m": 7,
+      "candles_15m": 3
+    },
+    {
+      "ca": "GqgGkGWD2DfHAtZyTwGDN6VULaqicy2Z45BYhyicpump",
+      "symbol": "SOLTOPIA",
+      "age_hours": 0.09,
+      "status": "dumped",
+      "initial_price": 8.149e-05,
+      "peak_price": 8.671e-05,
+      "last_price": 1.587e-06,
+      "multiplier": 0.02,
+      "peak_multiplier": 1.06,
+      "initial_mcap": 81495.0,
+      "initial_liq": 21055.42,
+      "last_holders": 0,
+      "last_top10": 0,
+      "snapshot_count": 5,
+      "candles_3m": 2,
+      "candles_5m": 1,
+      "candles_15m": 0
+    }
+  ],
+  "updated": "2026-06-27T14:43:30.084093+00:00"
+}
