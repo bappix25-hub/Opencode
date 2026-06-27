@@ -134,6 +134,7 @@ class MemeBot:
         self.helius = HeliusClient(self.session)
         self.birdeye = BirdeyeClient(self.session, config.birdeye_api_key)
         self.breakout = BreakoutDetector(self.dex, self.birdeye)
+        self.snapshots = SnapshotCollector(self.dex, self.birdeye)
         self.jupiter = JupiterClient(self.session)
         self.social = SocialSignalEngine(self.session)
         self.honeypot = HoneypotDetector(self.session, rugcheck=self.rugcheck, helius=self.helius, dex=self.dex, birdeye=self.birdeye)
@@ -179,6 +180,7 @@ class MemeBot:
             asyncio.create_task(self.connection_monitor_loop(), name="conn_monitor"),
             asyncio.create_task(self._heartbeat_loop(), name="heartbeat"),
             asyncio.create_task(self._breakout_scan_loop(), name="breakout_scan"),
+            asyncio.create_task(self._snapshot_scan_loop(), name="snapshot_scan"),
         ]
 
         if config.enable_github_sync:
@@ -464,6 +466,22 @@ class MemeBot:
             })
         except Exception as e:
             logger.debug(f"Breakout pre-mig feed error: {e}")
+
+        # Start snapshot collection for GMGN FEATURED tokens
+        try:
+            source_ch = launch_data.source_channel if hasattr(launch_data, 'source_channel') else ""
+            if "FEATURED" in source_ch or "featured" in source_ch:
+                pair_created_ts = int(launch_data.launch_time * 1000) if launch_data.launch_time > 0 else int(datetime.now(timezone.utc).timestamp() * 1000)
+                self.snapshots.start_tracking(
+                    ca=address,
+                    symbol=launch_data.symbol,
+                    launch_ts=launch_data.launch_time if launch_data.launch_time > 0 else datetime.now(timezone.utc).timestamp(),
+                    initial_price=price_usd,
+                    initial_mcap=mcap,
+                    initial_liq=liquidity,
+                )
+        except Exception as e:
+            logger.debug(f"Snapshot start error: {e}")
 
         await self.evaluate_and_signal(address, launch_data, pair)
 
@@ -2454,6 +2472,19 @@ class MemeBot:
                 break
             except Exception as e:
                 logger.error(f"Breakout scan error: {e}")
+                await asyncio.sleep(30)
+
+    async def _snapshot_scan_loop(self):
+        """Snapshot active GMGN tokens every 60s — builds 3/5/15m candles."""
+        logger.info("📸 Snapshot collector loop started")
+        while True:
+            try:
+                await asyncio.sleep(60)
+                await self.snapshots.scan_loop()
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"Snapshot scan error: {e}")
                 await asyncio.sleep(30)
 
     async def github_sync_loop(self):

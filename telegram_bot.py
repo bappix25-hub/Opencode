@@ -1095,6 +1095,38 @@ class TelegramHandlers:
         except Exception as e:
             await update.message.reply_text(f"❌ Error: {e}")
 
+    async def cmd_snapshots(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Show snapshot collector status."""
+        try:
+            from meme_bot import _get_bot
+            bot = _get_bot()
+            if not bot or not hasattr(bot, 'snapshots'):
+                await update.message.reply_text("❌ Snapshot collector not running.")
+                return
+
+            stats = bot.snapshots.get_session_stats()
+            msg = (
+                f"📸 <b>Snapshot Collector</b>\n"
+                f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                f"🟢 Active: <b>{stats['active']}</b>\n"
+                f"✅ Completed: <b>{stats['completed']}</b>\n"
+                f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            )
+            if stats['active'] > 0:
+                msg += "<b>Active Tokens:</b>\n"
+                for t in stats['tokens'][:10]:
+                    msg += (
+                        f"  • {t['symbol']}: age={t['age_hours']}h "
+                        f"snaps={t['snapshots']} peak={t['peak']} "
+                        f"price=${t['price']:.8f}\n"
+                    )
+            else:
+                msg += "⏳ No active snapshot sessions."
+
+            await update.message.reply_text(msg, parse_mode="HTML", disable_web_page_preview=True)
+        except Exception as e:
+            await update.message.reply_text(f"❌ Error: {e}")
+
 
 def register_handlers(app, handlers: TelegramHandlers):
     from telegram.ext import CallbackQueryHandler
@@ -1113,6 +1145,7 @@ def register_handlers(app, handlers: TelegramHandlers):
     app.add_handler(CommandHandler("config", handlers.cmd_config))
     app.add_handler(CommandHandler("scan", handlers.cmd_scan))
     app.add_handler(CommandHandler("breakout", handlers.cmd_breakout))
+    app.add_handler(CommandHandler("snapshots", handlers.cmd_snapshots))
     app.add_handler(CommandHandler("setchannel", handlers.cmd_setchannel))
     app.add_handler(CallbackQueryHandler(handlers.threshold_callback, pattern="^thr_"))
     app.add_handler(MessageHandler(filters.ALL & ~filters.COMMAND, handlers.handle_buttons))
