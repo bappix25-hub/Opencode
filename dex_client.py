@@ -12,9 +12,13 @@ class DexScreenerClient:
         self.base_url = "https://api.dexscreener.com"
         self.max_retries = config.dex_max_retries
         self.base_delay = config.dex_base_delay
+        self.default_timeout = aiohttp.ClientTimeout(total=10)  # 10s default timeout
     
     async def _request_with_retry(self, method: str, url: str, **kwargs) -> Optional[dict]:
         delay = self.base_delay
+        # Apply default timeout if not specified
+        if "timeout" not in kwargs:
+            kwargs["timeout"] = self.default_timeout
         for attempt in range(self.max_retries):
             try:
                 async with self.session.request(method, url, **kwargs) as resp:
