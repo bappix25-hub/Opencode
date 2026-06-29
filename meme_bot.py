@@ -11,8 +11,8 @@ from telegram import Bot
 from telegram.ext import Application
 
 from config import config
-from dex_client import DexScreenerClient
-from birdeye_client import BirdeyeClient
+from gmgn_client import GmgnClient
+from pump_portal_client import PumpPortalClient
 from telegram_bot import TelegramHandlers, register_handlers
 from gmgn_snapshot_tracker import GmgnSnapshotTracker
 from github_sync import sync_to_github, restore_from_github
@@ -48,8 +48,7 @@ def _get_bot():
 class MemeBot:
     def __init__(self):
         self.session: aiohttp.ClientSession = None
-        self.dex: DexScreenerClient = None
-        self.birdeye: BirdeyeClient = None
+        self.gmgn_client: GmgnClient = None
         self.tracker: GmgnSnapshotTracker = None
         self.telegram_app: Application = None
         self.handlers: TelegramHandlers = None
@@ -58,17 +57,22 @@ class MemeBot:
 
     async def start(self):
         self.session = aiohttp.ClientSession()
-        self.dex = DexScreenerClient(self.session)
-        self.birdeye = BirdeyeClient(self.session, config.birdeye_api_key)
-        self.tracker = GmgnSnapshotTracker(self.dex, self.birdeye)
+
+        self.pump_portal = PumpPortalClient()
+        await self.pump_portal.start()
+
+        self.gmgn_client = GmgnClient(pump_portal_client=self.pump_portal)
+        await self.gmgn_client.start()
+
+        self.tracker = GmgnSnapshotTracker(self.gmgn_client)
 
         self.telegram_app = Application.builder().token(config.bot_token).build()
-        self.handlers = TelegramHandlers(None, self.dex, self.session, None)
+        self.handlers = TelegramHandlers(None, None, self.session, None)
         register_handlers(self.telegram_app, self.handlers)
 
         await restore_from_github()
 
-        logger.info("🚀 বট চালু হচ্ছে (GMGN-only mode)...")
+        logger.info(" bot chalucchi (DexScreener mode)...")
 
         self._tasks = [
             asyncio.create_task(self._gmgn_scan_loop(), name="gmgn_scan"),
@@ -95,13 +99,17 @@ class MemeBot:
                         logger.warning(f"Conflict (attempt {attempt+1}/10), retry 5s...")
                         await asyncio.sleep(5)
                     else:
-                        raise
+                        if attempt < 9:
+                            logger.warning(f"Poll error (attempt {attempt+1}/10): {e}, sleep 10s...")
+                            await asyncio.sleep(10)
+                        else:
+                            raise
 
             await send_msg(self.telegram_app.bot,
-                "🤖 <b>বট চালু!</b>\n"
-                "📡 শুধুমাত্র GMGN Featured V2\n"
-                "⏱️ 3 মিনিট পর স্ন্যাপশট শুরু\n"
-                "🤖 ৭টি বট + রেটলিমিট সুরক্ষা"
+                " <b>Bot chaluchi!</b>\n"
+                " DexScreener tracking\n"
+                " Free API (no key)\n"
+                " 24/7 cholbe"
             )
             await self._shutdown_event.wait()
         except asyncio.CancelledError:
@@ -111,9 +119,13 @@ class MemeBot:
         finally:
             await self.shutdown()
 
-    def _telegram_error_handler(self, update, context):
+    async def _telegram_error_handler(self, update, context):
         error = context if isinstance(context, Exception) else getattr(context, 'error', context)
-        logger.error(f"Telegram error: {error}")
+        err_str = str(error)
+        if "Connection" in err_str or "NetworkError" in err_str or "104" in err_str or "103" in err_str:
+            logger.warning(f"Network error in TG handler (ignored): {err_str[:100]}")
+        else:
+            logger.error(f"Telegram handler error: {err_str[:200]}")
 
     async def shutdown(self):
         if self._shutdown_event.is_set():
@@ -127,6 +139,10 @@ class MemeBot:
         if self._tasks:
             await asyncio.gather(*self._tasks, return_exceptions=True)
 
+        if self.pump_portal:
+            await self.pump_portal.stop()
+        if self.gmgn_client:
+            await self.gmgn_client.close()
         if self.session:
             try:
                 await self.session.close()
@@ -153,7 +169,7 @@ class MemeBot:
         except Exception:
             pass
 
-        logger.info("✅ Shutdown complete")
+        logger.info(" Shutdown complete")
 
     # ===== GMGN SCAN LOOP =====
     async def _gmgn_scan_loop(self):
@@ -170,7 +186,7 @@ class MemeBot:
                     pass
 
                 if tg_client and tg_client.is_connected():
-                    new_tokens = await tc.scan_channels(tg_client, self.dex)
+                    new_tokens = await tc.scan_channels(tg_client)
                     if new_tokens:
                         for token in new_tokens:
                             ca = token.get("ca", "")
@@ -179,10 +195,8 @@ class MemeBot:
                                 continue
                             liq = token.get("liq_usd", 0)
                             mcp = token.get("mcp", 0)
-                            # Skip if no liquidity
                             if liq < 500:
                                 continue
-                            # Create session directly — no pending, no wait
                             if ca not in self.tracker.sessions:
                                 from gmgn_snapshot_tracker import SnapshotSession
                                 session = SnapshotSession(
@@ -190,12 +204,10 @@ class MemeBot:
                                     launch_ts=token.get("first_seen", time.time()),
                                     initial_price=0, initial_mcap=mcp, initial_liq=liq,
                                     signal_type=token.get("signal_type", ""),
-                                    source="bot",
+                                    source="gmgn",
                                 )
-                                session.last_dex_data = None
                                 self.tracker.sessions[ca] = session
-                                logger.info(f"🤖 New: {symbol} ({ca[:8]}...) liq=${liq:.0f} mcp=${mcp:.0f}")
-                            # IMMEDIATE snapshot via bot
+                                logger.info(f" New: {symbol} ({ca[:8]}...) liq=${liq:.0f} mcp=${mcp:.0f}")
                             try:
                                 await asyncio.wait_for(self.tracker.take_snapshot(ca), timeout=15)
                             except Exception as e:
@@ -210,10 +222,23 @@ class MemeBot:
 
     # ===== SNAPSHOT LOOP =====
     async def _snapshot_loop(self):
-        """Take snapshots every ~60s."""
+        """Take snapshots every ~60s, then check for candle patterns."""
         while True:
             try:
                 await self.tracker.scan_loop()
+
+                signals = self.tracker.check_patterns(180)
+                for sig in signals:
+                    msg = (
+                        f" SIGNAL: <b>{sig['symbol']}</b>\n"
+                        f"====================\n"
+                        f" Price: <b>${sig['price']:.6f}</b>\n"
+                        f" Candle: <b>+{sig['change_pct']}%</b>\n"
+                        f" MCap: ${sig['mcap']:.0f}\n"
+                        f" Age: {sig['age_hours']}h\n"
+                        f" CA: <code>{sig['ca'][:12]}...</code>"
+                    )
+                    await send_msg(self.telegram_app.bot, msg)
             except asyncio.CancelledError:
                 break
             except Exception as e:
@@ -227,8 +252,8 @@ class MemeBot:
             try:
                 await asyncio.sleep(3600)
                 if config.enable_github_sync:
-                    await sync_to_github("🔄 Hourly GMGN snapshot data sync")
-                    logger.info("✅ GitHub sync complete")
+                    await sync_to_github(" Hourly GMGN snapshot data sync")
+                    logger.info(" GitHub sync complete")
             except asyncio.CancelledError:
                 break
             except Exception as e:
@@ -244,20 +269,12 @@ class MemeBot:
                 active = len(self.tracker.sessions)
                 pending = len(self.tracker._pending_tokens)
                 completed = len(self.tracker.completed)
-                try:
-                    from multi_bot_client import get_bot_stats
-                    bs = get_bot_stats()
-                    working = sum(1 for v in bs.values() if v["total"] > 0 and not v["skipped"])
-                    bot_line = f"| বট {working}/7 সক্রিয়"
-                except Exception:
-                    bot_line = ""
-
-                msg = (f"💚 <b>GMGN Tracker চলছে</b>\n"
-                       f"━━━━━━━━━━━━━━━━\n"
-                       f"📡 স্ন্যাপশট: <b>{active}</b> active\n"
-                       f"⏳ অপেক্ষমান: <b>{pending}</b> (3মি গেট)\n"
-                       f"✅ সম্পন্ন: <b>{completed}</b>\n"
-                       f"{bot_line}")
+                msg = (f" <b>Tracker cholche</b>\n"
+                       f"====================\n"
+                       f" Snapshot: <b>{active}</b> active\n"
+                       f" Opekkhaman: <b>{pending}</b>\n"
+                       f" Sampanna: <b>{completed}</b>\n"
+                       f" DexScreener")
                 await send_msg(self.telegram_app.bot, msg)
             except asyncio.CancelledError:
                 break

@@ -71,6 +71,8 @@ class Config:
     paper_trade_timeout_hours: int = get_env_int("PAPER_TRADE_TIMEOUT_HOURS", 3)
 
     birdeye_api_key: str = get_env("BIRDEYE_API_KEY", "")
+    gmgn_email: str = get_env("GMGN_EMAIL", "")
+    gmgn_password: str = get_env("GMGN_PASSWORD", "")
     twitter_bearer_token: str = get_env("TWITTER_BEARER_TOKEN", "")
     twitter_client_id: str = get_env("TWITTER_CLIENT_ID", "")
     twitter_client_secret: str = get_env("TWITTER_CLIENT_SECRET", "")
